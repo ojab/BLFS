@@ -17,7 +17,7 @@ LEASEINFO="/var/lib/dhcpc/dhcpcd-$1.info"
 
 case "$2" in
         up)
-                echo "Starting dhcpcd on the $1 interface..."
+                echo -n "Starting dhcpcd on the $1 interface..."
                 # Test to see if there is a stale pid file
                 if [ -f "$PIDFILE" ]
                 then
@@ -31,7 +31,28 @@ case "$2" in
                     fi
                 fi
                 /sbin/dhcpcd $1 $DHCP_START
-                evaluate_retval
+		# Save the return value
+		RET="$?"
+		# Print the assigned settings if requested
+		if [ "$RET" == "0" -a "$PRINTIP" == "yes" ]; then
+			. /var/lib/dhcpc/dhcpcd-$1.info
+			if [ "$PRINTALL" == "yes" ]; then
+				echo ""
+				print_status success
+				echo "           DHCP Assigned Settings for $1:"
+				echo "           IP Address:      $IPADDR"
+				echo "           Subnet Mask:     $NETMASK"
+				echo "           Default Gateway: $GATEWAY"
+				echo "           DNS Server:      $DNS"
+			else
+				echo " IP Addresss: ""$IPADDR""..."
+				print_status success
+			fi
+		else
+			echo ""
+			$(exit "$RET")
+			evaluate_retval
+		fi
         ;;
                                                                                 
         down)
