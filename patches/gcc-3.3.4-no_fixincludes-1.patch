@@ -4,6 +4,9 @@ Initial Package Version: 3.3.1
 Origin: Originally developed for GCC 3.2 by Greg Schafer <gschafer at zip dot com dot au>
 Description: Prevent fixincludes script from running.
 
+$LastChangedBy$
+$Date$
+
 --- gcc-3.3.1.orig/gcc/Makefile.in	2003-08-03 15:48:36.000000000 +0000
 +++ gcc-3.3.1/gcc/Makefile.in	2003-08-15 23:40:28.000000000 +0000
 @@ -2335,10 +2335,6 @@
