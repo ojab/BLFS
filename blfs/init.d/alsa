@@ -6,6 +6,9 @@
 # ALSA specific parts by Mark Hymers - markh@linuxfromscratch.org
 # Stores mixer settings in the default location: /etc/asound.state
 
+#$LastChangedBy$
+#$Date$
+
 . /etc/sysconfig/rc
 . $rc_functions
 

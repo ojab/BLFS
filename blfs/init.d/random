@@ -5,6 +5,9 @@
 # Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
 # Random script elements by Larry Lawrence
 
+#$LastChangedBy$
+#$Date$
+
 . /etc/sysconfig/rc
 . $rc_functions
 

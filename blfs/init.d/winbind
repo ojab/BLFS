@@ -4,8 +4,11 @@
 # Based on sysklogd script from LFS-3.1 and earlier.
 # Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
 
-source /etc/sysconfig/rc
-source $rc_functions
+#$LastChangedBy$
+#$Date$
+
+. /etc/sysconfig/rc
+. $rc_functions
 
 PIDFILE="/var/run/winbindd.pid"
 KILLDELAY="10"
