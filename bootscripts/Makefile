@@ -306,6 +306,16 @@ install-sshd: create-dirs
 	ln -sf  ../init.d/sshd ${EXTDIR}/rc.d/rc5.d/S30sshd
 	ln -sf  ../init.d/sshd ${EXTDIR}/rc.d/rc6.d/K30sshd
 
+install-svn: create-dirs
+	install -m 754 blfs/init.d/svn        ${EXTDIR}/rc.d/init.d/
+	ln -sf ../init.d/svn ${EXTDIR}/rc.d/rc0.d/K27svn
+	ln -sf ../init.d/svn ${EXTDIR}/rc.d/rc1.d/K27svn
+	ln -sf ../init.d/svn ${EXTDIR}/rc.d/rc2.d/K27svn
+	ln -sf ../init.d/svn ${EXTDIR}/rc.d/rc3.d/S33svn
+	ln -sf ../init.d/svn ${EXTDIR}/rc.d/rc4.d/S33svn
+	ln -sf ../init.d/svn ${EXTDIR}/rc.d/rc5.d/S33svn
+	ln -sf ../init.d/svn ${EXTDIR}/rc.d/rc6.d/K27svn
+
 install-sysstat: create-dirs
 	install -m 754 blfs/init.d/sysstat    ${EXTDIR}/rc.d/init.d/
 	ln -sf ../init.d/sysstat ${EXTDIR}/rc.d/rcsysinit.d/S85sysstat
@@ -313,6 +323,16 @@ install-sysstat: create-dirs
 install-usb: create-dirs
 	install -m 754 blfs/init.d/usb        ${EXTDIR}/rc.d/init.d/
 	ln -sf ../init.d/usb ${EXTDIR}/rc.d/rcsysinit.d/S90usb
+
+install-vsftpd: create-dirs
+	install -m 754 blfs/init.d/vsftpd     ${EXTDIR}/rc.d/init.d/
+	ln -sf ../init.d/vsftpd ${EXTDIR}/rc.d/rc0.d/K28vsftpd
+	ln -sf ../init.d/vsftpd ${EXTDIR}/rc.d/rc1.d/K28vsftpd
+	ln -sf ../init.d/vsftpd ${EXTDIR}/rc.d/rc2.d/K28vsftpd
+	ln -sf ../init.d/vsftpd ${EXTDIR}/rc.d/rc3.d/S32vsftpd
+	ln -sf ../init.d/vsftpd ${EXTDIR}/rc.d/rc4.d/S32vsftpd
+	ln -sf ../init.d/vsftpd ${EXTDIR}/rc.d/rc5.d/S32vsftpd
+	ln -sf ../init.d/vsftpd ${EXTDIR}/rc.d/rc6.d/K28vsftpd
 
 install-winbind: create-dirs
 	install -m 754 blfs/init.d/winbind    ${EXTDIR}/rc.d/init.d/
@@ -365,7 +385,9 @@ install-xinetd: create-dirs
 	install-samba \
 	install-sendmail \
 	install-sshd \
+	install-svn \
 	install-sysstat \
+	install-vsftpd \
 	install-usb \
 	install-winbind \
 	install-xinetd

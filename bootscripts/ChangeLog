@@ -1,3 +1,6 @@
+2004-07-19 DJ Lucas <dj@linuxfromscratch.org>
+	* Added svn and vsftpd scripts.
+
 2004-06-27 DJ Lucas <dj@linuxfromscratch.org>
 	* Added sysstat bootscript
 	* Fixed missing $EXTDIR targets in Makefile
