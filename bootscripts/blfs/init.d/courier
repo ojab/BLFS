@@ -196,16 +196,8 @@ case "${1}" in
 			echo "     Webmail..."
 			/usr/sbin/webmaild stop
 			evaluate_retval
-			rm -f /var/run/courier/sqwebmaild.pid{,.lock}
+			rm -f /var/run/courier/sqwebmaild.pid{,.lock,.pcp.lock}
 		fi
-
-                # Webmail
-                if [ -f /var/run/courier/sqwebmaild.pid.lock ]; then
-                        echo "     Webmail..."
-                        /usr/sbin/webmaild stop
-                        evaluate_retval
-                        rm -f /var/run/courier/sqwebmaild.pid{,.lock}
-                fi
 
 		# LDAP Alias
 		if [ -f /var/run/courier/ldapaliasd.lock ]; then
