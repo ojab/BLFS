@@ -7,21 +7,21 @@
 
 . /etc/sysconfig/rc || exit
 . $rc_functions || exit
-. $network_devices/ifconfig.$1
+. $IFCONFIG
 
 case $2 in
         up)
-                echo "Setting up the IPX protocol on $IPXDEV"
-                /sbin/ifconfig $IPXDEV up > /dev/null
-                /bin/ipx_interface add $IPXDEV $FRAME &&
+                echo "Setting up IPX on the $1 interface..."
+                /sbin/ifconfig $1 up > /dev/null
+                /bin/ipx_interface add $1 $FRAME &&
                 /bin/ipx_configure --auto_interface=on --auto_primary=on
                 evaluate_retval
         ;;
 
         down)
-                echo "Stopping IPX on the $IPXDEV interface..."
+                echo "Stopping IPX on the $1 interface..."
                 /bin/ipx_configure --auto_interface=off --auto_primary=off &&
-                /bin/ipx_interface del $IPXDEV $FRAME
+                /bin/ipx_interface del $1 $FRAME
                 evaluate_retval
         ;;
 

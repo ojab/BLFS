@@ -7,15 +7,18 @@
 
 . /etc/sysconfig/rc
 . $rc_functions
-. $network_devices/ifconfig.$1
-                                                                                
+. $IFCONFIG
+
+PIDFILE="/var/run/dhcpcd-$1.pid"
+LEASEINFO="/var/lib/dhcpc/dhcpcd.$1.info"
+
 case "$2" in
         up)
                 echo "Bringing up the $1 interface (dhcpcd)..."
                 # Test to see if there is a stale pid file
-                if [ -f /var/run/dhcpcd-$1.pid ]
+                if [ -f "$PIDFILE" ]
                 then
-                    ps $(cat /var/run/dhcpcd-$1.pid) | grep dhcpcd > /dev/null
+                    ps `cat "$PIDFILE"` | grep dhcpcd > /dev/null
                     if [ $? != 0 ]
                     then
                         rm -f /var/run/dhcpcd-$1.pid > /dev/null
@@ -29,9 +32,36 @@ case "$2" in
         ;;
                                                                                 
         down)
+		# Do nothing if we have an infinate lease time as
+		# the client exits when started in this case.
+		if [ -e "$LEASEINFO" ]
+		then
+		    . $LEASEINFO
+		else
+		    # Have to print something here to let the user know
+		    # that there is something wrong with their setup
+		    echo "Bringing down the $1 interface..."
+		    print_status warning not_running
+		    exit 1
+		fi
+
+		if [ "$LEASETIME" == "4294967295" ]
+		then
+		    # Do nothing and exit
+		    exit 0
+		fi
+
                 echo "Bringing down the $1 interface (dhcpcd)..."
-                /sbin/dhcpcd $1 $DHCP_STOP
-                evaluate_retval
+		if [ "$DHCP_STOP" == "" ]
+		then
+		    # 2nd argument is not used when PIDFILE is set,
+		    # but killproc requires a second argument
+		    # currently in LFS bugzilla
+		    killproc dhcpcd
+		else
+                    /sbin/dhcpcd $1 $DHCP_STOP
+                    evaluate_retval
+                fi
         ;;
                                                                                 
         *)

@@ -7,7 +7,7 @@
 
 . /etc/sysconfig/rc
 . $rc_functions
-. $network_devices/ifconfig.$1
+. $IFCONFIG
                                                                                 
 case "$2" in
         up)
@@ -18,8 +18,15 @@ case "$2" in
                                                                                 
         down)
                 echo "Bringing down the $1 interface (dhclient)..."
-                /sbin/dhclient $1 $DHCP_STOP
-                evaluate_retval
+		if [ "$DHCP_STOP" == "" ]
+		then
+			# This breaks multiple interfaces please provide
+			# the correct stop arguments.
+			killproc dhclient
+		else
+                	/sbin/dhclient $1 $DHCP_STOP
+                	evaluate_retval
+		fi
         ;;
                                                                                 
         *)
