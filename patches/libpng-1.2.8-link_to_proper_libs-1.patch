@@ -1,3 +1,14 @@
+Submitted By: Bruce Dubbs <bdubbs@linuxfromscratch.org>
+Date: 2004-08-05
+Initial Package Version: 1.2.6
+Origin: http://blfs-bugs.linuxfromscratch.org/show_bug.cgi?id=644
+Description: libpng is not linked against libz and libm. This causes
+             problems for packages that try to link against libpng
+             without including "-lz -lm" in the linker flags.
+
+$LastChangedBy$
+$Date$
+
 --- libpng-1.2.8/scripts/libpng.pc.in.orig	2005-01-04 14:06:54.182100728 +0000
 +++ libpng-1.2.8/scripts/libpng.pc.in	2005-01-04 14:07:19.108311368 +0000
 @@ -7,5 +7,5 @@
