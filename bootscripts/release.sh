@@ -19,6 +19,12 @@ RTPWD=$ORPWD/../blfs-bootscripts-$RELEASE
 
 cp -a $ORPWD $RTPWD &&
 rm -f $RTPWD/{README.release,release.sh} &&
+rm -rf $RTPWD/.svn &&
+rm -rf $RTPWD/blfs/.svn &&
+rm -rf $RTPWD/blfs/init.d/.svn &&
+rm -rf $RTPWD/blfs/sysconfig/.svn &&
+rm -rf $RTPWD/blfs/sysconfig/network-devices/.svn &&
+rm -rf $RTPWD/blfs/sysconfig/network-devices/services/.svn &&
 chown root:root -R $RTPWD &&
 chmod 644 -R $RTPWD &&
 cd .. &&
