@@ -10,7 +10,7 @@
 . /etc/sysconfig/rc
 . $rc_functions
 
-export PATH=$PATH:/opt/gnome-2.4/bin:/opt/gnome-2.4/sbin
+export PATH=$PATH:/opt/gnome-2.8/bin:/opt/gnome-2.8/sbin
 
 case "$1" in
 	start)
