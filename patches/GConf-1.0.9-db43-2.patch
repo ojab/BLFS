@@ -50,7 +50,7 @@ $Date$
  #endif
      }
 -  if ((ret = dbp->open (dbp, dbname, NULL, DB_BTREE, flags, 0664)) != 0)
-+  if ((ret = dbp->open (dbp, NULL, dbname, NULL, DB_BTREE, flags | DB_AUTO_COMMIT, 0664)) != 0)
++  if ((ret = dbp->open (dbp, NULL, dbname, NULL, DB_BTREE, flags, 0664)) != 0)
      {
        dbp->err (dbp, ret, "%s: open", dbname);
        goto err1;
