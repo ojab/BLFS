@@ -238,6 +238,26 @@ install-ntp: create-dirs
 	ln -sf  ../init.d/ntp ${EXTDIR}/rc.d/rc5.d/S26ntp
 	ln -sf  ../init.d/ntp ${EXTDIR}/rc.d/rc6.d/K46ntp
 
+install-openldap1: create-dirs
+	install -m ${MODE} blfs/init.d/openldap1  ${EXTDIR}/rc.d/init.d/openldap
+	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc0.d/K46openldap
+	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc1.d/K46openldap
+	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc2.d/K46openldap
+	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc3.d/S25openldap
+	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc4.d/S25openldap
+	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc5.d/S25openldap
+	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc6.d/K46openldap
+
+install-openldap2: create-dirs
+	install -m ${MODE} blfs/init.d/openldap2  ${EXTDIR}/rc.d/init.d/openldap
+	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc0.d/K46openldap
+	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc1.d/K46openldap
+	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc2.d/K46openldap
+	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc3.d/S25openldap
+	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc4.d/S25openldap
+	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc5.d/S25openldap
+	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc6.d/K46openldap
+
 install-portmap: create-dirs
 	install -m ${MODE} blfs/init.d/portmap    ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/portmap ${EXTDIR}/rc.d/rc0.d/K49portmap
@@ -393,6 +413,7 @@ install-xinetd: create-dirs
 	install-gpm \
 	install-heimdal \
 	install-kerberos \
+	install-lisa \
 	install-lprng \
 	install-mysql \
 	install-nas \
@@ -400,6 +421,8 @@ install-xinetd: create-dirs
 	install-nfs-client \
 	install-nfs-server \
 	install-ntp \
+	install-openldap1 \
+	install-openldap2 \
 	install-portmap \
 	install-postfix \
 	install-postgresql \
