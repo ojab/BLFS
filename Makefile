@@ -1,6 +1,7 @@
 ETCDIR=/etc
 EXTDIR=${DESTDIR}${ETCDIR}
 MODE=754
+DIRMODE=755
 
 # The grep can probably be improved upon.
 all:
@@ -8,12 +9,12 @@ all:
 	@echo "Select an appropriate install target from the above list" ; exit 1
 
 create-dirs:
-	install -d -m 755 ${EXTDIR}/rc.d/rc{0,1,2,3,4,5,6,sysinit}.d
-	install -d -m 755 ${EXTDIR}/rc.d/init.d
-	install -d -m 755 ${EXTDIR}/sysconfig
+	install -d -m ${DIRMODE} ${EXTDIR}/rc.d/rc{0,1,2,3,4,5,6,sysinit}.d
+	install -d -m ${DIRMODE} ${EXTDIR}/rc.d/init.d
+	install -d -m ${DIRMODE} ${EXTDIR}/sysconfig
 
 create-service-dir:
-	install -d -m 755 ${EXTDIR}/sysconfig/network-devices/services
+	install -d -m ${DIRMODE} ${EXTDIR}/sysconfig/network-devices/services
 
 install-service-dhclient: create-service-dir
 	install -m ${MODE} blfs/sysconfig/network-devices/services/dhclient ${EXTDIR}/sysconfig/network-devices/services
