@@ -1,36 +1,20 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
-                        "/usr/share/docbook/docbookx.dtd" [
-
-
-<!ENTITY book SYSTEM "book/book.xml">
-
-<!ENTITY version "20021001">
-<!ENTITY releasedate "October 1st, 2002">
-
-<!ENTITY blfs-bugzilla "http://blfs-bugs.linuxfromscratch.org">
-
-<!ENTITY % bookinfo SYSTEM "entities/bookinfo.ent">
-<!ENTITY % preface SYSTEM "entities/preface.ent">
-<!ENTITY % chapter01 SYSTEM "entities/chapter01.ent">
-<!ENTITY % chapter02 SYSTEM "entities/chapter02.ent">
-<!ENTITY % chapter03 SYSTEM "entities/chapter03.ent">
-<!ENTITY % chapter04 SYSTEM "entities/chapter04.ent">
-<!ENTITY % chapter05 SYSTEM "entities/chapter05.ent">
-<!ENTITY % chapter06 SYSTEM "entities/chapter06.ent">
-%bookinfo;
-%preface;
-%chapter01;
-%chapter02;
-%chapter03;
-%chapter04;
-%chapter05;
-%chapter06;
-
-]>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
 
 <book>
 
-&book;
+<!-- Front Matter -->
+<xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="bookinfo.xml"/>
+<xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="preface.xml"/>
+
+<!-- &bookinfo; -->
+ 
+<xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="chapter01.xml"/>
+<xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="chapter02.xml"/>
+<xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="chapter03.xml"/>
+<xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="chapter04.xml"/>
+<xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="chapter05.xml"/>
+<xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="chapter06.xml"/>
 
 </book>

@@ -1,6 +1,16 @@
+<chapter id="chapter06">
+<title>Overall editing policy</title>
+<?dbhtml filename="chapter06.html"?>
+
+<para>This section still needs to be written.  (And we could probably do
+with actually <emphasis>developing</emphasis> some real policy first..).
+Suggestions include: what we do about optimization, scripts, patches
+(where we put them; probably in the blfs-patches area of shadowfax)
+etc. etc.  Contributions welcome; especially from (but not limited to)
+active editors.</para>
+
 <sect1 id="ch06-tagging">
 <title>Adding Tags</title>
-<?dbhtml filename="tagging.html" dir="chapter06"?>
 
 <itemizedlist>
 
@@ -59,4 +69,4 @@ section for items that are not commands.</para></listitem>
 </itemizedlist>
 
 </sect1>
-
+</chapter>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bookinfo PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+   "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+   
+<preface id="preface">
+<title>Welcome to the BLFS Editor's Manual</title>
+<?dbhtml filename="preface.html" ?>
+
+<para>This document is designed to be a friendly introduction to BLFS
+editing.  We've put it together in order to prevent a
+single "point of failure/delay" (so to speak) in the BLFS
+Project.</para>
+
+<para>This document covers a few things.  Firstly,
+basic admin issues like accessing <application>Subversion</application> 
+over <application>SSH</application>, committing changes and
+BLFS logging policy.  Then we briefly discuss a little bit of
+general BLFS policy.  </para>
+
+<para>We hope this little document will be helpful not only to all of the
+(co)editors but also to all people thinking about contributing to
+BLFS.</para>
+
+<para>Mark Hymers <userinput>&lt;markh@linuxfromscratch.org&gt;</userinput></para>
+<para>Bruce Dubbs <userinput>&lt;bdubbs@linuxfromscratch.org&gt;</userinput></para>
+
+</preface>
+

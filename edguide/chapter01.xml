@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bookinfo PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+   "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+
+  <!ENTITY blfs-bugzilla "http://blfs-bugs.linuxfromscratch.org">
+]>
+
+<chapter id="chapter01">
+<title>BLFS Development</title>
+<?dbhtml filename="chapter01.html" ?>
+
+<para>BLFS development takes place using three main systems.  Firstly, the
+mailing lists <emphasis>blfs-book</emphasis>, <emphasis>blfs-dev</emphasis> and
+(to a lesser extent) <emphasis>blfs-support</emphasis>.  Secondly the Bugzilla
+tracking system, and thirdly the <application>Subversion</application> server
+where the book itself is stored.  All of these services are provided by the
+server <emphasis>linuxfromscratch.org</emphasis> also known as
+<emphasis>belgarath.linuxfromscratch.org</emphasis>.  This single server
+provides mailing lists, web hosting, <application>Subversion</application>
+hosting, ftp hosting, the Bugzilla system and basically everything we use to
+work on the BLFS project.</para>
+
+<para>The actual BLFS book itself is written using Docbook-XML and at first can
+seem to be a daunting tangle of files.  Basically, if you're confused, start by
+looking at <filename>index.xml</filename>.  At the bottom, you will notice that
+it will reference the entity &amp;book;.  Look up the entity &amp;book; and you
+will see that it points to the file <filename>book/book.xml</filename>.
+Continue in this way and you'll soon be finding your way around the book like a
+pro!</para>
+
+<para>Anyone can subscribe to any of the mailing lists provided by shadowfax.
+I'm not going to describe that (or the lists in detail) here as there is a good
+description at <ulink
+url="http://www.linuxfromscratch.org/mailinglists/info.shtml"/>.</para>
+
+<para>The Bugzilla bug-tracking system for BLFS can be found at <ulink
+url="&blfs-bugzilla;"/>.  In order to be able to
+add, remove and edit bugs, you need to add an account and make sure you
+are logged in whenever you wish to perform such an action.  You can
+query and read the bug database without logging in or creating a user.
+Note that all bugzilla messages are copied to the
+<emphasis>blfs-book</emphasis> mailing list and that all editors
+should be subscribed to this and the <emphasis>blfs-dev</emphasis>
+list at a minimum.</para>
+
+<para>Finally, there is the CVS server which will be discussed in the
+following chapters.</para>
+
+</chapter>

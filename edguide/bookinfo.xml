@@ -1,6 +1,33 @@
-<legalnotice>
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bookinfo PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+   "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "general.ent">
+  %general-entities;
+]>
+ 
+<bookinfo>
+<title>Beyond Linux From Scratch Editor's Manual</title>
+<subtitle>Version &version;</subtitle>
 
-<para>Copyright (c) 2002, Mark Hymers</para>
+
+<editor>
+<firstname>Mark</firstname><surname>Hymers</surname>
+<affiliation><address>
+<email>markh@linuxfromscratch.org</email></address></affiliation>
+
+<firstname>Bruce</firstname><surname>Dubbs</surname>
+<affiliation><address>
+<email>bdubbs@linuxfromscratch.org</email></address></affiliation>
+</editor>
+
+
+<copyright id="copyright">
+<year>2002-2004</year>
+<holder>Mark Hymers</holder><holder>Bruce Dubbs</holder>
+</copyright>
+
+
+<legalnotice>
 
 <para>All rights reserved.</para>
 
@@ -38,3 +65,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</para>
 
 </legalnotice>
 
+
+<abstract>
+<para>This manual teaches you how to properly edit the BLFS-Book.</para>
+</abstract>
+
+</bookinfo> 
