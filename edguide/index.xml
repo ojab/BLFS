@@ -16,5 +16,6 @@
 <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="chapter04.xml"/>
 <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="chapter05.xml"/>
 <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="chapter06.xml"/>
+<xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="chapter07.xml"/>
 
 </book>

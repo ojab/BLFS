@@ -1,142 +1,134 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE bookinfo PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
    "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
 
 <chapter id="chapter03">
 <chapterinfo>
-<othername>$Author:$</othername>
+<othername>$Author$</othername>
 <date>$Date$</date>
 </chapterinfo>
-<title>Basic SVN Commands (under development)</title>
+<title>Basic SVN Commands</title>
 <?dbhtml filename="chapter03.html"?>
-
 
 <section id="ch03-introduction">
 <title>Introduction</title>
 
-<para>The man and info pages of CVS are fairly good but I'm going to list a
-basic set of commands which all editors will use on an almost daily basis.
-Note that quite a few things can be set in your local
-<filename>~/.cvsrc</filename> file.  For example, I have in there: <screen>cvs
--z9 diff -u</screen> This means that all options use the highest level of
-compression (I'm on a dial-up link, if you're on broadband it's probably not
-needed to do this.  It does entail a slightly higher processing time for both
-your machine and shadowfax so think before using it) and says that I always
-want the <userinput>cvs diff</userinput> command to use unified diff format
-(which <emphasis>all</emphasis> e-mailed submissions (i.e. by those without
-write CVS access) to <userinput>blfs-dev</userinput> should use as they're much
-easier to read.  There are many more options available, you can usually find
-them by doing <userinput>cvs --help</userinput> <emphasis>command</emphasis>.
-You can also get a basic list of CVS commands by simply doing <userinput>cvs
---help-commands</userinput>.  Having said all of this, let's get on with the
-commands!.</para>
+<para>The help function of <application>Subversion</application>
+(<userinput>svn help</userinput>) provides a summary of the commands available.
+More detailed information is available from the
+<application>Subversion</application> on-line book available at <ulink
+url='http://svnbook.red-bean.com/svnbook/book.html'/>.  Chapter 3 is especially
+helpful.</para>
 
-<para>Some commands have two forms, the long and the short.  I'll
-list both in the description.</para>
-</section>
+<para>The following is a basic set of commands which all editors will use
+frequently.  Some commands have two forms, the long and the short.  Both are
+listed in the description.</para> </section>
 
 <section id="ch03-checkout">
-<title>cvs checkout/co</title>
+<title>svn checkout/co</title>
 
-<para><userinput>cvs checkout</userinput> or <userinput>cvs co</userinput>.
-This command is used to pull a CVS tree such as <filename>LFS/BOOK</filename>
-(the LFS book) or <filename>BLFS</filename> (the BLFS book) from the server.
-You should only need to do this once. If we mess around with the directory
-structure (as sometimes is necessary), you may occasionally need to delete your
-local sandbox and re-check it out. If this is going to be needed, it will
-usually be because the Editor will have made a <emphasis>large</emphasis>
-change and it'll be announced at least on the <filename>blfs-book</filename>
-list.</para>
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2552632">
+<userinput>svn checkout</userinput></ulink> or <userinput>svn co</userinput>.
+This command is used to pull a SVN tree such as
+<filename>svn://linuxfromscratch.org/BLFS/trunk/BOOK</filename> (the BLFS book)
+from the server.  You should only need to do this once. If we change the
+directory structure (as sometimes is necessary), you <emphasis>may</emphasis>
+occasionally need to delete your local sandbox and re-check it out. If this is
+going to be needed, it will usually be because the Editor will have made a
+<emphasis>large</emphasis> change and it'll be announced at least on the
+<filename>blfs-book</filename> list.</para>
 
 </section>
 
-
 <section id="ch03-add">
-<title>cvs add</title>
+<title>svn add</title>
 
-<para><userinput>cvs add</userinput>.  When you are creating a new file,
-you need to tell the CVS server about it.  This does that.  Note that
-the file won't appear in the repository until you do a <userinput>cvs
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2552205">
+<userinput>svn add</userinput></ulink>.  When you are creating a new file or
+directory, you need to tell the CVS server about it.  This does that.  Note that
+the file won't appear in the repository until you do a <userinput>svn
 commit</userinput> (see below).</para>
 
 </section>
 
 <section id="ch03-delete">
-<title>cvs delete/remove</title>
+<title>svn delete</title>
 
-<para><userinput>cvs delete</userinput> or <userinput>cvs
-remove</userinput>.  This does what it says!  Note
-that you have to have deleted the file locally before you can run this.
-Again, the file will not be deleted from the server until you do a
-<userinput>cvs commit</userinput>.</para>
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2553659">
+<userinput>svn delete</userinput></ulink>.  This does what it says!  When you
+do a <userinput>svn commit</userinput> the file wil be deleted from your local
+sandbox as well as from the repository.</para>
+
+</section>
+
+<section id="ch03-status">
+<title>svn status</title>
+ 
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2557523">
+<userinput>svn status</userinput></ulink>.  This command prints the status of
+working directories and files.  If you have made local changes, it'll show you
+locally modified items.  If you use the <parameter>--vervose</parameter>
+switch, it will show revision information on every item.  With the
+<parameter>--show-updates</parameter> switch, it will show any server
+out-of-date info.</para>
+
+<para>You should always do a manual <userinput>svn status
+--show-updates</userinput> before trying to commit changes in order to check
+that everything is alright and ready to go. </para>
 
 </section>
 
 <section id="ch03-update">
-<title>cvs update/up</title>
+<title>svn update/up</title>
 
-<para><userinput>cvs update</userinput> or <userinput>cvs
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2558425"> 
+<userinput>svn update</userinput></ulink> or <userinput>svn
 up</userinput>.  This command syncs your local sandbox with the server.
 If you have made local changes, it'll try and merge any changes on the
-server with your changes <emphasis>on your machine</emphasis>.  You
-should always do a manual <userinput>cvs update</userinput> before
-trying to commit changes in order to check that everything is alright
-and ready to go (although when you do a <userinput>cvs
-commit</userinput>, it will warn you if there is a problem).</para>
+server with your changes <emphasis>on your machine</emphasis>.  
+</para>
 
 </section>
 
 <section id="ch03-commit">
-<title>cvs commit/ci</title>
+<title>svn commit/ci</title>
 
-<para><userinput>cvs commit</userinput> or <userinput>cvs
-ci</userinput>.  This command recursively sends your changes to the CVS
-server.  It will commit changed files, added files and deleted files.
-The -m option can be used to pass a log message to the command.  If you
-don't specify a -m "MESSAGE", then it will open vi (you may be able to
-override this using the $EDITOR variable but I've never tried it).
-Please don't use empty log messages (see later in this document on the
-policy which governs them).</para>
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2552968">
+<userinput>svn commit</userinput></ulink> or <userinput>svn ci</userinput>.
+This command recursively sends your changes to the CVS server.  It will commit
+changed files, added filesi, and deleted files.  The -m option should always be
+used to pass a log message to the command.  Please don't use empty log messages
+(see later in this document on the policy which governs them).</para>
 
 </section>
 
 <section id="ch03-diff">
-<title>cvs diff</title>
+<title>svn diff</title>
 
-<para><userinput>cvs diff</userinput>.  This is useful for two different
-purposes.  Firstly, those without write access to the BLFS CVS server
-can use it to generate patches to send to
-<userinput>blfs-dev</userinput>.  To do this, simply edit the files in
-your local sandbox then run <userinput>cvs diff -u &gt;
-FILE.patch</userinput> from the root of your BLFS directory.  You can
-then attach this file to a message to <userinput>blfs-dev</userinput>
-where someone with editing rights will pick it up and apply it to the
-book.  The second use is to find out what has changed between two
-revisions using:
-<userinput>cvs diff -u -r revision1 -r revision2 FILENAME</userinput>.
-For example: <userinput>cvs diff -u -r 1.68 -r 1.69
-index.xml</userinput> will output a unified diff showing the changes
-between revisions 1.68 and 1.69 of <filename>index.xml</filename>.
-Remember that when using cvs diff, you nearly
-<emphasis>always</emphasis> want to output a unified diff and so either
-use the <userinput>-u</userinput> switch or add it to
-your <userinput>~/.cvsrc</userinput></para>
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2553839">
+<userinput>svn diff</userinput></ulink>.  This is useful for two different
+purposes.  First, those without write access to the BLFS CVS server can use it
+to generate patches to send to <userinput>blfs-dev</userinput>.  To do this,
+simply edit the files in your local sandbox then run <userinput>svn diff &gt;
+FILE.patch</userinput> from the root of your BLFS directory.  You can then
+attach this file to a message to <userinput>blfs-dev</userinput> where someone
+with editing rights will pick it up and apply it to the book.  The second use
+is to find out what has changed between two revisions using: <userinput>svn
+diff -r revision1:revision2 FILENAME</userinput>.  For example: <userinput>svn
+diff -r 168:169 index.xml</userinput> will output a diff showing the changes
+between revisions 168 and 169 of <filename>index.xml</filename>.  </para>
 
 </section>
 
 
 <section id="ch03-moving">
-<title>Moving files</title>
+<title>svn move</title>
 
-<para>Moving files:  One of the (many?) complaints against cvs is that
-it has no concept of 1) moving files or 2) versioning directories.  If
-you need to move a file, it's generally better to do it on the server
-manually.  <emphasis>If this is needed, please contact me and I'll do
-it</emphasis>.  This is simply because then if something goes wrong,
-it's me who takes the fall instead of anyone else!</para>
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2556161">
+<userinput>svn move SRC DEST</userinput></ulink> or <userinput>svn mv SRC
+DEST</userinput>.  This command moves a file from one directory to
+another or renames a file.  This is an immediate command and no commit is
+necessary.  </para>
 
 </section>
-
-
-
 </chapter>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE bookinfo PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+<!DOCTYPE preface PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
    "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
    
 <preface id="preface">
 <prefaceinfo>
-<othername>$Author:$</othername>
+<othername>$Author$</othername>
 <date>$Date$</date>
 </prefaceinfo>
 <title>Welcome to the BLFS Editor's Manual</title>

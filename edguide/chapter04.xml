@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE bookinfo PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
    "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
   <!ENTITY % general-entities SYSTEM "general.ent">
   %general-entities;
@@ -24,8 +24,8 @@ changes:</para>
 <listitem><para>Test the instructions you are adding</para></listitem>
 <listitem><para>Update <filename>general.ent</filename> with the new date.</para></listitem>
 <listitem><para>Update <filename>introduction/welcome/changelog.xml</filename></para></listitem>
-<listitem><para>Check that all relevant files have been <userinput>svn add</userinput>'d or 
-   <userinput>remove</userinput>'d.</para></listitem>
+<listitem><para>Check that all relevant files have been <userinput>svn add</userinput>ed or 
+   <userinput>remove</userinput>ed.</para></listitem>
 <listitem><para>Check that the book renders properly.</para></listitem>
 <listitem><para>Commit it!</para></listitem>
 <listitem><para>Update bugzilla to reflect the changes</para></listitem>
