@@ -29,7 +29,8 @@ expected that the user is required to input the command to proceed.
 "command"s may terminate within userinput to continue showing items that
 must be typed in, but are not commands. It is also used when command
 options are written without the command, as use
-&lt;userinput&gt;-q&lt;/userinput&gt; for quiet operation.</para></listitem>
+&lt;userinput&gt;-q&lt;/userinput&gt; for quiet operation. A preferable
+alternative may be to use the &lt;option&gt; tag.</para></listitem>
 
 <listitem><para>application -- The proper name of the package.</para></listitem>
 
