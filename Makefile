@@ -49,6 +49,11 @@ install-apache: create-dirs
 	ln -sf  ../init.d/apache ${EXTDIR}/rc.d/rc5.d/S32apache
 	ln -sf  ../init.d/apache ${EXTDIR}/rc.d/rc6.d/K28apache
 
+install-autofs: create-dirs
+	install -m $(MODE) blfs/init.d/autofs    $(EXTDIR)/rc.d/init.d/
+	install -m $(CONFMODE) blfs/sysconfig/autofs.conf $(EXTDIR)/sysconfig/
+	ln -sf  ../init.d/autofs $(EXTDIR)/rc.d/rcsysinit.d/S45autofs
+
 install-bind: create-dirs
 	install -m ${MODE} blfs/init.d/bind       ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/bind ${EXTDIR}/rc.d/rc0.d/K49bind
