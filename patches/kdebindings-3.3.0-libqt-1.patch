@@ -1,0 +1,22 @@
+Submitted By: Jim Gifford (patches at jg555 dot com)
+Date: 2004-08-24
+Initial Package Version: 3.3
+Origin: Jim Gifford
+Upstream Status: Sent
+Description: Fails on checking for the qt library since two
+	     libraries exist. This forces the use of lqt-mt library
+ 
+$LastChangedBy$
+$Date$
+
+--- kdebindings-3.3.0/python/Makefile.in.orig	2004-08-24 20:53:02.070317336 +0000
++++ kdebindings-3.3.0/python/Makefile.in	2004-08-24 20:53:24.458913752 +0000
+@@ -549,7 +549,7 @@
+ 	@(cd pykde && $(MAKE))
+ 
+ sipdone:
+-	cd sip && export QTDIR=${qt_dir} && @PYTHON@ configure.py -b @bindir@ -d ${site_packages} -e ${python_inc_dir} -v ${sip_dir}
++	cd sip && export QTDIR=${qt_dir} && @PYTHON@ configure.py -b @bindir@ -d ${site_packages} -e ${python_inc_dir} -v ${sip_dir} -lqt-mt
+ 	@(cd sip && $(MAKE))
+ 	echo "" > sipdone
+ 
