@@ -52,6 +52,24 @@ if [ ! -d $BLFS_XML ]
       /usr/share/dsssl/docbook/dtds/decls/xml.dcl \
       $BLFS_XML/index.xml > nochunks.html
 
+#	
+#   Note that you can leave out this section if you don't have htmltidy
+#   installed (http://tidy.sf.net)
+#
+
+    for i in `find ./ -name "*.html"`
+    do
+    tidy -latin1 -m $i
+    cp $i $i.bak
+    sed '4i\
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">' $i.bak > $i
+    rm -f $i.bak
+    done
+
+#
+#   End of HTML Tidy section
+#
+
     htmldoc --book --firstpage p1 -v -t ps3 -f blfs.ps nochunks.html
     htmldoc --book --firstpage p1 -v -t pdf13 -f blfs.pdf nochunks.html
     lynx -dump nochunks.html > blfs.txt

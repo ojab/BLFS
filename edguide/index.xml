@@ -5,8 +5,8 @@
 
 <!ENTITY book SYSTEM "book/book.xml">
 
-<!ENTITY version "20020707">
-<!ENTITY releasedate "July 7th, 2002">
+<!ENTITY version "20021001">
+<!ENTITY releasedate "October 1st, 2002">
 
 <!ENTITY blfs-bugzilla "http://blfs-bugs.linuxfromscratch.org">
 
