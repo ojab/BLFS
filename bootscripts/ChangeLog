@@ -1,3 +1,7 @@
+2004-05-14 Tushar T <tushar@linuxfromscratch.org>
+	* Added init.d/kerberos script.
+	* Added init.d/usb script.
+
 2004-05-13 Tushar T <tushar@linuxfromscratch.org>
 	* The begining of blfs-bootscripts.
 
