@@ -1,3 +1,6 @@
+2004-10-27 Randy McMurchy <randy@linuxfromscratch.org>
+	* Added new bootscript for Stunnel.
+
 2004-10-23 Randy McMurchy <randy@linuxfromscratch.org>
 	* Modified PostgreSQL script because the pg_ctl script
 	  is no longer able to run as user root.
