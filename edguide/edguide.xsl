@@ -3,6 +3,9 @@
 <!-- Version 0.9 - Manuel Canales Esparcia <macana@lfs-es.org>
 Based on the original lfs-chunked.xsl created by Matthew Burgess -->
 
+<!-- $LastChangedBy: $ -->
+<!-- $Date: $ -->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns="http://www.w3.org/1999/xhtml"
                 version="1.0">
@@ -12,15 +15,6 @@ Based on the original lfs-chunked.xsl created by Matthew Burgess -->
   <xsl:param name="chunker.output.encoding" select="'ISO-8859-1'"/>
   <xsl:param name="chunk.section.depth" select="0"/>
   
-  	<!-- Including our others customized templates -->
-  <!-- <xsl:include href="xhtml/lfs-admon.xsl"/>
-  <xsl:include href="xhtml/lfs-index.xsl"/>
-  <xsl:include href="xhtml/lfs-legalnotice.xsl"/>
-  <xsl:include href="xhtml/lfs-mixed.xsl"/> 
-  <xsl:include href="xhtml/lfs-navigational.xsl"/>
-  <xsl:include href="xhtml/lfs-titles.xsl"/>
-  <xsl:include href="xhtml/lfs-toc.xsl"/> -->
-
   	<!-- The CSS Stylesheet -->
   <xsl:param name="html.stylesheet" select="'edguide.css'"/>
 
@@ -40,30 +34,55 @@ Based on the original lfs-chunked.xsl created by Matthew Burgess -->
     <xsl:call-template name="inline.monoseq"/>
   </xsl:template>
 
-  <xsl:template match="prefaceinfo|chapterinfo">
+    <!-- Handle name and date in info section as a footnote -->
+
+  <xsl:template name="process.footnotes">
+    <xsl:variable name="footnotes" select=".//footnote"/>
+    <xsl:variable name="fcount">
+      <xsl:call-template name="count.footnotes.in.this.chunk">
+        <xsl:with-param name="node" select="."/>
+        <xsl:with-param name="footnotes" select="$footnotes"/>
+      </xsl:call-template>
+    </xsl:variable>
+   
+    <!-- Only bother to do this if there's at least one non-table footnote -->
+    <xsl:if test="$fcount &gt; 0">
+      <div class="footnotes">
+        <br/>
+        <hr width="100" align="left"/>
+        <xsl:call-template name="process.footnotes.in.this.chunk">
+          <xsl:with-param name="node" select="."/>
+          <xsl:with-param name="footnotes" select="$footnotes"/>
+        </xsl:call-template>
+      </div>
+    </xsl:if>
+  
+    <!-- Add this to the footnotes -->
+    <xsl:apply-templates select='prefaceinfo|chapterinfo' mode='attribution'/>
+  </xsl:template>
+
+  <xsl:template match='prefaceinfo|chapterinfo' mode='attribution'>
     <p class='updated'> Last updated by 
-      <xsl:apply-templates select="othername"/>
+      <xsl:apply-templates select="othername" mode='attribution'/>
       on
-      <xsl:apply-templates select="date"/> 
+      <xsl:apply-templates select="date" mode='attribution'/> 
     </p>
   </xsl:template>
 
-  <xsl:template name='othername' match="othername"> 
+  <xsl:template match='othername' mode='attribution'> 
      <xsl:variable name='author'>
           <xsl:value-of select='.'/>
      </xsl:variable>
      <xsl:variable name='nameonly'>
           <xsl:value-of select='substring($author,10)'/>
      </xsl:variable>
-
      <xsl:value-of select="substring-before($nameonly,'$')" />
   </xsl:template> 
 
-  <xsl:template name='date' match="date"> 
+  <xsl:template match='date' mode='attribution'> 
       <xsl:variable name='date'>
          <xsl:value-of select='.'/>
       </xsl:variable>
-  
       <xsl:value-of select="substring($date,7,26)" />
   </xsl:template> 
 
