@@ -4,8 +4,8 @@ Initial Package Version: 1.4.2
 Origin: blfs-support
 Description: Allows compilation if /bin/sh is linked to /bin/ash by calling bash instead
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur j2sdk-1.4.2.OLD/hotspot/build/linux/Makefile j2sdk-1.4.2/hotspot/build/linux/Makefile
 --- j2sdk-1.4.2.OLD/hotspot/build/linux/Makefile	2003-09-10 19:40:03.000000000 -0600

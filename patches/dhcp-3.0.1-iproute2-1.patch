@@ -5,8 +5,8 @@ Origin: Jim Gifford
 Upstream Status: N/A
 Description: Fixes dhclient-script to work with iproute2
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur dhcp-3.0.1-orig/client/scripts/linux dhcp-3.0.1/client/scripts/linux
 --- dhcp-3.0.1-orig/client/scripts/linux	2002-11-14 19:09:09.000000000 -0600

@@ -4,8 +4,8 @@ Initial Package Version: 1.06
 Origin: NA
 Description: Fix readline access call.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur bc-1.06.orig/bc/scan.l bc-1.06/bc/scan.l
 --- bc-1.06.orig/bc/scan.l	2000-09-13 13:25:47.000000000 -0500

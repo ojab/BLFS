@@ -7,8 +7,8 @@ These messages can cause applications such as Midnight Commander to display stra
 This patch is useful for users linking unzip to the system zlib
 (i.e. installed as per the BLFS guidelines).
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 --- unzip-5.50/unzipstb.c.orig	2003-09-22 01:05:45.000000000 -0500
 +++ unzip-5.50/unzipstb.c	2003-09-22 01:06:57.000000000 -0500

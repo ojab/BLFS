@@ -4,8 +4,8 @@ Initial Package Version: 5beta
 Origin: None
 Description: Fix compilation with recent glibc versions.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 --- portmap_5beta/portmap.c	2003-03-10 12:32:26.000000000 -0600
 +++ portmap_5beta/portmap.c.new	2003-03-10 12:38:01.000000000 -0600

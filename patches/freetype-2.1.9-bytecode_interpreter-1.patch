@@ -4,8 +4,8 @@ Initial Package Version: 2.1.5
 Origin: Freetype FAQ
 Description: Enables bytecode interpreter for TT driver.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -ur freetype-2.1.5.orig/include/freetype/config/ftoption.h freetype-2.1.5/include/freetype/config/ftoption.h
 --- freetype-2.1.5.orig/include/freetype/config/ftoption.h	2004-02-01 02:29:17.000000000 -0600

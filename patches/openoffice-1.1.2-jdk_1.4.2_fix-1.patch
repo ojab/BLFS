@@ -5,8 +5,8 @@ Origin: http://archive.linuxfromscratch.org/mail-archives/blfs-dev/2003-October/
         Posted by Michael Brömer
 Description: Fixes compilation with jdk-1.4.2
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 --- oo_1.1_src/odk/source/OOSupport/org/netbeans/modules/openoffice/wizard/OOIDLWizardIterator.java.orig	2003-10-14 00:36:53.000000000 -0500
 +++ oo_1.1_src/odk/source/OOSupport/org/netbeans/modules/openoffice/wizard/OOIDLWizardIterator.java	2003-10-14 00:38:40.000000000 -0500

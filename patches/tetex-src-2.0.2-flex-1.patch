@@ -11,8 +11,8 @@ Corrects
  ./pl.l:462: for each function it appears in.)
 
  
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur tetex-src-2.0.2.orig/texk/web2c/omegafonts/Makefile.in tetex-src-2.0.2/texk/web2c/omegafonts/Makefile.in
 --- tetex-src-2.0.2.orig/texk/web2c/omegafonts/Makefile.in	2001-11-10 13:42:37.000000000 +0000

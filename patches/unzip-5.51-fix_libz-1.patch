@@ -4,8 +4,8 @@ Initial Package Version: 5.50
 Origin: NA
 Description: Fixes compilation against system zlib.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -urN unzip-5.50/api.c unzip-5.50-rcl/api.c
 --- unzip-5.50/api.c	Thu Nov 22 23:43:26 2001

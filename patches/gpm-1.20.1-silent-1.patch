@@ -4,8 +4,8 @@ Initial Package Version: 1.20.1
 Origin: http://archives.linuxfromscratch.org/mail-archives/blfs-dev/2003-May/002916.html
 Description: Don't output debug messages on screen.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -ur gpm-1.20.1.orig/src/lib/report-lib.c gpm-1.20.1/src/lib/report-lib.c
 --- gpm-1.20.1.orig/src/lib/report-lib.c	2002-12-25 03:57:16.000000000 +0500

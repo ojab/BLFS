@@ -4,8 +4,8 @@ Initial Package Version: 0.2
 Origin: Slackware Source
 Description: Use mkstemp instead of mktemp.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur ed-0.2/buf.c ed-0.2-2/buf.c
 --- ed-0.2/buf.c	Sat Nov 19 04:37:59 1994

@@ -4,8 +4,8 @@ Initial Package Version: 4.6
 Origin: http://www.ghostscript.com/
 Description: Fixes text extracting.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 --- gsview-4.6/srcunx/gvxdll.c.orig	2004-02-02 00:29:53.000000000 +0000
 +++ gsview-4.6/srcunx/gvxdll.c	2004-02-02 00:30:05.000000000 +0000

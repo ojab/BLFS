@@ -6,8 +6,8 @@ Upstream Status: Not Sent
 Description: Removes Readlink. Readlink is also included in
 	     coreutils. Coreutils version is more robust.
  
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 --- tetex-src-2.0.2/texk/kpathsea/Makefile.in.orig	2004-05-24 07:58:14.501539043 +0000
 +++ tetex-src-2.0.2/texk/kpathsea/Makefile.in	2004-05-24 07:58:42.672450852 +0000

@@ -4,8 +4,8 @@ Initial Package Version: 1.4.1
 Origin: Sent by Sourcemage Guru Hamish Greig
 Description: Motif compilation fix. Needed only if optimization flags are used.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -ru Build.orig/motif/lib/Xm/util/mkmsgcat.c Build/motif/lib/Xm/util/mkmsgcat.c
 --- Build.orig/motif/lib/Xm/util/mkmsgcat.c	2002-09-06 17:06:06.000000000 +1000

@@ -4,8 +4,8 @@ Initial Package Version: 2.6
 Origin: Based on lfs-hackers 
 Description: Fixes Compile with the 2.6 Kernel
  
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur inetutils-1.4.2.orig/libinetutils/revoke.c inetutils-1.4.2/libinetutils/revoke.c
 --- inetutils-1.4.2.orig/libinetutils/revoke.c	2002-06-26 03:15:06.000000000 +0000

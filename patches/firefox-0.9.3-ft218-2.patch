@@ -5,8 +5,8 @@ Upstream Status: Submitted (http://bugzilla.mozilla.org/show_bug.cgi?id=234035).
 Origin: Peter Kovar's 0.9 patch.
 Description: Fixes compilation against freetype >= 2.1.8.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur mozilla-orig/gfx/idl/nsIFreeType2.idl mozilla/gfx/idl/nsIFreeType2.idl
 --- mozilla-orig/gfx/idl/nsIFreeType2.idl	2004-07-15 11:24:14.000000000 +0000

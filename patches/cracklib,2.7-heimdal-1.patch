@@ -7,8 +7,8 @@ Description: Patches cracklib to work with Heimdal Kerberos 5
              source code. Patch is available at:
              http://www.linuxfromscratch.org/patches/blfs/cvs/
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur cracklib,2.7-orig/Makefile cracklib,2.7/Makefile
 --- cracklib,2.7-orig/Makefile	2004-05-01 00:41:30.000000000 +0000

@@ -5,8 +5,8 @@ Origin: j2sdk-1.4.1-remove-fixed-paths.patch
 Description: Instead of fixing the path where binaries are located, use the binaries
 	     in the user's path. Updated for 1.4.2
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur java.orig/control/make/common/Defs-linux.gmk java/control/make/common/Defs-linux.gmk
 --- java.orig/control/make/common/Defs-linux.gmk	2003-09-11 01:39:24.000000000 +0000

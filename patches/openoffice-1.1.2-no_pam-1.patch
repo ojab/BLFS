@@ -7,8 +7,8 @@ are not available in most of the LFS based systems. This patch removes the need 
 PAM headers by removing the functions that use PAM. This patch is part
 of the BLFS book.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -ur oo_1.1rc4_src.orig/sal/osl/unx/security.c oo_1.1rc4_src/sal/osl/unx/security.c
 --- oo_1.1rc4_src.orig/sal/osl/unx/security.c	2003-04-11 09:23:49.000000000 -0500

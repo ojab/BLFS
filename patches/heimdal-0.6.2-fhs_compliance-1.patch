@@ -7,8 +7,8 @@ Origin:                  Randy McMurchy
 Description:             Changes all references of /var/heimdal to /var/lib/heimdal
                          in source code and documentation to comply with FHS.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur heimdal-0.6.2-orig/lib/krb5/krb5.conf.5 heimdal-0.6.2/lib/krb5/krb5.conf.5
 --- heimdal-0.6.2-orig/lib/krb5/krb5.conf.5	2004-03-09 19:52:07.000000000 +0000

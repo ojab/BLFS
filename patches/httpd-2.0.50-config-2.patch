@@ -6,8 +6,8 @@ Origin: BLFS Book
 Description: Add a layout for installing Apache as per the FHS
              guidelines.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur httpd-2.0.50-orig/config.layout httpd-2.0.50/config.layout
 --- httpd-2.0.50-orig/config.layout	2004-07-15 15:07:48.000000000 +0000

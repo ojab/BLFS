@@ -6,8 +6,8 @@ Description: The installation script looks for test binary in the wrong location
 the binary in /bin. If the test binary is not found, it results in a corrupted installation. This patch is part
 of the BLFS book.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -ur oo_1.1rc4_src.orig/setup2/script/serverstartup.sh oo_1.1rc4_src/setup2/script/serverstartup.sh
 --- oo_1.1rc4_src.orig/setup2/script/serverstartup.sh	2003-06-12 04:53:08.000000000 -0500

@@ -5,8 +5,8 @@ Origin: http://www.ghostscript.com/
 Description: Some languages have the wrong characters in dialog boxes.
              This patch fixes the problem.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 --- gsview-4.6/en/gvxlang.c.orig	2004-02-02 00:32:11.000000000 +0000
 +++ gsview-4.6/en/gvxlang.c	2004-02-02 00:34:14.000000000 +0000

@@ -4,8 +4,8 @@ Initial Package Version: 1.06
 Origin: NA
 Description: Fix innvocation of flex.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 --- bc-1.06/configure.orig	2003-03-09 23:54:37.000000000 -0600
 +++ bc-1.06/configure	2003-03-09 23:55:00.000000000 -0600

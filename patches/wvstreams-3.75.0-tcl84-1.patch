@@ -5,8 +5,8 @@ Upstream Status: Not submitted.
 Origin: Igor Zivkovic
 Description: Fixes Tcl-8.4.X detection.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur wvstreams-3.75.0-orig/configure wvstreams-3.75.0/configure
 --- wvstreams-3.75.0-orig/configure	2004-03-13 18:59:36.000000000 +0000

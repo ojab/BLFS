@@ -9,8 +9,8 @@ This patch provides the following improvements:
     * Compilation and security fixes.
     * Documentation fixes.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur portmap_5beta/BLURB portmap_5beta.gimli/BLURB
 --- portmap_5beta/BLURB	1996-07-06 16:09:46.000000000 -0500

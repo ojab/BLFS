@@ -4,8 +4,8 @@ Initial Package Version: 0.9.23
 Origin: blfs.support
 Description: Fixes compilation if cURL is installed and utilized.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 --- xine-ui-0.9.23/src/xitk/common.h.orig	2004-02-08 06:07:02.000000000 +0000
 +++ xine-ui-0.9.23/src/xitk/common.h	2004-02-08 06:08:17.000000000 +0000

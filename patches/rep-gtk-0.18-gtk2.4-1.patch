@@ -4,8 +4,8 @@ Initial Package Version: 0.18
 Origin: blfs.support
 Description: Fixes compilation of rep-gtk with gtk-2.4 installed.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 --- rep-gtk-0.18/rep-gtk.h.orig	2004-03-26 14:10:18.000000000 -0500
 +++ rep-gtk-0.18/rep-gtk.h	2004-03-26 14:11:15.000000000 -0500

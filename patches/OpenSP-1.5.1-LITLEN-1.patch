@@ -4,8 +4,8 @@ Initial Package Version: 1.5
 Origin: BLFS Book
 Description: Remove some annonying messages when running openjade.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur OpenSP-1.5/lib/Syntax.cxx OpenSP-1.5-patched/lib/Syntax.cxx
 --- OpenSP-1.5/lib/Syntax.cxx	2000-03-14 23:17:25.000000000 +0000

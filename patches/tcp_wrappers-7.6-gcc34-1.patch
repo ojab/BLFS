@@ -6,8 +6,8 @@ Origin: Self-created, with assistance from Zack Winkles
 Description: Fixes compile problem with GCC 3.4 Prerelease  - apply on
 	     top of current shared-lib-plus-plus patch
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -aur tcp_wrappers_7.6/scaffold.c tcp_wrappers_7.6-new/scaffold.c
 --- tcp_wrappers_7.6/scaffold.c	1997-03-21 10:27:24.000000000 -0800

@@ -5,8 +5,8 @@ Origin: OpenJade SourceForge Patch Page
 Upstream Status: Fixed
 Description: Fixes Compile Issues with GCC 3.4
  
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 --- OpenSP-1.5.1/include/RangeMap.cxx.orig	2004-04-24 17:39:50.000691400 +0000
 +++ OpenSP-1.5.1/include/RangeMap.cxx	2004-04-24 17:39:59.682536194 +0000

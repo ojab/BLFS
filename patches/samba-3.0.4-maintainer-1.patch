@@ -20,8 +20,8 @@ Upstream Status: Accepted
 ##################################################################
                                                                                 
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur samba-3.0.4-orig/source/include/rpc_dce.h samba-3.0.4/source/include/rpc_dce.h
 --- samba-3.0.4-orig/source/include/rpc_dce.h	2004-04-20 15:42:57.000000000 -0500

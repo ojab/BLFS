@@ -5,8 +5,8 @@ Upstream Status:         Not submitted
 Origin:                  Peter Kovar's Firefox-0.9 patch
 Description:             Fixes compilation against FreeType2 >= 2.1.8.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur mozilla.orig/gfx/idl/nsIFreeType2.idl mozilla/gfx/idl/nsIFreeType2.idl
 --- mozilla.orig/gfx/idl/nsIFreeType2.idl	2004-04-16 01:09:33.000000000 +0000

@@ -11,8 +11,8 @@ Description: Fixes inline asm error listed below
 	error: impossible constraint in `asm'
  
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur java.orig/hotspot/src/os_cpu/linux_i486/vm/atomic_linux_i486.inline.hpp java/hotspot/src/os_cpu/linux_i486/vm/atomic_linux_i486.inline.hpp
 --- java.orig/hotspot/src/os_cpu/linux_i486/vm/atomic_linux_i486.inline.hpp	2003-09-11 01:40:30.000000000 +0000

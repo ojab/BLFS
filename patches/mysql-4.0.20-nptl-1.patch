@@ -7,8 +7,8 @@ Description: Patches the configure script to bypass its brain-dead check
              system this check will fail, but the library is present and
              will work properly.
  
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur mysql-4.0.18.orig/configure mysql-4.0.18/configure
 --- mysql-4.0.18.orig/configure	Tue Feb 10 18:16:56 2004

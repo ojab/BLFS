@@ -9,8 +9,8 @@ Description: Fixes Python build issue with gdbm
 
 
  
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur Python-2.3.2.orig/setup.py Python-2.3.2/setup.py
 --- Python-2.3.2.orig/setup.py	2003-09-22 01:19:45.000000000 +0000

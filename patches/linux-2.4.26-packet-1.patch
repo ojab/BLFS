@@ -4,8 +4,8 @@ Initial Package Version: 2.4.22
 Origin: http://w1.894.telia.com/~u89404340/patches/packet/2.4/packet-2.4.20.patch.bz2
 Description: Allow packet writing for CDROMs.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -u -r -N ../../linus/2.4/linux/Documentation/Configure.help linux/Documentation/Configure.help
 --- ../../linus/2.4/linux/Documentation/Configure.help	2003-08-23 21:25:25.000000000 +0200

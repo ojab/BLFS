@@ -4,8 +4,8 @@ Initial Package Version: 1.4.3
 Origin: Jim Gifford
 Description: Fixes GCC 3.3 Compile Errors
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur svgalib-1.4.3.orig/src/vga.c svgalib-1.4.3/src/vga.c
 --- svgalib-1.4.3.orig/src/vga.c	2001-05-29 07:37:55.000000000 -0000

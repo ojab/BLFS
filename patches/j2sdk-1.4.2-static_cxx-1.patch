@@ -4,8 +4,8 @@ Initial Package Version: 1.4.2
 Origin: Gentoo
 Description: Link to shared libstd++.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 --- j2sdk/j2se/make/common/Defs-linux.gmk.jj	2003-12-20 10:42:01.745988008 +0000
 +++ j2sdk/j2se/make/common/Defs-linux.gmk	2003-12-20 10:42:21.892925208 +0000

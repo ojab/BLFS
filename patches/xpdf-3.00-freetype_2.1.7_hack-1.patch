@@ -5,8 +5,8 @@ Origin: NA
 Upstream Status: Major hack, will never be accepted upstream.
 Description: Fixed compilation with freetype-2.1.7.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -ur xpdf-3.00.orig/configure xpdf-3.00/configure
 --- xpdf-3.00.orig/configure	2004-01-21 19:26:44.000000000 -0600

@@ -4,8 +4,8 @@ Initial Package Version: 4.1.0b1
 Origin: Slackware Source
 Description: Fixes compilation
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 --- libungif-4.1.0b1/configure.varg	Thu Jul 27 14:28:21 2000
 +++ libungif-4.1.0b1/configure	Thu Jul 27 14:28:41 2000

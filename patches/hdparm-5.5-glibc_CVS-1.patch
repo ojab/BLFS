@@ -17,8 +17,8 @@ rename it to fsreadahead, this is my interpretation of how he'll do it.
  Tested, at least as far as compiling and checking that ./hdparm -a returns
 the expected value.  
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -u hdparm-5.5/hdparm.c hdparm-5.5-renamed/hdparm.c
 --- hdparm-5.5/hdparm.c	2004-01-27 17:01:37.000000000 +0000

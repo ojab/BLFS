@@ -5,8 +5,8 @@ Origin: Thomas Pegg
 Description: Fixes syntax of Makefile.am for installation of man pages,
 for use with current automake versions 1.7.8 and higher.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur sgml-common-0.6.3.orig/doc/man/Makefile.am sgml-common-0.6.3/doc/man/Makefile.am
 --- sgml-common-0.6.3.orig/doc/man/Makefile.am	2001-01-30 14:42:22.000000000 +0000

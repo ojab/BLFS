@@ -6,8 +6,8 @@ Description: Fixes Long Long errors
 	     Removes ## from variables
 
  
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur java.orig/hotspot/src/cpu/i486/vm/i486.ad java/hotspot/src/cpu/i486/vm/i486.ad
 --- java.orig/hotspot/src/cpu/i486/vm/i486.ad	2003-09-11 01:40:13.000000000 +0000

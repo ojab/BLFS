@@ -9,8 +9,8 @@ the PID file that needs deleting is in /etc/dhcpc. This patch brings this
 program into FHS compliance, but more importantly, puts
 files where you expect them to be.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur dhcpcd-1.3.22-pl4/cache.c dhcpcd-1.3.22-pl4-patched/cache.c
 --- dhcpcd-1.3.22-pl4/cache.c	2002-12-31 03:31:08.000000000 +0100

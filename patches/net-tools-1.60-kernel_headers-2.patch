@@ -6,8 +6,8 @@ Upstream Status: N/A
 Description: Fixes Compile Issues with the 2.6 Kernel
  
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur net-tools-1.60.orig/hostname.c net-tools-1.60/hostname.c
 --- net-tools-1.60.orig/hostname.c	2001-04-08 17:04:23.000000000 +0000

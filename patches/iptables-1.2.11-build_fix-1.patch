@@ -5,8 +5,8 @@ Upstream Status:         Not submitted
 Origin:                  http://ep09.pld-linux.org/~mmazur/linux-libc-headers/patches/iptables.patch
 Description:             Fixes build problem using linux-2.6.7
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 --- iptables-1.2.9_20040308/Makefile.orig	2004-01-22 16:04:24.000000000 +0100
 +++ iptables-1.2.9_20040308/Makefile	2004-03-14 15:14:55.921810496 +0100

@@ -5,8 +5,8 @@ Origin: Jim Gifford
 Upstream Status: Sent
 Description: Fixes the missing mkinstalldirs reference
  
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 --- gnupg-1.2.5/po/Makefile.in.in.orig	2004-07-26 22:42:31.887821304 +0000
 +++ gnupg-1.2.5/po/Makefile.in.in	2004-07-26 22:42:49.054211616 +0000

@@ -10,8 +10,8 @@ OpenOffice itself. Glibc will take care of that automatically.
 For discussion, see:
 http://archive.linuxfromscratch.org/mail-archives/lfs-dev/2003-October/039508.html
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 
 --- oo_1.1_src/sal/osl/unx/socket.c	2003-10-14 10:05:55.000000000 +0600

@@ -9,8 +9,8 @@ This patch provides the following improvements:
     * Compilation and security fixes.
     * Documentation fixes.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur tcp_wrappers_7.6/Makefile tcp_wrappers_7.6.gimli/Makefile
 --- tcp_wrappers_7.6/Makefile	1997-03-21 12:27:21.000000000 -0600

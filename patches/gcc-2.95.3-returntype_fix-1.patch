@@ -6,8 +6,8 @@ Description: Fixes gcc 2.95.3 so the -Wreturn-type flag will work, even when
 g++ is not compiled.
 
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur gcc-2.95.3.orig/gcc/toplev.c gcc-2.95.3/gcc/toplev.c
 --- gcc-2.95.3.orig/gcc/toplev.c	2003-05-28 16:09:29.000000000 -0400

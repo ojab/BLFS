@@ -5,8 +5,8 @@ Upstream Status: Not submitted
 Origin: Me, Myself, and I
 Description: Fixes build of gnome-print with freetype 2.1.7
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -aur gnome-print-0.37/installer/gf-pfb.c gnome-print-0.37-new/installer/gf-pfb.c
 --- gnome-print-0.37/installer/gf-pfb.c	2002-01-18 16:23:00.000000000 -0800

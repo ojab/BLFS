@@ -8,8 +8,8 @@ Description:             Enables kpasswd and kadmin to use the cracklib library.
                          Cracklib must be installed using BLFS instructions. See:
                          http://www.linuxfromscratch.org/blfs/view/cvs/postlfs/cracklib.html
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur heimdal-0.6.2-orig/lib/kadm5/Makefile.in heimdal-0.6.2/lib/kadm5/Makefile.in
 --- heimdal-0.6.2-orig/lib/kadm5/Makefile.in	2004-05-06 01:52:10.000000000 +0000

@@ -6,8 +6,8 @@ Description: Fixes PAM Compile Issues with Shadow
 
 
  
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur shadow-4.0.4.1.orig/src/Makefile.in shadow-4.0.4.1/src/Makefile.in
 --- shadow-4.0.4.1.orig/src/Makefile.in	2004-01-14 14:15:28.000000000 +0000

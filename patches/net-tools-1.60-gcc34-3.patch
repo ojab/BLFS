@@ -6,8 +6,8 @@ Origin: N/A
 Upstream Status: N/A
 Description: Fix some occurrences of syntax that GCC 3.4 doesn't like.
  
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur net-tools-1.60.orig/hostname.c net-tools-1.60/hostname.c
 --- net-tools-1.60.orig/hostname.c	2001-04-08 17:04:23.000000000 +0000

@@ -4,8 +4,8 @@ Initial Package Version: 2.95.3
 Origin: BLFS Book
 Description: Prevent fixing the includes.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -ur gcc-2.95.3/gcc/Makefile.in gcc-2.95.3.no-fixinc/gcc/Makefile.in
 --- gcc-2.95.3/gcc/Makefile.in	2001-01-25 08:02:58.000000000 -0600

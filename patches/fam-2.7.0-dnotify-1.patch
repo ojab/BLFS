@@ -4,8 +4,8 @@ Initial Package Version: Jim Gifford
 Origin: Debian Maintainer of FAM
 Description: Dnotify Patch for FAM 2.7.0
  
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -Naur fam-2.7.0.orig/config.h.in fam-2.7.0/config.h.in
 --- fam-2.7.0.orig/config.h.in	2003-01-20 00:40:15.000000000 +0000

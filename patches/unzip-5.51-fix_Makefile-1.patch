@@ -4,8 +4,8 @@ Initial Package Version: 5.50
 Origin: NA
 Description: Creates a missing symlink.
 
-$LastChangedBy: $
-$Date: $
+$LastChangedBy$
+$Date$
 
 diff -urN unzip-5.50/unix/Makefile unzip-5.50-rcl/unix/Makefile
 --- unzip-5.50/unix/Makefile	Sat Feb 16 17:00:38 2002
