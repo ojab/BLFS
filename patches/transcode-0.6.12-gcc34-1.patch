@@ -1,0 +1,91 @@
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2004-09-04
+Initial Package Version: 0.6.12
+Upstream Status:         Not submitted 
+Origin:                  Randy McMurchy
+Description:             Fixes GCC-3.4 related build problems
+
+$LastChangedBy$
+$Date$
+
+diff -Naur transcode-0.6.12-orig/filter/subtitler/frame_list.c transcode-0.6.12/filter/subtitler/frame_list.c
+--- transcode-0.6.12-orig/filter/subtitler/frame_list.c	2004-01-05 13:12:55.000000000 +0000
++++ transcode-0.6.12/filter/subtitler/frame_list.c	2004-09-05 02:17:32.368562264 +0000
+@@ -33,7 +33,8 @@
+ 
+ char *strsave(char *s) /*save char array s somewhere*/
+ {
+-char *p, *malloc();
++/* char *p, *malloc(); */
++char *p;
+ if(p = malloc( strlen(s) +  1) ) strcpy(p, s);
+ return(p);
+ }
+
+diff -Naur transcode-0.6.12-orig/ffmpeg/libavcodec/i386/simple_idct_mmx.c transcode-0.6.12/ffmpeg/libavcodec/i386/simple_idct_mmx.c
+--- transcode-0.6.12-orig/ffmpeg/libavcodec/i386/simple_idct_mmx.c	2003-12-20 11:49:12.000000000 +0000
++++ transcode-0.6.12/ffmpeg/libavcodec/i386/simple_idct_mmx.c	2004-09-05 02:04:32.318147952 +0000
+@@ -45,10 +45,10 @@
+ #define ROW_SHIFT 11
+ #define COL_SHIFT 20 // 6
+ 
+-static const uint64_t __attribute__((aligned(8))) wm1010= 0xFFFF0000FFFF0000ULL;
+-static const uint64_t __attribute__((aligned(8))) d40000= 0x0000000000040000ULL;
++const uint64_t __attribute__((aligned(8))) wm1010= 0xFFFF0000FFFF0000ULL;
++const uint64_t __attribute__((aligned(8))) d40000= 0x0000000000040000ULL;
+ 
+-static const int16_t __attribute__((aligned(8))) coeffs[]= {
++const int16_t __attribute__((aligned(8))) coeffs[]= {
+ 	1<<(ROW_SHIFT-1), 0, 1<<(ROW_SHIFT-1), 0,
+ //	1<<(COL_SHIFT-1), 0, 1<<(COL_SHIFT-1), 0,
+ //	0, 1<<(COL_SHIFT-1-16), 0, 1<<(COL_SHIFT-1-16),
+
+diff -Naur transcode-0.6.12-orig/ffmpeg/libavcodec/i386/motion_est_mmx.c transcode-0.6.12/ffmpeg/libavcodec/i386/motion_est_mmx.c
+--- transcode-0.6.12-orig/ffmpeg/libavcodec/i386/motion_est_mmx.c	2003-12-30 10:02:10.000000000 +0000
++++ transcode-0.6.12/ffmpeg/libavcodec/i386/motion_est_mmx.c	2004-09-05 02:06:37.490118920 +0000
+@@ -20,13 +20,13 @@
+  */
+ #include "../dsputil.h"
+ 
+-static const __attribute__ ((aligned(8))) uint64_t round_tab[3]={
++const __attribute__ ((aligned(8))) uint64_t round_tab[3]={
+ 0x0000000000000000ULL,
+ 0x0001000100010001ULL,
+ 0x0002000200020002ULL,
+ };
+ 
+-static __attribute__ ((aligned(8), unused)) uint64_t bone= 0x0101010101010101LL;
++const __attribute__ ((aligned(8), unused)) uint64_t bone= 0x0101010101010101LL;
+ 
+ static inline void sad8_mmx(uint8_t *blk1, uint8_t *blk2, int stride, int h)
+ {
+
+diff -Naur transcode-0.6.12-orig/ffmpeg/libavcodec/i386/dsputil_mmx.c transcode-0.6.12/ffmpeg/libavcodec/i386/dsputil_mmx.c
+--- transcode-0.6.12-orig/ffmpeg/libavcodec/i386/dsputil_mmx.c	2003-12-30 10:02:10.000000000 +0000
++++ transcode-0.6.12/ffmpeg/libavcodec/i386/dsputil_mmx.c	2004-09-05 02:08:27.098455920 +0000
+@@ -27,16 +27,16 @@
+ int mm_flags; /* multimedia extension flags */
+ 
+ /* pixel operations */
+-static const uint64_t mm_bone __attribute__ ((aligned(8))) = 0x0101010101010101ULL;
+-static const uint64_t mm_wone __attribute__ ((aligned(8))) = 0x0001000100010001ULL;
+-static const uint64_t mm_wtwo __attribute__ ((aligned(8))) = 0x0002000200020002ULL;
+-
+-static const uint64_t ff_pw_20 __attribute__ ((aligned(8))) = 0x0014001400140014ULL;
+-static const uint64_t ff_pw_3  __attribute__ ((aligned(8))) = 0x0003000300030003ULL;
+-static const uint64_t ff_pw_16 __attribute__ ((aligned(8))) = 0x0010001000100010ULL;
+-static const uint64_t ff_pw_15 __attribute__ ((aligned(8))) = 0x000F000F000F000FULL;
++const uint64_t mm_bone __attribute__ ((aligned(8))) = 0x0101010101010101ULL;
++const uint64_t mm_wone __attribute__ ((aligned(8))) = 0x0001000100010001ULL;
++const uint64_t mm_wtwo __attribute__ ((aligned(8))) = 0x0002000200020002ULL;
++
++const uint64_t ff_pw_20 __attribute__ ((aligned(8))) = 0x0014001400140014ULL;
++const uint64_t ff_pw_3  __attribute__ ((aligned(8))) = 0x0003000300030003ULL;
++const uint64_t ff_pw_16 __attribute__ ((aligned(8))) = 0x0010001000100010ULL;
++const uint64_t ff_pw_15 __attribute__ ((aligned(8))) = 0x000F000F000F000FULL;
+ 
+-static const uint64_t ff_pb_FC __attribute__ ((aligned(8))) = 0xFCFCFCFCFCFCFCFCULL;
++const uint64_t ff_pb_FC __attribute__ ((aligned(8))) = 0xFCFCFCFCFCFCFCFCULL;
+ 
+ #define JUMPALIGN() __asm __volatile (".balign 8"::)
+ #define MOVQ_ZERO(regd)  __asm __volatile ("pxor %%" #regd ", %%" #regd ::)

@@ -1,0 +1,40 @@
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2004-09-05
+Initial Package Version: 0.6.12
+Upstream Status:         Not submitted 
+Origin:                  http://zebra.fh-weingarten.de/~maxi/html/transcode-users/2004-01/msg00504.html
+Description:             Fixes corrupted files created by splitting a large file into smaller files
+
+$LastChangedBy$
+$Date$
+
+diff -Naur transcode-0.6.12-orig/avilib/avilib.c transcode-0.6.12/avilib/avilib.c
+--- transcode-0.6.12-orig/avilib/avilib.c	2004-01-02 15:12:38.000000000 +0000
++++ transcode-0.6.12/avilib/avilib.c	2004-09-05 14:50:36.833479496 +0000
+@@ -165,10 +165,13 @@
+ }
+ 
+ 
+-// if bit 31 is not 0, its a keyframe
++// if bit 31 is 0, its a keyframe
+ static uint32_t str2ulong_key (unsigned char *str)
+ {
+-   return (str2ulong(str) & 0x80000000)?0:0x10;
++  uint32_t c = str2ulong(str);
++  c &= 0x80000000;
++  if (c == 0) return 0x10;
++  else return 0;
+ }
+ 
+ /* Calculate audio sample size from number of bits and number of channels.
+@@ -360,7 +363,9 @@
+     if(len>AVI->max_len) AVI->max_len=len;
+ 
+     // if bit 31 is set, it is NOT a keyframe
+-    if (flags != 0x10) len |= (1 << 30) & 0x80000000;
++    if (flags != 0x10) {
++	len |= 0x80000000;
++    }
+ 
+     si->aIndex [ cur_chunk_idx ].dwSize = len;
+     si->aIndex [ cur_chunk_idx ].dwOffset = 
