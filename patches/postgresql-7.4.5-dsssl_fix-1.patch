@@ -1,0 +1,26 @@
+Submitted By: Nico R. <n-roeser@gmx.net>
+Date: 2004-10-15
+Initial Package Version: 7.4.5
+Upstream Status: Not submitted - LFS Specific
+Origin: Nico R.
+Description: Allows the PostgreSQL configure script to find the DocBook DSSSL
+             Stylesheets-1.78 at the location where the BLFS book installs them.
+             This patch is marked as "LFS Specific" at the moment, because some
+             discussion is needed about the correct way to handle this problem.
+
+$LastChangedBy$
+$Date$
+
+diff -Naur postgresql-7.4.5.orig/configure postgresql-7.4.5/configure
+--- postgresql-7.4.5.orig/configure	2004-08-18 03:11:24.000000000 +0000
++++ postgresql-7.4.5/configure	2004-10-15 08:33:08.000000000 +0000
+@@ -17537,7 +17537,8 @@
+         sgml/stylesheets/docbook \
+         sgml/docbook/dsssl/modular \
+         sgml/docbook/stylesheet/dsssl/modular \
+-        sgml/docbook/dsssl-stylesheets
++        sgml/docbook/dsssl-stylesheets \
++        sgml/docbook/dsssl-stylesheets-1.78
+       do
+         pgac_candidate=$pgac_prefix/$pgac_infix/$pgac_postfix
+         if test -r "$pgac_candidate/html/docbook.dsl" \
