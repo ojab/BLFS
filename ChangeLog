@@ -1,6 +1,7 @@
 2004-07-28 DJ Lucas <dj@linuxfromscratch.org>
 	* Made minor fixups to dhcpcd, dhclient, and ipx 
-	* service scripts
+	  service scripts
+	* Added a shell script to create tarball
 
 2004-07-28 Randy McMurchy <randy@linuxfromscratch.org>
 	* Changed location of PID file in mysql script
