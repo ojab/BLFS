@@ -10,9 +10,7 @@ topsy.</para>
 <para>Changelog updates need to be in a standard format.  Here is an
 example:
 <screen>&lt;listitem&gt;&lt;para&gt;April 29th, 2002 [markh]: Chapter 06
-- Add D
-HCP_STOP
-variable to DHCP scripts.&lt;/para&gt;&lt;/listitem&gt;</screen>
+- Add DHCP_STOP variable to DHCP scripts.&lt;/para&gt;&lt;/listitem&gt;</screen>
 Replace <userinput>[markh]</userinput> with your shadowfax login
 name.</para>
 
