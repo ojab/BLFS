@@ -306,6 +306,10 @@ install-sshd: create-dirs
 	ln -sf  ../init.d/sshd ${EXTDIR}/rc.d/rc5.d/S30sshd
 	ln -sf  ../init.d/sshd ${EXTDIR}/rc.d/rc6.d/K30sshd
 
+install-sysstat: create-dirs
+	install -m 754 blfs/init.d/sysstat    ${EXTDIR}/rc.d/init.d/
+	ln -sf ../init.d/sysstat ${EXTDIR}/rc.d/rcsysinit.d/S85sysstat
+
 install-usb: create-dirs
 	install -m 754 blfs/init.d/usb        ${EXTDIR}/rc.d/init.d/
 	ln -sf ../init.d/usb /etc/rc.d/rcsysinit.d/S90usb
@@ -361,6 +365,7 @@ install-xinetd: create-dirs
 	install-samba \
 	install-sendmail \
 	install-sshd \
+	install-sysstat \
 	install-usb \
 	install-winbind \
 	install-xinetd

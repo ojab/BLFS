@@ -3,7 +3,6 @@
 
 # Based on sysklogd script from LFS-3.1 and earlier.
 # Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
-# Heimdal bootscript submitted by Randy McMurchy - LFS-User@mcmurchy.com
 
 . /etc/sysconfig/rc
 . $rc_functions
