@@ -59,7 +59,7 @@ if [ ! -d $BLFS_XML ]
 
     for i in `find ./ -name "*.html"`
     do
-    tidy -latin1 -m $i
+    tidy -q -latin1 -m $i
     cp $i $i.bak
     sed '4i\
 &lt;meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15"&gt;' $i.bak &gt; $i
