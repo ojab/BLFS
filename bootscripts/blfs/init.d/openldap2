@@ -1,0 +1,64 @@
+#!/bin/sh
+# Begin $rc_base/init.d/openldap
+
+# Based on sysklogd script from LFS-3.1 and earlier.
+# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+
+. /etc/sysconfig/rc
+. $rc_functions
+
+pid_file=/srv/ldap/run/slapd.pid
+
+case "$1" in
+	start)
+		echo "Starting LDAP slapd Server..."
+		if test -f "$pid_file"
+		then
+			print_status warning running
+		else
+			/usr/sbin/slapd
+			evaluate_retval
+		fi
+
+		echo "Starting LDAP slurpd Server..."
+		loadproc /usr/sbin/slurpd
+		;;
+
+	stop)
+		echo "Stopping LDAP slapd Server..."
+		if test -f "$pid_file"
+		then
+                	kill -INT `cat $pid_file`
+                	sleep 1
+			if test -f "$pid_file"
+			then
+				print_status failure
+			else
+				print_status success
+			fi
+		else
+			print_status warning not_running
+		fi
+
+		echo "Stopping LDAP slurpd Server..."
+		killproc /usr/sbin/slurpd
+		;;
+
+	restart)
+		$0 stop
+		sleep 1
+		$0 start
+		;;
+
+	status)
+		statusproc /usr/sbin/slapd
+		statusproc /usr/sbin/slurpd
+		;;
+
+	*)
+		echo "Usage: $0 {start|stop|restart|status}"
+		exit 1
+		;;
+esac
+
+# End $rc_base/init.d/openldap
