@@ -1,3 +1,6 @@
+2004-07-21 DJ Lucas <dj@linuxfromscratch.org>
+	* changed vsftpd bootscript to use loadproc
+
 2004-07-19 DJ Lucas <dj@linuxfromscratch.org>
 	* Added svn and vsftpd scripts.
 

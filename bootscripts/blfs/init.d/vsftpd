@@ -10,7 +10,7 @@
 case "$1" in
 	start)
 		echo "Starting vsFTPD Server..."
-		exec /usr/sbin/vsftpd &
+		loadproc /usr/sbin/vsftpd
 		;;
 
 	stop)
@@ -30,7 +30,7 @@ case "$1" in
 		;;
 
 	status)
-		statusproc /usr/sbin/sshd
+		statusproc /usr/sbin/vsftpd
 		;;
 
 	*)
