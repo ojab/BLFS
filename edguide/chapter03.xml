@@ -45,8 +45,8 @@ going to be needed, it will usually be because the Editor will have made a
 
 <para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2552205">
 <userinput>svn add</userinput></ulink>.  When you are creating a new file or
-directory, you need to tell the CVS server about it.  This does that.  Note that
-the file won't appear in the repository until you do a <userinput>svn
+directory, you need to tell the SVN server about it.  This does that.  Note that
+the file won't appear in the repository until you do an <userinput>svn
 commit</userinput> (see below).</para>
 
 </section>
@@ -56,8 +56,8 @@ commit</userinput> (see below).</para>
 
 <para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2553659">
 <userinput>svn delete</userinput></ulink>.  This does what it says!  When you
-do a <userinput>svn commit</userinput> the file wil be deleted from your local
-sandbox as well as from the repository.</para>
+do an <userinput>svn commit</userinput> the file wil be deleted from your local
+sandbox immediately as well as from the repository after committing.</para>
 
 </section>
 
@@ -66,8 +66,8 @@ sandbox as well as from the repository.</para>
  
 <para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2557523">
 <userinput>svn status</userinput></ulink>.  This command prints the status of
-working directories and files.  If you have made local changes, it'll show you
-locally modified items.  If you use the <parameter>--vervose</parameter>
+working directories and files.  If you have made local changes, it'll show your
+locally modified items.  If you use the <parameter>--verbose</parameter>
 switch, it will show revision information on every item.  With the
 <parameter>--show-updates</parameter> switch, it will show any server
 out-of-date info.</para>
@@ -95,8 +95,8 @@ server with your changes <emphasis>on your machine</emphasis>.
 
 <para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2552968">
 <userinput>svn commit</userinput></ulink> or <userinput>svn ci</userinput>.
-This command recursively sends your changes to the CVS server.  It will commit
-changed files, added filesi, and deleted files.  The -m option should always be
+This command recursively sends your changes to the SVN server.  It will commit
+changed files, added files, and deleted files.  The -m option should always be
 used to pass a log message to the command.  Please don't use empty log messages
 (see later in this document on the policy which governs them).</para>
 
@@ -107,7 +107,7 @@ used to pass a log message to the command.  Please don't use empty log messages
 
 <para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2553839">
 <userinput>svn diff</userinput></ulink>.  This is useful for two different
-purposes.  First, those without write access to the BLFS CVS server can use it
+purposes.  First, those without write access to the BLFS SVN server can use it
 to generate patches to send to <userinput>blfs-dev</userinput>.  To do this,
 simply edit the files in your local sandbox then run <userinput>svn diff &gt;
 FILE.patch</userinput> from the root of your BLFS directory.  You can then
@@ -126,9 +126,9 @@ between revisions 168 and 169 of <filename>index.xml</filename>.  </para>
 
 <para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2556161">
 <userinput>svn move SRC DEST</userinput></ulink> or <userinput>svn mv SRC
-DEST</userinput>.  This command moves a file from one directory to
-another or renames a file.  This is an immediate command and no commit is
-necessary.  </para>
+DEST</userinput>.  This command moves a file from one directory to another or
+renames a file.  The file will be moved on your local sandbox immediately as
+well as from the repository after committing.  </para>
 
 </section>
 </chapter>

@@ -20,7 +20,7 @@ be a reference to the <filename>general.ent</filename> file which includes
 entities that are used in multiple applications.  This includes the version
 numbers of all applications, including the current one.  Note that the reference to 
 <filename>general.ent</filename> includes the relative address of the file.  
-This will be at the root fo the BLFS book's source tree and is
+This will be at the root of the BLFS book's source tree and is
 normally two levels up from the application files.</para>
 
 <para>Included in the header are the five entities that you see below.  These are
@@ -65,7 +65,7 @@ this information as a footnote at the bottom of each page.</para>
 that tells the render engine where to place the output of the current page.</para>
 
 <para>Finally, the required &lt;title&gt; section specifies the actual name of the section
-at the top o fthe application's page.  This should  normally be the same as the 
+at the top of the application's page.  This should normally be the same as the 
 <parameter>xreflabel</parameter>.</para>
 
 <para>Note the use of entities in the XML.  This allows the package version to be updated
@@ -81,13 +81,13 @@ as entities without having to change the code.</para>
 &lt;title&gt;FAM-&amp;fam-version;&lt;/title&gt;</screen>
 
 <para>The content of the application is normally divided into five areas: Introduction, Installation, 
-Command Explainations, Configuration, and Contents.  In some cases, the Configuration is not required.</para>
+Command Explanations, Configuration, and Contents.  In some cases, the Configuration is not required.</para>
 
 <sect1>
 <title>Introduction Section</title>
 
-<para>The Introduction Section starts with a short description of the application.  This description
-is generally short, but for less well known applications, multiple paragraphs sumarizing the 
+<para>The Introduction Section starts with a description of the application.  This description
+is generally short, but for less well known applications, multiple paragraphs summarizing the 
 application's purpose is appropriate.</para>
 
 
@@ -99,7 +99,7 @@ contains a File Alteration Monitor which is useful for notifying applications of
 changes to the file system.&lt;/para&gt;</screen>
 
 <para>After the description, package locations and statistics are presented.  Here the entities defined
-in the header should be used.  If a HTTP or FTP location is not available, leave the
+in the header should be used.  If an HTTP or FTP location is not available, leave the
 header in place with an empty string for the missing location. </para>
 
 <screen>&lt;sect3&gt;&lt;title&gt;Package information&lt;/title&gt;
@@ -134,9 +134,9 @@ dependency should <emphasis>not</emphasis> be listed.  However, if a required
 dependency and the application share an optional dependency, that optional
 dependency should be listed.</para>
 
-<para>If a package will take advantage of another package after it is built, it
-should  <emphasis>not</emphasis> be listed as a dependency, however a note may
-be appropriate.</para>
+<para>If a package will take advantage of another package <emphasis>after</emphasis>
+it is built, it should  <emphasis>not</emphasis> be listed as a dependency,
+however a note may be appropriate.</para>
 
 <screen>&lt;sect3&gt;&lt;title&gt;&lt;application&gt;&lt;acronym&gt;FAM&lt;/acronym&gt;&lt;/application&gt; dependencies
 &lt;/title&gt;
@@ -185,7 +185,7 @@ switch is necessary.  If the Installation Section does not include a particular
 optional comnand or switch, an entry can be made here giving the user
 information about the alternative or supplemental option.  Since many packages
 have a large number of options, this explaination is normally reserved for
-optional instructions the editor feels is particularly important.</para>
+optional instructions the editor feels are particularly important.</para>
 
 <screen>&lt;sect2&gt;
 &lt;title&gt;Command explanations&lt;/title&gt;
@@ -210,8 +210,8 @@ because the dnotify patch affects &lt;filename&gt;configure.ac&lt;/filename&gt; 
 <sect1>
 <title>Configuration Section</title>
 
-<para>This section describes any actions the user needs to configure the application.  If
-no confiuration is required, then it can be omitted.</para>
+<para>This section describes any actions the user needs to take to configure the
+application.  If no confiuration is required, then it can be omitted.</para>
 
 <screen>&lt;sect2&gt;
 &lt;title&gt;Configuring &lt;application&gt;&lt;acronym&gt;FAM&lt;/acronym&gt;&lt;/application&gt;&lt;/title&gt;
