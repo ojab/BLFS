@@ -17,24 +17,36 @@ case "$1" in
 
 	lock)
 		echo "Locking system iptables firewall..."
-		/sbin/iptables -P INPUT DROP
-		/sbin/iptables -P OUTPUT DROP
-		/sbin/iptables -P FORWARD DROP
-        /sbin/iptables -F
-        /sbin/iptables -X
+		/sbin/iptables --policy INPUT   DROP
+		/sbin/iptables --policy OUTPUT  DROP
+		/sbin/iptables --policy FORWARD DROP
+        /sbin/iptables           --flush
+        /sbin/iptables -t nat    --flush
+        /sbin/iptables -t mangle --flush
+        /sbin/iptables           --delete-chain
+        /sbin/iptables -t nat    --delete-chain
+        /sbin/iptables -t mangle --delete-chain
+        /sbin/iptables -A INPUT  -i lo -j ACCEPT
+        /sbin/iptables -A OUTPUT -o lo -j ACCEPT
 		;;
 
 	clear)
         echo "Clearing system iptables iptables..."
-		/sbin/iptables -P INPUT ACCEPT
-		/sbin/iptables -P OUTPUT ACCEPT
-		/sbin/iptables -P FORWARD ACCEPT
-        /sbin/iptables -F
-        /sbin/iptables -X
+		/sbin/iptables --policy INPUT   ACCEPT
+		/sbin/iptables --policy OUTPUT  ACCEPT
+		/sbin/iptables --policy FORWARD ACCEPT
+        /sbin/iptables           --flush
+        /sbin/iptables -t nat    --flush
+        /sbin/iptables -t mangle --flush
+        /sbin/iptables           --delete-chain
+        /sbin/iptables -t nat    --delete-chain
+        /sbin/iptables -t mangle --delete-chain
 		;;
 
 	status)
-		/sbin/iptables -n -L 
+		/sbin/iptables           --numeric --list
+		/sbin/iptables -t nat    --numeric --list
+		/sbin/iptables -t mangle --numeric --list
 		;;
 
 	*)
