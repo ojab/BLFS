@@ -1,0 +1,82 @@
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2004-11-19
+Initial Package Version: 2.8.1
+Upstream Status:         Included in version 2.9.1
+Origin:                  Diff from development 2.9.1 version
+Description:             Fixes build due to the API change in libxklavier
+
+$LastChangedBy$
+$Date$
+
+--- gnome-applets-2.8.1/libgswitchit/gswitchit_config.c	2004-11-19 18:23:42.600883816 +0000
++++ gnome-applets-2.9.1/libgswitchit/gswitchit_config.c	2004-10-04 21:54:55.000000000 +0000
+@@ -380,44 +380,6 @@
+ }
+ 
+ static gboolean
+-_GSwitchItXkbConfigDoWithSettings (GSwitchItXkbConfig *
+-				   xkbConfig,
+-				   gboolean activate,
+-				   const char *psFileName)
+-{
+-	gboolean rv = FALSE;
+-
+-	XklConfigRec data;
+-	XklConfigRecInit (&data);
+-
+-	_GSwitchItXkbConfigCopyToXklConfig (xkbConfig, &data);
+-
+-	if (activate) {
+-		rv = XklConfigActivate (&data, NULL);
+-	} else {
+-		char *home = getenv ("HOME");
+-		char xkmFileName[PATH_MAX];
+-		char cmd[PATH_MAX * 2 + 20];
+-		int status;
+-		g_snprintf (xkmFileName, sizeof (xkmFileName),
+-			    "%s/.gnome_private/xkbpreview.xkm", home);
+-		rv = XklConfigWriteXKMFile (xkmFileName, &data, NULL);
+-		if (rv) {
+-			g_snprintf (cmd, sizeof (cmd),
+-				    "xkbprint -full -color %s %s",
+-				    xkmFileName, psFileName);
+-			status = system (cmd);
+-			XklDebug (100, "Res: [%d]\n", status);
+-			//unlink( xkmFileName );
+-		} else {
+-			XklDebug (10, "Could not create XKM file!\n");
+-		}
+-	}
+-	XklConfigRecDestroy (&data);
+-	return rv;
+-}
+-
+-static gboolean
+ _GSListStrEqual (GSList * l1, GSList * l2)
+ {
+ 	if (l1 == l2)
+@@ -752,15 +714,16 @@
+ gboolean
+ GSwitchItXkbConfigActivate (GSwitchItXkbConfig * xkbConfig)
+ {
+-	return _GSwitchItXkbConfigDoWithSettings (xkbConfig, TRUE, NULL);
+-}
++	gboolean rv = FALSE;
+ 
+-gboolean
+-GSwitchItXkbConfigDumpSettings (GSwitchItXkbConfig * xkbConfig,
+-				const char *fileName)
+-{
+-	return _GSwitchItXkbConfigDoWithSettings (xkbConfig, FALSE,
+-						  fileName);
++	XklConfigRec data;
++	XklConfigRecInit (&data);
++
++	_GSwitchItXkbConfigCopyToXklConfig (xkbConfig, &data);
++
++	rv = XklConfigActivate (&data);
++	XklConfigRecDestroy (&data);
++	return rv;
+ }
+ 
+ void
