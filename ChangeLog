@@ -1,3 +1,7 @@
+2004-12-27 Randy McMurchy <randy@linuxfromscratch.org>
+	* Changed Exim bootscript to start the daemon with -q15m instead
+	  of -q1m.
+
 2004-11-21 Igor Zivkovic <igor@linuxfromscratch.org>
 	* Removed setclock symlinks at install-ntp target and added a
 	  substitute command in the book.
