@@ -1,0 +1,22 @@
+<sect1 id="ch04-updateindex">
+<title>Updating index.xml</title>
+<?dbhtml filename="updateindex.html" dir="chapter04"?>
+
+<sect2><title>Updating the date</title>
+<para>The following elements should be updated whenever
+<emphasis>any</emphasis> change (including small typo fixes) is made:
+<screen>&lt;!ENTITY version "20020429"&gt;
+&lt;!ENTITY releasedate "April 29th, 2002"&gt;</screen>
+The two dates <emphasis>must</emphasis> correspond and the first is in
+the format YYYYMMDD.</para></sect2>
+
+<sect2><title>Adding / updating entities</title>
+<para>Entities should be on one line (even if this requires wrapping
+because of the length).  Package entities should always be added in
+alphabetical order; if needed, create the &lt;-- X --&gt; divider (where
+X == any letter!).  Most letters probably have their dividers by now but some
+still don't.  We may soon divide <filename>index.xml</filename> into
+entity files (as of the time of writing, it's a tad under 30Kb which is
+too big for my liking).</para></sect2>
+
+</sect1>

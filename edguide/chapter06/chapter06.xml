@@ -1,0 +1,12 @@
+<chapter id="chapter06">
+<title>Overall editing policy</title>
+<?dbhtml filename="chapter06.html" dir="chapter06"?>
+
+<para>This section still needs to be written.  (And we could probably do
+with actually <emphasis>developing</emphasis> some real policy first..).
+Suggestions include: what we do about optimization, scripts, patches
+(where we put them; probably in the blfs-patches area of shadowfax)
+etc. etc.  Contributions welcome; especially from (but not limited to)
+active editors.</para>
+
+</chapter>

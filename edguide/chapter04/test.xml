@@ -1,0 +1,11 @@
+<sect1 id="ch04-test">
+<title>Test the instructions</title>
+<?dbhtml filename="test.html" dir="chapter04"?>
+
+<para>This may seem <emphasis>really</emphasis> obvious but
+<filename>&lt;confession mode&gt;</filename> I have actually made small
+changes without testing them before, and had to change them (in one case
+twice) very quickly when someone noticed.... &lt;/confession mode&gt;
+So learn from my mistakes - check <emphasis>everything</emphasis></para>
+
+</sect1>

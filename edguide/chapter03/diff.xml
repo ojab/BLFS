@@ -1,0 +1,25 @@
+<sect1 id="ch03-diff">
+<title>cvs diff</title>
+<?dbhtml filename="diff.html" dir="chapter03"?>
+
+<para><userinput>cvs diff</userinput>.  This is useful for two different
+purposes.  Firstly, those without write access to the BLFS CVS server
+can use it to generate patches to send to
+<userinput>blfs-dev</userinput>.  To do this, simply edit the files in
+your local sandbox then run <userinput>cvs diff -u &gt;
+FILE.patch</userinput> from the root of your BLFS directory.  You can
+then attach this file to a message to <userinput>blfs-dev</userinput>
+where someone with editing rights will pick it up and apply it to the
+book.  The second use is to find out what has changed between two
+revisions using:
+<userinput>cvs diff -u -r revision1 -r revision2 FILENAME</userinput>.
+For example: <userinput>cvs diff -u -r 1.68 -r 1.69
+index.xml</userinput> will output a unified diff showing the changes
+between revisions 1.68 and 1.69 of <filename>index.xml</filename>.
+Remember that when using cvs diff, you nearly
+<emphasis>always</emphasis> want to output a unified diff and so either
+use the <userinput>-u</userinput> switch or add it to
+your <userinput>~/.cvsrc</userinput></para>
+
+</sect1>
+

@@ -1,0 +1,12 @@
+<sect1 id="ch03-moving">
+<title>Moving files</title>
+<?dbhtml filename="moving.html" dir="chapter03"?>
+
+<para>Moving files:  One of the (many?) complaints against cvs is that
+it has no concept of 1) moving files or 2) versioning directories.  If
+you need to move a file, it's generally better to do it on the server
+manually.  <emphasis>If this is needed, please contact me and I'll do
+it</emphasis>.  This is simply because then if something goes wrong,
+it's me who takes the fall instead of anyone else!</para>
+
+</sect1>

@@ -1,0 +1,26 @@
+<preface id="preface">
+<title>Welcome to the BLFS Editor's Manual</title>
+<?dbhtml filename="preface.html" dir="preface"?>
+
+<para>This document is designed to be a friendly introduction to BLFS
+editing.  I've put it together in order to remove myself from being the
+single "point of failure/delay" (so to speak) in the BLFS
+Project.</para>
+
+<para>This document covers (or will soon cover) a few things.  Firstly,
+basic admin issues like accessing CVS over SSH, committing changes and
+BLFS logging policy.  Then I intend to briefly discuss a little bit of
+general BLFS policy (which is liable to change over time as we sort it
+out).  Later, I hope to add features to BLFS such as filelists similar
+to those use with <filename>checklfs</filename> in the LFS book and a
+section will be added to discuss the processes for creating
+those.</para>
+
+<para>I hope this little document will be helpful not only to all of the
+(co)editors but also to all people thinking about contributing to
+BLFS.</para>
+
+<para>Mark Hymers <userinput>&lt;markh@linuxfromscratch.org&gt;</userinput></para>
+
+</preface>
+

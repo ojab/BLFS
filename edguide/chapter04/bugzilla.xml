@@ -1,0 +1,19 @@
+<sect1 id="ch04-bugzilla">
+<title>Update bugzilla</title>
+<?dbhtml filename="bugzilla.html" dir="chapter04"?>
+
+<para>The final part of updating the book is to update bugzilla.  I used
+to be terrible at doing this but even I'm getting slightly more
+disciplined these days!  This is usually as easy as going to BLFS
+Bugzilla (<ulink url="&blfs-bugzilla;"/>), going to the bug and
+choosing Resolve bug, changing resolution to FIXED.  Note that you
+should <emphasis>not</emphasis> then go back and CLOSE the bug.  The
+person who closes the bug should be a different editor who has tested
+that what the bug is about has been fixed.  Basically, it's our QA
+process.</para>
+
+<para>Having completed all of this, you can now go and have a rest.
+Well done, thank you and goodnight.</para>
+
+</sect1>
+
