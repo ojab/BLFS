@@ -1,5 +1,6 @@
 2004-06-27 DJ Lucas <dj@linuxfromscratch.org>
 	* Added sysstat bootscript
+	* Fixed missing $EXTDIR targets in Makefile
 
 2004-06-16 DJ Lucas <dj@linuxfromscratch.org>
 	* Added GPMOPTS to gpm script

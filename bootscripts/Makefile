@@ -138,13 +138,13 @@ install-heimdal: create-dirs
 
 install-kerberos: create-dirs
 	install -m 754 blfs/init.d/kerberos ${EXTDIR}/rc.d/init.d/
-	ln -sf ../init.d/kerberos ../rc0.d/K42kerberos
-	ln -sf ../init.d/kerberos ../rc1.d/K42kerberos
-	ln -sf ../init.d/kerberos ../rc2.d/K42kerberos
-	ln -sf ../init.d/kerberos ../rc3.d/S28kerberos
-	ln -sf ../init.d/kerberos ../rc4.d/S28kerberos
-	ln -sf ../init.d/kerberos ../rc5.d/S28kerberos
-	ln -sf ../init.d/kerberos ../rc6.d/K42kerberos
+	ln -sf ../init.d/kerberos ${EXTDIR}/rc.d/rc0.d/K42kerberos
+	ln -sf ../init.d/kerberos ${EXTDIR}/rc.d/rc1.d/K42kerberos
+	ln -sf ../init.d/kerberos ${EXTDIR}/rc.d/rc2.d/K42kerberos
+	ln -sf ../init.d/kerberos ${EXTDIR}/rc.d/rc3.d/S28kerberos
+	ln -sf ../init.d/kerberos ${EXTDIR}/rc.d/rc4.d/S28kerberos
+	ln -sf ../init.d/kerberos ${EXTDIR}/rc.d/rc5.d/S28kerberos
+	ln -sf ../init.d/kerberos ${EXTDIR}/rc.d/rc6.d/K42kerberos
 
 install-lisa: create-dirs
 	install -m 754 blfs/init.d/lisa       ${EXTDIR}/rc.d/init.d/
@@ -312,17 +312,17 @@ install-sysstat: create-dirs
 
 install-usb: create-dirs
 	install -m 754 blfs/init.d/usb        ${EXTDIR}/rc.d/init.d/
-	ln -sf ../init.d/usb /etc/rc.d/rcsysinit.d/S90usb
+	ln -sf ../init.d/usb ${EXTDIR}/rc.d/rcsysinit.d/S90usb
 
 install-winbind: create-dirs
 	install -m 754 blfs/init.d/winbind    ${EXTDIR}/rc.d/init.d/
-	ln -sf ../init.d/winbind /etc/rc.d/rc0.d/K49winbind
-	ln -sf ../init.d/winbind /etc/rc.d/rc1.d/K49winbind
-	ln -sf ../init.d/winbind /etc/rc.d/rc2.d/K49winbind
-	ln -sf ../init.d/winbind /etc/rc.d/rc3.d/S25winbind
-	ln -sf ../init.d/winbind /etc/rc.d/rc4.d/S25winbind
-	ln -sf ../init.d/winbind /etc/rc.d/rc5.d/S25winbind
-	ln -sf ../init.d/winbind /etc/rc.d/rc6.d/K49winbind
+	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc0.d/K49winbind
+	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc1.d/K49winbind
+	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc2.d/K49winbind
+	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc3.d/S25winbind
+	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc4.d/S25winbind
+	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc5.d/S25winbind
+	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc6.d/K49winbind
 
 install-xinetd: create-dirs
 	install -m 754 blfs/init.d/xinetd     ${EXTDIR}/rc.d/init.d/
