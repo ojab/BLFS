@@ -28,16 +28,16 @@ case "$1" in
 		fi
 		
 		# NFSD support only in 2.6 kernel
-		/bin/uname -r | /bin/grep "2.6"
+		/bin/uname -r | /bin/grep "2.6" 2>&1 > /dev/null
 		if [ $? == 0 ]; then
 			echo "Mounting nfsd virtual filesystem..."
 			/bin/mount -t nfsd none /proc/fs/nfsd 2>&1 > /dev/null
-			evalutate_retval
+			evaluate_retval
 		fi
 
 		# Make ceratin that the list is refreshed on 
 		# a restart.
-		echo "Starting NFS Server..."
+		echo "Exporting NFS Filesystems..."
 		/usr/sbin/exportfs -ra 2>&1 > /dev/null
 		evaluate_retval
 		;;
@@ -63,9 +63,17 @@ case "$1" in
 			killproc /usr/sbin/rpc.rquotad
 		fi
 
-		echo "Stopping NFS Server Services..."
+		echo "Refreshing NFS Exported Filesystems..."
 		/usr/sbin/exportfs -au 2>&1 > /dev/null
 		evaluate_retval
+
+		# NFSD support only in 2.6 kernel
+                /bin/uname -r | /bin/grep "2.6" 2>&1 > /dev/null
+                if [ $? == 0 ]; then
+			echo "Unmounting NFS Virtual Filesystem..."
+			/bin/umount /proc/fs/nfsd 2>&1 > /dev/null
+			evaluate_retval
+		fi
 		;;
 
 	reload)

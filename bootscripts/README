@@ -7,9 +7,8 @@ lfs-bootscripts package. See the <lfs-bootscripts.version> file
 for compatibility information.
 
 The various install targets are mentioned in the BLFS book. There 
-are variables defined for script permissions {MODE}, directory 
-permissions {DIRMODE} and destination directory {DESTDIR}.  For 
-more information refer to the BLFS BOOK at
-	http://www.linuxfromscratch.org/blfs/
-
+are variables defined for script permissions {MODE}, configuration 
+file permissions {CONFMODE}, directory permissions {DIRMODE} and 
+destination directory {DESTDIR}.  For more information refer to the 
+BLFS BOOK at http://www.linuxfromscratch.org/blfs/ .
 

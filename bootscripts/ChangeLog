@@ -1,3 +1,17 @@
+2004-10-11 DJ Lucas <dj@linuxfromscratch.org>
+	* Fixed multiple errors in nfs-server bootscript
+	* Added sysconfig file for nfs-server bootscript
+	* Removed lockd from nfs-client bootscript
+	* Added svn keywords to remaining bootscripts
+
+2004-10-02 DJ Lucas <dj@linuxfromscratch.org>
+	* Changed all scripts to use full path names
+
+2004-09-28 DJ Lucas <dj@linuxfromscratch.org>
+	* Replaced nfs-server and nfs-client scripts
+	* Adjusted mysql and winbind scripts to use PIDFILE
+	* Added svn keywords to remaining bootscripts
+
 2004-08-26 Randy McMurchy <randy@linuxfromscratch.org>
 	* Removed usb script (suggested by Alexander Patrakov)
 

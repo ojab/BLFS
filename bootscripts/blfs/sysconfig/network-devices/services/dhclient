@@ -1,9 +1,12 @@
 #!/bin/sh
 # Begin $network-devices/services/dhclient
-                                                                                
+
 # Based upon lfs-bootscripts-1.12 $network_devices/if{down,up}
 # Rewritten by Nathan Coulson <nathan@linuxfromscratch.org>
 # Adapted for dhclient by DJ Lucas <dj@lucasit.com>
+
+#$LastChangedBy$
+#$Date$
 
 . /etc/sysconfig/rc
 . $rc_functions

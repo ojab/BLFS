@@ -14,15 +14,9 @@ case "$1" in
 	start)
 		echo "Starting NFS statd..."
 		loadproc /usr/sbin/rpc.statd
-
-		echo "Starting NFS lockd..."
-		loadproc /usr/sbin/rpc.lockd
 		;;
 
 	stop)
-		echo "Stopping NFS lockd..."
-		killproc /usr/sbin/rpc.lockd
-
 		echo "Stopping NFS statd..."
 		killproc /usr/sbin/rpc.statd
 		;;
@@ -35,7 +29,6 @@ case "$1" in
 
 	status)
 		statusproc /usr/sbin/rpc.statd
-		statusproc /usr/sbin/rpc.lockd
 		;;
 
 	*)

@@ -2,6 +2,7 @@ ETCDIR=/etc
 EXTDIR=${DESTDIR}${ETCDIR}
 MODE=754
 DIRMODE=755
+CONFMODE=644
 
 # The grep can probably be improved upon.
 all:
@@ -220,6 +221,7 @@ install-nfs-client: create-dirs
 
 install-nfs-server: create-dirs
 	install -m ${MODE} blfs/init.d/nfs-server ${EXTDIR}/rc.d/init.d/
+	install -m ${CONFMODE} blfs/sysconfig/nfs ${EXTDIR}/sysconfig/
 	ln -sf  ../init.d/nfs-server ${EXTDIR}/rc.d/rc0.d/K48nfs-server
 	ln -sf  ../init.d/nfs-server ${EXTDIR}/rc.d/rc1.d/K48nfs-server
 	ln -sf  ../init.d/nfs-server ${EXTDIR}/rc.d/rc2.d/K48nfs-server
