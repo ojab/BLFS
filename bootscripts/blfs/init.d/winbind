@@ -1,0 +1,81 @@
+#!/bin/bash
+# Begin $rc_base/init.d/winbind
+
+# Based on sysklogd script from LFS-3.1 and earlier.
+# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+
+source /etc/sysconfig/rc
+source $rc_functions
+
+case "$1" in
+
+        start)
+                echo "Starting winbind..."
+                loadproc /usr/sbin/winbindd
+                ;;
+
+        stop)
+                echo "Stopping winbind..."
+                if [ -e /var/run/winbindd.pid ]
+                then
+                    localpid=$(cat /var/run/winbindd.pid)
+                else
+                    localpid=""
+                fi
+                if [ -n "$localpid" ]
+                then
+                    i=0
+                    kill -TERM $localpid 2>/dev/null
+		    sleep 3
+		    ps -A | grep $localpid 2>/dev/null
+		    if [ $?  == "0" ]
+		    then
+			while [ $i -lt 3 ]
+                	do
+                            kill -0 $localpid 2>/dev/null || break
+                            sleep 1
+                            i=$(($i+1))
+                        done
+			# if we are still running hit the fall back
+			# signal (KILL)
+                        ps -A | grep $localpid 2>/dev/null
+			if [ $? == "0" ]
+			then
+			    kill -KILL $localpid 2>/dev/null
+			    sleep 3
+			    failure=1
+			fi
+		    else
+			failure=0
+			rm -f /var/run/winbindd.pid
+		    fi
+                    (exit $failure)
+                    evaluate_retval
+                else
+                    print_status warning not_running
+                fi
+                ;;
+
+	reload)
+		echo "Reloading winbind..."
+		reloadproc winbindd
+		;;
+
+        restart)
+                $0 stop
+                sleep 1
+                $0 start
+                ;;
+
+        status)
+                statusproc /usr/sbin/winbindd
+                ;;
+
+        *)
+                echo "Usage: $0 {start|stop|reload|restart|status}"
+                exit 1
+                ;;
+
+esac
+
+# End $rc_base/init.d/winbind

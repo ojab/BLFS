@@ -310,6 +310,16 @@ install-usb: create-dirs
 	install -m 754 blfs/init.d/usb        ${EXTDIR}/rc.d/init.d/
 	ln -sf ../init.d/usb /etc/rc.d/rcsysinit.d/S90usb
 
+install-winbind: create-dirs
+	install -m 754 blfs/init.d/winbind    ${EXTDIR}/rc.d/init.d/
+	ln -sf ../init.d/winbind /etc/rc.d/rc0.d/K49winbind
+	ln -sf ../init.d/winbind /etc/rc.d/rc1.d/K49winbind
+	ln -sf ../init.d/winbind /etc/rc.d/rc2.d/K49winbind
+	ln -sf ../init.d/winbind /etc/rc.d/rc3.d/S25winbind
+	ln -sf ../init.d/winbind /etc/rc.d/rc4.d/S25winbind
+	ln -sf ../init.d/winbind /etc/rc.d/rc5.d/S25winbind
+	ln -sf ../init.d/winbind /etc/rc.d/rc6.d/K49winbind
+
 install-xinetd: create-dirs
 	install -m 754 blfs/init.d/xinetd     ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/xinetd ${EXTDIR}/rc.d/rc0.d/K49xinetd
@@ -352,4 +362,5 @@ install-xinetd: create-dirs
 	install-sendmail \
 	install-sshd \
 	install-usb \
+	install-winbind \
 	install-xinetd
