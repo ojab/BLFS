@@ -176,6 +176,16 @@ install-mysql: create-dirs
 	ln -sf  ../init.d/mysql ${EXTDIR}/rc.d/rc5.d/S34mysql
 	ln -sf  ../init.d/mysql ${EXTDIR}/rc.d/rc6.d/K26mysql
 
+install-nas: create-dirs
+	install -m 754 blfs/init.d/nas        ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/nas ${EXTDIR}/rc.d/rc0.d/K35nas
+	ln -sf  ../init.d/nas ${EXTDIR}/rc.d/rc1.d/K35nas
+	ln -sf  ../init.d/nas ${EXTDIR}/rc.d/rc2.d/K35nas
+	ln -sf  ../init.d/nas ${EXTDIR}/rc.d/rc3.d/S30nas
+	ln -sf  ../init.d/nas ${EXTDIR}/rc.d/rc4.d/S30nas
+	ln -sf  ../init.d/nas ${EXTDIR}/rc.d/rc5.d/S30nas
+	ln -sf  ../init.d/nas ${EXTDIR}/rc.d/rc6.d/K35nas
+
 install-netfs: create-dirs
 	install -m 754 blfs/init.d/netfs      ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/netfs ${EXTDIR}/rc.d/rc0.d/K47netfs
@@ -372,6 +382,7 @@ install-xinetd: create-dirs
 	install-kerberos \
 	install-lprng \
 	install-mysql \
+	install-nas \
 	install-netfs \
 	install-nfs-client \
 	install-nfs-server \
