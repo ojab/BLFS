@@ -136,6 +136,16 @@ install-heimdal: create-dirs
 	ln -sf  ../init.d/heimdal ${EXTDIR}/rc.d/rc5.d/S28heimdal
 	ln -sf  ../init.d/heimdal ${EXTDIR}/rc.d/rc6.d/K42heimdal
 
+install-kerberos: create-dirs
+	install -m 754 blfs/init.d/kerberos ${EXTDIR}/rc.d/init.d/
+	ln -sf ../init.d/kerberos ../rc0.d/K42kerberos
+	ln -sf ../init.d/kerberos ../rc1.d/K42kerberos
+	ln -sf ../init.d/kerberos ../rc2.d/K42kerberos
+	ln -sf ../init.d/kerberos ../rc3.d/S28kerberos
+	ln -sf ../init.d/kerberos ../rc4.d/S28kerberos
+	ln -sf ../init.d/kerberos ../rc5.d/S28kerberos
+	ln -sf ../init.d/kerberos ../rc6.d/K42kerberos
+
 install-lisa: create-dirs
 	install -m 754 blfs/init.d/lisa       ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc0.d/K35lisa
@@ -296,6 +306,10 @@ install-sshd: create-dirs
 	ln -sf  ../init.d/sshd ${EXTDIR}/rc.d/rc5.d/S30sshd
 	ln -sf  ../init.d/sshd ${EXTDIR}/rc.d/rc6.d/K30sshd
 
+install-usb: create-dirs
+	install -m 754 blfs/init.d/usb        ${EXTDIR}/rc.d/init.d/
+	ln -sf ../init.d/usb /etc/rc.d/rcsysinit.d/S90usb
+
 install-xinetd: create-dirs
 	install -m 754 blfs/init.d/xinetd     ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/xinetd ${EXTDIR}/rc.d/rc0.d/K49xinetd
@@ -307,5 +321,35 @@ install-xinetd: create-dirs
 	ln -sf  ../init.d/xinetd ${EXTDIR}/rc.d/rc6.d/K49xinetd
 
 .PHONY: all create-dirs create-service-dir \
-	install-service-dhclient install-service-dhcpcd install-service-ipx install-service-pppoe \
-	install-alsa install-apache install-bind install-cups install-dhcp install-exim install-fcron install-gdm install-gpm install-heimdal install-lprng install-mysql install-netfs install-nfs-client install-nfs-server install-ntp install-portmap install-postfix install-postgresql install-proftpd install-random install-rsync install-samba install-sendmail install-sshd install-xinetd
+	install-service-dhclient \
+	install-service-dhcpcd \
+	install-service-ipx \
+	install-service-pppoe \
+	install-alsa \
+	install-apache \
+	install-bind \
+	install-cups \
+	install-dhcp \
+	install-exim \
+	install-fcron \
+	install-gdm \
+	install-gpm \
+	install-heimdal \
+	install-kerberos \
+	install-lprng \
+	install-mysql \
+	install-netfs \
+	install-nfs-client \
+	install-nfs-server \
+	install-ntp \
+	install-portmap \
+	install-postfix \
+	install-postgresql \
+	install-proftpd \
+	install-random \
+	install-rsync \
+	install-samba \
+	install-sendmail \
+	install-sshd \
+	install-usb \
+	install-xinetd

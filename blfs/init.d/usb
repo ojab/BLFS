@@ -1,0 +1,18 @@
+#!/bin/sh
+# Begin $rc_base/init.d/usb
+
+. /etc/sysconfig/rc
+. $rc_functions
+
+modprobe usbcore 2>/dev/null || true
+# insert a modprobe command for your USB host adapter here, e.g.
+# modprobe ehci-hcd 2>/dev/null
+# Other host adapters are uhci-hcd and ohci-hcd
+# 2.4.x kernels have usb-ehci, usb-uhci, and usb-ohci modules
+if ( grep -q usbfs /proc/filesystems )
+then
+        echo "Mounting USB filesystem"
+        mount -o devgid=15,devmode=0660 -t usbfs usbfs /proc/bus/usb
+        evaluate_retval
+fi
+# End $rc_base/init.d/usb
