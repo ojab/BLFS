@@ -11,12 +11,10 @@ The two dates <emphasis>must</emphasis> correspond and the first is in
 the format YYYYMMDD.</para></sect2>
 
 <sect2><title>Adding / updating entities</title>
-<para>Entities should be on one line (even if this requires wrapping
-because of the length).  Package entities should always be added in
-alphabetical order; if needed, create the &lt;-- X --&gt; divider (where
-X == any letter!).  Most letters probably have their dividers by now but some
-still don't.  We may soon divide <filename>index.xml</filename> into
-entity files (as of the time of writing, it's a tad under 30Kb which is
-too big for my liking).</para></sect2>
+<para>Package entities are now stored in individual
+<filename>.ent</filename> files throughout the BLFS CVS tree.  You need
+to find the relevant ones and update them.  Entities should be on one line 
+(even if this requires wrapping because of the length).</para>
+</sect2>
 
 </sect1>

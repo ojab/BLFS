@@ -1,5 +1,5 @@
 <sect1 id="ch04-updatecredits">
-<title>Update chapter01/credits.xml</title>
+<title>Update introduction/welcome/credits.xml</title>
 <?dbhtml filename="updatecredits.html" dir="chapter04"?>
 
 <para>This file contains the list of who wrote what.  We should try and

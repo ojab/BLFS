@@ -4,17 +4,16 @@
 
 <para>If you are adding files, you need to have ran a <userinput>cvs
 add</userinput> command on each of them (something like <userinput>cvs
-add packages/m/mypackage*.xml</userinput> often does the trick.  A good
+add mypackage*.xml</userinput> often does the trick.  A good
 trick if you've only added files (not taken any away) is to run a
 <userinput>cvs up</userinput> which will give an output something like
 this:
 <screen>mark:~/LFS/BLFS$ cvs up
 ? temp/thisfileneedstobeadded
 cvs server: Updating .
-cvs server: Updating appendixa
+cvs server: Updating appendices
 [snip]
-cvs server: Updating packages/z
-cvs server: Updating parts
+cvs server: Updating postlfs  
 cvs server: Updating preface
 cvs server: Updating temp
 A temp/thisfileadded
@@ -37,6 +36,8 @@ M temp/thisfilehashadchangesmergedin
 cvs server: Updating template</screen>
 [snip]'s added by me!  If you look at the first column, you will see
 various different letters which all mean different things.</para>
+
+
 
 <para><userinput>?</userinput>: This is what CVS reports when it doesn't
 know what to do with a file.  Generally it means that you've forgotten

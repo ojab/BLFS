@@ -1,5 +1,5 @@
 <sect1 id="ch04-updatechangelog">
-<title>Update chapter01/changelog.xml</title>
+<title>Update introduction/welcome/changelog.xml</title>
 <?dbhtml filename="updatechangelog.html" dir="chapter04"?>
 
 <para>Changelog updates should <emphasis>always</emphasis> be provided

@@ -8,11 +8,11 @@ changes:</para>
 <itemizedlist>
 <listitem><para>Test the instructions you are adding</para></listitem>
 <listitem><para>Update <filename>index.xml</filename> with the new date
-and / or updated entities if necessary.</para></listitem>
+and the files containing updated entities if necessary.</para></listitem>
 <listitem><para>Update
-<filename>chapter01/changelog.xml</filename></para></listitem>
+<filename>introduction/welcome/changelog.xml</filename></para></listitem>
 <listitem><para>Update
-<filename>chapter01/credits.xml</filename></para></listitem>
+<filename>introduction/welcome/credits.xml</filename></para></listitem>
 <listitem><para>Check that all relevant files have been <userinput>cvs
 add</userinput>'d or <userinput>remove</userinput>'d.</para></listitem>
 <listitem><para>Check that the book renders properly.</para></listitem>
