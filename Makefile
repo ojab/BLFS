@@ -138,7 +138,7 @@ install-gpm: create-dirs
 	install -m ${MODE} blfs/init.d/gpm        ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/gpm ${EXTDIR}/rc.d/rc0.d/K10gpm
 	ln -sf  ../init.d/gpm ${EXTDIR}/rc.d/rc1.d/K10gpm
-	ln -sf  ../init.d/gpm ${EXTDIR}/rc.d/rc2.d/K10gpm
+	ln -sf  ../init.d/gpm ${EXTDIR}/rc.d/rc2.d/S70gpm
 	ln -sf  ../init.d/gpm ${EXTDIR}/rc.d/rc3.d/S70gpm
 	ln -sf  ../init.d/gpm ${EXTDIR}/rc.d/rc4.d/S70gpm
 	ln -sf  ../init.d/gpm ${EXTDIR}/rc.d/rc5.d/S70gpm
@@ -362,7 +362,7 @@ install-stunnel: create-dirs
         install -m ${MODE} blfs/init.d/stunnel    ${EXTDIR}/rc.d/init.d/
         ln -sf  ../init.d/stunnel ${EXTDIR}/rc.d/rc0.d/K47stunnel
         ln -sf  ../init.d/stunnel ${EXTDIR}/rc.d/rc1.d/K47stunnel
-        ln -sf  ../init.d/stunnel ${EXTDIR}/rc.d/rc2.d/S26stunnel
+        ln -sf  ../init.d/stunnel ${EXTDIR}/rc.d/rc2.d/K47stunnel
         ln -sf  ../init.d/stunnel ${EXTDIR}/rc.d/rc3.d/S26stunnel
         ln -sf  ../init.d/stunnel ${EXTDIR}/rc.d/rc4.d/S26stunnel
         ln -sf  ../init.d/stunnel ${EXTDIR}/rc.d/rc5.d/S26stunnel
