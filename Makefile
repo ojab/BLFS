@@ -164,6 +164,12 @@ install-heimdal: create-dirs
 	ln -sf  ../init.d/heimdal ${EXTDIR}/rc.d/rc5.d/S28heimdal
 	ln -sf  ../init.d/heimdal ${EXTDIR}/rc.d/rc6.d/K42heimdal
 
+install-iptables: create-dirs
+	install -m ${MODE} blfs/init.d/iptables        ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/iptables ${EXTDIR}/rc.d/rc3.d/S19iptables
+	ln -sf  ../init.d/iptables ${EXTDIR}/rc.d/rc4.d/S19iptables
+	ln -sf  ../init.d/iptables ${EXTDIR}/rc.d/rc5.d/S19iptables
+
 install-kerberos: create-dirs
 	install -m ${MODE} blfs/init.d/kerberos ${EXTDIR}/rc.d/init.d/
 	ln -sf ../init.d/kerberos ${EXTDIR}/rc.d/rc0.d/K42kerberos
@@ -439,6 +445,7 @@ install-xinetd: create-dirs
 	install-gdm \
 	install-gpm \
 	install-heimdal \
+	install-iptables \
 	install-kerberos \
 	install-lisa \
 	install-lprng \

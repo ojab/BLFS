@@ -1,0 +1,46 @@
+#!/bin/sh
+# Begin $rc_base/init.d/iptables
+
+#$LastChangedBy$
+#$Date$
+
+. /etc/sysconfig/rc
+. $rc_functions
+
+case "$1" in
+	start)
+        if [ -x /etc/rc.d/rc.iptables ]; then
+		  echo "Starting iptables..."
+		  loadproc /etc/rc.d/rc.iptables
+        fi
+		;;
+
+	lock)
+		echo "Locking system iptables firewall..."
+		/sbin/iptables -P INPUT DROP
+		/sbin/iptables -P OUTPUT DROP
+		/sbin/iptables -P FORWARD DROP
+        /sbin/iptables -F
+        /sbin/iptables -X
+		;;
+
+	clear)
+        echo "Clearing system iptables iptables..."
+		/sbin/iptables -P INPUT ACCEPT
+		/sbin/iptables -P OUTPUT ACCEPT
+		/sbin/iptables -P FORWARD ACCEPT
+        /sbin/iptables -F
+        /sbin/iptables -X
+		;;
+
+	status)
+		/sbin/iptables -n -L 
+		;;
+
+	*)
+		echo "Usage: $0 {start|clear|lock|status}"
+		exit 1
+		;;
+esac
+
+# End $rc_base/init.d/ntp
