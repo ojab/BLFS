@@ -1,5 +1,5 @@
-2004-08-06 Randy McMurchy <randy@linuxfromscratch.org>
-	* Added openldap (slapd and slurpd startup) scripts
+2004-08-26 Randy McMurchy <randy@linuxfromscratch.org>
+	* Removed usb script (suggested by Alexander Patrakov)
 
 2004-08-05 Randy McMurchy <randy@linuxfromscratch.org>
 	* Added cyrus-sasl (Cyrus SASL authdaemon) script 
