@@ -64,6 +64,16 @@ install-bind: create-dirs
 	ln -sf  ../init.d/bind ${EXTDIR}/rc.d/rc5.d/S22bind
 	ln -sf  ../init.d/bind ${EXTDIR}/rc.d/rc6.d/K49bind
 
+install-courier: create-dirs
+	install -m ${MODE} blfs/init.d/courier    ${EXTDIR}/rc.d/init.d/
+	ln -sf ../init.d/courier ${EXTDIR}/rc.d/rc0.d/K25courier
+	ln -sf ../init.d/courier ${EXTDIR}/rc.d/rc1.d/K25courier
+	ln -sf ../init.d/courier ${EXTDIR}/rc.d/rc2.d/K25courier
+	ln -sf ../init.d/courier ${EXTDIR}/rc.d/rc3.d/S35courier
+	ln -sf ../init.d/courier ${EXTDIR}/rc.d/rc4.d/S35courier
+	ln -sf ../init.d/courier ${EXTDIR}/rc.d/rc5.d/S35courier
+	ln -sf ../init.d/courier ${EXTDIR}/rc.d/rc6.d/K25courier
+
 install-cups: create-dirs
 	install -m ${MODE} blfs/init.d/cups       ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/cups ${EXTDIR}/rc.d/rc0.d/K00cups
@@ -420,6 +430,7 @@ install-xinetd: create-dirs
 	install-alsa \
 	install-apache \
 	install-bind \
+	install-courier \
 	install-cups \
 	install-cyrus-sasl \
 	install-dhcp \

@@ -1,0 +1,235 @@
+#!/bin/sh
+# Begin $rc_base/init.d/courier
+
+# Based on sysklogd script from LFS-3.1 and earlier.
+# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+
+# $LastChangedBy$
+# $Date$
+
+. /etc/sysconfig/rc
+. ${rc_functions}
+
+case "${1}" in
+	start)
+		# Start daemons.
+		touch /var/lock/subsys/courier
+		echo "Starting Courier mail services:"
+
+		# Start courierfilter
+		echo "     Courierfilter..."
+		/usr/sbin/courierfilter start
+		evaluate_retval		
+
+		# Start authdaemond
+		echo "     Auth..."
+		/usr/lib/courier/authlib/authdaemond start
+		evaluate_retval
+
+		# Start ldapaliasd
+		if [ -f /etc/courier/ldapaliasd ]; then
+			. /etc/courier/ldapaliasd
+			if [ "${LDAPALIASDSTART}" == "YES" ]; then
+				echo "     LDAP Alias..."
+				/usr/sbin/courierldapaliasd start
+				if [ "${?}" -eq "0" ]; then
+					echo_ok
+					touch /var/run/courier/ldapaliasd.lock
+				else
+					echo_failed
+				fi
+			fi
+		fi
+
+		# Start Webmail
+		if [ -f /etc/courier/webmaild ]; then
+			. /etc/courier/webmaild
+			if [ "${WEBMAILDSTART}" == "YES" ]; then
+				echo "     Webmail..."
+				/usr/sbin/webmaild start
+				evaluate_retval
+			fi
+		fi
+
+		# Start Courierd
+		echo "     Courier..."
+		/usr/sbin/courier start
+		evaluate_retval
+
+		# Start ESMTPD
+		if [ -f /etc/courier/esmtpd ]; then
+			. /etc/courier/esmtpd
+			if [ "${ESMTPDSTART}" == "YES" ]; then
+				echo "     ESMTP..."
+				/usr/sbin/esmtpd start
+				evaluate_retval
+			fi
+		fi
+
+		# Start ESMTPD-SSL
+		if [ -f /etc/courier/esmtpd-msa ]; then
+			. /etc/courier/esmtpd-msa
+			if [ "${ESMTPDSTART}" == "YES" ]; then
+				echo "     ESMTP-MSA..."
+				/usr/sbin/esmtpd-msa start
+				evaluate_retval
+			fi
+		fi
+
+		if [ -f /etc/courier/esmtpd-ssl ]; then
+			. /etc/courier/esmtpd-ssl
+			if [ "${ESMTPDSSLSTART}" == "YES" ]; then
+				echo "     ESMTP-SSL..."
+				/usr/sbin/esmtpd-ssl start
+				evaluate_retval
+			fi
+		fi
+
+		# Start POP3D
+		if [ -f /etc/courier/pop3d ]; then
+			. /etc/courier/pop3d
+			if [ "${POP3DSTART}" == "YES" ]; then
+				echo "     POP3..."
+				/usr/sbin/pop3d start
+				evaluate_retval
+			fi
+		fi
+
+		# Start POP3D-SSL
+		if [ -f /etc/courier/pop3d-ssl ]; then
+			. /etc/courier/pop3d-ssl
+			if [ "${POP3DSSLSTART}" == "YES" ]; then
+				echo "     POP3-SSL..."
+				/usr/sbin/pop3d-ssl start
+				evaluate_retval
+			fi
+		fi
+
+		# Start IMAPD
+		if [ -f /etc/courier/imapd ]; then
+			. /etc/courier/imapd
+			if [ "${IMAPDSTART}" == "YES" ]; then
+				echo "     IMAP..."
+				/usr/sbin/imapd start
+				evaluate_retval
+			fi
+		fi
+
+		# Start IMAPD-SSL
+		if [ -f /etc/courier/imapd-ssl ]; then
+			. /etc/courier/imapd-ssl
+			if [ "${IMAPDSSLSTART}" == "YES" ]; then
+				echo "     IMAP-SSL..."
+				/usr/sbin/imapd-ssl start
+				evaluate_retval
+			fi
+		fi
+        ;;
+
+
+	stop)
+		echo "Stopping Courier mail services:"
+
+		# IMAP SSL
+		if [ -f /var/run/courier/imapd-ssl.pid.lock ]; then
+			echo "     IMAP SSL..."
+			/usr/sbin/imapd-ssl stop
+			evaluate_retval
+			rm -f /var/run/courier/imapd-ssl.pid{,.lock}
+		fi
+
+		# IMAP
+		if [ -f /var/run/courier/imapd.pid.lock ]; then
+			echo "     IMAP..."
+			/usr/sbin/imapd stop
+			evaluate_retval
+			rm -f /var/run/courier/imapd.pid{,.lock}
+		fi
+
+		# POP3 SSL
+		if [ -f /var/run/courier/pop3d-ssl.pid.lock ]; then
+			echo "     POP3 SSL..."
+			/usr/sbin/pop3d-ssl stop
+			evaluate_retval
+			rm -f /var/run/courier/pop3d-ssl.pid{,.lock}
+		fi
+
+		# POP3
+		if [ -f /var/run/courier/pop3d.pid.lock ]; then
+			echo "     POP3..."
+			/usr/sbin/pop3d stop
+			evaluate_retval
+			rm /var/run/courier/pop3d.pid{,.lock}
+		fi
+
+		# ESMTP SSL
+		if [ -f /var/run/courier/esmtpd-ssl.pid.lock ]; then
+			echo "     ESMTP SSL..."
+			/usr/sbin/esmtpd-ssl stop
+			evaluate_retval
+			rm -f /var/run/courier/esmtpd-ssl.pid{,.lock}
+		fi
+
+		# ESMTP MSA
+		if [ -f /var/run/courier/esmtpd-msa.pid.lock ]; then
+			echo "     ESMTP MSA..."
+			/usr/sbin/esmtpd-msa stop
+			evaluate_retval
+			rm -f /var/run/courier/esmtpd-msa.pid{,.lock}
+		fi
+
+		# ESMTP
+		if [ -f /var/run/courier/esmtpd.pid.lock ]; then
+			echo "     ESMTP..."
+			/usr/sbin/esmtpd stop
+			evaluate_retval
+			rm -f /var/run/courier/esmtpd.pid{,.lock}
+		fi
+
+		# Courier
+		echo "     Courier..."
+		/usr/sbin/courier stop
+		evaluate_retval
+
+		# LDAP Alias
+		if [ -f /var/run/courier/ldapaliasd.lock ]; then
+			echo "     LDAP Alias..."
+			/usr/sbin/ldapaliasd stop
+			evaluate_retval
+			rm -f /var/run/courier/ldapaliasd.lock
+		fi
+
+		# Authdaemon
+		echo "     Auth..."
+		/usr/lib/courier/authlib/authdaemond stop
+		evaluate_retval
+
+		# Courierfilter
+		if [ -f /var/run/courier/courierfilter.pid ]; then
+			echo "     Courierfilter..."
+			/usr/sbin/courierfilter stop
+			evaluate_retval
+			rm -f /var/run/courier/courierfilter.pid
+		fi
+
+		# Remove the master lock file
+		rm -f /var/lock/subsys/courier
+	;;
+
+	restart)
+		$0 stop
+		sleep 1
+		$0 start
+        ;;
+
+	status)
+		statusproc courierfilter
+	;;
+
+	*)
+		echo "Usage: $0 {start|stop|restart|status}"
+		exit 1
+	;;
+esac
+
+# End $rc_base/init.d/courier

@@ -1,3 +1,6 @@
+2005-01-02 DJ Lucas <dj@linuxfromscratch.org>
+	* Added courier bootscript.
+
 2004-12-27 Randy McMurchy <randy@linuxfromscratch.org>
 	* Changed Exim bootscript to start the daemon with -q15m instead
 	  of -q1m.
