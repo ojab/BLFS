@@ -6,6 +6,9 @@ Origin:                  BLFS Dev Post
 Description:             Links against system zlib instead of the
                          internal zlib.
 
+$LastChangedBy$
+$Date$
+
 diff -Naur cvs-1.11.18.orig/src/Makefile.in cvs-1.11.18/src/Makefile.in
 --- cvs-1.11.18.orig/src/Makefile.in	2004-11-11 18:17:20.000000000 +0000
 +++ cvs-1.11.18/src/Makefile.in	2004-11-12 19:58:14.962293296 +0000
