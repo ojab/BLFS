@@ -6,6 +6,10 @@
 ]>
 
 <chapter id="chapter01">
+<chapterinfo>
+<othername>$Author: Bruce Dubbs$</othername>
+<date>$Date$</date>
+</chapterinfo>
 <title>BLFS Development</title>
 <?dbhtml filename="chapter01.html" ?>
 
@@ -48,9 +52,5 @@ minimum.</para>
 <para>Finally, there is the Subversion (svn) server which will be discussed in
 the following chapters.</para>
 
-<chapterinfo>
-<othername>$Author: Bruce Dubbs$</othername>
-<date>$Date$</date>
-</chapterinfo>
 
 </chapter>

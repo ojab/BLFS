@@ -1,4 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bookinfo PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+   "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" >
+
 <chapter id="chapter06">
+<chapterinfo>
+<othername>$Author: Bruce Dubbs$</othername>
+<date>$Date$</date>
+</chapterinfo>
 <title>Overall editing policy</title>
 <?dbhtml filename="chapter06.html"?>
 
@@ -69,9 +77,5 @@ section for items that are not commands.</para></listitem>
 </itemizedlist>
 </section>
 
-<chapterinfo>
-<othername>$Author: Bruce Dubbs$</othername>
-<date>$Date$</date>
-</chapterinfo>
 
 </chapter>

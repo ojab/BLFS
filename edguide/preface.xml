@@ -3,6 +3,10 @@
    "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
    
 <preface id="preface">
+<prefaceinfo>
+<othername>$Author:$</othername>
+<date>$Date$</date>
+</prefaceinfo>
 <title>Welcome to the BLFS Editor's Manual</title>
 <?dbhtml filename="preface.html" ?>
 
@@ -19,11 +23,6 @@ covered.  Then we briefly discuss a little bit of general BLFS policy.  </para>
 
 <para>Mark Hymers <userinput>&lt;markh@linuxfromscratch.org&gt;</userinput></para>
 <para>Bruce Dubbs <userinput>&lt;bdubbs@linuxfromscratch.org&gt;</userinput></para>
-
-<prefaceinfo>
-<othername>$LastChangedBy: xxx$</othername>
-<date>$Date$</date>
-</prefaceinfo>
 
 </preface>
 

@@ -6,6 +6,10 @@
 ]>
 
 <chapter id="chapter04">
+<chapterinfo>
+<othername>$Author: Bruce Dubbs$</othername>
+<date>$Date$</date>
+</chapterinfo>
 <title>Committing Changes - Policy</title>
 <?dbhtml filename="chapter04.html" ?>
 
@@ -213,10 +217,6 @@ process. A bug is CLOSEd when a new version of the book is released.</para>
 Well done, thank you and goodnight.</para>
 
 </section>
-<chapterinfo>
-<othername>$Author: Bruce Dubbs$</othername>
-<date>$Date$</date>
-</chapterinfo>
 
 
 </chapter>

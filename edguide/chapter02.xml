@@ -3,6 +3,10 @@
    "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
    
 <chapter id="chapter02">
+<chapterinfo>
+<othername>$Author: Bruce Dubbs$</othername>
+<date>$Date$</date>
+</chapterinfo>
 <title><application>Subversion</application> Access</title>
 <?dbhtml filename="chapter02.html" ?>
 
@@ -81,9 +85,5 @@ into the appropriate directory and running:
 
 </section>
 
-<chapterinfo>
-<othername>$Author: Bruce Dubbs$</othername>
-<date>$Date$</date>
-</chapterinfo>
 
 </chapter>

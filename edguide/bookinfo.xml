@@ -63,8 +63,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</para>
 </abstract>
 
 <revhistory>
-<revision><date>Summer 2002</date><revremark>Initial Release</revremark></revision>
-<revision><date>&date;</date><revremark>Subversion Update</revremark></revision>
+<revision><revnumber>Original</revnumber><date>Summer 2002</date>
+           <revremark>Initial Release</revremark></revision>
+<revision><revnumber>SVN Update</revnumber><date>&date;</date>
+          <revremark>Subversion Update</revremark></revision>
 </revhistory>
 
 

@@ -3,6 +3,10 @@
    "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
 
 <chapter id="chapter03">
+<chapterinfo>
+<othername>$Author: Bruce Dubbs$</othername>
+<date>$Date$</date>
+</chapterinfo>
 <title>Basic SVN Commands (under development)</title>
 <?dbhtml filename="chapter03.html"?>
 
@@ -133,10 +137,6 @@ it's me who takes the fall instead of anyone else!</para>
 
 </section>
 
-<chapterinfo>
-<othername>$Author: Bruce Dubbs$</othername>
-<date>$Date$</date>
-</chapterinfo>
 
 
 </chapter>
