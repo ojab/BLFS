@@ -1,0 +1,53 @@
+Submitted By:            BLFS Book <blfs-book@linuxfromscratch.org>
+Date:                    2003-10-04
+Initial Package Version: 1.11.2
+Upstream Status:         Not submitted
+Origin:                  BLFS Dev Post
+Description:             Links against system zlib instead of the
+                         internal zlib.
+
+$LastChangedBy:  $
+$Date:  $
+
+diff -Naur cvs-1.11.17-orig/src/Makefile.in cvs-1.11.17/src/Makefile.in
+--- cvs-1.11.17-orig/src/Makefile.in	2004-06-09 14:46:19.000000000 +0000
++++ cvs-1.11.17/src/Makefile.in	2004-10-07 19:25:52.804524123 +0000
+@@ -146,7 +146,7 @@
+ # some namespace hackery going on that maybe shouldn't be.  Long term fix is to
+ # try and remove naming ocnflicts and fix Automake to allow particular includes
+ # to be attached only to particular object files.  Short term fix is either or.
+-INCLUDES = -I$(top_srcdir)/lib -I$(top_srcdir)/diff -I$(top_srcdir)/zlib $(includeopt)
++INCLUDES = -I$(top_srcdir)/lib -I$(top_srcdir)/diff $(includeopt)
+ 
+ bin_PROGRAMS = cvs
+ bin_SCRIPTS = cvsbug
+@@ -228,7 +228,7 @@
+ cvs_LDADD = \
+ 	../diff/libdiff.a \
+ 	../lib/libcvs.a \
+-	../zlib/libz.a
++	-lz
+ 
+ 
+ # extra clean targets
+@@ -272,7 +272,7 @@
+ 	vers_ts.$(OBJEXT) watch.$(OBJEXT) wrapper.$(OBJEXT) \
+ 	zlib.$(OBJEXT)
+ cvs_OBJECTS = $(am_cvs_OBJECTS)
+-cvs_DEPENDENCIES = ../diff/libdiff.a ../lib/libcvs.a ../zlib/libz.a
++cvs_DEPENDENCIES = ../diff/libdiff.a ../lib/libcvs.a
+ cvs_LDFLAGS =
+ SCRIPTS = $(bin_SCRIPTS)
+ 
+diff -Naur cvs-1.11.17-orig/src/zlib.c cvs-1.11.17/src/zlib.c
+--- cvs-1.11.17-orig/src/zlib.c	2004-03-19 19:18:57.000000000 +0000
++++ cvs-1.11.17/src/zlib.c	2004-10-07 19:25:52.806523816 +0000
+@@ -22,7 +22,7 @@
+ 
+ #if defined (SERVER_SUPPORT) || defined (CLIENT_SUPPORT)
+ 
+-#include "zlib.h"
++#include <zlib.h>
+ 
+ /* OS/2 doesn't have EIO.  FIXME: this whole notion of turning
+    a different error into EIO strikes me as pretty dubious.  */
