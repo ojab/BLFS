@@ -1,0 +1,23 @@
+Submitted By:            BLFS Book <blfs-book@linuxfromscratch.org>
+Date:                    2005-01-24
+Initial Package Version: 2.2.0
+Upstream Status:         Not Required - already in recent package versions
+Origin:                  http://bugzilla.gnome.org/attachment.cgi?id=31277&action=view
+Description:             Fixes GCC-3.4.x compiling issues
+
+$LastChangedBy$
+$Date$
+
+diff -Nur libglademm-2.2.0-orig/libglade/libglademm/xml.h libglademm-2.2.0/libglade/libglademm/xml.h
+--- libglademm-2.2.0-orig/libglade/libglademm/xml.h	2004-03-29 19:23:17.000000000 +0200
++++ libglademm-2.2.0/libglade/libglademm/xml.h	2004-09-04 13:38:29.000000000 +0200
+@@ -244,7 +244,7 @@
+      //If there is already a C++ instance, then return it again:
+      if(pObjectBase)
+      {
+-       widget = dynamic_cast<T_Widget*>( Glib::wrap(pCWidget) );
++       widget = dynamic_cast<T_Widget*>( Glib::wrap((GtkWidget*)(pCWidget)) );
+ 
+        //The dynamic cast checks that it is of the correct type.
+        //Somebody might be trying to call get_widget_derived() after already calling get_widget(),
+
