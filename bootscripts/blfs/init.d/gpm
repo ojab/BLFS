@@ -23,7 +23,7 @@ fi
 case "$1" in
 	start)
 		echo "Starting gpm..."
-		loadproc gpm -m $MDEVICE -t $PROTOCOL
+		loadproc gpm -m "$MDEVICE" -t "$PROTOCOL" "$GPMOPTS"
 		;;
 
 	stop)
