@@ -1,0 +1,3 @@
+<!ENTITY chapter06 SYSTEM "../chapter06/chapter06.xml">
+<!ENTITY c6-introduction SYSTEM "../chapter06/introduction.xml">
+<!ENTITY c6-tagging SYSTEM "../chapter06/tagging.xml">

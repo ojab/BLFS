@@ -30,9 +30,9 @@ if [ ! -d $BLFS_XML ]
 
     if [ -d $BLFS_HTML ]
     then
-        cd $BLFS_HTML && rm -fr *
+        cd $BLFS_HTML &amp;&amp; rm -fr *
     else
-      mkdir $BLFS_HTML && cd $BLFS_HTML
+      mkdir $BLFS_HTML &amp;&amp; cd $BLFS_HTML
     fi
 
     mkdir introduction postlfs general connect basicnet server \

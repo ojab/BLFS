@@ -1,0 +1,58 @@
+<sect1 id="ch06-tagging">
+<title>Adding Tags</title>
+<?dbhtml filename="tagging.html" dir="chapter06"?>
+
+<itemizedlist>
+
+<listitem><para>acronym -- a word formed from the initial letter or
+letters of each of the successive parts or major parts of a compound
+term.</para></listitem>
+
+<listitem><para>filename -- a filename, a fully qualified file name, a
+directory (use class="directory"), a library file (use
+class="libraryfile") or an extension (do not use class="extension" as it
+was added in DocBook XML DTD V4.2). Extensions should be written in all
+caps as many are also acronyms.  Do not encapsulate an acronym tag with
+a filename tag, use either/or based on the usage.</para>
+<para>These classes should not be used until the XML header is update to
+V4.2 -- devicefile, headerfile, partition and symlink.  They do,
+however, describe other files that should be tagged.</para></listitem>
+
+<listitem><para>envar -- an environmental variable, can be common or
+temporary.</para></listitem>
+
+<listitem><para>command -- any string that will execute when entered at
+the prompt. (not just bash prompts).</para></listitem>
+
+<listitem><para>userinput -- usually encapsulates "command" when it
+expected that the user is required to input the command to proceed.
+"command"s may terminate within userinput to continue showing items that
+must be typed in, but are not commands. It is also used when command
+options are written without the command, as use
+&lt;userinput&gt;-q&lt;/userinput&gt; for quiet operation.</para></listitem>
+
+<listitem><para>application -- The proper name of the package.</para></listitem>
+
+<listitem><para>screen -- This creates a 'verbatum' environment that
+allows spacing the be controlled. Mainly used as it simulates a
+console. It should not be encapsulated by &lt;para&gt; unless unscreened
+text is present.</para></listitem>
+
+<listitem><para>replaceable -- used with screen to encapsulate text that
+is not to be typed as seen or copy and pasted. The text should also be
+encapsulated in brackets '[]' for text browser users. It should also be
+used outside of the 'screen' where you instructions are for what is to
+replace it.</para></listitem>
+
+<listitem><para>prompt -- usually used within &lt;screen&gt; to mimic a prompt
+that should be seen by the user on his/her screen.</para></listitem>
+
+<listitem><para>emphasis role="strong" -- used when a assumption is made
+in the instructions that may not always be true, i.e. your network
+connection is on &lt;emphasis role=strong&gt;eth0&lt;emphasis&gt;.
+Especially prior to giving script instructions using that assumption.</para></listitem>
+
+</itemizedlist>
+
+</sect1>
+
