@@ -5,6 +5,9 @@
 # Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
 # GPM specific parts by Mark Hymers - markh@linuxfromscratch.org
 
+#$LastChangedBy$
+#$Date$
+
 . /etc/sysconfig/rc
 . $rc_functions
 

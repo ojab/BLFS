@@ -6,6 +6,9 @@
 # netfs script written by Nathan Coulson - conathan@conet.dyndns.org
 # and by DJ Lucas - dj@lucasit.com
 
+#$LastChangedBy$
+#$Date$
+
 . /etc/sysconfig/rc
 . $rc_functions
 

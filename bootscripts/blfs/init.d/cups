@@ -1,6 +1,9 @@
 #!/bin/sh
 # Begin $rc_base/init.d/cups
 
+#$LastChangedBy$
+#$Date$
+
 # Start or stop the CUPS server based upon the first argument to the script.
 
 . /etc/sysconfig/rc

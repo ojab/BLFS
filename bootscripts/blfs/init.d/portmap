@@ -1,6 +1,9 @@
 #!/bin/sh
 # Begin $rc_base/init.d/portmap
 
+#$LastChangedBy$
+#$Date$
+
 . /etc/sysconfig/rc
 . $rc_functions
 
