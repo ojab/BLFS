@@ -1,3 +1,6 @@
+2004-06-27 DJ Lucas <dj@linuxfromscratch.org>
+	* Added sysstat bootscript
+
 2004-06-16 DJ Lucas <dj@linuxfromscratch.org>
 	* Added GPMOPTS to gpm script
 	* wrapped all gpm variables in quotes

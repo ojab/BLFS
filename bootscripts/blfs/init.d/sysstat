@@ -1,0 +1,28 @@
+#!/bin/sh
+# Begin $rc_base/init.d/sysstat
+
+# Based on sysklogd script from LFS-3.1 and earlier.
+# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+
+. /etc/sysconfig/rc
+. $rc_functions
+
+case "$1" in
+        start)
+                echo "Calling the system activity data collector (sadc)..."
+                /usr/lib/sa/sadc -F -L -
+                evaluate_retval
+                ;;
+
+        restart)
+                echo "Calling the system activity data collector (sadc)..."
+                /usr/lib/sa/sadc -F -L -
+                evaluate_retval
+                ;;
+        *)
+                echo "Usage: $0 {start|restart}"
+                exit 1
+                ;;
+esac
+
+# End $rc_base/init.d/sysstat
