@@ -23,6 +23,7 @@ case "$1" in
         stop)
                 echo "Stopping winbind..."
 		killproc
+		;;
 
 	reload)
 		echo "Reloading winbind..."
