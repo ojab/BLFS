@@ -1,17 +1,7 @@
-Submitted By: BLFS Book
-Date: 2004-07-31
-Initial Package Version: 3.0.1
-Origin: Jim Gifford
-Upstream Status: N/A
-Description: Fixes dhclient-script to work with iproute2
-
-$LastChangedBy$
-$Date$
-
-diff -Naur dhcp-3.0.1-orig/client/scripts/linux dhcp-3.0.1/client/scripts/linux
---- dhcp-3.0.1-orig/client/scripts/linux	2002-11-14 19:09:09.000000000 -0600
-+++ dhcp-3.0.1/client/scripts/linux	2004-07-31 22:08:46.205463208 -0500
-@@ -1,26 +1,16 @@
+diff -Naur dhcp-3.0.2.old/client/scripts/linux dhcp-3.0.2/client/scripts/linux
+--- dhcp-3.0.2.old/client/scripts/linux	Thu Nov 14 19:09:09 2002
++++ dhcp-3.0.2/client/scripts/linux	Sun Mar 13 01:35:32 2005
+@@ -1,26 +1,15 @@
  #!/bin/bash
  # dhclient-script for Linux. Dan Halbert, March, 1997.
  # Updated for Linux 2.[12] by Brian J. Murrell, January 1999.
@@ -23,7 +13,7 @@ diff -Naur dhcp-3.0.1-orig/client/scripts/linux dhcp-3.0.1/client/scripts/linux
  # Notes:
  
  # 0. This script is based on the netbsd script supplied with dhcp-970306.
- 
+-
 -# 1. ifconfig down apparently deletes all relevant routes and flushes
 -# the arp cache, so this doesn't need to be done explicitly.
 -
@@ -34,15 +24,16 @@ diff -Naur dhcp-3.0.1-orig/client/scripts/linux dhcp-3.0.1/client/scripts/linux
 -# 3. I have to calculate the network address, and calculate the broadcast
 -# address if it is not supplied. This might be much more easily done
 -# by the dhclient C code, and passed on.
-+# 1. This script was modified to work with iproute2
- 
+-
 -# 4. TIMEOUT not tested. ping has a flag I don't know, and I'm suspicious
 -# of the $1 in its args.
++# 1. This script was modified to work with iproute2
 +# 2. cidr_convert based on a script by Kevin Fleming (kpfleming@linuxfromscratch.org)
++# 3. Updated to delete addresses when taking an interface down (bdubbs@linuxfromscratch.org)
  
  make_resolv_conf() {
    if [ "x$new_domain_name" != x ] && [ x"$new_domain_name_servers" != x ]; then
-@@ -32,6 +22,30 @@
+@@ -32,6 +21,30 @@
    fi
  }
  
@@ -73,7 +64,19 @@ diff -Naur dhcp-3.0.1-orig/client/scripts/linux dhcp-3.0.1/client/scripts/linux
  # Must be used on exit.   Invokes the local dhcp client exit hooks, if any.
  exit_with_hooks() {
    exit_status=$1
-@@ -65,13 +79,12 @@
+@@ -53,11 +66,6 @@
+   fi
+ fi
+ 
+-release=`uname -r`
+-release=`expr $release : '\(.*\)\..*'`
+-relminor=`echo $release |sed -e 's/[0-9]*\.\([0-9][0-9]*\)\(\..*\)*$/\1/'`
+-relmajor=`echo $release |sed -e 's/\([0-9][0-9]*\)\..*$/\1/'`
+-
+ if [ x$new_broadcast_address != x ]; then
+   new_broadcast_arg="broadcast $new_broadcast_address"
+ fi
+@@ -65,13 +73,12 @@
    old_broadcast_arg="broadcast $old_broadcast_address"
  fi
  if [ x$new_subnet_mask != x ]; then
@@ -91,29 +94,28 @@ diff -Naur dhcp-3.0.1-orig/client/scripts/linux dhcp-3.0.1/client/scripts/linux
  fi
  
  if [ x$reason = xMEDIUM ]; then
-@@ -82,16 +95,16 @@
+@@ -82,17 +89,10 @@
  if [ x$reason = xPREINIT ]; then
    if [ x$alias_ip_address != x ]; then
      # Bring down alias interface. Its routes will disappear too.
 -    ifconfig $interface:0- inet 0
-+    ip link set $interface down
-   fi
-   if [ $relmajor -lt 2 ] || ( [ $relmajor -eq 2 ] && [ $relminor -eq 0 ] )
-    then
+-  fi
+-  if [ $relmajor -lt 2 ] || ( [ $relmajor -eq 2 ] && [ $relminor -eq 0 ] )
+-   then
 -    ifconfig $interface inet 0.0.0.0 netmask 0.0.0.0 \
 -		broadcast 255.255.255.255 up
-+    ip link set $interface up
-+    ip addr add 0.0.0.0/32 broadcast 255.255.255.255 label $interface dev $interface
-     # Add route to make broadcast work. Do not omit netmask.
+-    # Add route to make broadcast work. Do not omit netmask.
 -    route add default dev $interface netmask 0.0.0.0
-+    ip route add default dev $interface
-   else
+-  else
 -    ifconfig $interface 0 up
-+    ip link set $interface up
++    ip link set $interface down
++    ip addr del $alias_ip_address  dev $interface
    fi
++  ip link set $interface up
  
    # We need to give the kernel some time to get the interface up.
-@@ -115,83 +128,52 @@
+   sleep 1
+@@ -115,83 +115,50 @@
      fi
    fi
      
@@ -128,6 +130,7 @@ diff -Naur dhcp-3.0.1-orig/client/scripts/linux dhcp-3.0.1/client/scripts/linux
 -    ifconfig $interface inet 0 down
 -
 +    ip link set $interface down
++    ip addr del $old_ip_address dev $interface
    fi
    if [ x$old_ip_address = x ] || [ x$old_ip_address != x$new_ip_address ] || \
       [ x$reason = xBOUND ] || [ x$reason = xREBOOT ]; then
@@ -135,13 +138,13 @@ diff -Naur dhcp-3.0.1-orig/client/scripts/linux dhcp-3.0.1/client/scripts/linux
 -    ifconfig $interface inet $new_ip_address $new_subnet_arg \
 -							$new_broadcast_arg
 +    ip link set $interface up
-+    ip addr add $new_ip_address/$new_subnet_arg $new_broadcast_arg label $interface dev $interface
++    ip addr add $new_ip_address/$new_subnet_arg $new_broadcast_arg \
++       label $interface dev $interface
      # Add a network route to the computed network address.
-     if [ $relmajor -lt 2 ] || \
- 		( [ $relmajor -eq 2 ] && [ $relminor -eq 0 ] ); then
+-    if [ $relmajor -lt 2 ] || \
+-		( [ $relmajor -eq 2 ] && [ $relminor -eq 0 ] ); then
 -      route add -net $new_network_number $new_subnet_arg dev $interface
-+      ip route add via $new_network_number/$new_subnet_arg dev $interface
-     fi
+-    fi
      for router in $new_routers; do
 -      route add default gw $router
 +      ip route add default via $router
@@ -181,8 +184,9 @@ diff -Naur dhcp-3.0.1-orig/client/scripts/linux dhcp-3.0.1/client/scripts/linux
 -  fi
 -  ifconfig $interface inet $new_ip_address $new_subnet_arg \
 -					$new_broadcast_arg
-+  ip link set $interface eup
-+  ip addr set $new_ip_address/$new_subnet_arg $new_broadcast_arg label $interface dev $interface
++  ip link set $interface up
++  ip addr set $new_ip_address/$new_subnet_arg $new_broadcast_arg \
++     label $interface dev $interface
    set $new_routers
 -  ############## what is -w in ping?
 -  if ping -q -c 1 $1; then
@@ -191,20 +195,26 @@ diff -Naur dhcp-3.0.1-orig/client/scripts/linux dhcp-3.0.1/client/scripts/linux
 -      ifconfig $interface:0 inet $alias_ip_address $alias_subnet_arg
 -      route add -host $alias_ip_address dev $interface:0
 -    fi
-     if [ $relmajor -lt 2 ] || \
- 		( [ $relmajor -eq 2 ] && [ $relminor -eq 0 ] ); then
+-    if [ $relmajor -lt 2 ] || \
+-		( [ $relmajor -eq 2 ] && [ $relminor -eq 0 ] ); then
 -      route add -net $new_network_number
-+      ip route add $new_network_number dev $interface
-     fi
-     for router in $new_routers; do
+-    fi
+-    for router in $new_routers; do
 -      route add default gw $router
-+      ip route add default via $router
-     done
-     make_resolv_conf
-     exit_with_hooks 0
+-    done
+-    make_resolv_conf
+-    exit_with_hooks 0
 -  fi
 -  ifconfig $interface inet 0 down
++  
++  for router in $new_routers; do
++    ip route add default via $router
++  done
++  
++  make_resolv_conf
++  exit_with_hooks 0
 +  ip link set $interface down
++  ip addr flush dev $interface
    exit_with_hooks 1
  fi
  
