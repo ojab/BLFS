@@ -1,11 +1,15 @@
+2004-07-28 DJ Lucas <dj@linuxfromscratch.org>
+	* Made minor fixups to dhcpcd, dhclient, and ipx 
+	* service scripts
+
 2004-07-28 Randy McMurchy <randy@linuxfromscratch.org>
 	* Changed location of PID file in mysql script
 
 2004-07-21 DJ Lucas <dj@linuxfromscratch.org>
-	* changed vsftpd bootscript to use loadproc
+	* Changed vsftpd bootscript to use loadproc
 
 2004-07-19 DJ Lucas <dj@linuxfromscratch.org>
-	* Added svn and vsftpd scripts.
+	* Added svn and vsftpd scripts
 
 2004-06-27 DJ Lucas <dj@linuxfromscratch.org>
 	* Added sysstat bootscript
@@ -16,12 +20,12 @@
 	* wrapped all gpm variables in quotes
 
 2004-05-22 Tushar T <tushar@linuxfromscratch.org>
-	* Added winbind script.
+	* Added winbind script
 
 2004-05-14 Tushar T <tushar@linuxfromscratch.org>
-	* Added init.d/kerberos script.
-	* Added init.d/usb script.
+	* Added init.d/kerberos script
+	* Added init.d/usb script
 
 2004-05-13 Tushar T <tushar@linuxfromscratch.org>
-	* The begining of blfs-bootscripts.
+	* The begining of blfs-bootscripts
 
