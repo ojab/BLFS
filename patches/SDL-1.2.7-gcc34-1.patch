@@ -1,0 +1,124 @@
+Submitted By: Jeremy Utley (jeremy@linuxfromscratch.org)
+Date: 2004-04-11
+Initial Package Version: 1.2.7
+Upstream Status: Not submitted
+Origin: jbit from LFS-IRC's custom hacks
+Description: fixes inline asm code for gcc 3.4 compilation
+
+$LastChangedBy$
+$Date$
+
+diff -aur SDL-1.2.7/src/audio/SDL_mixer_MMX.c SDL-1.2.7-new/src/audio/SDL_mixer_MMX.c
+--- SDL-1.2.7/src/audio/SDL_mixer_MMX.c	2002-11-08 22:13:28.000000000 -0800
++++ SDL-1.2.7-new/src/audio/SDL_mixer_MMX.c	2004-04-11 06:27:06.765672328 -0700
+@@ -14,7 +14,7 @@
+ void SDL_MixAudio_MMX_S16(char* dst,char* src,unsigned int size,int volume)
+ {
+     __asm__ __volatile__ (
+-
++"	pushl %%ebx\n" //XXX: Jbit hack
+ "	movl %0,%%edi\n"	// edi = dst
+ "	movl %1,%%esi\n"	// esi = src
+ "	movl %3,%%eax\n"	// eax = volume
+@@ -102,10 +102,11 @@
+ "	emms\n"
+ 
+ ".endS16:\n"
++"	popl %%ebx\n" //XXX: Jbit hack
+ 	 :
+ 	 : "m" (dst), "m"(src),"m"(size),
+ 	 "m"(volume)
+-	 : "eax","ebx", "esi", "edi","memory"
++	 : "eax","esi", "edi","memory"
+ 	 );
+ }
+ 
+@@ -119,6 +120,7 @@
+ {
+     __asm__ __volatile__ (
+ 
++"	pushl %%ebx\n"		//XXX: Jbit hack
+ "	movl %0,%%edi\n"	// edi = dst
+ "	movl %1,%%esi\n"	// esi = src
+ "	movl %3,%%eax\n"	// eax = volume
+@@ -175,10 +177,11 @@
+ 
+ ".endS8:\n"
+ "	emms\n"
++"	popl %%ebx\n"		//XXX: Jbit hack
+ 	 :
+ 	 : "m" (dst), "m"(src),"m"(size),
+ 	 "m"(volume)
+-	 : "eax","ebx", "esi", "edi","memory"
++	 : "eax","esi", "edi","memory"
+ 	 );
+ }
+ #endif
+diff -aur SDL-1.2.7/src/cpuinfo/SDL_cpuinfo.c SDL-1.2.7-new/src/cpuinfo/SDL_cpuinfo.c
+--- SDL-1.2.7/src/cpuinfo/SDL_cpuinfo.c	2004-02-10 07:31:35.000000000 -0800
++++ SDL-1.2.7-new/src/cpuinfo/SDL_cpuinfo.c	2004-04-11 06:27:06.761672450 -0700
+@@ -105,6 +105,7 @@
+ 	int features = 0;
+ #if defined(__GNUC__) && defined(i386)
+ 	__asm__ (
++"		pushl %%ebx\n" //XXX: Jbit Hack
+ "        movl    %%ebx,%%edi\n"
+ "        xorl    %%eax,%%eax         # Set up for CPUID instruction    \n"
+ "        cpuid                       # Get and save vendor ID          \n"
+@@ -116,9 +117,10 @@
+ "        movl    %%edx,%0                                              \n"
+ "1:                                                                    \n"
+ "        movl    %%edi,%%ebx\n"
++"		popl %%ebx\n" //XXX: Jbit Hack
+ 	: "=m" (features)
+ 	:
+-	: "%eax", "%ebx", "%ecx", "%edx", "%edi"
++	: "%eax", "%ecx", "%edx", "%edi"
+ 	);
+ #elif defined(_MSC_VER)
+ 	__asm {
+@@ -141,6 +143,7 @@
+ 	int features = 0;
+ #if defined(__GNUC__) && defined(i386)
+ 	__asm__ (
++"		pushl %%ebx\n" //XXX: Jbit Hack
+ "        movl    %%ebx,%%edi\n"
+ "        movl    $0x80000000,%%eax   # Query for extended functions    \n"
+ "        cpuid                       # Get extended function limit     \n"
+@@ -151,9 +154,10 @@
+ "        movl    %%edx,%0                                              \n"
+ "1:                                                                    \n"
+ "        movl    %%edi,%%ebx\n"
++"		popl %%ebx\n" //XXX: Jbit Hack
+ 	: "=m" (features)
+ 	:
+-	: "%eax", "%ebx", "%ecx", "%edx", "%edi"
++	: "%eax", "%ecx", "%edx", "%edi"
+ 	);
+ #elif defined(_MSC_VER)
+ 	__asm {
+diff -aur SDL-1.2.7/src/video/SDL_yuv_mmx.c SDL-1.2.7-new/src/video/SDL_yuv_mmx.c
+--- SDL-1.2.7/src/video/SDL_yuv_mmx.c	2004-02-18 09:22:04.000000000 -0800
++++ SDL-1.2.7-new/src/video/SDL_yuv_mmx.c	2004-04-11 06:27:06.763672389 -0700
+@@ -238,9 +238,7 @@
+ 		 "popl %%ebx\n"
+ 		 :
+ 		 : "m" (cr), "r"(cb),"r"(lum),
+-		 "r"(row1),"r"(cols),"r"(row2),"m"(x),"m"(y),"m"(mod)
+-		 : "%ebx"
+-		 );
++		 "r"(row1),"r"(cols),"r"(row2),"m"(x),"m"(y),"m"(mod) );
+ }
+ 
+ void Color565DitherYV12MMX1X( int *colortab, Uint32 *rgb_2_pix,
+@@ -413,9 +411,7 @@
+ 	 "popl %%ebx\n"
+          :
+          :"m" (cr), "r"(cb),"r"(lum),
+-	 "r"(row1),"r"(cols),"r"(row2),"m"(x),"m"(y),"m"(mod)
+-	 : "%ebx"
+-         );
++	 "r"(row1),"r"(cols),"r"(row2),"m"(x),"m"(y),"m"(mod)  );
+ }
+ 
+ #endif /* GCC i386 inline assembly */
