@@ -11,7 +11,7 @@ export PATH=$PATH:/usr/X11R6/bin
 
 case "$1" in
         start)
-                echo "Starting Network Audio Server..."
+                echo "Starting the Network Audio System Server..."
                 pidof nasd
                 if test $? = "0"
                 then
@@ -28,12 +28,12 @@ case "$1" in
 		;;
 
         stop)
-                echo "Stopping Network Audio Server..."
+                echo "Stopping the Network Audio System Server..."
                 killproc nasd
                 ;;
 
         reload)
-                echo "Reloading Network Audio Server..."
+                echo "Reloading the Network Audio System Server..."
                 reloadproc nasd
                 ;;
 
