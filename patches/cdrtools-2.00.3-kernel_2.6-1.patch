@@ -5,8 +5,8 @@ Origin: Jim Gifford and http://kerneltrap.org/node/view/879
 Upstream Status: Sent
 Description: Fixes CDRTools Compile with the 2.6 Kernel
  
-LastChangedBy: $
-Date: $
+$LastChangedBy$
+$Date$
  
 diff -Naur cdrtools-2.01.orig/DEFAULTS/Defaults.gnu cdrtools-2.01/DEFAULTS/Defaults.gnu
 --- cdrtools-2.01.orig/DEFAULTS/Defaults.gnu	2003-02-16 00:01:47.000000000 +0000
