@@ -73,7 +73,7 @@ options are written without the command, as use
 <listitem><para>application -- The proper name of the package.</para></listitem>
 
 <listitem><para>screen -- This creates a 'verbatim' environment that
-allows spacing the be controlled. Mainly used as it simulates a
+allows spacing to be controlled. Mainly used as it simulates a
 console. It should not be encapsulated by &lt;para&gt; unless unscreened
 text is present.</para></listitem>
 

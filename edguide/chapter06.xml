@@ -107,7 +107,7 @@ header in place with an empty string for the missing location. </para>
 &lt;listitem&gt;&lt;para&gt;Download (HTTP): &lt;ulink url="&amp;fam-download-http;"/&gt;&lt;/para&gt;&lt;/listitem&gt;
 &lt;listitem&gt;&lt;para&gt;Download (FTP): &lt;ulink url="&amp;fam-download-ftp;"/&gt;&lt;/para&gt;&lt;/listitem&gt;
 &lt;listitem&gt;&lt;para&gt;Download size: &amp;fam-size;&lt;/para&gt;&lt;/listitem&gt;
-&lt;listitem&gt;&lt;para&gt;Estimated Disk space required: &amp;fam-buildsize;&lt;/para&gt;&lt;/listitem&gt;
+&lt;listitem&gt;&lt;para&gt;Estimated disk space required: &amp;fam-buildsize;&lt;/para&gt;&lt;/listitem&gt;
 &lt;listitem&gt;&lt;para&gt;Estimated build time: &amp;fam-time;&lt;/para&gt;&lt;/listitem&gt;
 &lt;/itemizedlist&gt;
 &lt;/sect3&gt;</screen>
