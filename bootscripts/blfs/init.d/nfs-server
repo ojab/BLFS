@@ -6,24 +6,68 @@
 
 . /etc/sysconfig/rc
 . $rc_functions
+. /etc/sysconfig/nfs
 
 case "$1" in
 	start)
-		echo "Starting NFS Server..."
+		echo "Starting NFS mountd..."
 		loadproc /usr/sbin/rpc.mountd
-		loadproc /usr/sbin/rpc.nfsd 8
+
+		echo "Starting NFS nfsd..."
+		loadproc /usr/sbin/rpc.nfsd -p $PORT $PROCESSES
+
+		echo "Starting NFS statd..."
 		loadproc /usr/sbin/rpc.statd
+
+		if [ "$QUOTAS" == "yes" ]; then
+			echo "Starting NFS rquotad..."
+			loadproc /usr/sbin/rpc.rquotad
+		fi
+		
+		# NFSD support only in 2.6 kernel
+		/bin/uname -r | grep "2.6"
+		if [ $? == 0 ]; then
+			echo "Mounting nfsd virtual filesystem..."
+			mount -t nfsd none /proc/fs/nfsd 2>&1 > /dev/null
+			evalutate_retval
+		fi
+
+		# Make ceratin that the list is refreshed on 
+		# a restart.
+		echo "Starting NFS Server..."
+		exportfs -ra 2>&1 > /dev/null
+		evaluate_retval
 		;;
 
 	stop)
-		echo "Stopping NFS Server..."
-		killproc /usr/sbin/rpc.nfsd
-		killproc /usr/sbin/rpc.mountd
+		echo "Stopping NFS statd..."
+		killproc rpc.statd
+
+		echo "Stopping NFS nfsd..."
+		# nfsd needs HUP....
+		TEMPSTOPSIG="$STOPSIG"
+		STOPSIG="HUP"
+		killproc nfsd
+		# return STOPSIG to it's orginal value...
+		STOPSIG="$TEMPSTOPSIG"
+
+		echo "Stopping NFS mountd..."
+		killproc rpc.mountd
+
+		if [ "$QUOTAS" == "yes" ]; then
+			echo "Stopping NFS rquotad..."
+			killproc rpc.rquotad
+		fi
+
+		echo "Stopping NFS Server Services..."
+		exportfs -au 2>&1 > /dev/null
+		evaluate_retval
 		;;
 
 	reload)
 		echo "Reloading NFS Server..."
-		/usr/sbin/exportfs -ra
+		exportfs -ra
+		evaluate_retval
 		;;
 
 	restart)
@@ -33,8 +77,12 @@ case "$1" in
 		;;
 
 	status)
-		statusproc /usr/sbin/rpc.mountd
-		statusproc /usr/sbin/rpc.nfsd
+		statusproc rpc.mountd
+		statusproc nfsd
+		statusproc rpc.statd
+		if [ "$QUOTA" == "yes" ]; then
+			statusproc rpc.rquotad
+		fi
 		;;
 
 	*)
