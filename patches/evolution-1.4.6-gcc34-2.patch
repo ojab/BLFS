@@ -1,0 +1,104 @@
+Submitted By:            Randy McMurchy (randy_at_linuxfromscratch_dot_org)
+Date:                    2004-09-10
+Initial Package Version: 1.4.6
+Upstream Status:         Not Submitted
+Origin:                  Jeremy Utley and Randy McMurchy
+Description:             Fixes syntax issues with GCC 3.4
+
+$LastChangedBy$
+$Date$
+
+diff -ur evolution-1.4.6/calendar/cal-client/cal-client.h 
+evolution-1.4.6.jbit/calendar/cal-client/cal-client.h
+--- evolution-1.4.6/calendar/cal-client/cal-client.h	2003-04-26 09:39:53.000000000 -0700
++++ evolution-1.4.6.jbit/calendar/cal-client/cal-client.h	2004-04-13 14:07:13.048767444 -0700
+@@ -213,7 +213,7 @@
+ CalClientResult cal_client_remove_object (CalClient *client, const char *uid);
+ CalClientResult cal_client_remove_object_with_mod (CalClient *client, const char *uid, CalObjModType mod);
+ 
+-CalClientSendResult cal_client_send_object (CalClient *client, icalcomponent *icalcomp, 
++CalClientResult cal_client_send_object (CalClient *client, icalcomponent *icalcomp, 
+ 					    icalcomponent **new_icalcomp, GList **users,
+ 					    char error_msg[256]);
+ 
+diff -ur evolution-1.4.6/calendar/gui/e-day-view.c evolution-1.4.6.jbit/calendar/gui/e-day-view.c
+--- evolution-1.4.6/calendar/gui/e-day-view.c	2003-08-11 20:14:21.000000000 -0700
++++ evolution-1.4.6.jbit/calendar/gui/e-day-view.c	2004-04-13 14:11:44.956505776 -0700
+@@ -3235,7 +3235,7 @@
+ 	case GDK_SCROLL_DOWN:
+ 		e_day_view_scroll (day_view, -E_DAY_VIEW_WHEEL_MOUSE_STEP_SIZE);
+ 		return TRUE;
+-	default:
++	default: break;
+ 	}
+ 
+ 	return FALSE;
+@@ -3255,7 +3255,7 @@
+ 	case GDK_SCROLL_DOWN:
+ 		e_day_view_scroll (day_view, -E_DAY_VIEW_WHEEL_MOUSE_STEP_SIZE);
+ 		return TRUE;
+-	default:
++	default: break;
+ 	}
+ 
+ 	return FALSE;
+diff -ur evolution-1.4.6/e-util/e-component-listener.c evolution-1.4.6.jbit/e-util/e-component-listener.c
+--- evolution-1.4.6/e-util/e-component-listener.c	2003-06-04 08:05:09.000000000 -0700
++++ evolution-1.4.6.jbit/e-util/e-component-listener.c	2004-04-13 13:55:04.230889468 -0700
+@@ -52,7 +52,7 @@
+ 			cl->priv->component = CORBA_OBJECT_NIL;
+ 			g_object_unref (cl);
+ 			break;
+-		default :
++		default: break;
+ 		}
+ 	}
+ }
+diff -ur evolution-1.4.6/mail/message-browser.c evolution-1.4.6.jbit/mail/message-browser.c
+--- evolution-1.4.6/mail/message-browser.c	2003-07-31 19:45:05.000000000 -0700
++++ evolution-1.4.6.jbit/mail/message-browser.c	2004-04-13 14:17:10.726599659 -0700
+@@ -344,7 +344,7 @@
+ 	case GDK_Escape:
+ 		message_browser_close (NULL, mb, NULL);
+ 		return TRUE;	
+-	default:
++	default: break;
+ 	}
+ 	
+ 	return FALSE;
+
+diff -Naur evolution-1.4.6-orig/addressbook/conduit/address-conduit.c evolution-1.4.6/addressbook/conduit/address-conduit.c
+--- evolution-1.4.6-orig/addressbook/conduit/address-conduit.c	2003-08-26 17:45:53.000000000 +0000
++++ evolution-1.4.6/addressbook/conduit/address-conduit.c	2004-09-11 02:01:04.213022248 +0000
+@@ -610,6 +610,7 @@
+ 	case E_CARD_SIMPLE_FIELD_EMAIL_2:
+ 		return E_CARD_SIMPLE_FIELD_EMAIL_3;
+ 	default:
++		break;
+ 	}
+ 
+ 	return E_CARD_SIMPLE_FIELD_LAST;
+@@ -625,6 +626,7 @@
+ 	case E_CARD_SIMPLE_FIELD_PHONE_HOME:
+ 		return E_CARD_SIMPLE_FIELD_PHONE_HOME_2;
+ 	default:
++		break;
+ 	}
+ 
+ 	return E_CARD_SIMPLE_FIELD_LAST;
+@@ -640,6 +642,7 @@
+ 	case E_CARD_SIMPLE_FIELD_PHONE_BUSINESS:
+ 		return E_CARD_SIMPLE_FIELD_PHONE_BUSINESS_2;
+ 	default:
++		break;
+ 	}
+ 
+ 	return E_CARD_SIMPLE_FIELD_LAST;
+@@ -657,6 +660,7 @@
+ 	case E_CARD_SIMPLE_FIELD_PHONE_HOME_FAX:
+ 		return E_CARD_SIMPLE_FIELD_PHONE_OTHER_FAX;
+ 	default:
++		break;
+ 	}
+ 
+ 	return E_CARD_SIMPLE_FIELD_LAST;
