@@ -13,19 +13,20 @@
 case "$1" in
         start)
                 echo "Starting the Network Audio System Server..."
-                pidof nasd
-                if test $? = "0"
-                then
-                        print_status warning running
-                else
-                        /usr/X11R6/bin/nasd -aa &
-                        pidof /usr/X11R6/bin/nasd
-                        if test $? = "0" ; then
-                                print_status success
-                        else
-                                print_status failure
-                        fi
-                fi
+		loadproc /usr/X11R6/bin/nasd -aa -b
+#                pidof nasd
+#                if test $? = "0"
+#                then
+#                        print_status warning running
+#                else
+#                        /usr/X11R6/bin/nasd -aa &
+#                        pidof /usr/X11R6/bin/nasd
+#                        if test $? = "0" ; then
+#                                print_status success
+#                        else
+#                                print_status failure
+#                        fi
+#                fi
 		;;
 
         stop)
