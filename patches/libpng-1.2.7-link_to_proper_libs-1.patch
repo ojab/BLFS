@@ -6,8 +6,8 @@ Description: libpng is not linked against libz and libm. This causes problems
 for packages that try to link against libpng without including "-lz -lm" in
 the linker flags.
 
-$LastChangedBy$
-$Date$
+$LastChangedBy: igor $
+$Date: 2004-10-06 03:32:45 +0200 (Wed, 06 Oct 2004) $
 
 diff -ur libpng-1.2.6rc1.orig/scripts/libpng.pc.in libpng-1.2.6rc1/scripts/libpng.pc.in
 --- libpng-1.2.6rc1.orig/scripts/libpng.pc.in	2002-10-03 06:32:33.000000000 -0500
