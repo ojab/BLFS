@@ -37,9 +37,25 @@ case "$1" in
 				print_status failure
 			fi
 		fi
+		echo "Starting KDC kadmind Daemon..."
+		if test -f "/var/run/kadmind.pid"
+		then
+			print_status warning running
+		else
+			/usr/sbin/kadmind &
+			sleep 1
+			if test -f "/var/run/kadmind.pid"
+			then
+				print_status success
+			else
+				print_status failure
+			fi
+		fi
 		;;
 
 	stop)   
+		echo "Stopping KDC kadmind Daemon..."
+		killproc /usr/sbin/kadmind
 		echo "Stopping KDC kpasswdd Daemon..."
 		killproc /usr/sbin/kpasswdd
 		echo "Stopping KDC Server Daemon..."
@@ -55,6 +71,7 @@ case "$1" in
 	status)
 		statusproc /usr/sbin/kdc
 		statusproc /usr/sbin/kpasswdd
+		statusproc /usr/sbin/kadmind
 		;;
 
 	*)
