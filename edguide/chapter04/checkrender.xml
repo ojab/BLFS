@@ -62,7 +62,7 @@ if [ ! -d $BLFS_XML ]
     tidy -latin1 -m $i
     cp $i $i.bak
     sed '4i\
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">' $i.bak > $i
+&lt;meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15"&gt;' $i.bak &gt; $i
     rm -f $i.bak
     done
 
