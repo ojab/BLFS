@@ -13,17 +13,17 @@
 case "$1" in
 	start)
 		echo "Starting File Alteration Monitor..."
-		loadproc famd -T 0
+		loadproc /usr/sbin/famd -T 0
 		;;
 
 	stop)
 		echo "Stopping File Alteration Monitor..."
-		killproc famd
+		killproc /usr/sbin/famd
 		;;
 
 	reload)
 		echo "Reloading File Alteration Monitor..."
-		reloadproc famd
+		reloadproc /usr/sbin/famd
 		;;
 
 	restart)
@@ -33,7 +33,7 @@ case "$1" in
 		;;
 
 	status)
-		statusproc famd
+		statusproc /usr/sbin/famd
 		;;
 
 	*)

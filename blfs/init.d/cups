@@ -17,7 +17,7 @@ case $1 in
 
 	stop)
 		echo "Stopping CUPS Printserver..."
-		killproc cupsd
+		killproc /usr/sbin/cupsd
 		;;
 
 	reload)
@@ -32,7 +32,7 @@ case $1 in
 		;;
 
 	status)
-		statusproc cupsd
+		statusproc /usr/sbin/cupsd
 		;;
 
 	*)

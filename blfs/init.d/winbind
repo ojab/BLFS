@@ -17,16 +17,16 @@ case "$1" in
 
         start)
                 echo "Starting winbind..."
-                loadproc winbindd
+                loadproc /usr/sbin/winbindd
                 ;;
 
         stop)
                 echo "Stopping winbind..."
-		killproc winbindd
+		killproc
 
 	reload)
 		echo "Reloading winbind..."
-		reloadproc winbindd
+		reloadproc /usr/sbin/winbindd
 		;;
 
         restart)
@@ -36,7 +36,7 @@ case "$1" in
                 ;;
 
         status)
-                statusproc winbindd
+                statusproc /usr/sbin/winbindd
                 ;;
 
         *)

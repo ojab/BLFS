@@ -18,11 +18,11 @@ case "$1" in
 
 	stop)
 		echo "Stopping exim..."
-		killproc exim
+		killproc /usr/sbin/exim
 		;;
 
 	status)
-		statusproc exim
+		statusproc /usr/sbin/exim
 		;;
 
 	restart)

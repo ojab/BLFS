@@ -15,17 +15,17 @@ export PATH=$PATH:/opt/kde/bin
 case "$1" in
         start)
                 echo "Starting LISA Daemon..."
-                loadproc lisa
+                loadproc /opt/kde/bin/lisa
                 ;;
 
         stop)
                 echo "Stopping LISA Daemon..."
-                killproc lisa
+                killproc /opt/kde/bin/lisa
                 ;;
 
         reload)
                 echo "Reloading LISA Daemon..."
-                reloadproc lisa
+                reloadproc /opt/kde/bin/lisa
                 ;;
 
         restart)
@@ -35,7 +35,7 @@ case "$1" in
                 ;;
 
         status)
-                statusproc lisa
+                statusproc /opt/kde/bin/lisa
                 ;;
 
         *)

@@ -13,12 +13,12 @@
 case "$1" in
 	start)
 		echo "Starting fcron..."
-		loadproc fcron
+		loadproc /usr/sbin/fcron
 		;;
 
 	stop)
 		echo "Stopping fcron..."
-		killproc fcron
+		killproc /usr/sbin/fcron
 		;;
 
 	restart)
@@ -28,7 +28,7 @@ case "$1" in
 		;;
 
 	status)
-		statusproc fcron
+		statusproc /usr/sbin/fcron
 		;;
 
 	*)

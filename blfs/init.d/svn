@@ -18,7 +18,7 @@ case "$1" in
 
 	stop)
 		echo "Stopping Subversion..."
-		killproc svnserve.orig
+		killproc /usr/bin/svnserve.orig
 		;;
 
 	restart)
@@ -28,7 +28,7 @@ case "$1" in
 		;;
 
 	status)
-		statusproc svnserve.orig
+		statusproc /usr/bin/svnserve.orig
 		;;
 
 	*)
