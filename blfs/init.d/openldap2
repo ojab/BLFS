@@ -15,33 +15,27 @@ pid_file=/srv/ldap/run/slapd.pid
 case "$1" in
 	start)
 		echo "Starting LDAP slapd Server..."
-		if test -f "$pid_file"
-		then
-			print_status warning running
-		else
-			/usr/sbin/slapd
-			evaluate_retval
-		fi
+        PIDFILE="/srv/ldap/run/slapd.pid"
+        loadproc /usr/sbin/slapd
+        # Return PIDFILE to null (for slurpd)
+        PIDFILE=""
 
-		echo "Starting LDAP slurpd Server..."
-		loadproc /usr/sbin/slurpd
+        echo "Starting LDAP slurpd Server..."
+        loadproc /usr/sbin/slurpd                                        
 		;;
 
 	stop)
 		echo "Stopping LDAP slapd Server..."
-		if test -f "$pid_file"
-		then
-                	kill -INT `cat $pid_file`
-                	sleep 1
-			if test -f "$pid_file"
-			then
-				print_status failure
-			else
-				print_status success
-			fi
-		else
-			print_status warning not_running
-		fi
+        PIDFILE="/srv/ldap/run/slapd.pid"
+        # slapd needs SIGINT
+        TEMPSTOPSIG="$STOPSIG"
+        STOPSIG="INT"
+        killproc
+
+        # return STOPSIG to it's previous value
+        STOPSIG="$TEMPSTOPSIG"
+        # return PIDFILE to nothing for slurpd
+        PIDFILE=""
 
 		echo "Stopping LDAP slurpd Server..."
 		killproc /usr/sbin/slurpd
