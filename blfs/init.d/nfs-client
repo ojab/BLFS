@@ -9,14 +9,18 @@
 
 case "$1" in
 	start)
-		echo "Starting NFS Client Services..."
+		echo "Starting NFS statd..."
 		loadproc /usr/sbin/rpc.statd
+
+		echo "Starting NFS lockd..."
 		loadproc /usr/sbin/rpc.lockd
 		;;
 
 	stop)
-		echo "Stopping NFS Client Services..."
+		echo "Stopping NFS lockd..."
 		killproc /usr/sbin/rpc.lockd
+
+		echo "Stopping NFS statd..."
 		killproc /usr/sbin/rpc.statd
 		;;
 
