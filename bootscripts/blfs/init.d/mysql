@@ -7,7 +7,7 @@
 . /etc/sysconfig/rc
 . $rc_functions
 
-pid_file=/var/lib/mysql/`/bin/hostname`.pid
+pid_file=/srv/mysql/`/bin/hostname`.pid
 
 case "$1" in
 	start)

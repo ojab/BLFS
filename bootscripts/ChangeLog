@@ -1,3 +1,6 @@
+2004-07-28 Randy McMurchy <randy@linuxfromscratch.org>
+	* Changed location of PID file in mysql script
+
 2004-07-21 DJ Lucas <dj@linuxfromscratch.org>
 	* changed vsftpd bootscript to use loadproc
 
