@@ -17,6 +17,18 @@
 <para>To be developed.  When should new apps be added to the book.</para>
 </section>
 
+<section id='ch07-build-instructions'>
+<title>Build Instructions</title>
+
+<para>When developing instructions to build a package, the editor should
+recommend a preferred build method&mdash;one that is reliable, stable, and performs
+well.  The editor uses his best judgement to determine the appropriate switches
+and methodology for the typical user in each section.  In some cases, the
+number of options is large and there should be a note placed in the text to
+tell the user to consult other documentaion for additional options.
+</para>
+</section>
+
 <section id="ch07-optimization">
 <title>Optimization</title>
 

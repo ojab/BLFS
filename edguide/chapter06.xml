@@ -277,20 +277,45 @@ init script included in the
 
 <screen>&lt;sect2&gt;
 &lt;title&gt;Contents&lt;/title&gt;
+&lt;segmentedlist&gt;
+  &lt;segtitle&gt;Installed Programs&lt;/segtitle&gt;
+  &lt;seglistitem&gt;
+    &lt;seg&gt;siggen, tripwire, twadmin and twprint.&lt;/seg&gt;
+  &lt;/seglistitem&gt;
+&lt;/segmentedlist&gt;
+ 
+&lt;variablelist&gt;
+  &lt;bridgehead renderas="sect3"&gt;Short Descriptions&lt;/bridgehead&gt;
+  &lt;?dbfo list-presentation="list"?&gt;
+ 
+  &lt;varlistentry id="siggen"&gt;
+    &lt;term&gt;&lt;command&gt;siggen&lt;/command&gt;&lt;/term&gt;
+    &lt;listitem&gt;&lt;para&gt;is a signature gathering utility that displays
+      the hash function values for the specified files.&lt;/para&gt;
+    &lt;/listitem&gt;
+  &lt;/varlistentry&gt;
+ 
+  &lt;varlistentry id='tripwire'&gt;
+    &lt;term&gt;&lt;command&gt;tripwire&lt;/command&gt;&lt;/term&gt;
+    &lt;listitem&gt;&lt;para&gt;is the main file integrity checking program.&lt;/para&gt;&lt;/listitem&gt;
+  &lt;/varlistentry&gt;
+ 
+  &lt;varlistentry id='twadmin'&gt;
+    &lt;term&gt;&lt;command&gt;twadmin&lt;/command&gt;&lt;/term&gt;
+    &lt;listitem&gt;&lt;para&gt;administrative and utility tool used to perform
+      certain administrative functions related to
+      &lt;application&gt;Tripwire&lt;/application&gt; files and configuration options.&lt;/para&gt;
+    &lt;/listitem&gt;
+  &lt;/varlistentry&gt;
+ 
+  &lt;varlistentry id='twprint'&gt;
+    &lt;term&gt;&lt;command&gt;twprint&lt;/command&gt;&lt;/term&gt;
+    &lt;listitem&gt;&lt;para&gt;prints &lt;application&gt;Tripwire&lt;/application&gt;
+      database and report files in clear text format.&lt;/para&gt;
+    &lt;/listitem&gt;
+  &lt;/varlistentry&gt;
+&lt;/variablelist&gt;
 
-&lt;para&gt;The &lt;application&gt;&lt;acronym&gt;FAM&lt;/acronym&gt;&lt;/application&gt; package contains
-the &lt;command&gt;famd&lt;/command&gt; executable and &lt;filename&gt;libfam&lt;/filename&gt;
-libraries.&lt;/para&gt;
-
-&lt;/sect2&gt;
-
-&lt;sect2&gt;&lt;title&gt;Description&lt;/title&gt;
-
-&lt;sect3&gt;&lt;title&gt;famd&lt;/title&gt;
-
-&lt;para&gt;&lt;command&gt;famd&lt;/command&gt; is the file alteration monitor.&lt;/para&gt;
-
-&lt;/sect3&gt;
 &lt;/sect2&gt;
 &lt;/sect1&gt;</screen>
 </sect1>
