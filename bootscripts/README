@@ -6,7 +6,9 @@ but needs to be installed in conjunction with a compatible
 lfs-bootscripts package. See the <lfs-bootscripts.version> file
 for compatibility information.
 
-The various install targets are mentioned in the book. For
+The various install targets are mentioned in the book. There are
+variables for install mode (MODE) and destdir {EXTDIR}.  For
 more information refer to the BLFS BOOK at
 	http://www.linuxfromscratch.org/blfs/
+
 
