@@ -1,3 +1,10 @@
+2004-10-13 Igor Zivkovic <igor@linuxfromscratch.org>
+	* Added ntpd -gqx to ntp bootscript start case to set
+	  the initial time (Thomas Trepl)
+	* Added setclock stop symlinks to runlevels 0, 1, 2
+	  and 6 on install-ntp target to write the system time
+	  back to hardware clock (Jeremy Utley)
+
 2004-10-11 DJ Lucas <dj@linuxfromscratch.org>
 	* Fixed multiple errors in nfs-server bootscript
 	* Removed lockd from nfs-client bootscript

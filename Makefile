@@ -232,12 +232,16 @@ install-nfs-server: create-dirs
 install-ntp: create-dirs
 	install -m ${MODE} blfs/init.d/ntp        ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/ntp ${EXTDIR}/rc.d/rc0.d/K46ntp
+	ln -sf  ../init.d/setclock ${EXTDIR}/rc.d/rc0.d/K46setclock
 	ln -sf  ../init.d/ntp ${EXTDIR}/rc.d/rc1.d/K46ntp
+	ln -sf  ../init.d/setclock ${EXTDIR}/rc.d/rc1.d/K46setclock
 	ln -sf  ../init.d/ntp ${EXTDIR}/rc.d/rc2.d/K46ntp
+	ln -sf  ../init.d/setclock ${EXTDIR}/rc.d/rc2.d/K46setclock
 	ln -sf  ../init.d/ntp ${EXTDIR}/rc.d/rc3.d/S26ntp
 	ln -sf  ../init.d/ntp ${EXTDIR}/rc.d/rc4.d/S26ntp
 	ln -sf  ../init.d/ntp ${EXTDIR}/rc.d/rc5.d/S26ntp
 	ln -sf  ../init.d/ntp ${EXTDIR}/rc.d/rc6.d/K46ntp
+	ln -sf  ../init.d/setclock ${EXTDIR}/rc.d/rc6.d/K46setclock
 
 install-openldap1: create-dirs
 	install -m ${MODE} blfs/init.d/openldap1  ${EXTDIR}/rc.d/init.d/openldap
