@@ -24,8 +24,12 @@ case "$1" in
 		$0 start
 		;;
 
+	status)
+		statusproc /sbin/portmap
+		;;
+
 	*)
-		echo "Usage: $0 {start|stop|restart}"
+		echo "Usage: $0 {start|stop|restart|status}"
 		exit 1
 		;;
 
