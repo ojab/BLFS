@@ -1,0 +1,95 @@
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2004-09-01
+Initial Package Version: 0.7.38
+Upstream Status:         Not submitted
+Origin:                  Self-created
+Description:             Fixes GCC-3.4.x related build problems with FFmpeg plugin
+
+$LastChangedBy$
+$Date$
+
+diff -Naur avifile-0.7-0.7.38-orig/ffmpeg/libavcodec/liba52/resample_mmx.c avifile-0.7-0.7.38/ffmpeg/libavcodec/liba52/resample_mmx.c
+--- avifile-0.7-0.7.38-orig/ffmpeg/libavcodec/liba52/resample_mmx.c	2003-04-16 20:03:07.000000000 +0000
++++ avifile-0.7-0.7.38/ffmpeg/libavcodec/liba52/resample_mmx.c	2004-09-01 19:24:55.421579744 +0000
+@@ -7,10 +7,10 @@
+ 	and it would mean (C / MMX2 / MMX / 3DNOW) versions 
+ */
+ 
+-static uint64_t __attribute__((aligned(8))) magicF2W= 0x43c0000043c00000LL;
+-static uint64_t __attribute__((aligned(8))) wm1010= 0xFFFF0000FFFF0000LL;
+-static uint64_t __attribute__((aligned(8))) wm0101= 0x0000FFFF0000FFFFLL;
+-static uint64_t __attribute__((aligned(8))) wm1100= 0xFFFFFFFF00000000LL;
++const uint64_t __attribute__((aligned(8))) magicF2W= 0x43c0000043c00000LL;
++const uint64_t __attribute__((aligned(8))) wm1010= 0xFFFF0000FFFF0000LL;
++const uint64_t __attribute__((aligned(8))) wm0101= 0x0000FFFF0000FFFFLL;
++const uint64_t __attribute__((aligned(8))) wm1100= 0xFFFFFFFF00000000LL;
+ 
+ static int a52_resample_MONO_to_5_MMX(float * _f, int16_t * s16){
+     int32_t * f = (int32_t *) _f;
+
+diff -Naur avifile-0.7-0.7.38-orig/ffmpeg/libavcodec/i386/motion_est_mmx.c avifile-0.7-0.7.38/ffmpeg/libavcodec/i386/motion_est_mmx.c
+--- avifile-0.7-0.7.38-orig/ffmpeg/libavcodec/i386/motion_est_mmx.c	2003-03-03 17:07:35.000000000 +0000
++++ avifile-0.7-0.7.38/ffmpeg/libavcodec/i386/motion_est_mmx.c	2004-09-01 19:34:08.637478144 +0000
+@@ -20,13 +20,13 @@
+  */
+ #include "../dsputil.h"
+ 
+-static const __attribute__ ((aligned(8))) uint64_t round_tab[3]={
++const __attribute__ ((aligned(8))) uint64_t round_tab[3]={
+ 0x0000000000000000,
+ 0x0001000100010001,
+ 0x0002000200020002,
+ };
+ 
+-static __attribute__ ((aligned(8))) uint64_t bone= 0x0101010101010101LL;
++const __attribute__ ((aligned(8))) uint64_t bone= 0x0101010101010101LL;
+ 
+ static inline void sad8_mmx(uint8_t *blk1, uint8_t *blk2, int stride, int h)
+ {
+
+diff -Naur avifile-0.7-0.7.38-orig/ffmpeg/libavcodec/i386/dsputil_mmx.c avifile-0.7-0.7.38/ffmpeg/libavcodec/i386/dsputil_mmx.c
+--- avifile-0.7-0.7.38-orig/ffmpeg/libavcodec/i386/dsputil_mmx.c	2003-06-23 18:52:34.000000000 +0000
++++ avifile-0.7-0.7.38/ffmpeg/libavcodec/i386/dsputil_mmx.c	2004-09-01 19:20:28.653134712 +0000
+@@ -25,14 +25,14 @@
+ int mm_flags; /* multimedia extension flags */
+ 
+ /* pixel operations */
+-static const uint64_t mm_bone __attribute__ ((aligned(8))) = 0x0101010101010101ULL;
+-static const uint64_t mm_wone __attribute__ ((aligned(8))) = 0x0001000100010001ULL;
+-static const uint64_t mm_wtwo __attribute__ ((aligned(8))) = 0x0002000200020002ULL;
+-
+-static const uint64_t ff_pw_20 __attribute__ ((aligned(8))) = 0x0014001400140014ULL;
+-static const uint64_t ff_pw_3  __attribute__ ((aligned(8))) = 0x0003000300030003ULL;
+-static const uint64_t ff_pw_16 __attribute__ ((aligned(8))) = 0x0010001000100010ULL;
+-static const uint64_t ff_pw_15 __attribute__ ((aligned(8))) = 0x000F000F000F000FULL;
++const uint64_t mm_bone __attribute__ ((aligned(8))) = 0x0101010101010101ULL;
++const uint64_t mm_wone __attribute__ ((aligned(8))) = 0x0001000100010001ULL;
++const uint64_t mm_wtwo __attribute__ ((aligned(8))) = 0x0002000200020002ULL;
++
++const uint64_t ff_pw_20 __attribute__ ((aligned(8))) = 0x0014001400140014ULL;
++const uint64_t ff_pw_3  __attribute__ ((aligned(8))) = 0x0003000300030003ULL;
++const uint64_t ff_pw_16 __attribute__ ((aligned(8))) = 0x0010001000100010ULL;
++const uint64_t ff_pw_15 __attribute__ ((aligned(8))) = 0x000F000F000F000FULL;
+ 
+ #define JUMPALIGN() __asm __volatile (".balign 8"::)
+ #define MOVQ_ZERO(regd)  __asm __volatile ("pxor %%" #regd ", %%" #regd ::)
+
+diff -Naur avifile-0.7-0.7.38-orig/ffmpeg/libavcodec/i386/simple_idct_mmx.c avifile-0.7-0.7.38/ffmpeg/libavcodec/i386/simple_idct_mmx.c
+--- avifile-0.7-0.7.38-orig/ffmpeg/libavcodec/i386/simple_idct_mmx.c	2003-02-14 13:58:00.000000000 +0000
++++ avifile-0.7-0.7.38/ffmpeg/libavcodec/i386/simple_idct_mmx.c	2004-09-01 19:43:30.809015080 +0000
+@@ -45,10 +45,10 @@
+ #define ROW_SHIFT 11
+ #define COL_SHIFT 20 // 6
+ 
+-static const uint64_t __attribute__((aligned(8))) wm1010= 0xFFFF0000FFFF0000ULL;
+-static const uint64_t __attribute__((aligned(8))) d40000= 0x0000000000040000ULL;
+-static int16_t __attribute__((aligned(8))) temp[64];
+-static int16_t __attribute__((aligned(8))) coeffs[]= {
++static uint64_t __attribute__((aligned(8))) wm1010= 0xFFFF0000FFFF0000ULL;
++const uint64_t __attribute__((aligned(8))) d40000= 0x0000000000040000ULL;
++const int16_t __attribute__((aligned(8))) temp[64];
++const int16_t __attribute__((aligned(8))) coeffs[]= {
+ 	1<<(ROW_SHIFT-1), 0, 1<<(ROW_SHIFT-1), 0,
+ //	1<<(COL_SHIFT-1), 0, 1<<(COL_SHIFT-1), 0,
+ //	0, 1<<(COL_SHIFT-1-16), 0, 1<<(COL_SHIFT-1-16),
+
