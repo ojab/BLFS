@@ -1,3 +1,10 @@
+2004-08-03 DJ Lucas <dj@linuxfromscratch.org>
+	* Added MODE and DIRMODE variables to set 
+	  permissions of installed scripts and 
+	  directories
+	* Corrected script to remove svn directories
+	  when creating release tarball
+
 2004-07-31 Randy McMurchy <randy@linuxfromscratch.org>
 	* Added nas (Network Audio Server) script 
 
