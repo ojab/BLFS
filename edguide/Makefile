@@ -6,4 +6,11 @@ edguide:
 	@echo "Generating Editor's Guide for the BLFS Book with xsltproc..." 
 	install -d  $(OUTPUTDIR) 
 	xsltproc --xinclude --nonet -stringparam base.dir $(OUTPUTDIR) \
-	       stylesheets/edguide.xsl index.xml
+	       edguide.xsl index.xml
+	cp *.css $(OUTPUTDIR)
+	sh goTidy $(OUTPUTDIR)
+
+
+validate:
+	xmllint --noout --nonet --xinclude --postvalid index.xml 
+

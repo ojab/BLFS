@@ -9,7 +9,7 @@ Suggestions include: what we do about optimization, scripts, patches
 etc. etc.  Contributions welcome; especially from (but not limited to)
 active editors.</para>
 
-<sect1 id="ch06-tagging">
+<section id="ch06-tagging">
 <title>Adding Tags</title>
 
 <itemizedlist>
@@ -67,6 +67,11 @@ Especially prior to giving script instructions using that assumption.</para></li
 section for items that are not commands.</para></listitem>
 
 </itemizedlist>
+</section>
 
-</sect1>
+<chapterinfo>
+<othername>$Author: Bruce Dubbs$</othername>
+<date>$Date$</date>
+</chapterinfo>
+
 </chapter>

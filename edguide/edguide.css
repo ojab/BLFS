@@ -154,3 +154,7 @@ b.command {
     width: 12.5em;
     float: left;
 }
+
+p.updated {
+    font: italic smaller serif;
+}

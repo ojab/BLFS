@@ -3,11 +3,11 @@
    "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
 
 <chapter id="chapter03">
-<title>Basic SVN Commands</title>
+<title>Basic SVN Commands (under development)</title>
 <?dbhtml filename="chapter03.html"?>
 
 
-<sect1 id="ch03-introduction">
+<section id="ch03-introduction">
 <title>Introduction</title>
 
 <para>The man and info pages of CVS are fairly good but I'm going to list a
@@ -29,8 +29,9 @@ commands!.</para>
 
 <para>Some commands have two forms, the long and the short.  I'll
 list both in the description.</para>
+</section>
 
-<sect2 id="ch03-checkout">
+<section id="ch03-checkout">
 <title>cvs checkout/co</title>
 
 <para><userinput>cvs checkout</userinput> or <userinput>cvs co</userinput>.
@@ -43,10 +44,10 @@ usually be because the Editor will have made a <emphasis>large</emphasis>
 change and it'll be announced at least on the <filename>blfs-book</filename>
 list.</para>
 
-</sect2>
+</section>
 
 
-<sect2 id="ch03-add">
+<section id="ch03-add">
 <title>cvs add</title>
 
 <para><userinput>cvs add</userinput>.  When you are creating a new file,
@@ -54,9 +55,9 @@ you need to tell the CVS server about it.  This does that.  Note that
 the file won't appear in the repository until you do a <userinput>cvs
 commit</userinput> (see below).</para>
 
-</sect2>
+</section>
 
-<sect2 id="ch03-delete">
+<section id="ch03-delete">
 <title>cvs delete/remove</title>
 
 <para><userinput>cvs delete</userinput> or <userinput>cvs
@@ -65,9 +66,9 @@ that you have to have deleted the file locally before you can run this.
 Again, the file will not be deleted from the server until you do a
 <userinput>cvs commit</userinput>.</para>
 
-</sect2>
+</section>
 
-<sect2 id="ch03-update">
+<section id="ch03-update">
 <title>cvs update/up</title>
 
 <para><userinput>cvs update</userinput> or <userinput>cvs
@@ -79,9 +80,9 @@ trying to commit changes in order to check that everything is alright
 and ready to go (although when you do a <userinput>cvs
 commit</userinput>, it will warn you if there is a problem).</para>
 
-</sect2>
+</section>
 
-<sect2 id="ch03-commit">
+<section id="ch03-commit">
 <title>cvs commit/ci</title>
 
 <para><userinput>cvs commit</userinput> or <userinput>cvs
@@ -93,9 +94,9 @@ override this using the $EDITOR variable but I've never tried it).
 Please don't use empty log messages (see later in this document on the
 policy which governs them).</para>
 
-</sect2>
+</section>
 
-<sect2 id="ch03-diff">
+<section id="ch03-diff">
 <title>cvs diff</title>
 
 <para><userinput>cvs diff</userinput>.  This is useful for two different
@@ -117,10 +118,10 @@ Remember that when using cvs diff, you nearly
 use the <userinput>-u</userinput> switch or add it to
 your <userinput>~/.cvsrc</userinput></para>
 
-</sect2>
+</section>
 
 
-<sect2 id="ch03-moving">
+<section id="ch03-moving">
 <title>Moving files</title>
 
 <para>Moving files:  One of the (many?) complaints against cvs is that
@@ -130,8 +131,12 @@ manually.  <emphasis>If this is needed, please contact me and I'll do
 it</emphasis>.  This is simply because then if something goes wrong,
 it's me who takes the fall instead of anyone else!</para>
 
-</sect2>
-</sect1>
+</section>
+
+<chapterinfo>
+<othername>$Author: Bruce Dubbs$</othername>
+<date>$Date$</date>
+</chapterinfo>
 
 
 </chapter>

@@ -9,7 +9,7 @@
 <title>Using Bugzilla</title>
 <?dbhtml filename="chapter05.html"?>
 
-<sect1 id="ch05-introduction">
+<section id="ch05-introduction">
 <title>Introduction</title>
 
 <para>This chapter covers the things you need to do when you are using
@@ -19,11 +19,13 @@ outstanding bugs.</para>
 <para>It's assume you have already logged into Bugzilla before doing anything
 outlined in the following sections.</para>
 
-<sect2 id="ch05-addingcomments">
+</section>
+
+<section id="ch05-addingcomments">
 <title>Adding comments</title>
 
 <itemizedlist>
-<listitem><para>Go to the bug you want add comments to</para></listitem>
+<listitem><para>Go to the bug you want to update.</para></listitem>
 
 <listitem><para>Add your additional information in the
 <emphasis>Additional Comments</emphasis> text field.</para></listitem>
@@ -33,9 +35,9 @@ button to commit your changes to the database. A log of this will be sent
 to the blfs-book mailinglist.</para></listitem>
 
 </itemizedlist>
-</sect2>
+</section>
 
-<sect2 id="ch05-filingbug">
+<section id="ch05-filingbug">
 <title>Enter a new bug</title>
 
 <para>You found a bug, or somebody else found a bug and you decided to add
@@ -45,21 +47,37 @@ it to Bugzilla.</para>
 <listitem><para>Go to <ulink url="&blfs-bugzilla;"/></para></listitem>
 
 <listitem><para>Select the proper <emphasis>Version</emphasis>. You most
-always will choose the <emphasis>CVS</emphasis> version. It doesn't make
-sense to report a bug against an old version if it's no longer in CVS. If
-it is, then CVS is newer than a previously released stable book version.
-The versions are basically there only for people who don't edit the book
+always will choose the <emphasis>CVS</emphasis> version. (Note: SVN will be
+added to the options.  Use that if you see it.) The other versions
+are basically there only for people who don't edit the book
 and who want to report a bug against the book version they
 have.</para></listitem>
 
-<listitem><para>Don't worry about <emphasis>Component, Platform, OS and
-Severity</emphasis> Those aren't used at the moment.</para></listitem>
+<listitem><para>Don't worry about <emphasis>Platform, OS, and Severity</emphasis>. 
+Those aren't used at the moment.</para></listitem>
 
-<listitem><para>Select the <emphasis>Resolution Priority</emphasis>. Use
+<listitem><para>Select the <emphasis>Priority</emphasis>. Use
 your own judgement on how important fixing this bug is. If you're not sure
 just leave the default. Priorities are periodically re-evaluated and
 changed anyways (what may be P5 a month ago may be changed to a P1 now
-because it's finally time to fix it).</para></listitem>
+because it's finally time to fix it).</para>
+
+<para>Use the following guidelines:</para>
+  <itemizedlist>
+     <listitem><para>P1&mdash;Critical issue that prevents build a system 
+       by the book and must be fixed as soon as possible. Includes package 
+       updates that fix serious security holes or fix some other critical bug.</para></listitem>
+     <listitem><para>P2&mdash;Major issue but not critical in the sense you 
+       cannot build an application with it. This includes most package updates. 
+       Must be fixed before the next release.</para></listitem>
+     <listitem><para>P3&mdash;Minor issue that would be nice to have fixed 
+       in the next release.</para></listitem>
+     <listitem><para>P4&mdash;Textual changes that have no impact on the 
+       installation instructions.</para></listitem>
+     <listitem><para>P5&mdash;A new, unclassified and/or unconfirmed bug.</para></listitem>
+  </itemizedlist>
+</listitem>
+
 
 <listitem><para>Select the <emphasis>Initial state</emphasis>. Only select
 <emphasis>UNCONFIRMED</emphasis> if you haven't checked the matter out yet
@@ -81,8 +99,12 @@ to the blfs-book mailinglist.</para></listitem>
 
 </itemizedlist>
 
-</sect2>
-</sect1>
+</section>
+<chapterinfo>
+<othername>$Author: Bruce Dubbs$</othername>
+<date>$Date$</date>
+</chapterinfo>
+
 
 </chapter>
 

@@ -25,8 +25,6 @@
 <holder>Mark Hymers</holder><holder>Bruce Dubbs</holder>
 </copyright>
 
-<date>&date;</date>
-
 <legalnotice>
 <para>All rights reserved.</para>
 
@@ -34,9 +32,10 @@
 modification, are permitted provided that the following conditions are
 met:</para>
 
-<itemizedlist> <listitem><para>Redistributions in any form must retain the
-above copyright notice, this list of conditions and the following
-disclaimer.</para></listitem>
+<itemizedlist> 
+
+<listitem><para>Redistributions in any form must retain the above copyright
+notice, this list of conditions and the following disclaimer.</para></listitem>
 
 <listitem><para>Neither the name of "Linux From Scratch" or "Beyond Linux From
 Scratch" nor the names of its contributors may be used to endorse or promote
@@ -62,5 +61,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</para>
 <abstract>
 <para>This manual teaches you how to properly edit the BLFS-Book.</para>
 </abstract>
+
+<revhistory>
+<revision><date>Summer 2002</date><revremark>Initial Release</revremark></revision>
+<revision><date>&date;</date><revremark>Subversion Update</revremark></revision>
+</revhistory>
+
+
 
 </bookinfo> 
