@@ -3,7 +3,7 @@ Date: 2004-05-03
 Initial Package Version: 2.7
 Origin: Randy McMurchy and ftp://ftp.pdc.kth.se/pub/krb/src/cracklib.patch 
 Description: Patches cracklib to work with Heimdal Kerberos 5
-             Requires heimdal-0.6.1-cracklib-1.patch applied to the Heimdal
+             Requires heimdal-0.6.3-cracklib-1.patch applied to the Heimdal
              source code. Patch is available at:
              http://www.linuxfromscratch.org/patches/blfs/cvs/
 
