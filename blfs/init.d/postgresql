@@ -10,14 +10,14 @@
 case "$1" in
 	start)
 		echo "Starting PostgreSQL daemon..."
-		su - postgres -c '/usr/bin/pg_ctl start -W -D /var/pgsql/data \
-				-l /var/pgsql/data/logfile -o "-i" '
+		su - postgres -c '/usr/bin/pg_ctl start -W -D /srv/pgsql/data \
+				-l /srv/pgsql/data/logfile -o "-i" '
 		evaluate_retval
 		;;
 
 	stop)
 		echo "Stopping PostgreSQL daemon..."
-		/usr/bin/pg_ctl stop -m smart -D /var/pgsql/data
+		/usr/bin/pg_ctl stop -m smart -D /srv/pgsql/data
 		evaluate_retval
 		;;
 
@@ -28,7 +28,7 @@ case "$1" in
 		;;
 
 	status)
-		/usr/bin/pg_ctl status -D /var/pgsql/data
+		/usr/bin/pg_ctl status -D /srv/pgsql/data
 		;;
 
 	*)
