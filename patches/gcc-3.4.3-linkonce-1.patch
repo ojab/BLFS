@@ -1,19 +1,17 @@
 Submitted By: Jim Gifford (patches at jg555 dot com)
-Date: 2004-08-20
-Initial Package Version: 3.4.1
-Origin: GCC - CVS
-Upstream Status: Applied
+Date: 2004-11-05
+Initial Package Version: 3.4.3
+Origin: Jim Gifford
+Upstream Status: Delayed till 3.4.4
 Description: Fixes linkone/comdat issue
-	     Details of this patch can be found on the following link
-	     http://gcc.gnu.org/ml/gcc-patches/2004-08/msg00653.html	     
- 
+
 $LastChangedBy$
 $Date$
-
-diff -Naur gcc-3.4.1.orig/gcc/config/alpha/alpha.c gcc-3.4.1/gcc/config/alpha/alpha.c
---- gcc-3.4.1.orig/gcc/config/alpha/alpha.c	2004-03-15 23:22:48.000000000 +0000
-+++ gcc-3.4.1/gcc/config/alpha/alpha.c	2004-08-20 16:43:55.555528168 +0000
-@@ -10149,6 +10149,8 @@
+ 
+diff -Naur gcc-3.4.3.orig/gcc/config/alpha/alpha.c gcc-3.4.3/gcc/config/alpha/alpha.c
+--- gcc-3.4.3.orig/gcc/config/alpha/alpha.c	2004-09-30 17:45:48.000000000 +0000
++++ gcc-3.4.3/gcc/config/alpha/alpha.c	2004-11-05 17:08:46.220272104 +0000
+@@ -10169,6 +10169,8 @@
  # define TARGET_SECTION_TYPE_FLAGS unicosmk_section_type_flags
  # undef TARGET_ASM_UNIQUE_SECTION
  # define TARGET_ASM_UNIQUE_SECTION unicosmk_unique_section
@@ -22,9 +20,9 @@ diff -Naur gcc-3.4.1.orig/gcc/config/alpha/alpha.c gcc-3.4.1/gcc/config/alpha/al
  # undef TARGET_ASM_GLOBALIZE_LABEL
  # define TARGET_ASM_GLOBALIZE_LABEL hook_void_FILEptr_constcharptr
  #endif
-diff -Naur gcc-3.4.1.orig/gcc/config/arm/pe.h gcc-3.4.1/gcc/config/arm/pe.h
---- gcc-3.4.1.orig/gcc/config/arm/pe.h	2004-02-24 14:25:22.000000000 +0000
-+++ gcc-3.4.1/gcc/config/arm/pe.h	2004-08-20 16:45:14.710494784 +0000
+diff -Naur gcc-3.4.3.orig/gcc/config/arm/pe.h gcc-3.4.3/gcc/config/arm/pe.h
+--- gcc-3.4.3.orig/gcc/config/arm/pe.h	2004-02-24 14:25:22.000000000 +0000
++++ gcc-3.4.3/gcc/config/arm/pe.h	2004-11-05 17:08:46.225271344 +0000
 @@ -97,6 +97,7 @@
  #define MULTIPLE_SYMBOL_SPACES
  
@@ -33,22 +31,22 @@ diff -Naur gcc-3.4.1.orig/gcc/config/arm/pe.h gcc-3.4.1/gcc/config/arm/pe.h
  
  #define SUPPORTS_ONE_ONLY 1
  
-diff -Naur gcc-3.4.1.orig/gcc/config/avr/avr.c gcc-3.4.1/gcc/config/avr/avr.c
---- gcc-3.4.1.orig/gcc/config/avr/avr.c	2004-03-13 06:38:12.000000000 +0000
-+++ gcc-3.4.1/gcc/config/avr/avr.c	2004-08-20 16:45:48.609341376 +0000
-@@ -232,6 +232,8 @@
+diff -Naur gcc-3.4.3.orig/gcc/config/avr/avr.c gcc-3.4.3/gcc/config/avr/avr.c
+--- gcc-3.4.3.orig/gcc/config/avr/avr.c	2004-09-28 01:13:55.000000000 +0000
++++ gcc-3.4.3/gcc/config/avr/avr.c	2004-11-05 17:56:54.764146688 +0000
+@@ -229,6 +229,8 @@
+ #define TARGET_ASM_FUNCTION_EPILOGUE avr_output_function_epilogue
+ #undef TARGET_ATTRIBUTE_TABLE
  #define TARGET_ATTRIBUTE_TABLE avr_attribute_table
- #undef TARGET_ASM_UNIQUE_SECTION
- #define TARGET_ASM_UNIQUE_SECTION avr_unique_section
 +#undef TARGET_ASM_FUNCTION_RODATA_SECTION
 +#define TARGET_ASM_FUNCTION_RODATA_SECTION default_no_function_rodata_section
  #undef TARGET_INSERT_ATTRIBUTES
  #define TARGET_INSERT_ATTRIBUTES avr_insert_attributes
  #undef TARGET_SECTION_TYPE_FLAGS
-diff -Naur gcc-3.4.1.orig/gcc/config/darwin.h gcc-3.4.1/gcc/config/darwin.h
---- gcc-3.4.1.orig/gcc/config/darwin.h	2004-04-06 18:32:59.000000000 +0000
-+++ gcc-3.4.1/gcc/config/darwin.h	2004-08-20 16:51:39.124055040 +0000
-@@ -682,6 +682,9 @@
+diff -Naur gcc-3.4.3.orig/gcc/config/darwin.h gcc-3.4.3/gcc/config/darwin.h
+--- gcc-3.4.3.orig/gcc/config/darwin.h	2004-09-11 20:32:17.000000000 +0000
++++ gcc-3.4.3/gcc/config/darwin.h	2004-11-05 17:08:46.300259944 +0000
+@@ -686,6 +686,9 @@
  #undef	TARGET_ASM_SELECT_RTX_SECTION
  #define TARGET_ASM_SELECT_RTX_SECTION machopic_select_rtx_section
  
@@ -58,9 +56,9 @@ diff -Naur gcc-3.4.1.orig/gcc/config/darwin.h gcc-3.4.1/gcc/config/darwin.h
  #define ASM_DECLARE_UNRESOLVED_REFERENCE(FILE,NAME)			\
      do {								\
  	 if (FILE) {							\
-diff -Naur gcc-3.4.1.orig/gcc/config/i386/cygming.h gcc-3.4.1/gcc/config/i386/cygming.h
---- gcc-3.4.1.orig/gcc/config/i386/cygming.h	2004-06-08 06:30:13.000000000 +0000
-+++ gcc-3.4.1/gcc/config/i386/cygming.h	2004-08-20 16:44:53.359740592 +0000
+diff -Naur gcc-3.4.3.orig/gcc/config/i386/cygming.h gcc-3.4.3/gcc/config/i386/cygming.h
+--- gcc-3.4.3.orig/gcc/config/i386/cygming.h	2004-06-08 06:30:13.000000000 +0000
++++ gcc-3.4.3/gcc/config/i386/cygming.h	2004-11-05 17:08:46.304259336 +0000
 @@ -255,6 +255,7 @@
  
  extern void i386_pe_unique_section (TREE, int);
@@ -69,9 +67,9 @@ diff -Naur gcc-3.4.1.orig/gcc/config/i386/cygming.h gcc-3.4.1/gcc/config/i386/cy
  
  #define SUPPORTS_ONE_ONLY 1
  
-diff -Naur gcc-3.4.1.orig/gcc/config/i386/i386-interix.h gcc-3.4.1/gcc/config/i386/i386-interix.h
---- gcc-3.4.1.orig/gcc/config/i386/i386-interix.h	2004-01-31 06:18:20.000000000 +0000
-+++ gcc-3.4.1/gcc/config/i386/i386-interix.h	2004-08-20 16:44:25.168026384 +0000
+diff -Naur gcc-3.4.3.orig/gcc/config/i386/i386-interix.h gcc-3.4.3/gcc/config/i386/i386-interix.h
+--- gcc-3.4.3.orig/gcc/config/i386/i386-interix.h	2004-01-31 06:18:20.000000000 +0000
++++ gcc-3.4.3/gcc/config/i386/i386-interix.h	2004-11-05 17:08:46.307258880 +0000
 @@ -344,6 +344,7 @@
  
  extern void i386_pe_unique_section (tree, int);
@@ -80,9 +78,9 @@ diff -Naur gcc-3.4.1.orig/gcc/config/i386/i386-interix.h gcc-3.4.1/gcc/config/i3
  
  #define SUPPORTS_ONE_ONLY 1
  #endif /* 0 */
-diff -Naur gcc-3.4.1.orig/gcc/config/ip2k/ip2k.c gcc-3.4.1/gcc/config/ip2k/ip2k.c
---- gcc-3.4.1.orig/gcc/config/ip2k/ip2k.c	2004-01-31 06:18:25.000000000 +0000
-+++ gcc-3.4.1/gcc/config/ip2k/ip2k.c	2004-08-20 16:42:54.505809136 +0000
+diff -Naur gcc-3.4.3.orig/gcc/config/ip2k/ip2k.c gcc-3.4.3/gcc/config/ip2k/ip2k.c
+--- gcc-3.4.3.orig/gcc/config/ip2k/ip2k.c	2004-01-31 06:18:25.000000000 +0000
++++ gcc-3.4.3/gcc/config/ip2k/ip2k.c	2004-11-05 17:08:46.352252040 +0000
 @@ -98,6 +98,9 @@
  #undef TARGET_ASM_UNIQUE_SECTION
  #define TARGET_ASM_UNIQUE_SECTION unique_section
@@ -93,9 +91,9 @@ diff -Naur gcc-3.4.1.orig/gcc/config/ip2k/ip2k.c gcc-3.4.1/gcc/config/ip2k/ip2k.
  #undef TARGET_ATTRIBUTE_TABLE
  #define TARGET_ATTRIBUTE_TABLE ip2k_attribute_table
  
-diff -Naur gcc-3.4.1.orig/gcc/config/mcore/mcore.c gcc-3.4.1/gcc/config/mcore/mcore.c
---- gcc-3.4.1.orig/gcc/config/mcore/mcore.c	2004-01-31 06:18:29.000000000 +0000
-+++ gcc-3.4.1/gcc/config/mcore/mcore.c	2004-08-20 16:42:02.558706296 +0000
+diff -Naur gcc-3.4.3.orig/gcc/config/mcore/mcore.c gcc-3.4.3/gcc/config/mcore/mcore.c
+--- gcc-3.4.3.orig/gcc/config/mcore/mcore.c	2004-01-31 06:18:29.000000000 +0000
++++ gcc-3.4.3/gcc/config/mcore/mcore.c	2004-11-05 17:08:46.384247176 +0000
 @@ -165,6 +165,8 @@
  #define TARGET_ATTRIBUTE_TABLE 		mcore_attribute_table
  #undef  TARGET_ASM_UNIQUE_SECTION
@@ -105,9 +103,9 @@ diff -Naur gcc-3.4.1.orig/gcc/config/mcore/mcore.c gcc-3.4.1/gcc/config/mcore/mc
  #undef  TARGET_ENCODE_SECTION_INFO
  #define TARGET_ENCODE_SECTION_INFO 	mcore_encode_section_info
  #undef  TARGET_STRIP_NAME_ENCODING
-diff -Naur gcc-3.4.1.orig/gcc/config/rs6000/xcoff.h gcc-3.4.1/gcc/config/rs6000/xcoff.h
---- gcc-3.4.1.orig/gcc/config/rs6000/xcoff.h	2004-01-31 06:18:34.000000000 +0000
-+++ gcc-3.4.1/gcc/config/rs6000/xcoff.h	2004-08-20 16:43:21.495706048 +0000
+diff -Naur gcc-3.4.3.orig/gcc/config/rs6000/xcoff.h gcc-3.4.3/gcc/config/rs6000/xcoff.h
+--- gcc-3.4.3.orig/gcc/config/rs6000/xcoff.h	2004-01-31 06:18:34.000000000 +0000
++++ gcc-3.4.3/gcc/config/rs6000/xcoff.h	2004-11-05 17:08:46.000000000 +0000
 @@ -172,6 +172,7 @@
  #define TARGET_ASM_SELECT_SECTION  rs6000_xcoff_select_section
  #define TARGET_ASM_SELECT_RTX_SECTION  rs6000_xcoff_select_rtx_section
@@ -116,10 +114,10 @@ diff -Naur gcc-3.4.1.orig/gcc/config/rs6000/xcoff.h gcc-3.4.1/gcc/config/rs6000/
  #define TARGET_STRIP_NAME_ENCODING  rs6000_xcoff_strip_name_encoding
  #define TARGET_SECTION_TYPE_FLAGS  rs6000_xcoff_section_type_flags
  
-diff -Naur gcc-3.4.1.orig/gcc/doc/tm.texi gcc-3.4.1/gcc/doc/tm.texi
---- gcc-3.4.1.orig/gcc/doc/tm.texi	2004-03-15 23:22:50.000000000 +0000
-+++ gcc-3.4.1/gcc/doc/tm.texi	2004-08-20 16:48:56.569767048 +0000
-@@ -5933,6 +5933,15 @@
+diff -Naur gcc-3.4.3.orig/gcc/doc/tm.texi gcc-3.4.3/gcc/doc/tm.texi
+--- gcc-3.4.3.orig/gcc/doc/tm.texi	2004-10-13 14:16:27.000000000 +0000
++++ gcc-3.4.3/gcc/doc/tm.texi	2004-11-05 17:08:46.503229088 +0000
+@@ -6003,6 +6003,15 @@
  Whatever the actual target object format, this is often good enough.
  @end deftypefn
  
@@ -135,9 +133,9 @@ diff -Naur gcc-3.4.1.orig/gcc/doc/tm.texi gcc-3.4.1/gcc/doc/tm.texi
  @deftypefn {Target Hook} void TARGET_ASM_SELECT_RTX_SECTION (enum machine_mode @var{mode}, rtx @var{x}, unsigned HOST_WIDE_INT @var{align})
  Switches to the appropriate section for output of constant pool entry
  @var{x} in @var{mode}.  You can assume that @var{x} is some kind of
-diff -Naur gcc-3.4.1.orig/gcc/final.c gcc-3.4.1/gcc/final.c
---- gcc-3.4.1.orig/gcc/final.c	2004-01-18 22:39:57.000000000 +0000
-+++ gcc-3.4.1/gcc/final.c	2004-08-20 16:41:02.706805168 +0000
+diff -Naur gcc-3.4.3.orig/gcc/final.c gcc-3.4.3/gcc/final.c
+--- gcc-3.4.3.orig/gcc/final.c	2004-01-18 22:39:57.000000000 +0000
++++ gcc-3.4.3/gcc/final.c	2004-11-05 17:08:46.542223160 +0000
 @@ -1881,7 +1881,7 @@
  		{
  		  int log_align;
@@ -147,9 +145,9 @@ diff -Naur gcc-3.4.1.orig/gcc/final.c gcc-3.4.1/gcc/final.c
  
  #ifdef ADDR_VEC_ALIGN
  		  log_align = ADDR_VEC_ALIGN (NEXT_INSN (insn));
-diff -Naur gcc-3.4.1.orig/gcc/output.h gcc-3.4.1/gcc/output.h
---- gcc-3.4.1.orig/gcc/output.h	2004-01-18 22:39:57.000000000 +0000
-+++ gcc-3.4.1/gcc/output.h	2004-08-20 16:39:56.713837624 +0000
+diff -Naur gcc-3.4.3.orig/gcc/output.h gcc-3.4.3/gcc/output.h
+--- gcc-3.4.3.orig/gcc/output.h	2004-01-18 22:39:57.000000000 +0000
++++ gcc-3.4.3/gcc/output.h	2004-11-05 17:08:46.549222096 +0000
 @@ -500,6 +500,8 @@
  					  unsigned HOST_WIDE_INT, int);
  extern void default_unique_section (tree, int);
@@ -159,9 +157,9 @@ diff -Naur gcc-3.4.1.orig/gcc/output.h gcc-3.4.1/gcc/output.h
  extern void default_select_rtx_section (enum machine_mode, rtx,
  					unsigned HOST_WIDE_INT);
  extern void default_elf_select_rtx_section (enum machine_mode, rtx,
-diff -Naur gcc-3.4.1.orig/gcc/target-def.h gcc-3.4.1/gcc/target-def.h
---- gcc-3.4.1.orig/gcc/target-def.h	2004-03-15 23:22:48.000000000 +0000
-+++ gcc-3.4.1/gcc/target-def.h	2004-08-20 16:40:37.680609728 +0000
+diff -Naur gcc-3.4.3.orig/gcc/target-def.h gcc-3.4.3/gcc/target-def.h
+--- gcc-3.4.3.orig/gcc/target-def.h	2004-08-23 18:02:40.000000000 +0000
++++ gcc-3.4.3/gcc/target-def.h	2004-11-05 17:08:46.553221488 +0000
 @@ -78,6 +78,10 @@
  #define TARGET_ASM_UNIQUE_SECTION default_unique_section
  #endif
@@ -181,9 +179,9 @@ diff -Naur gcc-3.4.1.orig/gcc/target-def.h gcc-3.4.1/gcc/target-def.h
  			TARGET_ASM_CONSTRUCTOR,			\
  			TARGET_ASM_DESTRUCTOR,                  \
                          TARGET_ASM_OUTPUT_MI_THUNK,             \
-diff -Naur gcc-3.4.1.orig/gcc/target.h gcc-3.4.1/gcc/target.h
---- gcc-3.4.1.orig/gcc/target.h	2004-03-15 23:22:48.000000000 +0000
-+++ gcc-3.4.1/gcc/target.h	2004-08-20 16:41:29.460737952 +0000
+diff -Naur gcc-3.4.3.orig/gcc/target.h gcc-3.4.3/gcc/target.h
+--- gcc-3.4.3.orig/gcc/target.h	2004-08-23 18:02:41.000000000 +0000
++++ gcc-3.4.3/gcc/target.h	2004-11-05 17:08:46.558220728 +0000
 @@ -118,6 +118,10 @@
         for SELECT_SECTION.  */
      void (* unique_section) (tree, int);
@@ -195,9 +193,9 @@ diff -Naur gcc-3.4.1.orig/gcc/target.h gcc-3.4.1/gcc/target.h
      /* Output a constructor for a symbol with a given priority.  */
      void (* constructor) (rtx, int);
  
-diff -Naur gcc-3.4.1.orig/gcc/testsuite/g++.old-deja/g++.other/comdat4-aux.cc gcc-3.4.1/gcc/testsuite/g++.old-deja/g++.other/comdat4-aux.cc
---- gcc-3.4.1.orig/gcc/testsuite/g++.old-deja/g++.other/comdat4-aux.cc	1970-01-01 00:00:00.000000000 +0000
-+++ gcc-3.4.1/gcc/testsuite/g++.old-deja/g++.other/comdat4-aux.cc	2004-08-20 16:49:20.412142456 +0000
+diff -Naur gcc-3.4.3.orig/gcc/testsuite/g++.old-deja/g++.other/comdat4-aux.cc gcc-3.4.3/gcc/testsuite/g++.old-deja/g++.other/comdat4-aux.cc
+--- gcc-3.4.3.orig/gcc/testsuite/g++.old-deja/g++.other/comdat4-aux.cc	1970-01-01 00:00:00.000000000 +0000
++++ gcc-3.4.3/gcc/testsuite/g++.old-deja/g++.other/comdat4-aux.cc	2004-11-05 17:08:46.560220424 +0000
 @@ -0,0 +1,40 @@
 +extern void
 +bar (int x);
@@ -239,9 +237,9 @@ diff -Naur gcc-3.4.1.orig/gcc/testsuite/g++.old-deja/g++.other/comdat4-aux.cc gc
 +}
 +
 +void *fooaddr2 = (void *) foo;
-diff -Naur gcc-3.4.1.orig/gcc/testsuite/g++.old-deja/g++.other/comdat4.C gcc-3.4.1/gcc/testsuite/g++.old-deja/g++.other/comdat4.C
---- gcc-3.4.1.orig/gcc/testsuite/g++.old-deja/g++.other/comdat4.C	1970-01-01 00:00:00.000000000 +0000
-+++ gcc-3.4.1/gcc/testsuite/g++.old-deja/g++.other/comdat4.C	2004-08-20 16:49:58.827302464 +0000
+diff -Naur gcc-3.4.3.orig/gcc/testsuite/g++.old-deja/g++.other/comdat4.C gcc-3.4.3/gcc/testsuite/g++.old-deja/g++.other/comdat4.C
+--- gcc-3.4.3.orig/gcc/testsuite/g++.old-deja/g++.other/comdat4.C	1970-01-01 00:00:00.000000000 +0000
++++ gcc-3.4.3/gcc/testsuite/g++.old-deja/g++.other/comdat4.C	2004-11-05 17:08:46.562220120 +0000
 @@ -0,0 +1,57 @@
 +// PR c++/16276
 +// { dg-do link }
@@ -300,9 +298,9 @@ diff -Naur gcc-3.4.1.orig/gcc/testsuite/g++.old-deja/g++.other/comdat4.C gcc-3.4
 +{
 +  return 0;
 +}
-diff -Naur gcc-3.4.1.orig/gcc/varasm.c gcc-3.4.1/gcc/varasm.c
---- gcc-3.4.1.orig/gcc/varasm.c	2004-04-14 21:14:08.000000000 +0000
-+++ gcc-3.4.1/gcc/varasm.c	2004-08-20 16:38:44.486817800 +0000
+diff -Naur gcc-3.4.3.orig/gcc/varasm.c gcc-3.4.3/gcc/varasm.c
+--- gcc-3.4.3.orig/gcc/varasm.c	2004-10-31 09:10:03.000000000 +0000
++++ gcc-3.4.3/gcc/varasm.c	2004-11-05 17:08:46.603213888 +0000
 @@ -535,6 +535,53 @@
      text_section ();
  }

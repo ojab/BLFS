@@ -1,16 +1,17 @@
-Submitted By: Zack Winkles <winkie AT linuxfromscratch DOT org>
-Date: 2004-04-06
-Initial Package Version: 3.4.0
-Origin: Originally developed for GCC 3.2 by Greg Schafer
+Submitted By: LFS PATCH
+Date: 2004-11-06
+Initial Package Version: 3.4.3
+Upstream Status: Not Sent - LFS Specfic
+Origin: Originally developed for GCC 3.2 by Greg Schafer and Zack Winkles
 Description: Prevent fixincludes script from running.
 
 $LastChangedBy$
 $Date$
 
-diff -Naur gcc-3.4.0.orig/gcc/Makefile.in gcc-3.4.0/gcc/Makefile.in
---- gcc-3.4.0.orig/gcc/Makefile.in	2004-04-05 14:24:51.298169000 -0400
-+++ gcc-3.4.0/gcc/Makefile.in	2004-04-05 14:24:59.824872888 -0400
-@@ -2477,10 +2477,6 @@
+diff -Naur gcc-3.4.3.orig/gcc/Makefile.in gcc-3.4.3/gcc/Makefile.in
+--- gcc-3.4.3.orig/gcc/Makefile.in	2004-10-18 16:00:39.000000000 +0000
++++ gcc-3.4.3/gcc/Makefile.in	2004-11-05 18:09:54.600593528 +0000
+@@ -2495,10 +2495,6 @@
  	rm -f include/limits.h
  	cp xlimits.h include/limits.h
  	chmod a+r include/limits.h
@@ -21,7 +22,7 @@ diff -Naur gcc-3.4.0.orig/gcc/Makefile.in gcc-3.4.0/gcc/Makefile.in
  	$(STAMP) $@
  
  # fixinc.sh depends on this, not on specs directly.
-@@ -2526,7 +2522,6 @@
+@@ -2544,7 +2540,6 @@
  	(TARGET_MACHINE='$(target)'; srcdir=`cd $(srcdir); ${PWD_COMMAND}`; \
  	SHELL='$(SHELL)' ;\
  	export TARGET_MACHINE srcdir SHELL ; \
