@@ -1,0 +1,6 @@
+#$LastChangedBy$
+#$Date$
+
+PORT="2049"
+PROCESSES="8"
+QUOTAS="no"

@@ -5,6 +5,9 @@
 # Rewritten by Nathan Coulson <nathan@linuxfromscratch.org>
 # Adapted for pppoe by DJ Lucas <dj@lucasit.com>
 
+#$LastChangedBy$
+#$Date$
+
 . /etc/sysconfig/rc
 . $rc_functions
 
