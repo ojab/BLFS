@@ -1,0 +1,120 @@
+Submitted By: BLFS Book <blfs-book at linuxfromscratch dot org>
+Date: 2004-02-01
+Initial Package Version: 4.6
+Origin: http://www.ghostscript.com/
+Description: Some languages have the wrong characters in dialog boxes.
+             This patch fixes the problem.
+
+$LastChangedBy: $
+$Date: $
+
+--- gsview-4.6/en/gvxlang.c.orig	2004-02-02 00:32:11.000000000 +0000
++++ gsview-4.6/en/gvxlang.c	2004-02-02 00:34:14.000000000 +0000
+@@ -19,7 +19,7 @@
+ #include "gvx.h"
+ #include "gvxres.h"
+ #include "gvxlang.h"
+-#include "en/gvclang.h"
++#include "gvclang.h"
+ 
+ /* string table ids must be in order since we use a binary search */
+ STRING_ENTRY string_en[] = {
+--- gsview-4.6/ct/gvxlang.c.orig	2004-02-02 00:32:23.000000000 +0000
++++ gsview-4.6/ct/gvxlang.c	2004-02-02 00:34:14.000000000 +0000
+@@ -19,7 +19,7 @@
+ #include "gvx.h"
+ #include "gvxres.h"
+ #include "gvxlang.h"
+-#include "ct/gvclang.h"
++#include "gvclang.h"
+ 
+ /* string table ids must be in order since we use a binary search */
+ STRING_ENTRY string_ct[] = {
+--- gsview-4.6/de/gvxlang.c.orig	2004-02-02 00:32:33.000000000 +0000
++++ gsview-4.6/de/gvxlang.c	2004-02-02 00:34:14.000000000 +0000
+@@ -19,7 +19,7 @@
+ #include "gvx.h"
+ #include "gvxres.h"
+ #include "gvxlang.h"
+-#include "de/gvclang.h"
++#include "gvclang.h"
+ 
+ /* string table ids must be in order since we use a binary search */
+ STRING_ENTRY string_de[] = {
+--- gsview-4.6/es/gvxlang.c.orig	2004-02-02 00:32:44.000000000 +0000
++++ gsview-4.6/es/gvxlang.c	2004-02-02 00:34:14.000000000 +0000
+@@ -19,7 +19,7 @@
+ #include "gvx.h"
+ #include "gvxres.h"
+ #include "gvxlang.h"
+-#include "es/gvclang.h"
++#include "gvclang.h"
+ 
+ /* string table ids must be in order since we use a binary search */
+ STRING_ENTRY string_es[] = {
+--- gsview-4.6/fr/gvxlang.c.orig	2004-02-02 00:33:08.000000000 +0000
++++ gsview-4.6/fr/gvxlang.c	2004-02-02 00:34:14.000000000 +0000
+@@ -19,7 +19,7 @@
+ #include "gvx.h"
+ #include "gvxres.h"
+ #include "gvxlang.h"
+-#include "fr/gvclang.h"
++#include "gvclang.h"
+ 
+ /* string table ids must be in order since we use a binary search */
+ STRING_ENTRY string_fr[] = {
+--- gsview-4.6/it/gvxlang.c.orig	2004-02-02 00:33:17.000000000 +0000
++++ gsview-4.6/it/gvxlang.c	2004-02-02 00:34:14.000000000 +0000
+@@ -19,7 +19,7 @@
+ #include "gvx.h"
+ #include "gvxres.h"
+ #include "gvxlang.h"
+-#include "it/gvclang.h"
++#include "gvclang.h"
+ 
+ /* string table ids must be in order since we use a binary search */
+ STRING_ENTRY string_it[] = {
+--- gsview-4.6/nl/gvxlang.c.orig	2004-02-02 00:33:27.000000000 +0000
++++ gsview-4.6/nl/gvxlang.c	2004-02-02 00:34:14.000000000 +0000
+@@ -19,7 +19,7 @@
+ #include "gvx.h"
+ #include "gvxres.h"
+ #include "gvxlang.h"
+-#include "nl/gvclang.h"
++#include "gvclang.h"
+ 
+ /* string table ids must be in order since we use a binary search */
+ STRING_ENTRY string_nl[] = {
+--- gsview-4.6/ru/gvxlang.c.orig	2004-02-02 00:33:39.000000000 +0000
++++ gsview-4.6/ru/gvxlang.c	2004-02-02 00:34:14.000000000 +0000
+@@ -19,7 +19,7 @@
+ #include "gvx.h"
+ #include "gvxres.h"
+ #include "gvxlang.h"
+-#include "ru/gvclang.h"
++#include "gvclang.h"
+ 
+ /* string table ids must be in order since we use a binary search */
+ STRING_ENTRY string_ru[] = {
+--- gsview-4.6/se/gvxlang.c.orig	2004-02-02 00:33:51.000000000 +0000
++++ gsview-4.6/se/gvxlang.c	2004-02-02 00:34:14.000000000 +0000
+@@ -19,7 +19,7 @@
+ #include "gvx.h"
+ #include "gvxres.h"
+ #include "gvxlang.h"
+-#include "se/gvclang.h"
++#include "gvclang.h"
+ 
+ /* string table ids must be in order since we use a binary search */
+ STRING_ENTRY string_se[] = {
+--- gsview-4.6/sk/gvxlang.c.orig	2004-02-02 00:34:01.000000000 +0000
++++ gsview-4.6/sk/gvxlang.c	2004-02-02 00:34:14.000000000 +0000
+@@ -19,7 +19,7 @@
+ #include "gvx.h"
+ #include "gvxres.h"
+ #include "gvxlang.h"
+-#include "sk/gvclang.h"
++#include "gvclang.h"
+ 
+ /* string table ids must be in order since we use a binary search */
+ STRING_ENTRY string_sk[] = {

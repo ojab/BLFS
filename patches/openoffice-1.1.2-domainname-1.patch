@@ -1,0 +1,26 @@
+Submitted By: Alexander E. Patrakov (semzx at newmail dot ru)
+Date: 2003-10-14
+Origin: Alexander E. Patrakov
+Initial Package Version: 1.1.0
+Description: The procedure OpenOffice performs for conversion of host names to
+fully qualified domain names is Just Wrong. It results in a DNS lookup for
+'localhost.(none)' at startup on a typical (B)LFS installation. That slows down
+things and makes DNS admins angry. The Right Thing is to do nothing in
+OpenOffice itself. Glibc will take care of that automatically.
+For discussion, see:
+http://archive.linuxfromscratch.org/mail-archives/lfs-dev/2003-October/039508.html
+
+$LastChangedBy: $
+$Date: $
+
+
+--- oo_1.1_src/sal/osl/unx/socket.c	2003-10-14 10:05:55.000000000 +0600
++++ oo_1.1_src/sal/osl/unx/socket.c	2003-10-14 10:07:58.000000000 +0600
+@@ -901,6 +901,7 @@
+ 
+ static sal_Char* _osl_getFullQualifiedDomainName (const sal_Char *pHostName)
+ {
++	return strdup(pHostName);
+ #	define DOMAINNAME_LENGTH 512
+ 	sal_uInt32 			nLengthOfHostName;
+ 	static sal_uInt32 	nLengthOfDomainName = 0;

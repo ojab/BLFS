@@ -1,0 +1,30 @@
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2004-07-30
+Initial Package Version: 1.2.9
+Upstream Status:         Not submitted 
+Origin:                  http://ep09.pld-linux.org/~mmazur/linux-libc-headers/patches/iptables.patch
+Description:             Fixes build problem using linux-2.6.7
+
+$LastChangedBy: $
+$Date: $
+
+--- iptables-1.2.9_20040308/Makefile.orig	2004-01-22 16:04:24.000000000 +0100
++++ iptables-1.2.9_20040308/Makefile	2004-03-14 15:14:55.921810496 +0100
+@@ -11,6 +11,7 @@
+ # Standard part of Makefile for topdir.
+ TOPLEVEL_INCLUDED=YES
+ 
++KERNEL_DIR=/usr
+ ifndef KERNEL_DIR
+ KERNEL_DIR=/usr/src/linux
+ endif
+@@ -32,7 +32,7 @@
+ endif
+ 
+ COPT_FLAGS:=-O2
+-CFLAGS:=$(COPT_FLAGS) -Wall -Wunused -I$(KERNEL_DIR)/include -Iinclude/ -DIPTABLES_VERSION=\"$(IPTABLES_VERSION)\" #-g -DDEBUG #-pg # -DIPTC_DEBUG
++CFLAGS:=$(COPT_FLAGS) -Wall -Wunused -Iinclude/ -DIPTABLES_VERSION=\"$(IPTABLES_VERSION)\"
+ 
+ ifdef NO_SHARED_LIBS
+ CFLAGS += -DNO_SHARED_LIBS=1
+

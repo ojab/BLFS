@@ -1,0 +1,45 @@
+Submitted By: Jim Gifford (patches at jg555 dot com)
+Date: 2004-07-26
+Initial Package Version: 1.2.5
+Origin: Jim Gifford
+Upstream Status: Sent
+Description: Fixes the missing mkinstalldirs reference
+ 
+$LastChangedBy: $
+$Date: $
+
+--- gnupg-1.2.5/po/Makefile.in.in.orig	2004-07-26 22:42:31.887821304 +0000
++++ gnupg-1.2.5/po/Makefile.in.in	2004-07-26 22:42:49.054211616 +0000
+@@ -29,7 +29,6 @@
+ INSTALL = @INSTALL@
+ INSTALL_DATA = @INSTALL_DATA@
+ MKINSTALLDIRS = @MKINSTALLDIRS@
+-mkinstalldirs = $(SHELL) `case "$(MKINSTALLDIRS)" in /*) echo "$(MKINSTALLDIRS)" ;; *) echo "$(top_builddir)/$(MKINSTALLDIRS)" ;; esac`
+ 
+ CC = @CC@
+ GMSGFMT = @GMSGFMT@
+@@ -94,7 +93,7 @@
+ install-exec:
+ install-data: install-data-@USE_NLS@
+ 	if test "$(PACKAGE)" = "gettext"; then \
+-	  $(mkinstalldirs) $(DESTDIR)$(gettextsrcdir); \
++	  $(MKINSTALLDIRS) $(DESTDIR)$(gettextsrcdir); \
+ 	  $(INSTALL_DATA) $(srcdir)/Makefile.in.in \
+ 			  $(DESTDIR)$(gettextsrcdir)/Makefile.in.in; \
+ 	else \
+@@ -102,13 +101,13 @@
+ 	fi
+ install-data-no: all
+ install-data-yes: all
+-	$(mkinstalldirs) $(DESTDIR)$(datadir)
++	$(MKINSTALLDIRS) $(DESTDIR)$(datadir)
+ 	@catalogs='$(CATALOGS)'; \
+ 	for cat in $$catalogs; do \
+ 	  cat=`basename $$cat`; \
+ 	  lang=`echo $$cat | sed 's/\.gmo$$//'`; \
+ 	  dir=$(localedir)/$$lang/LC_MESSAGES; \
+-	  $(mkinstalldirs) $(DESTDIR)$$dir; \
++	  $(MKINSTALLDIRS) $(DESTDIR)$$dir; \
+ 	  if test -r $$cat; then \
+ 	    $(INSTALL_DATA) $$cat $(DESTDIR)$$dir/$(PACKAGE).mo; \
+ 	    echo "installing $$cat as $(DESTDIR)$$dir/$(PACKAGE).mo"; \

@@ -1,0 +1,96 @@
+Submitted By: DJ Lucas (dj_at_lucasit_dot_com)
+Date: 2004-02-23
+Initial Package Version: 2.4.2
+Origin: DJ Lucas (dj_at_lucasit_dot_com)
+Description: Fix build problem in ppp-2.4.2 when compiled against
+             libpcap >= 0.8.1. (net/bpf.h moved to pcap-bpf.h)
+
+$LastChangedBy: $
+$Date: $
+
+diff -Naur ppp-2.4.2-orig/pppd/demand.c ppp-2.4.2/pppd/demand.c
+--- ppp-2.4.2-orig/pppd/demand.c	2003-03-02 23:11:45.000000000 -0600
++++ ppp-2.4.2/pppd/demand.c	2004-02-22 13:46:45.000000000 -0600
+@@ -50,7 +50,6 @@
+ #include <sys/socket.h>
+ #ifdef PPP_FILTER
+ #include <net/if.h>
+-#include <net/bpf.h>
+ #include <pcap.h>
+ #endif
+ 
+diff -Naur ppp-2.4.2-orig/pppd/plugins/rp-pppoe/config.h ppp-2.4.2/pppd/plugins/rp-pppoe/config.h
+--- ppp-2.4.2-orig/pppd/plugins/rp-pppoe/config.h	2001-12-13 20:55:20.000000000 -0600
++++ ppp-2.4.2/pppd/plugins/rp-pppoe/config.h	2004-02-22 13:47:23.000000000 -0600
+@@ -71,8 +71,8 @@
+ /* Define if you have the <linux/if_pppox.h> header file.  */
+ #define HAVE_LINUX_IF_PPPOX_H 1
+ 
+-/* Define if you have the <net/bpf.h> header file.  */
+-#define HAVE_NET_BPF_H 1
++/* Define if you have the <pcap-bpf.h> header file.  */
++#define HAVE_PCAP_BPF_H 1
+ 
+ /* Define if you have the <net/if_arp.h> header file.  */
+ #define HAVE_NET_IF_ARP_H 1
+diff -Naur ppp-2.4.2-orig/pppd/plugins/rp-pppoe/if.c ppp-2.4.2/pppd/plugins/rp-pppoe/if.c
+--- ppp-2.4.2-orig/pppd/plugins/rp-pppoe/if.c	2001-12-13 20:55:20.000000000 -0600
++++ ppp-2.4.2/pppd/plugins/rp-pppoe/if.c	2004-02-22 13:47:30.000000000 -0600
+@@ -67,6 +67,16 @@
+ #include <signal.h>
+ #include <stropts.h>
+ 
++#ifdef USE_BPF
++#include <pcap-bpf.h>
++#include <fcntl.h>
++                                                                                
++unsigned char *bpfBuffer;       /* Packet filter buffer */
++int bpfLength = 0;              /* Packet filter buffer length */
++int bpfSize = 0;                /* Number of unread bytes in buffer */
++int bpfOffset = 0;              /* Current offset in bpfBuffer */
++#endif
++
+ /* function declarations */
+ 
+ void dlpromisconreq( int fd, u_long  level);
+@@ -91,16 +101,6 @@
+ 
+ #endif
+ 
+-#ifdef USE_BPF
+-#include <net/bpf.h>
+-#include <fcntl.h>
+-
+-unsigned char *bpfBuffer;	/* Packet filter buffer */
+-int bpfLength = 0;		/* Packet filter buffer length */
+-int bpfSize = 0;		/* Number of unread bytes in buffer */
+-int bpfOffset = 0;		/* Current offset in bpfBuffer */
+-#endif
+-
+ /* Initialize frame types to RFC 2516 values.  Some broken peers apparently
+    use different frame types... sigh... */
+ 
+diff -Naur ppp-2.4.2-orig/pppd/plugins/rp-pppoe/pppoe.h ppp-2.4.2/pppd/plugins/rp-pppoe/pppoe.h
+--- ppp-2.4.2-orig/pppd/plugins/rp-pppoe/pppoe.h	2001-12-13 20:55:20.000000000 -0600
++++ ppp-2.4.2/pppd/plugins/rp-pppoe/pppoe.h	2004-02-22 13:47:39.000000000 -0600
+@@ -34,7 +34,7 @@
+ #define USE_LINUX_PACKET 1
+ #elif defined(HAVE_SYS_DLPI_H)
+ #define USE_DLPI
+-#elif defined(HAVE_NET_BPF_H)
++#elif defined(HAVE_PCAP_BPF_H)
+ #define USE_BPF 1
+ #endif
+ 
+diff -Naur ppp-2.4.2-orig/pppd/sys-linux.c ppp-2.4.2/pppd/sys-linux.c
+--- ppp-2.4.2-orig/pppd/sys-linux.c	2004-01-12 22:05:20.000000000 -0600
++++ ppp-2.4.2/pppd/sys-linux.c	2004-02-22 13:46:56.000000000 -0600
+@@ -141,7 +141,7 @@
+ #endif /* IPX_CHANGE */
+ 
+ #ifdef PPP_FILTER
+-#include <net/bpf.h>
++#include <pcap-bpf.h>
+ #include <linux/filter.h>
+ #endif /* PPP_FILTER */
+ 

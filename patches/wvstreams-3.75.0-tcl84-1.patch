@@ -1,0 +1,122 @@
+Submitted By: Igor Zivkovic <igor@linuxfromscratch.org>
+Date: 2004-07-11
+Initial Package Version: 3.75.0
+Upstream Status: Not submitted.
+Origin: Igor Zivkovic
+Description: Fixes Tcl-8.4.X detection.
+
+$LastChangedBy: $
+$Date: $
+
+diff -Naur wvstreams-3.75.0-orig/configure wvstreams-3.75.0/configure
+--- wvstreams-3.75.0-orig/configure	2004-03-13 18:59:36.000000000 +0000
++++ wvstreams-3.75.0/configure	2004-07-11 14:34:53.000000000 +0000
+@@ -4657,9 +4657,9 @@
+ if test "$with_tcl" != "no"; then
+     CPPFLAGS_save="$CPPFLAGS"
+     if test -z "$CPPFLAGS"; then
+-        CPPFLAGS="-I/usr/include/tcl8.3"
++        CPPFLAGS="-I/usr/include/tcl8.4"
+     else
+-        CPPFLAGS="$CPPFLAGS -I/usr/include/tcl8.3"
++        CPPFLAGS="$CPPFLAGS -I/usr/include/tcl8.4"
+     fi
+ 
+ 
+@@ -4779,13 +4779,13 @@
+ done
+ 
+ 
+-echo "$as_me:$LINENO: checking for TclInterpInit in -ltcl8.3" >&5
+-echo $ECHO_N "checking for TclInterpInit in -ltcl8.3... $ECHO_C" >&6
+-if test "${ac_cv_lib_tcl8_3_TclInterpInit+set}" = set; then
++echo "$as_me:$LINENO: checking for TclInterpInit in -ltcl8.4" >&5
++echo $ECHO_N "checking for TclInterpInit in -ltcl8.4... $ECHO_C" >&6
++if test "${ac_cv_lib_tcl8_4_TclInterpInit+set}" = set; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-ltcl8.3  $LIBS"
++LIBS="-ltcl8.4  $LIBS"
+ cat >conftest.$ac_ext <<_ACEOF
+ #line $LINENO "configure"
+ #include "confdefs.h"
+@@ -4823,23 +4823,23 @@
+   ac_status=$?
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); }; }; then
+-  ac_cv_lib_tcl8_3_TclInterpInit=yes
++  ac_cv_lib_tcl8_4_TclInterpInit=yes
+ else
+   echo "$as_me: failed program was:" >&5
+ cat conftest.$ac_ext >&5
+-ac_cv_lib_tcl8_3_TclInterpInit=no
++ac_cv_lib_tcl8_4_TclInterpInit=no
+ fi
+ rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
+ LIBS=$ac_check_lib_save_LIBS
+ fi
+-echo "$as_me:$LINENO: result: $ac_cv_lib_tcl8_3_TclInterpInit" >&5
+-echo "${ECHO_T}$ac_cv_lib_tcl8_3_TclInterpInit" >&6
+-if test $ac_cv_lib_tcl8_3_TclInterpInit = yes; then
++echo "$as_me:$LINENO: result: $ac_cv_lib_tcl8_4_TclInterpInit" >&5
++echo "${ECHO_T}$ac_cv_lib_tcl8_4_TclInterpInit" >&6
++if test $ac_cv_lib_tcl8_4_TclInterpInit = yes; then
+   cat >>confdefs.h <<_ACEOF
+-#define HAVE_LIBTCL8_3 1
++#define HAVE_LIBTCL8_4 1
+ _ACEOF
+ 
+-  LIBS="-ltcl8.3 $LIBS"
++  LIBS="-ltcl8.4 $LIBS"
+ 
+ else
+   with_tcl=no
+diff -Naur wvstreams-3.75.0-orig/configure.ac wvstreams-3.75.0/configure.ac
+--- wvstreams-3.75.0-orig/configure.ac	2004-03-13 18:59:36.000000000 +0000
++++ wvstreams-3.75.0/configure.ac	2004-07-11 14:34:02.000000000 +0000
+@@ -202,9 +202,9 @@
+ # tcl
+ if test "$with_tcl" != "no"; then
+     CPPFLAGS_save="$CPPFLAGS"
+-    WV_APPEND(CPPFLAGS, -I/usr/include/tcl8.3)
++    WV_APPEND(CPPFLAGS, -I/usr/include/tcl8.4)
+     AC_CHECK_HEADERS(tcl.h,, [with_tcl=no])
+-    AC_CHECK_LIB(tcl8.3, TclInterpInit,, [with_tcl=no])
++    AC_CHECK_LIB(tcl8.4, TclInterpInit,, [with_tcl=no])
+     if test "$with_tcl" != "no"; then
+         CPPFLAGS="$CPPFLAGS_save"
+     fi
+diff -Naur wvstreams-3.75.0-orig/include/wvautoconf.h.in wvstreams-3.75.0/include/wvautoconf.h.in
+--- wvstreams-3.75.0-orig/include/wvautoconf.h.in	2004-03-13 18:59:36.000000000 +0000
++++ wvstreams-3.75.0/include/wvautoconf.h.in	2004-07-11 14:34:59.000000000 +0000
+@@ -42,8 +42,8 @@
+ /* Define to 1 if you have the `ssl' library (-lssl). */
+ #undef HAVE_LIBSSL
+ 
+-/* Define to 1 if you have the `tcl8.3' library (-ltcl8.3). */
+-#undef HAVE_LIBTCL8_3
++/* Define to 1 if you have the `tcl8.4' library (-ltcl8.4). */
++#undef HAVE_LIBTCL8_4
+ 
+ /* Define to 1 if you have the `vorbis' library (-lvorbis). */
+ #undef HAVE_LIBVORBIS
+diff -Naur wvstreams-3.75.0-orig/vars.mk wvstreams-3.75.0/vars.mk
+--- wvstreams-3.75.0-orig/vars.mk	2004-03-13 18:59:36.000000000 +0000
++++ wvstreams-3.75.0/vars.mk	2004-07-11 14:34:20.000000000 +0000
+@@ -22,7 +22,7 @@
+ ifneq ("$(with_swig)", "no")
+   ifneq ("$(with_tcl)", "no")
+     TARGETS += libuniconf_tcl.so
+-    CPPFLAGS += -I/usr/include/tcl8.3
++    CPPFLAGS += -I/usr/include/tcl8.4
+   endif
+ endif
+ 
+@@ -178,5 +178,5 @@
+ libwvgtk.a libwvgtk.so: $(call objects,gtk)
+ libwvgtk.so: -lgtk -lgdk libwvstreams.so libwvutils.so
+ 
+-libuniconf_tcl.so: bindings/uniconf_tcl.o -ltcl8.3 -luniconf
++libuniconf_tcl.so: bindings/uniconf_tcl.o -ltcl8.4 -luniconf
+ 

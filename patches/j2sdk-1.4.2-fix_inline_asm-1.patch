@@ -1,0 +1,28 @@
+Submitted By: Jim Gifford (jim at linuxfromscratch dot org)
+Date: 2003-10-19
+Initial Package Version: 1.4.2
+Origin: Suggestion from http://gcc.gnu.org/bugzilla/show_bug.cgi?id=12590
+Description: Fixes inline asm error listed below
+
+	hotspot/src/os_cpu/linux_i486/vm/atomic_linux_i486.inline.hpp:
+	In  function `jboolean JVM_CX8Field(JNIEnv*, _jobject*, _jfieldID*, long long
+        int, long long int)':
+	hotspot/src/os_cpu/linux_i486/vm/atomic_linux_i486.inline.hpp:50:
+	error: impossible constraint in `asm'
+ 
+
+$LastChangedBy: $
+$Date: $
+
+diff -Naur java.orig/hotspot/src/os_cpu/linux_i486/vm/atomic_linux_i486.inline.hpp java/hotspot/src/os_cpu/linux_i486/vm/atomic_linux_i486.inline.hpp
+--- java.orig/hotspot/src/os_cpu/linux_i486/vm/atomic_linux_i486.inline.hpp	2003-09-11 01:40:30.000000000 +0000
++++ java/hotspot/src/os_cpu/linux_i486/vm/atomic_linux_i486.inline.hpp	2003-10-19 17:41:48.000000000 +0000
+@@ -49,7 +49,7 @@
+   jlong old_value;
+   __asm__ volatile (  "pushl %%ebx;mov 4+%1,%%ecx;mov %1,%%ebx;lock;cmpxchg8b (%3);popl %%ebx"
+                     : "=A" (old_value)
+-                    : "o" (exchange_value), "A" (compare_value), "r" (dest)
++                    : "m" (exchange_value), "A" (compare_value), "r" (dest)
+                     : "%ebx", "%ecx", "memory");
+   return old_value;
+ }

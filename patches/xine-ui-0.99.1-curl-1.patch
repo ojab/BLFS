@@ -1,0 +1,21 @@
+Submitted By: BLFS Book <blfs-book at linuxfromscratch dot org>
+Date: 2004-02-07
+Initial Package Version: 0.9.23
+Origin: blfs.support
+Description: Fixes compilation if cURL is installed and utilized.
+
+$LastChangedBy: $
+$Date: $
+
+--- xine-ui-0.9.23/src/xitk/common.h.orig	2004-02-08 06:07:02.000000000 +0000
++++ xine-ui-0.9.23/src/xitk/common.h	2004-02-08 06:08:17.000000000 +0000
+@@ -80,6 +80,9 @@
+ #include <lirc/lirc_client.h>
+ #endif
+ 
++#define FALSE                   0
++#define TRUE                    1
++
+ /*
+  * config related constants
+  */
