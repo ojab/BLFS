@@ -18,7 +18,7 @@ case "$1" in
 		# have the _netdev option.  This is required for network
 		# filesystems to be mounted at boot time.
 		echo "Mounting network volumes..."
-		mount -a -O _netdev
+		/bin/mount -a -O _netdev
 		evaluate_retval
 		;;
 
@@ -28,8 +28,9 @@ case "$1" in
 		# The following line obtains a list from the output of
 		# mount for all netfs types and anything that was
 		# mounted with the _netdev option.
-		NETMOUNTS=`mount | grep '_netdev\|smbfs\|ncpfs|\coda\|nfs' \
-			| cut -d " " -f 3 | sed 's/$/ /g'`
+		NETMOUNTS=`/bin/mount \
+			| /bin/grep '_netdev\|smbfs\|ncpfs|\coda\|nfs' \
+			| /usr/bin/cut -d " " -f 3 | /bin/sed 's/$/ /g'`
 
 		# Check to see if anything was listed from above
 		# (see if anything is actually needs to be unmounted)
@@ -37,11 +38,11 @@ case "$1" in
 		then
 			# There is something mounted
 			# terminate the echo -n above
-			echo " "
+			echo ""
 
 			# Try and stop processes the nice way
 			# (probably won't work in most cases)
-			fuser -m -SIGTERM $NETMOUNTS > /dev/null
+			/bin/fuser -m -SIGTERM $NETMOUNTS > /dev/null
 
 			# Check and see if it found anything.  If it
 			# did, then give 3 seconds for things to exit
@@ -49,8 +50,8 @@ case "$1" in
 			# This one will work all of the time!
 			if [ $? == 0 ]
 			then
-				sleep 3
-				fuser -km $NETMOUNTS > /dev/null
+				/bin/sleep 3
+				/bin/fuser -km $NETMOUNTS > /dev/null
 			fi
 
 			# We now need to unmount all network filesystems.
@@ -58,7 +59,7 @@ case "$1" in
 			# for broken behavior of smbmount, and also to make
 			# certain that netmounts without the _netdev option
 			# will still get unmounted.
-			umount -a -O _netdev
+			/bin/umount -a -O _netdev
 			# save the retval
 			if [ $? != 0 ]
 			then
@@ -68,7 +69,7 @@ case "$1" in
 			# Now catch the rest of the network filesystems
 			# by fstype.  This list can be extended later as
 			# more network filesystems are supported by mount.
-			umount -a -t coda,ncpfs,nfs,smbfs
+			/bin/umount -a -t coda,ncpfs,nfs,smbfs
 			if [ $? == 0 ]
 			then
 				[ -z $NERRVAL ]

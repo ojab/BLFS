@@ -23,7 +23,7 @@ case "$1" in
 
 	reload)
 		echo "Reloading xinetd..."
-		killall -HUP xinetd
+		reloadproc /usr/sbin/xinetd
 		;;
 
 	restart)

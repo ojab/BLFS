@@ -18,11 +18,11 @@ case "$1" in
 
 	stop)
 		echo "Stopping Sendmail..."
-		killproc sendmail
+		killproc /usr/sbin/sendmail
 		;;
 
 	status)
-		statusproc sendmail
+		statusproc /usr/sbin/sendmail
 		;;
 
 	restart)

@@ -28,48 +28,49 @@ case "$1" in
 		fi
 		
 		# NFSD support only in 2.6 kernel
-		/bin/uname -r | grep "2.6"
+		/bin/uname -r | /bin/grep "2.6"
 		if [ $? == 0 ]; then
 			echo "Mounting nfsd virtual filesystem..."
-			mount -t nfsd none /proc/fs/nfsd 2>&1 > /dev/null
+			/bin/mount -t nfsd none /proc/fs/nfsd 2>&1 > /dev/null
 			evalutate_retval
 		fi
 
 		# Make ceratin that the list is refreshed on 
 		# a restart.
 		echo "Starting NFS Server..."
-		exportfs -ra 2>&1 > /dev/null
+		/usr/sbin/exportfs -ra 2>&1 > /dev/null
 		evaluate_retval
 		;;
 
 	stop)
 		echo "Stopping NFS statd..."
-		killproc rpc.statd
+		killproc /usr/sbin/rpc.statd
 
 		echo "Stopping NFS nfsd..."
 		# nfsd needs HUP....
 		TEMPSTOPSIG="$STOPSIG"
 		STOPSIG="HUP"
+		## Special case for nfsd with no full path
 		killproc nfsd
 		# return STOPSIG to it's orginal value...
 		STOPSIG="$TEMPSTOPSIG"
 
 		echo "Stopping NFS mountd..."
-		killproc rpc.mountd
+		killproc /usr/sbin/rpc.mountd
 
 		if [ "$QUOTAS" == "yes" ]; then
 			echo "Stopping NFS rquotad..."
-			killproc rpc.rquotad
+			killproc /usr/sbin/rpc.rquotad
 		fi
 
 		echo "Stopping NFS Server Services..."
-		exportfs -au 2>&1 > /dev/null
+		/usr/sbin/exportfs -au 2>&1 > /dev/null
 		evaluate_retval
 		;;
 
 	reload)
 		echo "Reloading NFS Server..."
-		exportfs -ra
+		/usr/sbin/exportfs -ra
 		evaluate_retval
 		;;
 
@@ -80,9 +81,10 @@ case "$1" in
 		;;
 
 	status)
-		statusproc rpc.mountd
+		statusproc /usr/sbin/rpc.mountd
+		## Special case for nfsd with no full path
 		statusproc nfsd
-		statusproc rpc.statd
+		statusproc /usr/sbin/rpc.statd
 		if [ "$QUOTA" == "yes" ]; then
 			statusproc rpc.rquotad
 		fi

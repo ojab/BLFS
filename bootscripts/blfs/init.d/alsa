@@ -17,7 +17,7 @@ case "$1" in
 		echo "Starting ALSA...    Restoring volumes..."
 		loadproc /usr/sbin/alsactl restore
 		#echo "                    Loading MIDI font..."
-		#loadproc sfxload /path/to/soundfont
+		#loadproc /usr/sbin/sfxload /path/to/soundfont
 		;;
 
 	stop)

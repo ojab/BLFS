@@ -13,32 +13,32 @@
 case "$1" in
 	start)
 		echo "Starting Postfix..."
-		loadproc postfix start
+		loadproc /usr/sbin/postfix start
 		;;
 
 	stop)
 		echo "Stopping Postfix..."
-		loadproc postfix stop
+		loadproc /usr/sbin/postfix stop
 		;;
 
 	reload)
 		echo "Reloading Postfix..."
-		loadproc postfix reload
+		loadproc /usr/sbin/postfix reload
 		;;
 
 	abort)
 		echo "Aborting Postfix..."
-		loadproc postfix abort
+		loadproc /usr/sbin/postfix abort
 		;;
 
 	flush)
 		echo "Flushing Postfix..."
-		loadproc postfix flush
+		loadproc /usr/sbin/postfix flush
 		;;
 
 	check)
 		echo "Checking Postfix..."
-		loadproc postfix check
+		loadproc /usr/sbin/postfix check
 		;;
 
 	restart)

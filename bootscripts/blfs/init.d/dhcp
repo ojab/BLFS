@@ -13,17 +13,17 @@
 case "$1" in
 	start)
 		echo "Starting DHCP Server..."
-		loadproc dhcpd -q eth1
+		loadproc /usr/sbin/dhcpd -q eth1
 		;;
 
 	stop)
 		echo "Stopping DHCP Server..."
-		killproc dhcpd
+		killproc /usr/sbin/dhcpd
 		;;
 
 	reload)
 		echo "Reloading DHCP Server..."
-		reloadproc dhcpd
+		reloadproc /usr/sbin/dhcpd
 		;;
 
 	restart)
@@ -33,7 +33,7 @@ case "$1" in
 		;;
 
 	status)
-		statusproc dhcpd
+		statusproc /usr/sbin/dhcpd
 		;;
 
 	*)

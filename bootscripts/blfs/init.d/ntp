@@ -10,12 +10,12 @@
 case "$1" in
 	start)
 		echo "Starting ntpd..."
-		loadproc ntpd
+		loadproc /usr/sbin/ntpd
 		;;
 
 	stop)
 		echo "Stopping ntpd..."
-		killproc ntpd
+		killproc /usr/sbin/ntpd
 		;;
 
 	restart)
@@ -25,7 +25,7 @@ case "$1" in
 		;;
 
 	status)
-		statusproc ntpd
+		statusproc /usr/sbin/ntpd
 		;;
 
 	*)

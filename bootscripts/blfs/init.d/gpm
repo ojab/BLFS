@@ -26,12 +26,12 @@ fi
 case "$1" in
 	start)
 		echo "Starting gpm..."
-		loadproc gpm -m "$MDEVICE" -t "$PROTOCOL" "$GPMOPTS"
+		loadproc /usr/sbin/gpm -m "$MDEVICE" -t "$PROTOCOL" "$GPMOPTS"
 		;;
 
 	stop)
 		echo "Stopping gpm..."
-		killproc gpm
+		killproc /usr/sbin/gpm
 		;;
 
 	restart)
@@ -41,7 +41,7 @@ case "$1" in
 		;;
 
 	status)
-		statusproc gpm
+		statusproc /usr/sbin/gpm
 		;;
 
 	*)
