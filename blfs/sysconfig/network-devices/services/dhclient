@@ -11,13 +11,13 @@
                                                                                 
 case "$2" in
         up)
-                echo "Bringing up the $1 interface (dhclient)..."
+                echo "Starting dhclient on the interface..."
                 /sbin/dhclient $1 $DHCP_START
                 evaluate_retval
         ;;
                                                                                 
         down)
-                echo "Bringing down the $1 interface (dhclient)..."
+                echo "Stoping dhclient on the $1 interface..."
 		if [ "$DHCP_STOP" == "" ]
 		then
 			# This breaks multiple interfaces please provide
