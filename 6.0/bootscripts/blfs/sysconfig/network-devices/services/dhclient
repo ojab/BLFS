@@ -1,0 +1,41 @@
+#!/bin/sh
+# Begin $network-devices/services/dhclient
+
+# Based upon lfs-bootscripts-1.12 $network_devices/if{down,up}
+# Rewritten by Nathan Coulson <nathan@linuxfromscratch.org>
+# Adapted for dhclient by DJ Lucas <dj@lucasit.com>
+
+#$LastChangedBy$
+#$Date$
+
+. /etc/sysconfig/rc
+. $rc_functions
+. $IFCONFIG
+                                                                                
+case "$2" in
+        up)
+                echo "Starting dhclient on the interface..."
+                /sbin/dhclient $1 $DHCP_START
+                evaluate_retval
+        ;;
+                                                                                
+        down)
+                echo "Stoping dhclient on the $1 interface..."
+		if [ "$DHCP_STOP" == "" ]
+		then
+			# This breaks multiple interfaces please provide
+			# the correct stop arguments.
+			killproc dhclient
+		else
+                	/sbin/dhclient $1 $DHCP_STOP
+                	evaluate_retval
+		fi
+        ;;
+                                                                                
+        *)
+                echo "Usage: $0 [interface] {up|down}"
+                exit 1
+        ;;
+esac
+                                                                                
+# End $network_devices/services/dhclient

@@ -1,0 +1,106 @@
+Submitted By: Jeremy Utley (jeremy@linuxfromscratch.org)
+Date: 2004-04-11
+Initial Package Version: 0.7.11
+Upstream Status: Not Submitted
+Origin: Self Created
+Description: Fixes syntax issues with GCC 3.4
+
+$LastChangedBy$
+$Date$
+
+diff -ur soup-0.7.11/src/libwsdl/wsdl-soap-memory.c 
+soup-0.7.11.jbit/src/libwsdl/wsdl-soap-memory.c
+--- soup-0.7.11/src/libwsdl/wsdl-soap-memory.c	2001-08-26 18:38:53.000000000 -0700
++++ soup-0.7.11.jbit/src/libwsdl/wsdl-soap-memory.c	2004-04-13 14:37:17.271344628 -0700
+@@ -33,14 +33,14 @@
+ 
+ 	while (param->name != NULL) {
+ 		if (param->typecode == NULL) {
+-			g_warning (G_GNUC_FUNCTION
+-				   ": Parameter %s has no typecode!",
+-				   param->name);
++			g_warning (
++				   "%s: Parameter %s has no typecode!",
++				   G_GNUC_FUNCTION, param->name);
+ 		} else {
+ 			if (param->param == NULL) {
+-				g_warning (G_GNUC_FUNCTION
+-					   ": Parameter %s has no "
+-					   "memory location!",
++				g_warning (
++					   "%s: Parameter %s has no "
++					   "memory location!", G_GNUC_FUNCTION,
+ 					   param->name);
+ 			} else {
+ 				memset (param->param, 
+@@ -71,8 +71,8 @@
+ 
+ 	while (param->name != NULL) {
+ 		if (param->typecode == NULL) {
+-			g_warning (G_GNUC_FUNCTION
+-				   ": Parameter %s has no typecode!",
++			g_warning (
++				   "%s: Parameter %s has no typecode!", G_GNUC_FUNCTION,
+ 				   param->name);
+ 		} else {
+ 			if (param->param != NULL &&
+diff -ur soup-0.7.11/src/libwsdl/wsdl-soap-parse.c soup-0.7.11.jbit/src/libwsdl/wsdl-soap-parse.c
+--- soup-0.7.11/src/libwsdl/wsdl-soap-parse.c	2002-05-03 13:14:27.000000000 -0700
++++ soup-0.7.11.jbit/src/libwsdl/wsdl-soap-parse.c	2004-04-13 14:35:51.883142637 -0700
+@@ -37,7 +37,7 @@
+ 
+ 	switch (wsdl_typecode_kind (typecode)) {
+ 	case WSDL_TK_GLIB_NULL:
+-		g_warning ("Invalid typecode NULL in " G_GNUC_FUNCTION);
++		g_warning ("Invalid typecode NULL in %s", G_GNUC_FUNCTION);
+ 		break;
+ 
+ 	case WSDL_TK_GLIB_VOID:
+@@ -203,7 +203,7 @@
+ 		/* Handled elsewhere */
+ 		break;
+ 	case WSDL_TK_GLIB_MAX:
+-		g_warning ("Invalid typecode MAX in " G_GNUC_FUNCTION);
++		g_warning ("Invalid typecode MAX in %s", G_GNUC_FUNCTION);
+ 		break;
+ 	}
+ }
+diff -ur soup-0.7.11/src/libwsdl/wsdl-typecodes.c soup-0.7.11.jbit/src/libwsdl/wsdl-typecodes.c
+--- soup-0.7.11/src/libwsdl/wsdl-typecodes.c	2002-04-05 12:46:30.000000000 -0800
++++ soup-0.7.11.jbit/src/libwsdl/wsdl-typecodes.c	2004-04-13 14:35:06.786126919 -0700
+@@ -977,7 +977,7 @@
+ {
+ 	switch (tc->kind) {
+ 	case WSDL_TK_GLIB_NULL:
+-		g_warning ("Invalid typecode NULL in " G_GNUC_FUNCTION);
++		g_warning ("Invalid typecode NULL in %s", G_GNUC_FUNCTION);
+ 		return (0);
+ 		break;
+ 
+@@ -1082,7 +1082,7 @@
+ 		break;
+ 
+ 	case WSDL_TK_GLIB_MAX:
+-		g_warning ("Invalid typecode MAX in " G_GNUC_FUNCTION);
++		g_warning ("Invalid typecode MAX in %s", G_GNUC_FUNCTION);
+ 		return (0);
+ 		break;
+ 	}
+@@ -1106,7 +1106,7 @@
+ {
+ 	switch (tc->kind) {
+ 	case WSDL_TK_GLIB_NULL:
+-		g_warning ("Invalid typecode NULL in " G_GNUC_FUNCTION);
++		g_warning ("Invalid typecode NULL in %s", G_GNUC_FUNCTION);
+ 		return (0);
+ 		break;
+ 
+@@ -1218,7 +1218,7 @@
+ 		break;
+ 
+ 	case WSDL_TK_GLIB_MAX:
+-		g_warning ("Invalid typecode MAX in " G_GNUC_FUNCTION);
++		g_warning ("Invalid typecode MAX in %s", G_GNUC_FUNCTION);
+ 		return (0);
+ 		break;
+ 	}

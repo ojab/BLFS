@@ -1,0 +1,65 @@
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2004-11-29
+Initial Package Version: 1.6.2
+Upstream Status:         Not submitted (LFS/FHS specific)
+Origin:                  Randy McMurchy
+Description:             Modifies the installation layout to conform with 
+                         LFS and FHS Guidelines
+
+$LastChangedBy$
+$Date$
+
+diff -Naur apache-ant-1.6.2-orig/build.xml apache-ant-1.6.2/build.xml
+--- apache-ant-1.6.2-orig/build.xml	2004-07-16 07:57:30.000000000 +0000
++++ apache-ant-1.6.2/build.xml	2004-11-30 04:13:56.360978512 +0000
+@@ -121,7 +121,8 @@
+   <property name="dist.bin" value="${dist.dir}/bin"/>
+   <property name="dist.lib" value="${dist.dir}/lib"/>
+   <property name="dist.docs" value="${dist.dir}/docs"/>
+-  <property name="dist.etc" value="${dist.dir}/etc"/>
++  <property name="dist.readme" value="${dist.dir}/readme"/>
++  <property name="dist.etc" value="/etc/ant"/>
+   <property name="dist.javadocs" value="${dist.dir}/docs/manual/api"/>
+ 
+   <property name="src.dist.dir" value="dist-src"/>
+@@ -921,6 +922,7 @@
+     <mkdir dir="${dist.dir}"/>
+     <mkdir dir="${dist.bin}"/>
+     <mkdir dir="${dist.lib}"/>
++    <mkdir dir="${dist.readme}"/>
+ 
+     <copy todir="${dist.lib}">
+       <fileset dir="${build.lib}">
+@@ -999,7 +1001,7 @@
+       </fileset>
+     </copy>
+ 
+-    <copy todir="${dist.dir}">
++    <copy todir="${dist.readme}">
+       <fileset dir=".">
+         <include name="README"/>
+         <include name="LICENSE"/>
+
+diff -Naur apache-ant-1.6.2-orig/src/script/ant apache-ant-1.6.2/src/script/ant
+--- apache-ant-1.6.2-orig/src/script/ant        2004-07-16 07:56:50.000000000 +0000
++++ apache-ant-1.6.2/src/script/ant     2004-11-30 07:12:48.328471464 +0000
+@@ -44,8 +44,8 @@
+   usejikes=$use_jikes_default
+ else
+   # load system-wide ant configuration
+-  if [ -f "/etc/ant.conf" ] ; then
+-    . /etc/ant.conf
++  if [ -f "/etc/ant/ant.conf" ] ; then
++    . /etc/ant/ant.conf
+   fi
+
+   # load user ant configuration
+@@ -244,7 +244,7 @@
+   echo $0 '[script options] [options] [target [target2 [target3] ..]]'
+   echo 'Script Options:'
+   echo '  --help, --h            print this message and ant help'
+-  echo '  --noconfig             suppress sourcing of /etc/ant.conf,'
++  echo '  --noconfig             suppress sourcing of /etc/ant/ant.conf,'
+   echo '                         $HOME/.ant/ant.conf, and $HOME/.antrc'
+   echo '                         configuration files'
+   echo '  --usejikes             enable use of jikes by default, unless'

@@ -1,0 +1,93 @@
+#!/bin/sh
+# Begin $network-devices/services/dhcpcd
+
+# Based upon lfs-bootscripts-1.12 $network_devices/if{down,up}
+# Rewritten by Nathan Coulson <nathan@linuxfromscratch.org>
+# Adapted for dhcpcd by DJ Lucas <dj@lucasit.com>
+
+#$LastChangedBy$
+#$Date$
+
+. /etc/sysconfig/rc
+. $rc_functions
+. $IFCONFIG
+
+PIDFILE="/var/run/dhcpcd-$1.pid"
+LEASEINFO="/var/lib/dhcpc/dhcpcd-$1.info"
+
+case "$2" in
+        up)
+                echo -n "Starting dhcpcd on the $1 interface..."
+                # Test to see if there is a stale pid file
+                if [ -f "$PIDFILE" ]
+                then
+                    ps `cat "$PIDFILE"` | grep dhcpcd > /dev/null
+                    if [ $? != 0 ]
+                    then
+                        rm -f /var/run/dhcpcd-$1.pid > /dev/null
+                    else
+                        print_status warning running
+                        exit 2
+                    fi
+                fi
+                /sbin/dhcpcd $1 $DHCP_START
+		# Save the return value
+		RET="$?"
+		# Print the assigned settings if requested
+		if [ "$RET" == "0" -a "$PRINTIP" == "yes" ]; then
+			. /var/lib/dhcpc/dhcpcd-$1.info
+			if [ "$PRINTALL" == "yes" ]; then
+				echo ""
+				print_status success
+				echo "           DHCP Assigned Settings for $1:"
+				echo "           IP Address:      $IPADDR"
+				echo "           Subnet Mask:     $NETMASK"
+				echo "           Default Gateway: $GATEWAY"
+				echo "           DNS Server:      $DNS"
+			else
+				echo " IP Addresss: ""$IPADDR""..."
+				print_status success
+			fi
+		else
+			echo ""
+			$(exit "$RET")
+			evaluate_retval
+		fi
+        ;;
+                                                                                
+        down)
+		echo "Stopping dhcpcd on the $1 interface..."
+		# Do nothing with the client daemon if we have an infinate 
+		# lease time as the client exits when started in this case,
+		# just echo OK.
+		if [ -e $LEASEINFO ]
+		then
+		    . $LEASEINFO
+
+		    if [ "$LEASETIME" = "4294967295" ]
+		    then
+			# do nothing, just echo ok
+			print_status ok
+		    else
+			if [ -z "$DHCP_STOP" ]
+			then
+			    killproc dhcpcd
+			else
+			    /sbin/dhcpcd $1 $DHCP_STOP
+			    evaluate_retval
+			fi
+		    fi
+		else 
+		    echo "LEASEINFO Test failed"
+		    print_status warning not_running
+		    exit 1
+		fi
+        ;;
+                                                                                
+        *)
+                echo "Usage: $0 [interface] {up|down}"
+                exit 1
+        ;;
+esac
+                                                                                
+# End $network_devices/services/dhcpcd

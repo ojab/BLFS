@@ -1,0 +1,12 @@
+<chapter id="intro-important">
+<?dbhtml filename="important.html"?>
+<title>Important Information</title>
+
+&intro-important-pkgmgt;
+&intro-important-unpacking;
+&intro-important-position;
+&intro-important-patches;
+&intro-important-bootscripts;
+&intro-important-beyond;
+
+</chapter>

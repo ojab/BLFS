@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+   "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" >
+
+<chapter id="chapter07">
+<chapterinfo>
+<othername>$Author$</othername>
+<date>$Date$</date>
+</chapterinfo>
+<title>Overall editing policy</title>
+<?dbhtml filename="chapter07.html"?>
+
+<para>This section needs further development. Suggestions are welcome.</para>
+
+<section id="ch07-apps">
+<title>Adding Applications</title>
+<para>To be developed.  When should new apps be added to the book.</para>
+</section>
+
+<section id='ch07-build-instructions'>
+<title>Build Instructions</title>
+
+<para>When developing instructions to build a package, the editor should
+recommend a preferred build method&mdash;one that is reliable, stable, and performs
+well.  The editor uses his best judgement to determine the appropriate switches
+and methodology for the typical user in each section.  In some cases, the
+number of options is large and there should be a note placed in the text to
+tell the user to consult other documentaion for additional options.
+</para>
+</section>
+
+<section id="ch07-optimization">
+<title>Optimization</title>
+
+<para>Generally custom optimization beyond the application's default
+optimization should not be encouraged.  It generally causes more problems than
+it is worth.  In some cases, certain optimizations may be recommended, but this
+should be done with appropriate warnings.</para> 
+</section>
+
+<section id="ch07-patches">
+<title>Patches</title>
+<para>To be developed.  </para>
+</section>
+
+<section id="ch07-scripts">
+<title>Scripts</title>
+<para>To be developed.  </para>
+</section>
+
+
+<section id="ch07-tagging">
+<title>Adding Tags</title>
+
+<itemizedlist>
+
+<listitem><para>acronym -- a word formed from the initial letter or
+letters of each of the successive parts or major parts of a compound
+term.</para></listitem>
+
+<listitem><para>filename -- a filename, a fully qualified file name, a
+directory (use class="directory"), a library file (use
+class="libraryfile"). Do not encapsulate an acronym tag with
+a filename tag, use either/or based on the usage.</para>
+
+<para>Other extentions that may be used are extention, devicefile, headerfile,
+partition and symlink.  These are not normally used, but could be used in the
+future in the rendering process.</para></listitem>
+
+<listitem><para>envar -- an environmental variable, can be common or
+temporary.</para></listitem>
+
+<listitem><para>command -- any string that will execute when entered at
+the prompt (not just bash prompts).</para></listitem>
+
+<listitem><para>userinput -- usually encapsulates "command" when it is
+expected that the user is required to input the command to proceed.
+"command"s may terminate within userinput to continue showing items that
+must be typed in, but are not commands. </para></listitem>
+
+<listitem><para>option -- Should be used when command
+options are written without the command, as use
+&lt;option&gt;-q&lt;/option&gt; for quiet operation.</para></listitem>
+
+<listitem><para>application -- The proper name of the package.</para></listitem>
+
+<listitem><para>screen -- This creates a 'verbatim' environment that
+allows spacing to be controlled. Mainly used as it simulates a
+console. It should not be encapsulated by &lt;para&gt; unless unscreened
+text is present.</para></listitem>
+
+<listitem><para>replaceable -- used with screen to encapsulate text that
+is not to be typed as seen or copy and pasted. The text should also be
+encapsulated in brackets '[]' for text browser users. It should also be
+used outside of the 'screen' where your instructions are for what is to
+replace it.</para></listitem>
+
+<listitem><para>emphasis role="strong" -- used when an assumption is made in
+the instructions that may not always be true, i.e. your network connection is
+on &lt;emphasis role=strong&gt;eth0&lt;emphasis&gt;.  Especially prior to
+giving script instructions using that assumption.</para></listitem>
+
+<listitem><para>parameter -- used primarily in the command explanations
+section for items that are not commands.</para></listitem>
+
+</itemizedlist>
+
+<note><para>There are several ways to use the userinput, command, option,
+replaceable, parameter, envar, constant, varname, etc., tags.  Don't overdo it.
+In many cases, the tags will not change the output and will make editing the
+XML text more difficult.  Generally, a single set of tags around a block of
+text is sufficient.</para></note>
+
+</section>
+
+
+</chapter>

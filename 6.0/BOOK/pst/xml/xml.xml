@@ -1,0 +1,18 @@
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+   "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<chapter id="pst-xml">
+<?dbhtml filename="xml.html"?>
+<title>Extensible Markup Language (<acronym>XML</acronym>)</title>
+
+<para>This chapter contains the DocBook <acronym>XML</acronym> document
+type definition (<acronym>DTD</acronym>) and DocBook Stylesheets
+which are used to validate, transform, format and publish DocBook documents.</para>
+
+<xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="docbook.xml"/> 
+<xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="docbook-xsl.xml"/> 
+
+</chapter>

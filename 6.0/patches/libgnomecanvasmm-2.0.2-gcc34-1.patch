@@ -1,0 +1,36 @@
+Submitted By:            BLFS Book <blfs-book@linuxfromscratch.org>
+Date:                    2005-01-24
+Initial Package Version: 2.0.1
+Upstream Status:         Not Required - already in recent package versions
+Origin:                  http://bugzilla.gnome.org/attachment.cgi?id=31276&action=view
+Description:             Fixes compilation issues when using GCC-3.4.x
+
+$LastChangedBy$
+$Date$
+
+--- libgnomecanvasmm-2.0.1-orig/examples/canvas_events/canvas_events.cc	2004-09-04 15:10:54.502629928 -0700
++++ libgnomecanvasmm-2.0.1/examples/canvas_events/canvas_events.cc	2004-09-04 15:21:57.682811216 -0700
+@@ -73,15 +73,15 @@
+   
+   //Connect canvas signals:
+ 
+-  signal_event().connect_notify(SigC::bind(SigC::slot(*this, &CanvasExample::on_event_explorer_notify),CE));
+-  signal_button_press_event().connect_notify(SigC::bind(SigC::slot(*this, &CanvasExample::on_button_event_stub_notify),CBE));
+-  signal_button_press_event().connect(SigC::bind(SigC::slot(*this, &CanvasExample::on_button_event_stub),CBEA));
++  signal_event().connect_notify(SigC::bind(SigC::slot(*this, &CanvasExample::on_event_explorer_notify),(guint)CE));
++  signal_button_press_event().connect_notify(SigC::bind(SigC::slot(*this, &CanvasExample::on_button_event_stub_notify),(guint)CBE));
++  signal_button_press_event().connect(SigC::bind(SigC::slot(*this, &CanvasExample::on_button_event_stub),(guint)CBEA));
+ 	
+-  item->signal_event().connect_notify(SigC::bind(SigC::slot(*this, &CanvasExample::on_event_explorer_notify),IE));
+-  item->signal_event().connect(SigC::bind(SigC::slot(*this, &CanvasExample::on_event_explorer),IEA));
++  item->signal_event().connect_notify(SigC::bind(SigC::slot(*this, &CanvasExample::on_event_explorer_notify),(guint)IE));
++  item->signal_event().connect(SigC::bind(SigC::slot(*this, &CanvasExample::on_event_explorer),(guint)IEA));
+ 
+-  item2->signal_event().connect_notify(SigC::bind(SigC::slot(*this, &CanvasExample::on_event_explorer_notify),IE));
+-  item2->signal_event().connect(bind(slot(*this, &CanvasExample::on_event_explorer),IEA));
++  item2->signal_event().connect_notify(SigC::bind(SigC::slot(*this, &CanvasExample::on_event_explorer_notify),(guint)IE));
++  item2->signal_event().connect(bind(slot(*this, &CanvasExample::on_event_explorer),(guint)IEA));
+ }
+ 
+ CanvasExample::~CanvasExample()
+

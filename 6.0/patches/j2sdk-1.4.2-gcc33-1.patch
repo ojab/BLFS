@@ -1,0 +1,70 @@
+Submitted By: Jim Gifford (jim at linuxfromscratch dot org)
+Date: 2003-10-07
+Initial Package Version: 1.4.2
+Origin: Jim Gifford
+Description: Fixes Long Long errors
+	     Removes ## from variables
+
+ 
+$LastChangedBy$
+$Date$
+
+diff -Naur java.orig/hotspot/src/cpu/i486/vm/i486.ad java/hotspot/src/cpu/i486/vm/i486.ad
+--- java.orig/hotspot/src/cpu/i486/vm/i486.ad	2003-09-11 01:40:13.000000000 +0000
++++ java/hotspot/src/cpu/i486/vm/i486.ad	2003-10-08 02:51:46.000000000 +0000
+@@ -230,18 +230,18 @@
+ // These masks are used to provide 128-bit aligned bitmasks to the XMM
+ // instructions, to allow sign-masking or sign-bit flipping.  They allow
+ // fast versions of NegF/NegD and AbsF/AbsD.
+-static jlong float_signmask_pool[3] =  {0x7FFFFFFF7FFFFFFF,
+-                                        0x7FFFFFFF7FFFFFFF,
+-                                        0x7FFFFFFF7FFFFFFF};
+-static jlong double_signmask_pool[3] = {0x7FFFFFFFFFFFFFFF,
+-                                        0x7FFFFFFFFFFFFFFF,
+-                                        0x7FFFFFFFFFFFFFFF};
+-static jlong float_signflip_pool[3] =  {0x8000000080000000,
+-                                        0x8000000080000000,
+-                                        0x8000000080000000};
+-static jlong double_signflip_pool[3] = {0x8000000000000000,
+-                                        0x8000000000000000,
+-                                        0x8000000000000000};
++static jlong float_signmask_pool[3] =  {0x7FFFFFFF7FFFFFFFLL,
++                                        0x7FFFFFFF7FFFFFFFLL,
++                                        0x7FFFFFFF7FFFFFFFLL};
++static jlong double_signmask_pool[3] = {0x7FFFFFFFFFFFFFFFLL,
++                                        0x7FFFFFFFFFFFFFFFLL,
++                                        0x7FFFFFFFFFFFFFFFLL};
++static jlong float_signflip_pool[3] =  {0x8000000080000000LL,
++                                        0x8000000080000000LL,
++                                        0x8000000080000000LL};
++static jlong double_signflip_pool[3] = {0x8000000000000000LL,
++                                        0x8000000000000000LL,
++                                        0x8000000000000000LL};
+ 
+ // !!!!! Special hack to get all type of calls to specify the byte offset
+ //       from the start of the call to the point where the return address
+diff -Naur java.orig/hotspot/src/share/vm/runtime/jvmdiInterfaceSupport.hpp java/hotspot/src/share/vm/runtime/jvmdiInterfaceSupport.hpp
+--- java.orig/hotspot/src/share/vm/runtime/jvmdiInterfaceSupport.hpp	2003-09-11 01:41:55.000000000 +0000
++++ java/hotspot/src/share/vm/runtime/jvmdiInterfaceSupport.hpp	2003-10-08 02:51:01.000000000 +0000
+@@ -24,7 +24,7 @@
+   result_type JNICALL methodName signature {                                         \
+     JavaThread* thread = (JavaThread*) ThreadLocalStorage::thread();                 \
+     TransitionClass __tiv(thread);                                                   \
+-    __ENTRY(result_type, methodName##signature, thread)                              \
++    __ENTRY(result_type, methodName#signature, thread)                              \
+     debug_only(VMNativeEntryWrapper __vew;)                                          \
+     debug_only(const char* const _jvmdi_methodName_ = #methodName;)                  \
+     debug_only(bool  _trace_ = trace; );                                             \
+diff -Naur java.orig/hotspot/src/share/vm/runtime/mutexLocker.cpp java/hotspot/src/share/vm/runtime/mutexLocker.cpp
+--- java.orig/hotspot/src/share/vm/runtime/mutexLocker.cpp	2003-09-11 01:41:55.000000000 +0000
++++ java/hotspot/src/share/vm/runtime/mutexLocker.cpp	2003-10-08 02:51:01.000000000 +0000
+@@ -98,7 +98,7 @@
+ #endif
+ 
+ #define def(var, type, pri, vm_block) \
+-  var = new type(Mutex::##pri, #var, vm_block)
++  var = new type(Mutex::pri, #var, vm_block)
+ 
+ void mutex_init() {  
+   def(Event_lock                   , Mutex  , event,       true ); // allow to lock in VM
+ }

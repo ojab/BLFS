@@ -1,0 +1,25 @@
+Submitted By: DJ Lucas <dj_AT_linuxfromscratch_DOT_org>
+Date: 2004-12-12
+Initial Package Version: 1.1.3
+Origin: Gentoo
+Description: Fixes compilation with nptl.
+Upstream Status: Unknown (uneeded???)
+
+$LastChangedBy$
+$Date$
+
+diff -Naur OOo_1.1.3_src-orig/sal/osl/unx/process.c OOo_1.1.3_src/sal/osl/unx/process.c
+--- OOo_1.1.3_src-orig/sal/osl/unx/process.c	2003-07-02 08:34:17.000000000 -0500
++++ OOo_1.1.3_src/sal/osl/unx/process.c	2004-12-07 22:02:03.317233024 -0600
+@@ -1017,11 +1017,6 @@
+ 			for (i = 0; data.m_pszEnv[i] != NULL; i++)
+ 	     		putenv(data.m_pszEnv[i]);
+ 
+-#if defined(LINUX)
+-            /* mfe: linux likes to have just one thread when the exec family is called */
+-            /*      this np function has this purpose ...                              */
+-            pthread_kill_other_threads_np();
+-#endif
+             OSL_TRACE("ChildStatusProc : starting '%s'",data.m_pszArgs[0]);
+      
+ 			/* Connect std IO to pipe ends */

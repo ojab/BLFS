@@ -1,0 +1,33 @@
+Submitted By: Tushar Teredesai <tushar@linuxfromscratch.org>
+Date: 2003-10-08
+Initial Package Version: 1.4
+Origin: http://blfs-bugs.linuxfromscratch.org/show_bug.cgi?id=358
+Description: Fix compilation with recent glibc versions.
+
+$LastChangedBy$
+$Date$
+
+diff -ur compface-1.4.orig/cmain.c compface-1.4/cmain.c
+--- compface-1.4.orig/cmain.c	2000-11-22 18:51:03.000000000 -0600
++++ compface-1.4/cmain.c	2003-10-10 19:12:02.000000000 -0500
+@@ -26,6 +26,8 @@
+ extern char *malloc ();
+ #endif	/* STDC_HEADERS */
+ 
++#include <errno.h>
++
+ #ifdef HAVE_FCNTL_H
+ #include <fcntl.h>
+ #endif
+diff -ur compface-1.4.orig/uncmain.c compface-1.4/uncmain.c
+--- compface-1.4.orig/uncmain.c	2000-11-22 18:51:24.000000000 -0600
++++ compface-1.4/uncmain.c	2003-10-10 19:12:34.000000000 -0500
+@@ -30,6 +30,8 @@
+ extern char *malloc ();
+ #endif	/* STDC_HEADERS */
+ 
++#include <errno.h>
++
+ #ifdef HAVE_STRINGS_H
+ #include <strings.h>
+ #else
