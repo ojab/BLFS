@@ -1,9 +1,9 @@
-Submitted By: Igor Zivkovic <igor@linuxfromscratch.org>
-Date: 2004-07-15
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2004-09-19
 Initial Package Version: 0.8
-Upstream Status: Submitted (http://bugzilla.mozilla.org/show_bug.cgi?id=234035).
-Origin: Peter Kovar's 0.9 patch.
-Description: Fixes compilation against freetype >= 2.1.8.
+Upstream Status:         Submitted (http://bugzilla.mozilla.org/show_bug.cgi?id=234035)
+Origin:                  Peter Kovar's 0.9 patch
+Description:             Fixes compilation against freetype >= 2.1.8
 
 $LastChangedBy$
 $Date$
