@@ -1,10 +1,9 @@
-Submitted By: BLFS Book <blfs-book@linuxfromscratch.org>
-Date: 2004-07-15
+Submitted By:            BLFS Book <blfs-book@linuxfromscratch.org>
+Date:                    2004-09-21
 Initial Package Version: 2.0.47
-Upstream Status: Not submitted.
-Origin: BLFS Book
-Description: Add a layout for installing Apache as per the FHS
-             guidelines.
+Upstream Status:         Not submitted (LFS specific)
+Origin:                  BLFS Book
+Description:             Modify the FHS layout for installing Apache
 
 $LastChangedBy$
 $Date$
