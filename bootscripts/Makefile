@@ -68,6 +68,16 @@ install-cups: create-dirs
 	ln -sf  ../init.d/cups ${EXTDIR}/rc.d/rc5.d/S99cups
 	ln -sf  ../init.d/cups ${EXTDIR}/rc.d/rc6.d/K00cups
 
+install-cyrus-sasl: create-dirs
+	install -m ${MODE} blfs/init.d/cyrus-sasl ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc0.d/K49cyrus-sasl
+	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc1.d/K49cyrus-sasl
+	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc2.d/S24cyrus-sasl
+	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc3.d/S24cyrus-sasl
+	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc4.d/S24cyrus-sasl
+	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc5.d/S24cyrus-sasl
+	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc6.d/K49cyrus-sasl
+
 install-dhcp: create-dirs
 	install -m ${MODE} blfs/init.d/dhcp       ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/dhcp ${EXTDIR}/rc.d/rc0.d/K30dhcp
@@ -375,6 +385,7 @@ install-xinetd: create-dirs
 	install-apache \
 	install-bind \
 	install-cups \
+	install-cyrus-sasl \
 	install-dhcp \
 	install-exim \
 	install-fcron \
