@@ -2,9 +2,10 @@ Submitted By: Tushar Teredesai <tushar@linuxfromscratch.org>
 Date: 2003-09-21
 Origin: http://www.openoffice.org/issues/show_bug.cgi?id=10719
 Initial Package Version: 1.1rc4
-Description: The installation script looks for test binary in the wrong location. LFS installs
-the binary in /bin. If the test binary is not found, it results in a corrupted installation. This patch is part
-of the BLFS book.
+Description: The installation script looks for test binary in the wrong 
+  location. LFS installs the binary in /bin. If the test binary is not found, 
+  it results in a corrupted installation. This patch is part of the BLFS book.
+Upstream Status: Not applied
 
 $LastChangedBy$
 $Date$

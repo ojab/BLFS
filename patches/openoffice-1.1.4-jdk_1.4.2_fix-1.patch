@@ -4,6 +4,7 @@ Initial Package Version: 1.1.0
 Origin: http://archive.linuxfromscratch.org/mail-archives/blfs-dev/2003-October/003975.html
         Posted by Michael Brömer
 Description: Fixes compilation with jdk-1.4.2
+Upstream Status:  Not applied
 
 $LastChangedBy$
 $Date$

@@ -2,7 +2,7 @@ Submitted By: DJ Lucas <dj_At_linuxfromscratch_DOT_org>
 Date: 2004-12-12
 Origin: Self
 Initial Package Version: 1.1.3
-Description: Fixes build when used with system freetype-2.1.8+.
+Description: Fixes build when used with system freetype-2.1.5+.
 Upstream Status: Not submitted
 
 $LastChangedBy$
