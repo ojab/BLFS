@@ -1,0 +1,22 @@
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2005-04-15
+Initial Package Version: 1.14
+Upstream Status:         Submitted to the LCMS mailing list
+Origin:                  Randy McMurchy
+Description:             Adds an identifier declaration so that the SWIG/Python
+                         module will compile using GCC-3.4.3
+
+$LastChangedBy$
+$Date$
+
+diff -Naur lcms-1.14-orig/python/lcms.i lcms-1.14/python/lcms.i
+--- lcms-1.14-orig/python/lcms.i	2004-07-16 16:59:48.000000000 +0000
++++ lcms-1.14/python/lcms.i	2005-04-15 21:48:32.000000000 +0000
+@@ -102,6 +102,7 @@
+ %typemap(in) LPGAMMATABLE[3](LPGAMMATABLE gamma[3]) {  
+   
+   PyObject* tmp[3];
++  swig_type_info* SWIGTYPE_LPGAMMATABLE;
+ 
+   if (PyTuple_Check($input)) {
+     if (!PyArg_ParseTuple($input,"OOO",&tmp[0],&tmp[1],&tmp[2])) {
