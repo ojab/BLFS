@@ -66,6 +66,18 @@ the book renders.</para>
 <para>To be developed.  </para>
 </section>
 
+<section id="ch07-anduin">
+<title>BLFS Packages</title>
+<para>The BLFS project has a web/ftp site at anduin.linuxfromscratch.org. 
+This site is a repository for all the packages with build instructions
+in BLFS.  When adding or upgrading a package in the book, the new package should be
+placed in the appropriate directory there.  If necessary, repackage the
+source code as a .bz2 file before upgrading.  Also create a separate
+file that contains the md5sum of the tarball:</para>
+
+<screen><command>md5sum packagename.tar.bz2 > packagename.tar.bz2.md5sum</command></screen>
+
+</section>
 
 <section id="ch07-tagging">
 <title>Adding Tags</title>

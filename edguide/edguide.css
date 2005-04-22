@@ -158,3 +158,16 @@ b.command {
 p.updated {
     font: italic smaller serif;
 }
+
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: 0.3em;
+}
+
+tr > td:first-child {
+  text-align: center;
+}
+  

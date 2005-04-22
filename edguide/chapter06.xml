@@ -215,7 +215,7 @@ rendering purposes, switches actually used in the Installation Section must use
 must be used.</para>
 
 <screen>&lt;sect2 role="commands"&gt;
-&lt;title&gt;Command explanations&lt;/title&gt;
+&lt;title&gt;Command Explanations&lt;/title&gt;
 
 &lt;para&gt;&lt;parameter&gt;--sysconfdir=/etc&lt;/parameter&gt;: This setting is used to
 set the configuration file location properly.&lt;/para&gt;
@@ -249,7 +249,7 @@ this cannot be avoided.</para>
 &lt;title&gt;Configuring FAM&lt;/title&gt;
 
 &lt;sect3 id="fam-config"&gt;
-&lt;title&gt;Config files&lt;/title&gt;
+&lt;title&gt;Config Files&lt;/title&gt;
 
 &lt;para&gt;&lt;filename&gt;/etc/rpc&lt;/filename&gt;,
  &lt;filename&gt;/etc/fam.conf&lt;/filename&gt;,
@@ -305,8 +305,12 @@ sure the "nogroup" group exists):&lt;/para&gt;
         rpc_number      = 391002
     }&lt;/literal&gt;
 EOF&lt;/userinput&gt;&lt;/screen&gt;
+&lt;/sect3&gt;
 
-&lt;para id="fam-init"&gt;If you do not have an &lt;command&gt;inetd&lt;/command&gt; daemon installed and have 
+&lt;sect3 id="fam-boot"&gt;
+&lt;title&gt;Boot Scripts&lt;/title&gt;
+
+&lt;para&gt;If you do not have an &lt;command&gt;inetd&lt;/command&gt; daemon installed and have 
 no wish to install one, you can also start &lt;command&gt;famd&lt;/command&gt; during 
 system startup by installing the &lt;filename&gt;/etc/rc.d/init.d/fam&lt;/filename&gt;
 init script included in the
@@ -314,6 +318,10 @@ init script included in the
 
 &lt;screen role="root"&gt;&lt;userinput&gt;make install-fam&lt;/userinput&gt;&lt;/screen&gt;
 
+&lt;indexterm zone="fam fam-boot"&gt;
+  &lt;primary sortas="f-fam"&gt;fam&lt;/primary&gt;
+&lt;/indexterm&gt;
+  
 &lt;/sect3&gt;
 &lt;/sect2&gt;</screen>
 </sect1>
@@ -328,6 +336,7 @@ init script included in the
 &lt;segmentedlist&gt;
   &lt;segtitle&gt;Installed Program&lt;/segtitle&gt;
   &lt;segtitle&gt;Installed Library&lt;/segtitle&gt;
+  &lt;segtitle&gt;Installed Directories&lt;/segtitle&gt;
  
   &lt;seglistitem&gt;
     &lt;seg&gt;famd&lt;/seg&gt;
@@ -364,6 +373,52 @@ init script included in the
 
 &lt;/sect2&gt;
 &lt;/sect1&gt;</screen>
+</sect1>
+
+<sect1>
+<title>About Tagging</title>
+
+<para>As you can see above, there are serveral places where indexing tags are
+placed into the page.  The tagging has the following format:</para>
+
+<screen>&lt;indexterm zone="id-start id-end"&gt;
+  &lt;primary sortas="X-sortterm"&gt;indexed-item&lt;/primary&gt;
+&lt;/indexterm&gt;</screen>
+
+<para>The zone attribute has two values.  The first will always be to the 
+IDREF in the first &lt;sect1&gt; of the page.  The first a- entry for packages
+will only have one IDREF.  The other entries will have two IDREFS.  The first
+will still be the page IDREF and the second will be an IDREF for the tag
+defining the start of the discussion of the item.   The index will have
+two links for these references: one to the package and one to the
+specific section discussing the item.</para>
+
+
+<para>The 'X' value in the sortas attribute has a specific meaning for the BLFS
+XSL stylesheets.  It refers to the section of the index where the entry will
+be placed.  The values are:</para>
+
+<table id="indexing">
+<title>Index Sections</title>
+<tgroup cols='2' colsep='0' rowsep='0'>
+<thead>
+<row><entry>Label</entry><entry>Rendered in</entry></row>
+</thead>
+<tbody>
+<row><entry>a</entry><entry>Packages</entry></row>
+<row><entry>b</entry><entry>Programs</entry></row>
+<row><entry>c</entry><entry>Libraries</entry></row>
+<row><entry>d</entry><entry>Kernel Configuration</entry></row>
+<row><entry>e</entry><entry>Configuration Files</entry></row>
+<row><entry>f</entry><entry>Bootscripts</entry></row>
+<row><entry>g</entry><entry>Others</entry></row>
+</tbody>
+</tgroup>
+</table>
+
+<para>The value after the dash in the sortas attribute is how the index item will
+be sorted within its section.  It is <emphasis>not</emphasis> case sensitive.</para>
+
 </sect1>
 </chapter>
 
