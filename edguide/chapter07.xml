@@ -72,10 +72,17 @@ the book renders.</para>
 This site is a repository for all the packages with build instructions
 in BLFS.  When adding or upgrading a package in the book, the new package should be
 placed in the appropriate directory there.  If necessary, repackage the
-source code as a .bz2 file before upgrading.  Also create a separate
+source code as a .bz2 file before upgrading.  Old versions of the package
+should be deleted. Also create a separate
 file that contains the md5sum of the tarball:</para>
 
 <screen><command>md5sum packagename.tar.bz2 > packagename.tar.bz2.md5sum</command></screen>
+
+<para>If a package has multiple files or patches, they should all be placed in 
+the same directory and md5sums calculated for all files:</para>
+
+<screen><command>rm packagename*md5sum
+md5sum packagename-x.x* > packagename-x.x.md5sums</command></screen>
 
 </section>
 
