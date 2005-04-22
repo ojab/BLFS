@@ -58,7 +58,7 @@ updated.  The version numbers of packages should be updated as appropriate.</par
 <emphasis>any</emphasis> change (including small typo fixes) is made:
 <screen>&lt;!ENTITY day "01"&gt;
 &lt;!ENTITY month "08"&gt;
-&lt;!ENTITY year "2004"&gt;
+&lt;!ENTITY year "2005"&gt;
 &lt;!ENTITY releasedate "August &amp;day;st, &amp;year"&gt;</screen>
 The two dates <emphasis>must</emphasis> correspond.
 </para>

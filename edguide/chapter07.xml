@@ -40,7 +40,25 @@ should be done with appropriate warnings.</para>
 
 <section id="ch07-patches">
 <title>Patches</title>
-<para>To be developed.  </para>
+<para>Patches are maintained in a separate patches svn repository.  All BLFS
+editors have commit privileges to this repository.  To check out the patch tree,
+start in an empty directory and run:</para>
+
+<screen><command>svn co svn+ssh://linuxfromscratch.org/patches/trunk/</command></screen>
+
+<para>and then using normal svn procedures.</para>
+
+<para>When inserting a patch
+in the book, or changing an existing patch, the first choice is to point
+to the package originator's site.  If a custom patch is needed for BLFS,
+it should be placed in the apprpriate location of the patches repository.
+A patch must always go in a directory of the same name as the base package
+without revision numbers.  For instance, all mysql patches go in the mysql
+directory of the patches repository.</para>
+
+<para>The location of BLFS patches in the book will always be at 
+&amp;patch-root;.  The location is updated twice a day automatically when 
+the book renders.</para>
 </section>
 
 <section id="ch07-scripts">
@@ -56,52 +74,64 @@ should be done with appropriate warnings.</para>
 
 <listitem><para>acronym -- a word formed from the initial letter or
 letters of each of the successive parts or major parts of a compound
-term.</para></listitem>
+term. Try to avoid using this tag inside other inline tags because
+it really does not add any additional value and the XML becomes hard
+to read.</para></listitem>
 
 <listitem><para>filename -- a filename, a fully qualified file name, a
 directory (use class="directory"), a library file (use
-class="libraryfile"). Do not encapsulate an acronym tag with
-a filename tag, use either/or based on the usage.</para>
+class="libraryfile").</para>
 
 <para>Other extentions that may be used are extention, devicefile, headerfile,
-partition and symlink.  These are not normally used, but could be used in the
-future in the rendering process.</para></listitem>
+partition and symlink.  These are not normally used, but could be used to define
+a file type.</para></listitem>
+
+<listitem><para>systemitem -- similar to filename, but for items thar aren't files.
+Examples are usernames (use class="username"), groups (use class="groupname"),
+filesystems (use class="filesystem"), etc.</para></listitem>
 
 <listitem><para>envar -- an environmental variable, can be common or
 temporary.</para></listitem>
 
-<listitem><para>command -- any string that will execute when entered at
-the prompt (not just bash prompts).</para></listitem>
+<listitem><para>command -- used to tag commands names, commands (with their
+parameters) in the "Command Explanations" section, or commands that are 
+optional.</para></listitem>
 
-<listitem><para>userinput -- usually encapsulates "command" when it is
-expected that the user is required to input the command to proceed.
-"command"s may terminate within userinput to continue showing items that
-must be typed in, but are not commands. </para></listitem>
+<listitem><para>userinput -- encapsulates commands when it is
+expected that the user is required to input the command exactly as specified.
+Used mainly in screen blocks.</para></listitem>
 
-<listitem><para>option -- Should be used when command
+<listitem><para>option -- Should be used in the flow text when command
 options are written without the command, as use
-&lt;option&gt;-q&lt;/option&gt; for quiet operation.</para></listitem>
+&lt;option&gt;-q&lt;/option&gt; for quiet operation. It is also used in the 
+"Commands Explanations" sections for optional switches.</para></listitem>
 
 <listitem><para>application -- The proper name of the package.</para></listitem>
 
 <listitem><para>screen -- This creates a 'verbatim' environment that
-allows spacing to be controlled. Mainly used as it simulates a
-console. It should not be encapsulated by &lt;para&gt; unless unscreened
-text is present.</para></listitem>
+allows spacing to be controlled. Mainly used when a simulated 
+console is desired. It can be encapsulated by &lt;para&gt; tags but 
+provides little value. Try to avoid this.</para></listitem>
 
 <listitem><para>replaceable -- used with screen to encapsulate text that
-is not to be typed as seen or copy and pasted. The text should also be
-encapsulated in brackets '[]' for text browser users. It should also be
-used outside of the 'screen' where your instructions are for what is to
-replace it.</para></listitem>
+is not to be typed as seen or copy and pasted. The text should be
+encapsulated in brackets '[]' for text browser users. It should not be
+used in 'screen' sections.</para></listitem>
 
-<listitem><para>emphasis role="strong" -- used when an assumption is made in
-the instructions that may not always be true, i.e. your network connection is
+<listitem><para>literal -- used with userinput in screen sections to 
+encapsulate text that will be used to create (or to be added to) a 
+text file.</para></listitem>
+
+<listitem><para>emphasis role="strong" -- used to emphasize some word when 
+there is no other appropiate tag that can be used or when an assumption is made in
+the instructions that may not always be true. For example, your network connection is
 on &lt;emphasis role=strong&gt;eth0&lt;emphasis&gt;.  Especially prior to
 giving script instructions using that assumption.</para></listitem>
 
 <listitem><para>parameter -- used primarily in the command explanations
-section for items that are not commands.</para></listitem>
+section for items that are not commands but used in the installation commands
+provided by the book. An example of this use is when explaining 
+<command>configure</command> switches.</para></listitem>
 
 </itemizedlist>
 
