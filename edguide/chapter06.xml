@@ -208,7 +208,7 @@ other hand, this section is the perfect place to explain why a command or
 switch is necessary.  If the Installation Section does not include a particular
 optional comnand or switch, an entry can be made here giving the user
 information about the alternative or supplemental option.  Since many packages
-have a large number of options, this explaination is normally reserved for
+have a large number of options, this explanation is normally reserved for
 optional instructions the editor feels are particularly important. For
 rendering purposes, switches actually used in the Installation Section must use
 &lt;parameter&gt; tags. For optional switches, &lt;option&gt; tags
