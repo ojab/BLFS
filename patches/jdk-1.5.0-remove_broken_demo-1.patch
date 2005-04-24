@@ -1,0 +1,27 @@
+Submitted By: DJ Lucas <dj AT linuxfromscratch DOT org>
+Date: 2003-11-27
+Initial Package Version: 1.5.0
+Origin: DJ Lucas
+Description: The waiters demo is broken with gcc-3.3 and gcc-3.4.  I don't 
+             know how to fix it, so this will remove it.  We don't really 
+             need it anyway, but untill somebody else can take a look and 
+             fix it properly, this will be sufficient to make a clean build.
+
+$LastChangedBy$
+$Date$
+
+
+--- j2sdk-build-orig/j2se/make/mkdemo/jvmti/Makefile	2004-10-19 13:45:03.000000000 -0500
++++ j2sdk-build/j2se/make/mkdemo/jvmti/Makefile	2004-11-17 21:17:39.000000000 -0600
+@@ -26,8 +26,9 @@
+           gctest \
+ 	  heapViewer \
+ 	  heapTracker \
+-	  mtrace \
+-	  waiters
++	  mtrace
++#	  mtrace \
++#	  waiters
+ 
+ all optimized clean clobber ::
+ 	@for i in $(SUBDIRS) ; do \
