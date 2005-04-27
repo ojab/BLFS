@@ -4,9 +4,6 @@ Origin: Gentoo
 Initial Package Version: 1.1.3
 Description: Fixes build issues with gcc-3.4.2+.
 
-$LastChangedBy$
-$Date$
-
 
 diff -Naur OOo_1.1.3_src-orig/autodoc/source/ary/cpp/c_gate.cxx OOo_1.1.3_src/autodoc/source/ary/cpp/c_gate.cxx
 --- OOo_1.1.3_src-orig/autodoc/source/ary/cpp/c_gate.cxx	2003-06-30 10:25:45.000000000 -0500
@@ -18,8 +15,8 @@ diff -Naur OOo_1.1.3_src-orig/autodoc/source/ary/cpp/c_gate.cxx OOo_1.1.3_src/au
 - *  $Revision: 1.5 $
 + *  $Revision: 1.6 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: hr $ $Date: 2003/06/30 15:25:45 $
++ *  last change: $Author: rt $ $Date: 2003/12/01 16:11:09 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -43,8 +40,8 @@ diff -Naur OOo_1.1.3_src-orig/autodoc/source/ary/cpp/prpr.cxx OOo_1.1.3_src/auto
 - *  $Revision: 1.1.1.1 $
 + *  $Revision: 1.2 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: np $ $Date: 2002/03/08 14:45:18 $
++ *  last change: $Author: rt $ $Date: 2003/12/01 16:11:21 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -163,8 +160,8 @@ diff -Naur OOo_1.1.3_src-orig/autodoc/source/display/html/hdimpl.cxx OOo_1.1.3_s
 - *  $Revision: 1.4 $
 + *  $Revision: 1.5 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: hr $ $Date: 2003/03/18 14:11:36 $
++ *  last change: $Author: rt $ $Date: 2003/12/01 16:11:32 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -188,8 +185,8 @@ diff -Naur OOo_1.1.3_src-orig/autodoc/source/display/toolkit/out_position.cxx OO
 - *  $Revision: 1.1 $
 + *  $Revision: 1.2 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: np $ $Date: 2002/11/01 17:15:27 $
++ *  last change: $Author: rt $ $Date: 2003/12/01 16:11:43 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -237,8 +234,8 @@ diff -Naur OOo_1.1.3_src-orig/autodoc/source/parser/cpp/cx_c_pp.cxx OOo_1.1.3_sr
 - *  $Revision: 1.2 $
 + *  $Revision: 1.3 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: hr $ $Date: 2003/03/18 14:11:41 $
++ *  last change: $Author: rt $ $Date: 2003/12/01 16:11:55 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -383,8 +380,8 @@ diff -Naur OOo_1.1.3_src-orig/comphelper/inc/comphelper/broadcasthelper.hxx OOo_
 - *  $Revision: 1.3 $
 + *  $Revision: 1.4 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: fs $ $Date: 2002/04/23 11:04:56 $
++ *  last change: $Author: obo $ $Date: 2004/03/17 13:54:15 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -407,8 +404,8 @@ diff -Naur OOo_1.1.3_src-orig/comphelper/inc/comphelper/extract.hxx OOo_1.1.3_sr
 - *  $Revision: 1.1 $
 + *  $Revision: 1.1.200.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: dbo $ $Date: 2001/03/07 13:55:53 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 10:09:45 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -460,8 +457,8 @@ diff -Naur OOo_1.1.3_src-orig/comphelper/inc/comphelper/proparrhlp.hxx OOo_1.1.3
 - *  $Revision: 1.4 $
 + *  $Revision: 1.5 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: hr $ $Date: 2003/03/19 15:58:31 $
++ *  last change: $Author: rt $ $Date: 2003/10/06 16:01:18 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -483,8 +480,8 @@ diff -Naur OOo_1.1.3_src-orig/comphelper/inc/comphelper/property.hxx OOo_1.1.3_s
 - *  $Revision: 1.4 $
 + *  $Revision: 1.4.136.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: hr $ $Date: 2003/03/19 15:58:31 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 10:09:45 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -507,8 +504,8 @@ diff -Naur OOo_1.1.3_src-orig/comphelper/inc/comphelper/querydeep.hxx OOo_1.1.3_
 - *  $Revision: 1.1.1.1 $
 + *  $Revision: 1.1.1.1.208.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: fs $ $Date: 2000/09/29 11:28:15 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 10:09:46 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -851,8 +848,8 @@ diff -Naur OOo_1.1.3_src-orig/comphelper/inc/comphelper/servicehelper.hxx OOo_1.
 - *  $Revision: 1.1 $
 + *  $Revision: 1.2 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: cl $ $Date: 2001/03/14 15:52:37 $
++ *  last change: $Author: rt $ $Date: 2003/10/06 16:01:32 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -873,8 +870,8 @@ diff -Naur OOo_1.1.3_src-orig/comphelper/inc/comphelper/types.hxx OOo_1.1.3_src/
 - *  $Revision: 1.5 $
 + *  $Revision: 1.5.204.2 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: fs $ $Date: 2000/11/19 15:20:37 $
++ *  last change: $Author: hr $ $Date: 2004/07/13 11:27:01 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -946,8 +943,8 @@ diff -Naur OOo_1.1.3_src-orig/comphelper/inc/comphelper/uno3.hxx OOo_1.1.3_src/c
 - *  $Revision: 1.5 $
 + *  $Revision: 1.5.172.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: fs $ $Date: 2002/04/23 11:06:59 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 10:09:46 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -1076,8 +1073,8 @@ diff -Naur OOo_1.1.3_src-orig/connectivity/source/drivers/jdbc/Connection.cxx OO
 - *  $Revision: 1.17 $
 + *  $Revision: 1.17.110.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2003/06/06 10:50:29 $
++ *  last change: $Author: hr $ $Date: 2004/07/20 10:52:34 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -1106,8 +1103,8 @@ diff -Naur OOo_1.1.3_src-orig/connectivity/source/drivers/jdbc/DatabaseMetaData.
 - *  $Revision: 1.16 $
 + *  $Revision: 1.16.128.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: rt $ $Date: 2003/04/24 13:20:00 $
++ *  last change: $Author: hr $ $Date: 2004/07/20 10:52:34 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -1580,8 +1577,8 @@ diff -Naur OOo_1.1.3_src-orig/connectivity/source/drivers/jdbc/ResultSet.cxx OOo
 - *  $Revision: 1.18 $
 + *  $Revision: 1.18.128.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: rt $ $Date: 2003/04/24 13:21:49 $
++ *  last change: $Author: hr $ $Date: 2004/07/20 10:52:34 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -1655,8 +1652,8 @@ diff -Naur OOo_1.1.3_src-orig/connectivity/source/drivers/jdbc/SQLException.cxx 
 - *  $Revision: 1.5 $
 + *  $Revision: 1.5.128.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: rt $ $Date: 2003/04/24 13:22:09 $
++ *  last change: $Author: hr $ $Date: 2004/07/20 10:52:34 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -1685,8 +1682,8 @@ diff -Naur OOo_1.1.3_src-orig/connectivity/source/drivers/jdbc/Statement.cxx OOo
 - *  $Revision: 1.20 $
 + *  $Revision: 1.20.128.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: rt $ $Date: 2003/04/24 13:22:28 $
++ *  last change: $Author: hr $ $Date: 2004/07/20 10:52:35 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -2131,8 +2128,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/compbase1.hxx OOo_1.1.3_
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:29:53 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:51 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -2168,8 +2165,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/compbase10.hxx OOo_1.1.3
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:30:23 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:51 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -2205,8 +2202,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/compbase11.hxx OOo_1.1.3
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:30:54 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:51 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -2242,8 +2239,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/compbase12.hxx OOo_1.1.3
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:31:29 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:51 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -2279,8 +2276,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/compbase2.hxx OOo_1.1.3_
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:32:04 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:52 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -2320,8 +2317,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/compbase3.hxx OOo_1.1.3_
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:32:42 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:52 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -2365,8 +2362,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/compbase4.hxx OOo_1.1.3_
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:33:03 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:52 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -2414,8 +2411,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/compbase5.hxx OOo_1.1.3_
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:33:35 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:52 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -2467,8 +2464,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/compbase6.hxx OOo_1.1.3_
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:34:19 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:52 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -2524,8 +2521,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/compbase7.hxx OOo_1.1.3_
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:34:56 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:52 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -2561,8 +2558,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/compbase8.hxx OOo_1.1.3_
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:35:27 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:53 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -2598,8 +2595,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/compbase9.hxx OOo_1.1.3_
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:35:53 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:53 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -2695,8 +2692,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/implbase1.hxx OOo_1.1.3_
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:36:53 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:53 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -2765,8 +2762,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/implbase10.hxx OOo_1.1.3
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:37:26 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:53 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -2835,8 +2832,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/implbase11.hxx OOo_1.1.3
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:37:59 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:53 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -2905,8 +2902,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/implbase12.hxx OOo_1.1.3
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:38:27 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:53 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -2975,8 +2972,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/implbase2.hxx OOo_1.1.3_
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:39:01 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:54 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -3055,8 +3052,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/implbase3.hxx OOo_1.1.3_
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:39:45 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:54 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -3145,8 +3142,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/implbase4.hxx OOo_1.1.3_
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:40:19 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:54 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -3245,8 +3242,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/implbase5.hxx OOo_1.1.3_
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:40:53 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:54 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -3355,8 +3352,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/implbase6.hxx OOo_1.1.3_
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:41:20 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:55 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -3475,8 +3472,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/implbase7.hxx OOo_1.1.3_
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:41:53 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:55 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -3545,8 +3542,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/implbase8.hxx OOo_1.1.3_
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:42:34 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:55 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -3615,8 +3612,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/implbase9.hxx OOo_1.1.3_
 - *  $Revision: 1.8.6.1 $
 + *  $Revision: 1.9.26.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2004/01/28 15:43:15 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:22:55 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -3685,8 +3682,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/queryinterface.hxx OOo_1
 - *  $Revision: 1.4 $
 + *  $Revision: 1.4.128.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: dbo $ $Date: 2001/11/09 13:49:15 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:38:07 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -4029,8 +4026,8 @@ diff -Naur OOo_1.1.3_src-orig/cppuhelper/inc/cppuhelper/stdidlclass.hxx OOo_1.1.
 - *  $Revision: 1.4 $
 + *  $Revision: 1.4.128.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: jbu $ $Date: 2001/10/29 15:27:57 $
++ *  last change: $Author: sb $ $Date: 2004/07/02 09:50:58 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -4506,7 +4503,7 @@ diff -Naur OOo_1.1.3_src-orig/psprint/source/helper/ppdparser.cxx~ OOo_1.1.3_src
 + *
 + *  $Revision: 1.8.38.2 $
 + *
-+ *  last change: $Author$ $Date$
++ *  last change: $Author: vg $ $Date: 2004/02/19 10:58:29 $
 + *
 + *  The Contents of this file are made available subject to the terms of
 + *  either of the following licenses
@@ -6827,8 +6824,8 @@ diff -Naur OOo_1.1.3_src-orig/stoc/source/security/lru_cache.h OOo_1.1.3_src/sto
 - *  $Revision: 1.1 $
 + *  $Revision: 1.2.28.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: dbo $ $Date: 2002/03/04 17:43:21 $
++ *  last change: $Author: hr $ $Date: 2004/07/13 12:54:02 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -7104,8 +7101,8 @@ diff -Naur OOo_1.1.3_src-orig/svx/inc/ShapeTypeHandler.hxx OOo_1.1.3_src/svx/inc
 - *  $Revision: 1.11 $
 + *  $Revision: 1.11.576.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2003/04/24 16:50:54 $
++ *  last change: $Author: hr $ $Date: 2004/07/15 17:00:30 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -7226,8 +7223,8 @@ diff -Naur OOo_1.1.3_src-orig/svx/source/accessibility/AccessibleTextEventQueue.
 - *  $Revision: 1.3 $
 + *  $Revision: 1.3.480.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: vg $ $Date: 2003/06/24 07:39:24 $
++ *  last change: $Author: hr $ $Date: 2004/07/15 17:03:42 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -7286,8 +7283,8 @@ diff -Naur OOo_1.1.3_src-orig/svx/source/accessibility/GraphCtlAccessibleContext
 - *  $Revision: 1.15 $
 + *  $Revision: 1.15.480.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: hr $ $Date: 2003/06/26 11:10:07 $
++ *  last change: $Author: hr $ $Date: 2004/07/15 17:21:16 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
@@ -7743,8 +7740,8 @@ diff -Naur OOo_1.1.3_src-orig/toolkit/inc/toolkit/controls/geometrycontrolmodel_
 - *  $Revision: 1.3 $
 + *  $Revision: 1.3.268.1 $
   *
-- *  last change: $Author$ $Date$
-+ *  last change: $Author$ $Date$
+- *  last change: $Author: fs $ $Date: 2001/09/05 06:40:48 $
++ *  last change: $Author: hr $ $Date: 2004/07/13 16:56:04 $
   *
   *  The Contents of this file are made available subject to the terms of
   *  either of the following licenses
