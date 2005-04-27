@@ -5,7 +5,7 @@ Initial Package Version: 1.1.3
 Description: Fixes build issues with gcc-3.4.2+.
 
 $LastChangedBy$
-$Date $
+$Date$
 
 
 diff -Naur OOo_1.1.3_src-orig/autodoc/source/ary/cpp/c_gate.cxx OOo_1.1.3_src/autodoc/source/ary/cpp/c_gate.cxx
