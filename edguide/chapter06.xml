@@ -14,6 +14,11 @@
 <ulink url='http://www.docbook.org/tdg/en/html/docbook.html'>Docbook</ulink>
 specification.  This Chapter describes how a BLFS page should be laid out.</para>
 
+<para>A template of a typical package page is found in the BLFS BOOK 
+repository under templates/template.xml.  This chapter expands on the 
+template, but generally changes needed for formatting purposes are
+reflected in the template more frequently than this guide.</para>
+
 <para>The start of the page is the XML header.  The page fits into the overall 
 book as a <emphasis>sect1</emphasis> element.  In the header, there should
 be a reference to the <filename>general.ent</filename> file which includes
@@ -74,7 +79,7 @@ that tells the render engine where to place the output of the current page.</par
 
 <para>The required &lt;title&gt; section specifies the actual name of the section
 at the top of the application's page.  This should normally be the same as the 
-<parameter>xreflabel</parameter>.</para>
+<parameter>xreflabel</parameter>. All titles should be in Title Case.</para>
 
 <para>The &lt;indexterm&gt; tag is used for indexing the package. The zone attribute
 must match the sect1 id attribute value. The sortas attribute in the &lt;primary&gt; tag
@@ -89,18 +94,18 @@ used to make the XML source easily readable for maintainability purposes.  Altho
 it is not always possible, try to keep the line lengths to 90 characters or less.</para>
 
 <screen>&lt;sect1 id="fam" xreflabel="FAM-&amp;fam-version;"&gt;
-
-&lt;sect1info&gt;
-  &lt;othername&gt;$LastChangedBy$&lt;/othername&gt;
-  &lt;date&gt;$Date$&lt;/date&gt;
-&lt;/sect1info&gt;
-
 &lt;?dbhtml filename="fam.html"?&gt;
-&lt;title&gt;FAM-&amp;fam-version;&lt;/title&gt;
 
-&lt;indexterm zone="fam"&gt;
-&lt;primary sortas="a-FAM"&gt;FAM&lt;/primary&gt;
-&lt;/indexterm&gt;</screen>
+  &lt;sect1info&gt;
+    &lt;othername&gt;$LastChangedBy$&lt;/othername&gt;
+    &lt;date&gt;$Date$&lt;/date&gt;
+  &lt;/sect1info&gt;
+
+  &lt;title&gt;FAM-&amp;fam-version;&lt;/title&gt;
+
+  &lt;indexterm zone="fam"&gt;
+    &lt;primary sortas="a-FAM"&gt;FAM&lt;/primary&gt;
+  &lt;/indexterm&gt;</screen>
 
 <para>The content of the application is normally divided into five areas:
 "Introduction", "Installation", "Command Explanations", "Configuration", and
@@ -115,35 +120,48 @@ This description is generally short, but for less well known applications,
 multiple paragraphs summarizing the application's purpose are
 appropriate.</para>
 
-<screen>&lt;sect2 role="package"&gt;
-&lt;title&gt;Introduction to FAM&lt;/title&gt;
+<screen>  &lt;sect2 role="package"&gt;
+    &lt;title&gt;Introduction to FAM&lt;/title&gt;
 
-&lt;para&gt;The &lt;application&gt;FAM&lt;/application&gt; package 
-contains a File Alteration Monitor which is useful for notifying applications of
-changes to the file system.&lt;/para&gt;</screen>
+    &lt;para&gt;The &lt;application&gt;FAM&lt;/application&gt; package 
+    contains a File Alteration Monitor which is useful for notifying applications of
+    changes to the file system.&lt;/para&gt;</screen>
 
 <para>After the description, package locations and statistics are presented.  
 Here the entities defined in the header should be used.</para>
 
-<screen>&lt;bridgehead renderas="sect3"&gt;Package information&lt;/bridgehead&gt;
-  &lt;itemizedlist spacing='compact'&gt;
-  &lt;listitem&gt;&lt;para&gt;Download (HTTP): &lt;ulink url="&amp;fam-download-http;"/&gt;&lt;/para&gt;&lt;/listitem&gt;
-  &lt;listitem&gt;&lt;para&gt;Download (FTP): &lt;ulink url="&amp;fam-download-ftp;"/&gt;&lt;/para&gt;&lt;/listitem&gt;
-  &lt;listitem&gt;&lt;para&gt;Download MD5 sum: &amp;fam-md5sum;&lt;/para&gt;&lt;/listitem&gt;
-  &lt;listitem&gt;&lt;para&gt;Download size: &amp;fam-size;&lt;/para&gt;&lt;/listitem&gt;
-  &lt;listitem&gt;&lt;para&gt;Estimated disk space required: &amp;fam-buildsize;&lt;/para&gt;&lt;/listitem&gt;
-  &lt;listitem&gt;&lt;para&gt;Estimated build time: &amp;fam-time;&lt;/para&gt;&lt;/listitem&gt;
-&lt;/itemizedlist&gt;</screen>
+<screen>    &lt;bridgehead renderas="sect3"&gt;Package Information&lt;/bridgehead&gt;
+    &lt;itemizedlist spacing='compact'&gt;
+    &lt;listitem&gt;
+      &lt;para&gt;Download (HTTP): &lt;ulink url="&amp;fam-download-http;"/&gt;&lt;/para&gt;
+    &lt;/listitem&gt;
+    &lt;listitem&gt;
+      &lt;para&gt;Download (FTP): &lt;ulink url="&amp;fam-download-ftp;"/&gt;&lt;/para&gt;
+    &lt;/listitem&gt;
+    &lt;listitem&gt;
+      &lt;para&gt;Download MD5 sum: &amp;fam-md5sum;&lt;/para&gt;
+    &lt;/listitem&gt;
+    &lt;listitem&gt;
+      &lt;para&gt;Download size: &amp;fam-size;&lt;/para&gt;
+    &lt;/listitem&gt;
+    &lt;listitem&gt;
+      &lt;para&gt;Estimated disk space required: &amp;fam-buildsize;&lt;/para&gt;
+    &lt;/listitem&gt;
+    &lt;listitem&gt;
+      &lt;para&gt;Estimated build time: &amp;fam-time;&lt;/para&gt;
+    &lt;/listitem&gt;
+  &lt;/itemizedlist&gt;</screen>
 
 <para>Following the statistics, come any additional downloads needed.  These 
 files are generally patches.  If no patches are required, this section should 
 be omitted.</para>
 
-<screen>&lt;bridgehead renderas="sect3"&gt;Additional downloads&lt;/bridgehead&gt;
-&lt;itemizedlist spacing='compact'&gt;
-  &lt;listitem&gt;&lt;para&gt;Dnotify patch (Recommended): 
-     &lt;ulink url="&amp;patch-root;/fam-&amp;fam-version;-dnotify-1.patch"/&gt;&lt;/para&gt;&lt;/listitem&gt;
-&lt;/itemizedlist&gt;</screen>
+<screen>  &lt;bridgehead renderas="sect3"&gt;Additional Downloads&lt;/bridgehead&gt;
+  &lt;itemizedlist spacing='compact'&gt;
+    &lt;listitem&gt;
+      &lt;para&gt;Dnotify patch (Recommended): &lt;ulink url="&amp;patch-root;/fam-&amp;fam-version;-dnotify-1.patch"/&gt;&lt;/para&gt;
+    &lt;/listitem&gt;
+  &lt;/itemizedlist&gt;</screen>
 
 <para>Next comes dependencies.  This is one of the most important parts of each
 application.  Dependencies should be listed as <emphasis>Required</emphasis> or
@@ -159,13 +177,20 @@ dependency should be listed.</para>
 
 <para>If a package will take advantage of another package <emphasis>after</emphasis>
 it is built, it should  <emphasis>not</emphasis> be listed as a dependency,
-however a note may be appropriate.</para>
+however a note may be appropriate. Use the Required, Recommended, and Optional 
+sections as appropriate for the package.</para>
 
-<screen>&lt;bridgehead renderas="sect3"&gt;FAM dependencies&lt;/bridgehead&gt;
-&lt;bridgehead renderas="sect4"&gt;Required&lt;/bridgehead&gt;
-&lt;para&gt;&lt;xref linkend="portmap"/&gt;&lt;/para&gt;
+<screen>   &lt;bridgehead renderas="sect3"&gt;FAM dependencies&lt;/bridgehead&gt;
+  &lt;bridgehead renderas="sect4"&gt;Required&lt;/bridgehead&gt;
+  &lt;para&gt;&lt;xref linkend="portmap"/&gt;&lt;/para&gt;
 
-&lt;/sect2&gt;</screen>
+  &lt;bridgehead renderas="sect4"&gt;Recommended&lt;/bridgehead&gt;
+  &lt;para&gt;&lt;xref linkend="some-IDREF"/&gt;&lt;/para&gt;
+    
+  &lt;bridgehead renderas="sect4"&gt;Optional&lt;/bridgehead&gt;
+  &lt;para&gt;&lt;xref linkend="some-IDREF"/&gt;&lt;/para&gt;
+    
+  &lt;/sect2&gt;</screen>
 </sect1>
 
 <sect1>
@@ -177,13 +202,14 @@ build the application.  The instructions should be inside a
 (except the last) should terminate with a double ampersand (&amp;&amp;) to
 facilitate cut and paste capabilities for the user. Note that the
 &lt;screen&gt;&lt;userinput&gt; tags need to be on the same line
-as the first and last instruction for the book to render properly.</para>
+as the first and last instruction for the book and need to have no
+leading spaces to render properly.</para>
 
-<screen>&lt;sect2 role="installation"&gt;
-&lt;title&gt;Installation of FAM&lt;/title&gt;
+<screen>  &lt;sect2 role="installation"&gt;
+    &lt;title&gt;Installation of FAM&lt;/title&gt;
 
-&lt;para&gt;Install &lt;application&gt;FAM&lt;/application&gt; by running the
-following commands:&lt;/para&gt;
+    &lt;para&gt;Install &lt;application&gt;FAM&lt;/application&gt; by running the
+    following commands:&lt;/para&gt;
 
 &lt;screen&gt;&lt;userinput&gt;patch -Np1 -i ../fam-&amp;fam-version;-dnotify-1.patch &amp;amp;&amp;amp;
 chmod 755 configure &amp;amp;&amp;amp;
@@ -191,17 +217,17 @@ autoreconf -f -i &amp;amp;&amp;amp;
 ./configure --prefix=/usr --sysconfdir=/etc &amp;amp;&amp;amp;
 make&lt;/userinput&gt;&lt;/screen&gt;
 
-&lt;para&gt;Now, as the &lt;systemitem class="username"&gt;root&lt;/systemitem&gt; user:&lt;/para&gt;
+    &lt;para&gt;Now, as the &lt;systemitem class="username"&gt;root&lt;/systemitem&gt; user:&lt;/para&gt;
  
 &lt;screen role="root"&gt;&lt;userinput&gt;make install&lt;/userinput&gt;&lt;/screen&gt;
 
-&lt;/sect2&gt;</screen>
+  &lt;/sect2&gt;</screen>
 </sect1>
 
 <sect1>
-<title>Explaination Section</title>
+<title>Explanation Section</title>
 
-<para>The Explaination Section elaborates on unusual commands and switches.  If
+<para>The Explanation Section elaborates on unusual commands and switches.  If
 the instructions are common commands such as <userinput>configure &amp;&amp;
 make &amp;&amp; make install</userinput>, this section can be omitted.  On the
 other hand, this section is the perfect place to explain why a command or
@@ -214,27 +240,27 @@ rendering purposes, switches actually used in the Installation Section must use
 &lt;parameter&gt; tags. For optional switches, &lt;option&gt; tags
 must be used.</para>
 
-<screen>&lt;sect2 role="commands"&gt;
-&lt;title&gt;Command Explanations&lt;/title&gt;
+<screen>  &lt;sect2 role="commands"&gt;
+    &lt;title&gt;Command Explanations&lt;/title&gt;
 
-&lt;para&gt;&lt;parameter&gt;--sysconfdir=/etc&lt;/parameter&gt;: This setting is used to
-set the configuration file location properly.&lt;/para&gt;
+    &lt;para&gt;&lt;parameter&gt;--sysconfdir=/etc&lt;/parameter&gt;: This setting is used to
+    set the configuration file location properly.&lt;/para&gt;
 
-&lt;para&gt;&lt;command&gt;patch -Np1 -i ../fam-&amp;fam-version;-dnotify-1.patch&lt;/command&gt;: 
-This patch enables &lt;application&gt;FAM&lt;/application&gt; to use 
-the Linux kernel dnotify mechanism to inform the calling process of
-file modifications, rather than polling the file system for
-modifications.&lt;/para&gt;
+    &lt;para&gt;&lt;command&gt;patch -Np1 -i ../fam-&amp;fam-version;-dnotify-1.patch&lt;/command&gt;: 
+    This patch enables &lt;application&gt;FAM&lt;/application&gt; to use 
+    the Linux kernel dnotify mechanism to inform the calling process of
+    file modifications, rather than polling the file system for
+    modifications.&lt;/para&gt;
 
-&lt;para&gt;&lt;command&gt;chmod 755 configure&lt;/command&gt;: &lt;command&gt;configure&lt;/command&gt; is 
-set to read-only and &lt;command&gt;autoreconf&lt;/command&gt; will fail if the 
-permissions aren't changed.&lt;/para&gt;
+    &lt;para&gt;&lt;command&gt;chmod 755 configure&lt;/command&gt;: &lt;command&gt;configure&lt;/command&gt; is 
+    set to read-only and &lt;command&gt;autoreconf&lt;/command&gt; will fail if the 
+    permissions aren't changed.&lt;/para&gt;
 
-&lt;para&gt;&lt;command&gt;autoreconf -f -i&lt;/command&gt;: The autotools need rebuilding 
-because the dnotify patch affects &lt;filename&gt;configure.ac&lt;/filename&gt; and 
-&lt;filename&gt;Makefile.am&lt;/filename&gt;.&lt;/para&gt;
+    &lt;para&gt;&lt;command&gt;autoreconf -f -i&lt;/command&gt;: The autotools need rebuilding 
+    because the dnotify patch affects &lt;filename&gt;configure.ac&lt;/filename&gt; and 
+    &lt;filename&gt;Makefile.am&lt;/filename&gt;.&lt;/para&gt;
 
-&lt;/sect2&gt;</screen>
+  &lt;/sect2&gt;</screen>
 </sect1>
  
 <sect1>
@@ -245,50 +271,50 @@ application.  If no confiuration is required, then it can be omitted. Note
 that in some cases lines in &lt;screen&gt; sections can be very long.  Sometimes
 this cannot be avoided.</para>
 
-<screen>&lt;sect2 role="configuration"&gt;
-&lt;title&gt;Configuring FAM&lt;/title&gt;
+<screen>  &lt;sect2 role="configuration"&gt;
+    &lt;title&gt;Configuring FAM&lt;/title&gt;
 
-&lt;sect3 id="fam-config"&gt;
-&lt;title&gt;Config Files&lt;/title&gt;
+    &lt;sect3 id="fam-config"&gt;
+      &lt;title&gt;Config Files&lt;/title&gt;
 
-&lt;para&gt;&lt;filename&gt;/etc/rpc&lt;/filename&gt;,
- &lt;filename&gt;/etc/fam.conf&lt;/filename&gt;,
- &lt;filename&gt;/etc/inetd.conf&lt;/filename&gt;,
- &lt;filename&gt;/etc/xinetd.d/fam&lt;/filename&gt;
- or &lt;filename&gt;/etc/xinetd.conf&lt;/filename&gt;
- &lt;/para&gt;
+      &lt;para&gt;&lt;filename&gt;/etc/rpc&lt;/filename&gt;,
+        &lt;filename&gt;/etc/fam.conf&lt;/filename&gt;,
+        &lt;filename&gt;/etc/inetd.conf&lt;/filename&gt;, and
+        &lt;filename&gt;/etc/xinetd.d/fam&lt;/filename&gt; or
+        &lt;filename&gt;/etc/xinetd.conf&lt;/filename&gt;
+      &lt;/para&gt;
 
-&lt;indexterm zone="fam fam-config">
-  &lt;primary sortas="e-etc-rpc"&gt;/etc/rpc&lt;/primary&gt;
-&lt;/indexterm&gt;
-&lt;indexterm zone="fam fam-config"&gt;
-  &lt;primary sortas="e-etc-fam.conf"&gt;/etc/fam.conf&lt;/primary&gt;
-&lt;/indexterm&gt;
-&lt;indexterm zone="fam fam-config"&gt;
-  &lt;primary sortas="e-etc-inetd.conf"&gt;/etc/inetd.conf&lt;/primary&gt;
-&lt;/indexterm&gt;
-&lt;indexterm zone="fam fam-config"&gt;
-  &lt;primary sortas="e-etc-xinetd.conf"&gt;/etc/xinetd.conf&lt;/primary&gt;
-&lt;/indexterm&gt;
-&lt;indexterm zone="fam fam-config"&gt;
-  &lt;primary sortas="e-etc-xinetd.d-sgi_fam"&gt;/etc/xinetd.d/sgi_fam&lt;/primary&gt;
-&lt;/indexterm&gt;
-&lt;/sect3&gt;
+      &lt;indexterm zone="fam fam-config">
+        &lt;primary sortas="e-etc-rpc"&gt;/etc/rpc&lt;/primary&gt;
+      &lt;/indexterm&gt;
+      &lt;indexterm zone="fam fam-config"&gt;
+        &lt;primary sortas="e-etc-fam.conf"&gt;/etc/fam.conf&lt;/primary&gt;
+      &lt;/indexterm&gt;
+      &lt;indexterm zone="fam fam-config"&gt;
+        &lt;primary sortas="e-etc-inetd.conf"&gt;/etc/inetd.conf&lt;/primary&gt;
+      &lt;/indexterm&gt;
+      &lt;indexterm zone="fam fam-config"&gt;
+        &lt;primary sortas="e-etc-xinetd.conf"&gt;/etc/xinetd.conf&lt;/primary&gt;
+      &lt;/indexterm&gt;
+      &lt;indexterm zone="fam fam-config"&gt;
+        &lt;primary sortas="e-etc-xinetd.d-sgi_fam"&gt;/etc/xinetd.d/sgi_fam&lt;/primary&gt;
+      &lt;/indexterm&gt;
+    &lt;/sect3&gt;
 
-&lt;sect3&gt;
-&lt;title&gt;Configuration Information&lt;/title&gt;
+    &lt;sect3&gt;
+      &lt;title&gt;Configuration Information&lt;/title&gt;
 
-&lt;para&gt;Configuring the file alteration monitor.&lt;/para&gt;
+      &lt;para&gt;Configuring the file alteration monitor.&lt;/para&gt;
 
-&lt;para&gt;If you use &lt;application&gt;inetd&lt;/application&gt;, add the &lt;application&gt;FAM&lt;/application&gt; 
-entry to &lt;filename&gt;/etc/inetd.conf&lt;/filename&gt; with the following command:&lt;/para&gt;
+      &lt;para&gt;If you use &lt;application&gt;inetd&lt;/application&gt;, add the &lt;application&gt;FAM&lt;/application&gt; 
+      entry to &lt;filename&gt;/etc/inetd.conf&lt;/filename&gt; with the following command:&lt;/para&gt;
 
 &lt;screen role="root"&gt;&lt;userinput&gt;echo "sgi_fam/1-2 stream  rpc/tcp wait root /usr/sbin famd fam" \
     &amp;gt;&amp;gt; /etc/inetd.conf&lt;/userinput&gt;&lt;/screen&gt;
 
-&lt;para&gt;If you use &lt;application&gt;xinetd&lt;/application&gt;, add an entry to
-&lt;filename&gt;/etc/xinetd.conf&lt;/filename&gt; with the following command (be
-sure the "nogroup" group exists):&lt;/para&gt;
+      &lt;para&gt;If you use &lt;application&gt;xinetd&lt;/application&gt;, add an entry to
+      &lt;filename&gt;/etc/xinetd.conf&lt;/filename&gt; with the following command (be
+      sure the "nogroup" group exists):&lt;/para&gt;
 
 &lt;screen role="root"&gt;&lt;userinput&gt;cat &amp;gt;&amp;gt; /etc/xinetd.conf &amp;lt;&amp;lt; "EOF"
 &lt;literal&gt;# description: FAM - file alteration monitor
@@ -305,25 +331,25 @@ sure the "nogroup" group exists):&lt;/para&gt;
         rpc_number      = 391002
     }&lt;/literal&gt;
 EOF&lt;/userinput&gt;&lt;/screen&gt;
-&lt;/sect3&gt;
+    &lt;/sect3&gt;
 
-&lt;sect3 id="fam-boot"&gt;
-&lt;title&gt;Boot Scripts&lt;/title&gt;
+    &lt;sect3 id="fam-boot"&gt;
+      &lt;title&gt;Boot Scripts&lt;/title&gt;
 
-&lt;para&gt;If you do not have an &lt;command&gt;inetd&lt;/command&gt; daemon installed and have 
-no wish to install one, you can also start &lt;command&gt;famd&lt;/command&gt; during 
-system startup by installing the &lt;filename&gt;/etc/rc.d/init.d/fam&lt;/filename&gt;
-init script included in the
-&lt;xref linkend="intro-important-bootscripts"/&gt; package.&lt;/para&gt;
+      &lt;para&gt;If you do not have an &lt;command&gt;inetd&lt;/command&gt; daemon installed and have 
+      no wish to install one, you can also start &lt;command&gt;famd&lt;/command&gt; during 
+      system startup by installing the &lt;filename&gt;/etc/rc.d/init.d/fam&lt;/filename&gt;
+      init script included in the
+      &lt;xref linkend="intro-important-bootscripts"/&gt; package.&lt;/para&gt;
 
 &lt;screen role="root"&gt;&lt;userinput&gt;make install-fam&lt;/userinput&gt;&lt;/screen&gt;
 
-&lt;indexterm zone="fam fam-boot"&gt;
-  &lt;primary sortas="f-fam"&gt;fam&lt;/primary&gt;
-&lt;/indexterm&gt;
+      &lt;indexterm zone="fam fam-boot"&gt;
+        &lt;primary sortas="f-fam"&gt;fam&lt;/primary&gt;
+      &lt;/indexterm&gt;
   
-&lt;/sect3&gt;
-&lt;/sect2&gt;</screen>
+    &lt;/sect3&gt;
+  &lt;/sect2&gt;</screen>
 </sect1>
  
 <sect1>
@@ -331,47 +357,47 @@ init script included in the
 
 <para>The final section describes the contents of the application.</para>
 
-<screen>&lt;sect2&gt;
-&lt;title&gt;Contents&lt;/title&gt;
-&lt;segmentedlist&gt;
-  &lt;segtitle&gt;Installed Program&lt;/segtitle&gt;
-  &lt;segtitle&gt;Installed Library&lt;/segtitle&gt;
-  &lt;segtitle&gt;Installed Directories&lt;/segtitle&gt;
- 
-  &lt;seglistitem&gt;
-    &lt;seg&gt;famd&lt;/seg&gt;
-    &lt;seg&gt;libfam.[so,a]&lt;/seg&gt;
-    &lt;seg&gt;None&lt;/seg&gt;
-  &lt;/seglistitem&gt;
-&lt;/segmentedlist&gt;
- 
-&lt;variablelist&gt;
-  &lt;bridgehead renderas="sect3"&gt;Short Descriptions&lt;/bridgehead&gt;
-  &lt;?dbfo list-presentation="list"?&gt;
-  &lt;?dbhtml list-presentation="table"?&gt;
+<screen>  &lt;sect2&gt;
+    &lt;title&gt;Contents&lt;/title&gt;
+    &lt;segmentedlist&gt;
+      &lt;segtitle&gt;Installed Program&lt;/segtitle&gt;
+      &lt;segtitle&gt;Installed Library&lt;/segtitle&gt;
+      &lt;segtitle&gt;Installed Directories&lt;/segtitle&gt;
+     
+      &lt;seglistitem&gt;
+        &lt;seg&gt;famd&lt;/seg&gt;
+        &lt;seg&gt;libfam.[so,a]&lt;/seg&gt;
+        &lt;seg&gt;None&lt;/seg&gt;
+      &lt;/seglistitem&gt;
+    &lt;/segmentedlist&gt;
+     
+    &lt;variablelist&gt;
+      &lt;bridgehead renderas="sect3"&gt;Short Descriptions&lt;/bridgehead&gt;
+      &lt;?dbfo list-presentation="list"?&gt;
+      &lt;?dbhtml list-presentation="table"?&gt;
 
-&lt;varlistentry id="famd"&gt;
-  &lt;term&gt;&lt;command&gt;famd&lt;/command&gt;&lt;/term&gt;
-  &lt;listitem&gt;
-    &lt;para&gt;is the file alteration monitor daemon.&lt;/para&gt;
-    &lt;indexterm zone="fam famd"&gt;
-      &lt;primary sortas="b-famd"&gt;famd&lt;/primary&gt;
-    &lt;/indexterm&gt;
-  &lt;/listitem&gt;
-&lt;/varlistentry&gt;
+    &lt;varlistentry id="famd"&gt;
+      &lt;term&gt;&lt;command&gt;famd&lt;/command&gt;&lt;/term&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;is the file alteration monitor daemon.&lt;/para&gt;
+        &lt;indexterm zone="fam famd"&gt;
+          &lt;primary sortas="b-famd"&gt;famd&lt;/primary&gt;
+        &lt;/indexterm&gt;
+      &lt;/listitem&gt;
+    &lt;/varlistentry&gt;
 
-&lt;varlistentry id="libfam"&gt;
-  &lt;term&gt;&lt;filename class='libraryfile'&gt;libfam.[so,a]&lt;/filename&gt;&lt;/term&gt;
-  &lt;listitem&gt;
-    &lt;para&gt;contains functions that support the file allocation monitor.&lt;/para&gt;
-    &lt;indexterm zone="fam libfam"&gt;
-      &lt;primary sortas="c-libfam"&gt;libfam.[so,a]&lt;/primary&gt;
-    &lt;/indexterm&gt;
-    &lt;/listitem&gt;
-  &lt;/varlistentry&gt;
-&lt;/variablelist&gt;
+    &lt;varlistentry id="libfam"&gt;
+      &lt;term&gt;&lt;filename class='libraryfile'&gt;libfam.[so,a]&lt;/filename&gt;&lt;/term&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;contains functions that support the file allocation monitor.&lt;/para&gt;
+        &lt;indexterm zone="fam libfam"&gt;
+          &lt;primary sortas="c-libfam"&gt;libfam.[so,a]&lt;/primary&gt;
+        &lt;/indexterm&gt;
+        &lt;/listitem&gt;
+      &lt;/varlistentry&gt;
+    &lt;/variablelist&gt;
 
-&lt;/sect2&gt;
+  &lt;/sect2&gt;
 &lt;/sect1&gt;</screen>
 </sect1>
 

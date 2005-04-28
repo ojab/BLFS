@@ -8,7 +8,7 @@ edguide:
 	xsltproc --xinclude --nonet -stringparam base.dir $(OUTPUTDIR) \
 	       edguide.xsl index.xml
 	cp *.css $(OUTPUTDIR)
-	sh goTidy $(OUTPUTDIR)
+#	sh goTidy $(OUTPUTDIR)
 
 
 validate:
