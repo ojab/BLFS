@@ -44,7 +44,7 @@ case "$1" in
 		echo "Stopping MySQL daemon..."
 		if [ -e "$PIDFILE" ]
 		then
-			killproc
+			killproc mysqld
 		else
 			print_status warning not_running
 			if [ -e "$PIDFILE" ]
