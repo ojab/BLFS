@@ -1,9 +1,13 @@
+
+2005-05-30 Randy McMurchy <randy@linuxfromscratch.org>
+	* Updated GDM script to GNOME-2.10.
+
 2005-05-09 Igor Zivkovic <igor@linuxfromscratch.org>
 	* Added a killproc parameter to mysql (Nathan Coulson).
 
 2005-03-13 Bruce Dubbs <bdubbs@linuxfromscratch.org>
-	* Updated openldap1 and openldap2 to check for rrunning
-      daemons before starting.
+	* Updated openldap1 and openldap2 to check for running
+	daemons before starting.
 
 2005-03-13 Bruce Dubbs <bdubbs@linuxfromscratch.org>
 	* Added iptables initialization script.
