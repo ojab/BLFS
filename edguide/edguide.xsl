@@ -14,21 +14,21 @@ Based on the original lfs-chunked.xsl created by Matthew Burgess -->
   <xsl:import href="http://docbook.sourceforge.net/release/xsl/1.68.1/xhtml/chunk.xsl"/>
   <xsl:param name="chunker.output.encoding" select="'ISO-8859-1'"/>
   <xsl:param name="chunk.section.depth" select="0"/>
-  
+
   	<!-- The CSS Stylesheet -->
   <xsl:param name="html.stylesheet" select="'edguide.css'"/>
 
   	<!-- Dropping some unwanted style attributes -->
   <xsl:param name="ulink.target" select="''"></xsl:param>
   <xsl:param name="css.decoration" select="0"></xsl:param>
-  
+
     <!-- No XML declaration -->
   <xsl:param name="chunker.output.omit-xml-declaration" select="'yes'"/>
-  
+
     <!-- Insert a stylesheet for printing -->
   <xsl:template name='user.head.content'>
      <link rel='stylesheet' href="edguide-print.css" type="text/css" media='print'/>
-  </xsl:template> 
+  </xsl:template>
 
   <xsl:template match="userinput">
     <xsl:call-template name="inline.monoseq"/>
@@ -44,7 +44,7 @@ Based on the original lfs-chunked.xsl created by Matthew Burgess -->
         <xsl:with-param name="footnotes" select="$footnotes"/>
       </xsl:call-template>
     </xsl:variable>
-   
+
     <!-- Only bother to do this if there's at least one non-table footnote -->
     <xsl:if test="$fcount &gt; 0">
       <div class="footnotes">
@@ -56,7 +56,7 @@ Based on the original lfs-chunked.xsl created by Matthew Burgess -->
         </xsl:call-template>
       </div>
     </xsl:if>
-  
+
     <!-- Add this to the footnotes -->
     <xsl:apply-templates select='prefaceinfo|chapterinfo' mode='attribution'/>
   </xsl:template>
@@ -65,11 +65,11 @@ Based on the original lfs-chunked.xsl created by Matthew Burgess -->
     <p class='updated'> Last updated by 
       <xsl:apply-templates select="othername" mode='attribution'/>
       on
-      <xsl:apply-templates select="date" mode='attribution'/> 
+      <xsl:apply-templates select="date" mode='attribution'/>
     </p>
   </xsl:template>
 
-  <xsl:template match='othername' mode='attribution'> 
+  <xsl:template match='othername' mode='attribution'>
      <xsl:variable name='author'>
           <xsl:value-of select='.'/>
      </xsl:variable>
@@ -77,13 +77,13 @@ Based on the original lfs-chunked.xsl created by Matthew Burgess -->
           <xsl:value-of select='substring($author,10)'/>
      </xsl:variable>
      <xsl:value-of select="substring-before($nameonly,'$')" />
-  </xsl:template> 
+  </xsl:template>
 
-  <xsl:template match='date' mode='attribution'> 
+  <xsl:template match='date' mode='attribution'>
       <xsl:variable name='date'>
          <xsl:value-of select='.'/>
       </xsl:variable>
       <xsl:value-of select="substring($date,7,26)" />
-  </xsl:template> 
+  </xsl:template>
 
 </xsl:stylesheet>

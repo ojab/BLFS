@@ -150,7 +150,7 @@ and check the file for conflict markers in the file.
 
 <para><userinput>*</userinput>: An asterisk in column eight means that the file
 in the repository has been changed.  The file will be updated when a 
-<userinput>svn update</userinput> is run.</para> 
+<userinput>svn update</userinput> is run.</para>
 
 <para>Once you know why you're getting each symbol, and they're all
 correct, you can proceed to the next step.  There are other symbols that

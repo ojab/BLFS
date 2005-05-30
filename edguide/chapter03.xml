@@ -63,7 +63,7 @@ sandbox immediately as well as from the repository after committing.</para>
 
 <section id="ch03-status">
 <title>svn status</title>
- 
+
 <para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2557523">
 <userinput>svn status</userinput></ulink>.  This command prints the status of
 working directories and files.  If you have made local changes, it'll show your
@@ -81,7 +81,7 @@ that everything is alright and ready to go. </para>
 <section id="ch03-update">
 <title>svn update/up</title>
 
-<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2558425"> 
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2558425">
 <userinput>svn update</userinput></ulink> or <userinput>svn
 up</userinput>.  This command syncs your local sandbox with the server.
 If you have made local changes, it'll try and merge any changes on the

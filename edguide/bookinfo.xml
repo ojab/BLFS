@@ -4,7 +4,7 @@
   <!ENTITY % general-entities SYSTEM "general.ent">
   %general-entities;
 ]>
- 
+
 <bookinfo>
 <title>Beyond Linux From Scratch Editor's Manual</title>
 <subtitle>Version &version;</subtitle>
@@ -32,7 +32,7 @@
 modification, are permitted provided that the following conditions are
 met:</para>
 
-<itemizedlist> 
+<itemizedlist>
 
 <listitem><para>Redistributions in any form must retain the above copyright
 notice, this list of conditions and the following disclaimer.</para></listitem>
@@ -71,4 +71,4 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</para>
 
 
 
-</bookinfo> 
+</bookinfo>

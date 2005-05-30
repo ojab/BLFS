@@ -35,7 +35,7 @@ tell the user to consult other documentaion for additional options.
 <para>Generally custom optimization beyond the application's default
 optimization should not be encouraged.  It generally causes more problems than
 it is worth.  In some cases, certain optimizations may be recommended, but this
-should be done with appropriate warnings.</para> 
+should be done with appropriate warnings.</para>
 </section>
 
 <section id="ch07-patches">

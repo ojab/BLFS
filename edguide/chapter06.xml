@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
    "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" >
-    
+
 <chapter id="chapter06">
 <chapterinfo>
 <othername>$Author$</othername>
@@ -65,7 +65,7 @@ url='http://www.linuxfromscratch.org/~bdubbs/about.html'/>.</para>
 &lt;!ENTITY fam-time "0.3 SBU"&gt;
 ]&gt; </screen>
 
-<para>The application is delimited by &lt;sect1&gt; tags.  The <parameter>id</parameter> 
+<para>The application is delimited by &lt;sect1&gt; tags.  The <parameter>id</parameter>
 attribute should be unique in the BLFS book and similar to the application name.
 The <parameter>xreflabel</parameter> is the name that will show up in the table of
 contents.</para>
@@ -186,15 +186,15 @@ sections as appropriate for the package.</para>
 
   &lt;bridgehead renderas="sect4"&gt;Recommended&lt;/bridgehead&gt;
   &lt;para&gt;&lt;xref linkend="some-IDREF"/&gt;&lt;/para&gt;
-    
+
   &lt;bridgehead renderas="sect4"&gt;Optional&lt;/bridgehead&gt;
   &lt;para&gt;&lt;xref linkend="some-IDREF"/&gt;&lt;/para&gt;
-    
+
   &lt;/sect2&gt;</screen>
 </sect1>
 
 <sect1>
-<title>Installation Section</title> 
+<title>Installation Section</title>
 
 <para>The Installation Section provides the literal instructions needed to
 build the application.  The instructions should be inside a
@@ -218,7 +218,7 @@ autoreconf -f -i &amp;amp;&amp;amp;
 make&lt;/userinput&gt;&lt;/screen&gt;
 
     &lt;para&gt;Now, as the &lt;systemitem class="username"&gt;root&lt;/systemitem&gt; user:&lt;/para&gt;
- 
+
 &lt;screen role="root"&gt;&lt;userinput&gt;make install&lt;/userinput&gt;&lt;/screen&gt;
 
   &lt;/sect2&gt;</screen>
@@ -262,7 +262,7 @@ must be used.</para>
 
   &lt;/sect2&gt;</screen>
 </sect1>
- 
+
 <sect1>
 <title>Configuration Section</title>
 
@@ -347,11 +347,11 @@ EOF&lt;/userinput&gt;&lt;/screen&gt;
       &lt;indexterm zone="fam fam-boot"&gt;
         &lt;primary sortas="f-fam"&gt;fam&lt;/primary&gt;
       &lt;/indexterm&gt;
-  
+
     &lt;/sect3&gt;
   &lt;/sect2&gt;</screen>
 </sect1>
- 
+
 <sect1>
 <title>Contents Section</title>
 
@@ -363,14 +363,14 @@ EOF&lt;/userinput&gt;&lt;/screen&gt;
       &lt;segtitle&gt;Installed Program&lt;/segtitle&gt;
       &lt;segtitle&gt;Installed Library&lt;/segtitle&gt;
       &lt;segtitle&gt;Installed Directories&lt;/segtitle&gt;
-     
+
       &lt;seglistitem&gt;
         &lt;seg&gt;famd&lt;/seg&gt;
         &lt;seg&gt;libfam.[so,a]&lt;/seg&gt;
         &lt;seg&gt;None&lt;/seg&gt;
       &lt;/seglistitem&gt;
     &lt;/segmentedlist&gt;
-     
+
     &lt;variablelist&gt;
       &lt;bridgehead renderas="sect3"&gt;Short Descriptions&lt;/bridgehead&gt;
       &lt;?dbfo list-presentation="list"?&gt;
