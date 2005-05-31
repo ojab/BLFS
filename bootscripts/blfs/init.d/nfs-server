@@ -26,7 +26,7 @@ case "$1" in
 			echo "Starting NFS rquotad..."
 			loadproc /usr/sbin/rpc.rquotad
 		fi
-		
+
 		# NFSD support only in 2.6 kernel
 		/bin/uname -r | /bin/grep "2.6" 2>&1 > /dev/null
 		if [ $? == 0 ]; then
@@ -35,7 +35,7 @@ case "$1" in
 			evaluate_retval
 		fi
 
-		# Make ceratin that the list is refreshed on 
+		# Make ceratin that the list is refreshed on
 		# a restart.
 		echo "Exporting NFS Filesystems..."
 		/usr/sbin/exportfs -ra 2>&1 > /dev/null

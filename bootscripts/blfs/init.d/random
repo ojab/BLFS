@@ -21,7 +21,7 @@ case "$1" in
 			count=1 &>/dev/null
 		evaluate_retval
 		;;
-                
+
 	stop)
 		echo "Saving random seed..."
 		/bin/dd if=/dev/urandom of=/var/tmp/random-seed \
