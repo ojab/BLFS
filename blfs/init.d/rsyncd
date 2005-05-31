@@ -25,7 +25,7 @@ case "$1" in
 		echo "Reloading RSYNC Server..."
 		reloadproc /usr/bin/rsync
 		;;
-            
+
 	restart)
 		$0 stop
 		sleep 1

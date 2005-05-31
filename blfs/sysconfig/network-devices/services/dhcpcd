@@ -54,7 +54,7 @@ case "$2" in
 			evaluate_retval
 		fi
         ;;
-                                                                                
+
         down)
 		echo "Stopping dhcpcd on the $1 interface..."
 		# Do nothing with the client daemon if we have an infinate 
@@ -77,17 +77,17 @@ case "$2" in
 			    evaluate_retval
 			fi
 		    fi
-		else 
+		else
 		    echo "LEASEINFO Test failed"
 		    print_status warning not_running
 		    exit 1
 		fi
         ;;
-                                                                                
+
         *)
                 echo "Usage: $0 [interface] {up|down}"
                 exit 1
         ;;
 esac
-                                                                                
+
 # End $network_devices/services/dhcpcd
