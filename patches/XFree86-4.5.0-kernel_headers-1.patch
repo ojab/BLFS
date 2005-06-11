@@ -4,6 +4,9 @@ Initial Package Version: 4.5.0
 Origin: David Jensen, copied the change from xorg
 Description: Fixes PAGE_MASK error with userspace kernel headers
 
+$LastChangedBy$
+$Date$
+
 --- xc.orig/programs/Xserver/hw/xfree86/fbdevhw/fbdevhw.c	2003-10-30 11:37:16.000000000 -0600
 +++ xc/programs/Xserver/hw/xfree86/fbdevhw/fbdevhw.c	2005-06-08 17:04:12.000000000 -0500
 @@ -14,7 +14,12 @@
