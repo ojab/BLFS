@@ -45,7 +45,7 @@ case "$2" in
 				echo "           Default Gateway: $GATEWAY"
 				echo "           DNS Server:      $DNS"
 			else
-				echo " IP Addresss: ""$IPADDR""..."
+				echo " IP Addresss: ""$IPADDR"
 				print_status success
 			fi
 		else
