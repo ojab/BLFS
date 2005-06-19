@@ -1,6 +1,16 @@
-diff -Naur dhcp-3.0.2.old/client/scripts/linux dhcp-3.0.2/client/scripts/linux
---- dhcp-3.0.2.old/client/scripts/linux	Thu Nov 14 19:09:09 2002
-+++ dhcp-3.0.2/client/scripts/linux	Sun Mar 13 01:35:32 2005
+Submitted By: DJ Lucas (dj at linuxfromscratch dot org)
+Date: 2005-06-18
+Initial Package Version: 3.0.2
+Origin: Jim Gifford, Bruce Dubbs, DJ Lucas
+Description: Fixes client script to use iproute2 (added flush to previous 
+             unversioned patches)
+Upstream Status:  Not submitted
+
+$LastChangedBy$
+$Date$
+
+--- dhcp-3.0.2-orig/client/scripts/linux	2002-11-14 19:09:09.000000000 -0600
++++ dhcp-3.0.2/client/scripts/linux	2005-06-18 22:54:59.000000000 -0500
 @@ -1,26 +1,15 @@
  #!/bin/bash
  # dhclient-script for Linux. Dan Halbert, March, 1997.
@@ -115,7 +125,7 @@ diff -Naur dhcp-3.0.2.old/client/scripts/linux dhcp-3.0.2/client/scripts/linux
  
    # We need to give the kernel some time to get the interface up.
    sleep 1
-@@ -115,83 +115,50 @@
+@@ -115,83 +115,51 @@
      fi
    fi
      
@@ -125,12 +135,13 @@ diff -Naur dhcp-3.0.2.old/client/scripts/linux dhcp-3.0.2/client/scripts/linux
 -    ifconfig $interface:0- inet 0
 -  fi
    if [ x$old_ip_address != x ] && [ x$old_ip_address != x$new_ip_address ]; then
-     # IP address changed. Bringing down the interface will delete all routes,
+-    # IP address changed. Bringing down the interface will delete all routes,
++    # IP address changed. Bring down the interface, delete all routes,
      # and clear the ARP cache.
 -    ifconfig $interface inet 0 down
 -
 +    ip link set $interface down
-+    ip addr del $old_ip_address dev $interface
++    ip addr flush dev $interface
    fi
    if [ x$old_ip_address = x ] || [ x$old_ip_address != x$new_ip_address ] || \
       [ x$reason = xBOUND ] || [ x$reason = xREBOOT ]; then
@@ -167,13 +178,15 @@ diff -Naur dhcp-3.0.2.old/client/scripts/linux dhcp-3.0.2/client/scripts/linux
 -    ifconfig $interface:0- inet 0
 -  fi
    if [ x$old_ip_address != x ]; then
-     # Shut down interface, which will delete routes and clear arp cache.
+-    # Shut down interface, which will delete routes and clear arp cache.
 -    ifconfig $interface inet 0 down
 -  fi
 -  if [ x$alias_ip_address != x ]; then
 -    ifconfig $interface:0 inet $alias_ip_address $alias_subnet_arg
 -    route add -host $alias_ip_address $interface:0
++    # Shut down interface, delete routes, and clear arp cache.
 +    ip link set $interface down
++    ip addr flush dev $interface
    fi
    exit_with_hooks 0
  fi
