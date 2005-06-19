@@ -12,11 +12,51 @@
 . $rc_functions
 . $IFCONFIG
 
+printstats()
+{
+	# Print the last 16 lines of dhclient.leases
+	sed -e :a -e '$q;N;17,$D;ba' /var/state/dhcp//dhclient.leases
+}
+
 case "$2" in
         up)
                 echo "Starting dhclient on the interface..."
                 /sbin/dhclient $1 $DHCP_START
-                evaluate_retval
+                # Save the return value
+                RET="$?"
+                # Print the assigned settings if requested
+                if [ "$RET" == "0" -a "$PRINTIP" == "yes" ]; then
+			# Get info from dhclient.leases file
+			IPADDR=`printstats | grep "fixed-address" | \
+				sed 's/ fixed-address //' | \
+				sed 's/\;//'`
+			NETMASK=`printstats | grep "subnet-mask" | \
+				sed 's/ option subnet-mask //' | \
+				sed 's/\;//'`
+			GATEWAY=`printstats | grep "routers" | \
+				sed 's/ option routers //' | \
+				sed 's/\;//'`
+			DNS=`printstats | grep "domain-name-servers" | \
+				sed 's/ option domain-name-servers //' | \
+				sed 's/\;//' | sed 's/,/ and /'`
+
+                        if [ "$PRINTALL" == "yes" ]; then
+                                echo ""
+                                print_status success
+                                echo "           DHCP Assigned Settings for $1:"
+                                echo "           IP Address:      $IPADDR"
+                                echo "           Subnet Mask:     $NETMASK"
+                                echo "           Default Gateway: $GATEWAY"
+                                echo "           DNS Server:      $DNS"
+                        else
+                                echo " IP Addresss:""$IPADDR"
+                                print_status success
+                        fi
+                else
+                        echo ""
+                        $(exit "$RET")
+                        evaluate_retval
+                fi
         ;;
 
         down)
