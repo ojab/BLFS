@@ -4,8 +4,8 @@ Initial Package Version: 4.6
 Origin: http://www.ghostscript.com/
 Description: Fixes text extracting.
 
-$LastChangedBy$
-$Date$
+$LastChangedBy: djensen $
+$Date: 2005-06-21 09:17:17 -0500 (Tue, 21 Jun 2005) $
 
 --- gsview-4.6/srcunx/gvxdll.c.orig	2004-02-02 00:29:53.000000000 +0000
 +++ gsview-4.6/srcunx/gvxdll.c	2004-02-02 00:30:05.000000000 +0000
@@ -52,7 +52,7 @@ $Date$
      else {
  	/* parent */
 -	/* Check every second if pstotext has finished */
--	gtk_timeout_add(1000, check_pstotext, (gpointer)pstotext_pid);
+-	gtk_timeout_add(1000, check_pstotext, (gpointer)((size_t)pstotext_pid));
 +	/* pstotext_sighandler will tell us when it finishes */
      } 
      return 0;	/* all is well */
