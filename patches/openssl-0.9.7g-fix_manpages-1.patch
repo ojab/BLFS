@@ -10,8 +10,8 @@ Description:             This patch fixes conflicts between man pages
                          POD files that generates slightly broken man
                          pages.
 
-$LastChangedBy$
-$Date$
+$LastChangedBy: igor $
+$Date: 2005-04-03 16:54:23 -0600 (Sun, 03 Apr 2005) $
 
 diff -Naur openssl-0.9.7e.orig/FAQ openssl-0.9.7e/FAQ
 --- openssl-0.9.7e.orig/FAQ	2004-10-25 11:24:36.000000000 +0000
