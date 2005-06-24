@@ -13,13 +13,13 @@
 
 case "$2" in
         up)
-                echo "Bringing up the ADSL interface..."
+                boot_mesg "Bringing up the ADSL interface..."
                 /usr/sbin/adsl-start
                 evaluate_retval
         ;;
 
         down)
-                echo "Bringing down the ADSL interface..."
+                boot_mesg "Bringing down the ADSL interface..."
                 /usr/sbin/adsl-stop
                 evaluate_retval
         ;;

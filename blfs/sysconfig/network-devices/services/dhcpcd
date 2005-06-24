@@ -17,7 +17,7 @@ LEASEINFO="/var/lib/dhcpc/dhcpcd-$1.info"
 
 case "$2" in
         up)
-                echo -n "Starting dhcpcd on the $1 interface..."
+                boot_mesg -n "Starting dhcpcd on the $1 interface..."
                 # Test to see if there is a stale pid file
                 if [ -f "$PIDFILE" ]
                 then
@@ -26,7 +26,8 @@ case "$2" in
                     then
                         rm -f /var/run/dhcpcd-$1.pid > /dev/null
                     else
-                        print_status warning running
+			boot_mesg "dhcpcd already running!" ${WARNING}
+                        echo_warning
                         exit 2
                     fi
                 fi
@@ -38,15 +39,20 @@ case "$2" in
 			. /var/lib/dhcpc/dhcpcd-$1.info
 			if [ "$PRINTALL" == "yes" ]; then
 				echo ""
-				print_status success
-				echo "           DHCP Assigned Settings for $1:"
-				echo "           IP Address:      $IPADDR"
-				echo "           Subnet Mask:     $NETMASK"
-				echo "           Default Gateway: $GATEWAY"
-				echo "           DNS Server:      $DNS"
+				echo_ok
+				boot_mesg "           DHCP Assigned Settings for $1:"
+				boot_mesg_flush
+				boot_mesg "           IP Address:      $IPADDR"
+				boot_mesg_flush
+				boot_mesg "           Subnet Mask:     $NETMASK"
+				boot_mesg_flush
+				boot_mesg "           Default Gateway: $GATEWAY"
+				boot_mesg_flush
+				boot_mesg "           DNS Server:      $DNS"
+				boot_mesg_flush
 			else
-				echo " IP Addresss: ""$IPADDR"
-				print_status success
+				boot_mesg " IP Addresss: ""$IPADDR"
+				echo_ok
 			fi
 		else
 			echo ""
@@ -56,7 +62,7 @@ case "$2" in
         ;;
 
         down)
-		echo "Stopping dhcpcd on the $1 interface..."
+		boot_mesg -n "Stopping dhcpcd on the $1 interface..."
 		# Do nothing with the client daemon if we have an infinate 
 		# lease time as the client exits when started in this case,
 		# just echo OK.
@@ -67,19 +73,32 @@ case "$2" in
 		    if [ "$LEASETIME" = "4294967295" ]
 		    then
 			# do nothing, just echo ok
-			print_status ok
+			echo ""
+			echo_ok
 		    else
-			if [ -z "$DHCP_STOP" ]
+			if [ -n "$DHCP_STOP" ]
 			then
-			    killproc dhcpcd
+			    /sbin/dhcpcd $1 $DHCP_STOP &> /dev/null
+			    RET="$?"
+			    if [ "$RET" -eq 0 ]; then
+				echo ""
+				echo_ok
+			    elif [ "$RET" -eq 1 ]; then
+				boot_mesg "dhcpcd not running!" ${WARNING}
+				echo_warning
+			    else
+				echo ""
+				echo_failure
+			    fi
 			else
-			    /sbin/dhcpcd $1 $DHCP_STOP
-			    evaluate_retval
+			    echo ""
+			    killproc dhcpcd
 			fi
 		    fi
 		else
-		    echo "LEASEINFO Test failed"
-		    print_status warning not_running
+		    boot_mesg -n "LEASEINFO Test failed! - " ${WARNING}
+		    boot_mesg "dhcpcd is not running!" ${WARNING}
+		    echo_warning
 		    exit 1
 		fi
         ;;
