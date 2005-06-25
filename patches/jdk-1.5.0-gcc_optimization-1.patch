@@ -1,0 +1,22 @@
+Submitted By: DJ Lucas (dj AT linuxfromscratch DOT org)
+Date: 2005-06-25
+Initial Package Version: 1.5.0
+Origin: Self
+Upstream Status: Not Submitted (LFS Specific)
+Description: Removes OTHER_CXXFLAGS from the CXXFLAGS variable durring 
+the build of unpacker to allow for a successful build.
+
+$LastChangedBy$
+$Date$
+
+--- jdk-build-orig/j2se/make/com/sun/java/pack/Makefile	2004-10-19 13:44:46.000000000 -0500
++++ jdk-build/j2se/make/com/sun/java/pack/Makefile	2005-06-24 22:42:19.000000000 -0500
+@@ -15,7 +15,7 @@
+ PRODUCT = sun
+ PGRM = unpack200
+ include $(BUILDDIR)/common/Defs.gmk
+-
++CXXFLAGS        = $(CXXFLAGS_$(VARIANT)) $(CXXFLAGS_COMMON)
+ CPLUSPLUSLIBRARY=true
+ 
+ 
