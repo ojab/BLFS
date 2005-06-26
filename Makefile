@@ -428,6 +428,404 @@ install-xinetd: create-dirs
 	ln -sf  ../init.d/xinetd ${EXTDIR}/rc.d/rc5.d/S23xinetd
 	ln -sf  ../init.d/xinetd ${EXTDIR}/rc.d/rc6.d/K49xinetd
 
+uninstall-alsa:
+	rm -f ${EXTDIR}/rc.d/init.d/alsa
+	rm -f ${EXTDIR}/rc.d/rc0.d/K35alsa
+	rm -f ${EXTDIR}/rc.d/rc1.d/K35alsa
+	rm -f ${EXTDIR}/rc.d/rc2.d/S40alsa
+	rm -f ${EXTDIR}/rc.d/rc3.d/S40alsa
+	rm -f ${EXTDIR}/rc.d/rc4.d/S40alsa
+	rm -f ${EXTDIR}/rc.d/rc5.d/S40alsa
+	rm -f ${EXTDIR}/rc.d/rc6.d/K35alsa
+
+uninstall-apache:
+	rm -f ${EXTDIR}/rc.d/init.d/apache
+	rm -f ${EXTDIR}/rc.d/rc0.d/K28apache
+	rm -f ${EXTDIR}/rc.d/rc1.d/K28apache
+	rm -f ${EXTDIR}/rc.d/rc2.d/K28apache
+	rm -f ${EXTDIR}/rc.d/rc3.d/S32apache
+	rm -f ${EXTDIR}/rc.d/rc4.d/S32apache
+	rm -f ${EXTDIR}/rc.d/rc5.d/S32apache
+	rm -f ${EXTDIR}/rc.d/rc6.d/K28apache
+
+uninstall-autofs:
+	rm -f $(EXTDIR)/rc.d/init.d/autofs
+	rm -f $(EXTDIR)/rc.d/rcsysinit.d/S45autofs
+
+uninstall-bind:
+	rm -f ${EXTDIR}/rc.d/init.d/bind
+	rm -f ${EXTDIR}/rc.d/rc0.d/K49bind
+	rm -f ${EXTDIR}/rc.d/rc1.d/K49bind
+	rm -f ${EXTDIR}/rc.d/rc2.d/K49bind
+	rm -f ${EXTDIR}/rc.d/rc3.d/S22bind
+	rm -f ${EXTDIR}/rc.d/rc4.d/S22bind
+	rm -f ${EXTDIR}/rc.d/rc5.d/S22bind
+	rm -f ${EXTDIR}/rc.d/rc6.d/K49bind
+
+uninstall-courier:
+	rm -f ${EXTDIR}/rc.d/init.d/courier
+	rm -f ${EXTDIR}/rc.d/rc0.d/K25courier
+	rm -f ${EXTDIR}/rc.d/rc1.d/K25courier
+	rm -f ${EXTDIR}/rc.d/rc2.d/K25courier
+	rm -f ${EXTDIR}/rc.d/rc3.d/S35courier
+	rm -f ${EXTDIR}/rc.d/rc4.d/S35courier
+	rm -f ${EXTDIR}/rc.d/rc5.d/S35courier
+	rm -f ${EXTDIR}/rc.d/rc6.d/K25courier
+
+uninstall-cups:
+	rm -f ${EXTDIR}/rc.d/init.d/cups
+	rm -f ${EXTDIR}/rc.d/rc0.d/K00cups
+	rm -f ${EXTDIR}/rc.d/rc1.d/K00cups
+	rm -f ${EXTDIR}/rc.d/rc2.d/S99cups
+	rm -f ${EXTDIR}/rc.d/rc3.d/S99cups
+	rm -f ${EXTDIR}/rc.d/rc4.d/S99cups
+	rm -f ${EXTDIR}/rc.d/rc5.d/S99cups
+	rm -f ${EXTDIR}/rc.d/rc6.d/K00cups
+
+uninstall-cyrus-sasl:
+	rm -f ${EXTDIR}/rc.d/init.d/cyrus-sasl
+	rm -f ${EXTDIR}/rc.d/rc0.d/K49cyrus-sasl
+	rm -f ${EXTDIR}/rc.d/rc1.d/K49cyrus-sasl
+	rm -f ${EXTDIR}/rc.d/rc2.d/S24cyrus-sasl
+	rm -f ${EXTDIR}/rc.d/rc3.d/S24cyrus-sasl
+	rm -f ${EXTDIR}/rc.d/rc4.d/S24cyrus-sasl
+	rm -f ${EXTDIR}/rc.d/rc5.d/S24cyrus-sasl
+	rm -f ${EXTDIR}/rc.d/rc6.d/K49cyrus-sasl
+
+uninstall-dhcp:
+	rm -f ${EXTDIR}/rc.d/init.d/dhcp
+	rm -f ${EXTDIR}/rc.d/rc0.d/K30dhcp
+	rm -f ${EXTDIR}/rc.d/rc1.d/K30dhcp
+	rm -f ${EXTDIR}/rc.d/rc2.d/K30dhcp
+	rm -f ${EXTDIR}/rc.d/rc3.d/S30dhcp
+	rm -f ${EXTDIR}/rc.d/rc4.d/S30dhcp
+	rm -f ${EXTDIR}/rc.d/rc5.d/S30dhcp
+	rm -f ${EXTDIR}/rc.d/rc6.d/K30dhcp
+
+uninstall-exim:
+	rm -f ${EXTDIR}/rc.d/init.d/exim
+	rm -f ${EXTDIR}/rc.d/rc0.d/K25exim
+	rm -f ${EXTDIR}/rc.d/rc1.d/K25exim
+	rm -f ${EXTDIR}/rc.d/rc2.d/K25exim
+	rm -f ${EXTDIR}/rc.d/rc3.d/S35exim
+	rm -f ${EXTDIR}/rc.d/rc4.d/S35exim
+	rm -f ${EXTDIR}/rc.d/rc5.d/S35exim
+	rm -f ${EXTDIR}/rc.d/rc6.d/K25exim
+
+uninstall-fam:
+	rm -f ${EXTDIR}/rc.d/init.d/fam
+	rm -f ${EXTDIR}/rc.d/rc0.d/K37fam
+	rm -f ${EXTDIR}/rc.d/rc1.d/K37fam
+	rm -f ${EXTDIR}/rc.d/rc2.d/S23fam
+	rm -f ${EXTDIR}/rc.d/rc3.d/S23fam
+	rm -f ${EXTDIR}/rc.d/rc4.d/S23fam
+	rm -f ${EXTDIR}/rc.d/rc5.d/S23fam
+	rm -f ${EXTDIR}/rc.d/rc6.d/K39fam
+
+uninstall-fcron:
+	rm -f ${EXTDIR}/rc.d/init.d/fcron
+	rm -f ${EXTDIR}/rc.d/rc0.d/K08fcron
+	rm -f ${EXTDIR}/rc.d/rc1.d/K08fcron
+	rm -f ${EXTDIR}/rc.d/rc2.d/S40fcron
+	rm -f ${EXTDIR}/rc.d/rc3.d/S40fcron
+	rm -f ${EXTDIR}/rc.d/rc4.d/S40fcron
+	rm -f ${EXTDIR}/rc.d/rc5.d/S40fcron
+	rm -f ${EXTDIR}/rc.d/rc6.d/K08fcron
+
+uninstall-gdm:
+	rm -f ${EXTDIR}/rc.d/init.d/gdm
+	rm -f ${EXTDIR}/rc.d/rc0.d/K05gdm
+	rm -f ${EXTDIR}/rc.d/rc1.d/K05gdm
+	rm -f ${EXTDIR}/rc.d/rc2.d/K05gdm
+	rm -f ${EXTDIR}/rc.d/rc3.d/K05gdm
+	rm -f ${EXTDIR}/rc.d/rc4.d/K05gdm
+	rm -f ${EXTDIR}/rc.d/rc5.d/S95gdm
+	rm -f ${EXTDIR}/rc.d/rc6.d/K05gdm
+
+uninstall-gpm:
+	rm -f ${EXTDIR}/rc.d/init.d/gpm
+	rm -f ${EXTDIR}/rc.d/rc0.d/K10gpm
+	rm -f ${EXTDIR}/rc.d/rc1.d/K10gpm
+	rm -f ${EXTDIR}/rc.d/rc2.d/S70gpm
+	rm -f ${EXTDIR}/rc.d/rc3.d/S70gpm
+	rm -f ${EXTDIR}/rc.d/rc4.d/S70gpm
+	rm -f ${EXTDIR}/rc.d/rc5.d/S70gpm
+	rm -f ${EXTDIR}/rc.d/rc6.d/K10gpm
+
+uninstall-heimdal:
+	rm -f ${EXTDIR}/rc.d/init.d/heimdal
+	rm -f ${EXTDIR}/rc.d/rc0.d/K42heimdal
+	rm -f ${EXTDIR}/rc.d/rc1.d/K42heimdal
+	rm -f ${EXTDIR}/rc.d/rc2.d/K42heimdal
+	rm -f ${EXTDIR}/rc.d/rc3.d/S28heimdal
+	rm -f ${EXTDIR}/rc.d/rc4.d/S28heimdal
+	rm -f ${EXTDIR}/rc.d/rc5.d/S28heimdal
+	rm -f ${EXTDIR}/rc.d/rc6.d/K42heimdal
+
+uninstall-iptables:
+	rm -f ${EXTDIR}/rc.d/init.d/iptables
+	rm -f ${EXTDIR}/rc.d/rc3.d/S19iptables
+	rm -f ${EXTDIR}/rc.d/rc4.d/S19iptables
+	rm -f ${EXTDIR}/rc.d/rc5.d/S19iptables
+
+uninstall-kerberos:
+	rm -f ${EXTDIR}/rc.d/init.d/kerberos
+	rm -f ${EXTDIR}/rc.d/rc0.d/K42kerberos
+	rm -f ${EXTDIR}/rc.d/rc1.d/K42kerberos
+	rm -f ${EXTDIR}/rc.d/rc2.d/K42kerberos
+	rm -f ${EXTDIR}/rc.d/rc3.d/S28kerberos
+	rm -f ${EXTDIR}/rc.d/rc4.d/S28kerberos
+	rm -f ${EXTDIR}/rc.d/rc5.d/S28kerberos
+	rm -f ${EXTDIR}/rc.d/rc6.d/K42kerberos
+
+uninstall-lisa:
+	rm -f ${EXTDIR}/rc.d/init.d/lisa
+	rm -f ${EXTDIR}/rc.d/rc0.d/K35lisa
+	rm -f ${EXTDIR}/rc.d/rc1.d/K35lisa
+	rm -f ${EXTDIR}/rc.d/rc2.d/K35lisa
+	rm -f ${EXTDIR}/rc.d/rc3.d/S30lisa
+	rm -f ${EXTDIR}/rc.d/rc4.d/S30lisa
+	rm -f ${EXTDIR}/rc.d/rc5.d/S30lisa
+	rm -f ${EXTDIR}/rc.d/rc6.d/K35lisa
+
+uninstall-lprng:
+	rm -f ${EXTDIR}/rc.d/init.d/lprng
+	rm -f ${EXTDIR}/rc.d/rc0.d/K00lprng
+	rm -f ${EXTDIR}/rc.d/rc1.d/K00lprng
+	rm -f ${EXTDIR}/rc.d/rc2.d/S99lprng
+	rm -f ${EXTDIR}/rc.d/rc3.d/S99lprng
+	rm -f ${EXTDIR}/rc.d/rc4.d/S99lprng
+	rm -f ${EXTDIR}/rc.d/rc5.d/S99lprng
+	rm -f ${EXTDIR}/rc.d/rc6.d/K00lprng
+
+uninstall-mysql:
+	rm -f ${EXTDIR}/rc.d/init.d/mysql
+	rm -f ${EXTDIR}/rc.d/rc0.d/K26mysql
+	rm -f ${EXTDIR}/rc.d/rc1.d/K26mysql
+	rm -f ${EXTDIR}/rc.d/rc2.d/K26mysql
+	rm -f ${EXTDIR}/rc.d/rc3.d/S34mysql
+	rm -f ${EXTDIR}/rc.d/rc4.d/S34mysql
+	rm -f ${EXTDIR}/rc.d/rc5.d/S34mysql
+	rm -f ${EXTDIR}/rc.d/rc6.d/K26mysql
+
+uninstall-nas:
+	rm -f ${EXTDIR}/rc.d/init.d/nas
+	rm -f ${EXTDIR}/rc.d/rc0.d/K35nas
+	rm -f ${EXTDIR}/rc.d/rc1.d/K35nas
+	rm -f ${EXTDIR}/rc.d/rc2.d/K35nas
+	rm -f ${EXTDIR}/rc.d/rc3.d/S30nas
+	rm -f ${EXTDIR}/rc.d/rc4.d/S30nas
+	rm -f ${EXTDIR}/rc.d/rc5.d/S30nas
+	rm -f ${EXTDIR}/rc.d/rc6.d/K35nas
+
+uninstall-netfs:
+	rm -f ${EXTDIR}/rc.d/init.d/netfs
+	rm -f ${EXTDIR}/rc.d/rc0.d/K47netfs
+	rm -f ${EXTDIR}/rc.d/rc1.d/K47netfs
+	rm -f ${EXTDIR}/rc.d/rc2.d/K47netfs
+	rm -f ${EXTDIR}/rc.d/rc3.d/S28netfs
+	rm -f ${EXTDIR}/rc.d/rc4.d/S28netfs
+	rm -f ${EXTDIR}/rc.d/rc5.d/S28netfs
+	rm -f ${EXTDIR}/rc.d/rc6.d/K47netfs
+
+uninstall-nfs-client:
+	rm -f ${EXTDIR}/rc.d/init.d/nfs-client
+	rm -f ${EXTDIR}/rc.d/rc0.d/K48nfs-client
+	rm -f ${EXTDIR}/rc.d/rc1.d/K48nfs-client
+	rm -f ${EXTDIR}/rc.d/rc2.d/K48nfs-client
+	rm -f ${EXTDIR}/rc.d/rc3.d/S24nfs-client
+	rm -f ${EXTDIR}/rc.d/rc4.d/S24nfs-client
+	rm -f ${EXTDIR}/rc.d/rc5.d/S24nfs-client
+	rm -f ${EXTDIR}/rc.d/rc6.d/K48nfs-client
+
+uninstall-nfs-server:
+	rm -f ${EXTDIR}/rc.d/init.d/nfs-server
+	rm -f ${EXTDIR}/rc.d/rc0.d/K48nfs-server
+	rm -f ${EXTDIR}/rc.d/rc1.d/K48nfs-server
+	rm -f ${EXTDIR}/rc.d/rc2.d/K48nfs-server
+	rm -f ${EXTDIR}/rc.d/rc3.d/S24nfs-server
+	rm -f ${EXTDIR}/rc.d/rc4.d/S24nfs-server
+	rm -f ${EXTDIR}/rc.d/rc5.d/S24nfs-server
+	rm -f ${EXTDIR}/rc.d/rc6.d/K48nfs-server
+
+uninstall-ntp:
+	rm -f ${EXTDIR}/rc.d/init.d/ntp
+	rm -f ${EXTDIR}/rc.d/rc0.d/K46ntp
+	rm -f ${EXTDIR}/rc.d/rc1.d/K46ntp
+	rm -f ${EXTDIR}/rc.d/rc2.d/K46ntp
+	rm -f ${EXTDIR}/rc.d/rc3.d/S26ntp
+	rm -f ${EXTDIR}/rc.d/rc4.d/S26ntp
+	rm -f ${EXTDIR}/rc.d/rc5.d/S26ntp
+	rm -f ${EXTDIR}/rc.d/rc6.d/K46ntp
+
+uninstall-openldap1:
+	rm -f ${EXTDIR}/rc.d/init.d/openldap
+	rm -f ${EXTDIR}/rc.d/rc0.d/K46openldap
+	rm -f ${EXTDIR}/rc.d/rc1.d/K46openldap
+	rm -f ${EXTDIR}/rc.d/rc2.d/K46openldap
+	rm -f ${EXTDIR}/rc.d/rc3.d/S25openldap
+	rm -f ${EXTDIR}/rc.d/rc4.d/S25openldap
+	rm -f ${EXTDIR}/rc.d/rc5.d/S25openldap
+	rm -f ${EXTDIR}/rc.d/rc6.d/K46openldap
+
+uninstall-openldap2:
+	rm -f ${EXTDIR}/rc.d/init.d/openldap
+	rm -f ${EXTDIR}/rc.d/rc0.d/K46openldap
+	rm -f ${EXTDIR}/rc.d/rc1.d/K46openldap
+	rm -f ${EXTDIR}/rc.d/rc2.d/K46openldap
+	rm -f ${EXTDIR}/rc.d/rc3.d/S25openldap
+	rm -f ${EXTDIR}/rc.d/rc4.d/S25openldap
+	rm -f ${EXTDIR}/rc.d/rc5.d/S25openldap
+	rm -f ${EXTDIR}/rc.d/rc6.d/K46openldap
+
+uninstall-portmap:
+	rm -f ${EXTDIR}/rc.d/init.d/portmap
+	rm -f ${EXTDIR}/rc.d/rc0.d/K49portmap
+	rm -f ${EXTDIR}/rc.d/rc1.d/K49portmap
+	rm -f ${EXTDIR}/rc.d/rc2.d/K49portmap
+	rm -f ${EXTDIR}/rc.d/rc3.d/S22portmap
+	rm -f ${EXTDIR}/rc.d/rc4.d/S22portmap
+	rm -f ${EXTDIR}/rc.d/rc5.d/S22portmap
+	rm -f ${EXTDIR}/rc.d/rc6.d/K49portmap
+
+uninstall-postfix:
+	rm -f ${EXTDIR}/rc.d/init.d/postfix
+	rm -f ${EXTDIR}/rc.d/rc0.d/K25postfix
+	rm -f ${EXTDIR}/rc.d/rc1.d/K25postfix
+	rm -f ${EXTDIR}/rc.d/rc2.d/K25postfix
+	rm -f ${EXTDIR}/rc.d/rc3.d/S35postfix
+	rm -f ${EXTDIR}/rc.d/rc4.d/S35postfix
+	rm -f ${EXTDIR}/rc.d/rc5.d/S35postfix
+	rm -f ${EXTDIR}/rc.d/rc6.d/K25postfix
+
+uninstall-postgresql:
+	rm -f ${EXTDIR}/rc.d/init.d/postgresql
+	rm -f ${EXTDIR}/rc.d/rc0.d/K26postgresql
+	rm -f ${EXTDIR}/rc.d/rc1.d/K26postgresql
+	rm -f ${EXTDIR}/rc.d/rc2.d/K26postgresql
+	rm -f ${EXTDIR}/rc.d/rc3.d/S34postgresql
+	rm -f ${EXTDIR}/rc.d/rc4.d/S34postgresql
+	rm -f ${EXTDIR}/rc.d/rc5.d/S34postgresql
+	rm -f ${EXTDIR}/rc.d/rc6.d/K26postgresql
+
+uninstall-proftpd:
+	rm -f ${EXTDIR}/rc.d/init.d/proftpd
+	rm -f ${EXTDIR}/rc.d/rc0.d/K28proftpd
+	rm -f ${EXTDIR}/rc.d/rc1.d/K28proftpd
+	rm -f ${EXTDIR}/rc.d/rc2.d/K28proftpd
+	rm -f ${EXTDIR}/rc.d/rc3.d/S32proftpd
+	rm -f ${EXTDIR}/rc.d/rc4.d/S32proftpd
+	rm -f ${EXTDIR}/rc.d/rc5.d/S32proftpd
+	rm -f ${EXTDIR}/rc.d/rc6.d/K28proftpd
+
+uninstall-random:
+	rm -f ${EXTDIR}/rc.d/init.d/random
+	rm -f ${EXTDIR}/rc.d/rc0.d/K45random
+	rm -f ${EXTDIR}/rc.d/rc1.d/S25random
+	rm -f ${EXTDIR}/rc.d/rc2.d/S25random
+	rm -f ${EXTDIR}/rc.d/rc3.d/S25random
+	rm -f ${EXTDIR}/rc.d/rc4.d/S25random
+	rm -f ${EXTDIR}/rc.d/rc5.d/S25random
+	rm -f ${EXTDIR}/rc.d/rc6.d/K45random
+
+uninstall-rsyncd:
+	rm -f ${EXTDIR}/rc.d/init.d/rsyncd
+	rm -f ${EXTDIR}/rc.d/rc0.d/K30rsyncd
+	rm -f ${EXTDIR}/rc.d/rc1.d/K30rsyncd
+	rm -f ${EXTDIR}/rc.d/rc2.d/K30rsyncd
+	rm -f ${EXTDIR}/rc.d/rc3.d/S30rsyncd
+	rm -f ${EXTDIR}/rc.d/rc4.d/S30rsyncd
+	rm -f ${EXTDIR}/rc.d/rc5.d/S30rsyncd
+	rm -f ${EXTDIR}/rc.d/rc6.d/K30rsyncd
+
+uninstall-samba:
+	rm -f ${EXTDIR}/rc.d/init.d/samba
+	rm -f ${EXTDIR}/rc.d/rc0.d/K48samba
+	rm -f ${EXTDIR}/rc.d/rc1.d/K48samba
+	rm -f ${EXTDIR}/rc.d/rc2.d/K48samba
+	rm -f ${EXTDIR}/rc.d/rc3.d/S24samba
+	rm -f ${EXTDIR}/rc.d/rc4.d/S24samba
+	rm -f ${EXTDIR}/rc.d/rc5.d/S24samba
+	rm -f ${EXTDIR}/rc.d/rc6.d/K48samba
+
+uninstall-sendmail:
+	rm -f ${EXTDIR}/rc.d/init.d/sendmail
+	rm -f ${EXTDIR}/rc.d/rc0.d/K25sendmail
+	rm -f ${EXTDIR}/rc.d/rc1.d/K25sendmail
+	rm -f ${EXTDIR}/rc.d/rc2.d/K25sendmail
+	rm -f ${EXTDIR}/rc.d/rc3.d/S35sendmail
+	rm -f ${EXTDIR}/rc.d/rc4.d/S35sendmail
+	rm -f ${EXTDIR}/rc.d/rc5.d/S35sendmail
+	rm -f ${EXTDIR}/rc.d/rc6.d/K25sendmail
+
+uninstall-sshd:
+	rm -f ${EXTDIR}/rc.d/init.d/sshd
+	rm -f ${EXTDIR}/rc.d/rc0.d/K30sshd
+	rm -f ${EXTDIR}/rc.d/rc1.d/K30sshd
+	rm -f ${EXTDIR}/rc.d/rc2.d/K30sshd
+	rm -f ${EXTDIR}/rc.d/rc3.d/S30sshd
+	rm -f ${EXTDIR}/rc.d/rc4.d/S30sshd
+	rm -f ${EXTDIR}/rc.d/rc5.d/S30sshd
+	rm -f ${EXTDIR}/rc.d/rc6.d/K30sshd
+
+uninstall-stunnel:
+	rm -f ${EXTDIR}/rc.d/init.d/stunnel
+	rm -f ${EXTDIR}/rc.d/rc0.d/K47stunnel
+	rm -f ${EXTDIR}/rc.d/rc1.d/K47stunnel
+	rm -f ${EXTDIR}/rc.d/rc2.d/K47stunnel
+	rm -f ${EXTDIR}/rc.d/rc3.d/S26stunnel
+	rm -f ${EXTDIR}/rc.d/rc4.d/S26stunnel
+	rm -f ${EXTDIR}/rc.d/rc5.d/S26stunnel
+	rm -f ${EXTDIR}/rc.d/rc6.d/K47stunnel
+
+uninstall-svn:
+	rm -f ${EXTDIR}/rc.d/init.d/svn
+	rm -f ${EXTDIR}/rc.d/rc0.d/K27svn
+	rm -f ${EXTDIR}/rc.d/rc1.d/K27svn
+	rm -f ${EXTDIR}/rc.d/rc2.d/K27svn
+	rm -f ${EXTDIR}/rc.d/rc3.d/S33svn
+	rm -f ${EXTDIR}/rc.d/rc4.d/S33svn
+	rm -f ${EXTDIR}/rc.d/rc5.d/S33svn
+	rm -f ${EXTDIR}/rc.d/rc6.d/K27svn
+
+uninstall-sysstat:
+	rm -f ${EXTDIR}/rc.d/init.d/sysstat
+	rm -f ${EXTDIR}/rc.d/rcsysinit.d/S85sysstat
+
+uninstall-usb:
+	rm -f ${EXTDIR}/rc.d/init.d/usb
+	rm -f ${EXTDIR}/rc.d/rcsysinit.d/S90usb
+
+uninstall-vsftpd:
+	rm -f ${EXTDIR}/rc.d/init.d/vsftpd
+	rm -f ${EXTDIR}/rc.d/rc0.d/K28vsftpd
+	rm -f ${EXTDIR}/rc.d/rc1.d/K28vsftpd
+	rm -f ${EXTDIR}/rc.d/rc2.d/K28vsftpd
+	rm -f ${EXTDIR}/rc.d/rc3.d/S32vsftpd
+	rm -f ${EXTDIR}/rc.d/rc4.d/S32vsftpd
+	rm -f ${EXTDIR}/rc.d/rc5.d/S32vsftpd
+	rm -f ${EXTDIR}/rc.d/rc6.d/K28vsftpd
+
+uninstall-winbind:
+	rm -f ${EXTDIR}/rc.d/init.d/winbind
+	rm -f ${EXTDIR}/rc.d/rc0.d/K49winbind
+	rm -f ${EXTDIR}/rc.d/rc1.d/K49winbind
+	rm -f ${EXTDIR}/rc.d/rc2.d/K49winbind
+	rm -f ${EXTDIR}/rc.d/rc3.d/S25winbind
+	rm -f ${EXTDIR}/rc.d/rc4.d/S25winbind
+	rm -f ${EXTDIR}/rc.d/rc5.d/S25winbind
+	rm -f ${EXTDIR}/rc.d/rc6.d/K49winbind
+
+uninstall-xinetd:
+	rm -f ${EXTDIR}/rc.d/init.d/xinetd
+	rm -f ${EXTDIR}/rc.d/rc0.d/K49xinetd
+	rm -f ${EXTDIR}/rc.d/rc1.d/K49xinetd
+	rm -f ${EXTDIR}/rc.d/rc2.d/K49xinetd
+	rm -f ${EXTDIR}/rc.d/rc3.d/S23xinetd
+	rm -f ${EXTDIR}/rc.d/rc4.d/S23xinetd
+	rm -f ${EXTDIR}/rc.d/rc5.d/S23xinetd
+	rm -f ${EXTDIR}/rc.d/rc6.d/K49xinetd
+
 .PHONY: all create-dirs create-service-dir \
 	install-service-dhclient \
 	install-service-dhcpcd \
@@ -472,4 +870,44 @@ install-xinetd: create-dirs
 	install-vsftpd \
 	install-usb \
 	install-winbind \
-	install-xinetd
+	install-xinetd \
+	uninstall-alsa \
+	uninstall-apache \
+	uninstall-bind \
+	uninstall-courier \
+	uninstall-cups \
+	uninstall-cyrus-sasl \
+	uninstall-dhcp \
+	uninstall-exim \
+	uninstall-fcron \
+	uninstall-gdm \
+	uninstall-gpm \
+	uninstall-heimdal \
+	uninstall-iptables \
+	uninstall-kerberos \
+	uninstall-lisa \
+	uninstall-lprng \
+	uninstall-mysql \
+	uninstall-nas \
+	uninstall-netfs \
+	uninstall-nfs-client \
+	uninstall-nfs-server \
+	uninstall-ntp \
+	uninstall-openldap1 \
+	uninstall-openldap2 \
+	uninstall-portmap \
+	uninstall-postfix \
+	uninstall-postgresql \
+	uninstall-proftpd \
+	uninstall-random \
+	uninstall-rsync \
+	uninstall-samba \
+	uninstall-sendmail \
+	uninstall-sshd \
+	uninstall-stunnel \
+	uninstall-svn \
+	uninstall-sysstat \
+	uninstall-vsftpd \
+	uninstall-usb \
+	uninstall-winbind \
+	uninstall-xinetd
