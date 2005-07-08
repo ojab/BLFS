@@ -12,17 +12,17 @@
 
 case "$1" in
 	start)
-		echo "Starting lpd..."
+		boot_mesg "Starting lpd..."
 		loadproc /usr/sbin/lpd
 		;;
 
 	stop)
-		echo "Stopping lpd..."
+		boot_mesg "Stopping lpd..."
 		killproc /usr/sbin/lpd
 		;;
 
 	reload)
-		echo "Reloading lpd..."
+		boot_mesg "Reloading lpd..."
 		reloadproc /usr/sbin/lpd
 		;;
 

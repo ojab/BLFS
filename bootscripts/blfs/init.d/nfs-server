@@ -13,40 +13,40 @@
 
 case "$1" in
 	start)
-		echo "Starting NFS mountd..."
+		boot_mesg "Starting NFS mountd..."
 		loadproc /usr/sbin/rpc.mountd
 
-		echo "Starting NFS nfsd..."
+		boot_mesg "Starting NFS nfsd..."
 		loadproc /usr/sbin/rpc.nfsd -p $PORT $PROCESSES
 
-		echo "Starting NFS statd..."
+		boot_mesg "Starting NFS statd..."
 		loadproc /usr/sbin/rpc.statd
 
 		if [ "$QUOTAS" == "yes" ]; then
-			echo "Starting NFS rquotad..."
+			boot_mesg "Starting NFS rquotad..."
 			loadproc /usr/sbin/rpc.rquotad
 		fi
 
 		# NFSD support only in 2.6 kernel
 		/bin/uname -r | /bin/grep "2.6" 2>&1 > /dev/null
 		if [ $? == 0 ]; then
-			echo "Mounting nfsd virtual filesystem..."
+			boot_mesg "Mounting nfsd virtual filesystem..."
 			/bin/mount -t nfsd none /proc/fs/nfsd 2>&1 > /dev/null
 			evaluate_retval
 		fi
 
 		# Make ceratin that the list is refreshed on
 		# a restart.
-		echo "Exporting NFS Filesystems..."
+		boot_mesg "Exporting NFS Filesystems..."
 		/usr/sbin/exportfs -ra 2>&1 > /dev/null
 		evaluate_retval
 		;;
 
 	stop)
-		echo "Stopping NFS statd..."
+		boot_mesg "Stopping NFS statd..."
 		killproc /usr/sbin/rpc.statd
 
-		echo "Stopping NFS nfsd..."
+		boot_mesg "Stopping NFS nfsd..."
 		# nfsd needs HUP....
 		TEMPSTOPSIG="$STOPSIG"
 		STOPSIG="HUP"
@@ -55,29 +55,29 @@ case "$1" in
 		# return STOPSIG to it's orginal value...
 		STOPSIG="$TEMPSTOPSIG"
 
-		echo "Stopping NFS mountd..."
+		boot_mesg "Stopping NFS mountd..."
 		killproc /usr/sbin/rpc.mountd
 
 		if [ "$QUOTAS" == "yes" ]; then
-			echo "Stopping NFS rquotad..."
+			boot_mesg "Stopping NFS rquotad..."
 			killproc /usr/sbin/rpc.rquotad
 		fi
 
-		echo "Refreshing NFS Exported Filesystems..."
+		boot_mesg "Refreshing NFS Exported Filesystems..."
 		/usr/sbin/exportfs -au 2>&1 > /dev/null
 		evaluate_retval
 
 		# NFSD support only in 2.6 kernel
                 /bin/uname -r | /bin/grep "2.6" 2>&1 > /dev/null
                 if [ $? == 0 ]; then
-			echo "Unmounting NFS Virtual Filesystem..."
+			boot_mesg "Unmounting NFS Virtual Filesystem..."
 			/bin/umount /proc/fs/nfsd 2>&1 > /dev/null
 			evaluate_retval
 		fi
 		;;
 
 	reload)
-		echo "Reloading NFS Server..."
+		boot_mesg "Reloading NFS Server..."
 		/usr/sbin/exportfs -ra
 		evaluate_retval
 		;;

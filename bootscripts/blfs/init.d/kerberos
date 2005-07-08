@@ -12,23 +12,23 @@
 
 case "$1" in
         start)  
-                echo "Starting Kerberos Authentication..."
+                boot_mesg "Starting Kerberos Authentication..."
                 loadproc krb5kdc
-                echo "Starting Kerberos Admin Daemon..."
+                boot_mesg "Starting Kerberos Admin Daemon..."
                 loadproc kadmind
                 ;;
 
         stop)
-                echo "Stopping Kerberos Authentication..."
+                boot_mesg "Stopping Kerberos Authentication..."
                 killproc krb5kdc
-                echo "Stopping Kerberos Admin Daemon..."
+                boot_mesg "Stopping Kerberos Admin Daemon..."
                 killproc kadmind
                 ;;
 
         reload)
-                echo "Reloading Kerberos Authentication..."
+                boot_mesg "Reloading Kerberos Authentication..."
                 reloadproc krb5kdc
-                echo "Reloading Kerberos Admin Daemon..."
+                boot_mesg "Reloading Kerberos Admin Daemon..."
                 reloadproc kadmind
                 ;;
 
