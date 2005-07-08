@@ -12,12 +12,12 @@
 
 case "$1" in
 	start)
-		echo "Starting NFS statd..."
+		boot_mesg "Starting NFS statd..."
 		loadproc /usr/sbin/rpc.statd
 		;;
 
 	stop)
-		echo "Stopping NFS statd..."
+		boot_mesg "Stopping NFS statd..."
 		killproc /usr/sbin/rpc.statd
 		;;
 

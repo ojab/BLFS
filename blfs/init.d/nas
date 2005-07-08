@@ -12,7 +12,7 @@
 
 case "$1" in
         start)
-                echo "Starting the Network Audio System Server..."
+                boot_mesg "Starting the Network Audio System Server..."
 		loadproc /usr/X11R6/bin/nasd -aa -b
 #                pidof nasd
 #                if test $? = "0"
@@ -30,12 +30,12 @@ case "$1" in
 		;;
 
         stop)
-                echo "Stopping the Network Audio System Server..."
+                boot_mesg "Stopping the Network Audio System Server..."
                 killproc /usr/X11R6/bin/nasd
                 ;;
 
         reload)
-                echo "Reloading the Network Audio System Server..."
+                boot_mesg "Reloading the Network Audio System Server..."
                 reloadproc /usr/X11R6/bin/nasd
                 ;;
 

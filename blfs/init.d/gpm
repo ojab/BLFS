@@ -25,12 +25,12 @@ fi
 
 case "$1" in
 	start)
-		echo "Starting gpm..."
+		boot_mesg "Starting gpm..."
 		loadproc /usr/sbin/gpm -m "$MDEVICE" -t "$PROTOCOL" "$GPMOPTS"
 		;;
 
 	stop)
-		echo "Stopping gpm..."
+		boot_mesg "Stopping gpm..."
 		killproc /usr/sbin/gpm
 		;;
 

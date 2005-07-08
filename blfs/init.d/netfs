@@ -17,13 +17,13 @@ case "$1" in
 		# The following line mounts all entries in fstab that
 		# have the _netdev option.  This is required for network
 		# filesystems to be mounted at boot time.
-		echo "Mounting network volumes..."
+		boot_mesg "Mounting network volumes..."
 		/bin/mount -a -O _netdev
 		evaluate_retval
 		;;
 
 	stop)
-		echo -n "Unmounting network volumes..."
+		boot_mesg -n "Unmounting network volumes..."
 
 		# The following line obtains a list from the output of
 		# mount for all netfs types and anything that was
@@ -81,9 +81,9 @@ case "$1" in
 			fi
 		else
 			# There is nothing mounted
-			echo "No network volumes mounted!"
+			boot_mesg "No network volumes mounted!"
 			# print a nice '[  OK  ]' message
-			evaluate_retval
+			echo_ok
 		fi
 		;;
 

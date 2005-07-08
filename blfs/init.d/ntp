@@ -9,13 +9,13 @@
 
 case "$1" in
 	start)
-		echo "Starting ntpd..."
+		boot_mesg "Starting ntpd..."
 		ntpd -gqx
 		loadproc /usr/sbin/ntpd
 		;;
 
 	stop)
-		echo "Stopping ntpd..."
+		boot_mesg "Stopping ntpd..."
 		killproc /usr/sbin/ntpd
 		;;
 
