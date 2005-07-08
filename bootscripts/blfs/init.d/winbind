@@ -16,17 +16,17 @@ KILLDELAY="10"
 case "$1" in
 
         start)
-                echo "Starting winbind..."
+                boot_mesg "Starting winbind..."
                 loadproc /usr/sbin/winbindd
                 ;;
 
         stop)
-                echo "Stopping winbind..."
-		killproc
+                boot_mesg "Stopping winbind..."
+		killproc -p ${PIDFILE} /usr/sbin/winbind
 		;;
 
 	reload)
-		echo "Reloading winbind..."
+		boot_mesg "Reloading winbind..."
 		reloadproc /usr/sbin/winbindd
 		;;
 

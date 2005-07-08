@@ -12,12 +12,12 @@
 
 case "$1" in
 	start)
-		echo "Starting Subversion..."
+		boot_mesg "Starting Subversion..."
 		loadproc /usr/bin/svnserve -d -r /srv/svn/repositories
 		;;
 
 	stop)
-		echo "Stopping Subversion..."
+		boot_mesg "Stopping Subversion..."
 		killproc /usr/bin/svnserve.orig
 		;;
 

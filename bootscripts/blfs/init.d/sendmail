@@ -12,12 +12,12 @@
 
 case "$1" in
 	start)
-		echo "Starting sendmail..."
+		boot_mesg "Starting sendmail..."
 		loadproc /usr/sbin/sendmail -bs -bd -q5m start
 		;;
 
 	stop)
-		echo "Stopping Sendmail..."
+		boot_mesg "Stopping Sendmail..."
 		killproc /usr/sbin/sendmail
 		;;
 

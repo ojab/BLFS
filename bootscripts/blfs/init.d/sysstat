@@ -12,7 +12,7 @@
 
 case "$1" in
         start)
-                echo "Calling the system activity data collector (sadc)..."
+                boot_mesg "Calling the system activity data collector (sadc)..."
                 /usr/lib/sa/sadc -F -L -
                 evaluate_retval
                 ;;

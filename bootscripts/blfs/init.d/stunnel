@@ -12,12 +12,12 @@
 
 case "$1" in
         start)
-                echo "Starting the Stunnel Daemon..."
+                boot_mesg "Starting the Stunnel Daemon..."
                 loadproc /usr/sbin/stunnel
                 ;;
 
         stop)
-                echo "Stopping the Stunnel Daemon..."
+                boot_mesg "Stopping the Stunnel Daemon..."
                 killproc /usr/sbin/stunnel
                 ;;
 
