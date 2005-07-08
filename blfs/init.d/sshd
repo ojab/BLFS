@@ -12,17 +12,17 @@
 
 case "$1" in
 	start)
-		echo "Starting SSH Server..."
+		boot_mesg "Starting SSH Server..."
 		loadproc /usr/sbin/sshd
 		;;
 
 	stop)
-		echo "Stopping SSH Server..."
+		boot_mesg "Stopping SSH Server..."
 		killproc /usr/sbin/sshd
 		;;
 
 	reload)
-		echo "Reloading SSH Server..."
+		boot_mesg "Reloading SSH Server..."
 		reloadproc /usr/sbin/sshd
 		;;
 

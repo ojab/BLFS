@@ -12,17 +12,17 @@
 
 case "$1" in
 	start)
-		echo "Starting vsFTPD Server..."
+		boot_mesg "Starting vsFTPD Server..."
 		loadproc /usr/sbin/vsftpd
 		;;
 
 	stop)
-		echo "Stopping vsFTPD Server..."
+		boot_mesg "Stopping vsFTPD Server..."
 		killproc /usr/sbin/vsftpd
 		;;
 
 	reload)
-		echo "Reloading vsFTPD Server..."
+		boot_mesg "Reloading vsFTPD Server..."
 		reloadproc /usr/sbin/vsftpd
 		;;
 

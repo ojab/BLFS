@@ -12,26 +12,26 @@
 
 case "$1" in
 	start)
-		echo "Starting nmbd..."
+		boot_mesg "Starting nmbd..."
 		loadproc /usr/sbin/nmbd -D
 
-		echo "Starting smbd..."
+		boot_mesg "Starting smbd..."
 		loadproc /usr/sbin/smbd -D
 		;;
 
 	stop)
-		echo "Stopping smbd..."
+		boot_mesg "Stopping smbd..."
 		killproc /usr/sbin/smbd
 
-		echo "Stopping nmbd..."
+		boot_mesg "Stopping nmbd..."
 		killproc /usr/sbin/nmbd
                 ;;
 
 	reload)
-		echo "Reloading smbd..."
+		boot_mesg "Reloading smbd..."
 		reloadproc /usr/sbin/smbd
 
-		echo "Reloading nmbd..."
+		boot_mesg "Reloading nmbd..."
 		reloadproc /usr/sbin/nmbd
 		;;
 

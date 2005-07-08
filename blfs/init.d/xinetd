@@ -12,17 +12,17 @@
 
 case "$1" in
 	start)
-		echo "Starting xinetd..."
+		boot_mesg "Starting xinetd..."
 		loadproc /usr/sbin/xinetd
 		;;
 
 	stop)
-		echo "Stopping xinetd..."
+		boot_mesg "Stopping xinetd..."
 		killproc /usr/sbin/xinetd
 		;;
 
 	reload)
-		echo "Reloading xinetd..."
+		boot_mesg "Reloading xinetd..."
 		reloadproc /usr/sbin/xinetd
 		;;
 
