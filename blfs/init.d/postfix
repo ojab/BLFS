@@ -12,32 +12,32 @@
 
 case "$1" in
 	start)
-		echo "Starting Postfix..."
+		boot_mesg "Starting Postfix..."
 		loadproc /usr/sbin/postfix start
 		;;
 
 	stop)
-		echo "Stopping Postfix..."
+		boot_mesg "Stopping Postfix..."
 		loadproc /usr/sbin/postfix stop
 		;;
 
 	reload)
-		echo "Reloading Postfix..."
+		boot_mesg "Reloading Postfix..."
 		loadproc /usr/sbin/postfix reload
 		;;
 
 	abort)
-		echo "Aborting Postfix..."
+		boot_mesg "Aborting Postfix..."
 		loadproc /usr/sbin/postfix abort
 		;;
 
 	flush)
-		echo "Flushing Postfix..."
+		boot_mesg "Flushing Postfix..."
 		loadproc /usr/sbin/postfix flush
 		;;
 
 	check)
-		echo "Checking Postfix..."
+		boot_mesg "Checking Postfix..."
 		loadproc /usr/sbin/postfix check
 		;;
 

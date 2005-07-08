@@ -14,30 +14,30 @@ pid_file=/srv/ldap/run/slapd.pid
 
 case "$1" in
 	start)
-		echo "Starting LDAP slapd Server..."
-        PIDFILE="/srv/ldap/run/slapd.pid"
-        loadproc /usr/sbin/slapd
-        # Return PIDFILE to null (for slurpd)
-        PIDFILE=""
+		boot_mesg "Starting LDAP slapd Server..."
+		PIDFILE="/srv/ldap/run/slapd.pid"
+		loadproc /usr/sbin/slapd
+		# Return PIDFILE to null (for slurpd)
+		PIDFILE=""
 
-        echo "Starting LDAP slurpd Server..."
-        loadproc /usr/sbin/slurpd                                        
+		boot_mesg "Starting LDAP slurpd Server..."
+		loadproc /usr/sbin/slurpd                                        
 		;;
 
 	stop)
-		echo "Stopping LDAP slapd Server..."
-        PIDFILE="/srv/ldap/run/slapd.pid"
-        # slapd needs SIGINT
-        TEMPSTOPSIG="$STOPSIG"
-        STOPSIG="INT"
-        killproc
+		boot_mesg "Stopping LDAP slapd Server..."
+		PIDFILE="/srv/ldap/run/slapd.pid"
+		# slapd needs SIGINT
+		TEMPSTOPSIG="$STOPSIG"
+		STOPSIG="INT"
+		killproc -p ${PIDFILE} /usr/sbin/slapd
 
-        # return STOPSIG to it's previous value
-        STOPSIG="$TEMPSTOPSIG"
-        # return PIDFILE to nothing for slurpd
-        PIDFILE=""
+		# return STOPSIG to it's previous value
+		STOPSIG="$TEMPSTOPSIG"
+		# return PIDFILE to nothing for slurpd
+		PIDFILE=""
 
-		echo "Stopping LDAP slurpd Server..."
+		boot_mesg "Stopping LDAP slurpd Server..."
 		killproc /usr/sbin/slurpd
 		;;
 

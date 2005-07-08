@@ -13,7 +13,7 @@
 
 case "$1" in
 	start)
-		echo "Initializing kernel random number generator..."
+		boot_mesg "Initializing kernel random number generator..."
 		if [ -f /var/tmp/random-seed ]; then
 			/bin/cat /var/tmp/random-seed >/dev/urandom
 		fi
@@ -23,7 +23,7 @@ case "$1" in
 		;;
 
 	stop)
-		echo "Saving random seed..."
+		boot_mesg "Saving random seed..."
 		/bin/dd if=/dev/urandom of=/var/tmp/random-seed \
 			count=1 &>/dev/null
 		evaluate_retval

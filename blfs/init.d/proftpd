@@ -12,17 +12,17 @@
 
 case "$1" in
 	start)
-		echo "Starting FTP Server..."
+		boot_mesg "Starting FTP Server..."
 		loadproc /usr/sbin/proftpd
 		;;
 
 	stop)
-		echo "Stopping FTP Server..."
+		boot_mesg "Stopping FTP Server..."
 		killproc /usr/sbin/proftpd
 		;;
 
 	reload)
-		echo "Reloading FTP Server..."
+		boot_mesg "Reloading FTP Server..."
 		reloadproc /usr/sbin/proftpd
 		;;
 

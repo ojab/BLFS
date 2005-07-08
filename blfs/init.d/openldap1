@@ -14,17 +14,17 @@ pid_file=/srv/ldap/run/slapd.pid
 
 case "$1" in
 	start)
-		echo "Starting LDAP slapd Server..."
+		boot_mesg "Starting LDAP slapd Server..."
 		PIDFILE="/srv/ldap/run/slapd.pid"
 		loadproc /usr/sbin/slapd
 		;;
 
 	stop)
-		echo "Stopping LDAP slapd Server..."
-        PIDFILE="/srv/ldap/run/slapd.pid"
-        # slapd needs SIGINT
-        STOPSIG="INT"
-        killproc
+		boot_mesg "Stopping LDAP slapd Server..."
+		PIDFILE="/srv/ldap/run/slapd.pid"
+		# slapd needs SIGINT
+		STOPSIG="INT"
+		killproc -p ${PIDFILE} /usr/sbin/slapd
 		;;
 
 	restart)
