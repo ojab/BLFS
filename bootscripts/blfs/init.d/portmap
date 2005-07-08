@@ -9,12 +9,12 @@
 
 case "$1" in
 	start)
-		echo "Starting RPC Portmap"
+		boot_mesg "Starting RPC Portmap"
 		loadproc /sbin/portmap
 		;;
 
 	stop)
-		echo "Stopping Portmap"
+		boot_mesg "Stopping Portmap"
 		killproc /sbin/portmap
 		;;
 

@@ -12,17 +12,17 @@
 
 case "$1" in
 	start)
-		echo "Starting RSYNC Server..."
+		boot_mesg "Starting RSYNC Server..."
 		loadproc /usr/bin/rsync --daemon --compress
 		;;
 
 	stop)
-		echo "Stopping RSYNC Server..."
+		boot_mesg "Stopping RSYNC Server..."
 		killproc /usr/bin/rsync
 		;;
 
 	reload)
-		echo "Reloading RSYNC Server..."
+		boot_mesg "Reloading RSYNC Server..."
 		reloadproc /usr/bin/rsync
 		;;
 
