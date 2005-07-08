@@ -14,16 +14,16 @@
 
 case "$1" in
 	start)
-		echo "Starting ALSA...    Restoring volumes..."
+		boot_mesg "Starting ALSA...    Restoring volumes..."
 		loadproc /usr/sbin/alsactl restore
-		#echo "                    Loading MIDI font..."
-		#loadproc /usr/sbin/sfxload /path/to/soundfont
+		# boot_mesg "Loading MIDI font..."
+		# loadproc /usr/sbin/sfxload /path/to/soundfont
 		;;
 
 	stop)
-		echo "Stopping ALSA...    Saving volumes..."
+		boot_mesg "Stopping ALSA...    Saving volumes..."
 		loadproc /usr/sbin/alsactl store
-		#echo "                    Removing MIDI font..."
+		#boot_mesg "                    Removing MIDI font..."
 		#loadproc sfxload -i
 		;;
 

@@ -12,12 +12,12 @@
 
 case "$1" in
 	start)
-		echo "Starting fcron..."
+		boot_mesg "Starting fcron..."
 		loadproc /usr/sbin/fcron
 		;;
 
 	stop)
-		echo "Stopping fcron..."
+		boot_mesg "Stopping fcron..."
 		killproc /usr/sbin/fcron
 		;;
 
