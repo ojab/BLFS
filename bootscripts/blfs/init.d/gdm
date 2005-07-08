@@ -14,24 +14,24 @@ export PATH=$PATH:/opt/gnome-2.10/bin:/opt/gnome-2.10/sbin
 
 case "$1" in
 	start)
-		echo "Starting GDM..."
+		boot_mesg "Starting GDM..."
 		loadproc gdm
 		;;
 
 	stop)
-		echo "Stopping GDM..."
+		boot_mesg "Stopping GDM..."
 		if [ -f /var/run/gdm.pid ]; then
 			loadproc gdm-stop
 		fi
 		;;
 
 	reload)
-		echo "Reloading GDM..."
+		boot_mesg "Reloading GDM..."
 		loadproc gdm-safe-restart
 		;;
 
 	restart)
-		echo "Restarting GDM..."
+		boot_mesg "Restarting GDM..."
 		loadproc gdm-restart
 		;;
 

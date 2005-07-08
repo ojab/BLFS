@@ -12,13 +12,13 @@
 
 case "$1" in
 	start)
-		echo "Starting named..."
+		boot_mesg "Starting named..."
 		loadproc /usr/sbin/named -u named -t /home/named -c \
 			/etc/named.conf
 		;;
 
 	stop)
-		echo "Stopping named..."
+		boot_mesg "Stopping named..."
 		killproc /usr/sbin/named
 		;;
 
@@ -29,7 +29,7 @@ case "$1" in
 		;;
 
 	reload)
-		echo "Reloading named..."
+		boot_mesg "Reloading named..."
 		/usr/sbin/rndc -c /etc/rndc.conf reload
 		;;
 

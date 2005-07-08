@@ -12,19 +12,19 @@
 
 case "$1" in
 	start)
-		echo "Starting Apache daemon..."
+		boot_mesg "Starting Apache daemon..."
 		/usr/sbin/apachectl -k start
 		evaluate_retval
 		;;
 
 	stop)
-		echo "Stopping Apache daemon..."
+		boot_mesg "Stopping Apache daemon..."
 		/usr/sbin/apachectl -k stop
 		evaluate_retval
 		;;
 
 	restart)
-		echo "Restarting Apache daemon..."
+		boot_mesg "Restarting Apache daemon..."
 		/usr/sbin/apachectl -k restart
 		evaluate_retval
 		;;

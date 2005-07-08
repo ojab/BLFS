@@ -11,17 +11,17 @@
 
 case $1 in
 	start)
-		echo "Starting CUPS Printserver..."
+		boot_mesg "Starting CUPS Printserver..."
 		loadproc /usr/sbin/cupsd
 		;;
 
 	stop)
-		echo "Stopping CUPS Printserver..."
+		boot_mesg "Stopping CUPS Printserver..."
 		killproc /usr/sbin/cupsd
 		;;
 
 	reload)
-		echo "Reloading CUPS Printserver..."
+		boot_mesg "Reloading CUPS Printserver..."
 		reloadproc /usr/sbin/cupsd
 		;;
 

@@ -12,17 +12,17 @@
 
 case "$1" in
 	start)
-		echo "Starting File Alteration Monitor..."
+		boot_mesg "Starting File Alteration Monitor..."
 		loadproc /usr/sbin/famd -T 0
 		;;
 
 	stop)
-		echo "Stopping File Alteration Monitor..."
+		boot_mesg "Stopping File Alteration Monitor..."
 		killproc /usr/sbin/famd
 		;;
 
 	reload)
-		echo "Reloading File Alteration Monitor..."
+		boot_mesg "Reloading File Alteration Monitor..."
 		reloadproc /usr/sbin/famd
 		;;
 
