@@ -22,14 +22,14 @@ case "$1" in
 		boot_mesg "Starting NFS statd..."
 		loadproc /usr/sbin/rpc.statd
 
-		if [ "$QUOTAS" == "yes" ]; then
+		if [ "$QUOTAS" = "yes" ]; then
 			boot_mesg "Starting NFS rquotad..."
 			loadproc /usr/sbin/rpc.rquotad
 		fi
 
 		# NFSD support only in 2.6 kernel
 		/bin/uname -r | /bin/grep "2.6" 2>&1 > /dev/null
-		if [ $? == 0 ]; then
+		if [ $? = 0 ]; then
 			boot_mesg "Mounting nfsd virtual filesystem..."
 			/bin/mount -t nfsd none /proc/fs/nfsd 2>&1 > /dev/null
 			evaluate_retval
@@ -58,7 +58,7 @@ case "$1" in
 		boot_mesg "Stopping NFS mountd..."
 		killproc /usr/sbin/rpc.mountd
 
-		if [ "$QUOTAS" == "yes" ]; then
+		if [ "$QUOTAS" = "yes" ]; then
 			boot_mesg "Stopping NFS rquotad..."
 			killproc /usr/sbin/rpc.rquotad
 		fi
@@ -69,7 +69,7 @@ case "$1" in
 
 		# NFSD support only in 2.6 kernel
                 /bin/uname -r | /bin/grep "2.6" 2>&1 > /dev/null
-                if [ $? == 0 ]; then
+                if [ $? = 0 ]; then
 			boot_mesg "Unmounting NFS Virtual Filesystem..."
 			/bin/umount /proc/fs/nfsd 2>&1 > /dev/null
 			evaluate_retval
@@ -93,7 +93,7 @@ case "$1" in
 		## Special case for nfsd with no full path
 		statusproc nfsd
 		statusproc /usr/sbin/rpc.statd
-		if [ "$QUOTA" == "yes" ]; then
+		if [ "$QUOTA" = "yes" ]; then
 			statusproc rpc.rquotad
 		fi
 		;;

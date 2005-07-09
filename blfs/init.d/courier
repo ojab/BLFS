@@ -30,7 +30,7 @@ case "${1}" in
 		# Start ldapaliasd
 		if [ -f /etc/courier/ldapaliasd ]; then
 			. /etc/courier/ldapaliasd
-			if [ "${LDAPALIASDSTART}" == "YES" ]; then
+			if [ "${LDAPALIASDSTART}" = "YES" ]; then
 				boot_mesg "     LDAP Alias..."
 				/usr/sbin/courierldapaliasd start
 				if [ "${?}" -eq "0" ]; then
@@ -45,7 +45,7 @@ case "${1}" in
 		# Start Webmail
 		if [ -f /etc/courier/webmaild ]; then
 			. /etc/courier/webmaild
-			if [ "${WEBMAILDSTART}" == "YES" ]; then
+			if [ "${WEBMAILDSTART}" = "YES" ]; then
 				boot_mesg "     Webmail..."
 				/usr/sbin/webmaild start
 				evaluate_retval
@@ -60,7 +60,7 @@ case "${1}" in
 		# Start ESMTPD
 		if [ -f /etc/courier/esmtpd ]; then
 			. /etc/courier/esmtpd
-			if [ "${ESMTPDSTART}" == "YES" ]; then
+			if [ "${ESMTPDSTART}" = "YES" ]; then
 				boot_mesg "     ESMTP..."
 				/usr/sbin/esmtpd start
 				evaluate_retval
@@ -70,7 +70,7 @@ case "${1}" in
 		# Start ESMTPD-SSL
 		if [ -f /etc/courier/esmtpd-msa ]; then
 			. /etc/courier/esmtpd-msa
-			if [ "${ESMTPDSTART}" == "YES" ]; then
+			if [ "${ESMTPDSTART}" = "YES" ]; then
 				boot_mesg "     ESMTP-MSA..."
 				/usr/sbin/esmtpd-msa start
 				evaluate_retval
@@ -79,7 +79,7 @@ case "${1}" in
 
 		if [ -f /etc/courier/esmtpd-ssl ]; then
 			. /etc/courier/esmtpd-ssl
-			if [ "${ESMTPDSSLSTART}" == "YES" ]; then
+			if [ "${ESMTPDSSLSTART}" = "YES" ]; then
 				boot_mesg "     ESMTP-SSL..."
 				/usr/sbin/esmtpd-ssl start
 				evaluate_retval
@@ -89,7 +89,7 @@ case "${1}" in
 		# Start POP3D
 		if [ -f /etc/courier/pop3d ]; then
 			. /etc/courier/pop3d
-			if [ "${POP3DSTART}" == "YES" ]; then
+			if [ "${POP3DSTART}" = "YES" ]; then
 				boot_mesg "     POP3..."
 				/usr/sbin/pop3d start
 				evaluate_retval
@@ -99,7 +99,7 @@ case "${1}" in
 		# Start POP3D-SSL
 		if [ -f /etc/courier/pop3d-ssl ]; then
 			. /etc/courier/pop3d-ssl
-			if [ "${POP3DSSLSTART}" == "YES" ]; then
+			if [ "${POP3DSSLSTART}" = "YES" ]; then
 				boot_mesg "     POP3-SSL..."
 				/usr/sbin/pop3d-ssl start
 				evaluate_retval
@@ -109,7 +109,7 @@ case "${1}" in
 		# Start IMAPD
 		if [ -f /etc/courier/imapd ]; then
 			. /etc/courier/imapd
-			if [ "${IMAPDSTART}" == "YES" ]; then
+			if [ "${IMAPDSTART}" = "YES" ]; then
 				boot_mesg "     IMAP..."
 				/usr/sbin/imapd start
 				evaluate_retval
@@ -119,7 +119,7 @@ case "${1}" in
 		# Start IMAPD-SSL
 		if [ -f /etc/courier/imapd-ssl ]; then
 			. /etc/courier/imapd-ssl
-			if [ "${IMAPDSSLSTART}" == "YES" ]; then
+			if [ "${IMAPDSSLSTART}" = "YES" ]; then
 				boot_mesg "     IMAP-SSL..."
 				/usr/sbin/imapd-ssl start
 				evaluate_retval

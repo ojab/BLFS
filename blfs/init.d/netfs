@@ -48,7 +48,7 @@ case "$1" in
 			# did, then give 3 seconds for things to exit
 			# the nice way before killing them off.
 			# This one will work all of the time!
-			if [ $? == 0 ]
+			if [ $? = 0 ]
 			then
 				/bin/sleep 3
 				/bin/fuser -km $NETMOUNTS > /dev/null
@@ -70,7 +70,7 @@ case "$1" in
 			# by fstype.  This list can be extended later as
 			# more network filesystems are supported by mount.
 			/bin/umount -a -t coda,ncpfs,nfs,smbfs
-			if [ $? == 0 ]
+			if [ $? = 0 ]
 			then
 				[ -z $NERRVAL ]
 				evaluate_retval

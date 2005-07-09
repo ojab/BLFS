@@ -35,9 +35,9 @@ case "$2" in
 		# Save the return value
 		RET="$?"
 		# Print the assigned settings if requested
-		if [ "$RET" == "0" -a "$PRINTIP" == "yes" ]; then
+		if [ "$RET" = "0" -a "$PRINTIP" = "yes" ]; then
 			. /var/lib/dhcpc/dhcpcd-$1.info
-			if [ "$PRINTALL" == "yes" ]; then
+			if [ "$PRINTALL" = "yes" ]; then
 				echo ""
 				echo_ok
 				boot_mesg "           DHCP Assigned Settings for $1:"

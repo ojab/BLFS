@@ -124,7 +124,7 @@ case "$1" in
                     continue
                 fi
 
-                if [ ! -x "$map" -a "$type" == "program" ]
+                if [ ! -x "$map" -a "$type" = "program" ]
                 then
                     boot_mesg "Map file $map is not executable!" ${FAILURE}
                     echo_failed
