@@ -12,12 +12,12 @@
 
 case "$1" in
 	start)
-		echo "Starting the Cyrus SASL Server..."
+		boot_mesg "Starting the Cyrus SASL Server..."
 		loadproc /usr/sbin/saslauthd -a [authmech]
 		;;
 
 	stop)
-		echo "Stopping the Cyrus SASL Server..."
+		boot_mesg "Stopping the Cyrus SASL Server..."
 		killproc /usr/sbin/saslauthd
 		;;
 

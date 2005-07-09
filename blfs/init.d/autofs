@@ -107,34 +107,34 @@ case "$1" in
         (
             while read dir type map options
             do 
-                echo -n "Automounting $dir..."
+                boot_mesg -n "Automounting $dir..."
                 pidfile=$(echo $dir | sed -e "y/\//-/" | sed -e "s/^-//")
                 pidpath=${piddir}/${pidroot}.${pidfile}.pid
 
                 if [ ! -d "$dir" ]
                 then
-                    echo -n " Creating mountpoint $dir..."
+                    boot_mesg -n " Creating mountpoint $dir..."
                     mkdir -p "$dir"
                 fi
 
                 if [ ! -e "$map" ]
                 then
-                    echo "Map file $map does not exist!"
-                    print_status failure
+                    boot_mesg "Map file $map does not exist!" ${FAILURE}
+                    echo_failed
                     continue
                 fi
 
                 if [ ! -x "$map" -a "$type" == "program" ]
                 then
-                    echo "Map file $map is not executable!"
-                    print_status failure
+                    boot_mesg "Map file $map is not executable!" ${FAILURE}
+                    echo_failed
                     continue
                 fi
 
                 if [ -e "$pidpath" ]
                 then
-                    echo " "
-                    print_status warning running
+                    boot_mesg " already running!" ${WARNING}
+                    echo_warning
                 else
                     echo " "
                     $automount -p $pidpath $daemonoptions $dir $type $map $options $localoptions
@@ -153,7 +153,7 @@ case "$1" in
                 pid=$(cat $pidpath)
                 pidfile=$(basename $pidpath)
                 mountpoint=$(echo $pidfile | sed -e "s/^autofs\.\(.*\)\.pid$/\1/" | sed -e "y/-/\//")
-                echo "Stopping automount on /$mountpoint..."
+                boot_mesg "Stopping automount on /$mountpoint..."
                 kill $pid
                 evaluate_retval
             done
@@ -165,7 +165,7 @@ case "$1" in
         (
             while read pid everything_else
             do
-                echo "Stopping automount with pid $pid..."
+                boot_mesg "Stopping automount with pid $pid..."
                 kill $pid
                 evaluate_retval
             done
