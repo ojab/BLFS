@@ -1,14 +1,18 @@
+2005-07-08 DJ Lucas <dj@linuxfromscratch.org>
+	* Moved all scripts to use new functions provided by 
+	  lfs-bootscripts-3.2.1.
+
 2005-06-26 DJ Lucas <dj@linuxfromscratch.org>
 	* Added uninstall targets to Makefile.  Patch provided by 
 	  Matthias Berndt.
 
 2005-06-13 Igor Zivkovic <igor@linuxfromscratch.org>
 	* Corrected the MySQL script to make it compatible with the new LFS
-	boot scripts (Jay D. McHugh).
+	  boot scripts (Jay D. McHugh).
 
 2005-05-31 Randy McMurchy <randy@linuxfromscratch.org>
 	* Removed explicit path from GDM script commands so that the commands
-	will work no matter where $GNOME_PREFIX is.
+	  will work no matter where $GNOME_PREFIX is.
 
 2005-05-30 Randy McMurchy <randy@linuxfromscratch.org>
 	* Updated GDM script to GNOME-2.10.
