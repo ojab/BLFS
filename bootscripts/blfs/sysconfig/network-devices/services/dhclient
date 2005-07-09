@@ -25,7 +25,7 @@ case "$2" in
                 # Save the return value
                 RET="$?"
                 # Print the assigned settings if requested
-                if [ "$RET" == "0" -a "$PRINTIP" == "yes" ]; then
+                if [ "$RET" = "0" -a "$PRINTIP" = "yes" ]; then
 			# Get info from dhclient.leases file
 			IPADDR=`getipstats | grep "fixed-address" | \
 				sed 's/ fixed-address //' | \
@@ -40,7 +40,7 @@ case "$2" in
 				sed 's/ option domain-name-servers //' | \
 				sed 's/\;//' | sed 's/,/ and /'`
 
-                        if [ "$PRINTALL" == "yes" ]; then
+                        if [ "$PRINTALL" = "yes" ]; then
                                 $(exit "$RET")
 				evaluate_retval
                                 boot_mesg "           DHCP Assigned Settings for $1:"
@@ -66,7 +66,7 @@ case "$2" in
 
         down)
                 boot_mesg "Stoping dhclient on the $1 interface..."
-		if [ "$DHCP_STOP" == "" ]
+		if [ "$DHCP_STOP" = "" ]
 		then
 			# This breaks multiple interfaces please provide
 			# the correct stop arguments.
