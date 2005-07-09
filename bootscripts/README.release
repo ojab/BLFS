@@ -1,5 +1,0 @@
-To create a dated tarball, simple run release.sh, optionally add a release value.
-Must be run as root!!!
-
-ex: $ /bin/bash release.sh [6.0]
-
