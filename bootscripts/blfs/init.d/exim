@@ -12,12 +12,12 @@
 
 case "$1" in
 	start)
-		echo "Starting exim..."
+		boot_mesg "Starting exim..."
 		loadproc /usr/sbin/exim -bd -q15m
 		;;
 
 	stop)
-		echo "Stopping exim..."
+		boot_mesg "Stopping exim..."
 		killproc /usr/sbin/exim
 		;;
 
