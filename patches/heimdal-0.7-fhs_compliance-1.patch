@@ -1,0 +1,266 @@
+Patch Name:              heimdal-0.7-fhs-compliance-1.patch
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2005-07-23
+Initial Package Version: 0.7 (this patch adapted from an 0.6.1 version patch)
+Upstream Status:         N/A (LFS specific)
+Origin:                  Randy McMurchy
+Description:             Changes all references of /var/heimdal to /var/lib/heimdal
+                         in source code and documentation to comply with the FHS
+
+$LastChangedBy$
+$Date$
+
+
+diff -Naur heimdal-0.7-orig/configure heimdal-0.7/configure
+--- heimdal-0.7-orig/configure	2005-06-16 16:31:02.000000000 +0000
++++ heimdal-0.7/configure	2005-07-23 23:24:34.000000000 +0000
+@@ -3183,7 +3183,7 @@
+ 
+ 
+ test "$sysconfdir" = '${prefix}/etc' && sysconfdir='/etc'
+-test "$localstatedir" = '${prefix}/var' && localstatedir='/var/heimdal'
++test "$localstatedir" = '${prefix}/var' && localstatedir='/var/lib/heimdal'
+ 
+ # Make sure we can run config.sub.
+ $ac_config_sub sun4 >/dev/null 2>&1 ||
+
+diff -Naur heimdal-0.7-orig/configure.in heimdal-0.7/configure.in
+--- heimdal-0.7-orig/configure.in	2005-06-16 16:29:14.000000000 +0000
++++ heimdal-0.7/configure.in	2005-07-23 23:24:54.000000000 +0000
+@@ -16,7 +16,7 @@
+ AC_PREFIX_DEFAULT(/usr/heimdal)
+ 
+ test "$sysconfdir" = '${prefix}/etc' && sysconfdir='/etc'
+-test "$localstatedir" = '${prefix}/var' && localstatedir='/var/heimdal'
++test "$localstatedir" = '${prefix}/var' && localstatedir='/var/lib/heimdal'
+ 
+ AC_CANONICAL_HOST
+ CANONICAL_HOST=$host
+
+diff -Naur heimdal-0.7-orig/doc/heimdal.info-1 heimdal-0.7/doc/heimdal.info-1
+--- heimdal-0.7-orig/doc/heimdal.info-1	2005-06-16 16:33:47.000000000 +0000
++++ heimdal-0.7/doc/heimdal.info-1	2005-07-23 23:27:04.000000000 +0000
+@@ -452,15 +452,15 @@
+ =====================
+ 
+ The database library will look for the database in the directory
+-`/var/heimdal', so you should probably create that directory.  Make
++`/var/lib/heimdal', so you should probably create that directory.  Make
+ sure the directory has restrictive permissions.
+ 
+-     # mkdir /var/heimdal
++     # mkdir /var/lib/heimdal
+ 
+ The keys of all the principals are stored in the database.  If you
+ choose to, these can be encrypted with a master key.  You do not have to
+ remember this key (or password), but just to enter it once and it will
+-be stored in a file (`/var/heimdal/m-key').  If you want to have a
++be stored in a file (`/var/lib/heimdal/m-key').  If you want to have a
+ master key, run `kstash' to create this master key:
+ 
+      # kstash
+@@ -671,7 +671,7 @@
+ `749/tcp'.
+ 
+ Access to the administration server is controlled by an ACL file,
+-(default `/var/heimdal/kadmind.acl'.) The lines in the access file,
++(default `/var/lib/heimdal/kadmind.acl'.) The lines in the access file,
+ have the following syntax:
+      principal       [priv1,priv2,...]       [glob-pattern]
+ 
+@@ -822,7 +822,7 @@
+ follows:
+ 
+      slave# ktutil get -p foo/admin hprop/`hostname`
+-     slave# mkdir /var/heimdal
++     slave# mkdir /var/lib/heimdal
+      slave# hpropd
+ 
+ The master will use the principal `kadmin/hprop' to authenticate to the
+@@ -870,7 +870,7 @@
+ The program that runs on the master is `ipropd-master' and all clients
+ run `ipropd-slave'.
+ 
+-Create the file `/var/heimdal/slaves' on the master containing all the
++Create the file `/var/lib/heimdal/slaves' on the master containing all the
+ slaves that the database should be propagated to.  Each line contains
+ the full name of the principal (for example
+ `iprop/hemligare.foo.se@FOO.SE').
+@@ -888,7 +888,7 @@
+ 
+ The next step is to start the `ipropd-master' process on the master
+ server.  The `ipropd-master' listens on the UNIX domain socket
+-`/var/heimdal/signal' to know when changes have been made to the
++`/var/lib/heimdal/signal' to know when changes have been made to the
+ database so they can be propagated to the slaves.  There is also a
+ safety feature of testing the version number regularly (every 30
+ seconds) to see if it has been modified by some means that do not raise
+
+diff -Naur heimdal-0.7-orig/doc/setup.texi heimdal-0.7/doc/setup.texi
+--- heimdal-0.7-orig/doc/setup.texi	2005-06-16 16:27:48.000000000 +0000
++++ heimdal-0.7/doc/setup.texi	2005-07-23 23:26:08.000000000 +0000
+@@ -105,17 +105,17 @@
+ @section Creating the database
+ 
+ The database library will look for the database in the directory
+-@file{/var/heimdal}, so you should probably create that directory.
++@file{/var/lib/heimdal}, so you should probably create that directory.
+ Make sure the directory has restrictive permissions.
+ 
+ @example
+-# mkdir /var/heimdal
++# mkdir /var/lib/heimdal
+ @end example
+ 
+ The keys of all the principals are stored in the database.  If you
+ choose to, these can be encrypted with a master key.  You do not have to
+ remember this key (or password), but just to enter it once and it will
+-be stored in a file (@file{/var/heimdal/m-key}).  If you want to have a
++be stored in a file (@file{/var/lib/heimdal/m-key}).  If you want to have a
+ master key, run @samp{kstash} to create this master key:
+ 
+ @example
+@@ -335,7 +335,7 @@
+ as @samp{749/tcp}.
+ 
+ Access to the administration server is controlled by an ACL file, (default
+-@file{/var/heimdal/kadmind.acl}.) The lines in the access file, have the
++@file{/var/lib/heimdal/kadmind.acl}.) The lines in the access file, have the
+ following syntax:
+ @smallexample
+ principal       [priv1,priv2,...]       [glob-pattern]
+@@ -498,7 +498,7 @@
+ 
+ @example
+ slave# ktutil get -p foo/admin hprop/`hostname`
+-slave# mkdir /var/heimdal
++slave# mkdir /var/lib/heimdal
+ slave# hpropd
+ @end example
+ 
+@@ -550,7 +550,7 @@
+ The program that runs on the master is @command{ipropd-master} and all
+ clients run @command{ipropd-slave}.
+ 
+-Create the file @file{/var/heimdal/slaves} on the master containing all
++Create the file @file{/var/lib/heimdal/slaves} on the master containing all
+ the slaves that the database should be propagated to.  Each line contains
+ the full name of the principal (for example
+ @samp{iprop/hemligare.foo.se@@FOO.SE}).
+@@ -571,7 +571,7 @@
+ 
+ The next step is to start the @command{ipropd-master} process on the master
+ server.  The @command{ipropd-master} listens on the UNIX domain socket
+-@file{/var/heimdal/signal} to know when changes have been made to the
++@file{/var/lib/heimdal/signal} to know when changes have been made to the
+ database so they can be propagated to the slaves.  There is also a
+ safety feature of testing the version number regularly (every 30
+ seconds) to see if it has been modified by some means that do not raise
+
+diff -Naur heimdal-0.7-orig/kadmin/kadmind.8 heimdal-0.7/kadmin/kadmind.8
+--- heimdal-0.7-orig/kadmin/kadmind.8	2005-06-16 16:27:56.000000000 +0000
++++ heimdal-0.7/kadmin/kadmind.8	2005-07-23 23:27:41.000000000 +0000
+@@ -85,7 +85,7 @@
+ Principals are always allowed to change their own password and list
+ their own principal.  Apart from that, doing any operation requires
+ permission explicitly added in the ACL file
+-.Pa /var/heimdal/kadmind.acl .
++.Pa /var/lib/heimdal/kadmind.acl .
+ The format of this file is:
+ .Bd -ragged
+ .Va principal
+@@ -155,7 +155,7 @@
+ .El
+ .\".Sh ENVIRONMENT
+ .Sh FILES
+-.Pa /var/heimdal/kadmind.acl
++.Pa /var/lib/heimdal/kadmind.acl
+ .Sh EXAMPLES
+ This will cause
+ .Nm
+
+diff -Naur heimdal-0.7-orig/kdc/kdc.8 heimdal-0.7/kdc/kdc.8
+--- heimdal-0.7-orig/kdc/kdc.8	2005-06-16 16:27:58.000000000 +0000
++++ heimdal-0.7/kdc/kdc.8	2005-07-23 23:27:59.000000000 +0000
+@@ -77,7 +77,7 @@
+ .Fl -config-file= Ns Ar file
+ .Xc
+ Specifies the location of the config file, the default is
+-.Pa /var/heimdal/kdc.conf .
++.Pa /var/lib/heimdal/kdc.conf .
+ This is the only value that can't be specified in the config file.
+ .It Xo
+ .Fl p ,
+
+diff -Naur heimdal-0.7-orig/kdc/kstash.8 heimdal-0.7/kdc/kstash.8
+--- heimdal-0.7-orig/kdc/kstash.8	2005-06-16 16:27:58.000000000 +0000
++++ heimdal-0.7/kdc/kstash.8	2005-07-23 23:28:17.000000000 +0000
+@@ -89,7 +89,7 @@
+ .El
+ .\".Sh ENVIRONMENT
+ .Sh FILES
+-.Pa /var/heimdal/m-key
++.Pa /var/lib/heimdal/m-key
+ is the default keyfile is no other keyfile is specified.
+ The format of a Heimdal master key is the same as a keytab, so
+ .Nm ktutil
+
+diff -Naur heimdal-0.7-orig/lib/hdb/hdb.h heimdal-0.7/lib/hdb/hdb.h
+--- heimdal-0.7-orig/lib/hdb/hdb.h	2005-06-16 16:28:05.000000000 +0000
++++ heimdal-0.7/lib/hdb/hdb.h	2005-07-23 23:28:55.000000000 +0000
+@@ -86,7 +86,7 @@
+     krb5_error_code (*create)(krb5_context, HDB **, const char *filename);
+ };
+ 
+-#define HDB_DB_DIR "/var/heimdal"
++#define HDB_DB_DIR "/var/lib/heimdal"
+ #define HDB_DEFAULT_DB HDB_DB_DIR "/heimdal"
+ #define HDB_DB_FORMAT_ENTRY "hdb/db-format"
+ 
+diff -Naur heimdal-0.7-orig/lib/kadm5/iprop.8 heimdal-0.7/lib/kadm5/iprop.8
+--- heimdal-0.7-orig/lib/kadm5/iprop.8	2005-06-16 16:28:07.000000000 +0000
++++ heimdal-0.7/lib/kadm5/iprop.8	2005-07-23 23:29:24.000000000 +0000
+@@ -93,7 +93,7 @@
+ The slaves are specified by the contents of the
+ .Pa slaves
+ file in the KDC's database directory, e.g.\&
+-.Pa /var/heimdal/slaves .
++.Pa /var/lib/heimdal/slaves .
+ This has principals one per-line of the form
+ .Dl ipropd/ Ns Ar slave Ns @ Ns Ar REALM
+ where 
+@@ -131,7 +131,7 @@
+ There is a keep-alive feature logged in the master's
+ .Pa slave-stats
+ file (e.g.\&
+-.Pa /var/heimdal/slave-stats ) .
++.Pa /var/lib/heimdal/slave-stats ) .
+ .Pp
+ Supported options for
+ .Nm ipropd-master :
+
+diff -Naur heimdal-0.7-orig/lib/krb5/krb5.conf.5 heimdal-0.7/lib/krb5/krb5.conf.5
+--- heimdal-0.7-orig/lib/krb5/krb5.conf.5	2005-06-16 16:28:09.000000000 +0000
++++ heimdal-0.7/lib/krb5/krb5.conf.5	2005-07-23 23:30:45.000000000 +0000
+@@ -490,7 +490,7 @@
+ 		default_domain = foo.se
+ 	}
+ [logging]
+-	kdc = FILE:/var/heimdal/kdc.log
++	kdc = FILE:/var/lib/heimdal/kdc.log
+ 	kdc = SYSLOG:INFO
+ 	default = SYSLOG:INFO:USER
+ .Ed
+
+diff -Naur heimdal-0.7-orig/lib/krb5/krb5.conf.cat5 heimdal-0.7/lib/krb5/krb5.conf.cat5
+--- heimdal-0.7-orig/lib/krb5/krb5.conf.cat5	2005-06-16 16:33:58.000000000 +0000
++++ heimdal-0.7/lib/krb5/krb5.conf.cat5	2005-07-23 23:31:02.000000000 +0000
+@@ -503,7 +503,7 @@
+                            default_domain = foo.se
+                    }
+            [logging]
+-                   kdc = FILE:/var/heimdal/kdc.log
++                   kdc = FILE:/var/lib/heimdal/kdc.log
+                    kdc = SYSLOG:INFO
+                    default = SYSLOG:INFO:USER
+ 
