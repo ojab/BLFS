@@ -1,7 +1,7 @@
 Submitted By: David Jensen (djensen at linuxfromscratch dot org)
 Date: 2005-07-26
 Initial Package Version: 1.0.9
-Origin: Debian
+Origin: David Jensen
 Upstream Status: not submitted
 Description: Allows the pcm/oss plugin to build eithout installing jack.
  
