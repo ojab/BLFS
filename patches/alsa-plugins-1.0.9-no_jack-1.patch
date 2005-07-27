@@ -3,7 +3,7 @@ Date: 2005-07-26
 Initial Package Version: 1.0.9
 Origin: David Jensen
 Upstream Status: not submitted
-Description: Allows the pcm/oss plugin to build eithout installing jack.
+Description: Allows the pcm/oss plugin to build without installing jack.
  
 $LastChangedBy$
 $Date$
