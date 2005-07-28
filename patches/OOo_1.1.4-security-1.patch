@@ -1,0 +1,30 @@
+Submitted By: DJ Lucas <dj_AT_linuxfromscratch_DOT_org>
+Date: 2005-07-28
+Initial Package Version: 1.1.4
+Origin: CVS
+Description: Fixes overflow condition (see comments below)
+Upstream Status: Accepted
+
+$LastChangedBy$
+$Date$
+
+--- ooo-build-orig/sot/source/sdstor/stgole.cxx	2005-07-27 23:53:22.000000000 -0500
++++ ooo-build/sot/source/sdstor/stgole.cxx	2005-07-28 00:00:14.000000000 -0500
+@@ -157,7 +157,16 @@
+ 		INT32 nLen1 = 0;
+ 		*this >> nLen1;
+ 		sal_Char* p = new sal_Char[ (USHORT) nLen1 ];
+-		if( Read( p, nLen1 ) == (ULONG) nLen1 )
++/*
++
++ * This is bad...16 bit value to alocate memory ^^ but 32 bits for length if 
++
++		if( Read( p, nLen1 ) == (ULONG) nLen1 ) 
++
++ * So mask the higher bits to avoid overflow attack 
++
++*/
++		if( Read( p, nLen1&0xFFFF ) == (ULONG) (nLen1&0xFFFF) )
+ 		{
+ 			aUserName = String( p, gsl_getSystemTextEncoding() );
+ /*			// Now we can read the CB format
