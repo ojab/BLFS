@@ -1,0 +1,60 @@
+Submitted By:            Igor Zivkovic <igor@linuxfromscratch.org>
+Date:                    2005-01-10
+Initial Package Version: 4.43
+Upstream Status:         Not submitted.
+Origin:                  http://www.sleepycat.com/docs/ref/upgrade.4.3/toc.html
+Description:             Adds support for Berkeley DB-4.3.x.
+Updated By:              Bruce Dubbs <bdubbs@linuxfromscratch.org>
+Current Package Version: 4.52
+
+$LastChangedBy$
+$Date$
+
+diff -Naur exim-4.52-orig/src/dbfn.c exim-4.52/src/dbfn.c
+--- exim-4.52-orig/src/dbfn.c	2005-07-01 06:09:15.000000000 -0500
++++ exim-4.52/src/dbfn.c	2005-07-29 18:36:25.000000000 -0500
+@@ -50,7 +50,7 @@
+ {
+ dbenv = dbenv;
+ #else
+-dbfn_bdb_error_callback(const char *pfx, char *msg)
++dbfn_bdb_error_callback(const DB_ENV *dbenv, const char *pfx, const char *msg)
+ {
+ #endif
+ pfx = pfx;
+diff -Naur exim-4.52-orig/src/dbfunctions.h exim-4.52/src/dbfunctions.h
+--- exim-4.52-orig/src/dbfunctions.h	2005-07-01 06:09:15.000000000 -0500
++++ exim-4.52/src/dbfunctions.h	2005-07-29 18:36:25.000000000 -0500
+@@ -28,7 +28,7 @@
+ #if DB_VERSION_MAJOR > 4 || (DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR >= 3)
+ void     dbfn_bdb_error_callback(const DB_ENV *, const char *, const char *);
+ #else
+-void     dbfn_bdb_error_callback(const char *, char *);
++void     dbfn_bdb_error_callback(const DB_ENV *, const char *, const char *);
+ #endif
+ #endif
+ 
+diff -Naur exim-4.52-orig/src/exim_dbmbuild.c exim-4.52/src/exim_dbmbuild.c
+--- exim-4.52-orig/src/exim_dbmbuild.c	2005-07-01 06:09:15.000000000 -0500
++++ exim-4.52/src/exim_dbmbuild.c	2005-07-29 18:36:25.000000000 -0500
+@@ -67,7 +67,7 @@
+ {
+ dbenv = dbenv;
+ #else
+-dbfn_bdb_error_callback(const char *pfx, char *msg)
++dbfn_bdb_error_callback(const DB_ENV *dbenv, const char *pfx, const char *msg)
+ {
+ #endif
+ pfx = pfx;
+diff -Naur exim-4.52-orig/src/exim_dbutil.c exim-4.52/src/exim_dbutil.c
+--- exim-4.52-orig/src/exim_dbutil.c	2005-07-01 06:09:15.000000000 -0500
++++ exim-4.52/src/exim_dbutil.c	2005-07-29 18:36:25.000000000 -0500
+@@ -87,7 +87,7 @@
+ {
+ dbenv = dbenv;
+ #else
+-dbfn_bdb_error_callback(const char *pfx, char *msg)
++dbfn_bdb_error_callback(const DB_ENV *dbenv, const char *pfx, const char *msg)
+ {
+ #endif
+ pfx = pfx;
