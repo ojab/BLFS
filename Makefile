@@ -171,9 +171,9 @@ install-lisa: create-dirs
 	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc0.d/K35lisa
 	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc1.d/K35lisa
 	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc2.d/K35lisa
-	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc3.d/S60lisa
-	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc4.d/S60lisa
-	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc5.d/S60lisa
+	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc3.d/S30lisa
+	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc4.d/S30lisa
+	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc5.d/S30lisa
 	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc6.d/K35lisa
 
 install-lprng: create-dirs
@@ -555,9 +555,9 @@ uninstall-lisa:
 	rm -f ${EXTDIR}/rc.d/rc0.d/K35lisa
 	rm -f ${EXTDIR}/rc.d/rc1.d/K35lisa
 	rm -f ${EXTDIR}/rc.d/rc2.d/K35lisa
-	rm -f ${EXTDIR}/rc.d/rc3.d/S60lisa
-	rm -f ${EXTDIR}/rc.d/rc4.d/S60lisa
-	rm -f ${EXTDIR}/rc.d/rc5.d/S60lisa
+	rm -f ${EXTDIR}/rc.d/rc3.d/S30lisa
+	rm -f ${EXTDIR}/rc.d/rc4.d/S30lisa
+	rm -f ${EXTDIR}/rc.d/rc5.d/S30lisa
 	rm -f ${EXTDIR}/rc.d/rc6.d/K35lisa
 
 uninstall-lprng:
