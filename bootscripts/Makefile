@@ -60,24 +60,14 @@ install-bind: create-dirs
 	ln -sf  ../init.d/bind ${EXTDIR}/rc.d/rc5.d/S22bind
 	ln -sf  ../init.d/bind ${EXTDIR}/rc.d/rc6.d/K49bind
 
-install-courier: create-dirs
-	install -m ${MODE} blfs/init.d/courier    ${EXTDIR}/rc.d/init.d/
-	ln -sf ../init.d/courier ${EXTDIR}/rc.d/rc0.d/K25courier
-	ln -sf ../init.d/courier ${EXTDIR}/rc.d/rc1.d/K25courier
-	ln -sf ../init.d/courier ${EXTDIR}/rc.d/rc2.d/K25courier
-	ln -sf ../init.d/courier ${EXTDIR}/rc.d/rc3.d/S35courier
-	ln -sf ../init.d/courier ${EXTDIR}/rc.d/rc4.d/S35courier
-	ln -sf ../init.d/courier ${EXTDIR}/rc.d/rc5.d/S35courier
-	ln -sf ../init.d/courier ${EXTDIR}/rc.d/rc6.d/K25courier
-
 install-cups: create-dirs
 	install -m ${MODE} blfs/init.d/cups       ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/cups ${EXTDIR}/rc.d/rc0.d/K00cups
 	ln -sf  ../init.d/cups ${EXTDIR}/rc.d/rc1.d/K00cups
-	ln -sf  ../init.d/cups ${EXTDIR}/rc.d/rc2.d/S99cups
-	ln -sf  ../init.d/cups ${EXTDIR}/rc.d/rc3.d/S99cups
-	ln -sf  ../init.d/cups ${EXTDIR}/rc.d/rc4.d/S99cups
-	ln -sf  ../init.d/cups ${EXTDIR}/rc.d/rc5.d/S99cups
+	ln -sf  ../init.d/cups ${EXTDIR}/rc.d/rc2.d/S25cups
+	ln -sf  ../init.d/cups ${EXTDIR}/rc.d/rc3.d/S25cups
+	ln -sf  ../init.d/cups ${EXTDIR}/rc.d/rc4.d/S25cups
+	ln -sf  ../init.d/cups ${EXTDIR}/rc.d/rc5.d/S25cups
 	ln -sf  ../init.d/cups ${EXTDIR}/rc.d/rc6.d/K00cups
 
 install-cyrus-sasl: create-dirs
@@ -181,9 +171,9 @@ install-lisa: create-dirs
 	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc0.d/K35lisa
 	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc1.d/K35lisa
 	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc2.d/K35lisa
-	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc3.d/S30lisa
-	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc4.d/S30lisa
-	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc5.d/S30lisa
+	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc3.d/S60lisa
+	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc4.d/S60lisa
+	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc5.d/S60lisa
 	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc6.d/K35lisa
 
 install-lprng: create-dirs
@@ -341,9 +331,9 @@ install-samba: create-dirs
 	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc0.d/K48samba
 	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc1.d/K48samba
 	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc2.d/K48samba
-	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc3.d/S24samba
-	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc4.d/S24samba
-	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc5.d/S24samba
+	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc3.d/S45samba
+	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc4.d/S45samba
+	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc5.d/S45samba
 	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc6.d/K48samba
 
 install-sendmail: create-dirs
@@ -371,9 +361,9 @@ install-stunnel: create-dirs
 	ln -sf  ../init.d/stunnel ${EXTDIR}/rc.d/rc0.d/K47stunnel
 	ln -sf  ../init.d/stunnel ${EXTDIR}/rc.d/rc1.d/K47stunnel
 	ln -sf  ../init.d/stunnel ${EXTDIR}/rc.d/rc2.d/K47stunnel
-	ln -sf  ../init.d/stunnel ${EXTDIR}/rc.d/rc3.d/S26stunnel
-	ln -sf  ../init.d/stunnel ${EXTDIR}/rc.d/rc4.d/S26stunnel
-	ln -sf  ../init.d/stunnel ${EXTDIR}/rc.d/rc5.d/S26stunnel
+	ln -sf  ../init.d/stunnel ${EXTDIR}/rc.d/rc3.d/S55stunnel
+	ln -sf  ../init.d/stunnel ${EXTDIR}/rc.d/rc4.d/S55stunnel
+	ln -sf  ../init.d/stunnel ${EXTDIR}/rc.d/rc5.d/S55stunnel
 	ln -sf  ../init.d/stunnel ${EXTDIR}/rc.d/rc6.d/K47stunnel
 
 install-svn: create-dirs
@@ -409,9 +399,9 @@ install-winbind: create-dirs
 	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc0.d/K49winbind
 	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc1.d/K49winbind
 	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc2.d/K49winbind
-	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc3.d/S25winbind
-	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc4.d/S25winbind
-	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc5.d/S25winbind
+	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc3.d/S50winbind
+	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc4.d/S50winbind
+	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc5.d/S50winbind
 	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc6.d/K49winbind
 
 install-xinetd: create-dirs
@@ -454,24 +444,14 @@ uninstall-bind:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S22bind
 	rm -f ${EXTDIR}/rc.d/rc6.d/K49bind
 
-uninstall-courier:
-	rm -f ${EXTDIR}/rc.d/init.d/courier
-	rm -f ${EXTDIR}/rc.d/rc0.d/K25courier
-	rm -f ${EXTDIR}/rc.d/rc1.d/K25courier
-	rm -f ${EXTDIR}/rc.d/rc2.d/K25courier
-	rm -f ${EXTDIR}/rc.d/rc3.d/S35courier
-	rm -f ${EXTDIR}/rc.d/rc4.d/S35courier
-	rm -f ${EXTDIR}/rc.d/rc5.d/S35courier
-	rm -f ${EXTDIR}/rc.d/rc6.d/K25courier
-
 uninstall-cups:
 	rm -f ${EXTDIR}/rc.d/init.d/cups
 	rm -f ${EXTDIR}/rc.d/rc0.d/K00cups
 	rm -f ${EXTDIR}/rc.d/rc1.d/K00cups
-	rm -f ${EXTDIR}/rc.d/rc2.d/S99cups
-	rm -f ${EXTDIR}/rc.d/rc3.d/S99cups
-	rm -f ${EXTDIR}/rc.d/rc4.d/S99cups
-	rm -f ${EXTDIR}/rc.d/rc5.d/S99cups
+	rm -f ${EXTDIR}/rc.d/rc2.d/S25cups
+	rm -f ${EXTDIR}/rc.d/rc3.d/S25cups
+	rm -f ${EXTDIR}/rc.d/rc4.d/S25cups
+	rm -f ${EXTDIR}/rc.d/rc5.d/S25cups
 	rm -f ${EXTDIR}/rc.d/rc6.d/K00cups
 
 uninstall-cyrus-sasl:
@@ -575,9 +555,9 @@ uninstall-lisa:
 	rm -f ${EXTDIR}/rc.d/rc0.d/K35lisa
 	rm -f ${EXTDIR}/rc.d/rc1.d/K35lisa
 	rm -f ${EXTDIR}/rc.d/rc2.d/K35lisa
-	rm -f ${EXTDIR}/rc.d/rc3.d/S30lisa
-	rm -f ${EXTDIR}/rc.d/rc4.d/S30lisa
-	rm -f ${EXTDIR}/rc.d/rc5.d/S30lisa
+	rm -f ${EXTDIR}/rc.d/rc3.d/S60lisa
+	rm -f ${EXTDIR}/rc.d/rc4.d/S60lisa
+	rm -f ${EXTDIR}/rc.d/rc5.d/S60lisa
 	rm -f ${EXTDIR}/rc.d/rc6.d/K35lisa
 
 uninstall-lprng:
@@ -735,9 +715,9 @@ uninstall-samba:
 	rm -f ${EXTDIR}/rc.d/rc0.d/K48samba
 	rm -f ${EXTDIR}/rc.d/rc1.d/K48samba
 	rm -f ${EXTDIR}/rc.d/rc2.d/K48samba
-	rm -f ${EXTDIR}/rc.d/rc3.d/S24samba
-	rm -f ${EXTDIR}/rc.d/rc4.d/S24samba
-	rm -f ${EXTDIR}/rc.d/rc5.d/S24samba
+	rm -f ${EXTDIR}/rc.d/rc3.d/S45samba
+	rm -f ${EXTDIR}/rc.d/rc4.d/S45samba
+	rm -f ${EXTDIR}/rc.d/rc5.d/S45samba
 	rm -f ${EXTDIR}/rc.d/rc6.d/K48samba
 
 uninstall-sendmail:
@@ -765,9 +745,9 @@ uninstall-stunnel:
 	rm -f ${EXTDIR}/rc.d/rc0.d/K47stunnel
 	rm -f ${EXTDIR}/rc.d/rc1.d/K47stunnel
 	rm -f ${EXTDIR}/rc.d/rc2.d/K47stunnel
-	rm -f ${EXTDIR}/rc.d/rc3.d/S26stunnel
-	rm -f ${EXTDIR}/rc.d/rc4.d/S26stunnel
-	rm -f ${EXTDIR}/rc.d/rc5.d/S26stunnel
+	rm -f ${EXTDIR}/rc.d/rc3.d/S55stunnel
+	rm -f ${EXTDIR}/rc.d/rc4.d/S55stunnel
+	rm -f ${EXTDIR}/rc.d/rc5.d/S55stunnel
 	rm -f ${EXTDIR}/rc.d/rc6.d/K47stunnel
 
 uninstall-svn:
@@ -803,9 +783,9 @@ uninstall-winbind:
 	rm -f ${EXTDIR}/rc.d/rc0.d/K49winbind
 	rm -f ${EXTDIR}/rc.d/rc1.d/K49winbind
 	rm -f ${EXTDIR}/rc.d/rc2.d/K49winbind
-	rm -f ${EXTDIR}/rc.d/rc3.d/S25winbind
-	rm -f ${EXTDIR}/rc.d/rc4.d/S25winbind
-	rm -f ${EXTDIR}/rc.d/rc5.d/S25winbind
+	rm -f ${EXTDIR}/rc.d/rc3.d/S50winbind
+	rm -f ${EXTDIR}/rc.d/rc4.d/S50winbind
+	rm -f ${EXTDIR}/rc.d/rc5.d/S50winbind
 	rm -f ${EXTDIR}/rc.d/rc6.d/K49winbind
 
 uninstall-xinetd:
@@ -826,7 +806,6 @@ uninstall-xinetd:
 	install-alsa \
 	install-apache \
 	install-bind \
-	install-courier \
 	install-cups \
 	install-cyrus-sasl \
 	install-dhcp \
@@ -866,7 +845,6 @@ uninstall-xinetd:
 	uninstall-alsa \
 	uninstall-apache \
 	uninstall-bind \
-	uninstall-courier \
 	uninstall-cups \
 	uninstall-cyrus-sasl \
 	uninstall-dhcp \
