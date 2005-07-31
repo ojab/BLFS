@@ -33,10 +33,6 @@ install-alsa: create-dirs
 	install -m ${MODE} blfs/init.d/alsa       ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/alsa ${EXTDIR}/rc.d/rc0.d/K35alsa
 	ln -sf  ../init.d/alsa ${EXTDIR}/rc.d/rc1.d/K35alsa
-	ln -sf  ../init.d/alsa ${EXTDIR}/rc.d/rc2.d/S40alsa
-	ln -sf  ../init.d/alsa ${EXTDIR}/rc.d/rc3.d/S40alsa
-	ln -sf  ../init.d/alsa ${EXTDIR}/rc.d/rc4.d/S40alsa
-	ln -sf  ../init.d/alsa ${EXTDIR}/rc.d/rc5.d/S40alsa
 	ln -sf  ../init.d/alsa ${EXTDIR}/rc.d/rc6.d/K35alsa
 
 install-apache: create-dirs
