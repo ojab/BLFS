@@ -428,10 +428,6 @@ uninstall-alsa:
 	rm -f ${EXTDIR}/rc.d/init.d/alsa
 	rm -f ${EXTDIR}/rc.d/rc0.d/K35alsa
 	rm -f ${EXTDIR}/rc.d/rc1.d/K35alsa
-	rm -f ${EXTDIR}/rc.d/rc2.d/S40alsa
-	rm -f ${EXTDIR}/rc.d/rc3.d/S40alsa
-	rm -f ${EXTDIR}/rc.d/rc4.d/S40alsa
-	rm -f ${EXTDIR}/rc.d/rc5.d/S40alsa
 	rm -f ${EXTDIR}/rc.d/rc6.d/K35alsa
 
 uninstall-apache:
