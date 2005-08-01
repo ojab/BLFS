@@ -13,13 +13,6 @@
 . $rc_functions
 
 case "$1" in
-	start)
-		boot_mesg "Starting ALSA...    Restoring volumes..."
-		loadproc /usr/sbin/alsactl restore
-		# boot_mesg "Loading MIDI font..."
-		# loadproc /usr/sbin/sfxload /path/to/soundfont
-		;;
-
 	stop)
 		boot_mesg "Stopping ALSA...    Saving volumes..."
 		loadproc /usr/sbin/alsactl store
@@ -27,14 +20,8 @@ case "$1" in
 		#loadproc sfxload -i
 		;;
 
-	restart)
-		$0 stop
-		sleep 1
-		$0 start
-		;;
-
 	*)
-		echo "Usage: $0 {start|stop|restart}"
+		echo "Usage: $0 stop"
 		exit 1
 		;;
 esac

@@ -1,3 +1,9 @@
+2005-07-31 DJ Lucas <dj@linuxfromscratch.org>
+	* Removed courier bootscript.
+	* Removed start and restart sections of alsa bootscript.
+	* Added missing echo in mysql script.
+	* Reordered bootscripts for samba/cups interaction.
+
 2005-07-08 DJ Lucas <dj@linuxfromscratch.org>
 	* Moved all scripts to use new functions provided by 
 	  lfs-bootscripts-3.2.1.
