@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY alsa-firmware-download-http "&alsa-download-http;/firmware/alsa-firmware-&alsa-firmware-version;.tar.bz2">
+  <!ENTITY alsa-firmware-download-ftp  "&alsa-download-ftp;/firmware/alsa-firmware-&alsa-firmware-version;.tar.bz2">
+  <!ENTITY alsa-firmware-md5sum        "f7ce6a31691d6eb35fc155f306abc77b">
+  <!ENTITY alsa-firmware-size          "1.5 MB">
+  <!ENTITY alsa-firmware-buildsize     "18.4 MB">
+  <!ENTITY alsa-firmware-time          "0.1 SBU">
+]>
+<sect1 id="alsa-firmware" xreflabel="ALSA Firmware-&alsa-firmware-version;">
+  <?dbhtml filename="alsa-firmware.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>ALSA Firmware-&alsa-firmware-version;</title>
+
+  <indexterm zone="alsa-firmware">
+    <primary sortas="a-ALSA-Firmware">ALSA Firmware</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to ALSA Firmware</title>
+
+    <para>The <application>ALSA Firmware</application> package
+    contains firmware for certain sound cards.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&alsa-firmware-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&alsa-firmware-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &alsa-firmware-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &alsa-firmware-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &alsa-firmware-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &alsa-firmware-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">ALSA Firmware Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para><xref linkend="alsa-tools"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of ALSA Firmware</title>
+
+    <para>The <application>ALSA Firmware</application> package
+    is only needed by those with advanced requirements for their sound card.
+    See the README for configure options.</para>
+
+    <para>Install <application>ALSA Firmware</application> by
+    running the following commands:</para>
+
+<screen><userinput>./configure --prefix=/usr &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>None</seg>
+        <seg>None</seg>
+        <seg>/usr/lib/hotplug/firmware and/or /usr/share/alsa/firmware</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+</sect1>

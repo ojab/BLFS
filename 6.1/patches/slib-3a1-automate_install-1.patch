@@ -1,0 +1,59 @@
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2004-09-08
+Initial Package Version: 3a1
+Upstream Status:         Not submitted 
+Origin:                  Randy McMurchy
+Description:             Adds installation commands to the Makefile to install 
+			 the package
+
+$LastChangedBy$
+$Date$
+
+--- slib-orig/Makefile	2003-12-01 04:44:11.000000000 +0000
++++ slib/Makefile	2004-09-08 19:35:21.380844048 +0000
+@@ -26,6 +26,7 @@
+ bindir = $(exec_prefix)bin/
+ libdir = $(exec_prefix)lib/
+ infodir = $(prefix)info/
++guiledir = $(prefix)share/guile/
+ 
+ PREVDOCS = prevdocs/
+ 
+@@ -80,17 +81,23 @@
+ install:
+ 	test -d $(bindir) || mkdir $(bindir)
+ 	echo '#! /bin/sh'			 > $(bindir)slib
+-	echo export SCHEME_LIBRARY_PATH=$(libdir)slib/	>> $(bindir)slib
++	echo export SCHEME_LIBRARY_PATH=$(guiledir)slib/	>> $(bindir)slib
+ 	echo VERSION=$(VERSION)			>> $(bindir)slib
+ 	cat slib.sh				>> $(bindir)slib
+ 	chmod +x $(bindir)slib
++	install -d -m755 -oroot -groot $(guiledir)slib
++	install -m644 -oroot -groot ANNOUNCE COPYING ChangeLog FAQ Makefile README \
++	grapheps.ps slib.spec srcdir.mk *.xyz *.txt *.texi *.info *.txi *.init *.scm \
++	$(guiledir)slib
++	install -m755 -oroot -groot *.sh $(guiledir)slib
++
+ 
+ #### Stuff for maintaining SLIB below ####
+ 
+ ver = $(VERSION)
+ version.txi:	Makefile
+ 	echo @set SLIBVERSION $(ver) > version.txi
+-	echo @set SLIBDATE `date +"%B %Y"` >> version.txi
++	echo @set SLIBDATE November 2003 >> version.txi
+ 
+ scheme = scm
+ 
+@@ -206,8 +213,10 @@
+ installinfo:	$(infodir)slib.info
+ $(infodir)slib.info:	slib.info
+ 	cp -a slib.info $(infodir)slib.info
++	chown root:root $(infodir)slib.info
+ 	-install-info $(infodir)slib.info $(infodir)dir
+-	-rm $(infodir)slib.info.gz
++	if [ -f $(infodir)slib.info.gz ]; \
++	then rm $(infodir)slib.info.gz; fi
+ infoz:	installinfoz
+ installinfoz:	$(infodir)slib.info.gz
+ $(infodir)slib.info.gz:	$(infodir)slib.info

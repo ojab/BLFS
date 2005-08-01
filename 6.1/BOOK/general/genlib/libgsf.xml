@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libgsf-download-http "http://ftp.gnome.org/pub/gnome/sources/libgsf/1.12/libgsf-&libgsf-version;.tar.bz2">
+  <!ENTITY libgsf-download-ftp "ftp://ftp.gnome.org/pub/gnome/sources/libgsf/1.12/libgsf-&libgsf-version;.tar.bz2">
+  <!ENTITY libgsf-md5sum "34c4672edd2e4e814fb82d7b94d71ffd">
+  <!ENTITY libgsf-size "428 KB">
+  <!ENTITY libgsf-buildsize "10.1 MB">
+  <!ENTITY libgsf-time "0.3 SBU">
+]>
+
+<sect1 id="libgsf" xreflabel="libgsf-&libgsf-version;">
+  <?dbhtml filename="libgsf.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Libgsf-&libgsf-version;</title>
+
+  <indexterm zone="libgsf">
+    <primary sortas="a-Libgsf">Libgsf</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Libgsf</title>
+
+    <para>The <application>libgsf</application> package contains
+    <filename class="libraryfile">libgsf</filename> libraries. These are useful for
+    providing an extensible input/output abstraction layer for structured file
+    formats.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&libgsf-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&libgsf-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &libgsf-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &libgsf-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &libgsf-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &libgsf-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Libgsf Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para><xref linkend="glib2"/> and
+    <xref linkend="libxml2"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para><xref linkend="gnome-vfs"/> (required for GNOME-2 support) and
+    <xref linkend="gtk-doc"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Libgsf</title>
+
+    <para>Install <application>libgsf</application> by running the following
+    commands:</para>
+
+<screen><userinput>./configure --prefix=/usr &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>None</seg>
+        <seg>libgsf-1.[so,a] and optionally, libgsf-gnome-1.[so,a]</seg>
+        <seg>/usr/include/libgsf-1 and /usr/share/gtk-doc/html/gsf</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+</sect1>
+

@@ -1,0 +1,21 @@
+Submitted By: DJ Lucas <dj_AT_linuxfromscratch_DOT_org>
+Date: 2005-07-28
+Initial Package Version: 1.1.4
+Origin: OOo-1.1.5 (official upstream change)
+Description: Fixes overflow condition - OOo Issue# 46388
+Upstream Status: Accepted
+
+$LastChangedBy$
+$Date$
+
+--- ooo-build-orig/sot/source/sdstor/stgole.cxx	2005-07-27 23:53:22.000000000 -0500
++++ ooo-build/sot/source/sdstor/stgole.cxx	2005-07-28 00:22:34.000000000 -0500
+@@ -156,6 +156,8 @@
+ 		*this >> aClsId;
+ 		INT32 nLen1 = 0;
+ 		*this >> nLen1;
++		// the higher bits are ignored
++		nLen1 &= 0xFFFF;
+ 		sal_Char* p = new sal_Char[ (USHORT) nLen1 ];
+ 		if( Read( p, nLen1 ) == (ULONG) nLen1 )
+ 		{

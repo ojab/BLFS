@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libgnomeui-download-http "http://ftp.gnome.org/pub/GNOME/sources/libgnomeui/&gnome-version;/libgnomeui-&libgnomeui-version;.tar.bz2">
+  <!ENTITY libgnomeui-download-ftp "ftp://ftp.gnome.org/pub/GNOME/sources/libgnomeui/&gnome-version;/libgnomeui-&libgnomeui-version;.tar.bz2">
+  <!ENTITY libgnomeui-md5sum "e17c0d97e5f240513ac2d36268d696ed">
+  <!ENTITY libgnomeui-size "1.6 MB">
+  <!ENTITY libgnomeui-buildsize "37 MB">
+  <!ENTITY libgnomeui-time "0.9 SBU">
+]>
+
+<sect1 id="libgnomeui" xreflabel="libgnomeui-&libgnomeui-version;">
+  <?dbhtml filename="libgnomeui.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Libgnomeui-&libgnomeui-version;</title>
+
+  <indexterm zone="libgnomeui">
+    <primary sortas="a-Libgnomeui">Libgnomeui</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Libgnomeui</title>
+
+    <para>The <application>libgnomeui</application> package contains
+    <filename class="libraryfile">libgnomeui</filename> libraries.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&libgnomeui-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&libgnomeui-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &libgnomeui-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &libgnomeui-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &libgnomeui-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &libgnomeui-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Libgnomeui Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para><xref linkend="libbonoboui"/> and <xref linkend="gnome-keyring"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para><xref linkend="libjpeg"/> and <xref linkend="gtk-doc"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Libgnomeui</title>
+
+    <para>Install <application>libgnomeui</application> by running the following
+    commands:</para>
+
+<screen><userinput>./configure --prefix=`pkg-config --variable=prefix ORBit-2.0` \
+    --libexecdir=`pkg-config --variable=prefix ORBit-2.0`/sbin &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>--libexecdir=`pkg-config --variable=prefix
+    ORBit-2.0`/sbin</parameter>: This switch puts libexec files in
+    <filename class="directory">$GNOME_PREFIX/sbin</filename> instead of
+    <filename class="directory">$GNOME_PREFIX/libexec</filename>.</para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Libgnomeui</title>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>Some applications cannot properly discover the
+      <application>libglade</application> interface library installed by
+      <application>libgnomeui</application>. Get around this problem by
+      initializing an environment variable which identifies the location
+      of the library. Add the following line to the system-wide
+      <filename>/etc/profile</filename> file, or to individual user's
+      <filename>~/.profile</filename> or <filename>~/.bashrc</filename>
+      files:</para>
+
+<screen><literal>export LIBGLADE_MODULE_PATH=$GNOME_PREFIX/lib/libglade/2.0</literal></screen>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>gnome_segv2</seg>
+        <seg>libgnomeui-2[so,a], libgnome[so,a] glade library, and
+        libgnome-vfs[so,a] <application>GTK+</application> library.</seg>
+        <seg>$GNOME_PREFIX/include/libgnomeui-2.0,
+        $GNOME_PREFIX/lib/gtk-2.0/2.4.0/filesystems, and
+        $GNOME_PREFIX/share/gtk-doc/html/libgnomeui</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libgnomeui-2">
+        <term><filename class='libraryfile'>libgnomeui-2.[so,a]</filename></term>
+        <listitem>
+          <para>are the GUI portion of the <application>GNOME</application>
+          libraries.</para>
+          <indexterm zone="libgnomeui libgnomeui-2">
+            <primary sortas="c-libgnomeui-2">libgnomeui-2.[so,a]</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

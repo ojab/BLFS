@@ -1,0 +1,21 @@
+Submitted By: DJ Lucas <dj AT linuxfromscratch DOT org>
+Date: 2004-11-27
+Initial Package Version: 1.4.2
+Origin: Gentoo
+Description: Link to shared cxxlibs.
+
+$LastChangedBy$
+$Date$
+
+
+--- j2sdk-build-orig/j2se/make/common/Defs-linux.gmk	2004-11-18 00:19:15.021281736 -0600
++++ jdk-build/j2se/make/common/Defs-linux.gmk	2004-11-18 00:09:33.148739808 -0600
+@@ -22,7 +22,7 @@
+ #   LDLIBS_COMMON (set $(EXTRA_LIBS) instead)
+ 
+ # statically link libstdc++ before C++ ABI is stablized on Linux
+-STATIC_CXX     = true
++STATIC_CXX     = false
+ 
+ # define these to avoid picking up ones from aliases or from
+ # non-standard locations

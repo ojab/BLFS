@@ -1,0 +1,22 @@
+Submitted By: DJ Lucas <dj AT linuxfromscratch DOT org>
+Date: 2004-11-27
+Initial Package Version: 1.4.2
+Origin: Sent by Hamish Greig (Formerly of SourceMage)
+Description: Prevents building of the debug image, saving approximately 
+             300 MB of disk space.
+
+$LastChangedBy$
+$Date$
+
+
+--- j2sdk-build-orig/j2se/make/common/Release.gmk	2004-10-19 13:44:51.000000000 -0500
++++ j2sdk-build/j2se/make/common/Release.gmk	2004-11-15 20:40:25.000000000 -0600
+@@ -180,7 +180,7 @@
+ compare-image-jre compare-image-jdk ::
+ 	@$(ECHO) ">>>Making "$@" @ `$(DATE)` ..."; 
+ 
+-images:: sanity-images post-sanity-images image-jre image-jdk image-jdk-debug
++images:: sanity-images post-sanity-images image-jre image-jdk
+ 
+ #
+ # Sources we ship in the SDK.

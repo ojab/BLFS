@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gnome-desktop-download-http "http://ftp.gnome.org/pub/GNOME/sources/gnome-desktop/&gnome-version;/gnome-desktop-&gnome-desktop-version;.tar.bz2">
+  <!ENTITY gnome-desktop-download-ftp "ftp://ftp.gnome.org/pub/GNOME/sources/gnome-desktop/&gnome-version;/gnome-desktop-&gnome-desktop-version;.tar.bz2">
+  <!ENTITY gnome-desktop-md5sum "5d6d21e4b5d66975c9c2c04add7da6e2">
+  <!ENTITY gnome-desktop-size "1.0 MB">
+  <!ENTITY gnome-desktop-buildsize "12 MB">
+  <!ENTITY gnome-desktop-time "0.2 SBU">
+]>
+
+<sect1 id="gnome-desktop" xreflabel="GNOME Desktop-&gnome-desktop-version;">
+  <?dbhtml filename="gnome-desktop.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>GNOME Desktop-&gnome-desktop-version;</title>
+
+  <indexterm zone="gnome-desktop">
+    <primary sortas="a-GNOME-Desktop">GNOME Desktop</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to GNOME Desktop</title>
+
+    <para>The <application>GNOME Desktop</application> package contains
+    the <command>gnome-about</command> program, the
+    <filename class='libraryfile'>libgnome-desktop-2</filename> library and
+    <application>GNOME</application>'s core graphics files and icons.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&gnome-desktop-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&gnome-desktop-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &gnome-desktop-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &gnome-desktop-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &gnome-desktop-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &gnome-desktop-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">GNOME Desktop Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para><xref linkend="libgnomeui"/> and
+    <xref linkend="scrollkeeper"/></para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para><xref linkend="startup-notification"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of GNOME Desktop</title>
+
+    <para>Install <application>GNOME Desktop</application> by
+    running the following commands:</para>
+
+<screen><userinput>./configure --prefix=`pkg-config --variable=prefix ORBit-2.0` \
+    --sysconfdir=/etc/gnome --localstatedir=/var/lib &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>--sysconfdir=/etc/gnome</parameter>: This switch
+    puts configuration files in <filename class="directory">/etc/gnome</filename>
+    instead of <filename class="directory">$GNOME_PREFIX/etc</filename>.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>gnome-about</seg>
+        <seg>libgnome-desktop-2.[so,a]</seg>
+        <seg>$GNOME_PREFIX/include/gnome-desktop-2.0, $GNOME_PREFIX/share/gnome,
+        $GNOME_PREFIX/share/gnome-about, and $GNOME_PREFIX/share/omf</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gnome-about">
+        <term><command>gnome-about</command></term>
+        <listitem>
+          <para>produces the about screen.</para>
+          <indexterm zone="gnome-desktop gnome-about">
+            <primary sortas="b-gnome-about">gnome-about</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgnome-desktop-2">
+        <term><filename class='libraryfile'>libgnome-desktop-2.[so,a]</filename></term>
+        <listitem>
+          <para>contains APIs being tested for inclusion in
+          <application>libgnome</application> or
+          <application>libgnomeui</application>.</para>
+          <indexterm zone="gnome-desktop libgnome-desktop-2">
+            <primary sortas="c-libgnome-desktop-2">libgnome-desktop-2.[so,a]</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

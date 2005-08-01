@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY atk-download-http "http://ftp.gnome.org/pub/GNOME/sources/atk/1.9/atk-&atk-version;.tar.bz2">
+  <!ENTITY atk-download-ftp  "ftp://ftp.gnome.org/pub/GNOME/sources/atk/1.9/atk-&atk-version;.tar.bz2">
+  <!ENTITY atk-md5sum        "689eb6a77215858eb804f6dcc90058be">
+  <!ENTITY atk-size          "473 KB">
+  <!ENTITY atk-buildsize     "7.1 MB">
+  <!ENTITY atk-time          "0.11 SBU">
+]>
+
+<sect1 id="atk" xreflabel="ATK-&atk-version;">
+  <?dbhtml filename="atk.html" ?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>ATK-&atk-version;</title>
+
+  <indexterm zone="atk">
+    <primary sortas="a-ATK">ATK</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to ATK</title>
+
+    <para>The <application>ATK</application> package contains the
+    <application>ATK</application> libraries. They are useful for
+    allowing accessibility solutions to be available for all
+    <application>GTK2</application> applications.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&atk-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&atk-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &atk-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &atk-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &atk-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &atk-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">ATK Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para><xref linkend="glib2"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para><xref linkend="gtk-doc"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of ATK</title>
+
+    <para>Install <application>ATK</application> by running
+    the following commands:</para>
+
+<screen><userinput>./configure --prefix=/usr &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><option>--enable-gtk-doc</option>: This switch will rebuild
+    the API documentation during the <command>make</command> command.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>None</seg>
+        <seg>libatk-1.0.so</seg>
+        <seg>/usr/include/atk-1.0 and /usr/share/gtk-doc/html/atk</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libatk">
+        <term><filename class='libraryfile'>atklib-1.0.so</filename></term>
+        <listitem>
+          <para>contains functions that are used by assistive technologies
+          in order to interact with the desktop and applications.</para>
+          <indexterm zone="atk libatk">
+            <primary sortas="c-libatk">libatk-1.0.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

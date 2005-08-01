@@ -1,0 +1,116 @@
+Submitted By: DJ Lucas (dj AT linuxfromscratch DOT org)
+Date: 2005-04-23
+Initial Package Version: 1.5.0
+Origin: JDK-6.0 (Mustang) snapshot
+Upstream Status: Fixed in CVS
+Description: Fixes syntax for use with nptl.
+
+$LastChangedBy$
+$Date$
+
+
+diff -Naur jdk-build-orig/deploy/src/javaws/solaris/native/system_md.c jdk-build/deploy/src/javaws/solaris/native/system_md.c
+--- jdk-build-orig/deploy/src/javaws/solaris/native/system_md.c	2004-10-19 14:04:24.000000000 -0500
++++ jdk-build/deploy/src/javaws/solaris/native/system_md.c	2005-04-23 22:19:56.234233448 -0500
+@@ -1,5 +1,5 @@
+ /*
+- * @(#)system_md.c	1.40 04/01/12
++ * @(#)system_md.c	1.42 05/02/11
+  * 
+  * Copyright 2004 Sun Microsystems, Inc. All rights reserved.
+  * SUN PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+@@ -11,7 +11,9 @@
+ #include <malloc.h>
+ #include <langinfo.h>
+ #include <iconv.h>
+-#include <wait.h>
++#include <sys/types.h>
++#include <sys/wait.h>
++#include <errno.h>
+ #include <sys/utsname.h>	/* For os_name */
+ #include "system.h"
+ #include "util.h"
+@@ -357,7 +359,6 @@
+         /* Not implemented */
+     }
+ #endif
+- 
+     if (exec_path == NULL) {
+         exec_path = FindExecName(argv[0]);
+     }
+@@ -378,9 +379,9 @@
+  */
+ char *getHome(void) {
+     char buf[MAXPATHLEN];
+-
+ #ifdef __linux__
+     char *execname = GetExecname();
++
+     if (execname) {
+         strncpy(buf, execname, MAXPATHLEN-1);
+         buf[MAXPATHLEN-1] = '\0';
+@@ -410,7 +411,6 @@
+         Abort(getMsgString(MSG_BADINST_NOHOME)); 
+     }   
+     *(strrchr(buf, '/')) = '\0';        /* bin                  */
+- 
+     return buf;
+ }
+ 
+@@ -725,7 +725,7 @@
+ 
+ /* argv MUST include cmd. */
+ void sysExec2Buf(char *cmd, int argc, char *argv[], char *buf, int *buflen) {
+-  int fdin[2], fdout[2], fderr[2], k, resultPid, n, ofs = 0, len, options;
++  int fdin[2], fdout[2], fderr[2], k, resultPid, n, ofs = 0, len, status;
+   siginfo_t info;
+   len = *buflen;
+   *buflen = 0;
+@@ -774,14 +774,21 @@
+ 
+   /* Wait for the child process to exit.  This returns immediately if
+      the child has already exited. */
+-#ifdef SOLARIS
+-  options = WEXITED;
+-#else
+-  options = 0;
+-#endif
+-
+-  while (waitid(P_PID, resultPid, &info, options) != 0) {
+-    /* do nothing */
++  /* fix for 6188963: java web start cannot start on linux with
++     new glibc */
++  /* from Runtime.exec() UNIXProcess_md.c */
++  while (waitpid(resultPid, &status, 0) < 0) {
++    switch (errno) {
++    case EINTR: break;
++    default: 
++      close(fdin[1]);
++      close(fdout[0]);
++      close(fderr[0]);
++      close(fdin[0]);
++      close(fdout[1]);
++      close(fderr[1]);
++      return;
++    }
+   }
+ 
+   /* clean up the child's side of the pipes */
+@@ -797,7 +804,7 @@
+   
+   close(fdin[1]);
+   close(fdout[0]);
+-  close(fdout[0]);
++  close(fderr[0]);
+ }
+ 
+ void sysGetRegistryJREs (JREDescription jre_list[], int *nJREs) {
+@@ -878,3 +885,8 @@
+ 
+   return strcat(temp, dbg_suffix);
+ }
++
++char *sysGetNetProperty() {
++  return NULL;
++}
++

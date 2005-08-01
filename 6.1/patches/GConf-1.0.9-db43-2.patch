@@ -1,0 +1,84 @@
+Submitted By:            Igor Zivkovic <igor@linuxfromscratch.org>
+Date:                    2005-01-10
+Initial Package Version: 1.0.9
+Upstream Status:         Not submitted.
+Origin:                  http://www.sleepycat.com/docs/ref/upgrade.4.0/lock.html
+                         http://www.sleepycat.com/docs/ref/upgrade.4.1/fop.html
+Description:             Adds support for Berkeley DB-4.3.x.
+
+$LastChangedBy$
+$Date$
+
+--- GConf-1.0.9/configure.orig	2005-01-10 16:11:34.673838384 +0000
++++ GConf-1.0.9/configure	2005-01-10 16:11:48.740699896 +0000
+@@ -7945,7 +7945,7 @@
+ BDB_LIBS=
+ BDB_CFLAGS=
+ 
+-for dblib in db-3.3 db-3.2 db-3.1 db-3; do
++for dblib in db db-3.3 db-3.2 db-3.1 db-3; do
+   as_ac_Lib=`echo "ac_cv_lib_$dblib''_db_env_create" | $as_tr_sh`
+ echo "$as_me:7950: checking for db_env_create in -l$dblib" >&5
+ echo $ECHO_N "checking for db_env_create in -l$dblib... $ECHO_C" >&6
+@@ -8010,7 +8010,7 @@
+ echo "$as_me: WARNING: No db3 library found. Not building bdb backend." >&2;}
+ else
+ 
+-for ac_header in db3/db.h
++for ac_header in db.h
+ do
+ as_ac_Header=`echo "ac_cv_header_$ac_header" | $as_tr_sh`
+ echo "$as_me:8016: checking for $ac_header" >&5
+--- GConf-1.0.9/backends/bdb.h.orig	2005-01-10 16:13:16.876301248 +0000
++++ GConf-1.0.9/backends/bdb.h	2005-01-10 16:13:35.797424800 +0000
+@@ -116,11 +116,7 @@
+ 
+ #ifndef BDB_H
+ 
+-#ifdef HAVE_DB3_DB_H
+-#include <db3/db.h>
+-#else
+ #include <db.h>
+-#endif
+ #include <glib.h>
+ #include <gconf/gconf.h>
+ 
+--- GConf-1.0.9/backends/bdb.c.orig	2001-10-17 03:43:01.000000000 +0000
++++ GConf-1.0.9/backends/bdb.c	2005-01-10 21:24:49.676852808 +0000
+@@ -154,7 +154,7 @@
+ 	       dbname);
+ #endif
+     }
+-  if ((ret = dbp->open (dbp, dbname, NULL, DB_BTREE, flags, 0664)) != 0)
++  if ((ret = dbp->open (dbp, NULL, dbname, NULL, DB_BTREE, flags, 0664)) != 0)
+     {
+       dbp->err (dbp, ret, "%s: open", dbname);
+       goto err1;
+@@ -433,7 +433,7 @@
+ 
+   if (!inited)
+     {
+-      lock_id (bdb_db_env, &id);
++      bdb_db_env->lock_id(bdb_db_env, &id); 
+       inited = 1;
+     }
+   return id;
+@@ -455,8 +455,7 @@
+   init_dbt_int (&kdir_id, &dir_id);
+ 
+ #if LOCKING
+-  if (lock_get
+-      (bdb_db_env, get_lock_id (), 0, &dir, DB_LOCK_WRITE, &lock) != 0)
++  if (bdb_db_env->lock_get(bdb_db_env, get_lock_id(), 0, &dir, DB_LOCK_WRITE, &lock) != 0)
+     {
+       /* TODO: error failed to lock id row of DB_DIR table */
+ #ifdef GCONF_ERROR_VERBOSE
+@@ -541,7 +540,7 @@
+   ret = dir_id;
+ unlock_and_return:
+ #ifdef LOCKING
+-  if (lock_put (bdb_db_env, &lock) != 0)
++  if (bdb_db_env->lock_put(bdb_db_env, &lock) != 0)
+     {
+ #ifdef GCONF_ERROR_VERBOSE
+       fprintf (stderr, "%s: CRITICAL failed to unlock BDB dir database\n",
