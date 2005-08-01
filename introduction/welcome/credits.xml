@@ -34,8 +34,8 @@
       </listitem>
       <listitem>
         <para><emphasis>Co-Editors:</emphasis> Randy McMurchy,
-        Larry Lawrence, Igor Zivkovic, DJ Lucas, Tushar Teredesai, David Jensen, and
-        Manuel Canales Esparcia.</para>
+        Larry Lawrence, Igor Zivkovic, DJ Lucas, Tushar Teredesai, David Jensen, 
+        Manuel Canales Esparcia, and Richard Downing.</para>
       </listitem>
     </itemizedlist>
 
@@ -310,10 +310,10 @@
         <emphasis>Reinhard</emphasis></para>
       </listitem>
 
-      <listitem>
+      <!-- <listitem>
         <para>courier:
         <emphasis>Jim Gifford</emphasis></para>
-      </listitem>
+      </listitem> -->
 
     </itemizedlist>
 
@@ -443,8 +443,8 @@
 
       <listitem>
         <para><emphasis>Alexander E. Patrakov</emphasis>
-        for patches and suggestions to improve the book content and increasing
-        the l10n awareness.</para>
+        for patches and suggestions to improve the book content, assistance 
+        with alsa dev.d helpers, and increasing the l10n awareness.</para>
       </listitem>
 
       <listitem>

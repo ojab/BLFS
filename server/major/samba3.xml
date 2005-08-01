@@ -219,7 +219,7 @@ install -v -m644 ../docs/*.pdf /usr/share/samba</userinput></screen>
 
       <para>Due to the complexity and the many various uses for
       <application>Samba</application>, complete configuration for all the
-      package's cababilities is well beyond the scope of the BLFS book. This
+      package's capabilities is well beyond the scope of the BLFS book. This
       section provides instructions to configure the
       <filename>/etc/samba/smb.conf</filename> file for two common scenarios.
       The complete contents of <filename>/etc/samba/smb.conf</filename> will
@@ -345,7 +345,7 @@ install -v -m644 ../docs/*.pdf /usr/share/samba</userinput></screen>
         <application>Samba</application> BDC cannot be used as a fallback
         for a Windows PDC, and conversely, a Windows BDC cannot be used as a
         fallback for a <application>Samba</application> PDC. Also in some
-        domain mambership scenarios, the <command>winbindd</command> daemon and
+        domain membership scenarios, the <command>winbindd</command> daemon and
         the corresponding bootscript are needed.</para>
 
         <para>There is quite a bit of documentation available which covers many
@@ -384,7 +384,7 @@ install -v -m644 ../docs/*.pdf /usr/share/samba</userinput></screen>
       <para>The built in SWAT (<application>Samba</application> Web
       Administration Tool) utility can be used for basic configuration of
       the <application>Samba</application> installation, but because it may
-      be inconvenient, undesireable or perhaps even impossible to gain
+      be inconvenient, undesirable or perhaps even impossible to gain
       access to the console, BLFS recommends setting up access to SWAT using
       <application>Stunnel</application>. Without
       <application>Stunnel</application>, the
@@ -513,7 +513,7 @@ EOF</userinput></screen>
 <screen role='root'><userinput>echo "swat            901/tcp" &gt;&gt; /etc/services</userinput></screen>
 
         <para>If <command>inetd</command> is used, the following command
-        issed as the <systemitem class='username'>root</systemitem> user will
+        issued as the <systemitem class='username'>root</systemitem> user will
         add a swat entry to the <filename>/etc/inetd.conf</filename> file:</para>
 
 <screen role='root'><userinput>echo "swat stream tcp nowait.400 root /usr/sbin/swat swat" \

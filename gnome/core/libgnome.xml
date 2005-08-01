@@ -93,7 +93,7 @@ make</userinput></screen>
     switch sets <envar>LIBGNOME_LOCALSTATEDIR</envar> to
     <filename class='directory'>/var/lib</filename> instead
     of <filename class='directory'>$GNOME_PREFIX/var</filename>
-    to syncronize with the <application>GNOME Games</application>
+    to synchronize with the <application>GNOME Games</application>
     installation and properly record high scores in
     <filename class='directory'>/var/lib/games</filename>.</para>
 
@@ -112,7 +112,7 @@ make</userinput></screen>
         <seg>libgnome-2.[so,a] and the libmoniker_extra_2.[so,a] bonobo
         library</seg>
         <seg>several configuration directories under the
-        /etc/gnome/gconf/gconf.xml.defaults/ hierachy,
+        /etc/gnome/gconf/gconf.xml.defaults/ hierarchy,
         /etc/gnome/sound,
         GNOME_PREFIX/include/libgnome-2.0, and
         GNOME_PREFIX/share/gtk-doc/html/libgnome</seg>

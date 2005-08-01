@@ -4,12 +4,12 @@
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 
-  <!ENTITY aspell-download-http "http://gnu.mirror.mcgill.ca/aspell/aspell-&aspell-version;.tar.gz">
+  <!ENTITY aspell-download-http "http://ftp.gnu.org/gnu/aspell/aspell-&aspell-version;.tar.gz">
   <!ENTITY aspell-download-ftp  "ftp://ftp.gnu.org/gnu/aspell/aspell-&aspell-version;.tar.gz">
-  <!ENTITY aspell-md5sum        "d067596a1d9029d127d85e5040bab0ab">
+  <!ENTITY aspell-md5sum        "ca44ac2fcfdc7213e03d3b5610ce141a">
   <!ENTITY aspell-size          "1.6 MB">
-  <!ENTITY aspell-buildsize     "41.5 MB (includes the English dictionary)">
-  <!ENTITY aspell-time          "0.76 SBU">
+  <!ENTITY aspell-buildsize     "26.0 MB (Additional 8 MB for en dict)">
+  <!ENTITY aspell-time          "0.62 SBU">
 ]>
 
 <sect1 id="aspell" xreflabel="Aspell-&aspell-version;">
@@ -155,6 +155,28 @@ make</userinput></screen>
         </listitem>
       </varlistentry>
 
+      <varlistentry id="aspell-ispell">
+        <term><command>ispell</command></term>
+        <listitem>
+          <para>is a wrapper around <command>aspell</command> to invoke it in
+          <command>ispell</command> compatible mode.</para>
+          <indexterm zone="aspell aspell-ispell">
+            <primary sortas="b-ispell">ispell</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="aspell-spell">
+        <term><command>spell</command></term>
+        <listitem>
+          <para>is a wrapper around <command>aspell</command> to invoke it in
+          <command>spell</command> compatible mode.</para>
+          <indexterm zone="aspell aspell-spell">
+            <primary sortas="b-spell">spell</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
       <varlistentry id="aspell-import">
         <term><command>aspell-import</command></term>
         <listitem>
@@ -258,9 +280,9 @@ make</userinput></screen>
         <listitem>
           <para>is an interface to the
           <filename class='libraryfile'>libaspell</filename> library. All the spell
-          checking funtionality is now in
+          checking functionality is now in
           <filename class='libraryfile'>libaspell</filename> but this library is
-          included for backwards compatibility.</para>
+          included for backward compatibility.</para>
           <indexterm zone="aspell libpspell">
             <primary sortas="c-libpspell">libpspell.so</primary>
           </indexterm>

@@ -9,7 +9,7 @@
   <!ENTITY cpio-md5sum "76b4145f33df088a5bade3bf4373d17d">
   <!ENTITY cpio-size "561 KB">
   <!ENTITY cpio-buildsize "5.3 MB">
-  <!ENTITY cpio-time "0.12 SBU">
+  <!ENTITY cpio-time "0.1 SBU">
 ]>
 
 <sect1 id="cpio" xreflabel="cpio-&cpio-version;">
@@ -54,6 +54,14 @@
       </listitem>
     </itemizedlist>
 
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Required Patch: <ulink
+        url="&patch-root;/cpio-&cpio-version;-security_fixes-1.patch"/></para>
+      </listitem>
+    </itemizedlist>
+
   </sect2>
 
   <sect2 role="installation">
@@ -63,6 +71,7 @@
     commands:</para>
 
 <screen><userinput>sed -i -e "s/invalid_arg/argmatch_invalid/" src/mt.c &amp;&amp;
+patch -Np1 -i ../cpio-&cpio-version;-security_fixes-1.patch &amp;&amp;
 ./configure CPIO_MT_PROG=mt --prefix=/usr \
     --bindir=/bin --libexecdir=/tmp \
     --with-rmt=/usr/sbin/rmt &amp;&amp;
@@ -81,31 +90,34 @@ make</userinput></screen>
   <sect2 role="commands">
     <title>Command Explanations</title>
 
-    <para><command>sed -i -e "s/invalid_arg/argmatch_invalid/" src/mt.c</command>:
-    This command fixes a build problem in the <command>mt</command> program.</para>
+    <para><command>sed -i -e "s/invalid_arg/argmatch_invalid/"
+    src/mt.c</command>: This command fixes a build problem with the
+    <command>mt</command> program.</para>
 
     <para><parameter>CPIO_MT_PROG=mt</parameter>: This parameter forces the
     building and installation of the <command>mt</command> program.</para>
 
     <para><parameter>--bindir=/bin</parameter>: This parameter installs
-    <command>cpio</command> to <filename class="directory">/bin</filename> instead
-    of <filename class="directory">/usr/bin</filename> as recommended by the
-    FHS guidelines.</para>
+    <command>cpio</command> to <filename class="directory">/bin</filename>
+    instead of <filename class="directory">/usr/bin</filename> as recommended
+    by the FHS guidelines.</para>
 
     <para><parameter>--libexecdir=/tmp</parameter>: This parameter is used so
-    that <filename class='directory'>/usr/libexec</filename> is not created.</para>
+    that <filename class='directory'>/usr/libexec</filename> is not
+    created.</para>
 
-    <para><parameter>--with-rmt=/usr/sbin/rmt</parameter>: This parameter inhibits
-    building the <command>rmt</command> program as it is already installed by the
-    <application>tar</application> package in LFS.</para>
+    <para><parameter>--with-rmt=/usr/sbin/rmt</parameter>: This parameter
+    inhibits building the <command>rmt</command> program as it is already
+    installed by the <application>Tar</application> package in LFS.</para>
 
-    <para><command>echo "#define HAVE_SETLOCALE 1" >> config.h</command>:
-    This command specifies that the system <application>Libc</application> implements the
-    setlocale function since it is not detected by <command>configure</command>.</para>
+    <para><command>echo "#define HAVE_SETLOCALE 1" >> config.h</command>: This
+    command specifies that the system <application>Libc</application>
+    implements the setlocale function since it is not detected by
+    <command>configure</command>.</para>
         
-    <para><command>echo "#define HAVE_LSTAT 1" >> config.h</command>:
-    This define fixes a bug that causes <command>cpio</command> to convert symlinks into
-    regular files during archive creation.</para>
+    <para><command>echo "#define HAVE_LSTAT 1" >> config.h</command>: This
+    define fixes a bug that causes <command>cpio</command> to convert symlinks
+    into regular files during archive creation.</para>
 
   </sect2>
 
@@ -154,4 +166,3 @@ make</userinput></screen>
   </sect2>
 
 </sect1>
-

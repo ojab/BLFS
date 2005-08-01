@@ -29,7 +29,7 @@
   <sect2 role="package">
     <title>Introduction to CVS</title>
 
-    <para><application>CVS</application> is the Concurrent Versioning System.
+    <para><application>CVS</application> is the Concurrent Versions System.
     This is a version control system useful for projects using a central repository
     to hold files and then track all changes made to those files. These instructions
     install the client used to manipulate the repository, creation of a repository is
@@ -73,9 +73,8 @@
     <ulink url="http://www.pdc.kth.se/kth-krb/">krb4</ulink>,
     <xref linkend="mitkrb"/> or <xref linkend="heimdal"/>
     (for the GSSAPI libraries),
-    <xref linkend="gs"/> or <xref linkend="espgs"/>,
-    <ulink url="../server/mail.html">MTA</ulink> and
-    <xref linkend="vim"/></para>
+    <xref linkend="gs"/> or <xref linkend="espgs"/>, and
+    <ulink url="../server/mail.html">an MTA</ulink></para>
 
   </sect2>
 
@@ -83,14 +82,15 @@
     <title>Installation of CVS</title>
 
     <para>By default <application>CVS</application>
-    is statically linked against the zlib library included in its source
-    tree. This makes it exposed to possible security vulnerabilities in that
-    library. If you want to modify CVS to use the newest system shared zlib
-    library apply the following patch:</para>
+    is statically linked against the <application>Zlib</application> library
+    included in its source tree. This makes it exposed to possible security
+    vulnerabilities in that library. If you want to modify
+    <application>CVS</application> to use the newest system shared
+    <application>Zlib</application> library, apply the following patch:</para>
 
 <screen><userinput>patch -Np1 -i ../cvs-&cvs-version;-zlib-1.patch</userinput></screen>
 
-    <para>Install <application>cvs</application> by running
+    <para>Install <application>CVS</application> by running
     the following commands:</para>
 
 <screen><userinput>./configure --prefix=/usr &amp;&amp;
@@ -134,10 +134,11 @@ install -v -m644 doc/cvs{,client}.ps /usr/share/doc/cvs-&cvs-version;</userinput
 
       <para><filename>~/.cvsrc</filename> is the main
       <application>CVS</application> configuration file.
-      This file is used by users to specify defaults for different <command>cvs
-      </command> commands, for example to make all <command>cvs diff</command>
-      commands run with <userinput>-u</userinput>, a user would add <userinput>
-      diff -u</userinput> to their <filename>.cvsrc</filename> file.</para>
+      This file is used by users to specify defaults for different
+      <command>cvs</command> commands. For example, to make all
+      <command>cvs diff</command> commands run with <option>-u</option>, a user
+      would add <option>diff -u</option> to their <filename>.cvsrc</filename>
+      file.</para>
 
       <para><filename>~/.cvswrappers</filename> specifies wrappers to be used in
       addition to those specified in the <filename>CVSROOT/cvswrappers</filename>
@@ -173,7 +174,7 @@ install -v -m644 doc/cvs{,client}.ps /usr/share/doc/cvs-&cvs-version;</userinput
       <varlistentry id="cvs-prog">
         <term><command>cvs</command></term>
         <listitem>
-          <para>is the main program file for the concurrent versioning system.</para>
+          <para>is the main program file for the concurrent versions system.</para>
           <indexterm zone="cvs cvs-prog">
             <primary sortas="b-cvs">cvs</primary>
           </indexterm>
