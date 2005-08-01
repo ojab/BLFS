@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libwnck-download-http "http://ftp.gnome.org/pub/GNOME/sources/libwnck/&gnome-version;/libwnck-&libwnck-version;.tar.bz2">
+  <!ENTITY libwnck-download-ftp "ftp://ftp.gnome.org/pub/GNOME/sources/libwnck/&gnome-version;/libwnck-&libwnck-version;.tar.bz2">
+  <!ENTITY libwnck-md5sum "c04c79f1e8576bc930c79d2e7bb8190a">
+  <!ENTITY libwnck-size "419 KB">
+  <!ENTITY libwnck-buildsize "10 MB">
+  <!ENTITY libwnck-time "0.3 SBU">
+]>
+
+<sect1 id="libwnck" xreflabel="libwnck-&libwnck-version;">
+  <?dbhtml filename="libwnck.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Libwnck-&libwnck-version;</title>
+
+  <indexterm zone="libwnck">
+    <primary sortas="a-Libwnck">Libwnck</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Libwnck</title>
+
+    <para>The <application>libwnck</application> package contains a
+    Window Navigator Construction Kit.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&libwnck-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&libwnck-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &libwnck-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &libwnck-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &libwnck-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &libwnck-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Libwnck Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para><xref linkend="gtk2"/></para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para><xref linkend="startup-notification"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para><xref linkend="gtk-doc"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Libwnck</title>
+
+    <para>Install <application>libwnck</application> by running the
+    following commands:</para>
+
+<screen><userinput>./configure --prefix=/usr &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>None</seg>
+        <seg>libwnck-1</seg>
+        <seg>/usr/include/libwnck-1.0 and
+        /usr/share/gtk-doc/html/libwnck</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libwnck-1">
+        <term><filename class='libraryfile'>libwnck-1.[so,a]</filename></term>
+        <listitem>
+          <para>contains functions for writing pagers and task lists.</para>
+          <indexterm zone="libwnck libwnck-1">
+            <primary sortas="c-libwnck-1">libwnck-1.[so,a]</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

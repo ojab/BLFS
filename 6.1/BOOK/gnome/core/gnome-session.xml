@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gnome-session-download-http "http://ftp.gnome.org/pub/GNOME/sources/gnome-session/&gnome-version;/gnome-session-&gnome-session-version;.tar.bz2">
+  <!ENTITY gnome-session-download-ftp "ftp://ftp.gnome.org/pub/GNOME/sources/gnome-session/&gnome-version;/gnome-session-&gnome-session-version;.tar.bz2">
+  <!ENTITY gnome-session-md5sum "cbeb2db49dac11bf8088e6b025265fff">
+  <!ENTITY gnome-session-size "796 KB">
+  <!ENTITY gnome-session-buildsize "11 MB">
+  <!ENTITY gnome-session-time "0.2 SBU">
+]>
+
+<sect1 id="gnome-session" xreflabel="GNOME Session-&gnome-session-version;">
+  <?dbhtml filename="gnome-session.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>GNOME Session-&gnome-session-version;</title>
+
+  <indexterm zone="gnome-session">
+    <primary sortas="a-GNOME Session">GNOME Session</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to GNOME Session</title>
+
+    <para>The <application>GNOME Session</application> package contains
+    the <application>GNOME</application> session manager.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&gnome-session-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&gnome-session-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &gnome-session-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &gnome-session-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &gnome-session-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &gnome-session-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">GNOME Session Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para><xref linkend="libgnomeui"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para><xref linkend="tcpwrappers"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of GNOME Session</title>
+
+    <para>Install <application>GNOME Session</application> by
+    running the following commands:</para>
+
+<screen><userinput>./configure --prefix=`pkg-config --variable=prefix ORBit-2.0` \
+    --localstatedir=/var/lib --sysconfdir=/etc/gnome  &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>--localstatedir=/var/lib</parameter>: This switch puts
+    <application>ScrollKeeper</application> files in
+    <filename class="directory">/var/lib/scrollkeeper</filename> instead of
+    <filename class="directory">$GNOME_PREFIX/var/scrollkeeper</filename>.</para>
+
+    <para><parameter>--sysconfdir=/etc/gnome</parameter>: This switch puts
+    configuration files in <filename class="directory">/etc/gnome</filename>
+    instead of <filename class="directory">$GNOME_PREFIX/etc</filename>.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>gnome-session, gnome-session-properties, gnome-session-remove,
+        gnome-session-save, gnome-smproxy, and gnome-wm</seg>
+        <seg>None</seg>
+        <seg>/etc/gnome/gconf/gconf.xml.defaults/schemas/apps/gnome-session,
+        /etc/gnome/gconf/gconf.xml.defaults/apps/gnome-session,
+        and $GNOME_PREFIX/share/pixmaps/splash</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gnome-session-prog">
+        <term><command>gnome-session</command></term>
+        <listitem>
+          <para>starts up the <application>GNOME</application> desktop.</para>
+          <indexterm zone="gnome-session gnome-session-prog">
+            <primary sortas="b-gnome-session">gnome-session</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gnome-session-utils">
+        <term><command>gnome-session-*</command></term>
+        <listitem>
+          <para>session utilities includes a configuration program and
+          other session management related utilities.</para>
+          <indexterm zone="gnome-session gnome-session-utils">
+            <primary sortas="b-gnome-session-*">gnome-session-*</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gnome-smproxy">
+        <term><command>gnome-smproxy</command></term>
+        <listitem>
+          <para>handles basic session management for applications that
+          do not support XSM.</para>
+          <indexterm zone="gnome-session gnome-smproxy">
+            <primary sortas="b-gnome-smproxy">gnome-smproxy</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gnome-wm">
+        <term><command>gnome-wm</command></term>
+        <listitem>
+          <para>uses the <envar>$WINDOW_MANAGER</envar> environment variable
+          to allow a user to define a window manager of choice. If no
+          <envar>$WINDOW_MANAGER</envar> is defined, <command>gnome-wm</command>
+          defaults to <command>metacity</command> as the default window
+          manager.</para>
+          <indexterm zone="gnome-session gnome-wm">
+            <primary sortas="b-gnome-wm">gnome-wm</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

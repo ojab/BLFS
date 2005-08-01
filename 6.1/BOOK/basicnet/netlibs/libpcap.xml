@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libpcap-download-http "http://www.tcpdump.org/release/libpcap-&libpcap-version;.tar.gz">
+  <!ENTITY libpcap-download-ftp " ">
+<!--  <!ENTITY libpcap-download-ftp "ftp://ftp.sunfreeware.com/pub/freeware/SOURCES/libpcap-&libpcap-version;.tar.gz">-->
+  <!ENTITY libpcap-md5sum "0ad921c881fdd3d278046afcd352a151">
+  <!ENTITY libpcap-size "424 KB">
+  <!ENTITY libpcap-buildsize "3.2 MB">
+  <!ENTITY libpcap-time "less than 0.1 SBU">
+]>
+
+<sect1 id="libpcap" xreflabel="libpcap-&libpcap-version;">
+  <?dbhtml filename="libpcap.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Libpcap-&libpcap-version;</title>
+
+  <indexterm zone="libpcap">
+    <primary sortas="a-Libpcap">Libpcap</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Libpcap</title>
+
+    <para><application>libpcap</application> provides functions for user-level
+    packet capture, used in low-level network monitoring.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&libpcap-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&libpcap-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &libpcap-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &libpcap-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &libpcap-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &libpcap-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Libpcap Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para><ulink url="http://www.endace.com/">DAG</ulink></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Libpcap</title>
+
+    <para>Install <application>libpcap</application> by running the
+    following commands:</para>
+
+<screen><userinput>./configure --prefix=/usr &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+install -v -m755 -d /usr/share/doc/libpcap-&libpcap-version; &amp;&amp;
+install -v -m644 doc/*{html,txt} /usr/share/doc/libpcap-&libpcap-version;</userinput></screen>
+
+    <!-- <note>
+      <para>Some applications, including <ulink
+      url="http://www.tcpdump.org/">tcpdump</ulink>, require
+      <option>-enable-yydebug</option> passed to <command>configure</command>
+      when building <application>libpcap</application> to enable the parser
+      debugging code. <application>tcpdump</application> will fail to build if
+      you don't pass this parameter.</para>
+    </note> -->
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>None</seg>
+        <seg>libpcap.a</seg>
+        <seg>/usr/share/doc/libpcap-&libpcap-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+    <varlistentry id="libpcap-lib">
+        <term><filename class="libraryfile">libpcap.a</filename></term>
+      <listitem>
+        <para>is a library used for user-level packet capture.</para>
+        <indexterm zone="libpcap libpcap-lib">
+          <primary sortas="c-libpcap">libpcap.a</primary>
+        </indexterm>
+      </listitem>
+    </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

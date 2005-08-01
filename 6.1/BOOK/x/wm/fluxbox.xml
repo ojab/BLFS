@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY fluxbox-download-http "http://prdownloads.sourceforge.net/fluxbox/fluxbox-&fluxbox-version;.tar.bz2">
+  <!ENTITY fluxbox-download-ftp  " ">
+  <!ENTITY fluxbox-md5sum        "f9b7b3c3b8e1e9ce3449601b238d4fba">
+  <!ENTITY fluxbox-size          "649 KB">
+  <!ENTITY fluxbox-buildsize     "47.7 MB">
+  <!ENTITY fluxbox-time          "1.2 SBU">
+]>
+
+<sect1 id="fluxbox" xreflabel="Fluxbox-&fluxbox-version;">
+  <?dbhtml filename="fluxbox.html" ?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Fluxbox-&fluxbox-version;</title>
+
+  <indexterm zone="fluxbox">
+    <primary sortas="a-Fluxbox">Fluxbox</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Fluxbox</title>
+
+    <para>The <application>Fluxbox</application> package contains a window
+    manager.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&fluxbox-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&fluxbox-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &fluxbox-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &fluxbox-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &fluxbox-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &fluxbox-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Fluxbox Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para>X (<xref linkend="xfree86"/> or <xref linkend="xorg"/>)</para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para><xref linkend="imlib2"/> Image display library</para>
+
+   </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Fluxbox</title>
+
+    <para>Install <application>Fluxbox</application> by running the following
+    commands:</para>
+
+<screen><userinput>./configure --prefix=/usr &amp;&amp;
+make</userinput></screen>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><option>--enable-imlib2</option>:
+    Use this option if you wish image formats additional to xpm.</para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Fluxbox</title>
+
+    <sect3 id="fluxbox-config">
+      <title>Config Files</title>
+
+      <para><filename>~/.fluxbox/init</filename>,
+      <filename>~/.fluxbox/keys</filename>, and
+      <filename>~/.fluxbox/menu</filename></para>
+
+      <indexterm zone="fluxbox fluxbox-config">
+        <primary sortas="e-AA.fluxbox-init">~/.fluxbox/init</primary>
+      </indexterm>
+
+      <indexterm zone="fluxbox fluxbox-config">
+        <primary sortas="e-AA.fluxbox-keys">~/.fluxbox/keys</primary>
+      </indexterm>
+
+      <indexterm zone="fluxbox fluxbox-config">
+        <primary sortas="e-AA.fluxbox-menu">~/.fluxbox/menu</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>Be sure to backup your current <filename>.xinitrc</filename>
+      before proceeding.</para>
+
+      <indexterm zone="fluxbox fluxbox-config">
+        <primary sortas="e-AA.xinitrc">~/.xinitrc</primary>
+      </indexterm>
+
+<screen><userinput>cat &gt;&gt; ~/.xinitrc &lt;&lt; "EOF"
+<literal>startfluxbox</literal>
+EOF</userinput></screen>
+
+      <para>Now create the <application>Fluxbox</application> configuration
+      files:</para>
+
+<screen><userinput>mkdir -v ~/.fluxbox &amp;&amp;
+cp -v /usr/share/fluxbox/init ~/.fluxbox/init &amp;&amp;
+cp -v /usr/share/fluxbox/keys ~/.fluxbox/keys</userinput></screen>
+
+      <para>Now if you have <application>Which</application> installed.</para>
+
+<screen><userinput>cd ~/.fluxbox &amp;&amp;
+fluxbox-generate_menu</userinput></screen>
+
+      <para>Else, if you do not have <application>Which</application>
+      installed.</para>
+
+<screen><userinput>cp -v /usr/share/fluxbox/menu ~/.fluxbox/menu</userinput></screen>
+
+      <para>Menu Items are added by editing <filename>~/.fluxbox/menu</filename>.
+      The syntax is explained on the <command>fluxbox</command> man page.</para>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>fluxbox, fbsetbg, bsetroot, fluxbox-generate_menu, startfluxbox,
+        and fbrun</seg>
+        <seg>None</seg>
+        <seg>/usr/share/fluxbox and ~/.fluxbox</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="fluxbox-prog">
+        <term><command>fluxbox</command></term>
+        <listitem>
+          <para>is a window manager for <application>X11</application> based
+          on <application>Blackbox</application> 0.61.0.</para>
+          <indexterm zone="fluxbox fluxbox-prog">
+            <primary sortas="b-fluxbox">fluxbox</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fbsetbg">
+        <term><command>fbsetbg</command></term>
+        <listitem>
+          <para>is a utility that sets the background image. It needs
+          <command>display</command>, <command>Esetroot</command>,
+          <command>wmsetbg</command>, <command>xv</command>,
+          <command>qiv</command> or <command>xsri</command> to be used.</para>
+          <indexterm zone="fluxbox fbsetbg">
+            <primary sortas="b-fbsetbg">fbsetbg</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="bsetroot">
+        <term><command>bsetroot</command></term>
+        <listitem>
+          <para>is a <application>Blackbox</application>
+          utility to change root window appearance.</para>
+          <indexterm zone="fluxbox bsetroot">
+            <primary sortas="b-bsetroot">bsetroot</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fluxbox-generate">
+        <term><command>fluxbox-generate_menu</command></term>
+        <listitem>
+          <para>is a utility that generates a menu by scanning your
+          <envar>PATH</envar>. It requires <command>which</command> to function
+          properly.</para>
+          <indexterm zone="fluxbox fluxbox-generate">
+            <primary sortas="b-fluxbox-generate">fluxbox-generate_menu</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="startfluxbox">
+        <term><command>startfluxbox</command></term>
+        <listitem>
+          <para>is a session startup script that allows for command
+          executions prior to <command>fluxbox</command> starting.</para>
+          <indexterm zone="fluxbox startfluxbox">
+            <primary sortas="b-startfluxbox">startfluxbox</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fbrun">
+        <term><command>fbrun</command></term>
+        <listitem>
+          <para>displays a run dialog window.</para>
+          <indexterm zone="fluxbox fbrun">
+            <primary sortas="b-fbrun">fbrun</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

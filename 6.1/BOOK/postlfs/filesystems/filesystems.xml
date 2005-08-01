@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<chapter id="postlfs-filesystems">
+  <?dbhtml filename="filesystems.html"?>
+
+  <title>File Systems</title>
+
+  <para>Journaling file systems reduce the time needed to recover a
+  file system that was not unmounted properly.  While this can be extremely
+  important in reducing downtime for servers, it has also become popular for
+  desktop environments.  This chapter contains a variety of journaling
+  file systems.</para>
+
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="ext3.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="reiser.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="xfs.xml"/>
+
+</chapter>

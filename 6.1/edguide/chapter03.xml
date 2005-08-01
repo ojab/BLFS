@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+   "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+
+<chapter id="chapter03">
+<chapterinfo>
+<othername>$Author$</othername>
+<date>$Date$</date>
+</chapterinfo>
+<title>Basic SVN Commands</title>
+<?dbhtml filename="chapter03.html"?>
+
+<section id="ch03-introduction">
+<title>Introduction</title>
+
+<para>The help function of <application>Subversion</application>
+(<userinput>svn help</userinput>) provides a summary of the commands available.
+More detailed information is available from the
+<application>Subversion</application> on-line book available at <ulink
+url='http://svnbook.red-bean.com/svnbook/book.html'/>.  Chapter 3 is especially
+helpful.</para>
+
+<para>The following is a basic set of commands which all editors will use
+frequently.  Some commands have two forms, the long and the short.  Both are
+listed in the description.</para> </section>
+
+<section id="ch03-checkout">
+<title>svn checkout/co</title>
+
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2552632">
+<userinput>svn checkout</userinput></ulink> or <userinput>svn co</userinput>.
+This command is used to pull a SVN tree such as
+<filename>svn://linuxfromscratch.org/BLFS/trunk/BOOK</filename> (the BLFS book)
+from the server.  You should only need to do this once. If we change the
+directory structure (as sometimes is necessary), you <emphasis>may</emphasis>
+occasionally need to delete your local sandbox and re-check it out. If this is
+going to be needed, it will usually be because the Editor will have made a
+<emphasis>large</emphasis> change and it'll be announced at least on the
+<filename>blfs-book</filename> list.</para>
+
+</section>
+
+<section id="ch03-add">
+<title>svn add</title>
+
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2552205">
+<userinput>svn add</userinput></ulink>.  When you are creating a new file or
+directory, you need to tell the SVN server about it.  This does that.  Note that
+the file won't appear in the repository until you do an <userinput>svn
+commit</userinput> (see below).</para>
+
+</section>
+
+<section id="ch03-delete">
+<title>svn delete</title>
+
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2553659">
+<userinput>svn delete</userinput></ulink>.  This does what it says!  When you
+do an <userinput>svn commit</userinput> the file wil be deleted from your local
+sandbox immediately as well as from the repository after committing.</para>
+
+</section>
+
+<section id="ch03-status">
+<title>svn status</title>
+
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2557523">
+<userinput>svn status</userinput></ulink>.  This command prints the status of
+working directories and files.  If you have made local changes, it'll show your
+locally modified items.  If you use the <parameter>--verbose</parameter>
+switch, it will show revision information on every item.  With the
+<parameter>--show-updates</parameter> switch, it will show any server
+out-of-date info.</para>
+
+<para>You should always do a manual <userinput>svn status
+--show-updates</userinput> before trying to commit changes in order to check
+that everything is alright and ready to go. </para>
+
+</section>
+
+<section id="ch03-update">
+<title>svn update/up</title>
+
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2558425">
+<userinput>svn update</userinput></ulink> or <userinput>svn
+up</userinput>.  This command syncs your local sandbox with the server.
+If you have made local changes, it'll try and merge any changes on the
+server with your changes <emphasis>on your machine</emphasis>.  
+</para>
+
+</section>
+
+<section id="ch03-commit">
+<title>svn commit/ci</title>
+
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2552968">
+<userinput>svn commit</userinput></ulink> or <userinput>svn ci</userinput>.
+This command recursively sends your changes to the SVN server.  It will commit
+changed files, added files, and deleted files.  The -m option should always be
+used to pass a log message to the command.  Please don't use empty log messages
+(see later in this document on the policy which governs them).</para>
+
+</section>
+
+<section id="ch03-diff">
+<title>svn diff</title>
+
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2553839">
+<userinput>svn diff</userinput></ulink>.  This is useful for two different
+purposes.  First, those without write access to the BLFS SVN server can use it
+to generate patches to send to <userinput>blfs-dev</userinput>.  To do this,
+simply edit the files in your local sandbox then run <userinput>svn diff &gt;
+FILE.patch</userinput> from the root of your BLFS directory.  You can then
+attach this file to a message to <userinput>blfs-dev</userinput> where someone
+with editing rights will pick it up and apply it to the book.  The second use
+is to find out what has changed between two revisions using: <userinput>svn
+diff -r revision1:revision2 FILENAME</userinput>.  For example: <userinput>svn
+diff -r 168:169 index.xml</userinput> will output a diff showing the changes
+between revisions 168 and 169 of <filename>index.xml</filename>.  </para>
+
+</section>
+
+
+<section id="ch03-moving">
+<title>svn move</title>
+
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2556161">
+<userinput>svn move SRC DEST</userinput></ulink> or <userinput>svn mv SRC
+DEST</userinput>.  This command moves a file from one directory to another or
+renames a file.  The file will be moved on your local sandbox immediately as
+well as from the repository after committing.  </para>
+
+</section>
+</chapter>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY kdeaddons-download-http "&kde-download-http;/kdeaddons-&kde-version;.tar.bz2">
+  <!ENTITY kdeaddons-download-ftp  "&kde-download-ftp;/kdeaddons-&kde-version;.tar.bz2">
+  <!ENTITY kdeaddons-md5sum        "596c3a7f4ef43e2f0bd760196a6b119b">
+  <!ENTITY kdeaddons-size          "1.6 MB">
+  <!ENTITY kdeaddons-buildsize     "40 MB">
+  <!ENTITY kdeaddons-time          "3.1 SBU">
+]>
+
+<sect1 id="kdeaddons" xreflabel="kdeaddons-&kde-version;">
+  <?dbhtml filename="kdeaddons.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Kdeaddons-&kde-version;</title>
+
+  <indexterm zone="kdeaddons">
+    <primary sortas="a-kdeaddons">Kdeaddons</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Kdeaddons</title>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing='compact'>
+      <listitem>
+        <para>Download (HTTP): <ulink url="&kdeaddons-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&kdeaddons-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &kdeaddons-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &kdeaddons-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &kdeaddons-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &kdeaddons-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Kdeaddons Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para><xref linkend="kdebase"/></para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para><xref linkend="libjpeg"/> and
+    <xref linkend="libxml2"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para><xref linkend="kdenetwork"/>,
+    <xref linkend="kdemultimedia"/>,
+    <xref linkend="kdepim"/>,
+    <xref linkend="kdegames"/>,
+    <xref linkend="db"/>,
+    <xref linkend="xmms"/>, and
+    <xref linkend="sdl"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Kdeaddons</title>
+
+    <para>Install <application>kdeaddons</application> with:</para>
+
+<screen><userinput>./configure --prefix=&kde-dir; --disable-debug \
+    --disable-dependency-tracking &amp;&amp;
+make</userinput></screen>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>Miscellaneous <application>KDE</application> support programs</seg>
+        <seg>Additional plugins, libraries, and  scripts for <application>KDE</application>
+        applications</seg>
+        <seg>None</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <indexterm zone="kdeaddons">
+      <primary sortas="c-kdeaddons">KDE plugins and scripts</primary>
+    </indexterm>
+
+  </sect2>
+
+</sect1>

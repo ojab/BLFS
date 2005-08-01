@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gedit-download-http "http://ftp.gnome.org/pub/GNOME/sources/gedit/&gnome-version;/gedit-&gedit-version;.tar.bz2">
+  <!ENTITY gedit-download-ftp "ftp://ftp.gnome.org/pub/GNOME/sources/gedit/&gnome-version;/gedit-&gedit-version;.tar.bz2">
+  <!ENTITY gedit-md5sum "e3cf99b9233377583a69c4ad235e8494">
+  <!ENTITY gedit-size "3.1 MB">
+  <!ENTITY gedit-buildsize "56 MB">
+  <!ENTITY gedit-time "0.6 SBU">
+]>
+
+<sect1 id="gedit" xreflabel="gedit-&gedit-version;">
+  <?dbhtml filename="gedit.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>gedit-&gedit-version;</title>
+
+  <indexterm zone="gedit">
+    <primary sortas="a-gedit">gedit</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to gedit</title>
+
+    <para>The <application>gedit</application> package contains a lightweight
+    UTF-8 text editor for the <application>GNOME</application> desktop.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&gedit-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&gedit-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &gedit-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &gedit-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &gedit-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &gedit-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">gedit Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para><xref linkend="eel"/> and <xref linkend="gtksourceview"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para><xref linkend="aspell"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of gedit</title>
+
+    <para>Install <application>gedit</application> by running the following
+    commands:</para>
+
+<screen><userinput>./configure --prefix=`pkg-config --variable=prefix ORBit-2.0` \
+    --localstatedir=/var/lib --sysconfdir=/etc/gnome &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>--localstatedir=/var/lib</parameter>: This switch
+    puts <application>ScrollKeeper</application> files in
+    <filename class="directory">/var/lib/scrollkeeper</filename> instead of
+    <filename class="directory">$GNOME_PREFIX/var/scrollkeeper</filename>.</para>
+
+    <para><parameter>--sysconfdir=/etc/gnome</parameter>: This switch puts
+    configuration files in <filename class="directory">/etc/gnome</filename>
+    instead of <filename class="directory">$GNOME_PREFIX/etc</filename>.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>gedit and gnome-text-editor</seg>
+        <seg>GNOME_Gedit.server bonobo server and several
+        <application>gedit</application> plugin modules</seg>
+        <seg>/etc/gnome/gconf/gconf.xml.defaults/apps/gedit-2,
+        /etc/gnome/gconf/gconf.xml.defaults/schemas/apps/gedit-2,
+        $GNOME_PREFIX/include/gedit-2.10,
+        $GNOME_PREFIX/lib/gedit-2,
+        $GNOME_PREFIX/share/gedit-2,
+        $GNOME_PREFIX/share/gnome/help/gedit, and
+        $GNOME_PREFIX/share/omf/gedit</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gedit-prog">
+        <term><command>gedit</command></term>
+        <listitem>
+          <para>is a lightweight text editor.</para>
+          <indexterm zone="gedit gedit-prog">
+            <primary sortas="b-gedit">gedit</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gnome-text-editor">
+        <term><command>gnome-text-editor</command></term>
+        <listitem>
+          <para>is a symlink to <command>gedit</command>.</para>
+          <indexterm zone="gedit gnome-text-editor">
+            <primary sortas="g-gnome-text-editor">gnome-text-editor</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

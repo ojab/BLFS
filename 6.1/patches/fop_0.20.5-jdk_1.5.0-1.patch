@@ -1,0 +1,144 @@
+Submitted By: DJ Lucas <dj AT linuxfromscratch DOT org>
+Date: 2005-04-24
+Initial Package Version: 0.20.5
+Origin: Upstream CVS
+Description: Fixes compilation with JDK-1.5.
+Upstream Status: Not Requried
+
+$LastChangedBy$
+$Date$
+
+
+diff -Naur fop-0.20.5-orig/src/org/apache/fop/fonts/apps/PFMReader.java fop-0.20.5/src/org/apache/fop/fonts/apps/PFMReader.java
+--- fop-0.20.5-orig/src/org/apache/fop/fonts/apps/PFMReader.java	2003-07-14 21:03:25.000000000 -0500
++++ fop-0.20.5/src/org/apache/fop/fonts/apps/PFMReader.java	2005-04-17 21:40:44.633035168 -0500
+@@ -370,16 +370,16 @@
+ 
+ 
+         // Get kerning
+-        for (Iterator enum = pfm.getKerning().keySet().iterator(); enum.hasNext(); ) {
+-            Integer kpx1 = (Integer)enum.next();
++        for (Iterator iter = pfm.getKerning().keySet().iterator(); iter.hasNext(); ) {
++            Integer kpx1 = (Integer)iter.next();
+             el = doc.createElement("kerning");
+             el.setAttribute("kpx1", kpx1.toString());
+             root.appendChild(el);
+             Element el2 = null;
+ 
+             Map h2 = (Map)pfm.getKerning().get(kpx1);
+-            for (Iterator enum2 = h2.keySet().iterator(); enum2.hasNext(); ) {
+-                Integer kpx2 = (Integer)enum2.next();
++            for (Iterator iter2 = h2.keySet().iterator(); iter2.hasNext(); ) {
++                Integer kpx2 = (Integer)iter2.next();
+                 el2 = doc.createElement("pair");
+                 el2.setAttribute("kpx2", kpx2.toString());
+                 Integer val = (Integer)h2.get(kpx2);
+diff -Naur fop-0.20.5-orig/src/org/apache/fop/fonts/apps/TTFReader.java fop-0.20.5/src/org/apache/fop/fonts/apps/TTFReader.java
+--- fop-0.20.5-orig/src/org/apache/fop/fonts/apps/TTFReader.java	2003-07-14 21:03:13.000000000 -0500
++++ fop-0.20.5/src/org/apache/fop/fonts/apps/TTFReader.java	2005-04-17 21:40:44.634035016 -0500
+@@ -423,14 +423,14 @@
+         }
+ 
+         // Get kerning
+-        Iterator enum;
++        Iterator iter;
+         if (isCid)
+-            enum = ttf.getKerning().keySet().iterator();
++            iter = ttf.getKerning().keySet().iterator();
+         else
+-            enum = ttf.getAnsiKerning().keySet().iterator();
++            iter = ttf.getAnsiKerning().keySet().iterator();
+ 
+-        while (enum.hasNext()) {
+-            Integer kpx1 = (Integer)enum.next();
++        while (iter.hasNext()) {
++            Integer kpx1 = (Integer)iter.next();
+ 
+             el = doc.createElement("kerning");
+             el.setAttribute("kpx1", kpx1.toString());
+@@ -443,8 +443,8 @@
+             else
+                 h2 = (HashMap)ttf.getAnsiKerning().get(kpx1);
+ 
+-            for (Iterator enum2 = h2.keySet().iterator(); enum2.hasNext(); ) {
+-                Integer kpx2 = (Integer)enum2.next();
++            for (Iterator iter2 = h2.keySet().iterator(); iter2.hasNext(); ) {
++                Integer kpx2 = (Integer)iter2.next();
+                 if (isCid || kpx2.intValue() < 256) {
+                     el2 = doc.createElement("pair");
+                     el2.setAttribute("kpx2", kpx2.toString());
+diff -Naur fop-0.20.5-orig/src/org/apache/fop/messaging/MessageHandler.java fop-0.20.5/src/org/apache/fop/messaging/MessageHandler.java
+--- fop-0.20.5-orig/src/org/apache/fop/messaging/MessageHandler.java	2003-07-14 21:03:14.000000000 -0500
++++ fop-0.20.5/src/org/apache/fop/messaging/MessageHandler.java	2005-04-17 21:40:44.639034256 -0500
+@@ -156,9 +156,9 @@
+             break;
+         case EVENT:
+             setMessage(message);
+-            Enumeration enum = listeners.elements();
+-            while (enum.hasMoreElements()) {
+-                ((MessageListener)enum.nextElement()).processMessage(new MessageEvent(getMessage()));
++            Enumeration enumer = listeners.elements();
++            while (enumer.hasMoreElements()) {
++                ((MessageListener)enumer.nextElement()).processMessage(new MessageEvent(getMessage()));
+             }
+             break;
+         case NONE:
+@@ -205,11 +205,11 @@
+             break;
+         case EVENT:
+             setMessage(message);
+-            Enumeration enum = listeners.elements();
+-            while (enum.hasMoreElements()) {
++            Enumeration enumer = listeners.elements();
++            while (enumer.hasMoreElements()) {
+                 MessageEvent messEv = new MessageEvent(getMessage());
+                 messEv.setMessageType(MessageEvent.ERROR);
+-                ((MessageListener)enum.nextElement()).processMessage(messEv);
++                ((MessageListener)enumer.nextElement()).processMessage(messEv);
+             }
+             break;
+         case NONE:
+diff -Naur fop-0.20.5-orig/src/org/apache/fop/render/ps/PSRenderer.java fop-0.20.5/src/org/apache/fop/render/ps/PSRenderer.java
+--- fop-0.20.5-orig/src/org/apache/fop/render/ps/PSRenderer.java	2003-07-14 21:03:16.000000000 -0500
++++ fop-0.20.5/src/org/apache/fop/render/ps/PSRenderer.java	2005-04-17 21:40:44.640034104 -0500
+@@ -303,9 +303,9 @@
+         // write("/gfF1{/Helvetica findfont} bd");
+         // write("/gfF3{/Helvetica-Bold findfont} bd");
+         Map fonts = fontInfo.getFonts();
+-        Iterator enum = fonts.keySet().iterator();
+-        while (enum.hasNext()) {
+-            String key = (String)enum.next();
++        Iterator iter = fonts.keySet().iterator();
++        while (iter.hasNext()) {
++            String key = (String)iter.next();
+             Font fm = (Font)fonts.get(key);
+             write("/" + key + " /" + fm.fontName() + " def");
+         }
+@@ -314,9 +314,9 @@
+         defineWinAnsiEncoding();
+ 
+         //Rewrite font encodings
+-        enum = fonts.keySet().iterator();
+-        while (enum.hasNext()) {
+-            String key = (String)enum.next();
++        iter = fonts.keySet().iterator();
++        while (iter.hasNext()) {
++            String key = (String)iter.next();
+             Font fm = (Font)fonts.get(key);
+             if (null == fm.encoding()) {
+                 //ignore (ZapfDingbats and Symbol run through here
+diff -Naur fop-0.20.5-orig/src/org/apache/fop/svg/PDFGraphics2D.java fop-0.20.5/src/org/apache/fop/svg/PDFGraphics2D.java
+--- fop-0.20.5-orig/src/org/apache/fop/svg/PDFGraphics2D.java	2003-07-14 21:03:16.000000000 -0500
++++ fop-0.20.5/src/org/apache/fop/svg/PDFGraphics2D.java	2005-04-17 21:57:03.000000000 -0500
+@@ -1328,6 +1328,11 @@
+             return null;
+         }
+         @jdk14codeend@
++	
++	// needed for compiling under jdk1.5
++	public VolatileImage createCompatibleVolatileImage(int width, int height, int transparency) {
++	    return null;
++	}
+     }
+ 
+     /**

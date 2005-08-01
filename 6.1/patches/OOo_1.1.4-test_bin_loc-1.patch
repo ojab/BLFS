@@ -1,0 +1,84 @@
+Submitted By: Tushar Teredesai <tushar@linuxfromscratch.org>
+Date: 2003-09-21
+Origin: http://www.openoffice.org/issues/show_bug.cgi?id=10719
+Initial Package Version: 1.1rc4
+Description: The installation script looks for test binary in the wrong 
+  location. LFS installs the binary in /bin. If the test binary is not found, 
+  it results in a corrupted installation. This patch is part of the BLFS book.
+Upstream Status: Not applied
+
+$LastChangedBy$
+$Date$
+
+diff -ur oo_1.1rc4_src.orig/setup2/script/serverstartup.sh oo_1.1rc4_src/setup2/script/serverstartup.sh
+--- oo_1.1rc4_src.orig/setup2/script/serverstartup.sh	2003-06-12 04:53:08.000000000 -0500
++++ oo_1.1rc4_src/setup2/script/serverstartup.sh	2003-09-21 02:13:07.000000000 -0500
+@@ -66,7 +66,7 @@
+         SCO_SV) test=/bin/test     ;;
+         NetBSD) test=/bin/test     ;;
+         FreeBSD) test=/bin/test     ;;
+-        *)      test=/usr/bin/test ;;
++        *)      test=/bin/test ;;
+ esac
+ 
+ if $test -L "$0" ; then
+diff -ur oo_1.1rc4_src.orig/setup2/script/setupserver oo_1.1rc4_src/setup2/script/setupserver
+--- oo_1.1rc4_src.orig/setup2/script/setupserver	2003-06-12 04:53:18.000000000 -0500
++++ oo_1.1rc4_src/setup2/script/setupserver	2003-09-21 02:13:16.000000000 -0500
+@@ -235,7 +235,7 @@
+ case $sd_platform in
+ 	SCO_SV) test=/bin/test     ;;
+ 	FreeBSD) test=/bin/test    ;;
+-  	*)      test=/usr/bin/test ;;
++  	*)      test=/bin/test ;;
+ esac
+ sd_cwd="`pwd`"
+ 
+diff -ur oo_1.1rc4_src.orig/setup2/script/websnooper oo_1.1rc4_src/setup2/script/websnooper
+--- oo_1.1rc4_src.orig/setup2/script/websnooper	2003-06-12 04:53:55.000000000 -0500
++++ oo_1.1rc4_src/setup2/script/websnooper	2003-09-21 02:13:23.000000000 -0500
+@@ -7,7 +7,7 @@
+         SCO_SV) test=/bin/test     ;;
+         NetBSD) test=/bin/test     ;;
+         FreeBSD) test=/bin/test     ;;
+-        *)      test=/usr/bin/test ;;
++        *)      test=/bin/test ;;
+ esac
+ 
+ if $test -L "$0" ; then
+diff -ur oo_1.1rc4_src.orig/setup2/source/custom/jvmsetup/loader/jvmsetup.sh oo_1.1rc4_src/setup2/source/custom/jvmsetup/loader/jvmsetup.sh
+--- oo_1.1rc4_src.orig/setup2/source/custom/jvmsetup/loader/jvmsetup.sh	2003-06-12 04:54:49.000000000 -0500
++++ oo_1.1rc4_src/setup2/source/custom/jvmsetup/loader/jvmsetup.sh	2003-09-21 02:13:29.000000000 -0500
+@@ -67,7 +67,7 @@
+ case $sd_platform in
+ 	SCO_SV) test=/bin/test     ;;
+ 	FreeBSD) test=/bin/test    ;;
+-	*)      test=/usr/bin/test ;;
++	*)      test=/bin/test ;;
+ esac
+ 
+ sd_cwd="`pwd`"
+diff -ur oo_1.1rc4_src.orig/ucb/source/main/ucb.sh oo_1.1rc4_src/ucb/source/main/ucb.sh
+--- oo_1.1rc4_src.orig/ucb/source/main/ucb.sh	2001-04-08 16:29:21.000000000 -0500
++++ oo_1.1rc4_src/ucb/source/main/ucb.sh	2003-09-21 02:13:43.000000000 -0500
+@@ -78,7 +78,7 @@
+ 	SCO_SV) test=/bin/test     ;;
+ 	NetBSD) test=/bin/test     ;;
+ 	FreeBSD) test=/bin/test     ;;
+-  	*)      test=/usr/bin/test ;;
++  	*)      test=/bin/test ;;
+ esac
+ 
+ sd_cwd="`pwd`"
+diff -ur oo_1.1rc4_src.orig/xmlhelp/source/com/sun/star/help/helpserver.sh oo_1.1rc4_src/xmlhelp/source/com/sun/star/help/helpserver.sh
+--- oo_1.1rc4_src.orig/xmlhelp/source/com/sun/star/help/helpserver.sh	2003-03-27 12:07:29.000000000 -0600
++++ oo_1.1rc4_src/xmlhelp/source/com/sun/star/help/helpserver.sh	2003-09-21 02:13:37.000000000 -0500
+@@ -124,7 +124,7 @@
+ sd_platform=`uname -s`
+ case $sd_platform in
+ 	SCO_SV) test=/bin/test     ;;
+-  	*)      test=/usr/bin/test ;;
++  	*)      test=/bin/test ;;
+ esac
+ sd_cwd="`pwd`"
+ 
