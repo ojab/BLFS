@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gnucash-download-http "http://www.gnucash.org/pub/gnucash/sources/stable/gnucash-&gnucash-version;.tar.gz">
+  <!ENTITY gnucash-download-ftp  "ftp://ftp.at.gnucash.org/pub/gnucash/gnucash/sources/stable/gnucash-&gnucash-version;.tar.gz">
+  <!ENTITY gnucash-src-md5sum    "62f94331936e37ed1b1d28b5a1863bb3">
+  <!ENTITY gnucash-docs-md5sum   "9758d8e523530c2509912761e327a9d5">
+  <!ENTITY gnucash-size          "7.8 MB">
+  <!ENTITY gnucash-buildsize     "110 MB (additional 22 MB for Help documentation)">
+  <!ENTITY gnucash-time          "2.9 SBU">
+  <!ENTITY gnucash-docs-version  "1.8.5">
+  <!ENTITY gnucash-docs-download "http://www.gnucash.org/pub/gnucash/sources/stable/gnucash-docs-&gnucash-docs-version;.tar.gz">
+]>
+
+<sect1 id="gnucash" xreflabel="GnuCash-&gnucash-version;">
+  <?dbhtml filename="gnucash.html" ?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>GnuCash-&gnucash-version;</title>
+
+  <indexterm zone="gnucash">
+    <primary sortas="a-GnuCash">GnuCash</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to GnuCash</title>
+
+    <para><application>GnuCash</application> is a personal finance
+    manager.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&gnucash-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&gnucash-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &gnucash-src-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &gnucash-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &gnucash-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &gnucash-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing='compact'>
+      <listitem>
+        <para>Help documentation: <ulink url="&gnucash-docs-download;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &gnucash-docs-md5sum;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">GnuCash Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para><xref linkend="oaf"/>,
+    <xref linkend="gal1"/>,
+    <xref linkend="gtkhtml1"/>,
+    <xref linkend="libghttp"/>,
+    <xref linkend="gwrap"/> and
+    <xref linkend="slib"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para><xref linkend="postgresql"/>,
+    <xref linkend="guppi"/>,
+    <xref linkend="scrollkeeper"/>,
+    <xref linkend="doxygen"/>,
+    <ulink url="http://www.graphviz.org/">GraphViz</ulink>,
+    <ulink url="ftp://ftp.gnu.org/pub/gnu/guile/">Guile-www</ulink>,
+    <ulink url="http://perens.com/FreeSoftware/">Electric Fence</ulink></para>
+
+    <bridgehead renderas="sect4">Optional (for On-Line Banking)</bridgehead>
+    <para><ulink url="http://libofx.sourceforge.net/">LibOFX</ulink> (requires
+    <xref linkend="opensp"/> and <xref linkend="curl"/>),
+    <ulink url="http://sourceforge.net/projects/ktoblzcheck">KtoBlzCheck</ulink>,
+    <ulink url="http://sourceforge.net/projects/aqhbci">AqHBCI</ulink>
+    (requires
+    <ulink url="http://sourceforge.net/projects/gwenhywfar">Gwenhywfar</ulink>
+    then
+    <ulink url="http://sourceforge.net/projects/aqbanking">AqBanking</ulink>),
+    and also see
+    <ulink
+    url="http://sourceforge.net/projects/libchipcard">libchipcard</ulink></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of GnuCash</title>
+
+    <para>Install <application>GnuCash</application> by running the following
+    commands:</para>
+
+<screen><userinput>./configure --prefix=/opt/gnome-1.4 \
+    --sysconfdir=/etc --disable-guppi &amp;&amp;
+make</userinput></screen>
+
+    <para>To test the results, issue <command>make check</command> as the
+    <systemitem class="username">root</systemitem> user as the test suite will
+    attempt to update the <application>SLIB</application> catalog in
+    <filename class='directory'>/usr/share/guile</filename>.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role='root'><userinput>make install &amp;&amp;
+chown -v -R root:root /opt/gnome-1.4/share/gnucash/doc/html/html</userinput></screen>
+
+    <para>If you want to install the Help documentation (requires
+    <xref linkend="scrollkeeper"/> to be installed), unpack the additional
+    tarball, change into the
+    <filename class='directory'>gnucash-docs-&gnucash-docs-version;</filename>
+    source directory and issue the following commands as an unprivileged
+    user:</para>
+
+<screen><userinput>./configure --prefix=/opt/gnome-1.4 \
+    --localstatedir=/var/lib &amp;&amp;
+make</userinput></screen>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role='root'><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>--prefix=/opt/gnome-1.4</parameter>:
+    <application>GnuCash</application>-&gnucash-version; is a
+    <application>GNOME</application>-1.4 application.</para>
+
+    <para><parameter>--sysconfdir=/etc</parameter>: This installs configuration
+    files in <filename class='directory'>/etc/gnucash</filename> instead of
+    <filename class='directory'>/opt/gnome-1.4/etc/gnucash</filename>.</para>
+
+    <para><parameter>--disable-guppi</parameter>: This compiles
+    <application>GnuCash</application> without support for creating
+    GUI graphs and plots. Remove this option if you have
+    <application>Guppi</application> installed.</para>
+
+    <!-- <para><parameter>-disable-error-on-warning</parameter>: The build will fail
+    if you used <option>-enable-hbci</option>, as a warning is generated. This
+    option forces the build to ignore the warning.</para> -->
+
+    <para><option>--enable-sql</option>: This parameter is required if you want
+    to build in SQL support using <application>PostgreSQL</application>.</para>
+
+    <para><option>--enable-ofx</option>: This parameter is required if you want
+    to build in on-line banking support using
+    <application>LibOFX</application>.</para>
+
+    <para><option>--enable-hbci</option>: This parameter is required if you want
+    to build in on-line banking support using
+    <application>AqBanking</application>/<application>AqHBCI</application>. See
+    <filename>doc/README.HBCI</filename> in the
+    <application>GnuCash</application> source tree for complete information.</para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring GnuCash</title>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>If you wish to use <application>GnuCash</application> to retrieve
+      stock price quotes and stock historical information, you'll need to 
+      install the following <application>Perl</application> modules:
+      <xref linkend="perl-lwp"/>, <xref linkend="perl-date-manip"/>,
+      <xref linkend="perl-html-parser"/>, <xref linkend="perl-finance-quote"/>
+      and <xref linkend="perl-finance-quotehist"/>.</para>
+
+      <note>
+        <para><application>GnuCash</application> must be run as
+        <systemitem class="username">root</systemitem> once before use. Simply
+        executing <command>gnucash</command> from an <application>X</application>
+        terminal and clicking on the cancel button is sufficient. This must be
+        done prior to setting up accounts as an unprivileged user, due to the
+        fact that <application>GnuCash</application> must update scheme catalogs
+        before it is used.</para>
+      </note>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>dump-finance-quote, gnc-prices, gnc-test-env, gnucash,
+        gnucash-config, gnucash-env, gnucash-make-guids, gnucash-run-script
+        and update-finance-quote</seg>
+        <seg>libcore-utils.so, libgnc-app-file-gnome.so, libgncgnome.so,
+        libgncmodule.so, libgw-core-utils.so, libgw-gnc.so and numerous
+        support libraries installed in
+        <filename class='directory'>/opt/gnome-1.4/lib/gnucash</filename></seg>
+        <seg>/etc/gnucash,
+        /opt/gnome-1.4/include/gnucash,
+        /opt/gnome-1.4/lib/gnucash,
+        /opt/gnome-1.4/libexec/gnucash,
+        /opt/gnome-1.4/share/gnome/apps/Applications,
+        /opt/gnome-1.4/share/gnome/help/gnucash,
+        /opt/gnome-1.4/share/gnucash,
+        /opt/gnome-1.4/share/omf/gnucash-docs and
+        /opt/gnome-1.4/share/pixmaps/gnucash</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gnucash-prog">
+        <term><command>gnucash</command></term>
+        <listitem>
+          <para>is a personal finance manager.</para>
+          <indexterm zone="gnucash gnucash-prog">
+            <primary sortas="b-gnucash">gnucash</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

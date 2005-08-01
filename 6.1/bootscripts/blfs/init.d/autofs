@@ -1,0 +1,193 @@
+#!/bin/bash
+#
+# Autofs Boot Script
+#
+# Filename:     /etc/rc.d/init.d/autofs
+#
+# Author:       Bryan Mason <bmason@bmason.com>
+#
+# Edit History:
+#
+# Date         Author        Action
+# ----------------------------------------------------------------------
+# 20 Jan 2004  B. Mason      Created by modifying original autofs 
+#                            script created by Peter Anvin
+# 20 Mar 2004  B. Mason      Modified to create mountpoints if they
+#                            don't already exist.
+
+source /etc/sysconfig/rc
+source $rc_functions
+source /etc/sysconfig/autofs.conf
+
+#
+# This function will build a list of automount commands to execute in
+# order to activate all the mount points. It is used to figure out
+# the difference of automount points in case of a reload
+#
+function getmounts()
+{
+    if [ -f /etc/auto.master ]
+    then
+        cat /etc/auto.master | sed -e '/^#/d' -e '/^$/d'| 
+        (
+            while read dir map options
+            do
+            if [ ! -z "$dir" -a ! -z "$map" \
+                -a x$(echo "$map" | cut -c1) != 'x-' ]
+                then
+                    map=$(echo "/etc/$map" | sed -e 's:^/etc//:/:')
+                    options=$(echo "$options" | sed -e 's/\(^\|[ \t]\)-/\1/g')
+                    if [ -x $map ]; then
+                        echo "  $dir program $map $options"
+                    else 
+                        echo "  $dir file $map $options"
+                    fi
+                fi
+            done
+        )
+    fi
+}
+
+#
+# Show the status of configured and active mounts.
+#
+function status()
+{
+    echo "Configured Mount Points:"
+    getmounts |
+    (
+        while read dir type map options
+        do
+            echo $dir $type $map $options
+
+            if [ $type = 'file' ]
+            then
+                cat $map | sed -e '/^#/d' -e '/^$/d' |
+                (
+                    while read key options location
+                    do
+                        echo "  $key $options $location"
+                    done
+                )
+                echo ""
+            fi 
+        done
+    )
+
+    echo "Active Automount Daemons:"
+    if [ $(COLUMNS=1024 ps ax | grep "[0-9]:[0-9][0-9] $automount " | wc -w) -gt 0 ]
+    then
+        COLUMNS=1024 ps ax | grep "[0-9]:[0-9][0-9] $automount " | 
+        (
+            while read pid tt stat time command; do echo "  $command" ; done
+        )
+    else
+         echo "  None";
+    fi
+    echo ""
+
+    echo "Actively Automounted Directories:"
+    getmounts |
+    (
+        while read dir type map options
+        do
+            line=$(mount | grep -v "^automount" | grep "$dir")
+            if [ $(echo $line | wc -w) -ne 0 ]
+                then
+                echo "$line" | sed -e "s/^./  &/"  
+            fi
+        done
+    )
+    echo ""
+}
+
+case "$1" in 
+    start)
+        getmounts | 
+        (
+            while read dir type map options
+            do 
+                boot_mesg -n "Automounting $dir..."
+                pidfile=$(echo $dir | sed -e "y/\//-/" | sed -e "s/^-//")
+                pidpath=${piddir}/${pidroot}.${pidfile}.pid
+
+                if [ ! -d "$dir" ]
+                then
+                    boot_mesg -n " Creating mountpoint $dir..."
+                    mkdir -p "$dir"
+                fi
+
+                if [ ! -e "$map" ]
+                then
+                    boot_mesg "Map file $map does not exist!" ${FAILURE}
+                    echo_failed
+                    continue
+                fi
+
+                if [ ! -x "$map" -a "$type" = "program" ]
+                then
+                    boot_mesg "Map file $map is not executable!" ${FAILURE}
+                    echo_failed
+                    continue
+                fi
+
+                if [ -e "$pidpath" ]
+                then
+                    boot_mesg " already running!" ${WARNING}
+                    echo_warning
+                else
+                    echo " "
+                    $automount -p $pidpath $daemonoptions $dir $type $map $options $localoptions
+                    evaluate_retval
+                fi
+            done 
+        )
+        ;;
+
+    stop)
+        # Kill all automounters listed in /var/run
+        ls ${piddir}/${pidroot}.*.pid 2>/dev/null |
+        (
+            while read pidpath
+            do
+                pid=$(cat $pidpath)
+                pidfile=$(basename $pidpath)
+                mountpoint=$(echo $pidfile | sed -e "s/^autofs\.\(.*\)\.pid$/\1/" | sed -e "y/-/\//")
+                boot_mesg "Stopping automount on /$mountpoint..."
+                kill $pid
+                evaluate_retval
+            done
+        )
+
+        # Now kill any rogue automounters (automount process w/o pid files)
+        sleep 1
+        COLUMNS=1024 ps ax | grep "[0-9]:[0-9][0-9] $automount " |
+        (
+            while read pid everything_else
+            do
+                boot_mesg "Stopping automount with pid $pid..."
+                kill $pid
+                evaluate_retval
+            done
+        )
+        ;;
+
+    restart)
+        $0 stop
+        sleep 1
+        $0 start
+        ;;
+
+    status)
+        status
+        ;;
+
+    *)
+        echo "usage: $0 {start|stop|restart|status}"
+        exit 1
+        ;;
+esac
+
+
+# END
+

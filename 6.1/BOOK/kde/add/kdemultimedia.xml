@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY kdemultimedia-download-http "&kde-download-http;/kdemultimedia-&kde-version;.tar.bz2">
+  <!ENTITY kdemultimedia-download-ftp  "&kde-download-ftp;/kdemultimedia-&kde-version;.tar.bz2">
+  <!ENTITY kdemultimedia-md5sum        "db69c9ab845c8295f095dc6394fba047">
+  <!ENTITY kdemultimedia-size          "5.3 MB">
+  <!ENTITY kdemultimedia-buildsize     "117 MB">
+  <!ENTITY kdemultimedia-time          "12.4 SBU">
+]>
+
+<sect1 id="kdemultimedia" xreflabel="kdemultimedia-&kde-version;">
+  <?dbhtml filename="kdemultimedia.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Kdemultimedia-&kde-version;</title>
+
+  <indexterm zone="kdemultimedia">
+    <primary sortas="a-kdemultimedia">Kdemultimedia</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Kdemultimedia</title>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing='compact'>
+      <listitem>
+        <para>Download (HTTP): <ulink url="&kdemultimedia-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&kdemultimedia-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &kdemultimedia-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &kdemultimedia-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &kdemultimedia-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &kdemultimedia-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Kdemultimedia Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para><xref linkend="kdebase"/></para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para><xref linkend="libjpeg"/>,
+    <xref linkend="libxml2"/>,
+    <xref linkend="alsa"/>, and
+    <xref linkend="libmad"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para><xref linkend="cdparanoia"/>,
+    <xref linkend="lame"/>,
+    <xref linkend="audiofile"/>,
+    <xref linkend="libogg"/>,
+    <xref linkend="libvorbis"/>,
+    <xref linkend="xine-lib"/>,
+    <xref linkend="flac"/>,
+    <xref linkend="speex"/>,
+    <xref linkend="sdl"/>,
+    <xref linkend="gstreamer"/>
+    (with <ulink url="http://developer.kde.org/~wheeler/juk.html">KGst</ulink>),
+    <ulink url="http://developer.kde.org/~wheeler/taglib/">TagLib</ulink>,
+    <ulink url="http://www.musicbrainz.org/">libmusicbrainz</ulink>,
+    <ulink url="http://www.musicbrainz.org/products/trmgen/download.html">TRM Generator</ulink>, and
+    <ulink url="http://www.musicbrainz.org/products/tunepimp/download.html">TunePimp</ulink></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Kdemultimedia</title>
+
+    <para>Install <application>kdemultimedia</application> with:</para>
+
+<screen><userinput>./configure --prefix=&kde-dir; --disable-debug \
+    --disable-dependency-tracking &amp;&amp;
+make</userinput></screen>
+
+     <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+<!--
+<sect2>
+  <title>Configuring kdemultimedia</title>
+
+  <para>There is no explicit configuration for the
+  <application>kdemultimedia</application> package, however
+  <command>kscd</command> needs to find the CD drive. The default device file
+  is <filename>/dev/cdrom</filename> which may not exist on your system.  The
+  easiest way to do this is to create a symbolic link to this from your CD
+  drive (e.g., <filename>/dev/hdc</filename>, <filename>/dev/scd0</filename>,
+  etc.): </para>
+
+<screen><userinput><command>ln -s <replaceable>[CD Drive]</replaceable> /dev/cdrom</command></userinput></screen>
+</sect2>
+-->
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>artsbuilder, juk, kaboodle, kmid, kmix, krec, kscd, and noatun</seg>
+        <seg>Numerous kdemultimedia specific libraries</seg>
+        <seg>Several subdirectories of $KDE_PREFIX/{include,share}</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="artsbuilder">
+        <term><command>artsbuilder</command></term>
+        <listitem>
+          <para>is a tool to create new structures of small connected
+          <application>aRts</application> modules.</para>
+          <indexterm zone="kdemultimedia artsbuilder">
+            <primary sortas="b-artsbuilder">artsbuilder</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="juk">
+        <term><command>juk</command></term>
+        <listitem>
+          <para>is a jukebox, tagger, and music collection manager.</para>
+          <indexterm zone="kdemultimedia juk">
+            <primary sortas="b-juk">juk</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kaboodle">
+        <term><command>kaboodle</command></term>
+        <listitem>
+          <para>is a multimedia player.</para>
+          <indexterm zone="kdemultimedia kaboodle">
+            <primary sortas="b-kaboodle">kaboodle</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kmid">
+        <term><command>kmid</command></term>
+        <listitem>
+          <para>is a midi/karaoke player.</para>
+          <indexterm zone="kdemultimedia kmid">
+            <primary sortas="b-kmid">kmid</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kmix">
+        <term><command>kmix</command></term>
+        <listitem>
+          <para>is a sound mixer.</para>
+          <indexterm zone="kdemultimedia kmix">
+            <primary sortas="b-kmix">kmix</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="krec">
+        <term><command>krec</command></term>
+        <listitem>
+          <para>is a recording frontend for <application>aRts</application>.</para>
+          <indexterm zone="kdemultimedia krec">
+            <primary sortas="b-krec">krec</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kscd">
+        <term><command>kscd</command></term>
+        <listitem>
+          <para>is a CD player.</para>
+          <indexterm zone="kdemultimedia kscd">
+            <primary sortas="b-kscd">kscd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="noatun">
+        <term><command>noatun</command></term>
+        <listitem>
+          <para>is another multimedia player.</para>
+          <indexterm zone="kdemultimedia noatun">
+            <primary sortas="b-noatun">noatun</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

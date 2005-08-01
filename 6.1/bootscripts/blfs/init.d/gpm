@@ -1,0 +1,53 @@
+#!/bin/sh
+# Begin $rc_base/init.d/gpm
+
+# Based on sysklogd script from LFS-3.1 and earlier.
+# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+# GPM specific parts by Mark Hymers - markh@linuxfromscratch.org
+
+#$LastChangedBy$
+#$Date$
+
+. /etc/sysconfig/rc
+. $rc_functions
+
+if [ -f /etc/sysconfig/mouse ]
+	then
+	. /etc/sysconfig/mouse
+fi
+
+if [ -z "$MDEVICE" ] || [ -z "$PROTOCOL" ]
+	then
+	echo "Please create an /etc/sysconfig/mouse file containing"
+	echo "MDEVICE and PROTOCOL values"
+	exit 1;
+fi
+
+case "$1" in
+	start)
+		boot_mesg "Starting gpm..."
+		loadproc /usr/sbin/gpm -m "$MDEVICE" -t "$PROTOCOL" "$GPMOPTS"
+		;;
+
+	stop)
+		boot_mesg "Stopping gpm..."
+		killproc /usr/sbin/gpm
+		;;
+
+	restart)
+		$0 stop
+		sleep 1
+		$0 start
+		;;
+
+	status)
+		statusproc /usr/sbin/gpm
+		;;
+
+	*)
+		echo "Usage: $0 {start|stop|restart|status}"
+		exit 1
+		;;
+esac
+
+# End $rc_base/init.d/gpm

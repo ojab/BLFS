@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gnome-system-monitor-download-http "http://ftp.gnome.org/pub/GNOME/sources/gnome-system-monitor/&gnome-version;/gnome-system-monitor-&gnome-system-monitor-version;.tar.bz2">
+  <!ENTITY gnome-system-monitor-download-ftp "ftp://ftp.gnome.org/pub/GNOME/sources/gnome-system-monitor/&gnome-version;/gnome-system-monitor-&gnome-system-monitor-version;.tar.bz2">
+  <!ENTITY gnome-system-monitor-md5sum "22acb1699193f8bd2ced656d44f57377">
+  <!ENTITY gnome-system-monitor-size "766 KB">
+  <!ENTITY gnome-system-monitor-buildsize "8 MB">
+  <!ENTITY gnome-system-monitor-time "0.1 SBU">
+]>
+
+<sect1 id="gnome-system-monitor"
+xreflabel="GNOME System Monitor-&gnome-system-monitor-version;">
+  <?dbhtml filename="gnome-system-monitor.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>GNOME System Monitor-&gnome-system-monitor-version;</title>
+
+  <indexterm zone="gnome-system-monitor">
+    <primary sortas="a-GNOME System Monitor">GNOME System Monitor</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to GNOME System Monitor</title>
+
+    <para>The <application>GNOME System Monitor</application> package contains
+    <command>gnome-system-monitor</command>, GNOME's replacement for
+    <command>gtop</command>.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP):
+        <ulink url="&gnome-system-monitor-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP):
+        <ulink url="&gnome-system-monitor-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &gnome-system-monitor-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &gnome-system-monitor-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &gnome-system-monitor-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &gnome-system-monitor-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">GNOME System Monitor Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para><xref linkend="libgnomeui"/>,
+    <xref linkend="libwnck"/> and
+    <xref linkend="libgtop"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of GNOME System Monitor</title>
+
+    <para>Install <application>GNOME System Monitor</application> by running
+    the following commands:</para>
+
+<screen><userinput>./configure --prefix=`pkg-config --variable=prefix ORBit-2.0` \
+    --localstatedir=/var/lib --sysconfdir=/etc/gnome &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+<!-- This should not be necessary any longer, but leaving it as a comment
+
+<note><para><command>make install</command> will need path access to
+<filename class="directory">$GNOME_PREFIX/bin</filename>. If you use the
+root account for installation of the package and your preinstallation changes
+were made only to a user's account, you will need to adjust root's path prior
+to running <command>make install</command>.</para></note>
+
+ -->
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>--localstatedir=/var/lib</parameter>: This switch
+    puts <application>ScrollKeeper</application> files in
+    <filename class="directory">/var/lib/scrollkeeper</filename> instead of
+    <filename class="directory">$GNOME_PREFIX/var/scrollkeeper</filename>.</para>
+
+    <para><parameter>--sysconfdir=/etc/gnome</parameter>: This switch puts
+    configuration files in <filename class="directory">/etc/gnome</filename>
+    instead of <filename class="directory">$GNOME_PREFIX/etc</filename>.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>gnome-system-monitor</seg>
+        <seg>None</seg>
+        <seg>/etc/gnome/gconf/gconf.xml.defaults/apps/procman,
+        /etc/gnome/gconf/gconf.xml.defaults/schemas/apps/procman,
+        $GNOME_PREFIX/share/gnome/help/gnome-system-monitor, and,
+        $GNOME_PREFIX/share/omf/gnome-system-monitor</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gnome-system-monitor-prog">
+        <term><command>gnome-system-monitor</command></term>
+        <listitem>
+          <para>displays the process tree and hardware meters.</para>
+          <indexterm zone="gnome-system-monitor gnome-system-monitor-prog">
+            <primary sortas="b-gnome-system-monitor">gnome-system-monitor</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

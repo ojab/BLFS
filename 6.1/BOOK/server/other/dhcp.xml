@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY dhcp-download-http "http://gd.tuwien.ac.at/infosys/servers/isc/dhcp/dhcp-&dhcp-version;.tar.gz">
+  <!ENTITY dhcp-download-ftp "ftp://ftp.isc.org/isc/dhcp/dhcp-&dhcp-version;.tar.gz">
+  <!ENTITY dhcp-md5sum "04800a111521e7442749b2ce883f962b">
+  <!ENTITY dhcp-size "834 KB">
+  <!ENTITY dhcp-buildsize "29.7 MB">
+  <!ENTITY dhcp-time "0.22 SBU">
+]>
+
+<sect1 id="dhcp" xreflabel="DHCP-&dhcp-version;">
+  <?dbhtml filename="dhcp.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>DHCP-&dhcp-version;</title>
+
+  <indexterm zone="dhcp">
+    <primary sortas="a-dhcp">Dhcp</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to DHCP</title>
+
+    <para>The <application>DHCP</application> package contains both the client
+    and server programs for DHCP. <command>dhclient</command> (the client) is
+    useful for connecting your computer to a network which uses DHCP to assign
+    network addresses. <command>dhcpd</command> (the server) is useful for
+    assigning network addresses on your private network.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&dhcp-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&dhcp-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &dhcp-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &dhcp-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &dhcp-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &dhcp-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing='compact'>
+      <listitem>
+        <para>Required Patch:
+        <ulink url="&patch-root;/dhcp-&dhcp-version;-gcc_3.4.3-2.patch"/></para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">DHCP Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para><xref linkend="net-tools"/> (you may omit
+    <application>net-tools</application> by using the following patch
+    to utilize <application>iproute2</application>:
+    <ulink url="&patch-root;/dhcp-&dhcp-version;-iproute2-3.patch"/>)</para>
+
+  </sect2>
+
+  <sect2 role="kernel" id='dhcp-kernel'>
+    <title>Kernel Configuration</title>
+
+    <para>You must have Packet Socket support (Device Drivers -&gt; Networking
+    Support -&gt; Networking Options -&gt; Packet Socket) compiled into
+    the kernel.</para>
+
+    <indexterm zone="dhcp dhcp-kernel">
+      <primary sortas="d-dhcp">DHCP</primary>
+    </indexterm>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of DHCP</title>
+
+    <para>If you chose not to install net-tools, apply the 
+    iproute2 patch:</para>
+
+<screen><userinput>patch -Np1 -i ../dhcp-&dhcp-version;-iproute2-3.patch</userinput></screen>
+
+    <para>Install <application>DHCP</application> by running
+    the following commands:</para>
+
+<screen><userinput>patch -Np1 -i ../dhcp-&dhcp-version;-gcc_3.4.3-2.patch &amp;&amp;
+./configure &amp;&amp;
+make</userinput></screen>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make LIBDIR=/usr/lib INCDIR=/usr/include install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>LIBDIR=/usr/lib INCDIR=/usr/include</parameter>: This
+    command installs the library and include files in
+    <filename class="directory">/usr</filename> instead of
+    <filename class="directory">/usr/local</filename>.</para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring DHCP</title>
+
+    <sect3 id='dhcp-config'>
+      <title>Config Files</title>
+
+      <para><filename>/etc/dhclient.conf</filename> and
+      <filename>/etc/dhcpd.conf</filename></para>
+
+      <indexterm zone="dhcp dhcp-config">
+        <primary sortas="e-etc-dhclient.conf">/etc/dhclient.conf</primary>
+      </indexterm>
+
+      <indexterm zone="dhcp dhcp-config">
+        <primary sortas="e-etc-dhcpd.conf">/etc/dhcpd.conf</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3 id='dhcp-init'>
+      <title>Configuration Information</title>
+
+      <para>Information on configuring the DHCP client can be
+      found in <xref linkend="connect-dhcp"/>.</para>
+
+      <para>Note that you only need the DHCP server if you want to issue
+      LAN addresses over your network. The DHCP client doesn't need this
+      script to be used.  Also note that this script is coded for the
+      <emphasis role="strong">eth1</emphasis> interface, which may need
+      to be modified for your hardware configuration.</para>
+
+      <para>Install the <filename>/etc/rc.d/init.d/dhcp</filename>
+      init script included in the <xref linkend="intro-important-bootscripts"/>
+      package.</para>
+
+      <indexterm zone="dhcp dhcp-init">
+        <primary sortas="f-dhcp">dhcpd</primary>
+      </indexterm>
+
+<screen role="root"><userinput>make install-dhcp</userinput></screen>
+
+      <para>The lease file must exist on startup. The following command will
+      satisfy that requirement:</para>
+
+<screen role="root"><userinput>touch /var/state/dhcp/dhcpd.leases</userinput></screen>
+
+      <para>The following commands will create a base configuration file
+      for a DHCP server.  There are several options that you may want to
+      add (information that is passed back to the DHCP client) and those
+      are covered in the man pages for <filename>dhcp.conf</filename>.</para>
+
+<screen role="root"><userinput>cat &gt; /etc/dhcpd.conf &lt;&lt; "EOF"
+<literal>default-lease-time 72000;
+max-lease-time 144000;
+ddns-update-style ad-hoc;
+
+subnet <replaceable>[192.168.5.0]</replaceable> netmask <replaceable>[255.255.255.0]</replaceable> {
+  range <replaceable>[192.168.5.10] [192.168.5.240]</replaceable>;
+  option broadcast-address <replaceable>[192.168.5.255]</replaceable>;
+  option routers <replaceable>[192.168.5.1]</replaceable>;
+}</literal>
+EOF</userinput></screen>
+
+      <para>All addresses should be changed to meet your circumstance.</para>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>dhcpd, dhcrelay, dhclient, dhclient-script, and omshell</seg>
+        <seg>bdhcpctl.a, libomapi.a</seg>
+        <seg>/var/state/dhcp, /usr/include/omapip, and /usr/include/isi-dhcp</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="dhclient">
+        <term><command>dhclient</command></term>
+        <listitem>
+          <para>is the implementation of the DHCP client.</para>
+          <indexterm zone="dhcp dhclient">
+            <primary sortas="b-dhclient">dhclient</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="dhcpd">
+        <term><command>dhcpd</command></term>
+        <listitem>
+          <para>implements Dynamic Host Configuration Protocol (DHCP) and
+          Internet Bootstrap Protocol (BOOTP) requests for network
+          addresses.</para>
+          <indexterm zone="dhcp dhcpd">
+            <primary sortas="b-dhcpd">dhcpd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="dhcrelay">
+        <term><command>dhcrelay</command></term>
+        <listitem>
+          <para>provides a means to accept DHCP and BOOTP requests on a subnet
+          without a DHCP server and relay them to a DHCP server on another
+          subnet.</para>
+          <indexterm zone="dhcp dhcrelay">
+            <primary sortas="b-dhcrelay">dhcrelay</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="omshell">
+        <term><command>omshell</command></term>
+        <listitem>
+          <para> provides an interactive way to connect to, query, and
+          possibly change, the ISC DHCP Server's state via OMAPI, the
+          Object Management API.</para>
+          <indexterm zone="dhcp omshell">
+            <primary sortas="b-omshell">omshell</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

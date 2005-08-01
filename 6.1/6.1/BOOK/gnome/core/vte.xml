@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY vte-download-http "http://ftp.gnome.org/pub/GNOME/sources/vte/0.11/vte-&vte-version;.tar.bz2">
+  <!ENTITY vte-download-ftp "ftp://ftp.gnome.org/pub/GNOME/sources/vte/0.11/vte-&vte-version;.tar.bz2">
+  <!ENTITY vte-md5sum "5eb73c7de433fb6e53ac4378df9d23b5">
+  <!ENTITY vte-size "952 KB">
+  <!ENTITY vte-buildsize "24 MB">
+  <!ENTITY vte-time "0.7 SBU">
+]>
+
+<sect1 id="vte" xreflabel="VTE-&vte-version;">
+  <?dbhtml filename="vte.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>VTE-&vte-version;</title>
+
+  <indexterm zone="vte">
+    <primary sortas="a-VTE">VTE</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to VTE</title>
+
+    <para>The <application>VTE</application> package contains a termcap
+    file implementation for terminal emulators.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&vte-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&vte-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &vte-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &vte-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &vte-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &vte-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">VTE Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para><xref linkend="gtk2"/> and
+    <xref linkend="python"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para><xref linkend="gtk-doc"/> and
+    <ulink url="http://www.pygtk.org/">PyGTK</ulink></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of VTE</title>
+
+    <para>Install <application>VTE</application> by running the following
+    commands:</para>
+
+<screen><userinput>sed -i -e 's%\\177:%&amp;kh=\\EOH:@7=\\EOF:%g' termcaps/xterm &amp;&amp;
+./configure --prefix=/usr --libexecdir=/usr/sbin --disable-gtk-doc &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><command>sed -i -e ...</command>: The <keysym>Home</keysym> and
+    <keysym>End</keysym> keys are broken in the <filename>xterm</filename>
+    termcap file. This <command>sed</command> command fixes them.</para>
+
+    <para><parameter>--libexecdir=/usr/sbin</parameter>: This switch puts
+    libexec files in <filename class="directory">/usr/sbin</filename>
+    instead of <filename class="directory">/usr/libexec</filename>.</para>
+
+    <para><parameter>--disable-gtk-doc</parameter>: This switch prevents the
+    building of documentation. Remove it if you have
+    <application>GTK-Doc</application> installed and wish to rebuild the
+    documentation.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>gnome-pty-helper and vte</seg>
+        <seg>libvte.[so,a] and vtemodule.[so,a]
+        <application>Python</application> module</seg>
+        <seg>/usr/include/vte, /usr/lib/vte, /usr/share/gtk-doc/html/vte,
+        and /usr/share/vte</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gnome-pty-helper">
+        <term><command>gnome-pty-helper</command></term>
+        <listitem>
+          <para>is a setuid helper for opening ptys.</para>
+          <indexterm zone="vte gnome-pty-helper">
+            <primary sortas="b-gnome-pty-helper">gnome-pty-helper</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="vte-prog">
+        <term><command>vte</command></term>
+        <listitem>
+          <para>is a test application for the <application>VTE</application>
+          libraries.</para>
+          <indexterm zone="vte vte-prog">
+            <primary sortas="b-vte">vte</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libvte">
+        <term><filename class='libraryfile'>libvte.[so,a]</filename></term>
+        <listitem>
+          <para>provide the functions necessary to implement a
+          <quote>termcap file</quote> for terminal emulators.</para>
+          <indexterm zone="vte libvte">
+            <primary sortas="c-libvte">libvte.[so,a]</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

@@ -1,0 +1,26 @@
+Submitted By: DJ Lucas (dj at linuxfromscratch dot org)
+Date: 2005-06-18
+Initial Package Version: 3.0.2
+Origin: Jakub Jelinek (https://bugzilla.redhat.com/beta/show_bug.cgi?id=144358)
+Description: Fixed syntax to honor old (broken) gcc behavior
+Upstream Status:  Not submitted
+
+$LastChangedBy$
+$Date$
+
+diff -Naur dhcp-3.0.2-orig/includes/dhcpd.h dhcp-3.0.2/includes/dhcpd.h
+--- dhcp-3.0.2-orig/includes/dhcpd.h	2004-11-24 11:39:16.000000000 -0600
++++ dhcp-3.0.2/includes/dhcpd.h	2005-06-18 20:14:57.000000000 -0500
+@@ -306,9 +306,9 @@
+ #	define EPHEMERAL_FLAGS		(MS_NULL_TERMINATION | \
+ 					 UNICAST_BROADCAST_HACK)
+ 
+-	binding_state_t __attribute__ ((mode (__byte__))) binding_state;
+-	binding_state_t __attribute__ ((mode (__byte__))) next_binding_state;
+-	binding_state_t __attribute__ ((mode (__byte__))) desired_binding_state;
++	uint8_t binding_state;
++	uint8_t next_binding_state;
++	uint8_t desired_binding_state;
+ 	
+ 	struct lease_state *state;
+ 

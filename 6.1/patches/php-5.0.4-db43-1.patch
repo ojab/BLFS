@@ -1,0 +1,21 @@
+Submitted By:            Igor Zivkovic <igor@linuxfromscratch.org>
+Date:                    2005-01-10
+Initial Package Version: 5.0.3
+Upstream Status:         Not submitted.
+Origin:                  http://www.sleepycat.com/docs/ref/upgrade.4.3/toc.html
+Description:             Adds support for Berkeley DB-4.3.x.
+
+$LastChangedBy$
+$Date$
+
+--- php-5.0.3/ext/dba/dba_db4.c.orig	2005-01-10 00:10:49.798665848 +0000
++++ php-5.0.3/ext/dba/dba_db4.c	2005-01-10 00:23:10.805015760 +0000
+@@ -36,7 +36,7 @@
+ #include <db.h>
+ #endif
+ 
+-static void php_dba_db4_errcall_fcn(const char *errpfx, char *msg)
++static void php_dba_db4_errcall_fcn(const DB_ENV *dbenv, const char *errpfx, const char *msg)
+ {
+ 	TSRMLS_FETCH();
+ 	

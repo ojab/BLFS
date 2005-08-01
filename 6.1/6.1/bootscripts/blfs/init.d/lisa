@@ -1,0 +1,47 @@
+#!/bin/sh
+# Begin $rc_base/init.d/lisa
+
+# Based on sysklogd script from LFS-3.1 and earlier.
+# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+
+#$LastChangedBy$
+#$Date$
+
+. /etc/sysconfig/rc
+. $rc_functions
+
+export PATH=$PATH:/opt/kde/bin
+
+case "$1" in
+        start)
+                boot_mesg "Starting LISA Daemon..."
+                loadproc /opt/kde/bin/lisa
+                ;;
+
+        stop)
+                boot_mesg "Stopping LISA Daemon..."
+                killproc /opt/kde/bin/lisa
+                ;;
+
+        reload)
+                boot_mesg "Reloading LISA Daemon..."
+                reloadproc /opt/kde/bin/lisa
+                ;;
+
+        restart)
+                $0 stop
+                sleep 1
+                $0 start
+                ;;
+
+        status)
+                statusproc /opt/kde/bin/lisa
+                ;;
+
+        *)
+                echo "Usage: $0 {start|stop|reload|restart|status}"
+                exit 1
+                ;;
+esac
+
+# End $rc_base/init.d/lisa

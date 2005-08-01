@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gnome2-user-docs-download-http "http://ftp.gnome.org/pub/GNOME/sources/gnome2-user-docs/2.8/gnome2-user-docs-&gnome2-user-docs-version;.tar.bz2">
+  <!ENTITY gnome2-user-docs-download-ftp "ftp://ftp.gnome.org/pub/GNOME/sources/gnome2-user-docs/2.8/gnome2-user-docs-&gnome2-user-docs-version;.tar.bz2">
+  <!ENTITY gnome2-user-docs-md5sum "90bdd21ea3e3e794f641dd805216f275">
+  <!ENTITY gnome2-user-docs-size "1.0 MB">
+  <!ENTITY gnome2-user-docs-buildsize "6 MB">
+  <!ENTITY gnome2-user-docs-time "less than 0.1 SBU">
+]>
+
+<sect1 id="gnome2-user-docs" xreflabel="GNOME2 User Docs-&gnome2-user-docs-version;">
+  <?dbhtml filename="gnome2-user-docs.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>GNOME2 User Docs-&gnome2-user-docs-version;</title>
+
+  <indexterm zone="gnome2-user-docs">
+    <primary sortas="a-GNOME2-User-Docs">GNOME2 User Docs</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to GNOME2 User Docs</title>
+
+    <para>The <application>GNOME2 User Docs</application> package contains
+    end user documents for <application>GNOME</application>.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&gnome2-user-docs-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&gnome2-user-docs-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &gnome2-user-docs-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &gnome2-user-docs-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &gnome2-user-docs-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &gnome2-user-docs-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">GNOME2 User Docs Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para><xref linkend="scrollkeeper"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para><xref linkend="docbook-utils"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of GNOME2 User Docs</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../without-gnome.xml"/>
+
+    <para>Install <application>GNOME2 User Docs</application>
+    by running the following commands:</para>
+
+<screen><userinput>./configure --prefix=`pkg-config --variable=prefix ORBit-2.0` \
+    --localstatedir=/var/lib &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+chmod -v 644 `pkg-config --variable=prefix ORBit-2.0`/share/gnome/help/\
+{gnome-access-guide,system-admin-guide,user-guide}/C/*.xml</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>--localstatedir=/var/lib</parameter>: This switch
+    puts <application>ScrollKeeper</application> files in
+    <filename class="directory">/var/lib/scrollkeeper</filename> instead of
+    <filename class="directory">$GNOME_PREFIX/var/scrollkeeper</filename>.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>None</seg>
+        <seg>None</seg>
+        <seg>$GNOME_PREFIX/share/gnome/help/[gnome-access-guide,system-admin-guide,user-guide]
+        and $GNOME_PREFIX/share/omf/[gnome2-user-docs,user-guide]</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry>
+        <term>OMF files</term>
+        <listitem>
+          <para>contain user documentation. These include introductions
+          and help on the core packages.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

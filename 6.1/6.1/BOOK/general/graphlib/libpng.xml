@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libpng-download-http "http://prdownloads.sourceforge.net/libpng/libpng-&libpng-version;.tar.bz2">
+  <!ENTITY libpng-download-ftp " ">
+  <!ENTITY libpng-md5sum "00cea4539bea4bd34cbf8b82ff9589cd">
+  <!ENTITY libpng-size "376 KB">
+  <!ENTITY libpng-buildsize "5.75 MB">
+  <!ENTITY libpng-time "0.13 SBU">
+]>
+
+<sect1 id="libpng" xreflabel="libpng-&libpng-version;">
+  <?dbhtml filename="libpng.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Libpng-&libpng-version;</title>
+
+  <indexterm zone="libpng">
+    <primary sortas="a-Libpng">Libpng</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Libpng</title>
+
+    <para>The <application>libpng</application> package contains libraries used
+    by other programs for reading and writing PNG files.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&libpng-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&libpng-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &libpng-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &libpng-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &libpng-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &libpng-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing='compact'>
+      <listitem>
+        <para>Required Patch to explicitly link
+        <application>libpng</application> against system libraries: <ulink
+        url="&patch-root;/libpng-&libpng-version;-link_to_proper_libs-1.patch"/></para>
+      </listitem>
+    </itemizedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Libpng</title>
+
+    <para>Install <application>libpng</application> by running the following
+    commands:</para>
+
+<screen><userinput>patch -Np1 -i ../libpng-&libpng-version;-link_to_proper_libs-1.patch &amp;&amp;
+make prefix=/usr ZLIBINC= \
+    ZLIBLIB= -f scripts/makefile.linux</userinput></screen>
+
+    <para>To test the results, issue: <command>make -f scripts/makefile.linux
+    test</command>.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make prefix=/usr install -f scripts/makefile.linux</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>ZLIBINC=; ZLIBLIB=</parameter>: This
+    forces <application>libpng</application> to look for the
+    <application>Zlib</application> includes and libraries in the default locations
+    (<filename class='directory'>/usr/include</filename> and
+    <filename class='directory'>/usr/lib</filename> respectively).</para>
+
+    <para><parameter>-f scripts/makefile.linux</parameter>: This points
+    <command>make</command> at the <application>Linux</application> version of the
+    <filename>Makefile</filename> as <application>libpng</application> doesn't use
+    an <application>Autoconf</application> routine. Instead, it has various
+    <filename>Makefile</filename>s for different platforms.</para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Libpng</title>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="../../lib-config.xml"/>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>libpng-config and libpng12-config</seg>
+        <seg>libpng.[so,a] and libpng12.[so,a]</seg>
+        <seg>/usr/include/libpng12</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libpng-config">
+        <term><command>libpng-config</command></term>
+        <listitem>
+          <para>is a symlink to <command>libpng12-config</command>.</para>
+          <indexterm zone="libpng libpng-config">
+            <primary sortas="g-libpng-config">libpng-config</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libpng12-config">
+        <term><command>libpng12-config</command></term>
+        <listitem>
+          <para>provides configuration information for
+          <application>libpng</application>.</para>
+          <indexterm zone="libpng libpng12-config">
+            <primary sortas="b-libpng12-config">libpng12-config</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libpng12">
+        <term><filename class='libraryfile'>libpng.[so,a] and
+        libpng12.[so,a]</filename></term>
+        <listitem>
+          <para>are a collection of routines used to create and manipulate PNG
+          format graphics files. The PNG format was designed as a replacement for
+          GIF and, to a lesser extent, TIFF, with many improvements and extensions
+          and lack of patent problems.</para>
+          <indexterm zone="libpng libpng12">
+            <primary sortas="c-libpng">libpng.[so,a]</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

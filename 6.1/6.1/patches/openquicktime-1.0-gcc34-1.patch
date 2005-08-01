@@ -1,0 +1,33 @@
+Submitted By: Jeremy Utley (jeremy@linuxfromscratch.org)
+Date: 2004-04-11
+Initial Package Version: 1.0
+Upstream Status: Not Submitted
+Origin: Jbit from LFS-IRC's custom hack
+Description: fixes inline asm code for gcc 3.4 compilation
+
+$LastChangedBy$
+$Date$
+
+diff -aur openquicktime-1.0-src/audioplugin/MP3/audioencoder/lame3.70/quantize-pvt.c openquicktime-1.0-src-new/audioplugin/MP3/audioencoder/lame3.70/quantize-pvt.c
+--- openquicktime-1.0-src/audioplugin/MP3/audioencoder/lame3.70/quantize-pvt.c	2001-07-27 05:53:35.000000000 -0700
++++ openquicktime-1.0-src-new/audioplugin/MP3/audioencoder/lame3.70/quantize-pvt.c	2004-04-11 23:29:41.366114717 -0700
+@@ -976,6 +976,7 @@
+   {
+       int rx[4];
+       __asm__ __volatile__(
++	"pushl %%ebx\n" //XXX: Jbit Hack
+         "\n\nloop1:\n\t"
+ 
+         "fld" F8type " 0*" F8size "(%1)\n\t"
+@@ -1028,9 +1029,10 @@
+         "fistpl -4(%3)\n\t"
+ 
+         "jnz loop1\n\n"
++	"popl %%ebx\n" //XXX: Jbit Hack
+         : /* no outputs */
+         : "t" (istep), "r" (xr), "r" (adj43asm), "r" (ix), "r" (576 / 4), "m" (rx)
+-        : "%eax", "%ebx", "memory", "cc"
++        : "%eax", "memory", "cc"
+       );
+   }
+ #elif defined (USE_MSC_ASM)

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY AbiWord-download-http "http://www.abisource.com/downloads/abiword/2.2.8/source/abiword-&AbiWord-version;.tar.bz2">
+  <!ENTITY AbiWord-download-ftp  " ">
+  <!ENTITY AbiWord-md5sum        "f6f58e6ea4720ca635ede7b7f13cf156">
+  <!ENTITY AbiWord-size          "23.4 MB">
+  <!ENTITY AbiWord-buildsize     "208 MB">
+  <!ENTITY AbiWord-time          "2.7 SBU">
+]>
+
+<sect1 id="abiword" xreflabel="AbiWord-&AbiWord-version;">
+  <?dbhtml filename="AbiWord.html" ?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>AbiWord-&AbiWord-version;</title>
+
+  <indexterm zone="abiword">
+    <primary sortas="a-AbiWord">AbiWord</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to AbiWord</title>
+
+    <para>The <application>AbiWord</application> package contains a word
+    processing application. This is useful for writing reports, letters and
+    other formatted documents.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&AbiWord-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&AbiWord-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &AbiWord-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &AbiWord-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &AbiWord-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &AbiWord-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">AbiWord Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para><xref linkend="popt"/>,
+    <xref linkend="libglade"/> and
+    <xref linkend="fribidi"/></para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para><xref linkend="libjpeg"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para><xref linkend="gucharmap"/>,
+    <xref linkend="libgnomeprintui"/>,
+    <xref linkend="nautilus"/>,
+    <xref linkend="imagemagick"/>,
+    <ulink url="http://www.abisource.com/enchant/">Enchant</ulink>
+    (uses <xref linkend="aspell"/>) and
+    <ulink url="http://wvware.sourceforge.net/">wv</ulink></para>
+
+    <bridgehead renderas="sect4">Optional for Plugins</bridgehead>
+    <para><xref linkend="librsvg"/>,
+    <xref linkend="gnome-utils"/>,
+    <xref linkend="python"/>for gypsthon mailmerge,
+ 	<ulink url="http://aiksaurus.sourceforge.net/">aiksaurus</ulink>,
+    <ulink url="http://www.gnome-db.org/">libgda</ulink>,
+    <ulink url="http://wvware.sourceforge.net/index.html">libwmf</ulink>,
+    <ulink url="http://libwpd.sourceforge.net/">libwpd</ulink> and
+    <ulink url="http://libots.sourceforge.net/">libots</ulink></para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of AbiWord</title>
+
+    <para>Install <application>AbiWord</application> by running the following
+    commands:</para>
+
+<screen><userinput>cd abi &amp;&amp;
+./configure --prefix=/usr &amp;&amp;
+make &amp;&amp;
+cd ../abiword-plugins &amp;&amp;
+sed -i 's:python2.3:python2.4:g' configure &amp;&amp;
+./configure --prefix=/usr &amp;&amp;
+make</userinput></screen>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>cd ../abi &amp;&amp;
+make install &amp;&amp;
+cp -v -rf docs /usr/share/AbiSuite-2.2/AbiWord &amp;&amp;
+cd ../abiword-plugins &amp;&amp;
+make install</userinput></screen>
+
+    <para>To build the help files, issue the following commands as an
+    unprivileged user:</para>
+
+<screen><userinput>cd ../abiword-docs &amp;&amp;
+./make-html.sh</userinput></screen>
+
+    <para>And, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>install -v -m644 man/abiword.1 /usr/share/man/man1 &amp;&amp;
+install -v -m644 Manual/en/Abiword_Manual.abw \
+    /usr/share/AbiSuite-2.2/AbiWord/docs  &amp;&amp;
+cp -v -rf help /usr/share/AbiSuite-2.2/AbiWord &amp;&amp;
+find /usr/share/AbiSuite-2.2/AbiWord/help \
+    -type d -exec chmod -v 755 {} \;</userinput></screen>
+
+    <para>To integrate <application>AbiWord</application> into your
+    <application>GNOME-2</application> environment, run the
+    following commands:</para>
+
+<screen role="root"><userinput>cd .. &amp;&amp;
+install -v -m644 abidistfiles/GNOME_AbiWord_Control_2_2.server \
+    $GNOME_PREFIX/lib/bonobo/servers &amp;&amp;
+install -v -m644 abi/abiword.desktop $GNOME_PREFIX/share/applications</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><command>./make-html.sh</command>: This command creates the HTML files
+    used by <application>AbiWord</application> when help is requested from the
+    main menu.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>abiword, AbiWord-2.2, ttfdmin.sh, and ttftool</seg>
+        <seg>None</seg>
+        <seg>/usr/share/AbiSuite-2.2</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="abiword-prog">
+        <term><command>abiword</command></term>
+        <listitem>
+          <para>is a symbolic link to the main <command>AbiWord-2.2</command>
+          executable.</para>
+          <indexterm zone="abiword abiword-prog">
+            <primary sortas="g-abiword">abiword</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="AbiWord-2.2">
+        <term><command>AbiWord-2.2</command></term>
+        <listitem>
+          <para>is the word-processing program executable.</para>
+          <indexterm zone="abiword AbiWord-2.2">
+            <primary sortas="b-AbiWord-2.2">AbiWord-2.2</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ttfadmin.sh">
+        <term><command>ttfadmin.sh</command></term>
+        <listitem>
+          <para>generates support files required by
+          <application>AbiWord</application> for each TrueType font in a
+          given directory.</para>
+          <indexterm zone="abiword ttfadmin.sh">
+            <primary sortas="b-ttfadmin.sh">ttfadmin.sh</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ttftool">
+        <term><command>ttftool</command></term>
+        <listitem>
+          <para>is a utility for processing TrueType fonts.</para>
+          <indexterm zone="abiword ttftool">
+            <primary sortas="b-ttftool">ttftool</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

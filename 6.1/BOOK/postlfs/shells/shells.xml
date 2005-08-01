@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<chapter id="postlfs-shells">
+  <?dbhtml filename="shells.html"?>
+
+  <title>Shells</title>
+
+  <para>We are all familiar with the Bourne Again SHell, but there are two
+  other user interfaces that are considered useful modern shells -- the
+  Berkeley Unix C shell and the Korn shell.  This chapter installs
+  packages compatible with these additional shell types.</para>
+
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="ash.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="tcsh.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2003/XInclude" href="zsh.xml"/>
+
+</chapter>

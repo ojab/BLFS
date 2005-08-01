@@ -1,0 +1,31 @@
+Submitted By:            BLFS Book <blfs-book@linuxfromscratch.org>
+Date:                    2005-03-07
+Initial Package Version: 040914
+Upstream Status:         Unknown
+Origin:                  Nico R. submitted to lfs.dev mailing list
+Description:             Fixes an issue where an extra line feed is incorrectly 
+                         inserted when using the <pre></pre> tags
+
+$LastChangedBy$
+$Date$
+
+diff -Naur tidy-20040914T211547+0000.orig/src/pprint.c tidy-20040914T211547+0000/src/pprint.c
+--- tidy-20040914T211547+0000.orig/src/pprint.c	2004-09-14 21:13:08.000000000 +0000
++++ tidy-20040914T211547+0000/src/pprint.c	2004-09-14 22:08:08.000000000 +0000
+@@ -1976,14 +1976,14 @@
+             PPrintTag( doc, mode, indent, node );
+ 
+             indent = 0;
+-            PFlushLine( doc, indent );
++            if ( !nodeIsPRE(node) ) PFlushLine( doc, indent );
+ 
+             for ( content = node->content; content; content = content->next )
+             {
+                 PPrintTree( doc, (mode | PREFORMATTED | NOWRAP),
+                             indent, content );
+             }
+-            PCondFlushLine( doc, indent );
++            if ( !nodeIsPRE(node) ) PCondFlushLine( doc, indent );
+             indent = indprev;
+             PPrintEndTag( doc, mode, indent, node );
+ 

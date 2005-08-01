@@ -1,0 +1,117 @@
+Submitted By: BLFS Book <blfs-book@linuxfromscratch.org>
+Date: 2005-02-09
+Initial Package Version: 3.75.0
+Upstream Status: Not submitted
+Origin: Igor Zivkovic and Randy McMurchy
+Description: Fixes Tcl-8.4.X detection
+
+$LastChangedBy$
+$Date$
+
+diff -Naur wvstreams-4.0.1-orig/configure wvstreams-4.0.1/configure
+--- wvstreams-4.0.1-orig/configure	2004-11-18 14:15:05.000000000 +0000
++++ wvstreams-4.0.1/configure	2005-02-09 18:09:14.475593880 +0000
+@@ -8567,9 +8567,9 @@
+ if test "$with_tcl" != "no"; then
+     CPPFLAGS_save="$CPPFLAGS"
+     if test -z "$CPPFLAGS"; then
+-        CPPFLAGS="-I/usr/include/tcl8.3"
++        CPPFLAGS="-I/usr/include/tcl8.4"
+     else
+-        CPPFLAGS="$CPPFLAGS -I/usr/include/tcl8.3"
++        CPPFLAGS="$CPPFLAGS -I/usr/include/tcl8.4"
+     fi
+ 
+ 
+@@ -8724,13 +8724,13 @@
+ done
+ 
+ 
+-echo "$as_me:$LINENO: checking for TclInterpInit in -ltcl8.3" >&5
+-echo $ECHO_N "checking for TclInterpInit in -ltcl8.3... $ECHO_C" >&6
+-if test "${ac_cv_lib_tcl8_3_TclInterpInit+set}" = set; then
++echo "$as_me:$LINENO: checking for TclInterpInit in -ltcl8.4" >&5
++echo $ECHO_N "checking for TclInterpInit in -ltcl8.4... $ECHO_C" >&6
++if test "${ac_cv_lib_tcl8_4_TclInterpInit+set}" = set; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-ltcl8.3  $LIBS"
++LIBS="-ltcl8.4  $LIBS"
+ cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
+ _ACEOF
+@@ -8774,25 +8774,25 @@
+   ac_status=$?
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); }; }; then
+-  ac_cv_lib_tcl8_3_TclInterpInit=yes
++  ac_cv_lib_tcl8_4_TclInterpInit=yes
+ else
+   echo "$as_me: failed program was:" >&5
+ sed 's/^/| /' conftest.$ac_ext >&5
+ 
+-ac_cv_lib_tcl8_3_TclInterpInit=no
++ac_cv_lib_tcl8_4_TclInterpInit=no
+ fi
+ rm -f conftest.err conftest.$ac_objext \
+       conftest$ac_exeext conftest.$ac_ext
+ LIBS=$ac_check_lib_save_LIBS
+ fi
+-echo "$as_me:$LINENO: result: $ac_cv_lib_tcl8_3_TclInterpInit" >&5
+-echo "${ECHO_T}$ac_cv_lib_tcl8_3_TclInterpInit" >&6
+-if test $ac_cv_lib_tcl8_3_TclInterpInit = yes; then
++echo "$as_me:$LINENO: result: $ac_cv_lib_tcl8_4_TclInterpInit" >&5
++echo "${ECHO_T}$ac_cv_lib_tcl8_4_TclInterpInit" >&6
++if test $ac_cv_lib_tcl8_4_TclInterpInit = yes; then
+   cat >>confdefs.h <<_ACEOF
+-#define HAVE_LIBTCL8_3 1
++#define HAVE_LIBTCL8_4 9
+ _ACEOF
+ 
+-  LIBS="-ltcl8.3 $LIBS"
++  LIBS="-ltcl8.4 $LIBS"
+ 
+ else
+   with_tcl=no
+diff -Naur wvstreams-4.0.1-orig/configure.ac wvstreams-4.0.1/configure.ac
+--- wvstreams-4.0.1-orig/configure.ac	2004-11-18 14:15:05.000000000 +0000
++++ wvstreams-4.0.1/configure.ac	2005-02-09 18:15:18.621235328 +0000
+@@ -473,9 +473,9 @@
+ # tcl
+ if test "$with_tcl" != "no"; then
+     CPPFLAGS_save="$CPPFLAGS"
+-    WV_APPEND(CPPFLAGS, -I/usr/include/tcl8.3)
++    WV_APPEND(CPPFLAGS, -I/usr/include/tcl8.4)
+     AC_CHECK_HEADERS(tcl.h,, [with_tcl=no])
+-    AC_CHECK_LIB(tcl8.3, TclInterpInit,, [with_tcl=no])
++    AC_CHECK_LIB(tcl8.4, TclInterpInit,, [with_tcl=no])
+     if test "$with_tcl" != "no"; then
+         CPPFLAGS="$CPPFLAGS_save"
+     fi
+diff -Naur wvstreams-4.0.1-orig/include/wvautoconf.h.in wvstreams-4.0.1/include/wvautoconf.h.in
+--- wvstreams-4.0.1-orig/include/wvautoconf.h.in	2004-11-18 14:15:05.000000000 +0000
++++ wvstreams-4.0.1/include/wvautoconf.h.in	2005-02-09 18:16:42.633463528 +0000
+@@ -84,8 +84,8 @@
+ /* Define to 1 if you have the `ssl' library (-lssl). */
+ #undef HAVE_LIBSSL
+ 
+-/* Define to 1 if you have the `tcl8.3' library (-ltcl8.3). */
+-#undef HAVE_LIBTCL8_3
++/* Define to 1 if you have the `tcl8.4' library (-ltcl8.4). */
++#undef HAVE_LIBTCL8_4
+ 
+ /* Define to 1 if you have the `vorbis' library (-lvorbis). */
+ #undef HAVE_LIBVORBIS
+diff -Naur wvstreams-4.0.1-orig/vars.mk wvstreams-4.0.1/vars.mk
+--- wvstreams-4.0.1-orig/vars.mk	2004-11-18 14:15:05.000000000 +0000
++++ wvstreams-4.0.1/vars.mk	2005-02-09 18:18:23.924065016 +0000
+@@ -25,7 +25,7 @@
+ #ifneq ("$(with_swig)", "no")
+ #  ifneq ("$(with_tcl)", "no")
+ #    TARGETS += bindings/tcl
+-#    CPPFLAGS += -I/usr/include/tcl8.3
++#    CPPFLAGS += -I/usr/include/tcl8.4
+ #  endif
+ #  ifneq ("$(with_python)", "no")
+ #    TARGETS += bindings/python

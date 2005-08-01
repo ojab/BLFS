@@ -1,0 +1,6 @@
+<!ENTITY version "20050428">
+<!ENTITY releasedate "April 28th, 2005">
+
+<!ENTITY date "$Date$">
+
+<!ENTITY blfs-bugzilla "http://blfs-bugs.linuxfromscratch.org">

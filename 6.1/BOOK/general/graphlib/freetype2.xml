@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY freetype2-download-http "http://prdownloads.sourceforge.net/freetype/freetype-&freetype2-version;.tar.bz2">
+  <!ENTITY freetype2-download-ftp " ">
+  <!ENTITY freetype2-md5sum "a4012e7d1f6400df44a16743b11b8423">
+  <!ENTITY freetype2-size "1.0 MB">
+  <!ENTITY freetype2-buildsize "19.1 MB">
+  <!ENTITY freetype2-time "0.3 SBU">
+]>
+
+<sect1 id="freetype2" xreflabel="FreeType-&freetype2-version;">
+  <?dbhtml filename="freetype2.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>FreeType-&freetype2-version;</title>
+
+  <indexterm zone="freetype2">
+    <primary sortas="a-FreeType">FreeType</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to FreeType2</title>
+
+  <para>The <application>FreeType2</application> package
+  contains a library to allow applications to properly render
+  <application>TrueType</application> fonts.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&freetype2-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&freetype2-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &freetype2-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &freetype2-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &freetype2-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &freetype2-time;</para>
+      </listitem>
+    </itemizedlist>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of FreeType2</title>
+
+    <para>Install <application>FreeType2</application> by running the following
+    commands:</para>
+
+<screen><userinput>sed -i -r 's:.*(#.*BYTE.*) .*:\1:' \
+     include/freetype/config/ftoption.h &amp;&amp;
+./configure --prefix=/usr &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><command>sed -i -r 's:.*(#.*BYTE.*) .*:\1:'
+     include/freetype/config/ftoption.h</command>: Uncomments configuration
+     options.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>freetype-config</seg>
+        <seg>libfreetype.[so,a]</seg>
+        <seg>/usr/include/freetype2</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="freetype-config">
+        <term><command>freetype-config</command></term>
+        <listitem>
+          <para>is used to get <application>FreeType</application> compilation
+          and linking information.</para>
+          <indexterm zone="freetype2 freetype-config">
+            <primary sortas="b-freetype-config">freetype-config</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libfreetype">
+        <term><filename class='libraryfile'>libfreetype.[so,a]</filename></term>
+        <listitem>
+          <para>contains functions to add <application>TrueType</application>
+          font capabilities to the X Window system.</para>
+          <indexterm zone="freetype2 libfreetype">
+            <primary sortas="c-libfreetype">libfreetype.[so,a]</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

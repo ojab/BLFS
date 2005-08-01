@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+   "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" >
+
+<chapter id="chapter06">
+<chapterinfo>
+<othername>$Author$</othername>
+<date>$Date$</date>
+</chapterinfo>
+<title>Package Editing Policy</title>
+<?dbhtml filename="chapter06.html"?>
+
+<para>Each package in the book is written as a complete XML document using the 
+<ulink url='http://www.docbook.org/tdg/en/html/docbook.html'>Docbook</ulink>
+specification.  This Chapter describes how a BLFS page should be laid out.</para>
+
+<para>A template of a typical package page is found in the BLFS BOOK 
+repository under templates/template.xml.  This chapter expands on the 
+template, but generally changes needed for formatting purposes are
+reflected in the template more frequently than this guide.</para>
+
+<para>The start of the page is the XML header.  The page fits into the overall 
+book as a <emphasis>sect1</emphasis> element.  In the header, there should
+be a reference to the <filename>general.ent</filename> file which includes
+entities that are used in multiple applications.  This includes the version
+numbers of all applications, including the current one.  Note that the reference to 
+<filename>general.ent</filename> includes the relative address of the file.  
+This will be at the root of the BLFS book's source tree and is
+normally two levels up from the application files.</para>
+
+<para>Included in the header are the six entities that you see below.  These are
+custom entities for each application and are included with each application even if
+the entity is only used once.  This is done for consistency between applications.</para>
+
+<para>If an HTTP or FTP location is not available, leave the
+entity in place with an one-space string for the missing location.</para>
+
+<para>Units provided should be kilobytes (1024 bytes) or megabytes (1024 kilobytes). 
+Entries less than a 1000 kilobytes should be specified as whole numbers (e.g. 320 KB);
+larger sizes should be accurate to one decimal (e.g. 6.9 MB). 
+SBU entries should be rounded to one decimal.  If the value is less than 
+0.1 SBU, it should be listed as "less than 0.1 SBU."  Very long build
+times (greatehr than 20 SBUs) and be listed as integer values.</para>
+
+<para>File sizes should be measured with the <command>ls -h filename</command>
+command. Build sizes should be measured with a <command>df -k /</command>
+command before the package is unpacked and after the package is installed. Note
+that this assumes that the package is built and installed on the root
+filesystem. Adjust the procedure as necessary for your setup. The difference
+between these measurements is the build size.  Build times should be measured
+with the procedure documented at <ulink
+url='http://www.linuxfromscratch.org/~bdubbs/about.html'/>.</para>
+
+<screen>&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  &lt;!ENTITY % general-entities SYSTEM "../../general.ent"&gt;
+  %general-entities;
+
+&lt;!ENTITY fam-download-http "http://gd.tuwien.ac.at/opsys/linux/gentoo/distfiles/fam-&amp;fam-version;.tar.gz"&gt;
+&lt;!ENTITY fam-download-ftp "ftp://oss.sgi.com/projects/fam/download/stable/fam-&amp;fam-version;.tar.gz"&gt;
+&lt;!ENTITY fam-md5sum "1bf3ae6c0c58d3201afc97c6a4834e39"&gt;
+&lt;!ENTITY fam-size "301 KB"&gt;
+&lt;!ENTITY fam-buildsize "7.7 MB"&gt;
+&lt;!ENTITY fam-time "0.3 SBU"&gt;
+]&gt; </screen>
+
+<para>The application is delimited by &lt;sect1&gt; tags.  The <parameter>id</parameter>
+attribute should be unique in the BLFS book and similar to the application name.
+The <parameter>xreflabel</parameter> is the name that will show up in the table of
+contents.</para>
+
+<para>The  &lt;sect1info&gt; structure is for Subversion to automatically tag the
+date and editor of the most recent change to the file.  It is also used to list
+this information as a footnote at the bottom of each page.</para>
+
+<para>The &lt;?dbhtml filename="fam.html"?&gt; line is an XSL processing instruction
+that tells the render engine where to place the output of the current page.</para>
+
+<para>The required &lt;title&gt; section specifies the actual name of the section
+at the top of the application's page.  This should normally be the same as the 
+<parameter>xreflabel</parameter>. All titles should be in Title Case.</para>
+
+<para>The &lt;indexterm&gt; tag is used for indexing the package. The zone attribute
+must match the sect1 id attribute value. The sortas attribute in the &lt;primary&gt; tag
+must start by "a-" followed by the application name in uppercase. The string enclosed by
+&lt;primary&gt; tags must be in the same case as the package name.</para>
+
+<para>Note the use of entities in the XML.  This allows the package version to be updated
+as entities without having to change the code.</para>
+
+<para>Finally, note the use of whitespace. This is somewhat flexible, but should be
+used to make the XML source easily readable for maintainability purposes.  Although
+it is not always possible, try to keep the line lengths to 90 characters or less.</para>
+
+<screen>&lt;sect1 id="fam" xreflabel="FAM-&amp;fam-version;"&gt;
+&lt;?dbhtml filename="fam.html"?&gt;
+
+  &lt;sect1info&gt;
+    &lt;othername&gt;$LastChangedBy$&lt;/othername&gt;
+    &lt;date&gt;$Date$&lt;/date&gt;
+  &lt;/sect1info&gt;
+
+  &lt;title&gt;FAM-&amp;fam-version;&lt;/title&gt;
+
+  &lt;indexterm zone="fam"&gt;
+    &lt;primary sortas="a-FAM"&gt;FAM&lt;/primary&gt;
+  &lt;/indexterm&gt;</screen>
+
+<para>The content of the application is normally divided into five areas:
+"Introduction", "Installation", "Command Explanations", "Configuration", and
+"Contents".  In some cases, the "Command Explanations" and/or "Configuration"
+sections are not required.</para>
+
+<sect1>
+<title>Introduction Section</title>
+
+<para>The Introduction Section starts with a description of the application.
+This description is generally short, but for less well known applications,
+multiple paragraphs summarizing the application's purpose are
+appropriate.</para>
+
+<screen>  &lt;sect2 role="package"&gt;
+    &lt;title&gt;Introduction to FAM&lt;/title&gt;
+
+    &lt;para&gt;The &lt;application&gt;FAM&lt;/application&gt; package 
+    contains a File Alteration Monitor which is useful for notifying applications of
+    changes to the file system.&lt;/para&gt;</screen>
+
+<para>After the description, package locations and statistics are presented.  
+Here the entities defined in the header should be used.</para>
+
+<screen>    &lt;bridgehead renderas="sect3"&gt;Package Information&lt;/bridgehead&gt;
+    &lt;itemizedlist spacing='compact'&gt;
+    &lt;listitem&gt;
+      &lt;para&gt;Download (HTTP): &lt;ulink url="&amp;fam-download-http;"/&gt;&lt;/para&gt;
+    &lt;/listitem&gt;
+    &lt;listitem&gt;
+      &lt;para&gt;Download (FTP): &lt;ulink url="&amp;fam-download-ftp;"/&gt;&lt;/para&gt;
+    &lt;/listitem&gt;
+    &lt;listitem&gt;
+      &lt;para&gt;Download MD5 sum: &amp;fam-md5sum;&lt;/para&gt;
+    &lt;/listitem&gt;
+    &lt;listitem&gt;
+      &lt;para&gt;Download size: &amp;fam-size;&lt;/para&gt;
+    &lt;/listitem&gt;
+    &lt;listitem&gt;
+      &lt;para&gt;Estimated disk space required: &amp;fam-buildsize;&lt;/para&gt;
+    &lt;/listitem&gt;
+    &lt;listitem&gt;
+      &lt;para&gt;Estimated build time: &amp;fam-time;&lt;/para&gt;
+    &lt;/listitem&gt;
+  &lt;/itemizedlist&gt;</screen>
+
+<para>Following the statistics, come any additional downloads needed.  These 
+files are generally patches.  If no patches are required, this section should 
+be omitted.</para>
+
+<screen>  &lt;bridgehead renderas="sect3"&gt;Additional Downloads&lt;/bridgehead&gt;
+  &lt;itemizedlist spacing='compact'&gt;
+    &lt;listitem&gt;
+      &lt;para&gt;Dnotify patch (Recommended): &lt;ulink url="&amp;patch-root;/fam-&amp;fam-version;-dnotify-1.patch"/&gt;&lt;/para&gt;
+    &lt;/listitem&gt;
+  &lt;/itemizedlist&gt;</screen>
+
+<para>Next comes dependencies.  This is one of the most important parts of each
+application.  Dependencies should be listed as <emphasis>Required</emphasis> or
+<emphasis>Optional</emphasis>.  In many cases both are needed, and in some cases
+can be added <emphasis>Recomended</emphasis> dependencies.  Required
+dependencies are those packages that are needed to build or run the
+application.  Since the book assumes that the packages are being built from an
+LFS system, no LFS packages should be listed.  If a package and a required
+dependency has, in turn, a required dependency in common, the second level
+dependency should <emphasis>not</emphasis> be listed.  However, if a required
+dependency and the application share an optional dependency, that optional
+dependency should be listed.</para>
+
+<para>If a package will take advantage of another package <emphasis>after</emphasis>
+it is built, it should  <emphasis>not</emphasis> be listed as a dependency,
+however a note may be appropriate. Use the Required, Recommended, and Optional 
+sections as appropriate for the package.</para>
+
+<screen>   &lt;bridgehead renderas="sect3"&gt;FAM dependencies&lt;/bridgehead&gt;
+  &lt;bridgehead renderas="sect4"&gt;Required&lt;/bridgehead&gt;
+  &lt;para&gt;&lt;xref linkend="portmap"/&gt;&lt;/para&gt;
+
+  &lt;bridgehead renderas="sect4"&gt;Recommended&lt;/bridgehead&gt;
+  &lt;para&gt;&lt;xref linkend="some-IDREF"/&gt;&lt;/para&gt;
+
+  &lt;bridgehead renderas="sect4"&gt;Optional&lt;/bridgehead&gt;
+  &lt;para&gt;&lt;xref linkend="some-IDREF"/&gt;&lt;/para&gt;
+
+  &lt;/sect2&gt;</screen>
+</sect1>
+
+<sect1>
+<title>Installation Section</title>
+
+<para>The Installation Section provides the literal instructions needed to
+build the application.  The instructions should be inside a
+&lt;screen&gt;&lt;userinput&gt; construct and each instruction
+(except the last) should terminate with a double ampersand (&amp;&amp;) to
+facilitate cut and paste capabilities for the user. Note that the
+&lt;screen&gt;&lt;userinput&gt; tags need to be on the same line
+as the first and last instruction for the book and need to have no
+leading spaces to render properly.</para>
+
+<screen>  &lt;sect2 role="installation"&gt;
+    &lt;title&gt;Installation of FAM&lt;/title&gt;
+
+    &lt;para&gt;Install &lt;application&gt;FAM&lt;/application&gt; by running the
+    following commands:&lt;/para&gt;
+
+&lt;screen&gt;&lt;userinput&gt;patch -Np1 -i ../fam-&amp;fam-version;-dnotify-1.patch &amp;amp;&amp;amp;
+chmod 755 configure &amp;amp;&amp;amp;
+autoreconf -f -i &amp;amp;&amp;amp;
+./configure --prefix=/usr --sysconfdir=/etc &amp;amp;&amp;amp;
+make&lt;/userinput&gt;&lt;/screen&gt;
+
+    &lt;para&gt;Now, as the &lt;systemitem class="username"&gt;root&lt;/systemitem&gt; user:&lt;/para&gt;
+
+&lt;screen role="root"&gt;&lt;userinput&gt;make install&lt;/userinput&gt;&lt;/screen&gt;
+
+  &lt;/sect2&gt;</screen>
+</sect1>
+
+<sect1>
+<title>Explanation Section</title>
+
+<para>The Explanation Section elaborates on unusual commands and switches.  If
+the instructions are common commands such as <userinput>configure &amp;&amp;
+make &amp;&amp; make install</userinput>, this section can be omitted.  On the
+other hand, this section is the perfect place to explain why a command or
+switch is necessary.  If the Installation Section does not include a particular
+optional comnand or switch, an entry can be made here giving the user
+information about the alternative or supplemental option.  Since many packages
+have a large number of options, this explanation is normally reserved for
+optional instructions the editor feels are particularly important. For
+rendering purposes, switches actually used in the Installation Section must use
+&lt;parameter&gt; tags. For optional switches, &lt;option&gt; tags
+must be used.</para>
+
+<screen>  &lt;sect2 role="commands"&gt;
+    &lt;title&gt;Command Explanations&lt;/title&gt;
+
+    &lt;para&gt;&lt;parameter&gt;--sysconfdir=/etc&lt;/parameter&gt;: This setting is used to
+    set the configuration file location properly.&lt;/para&gt;
+
+    &lt;para&gt;&lt;command&gt;patch -Np1 -i ../fam-&amp;fam-version;-dnotify-1.patch&lt;/command&gt;: 
+    This patch enables &lt;application&gt;FAM&lt;/application&gt; to use 
+    the Linux kernel dnotify mechanism to inform the calling process of
+    file modifications, rather than polling the file system for
+    modifications.&lt;/para&gt;
+
+    &lt;para&gt;&lt;command&gt;chmod 755 configure&lt;/command&gt;: &lt;command&gt;configure&lt;/command&gt; is 
+    set to read-only and &lt;command&gt;autoreconf&lt;/command&gt; will fail if the 
+    permissions aren't changed.&lt;/para&gt;
+
+    &lt;para&gt;&lt;command&gt;autoreconf -f -i&lt;/command&gt;: The autotools need rebuilding 
+    because the dnotify patch affects &lt;filename&gt;configure.ac&lt;/filename&gt; and 
+    &lt;filename&gt;Makefile.am&lt;/filename&gt;.&lt;/para&gt;
+
+  &lt;/sect2&gt;</screen>
+</sect1>
+
+<sect1>
+<title>Configuration Section</title>
+
+<para>This section describes any actions the user needs to take to configure the
+application.  If no confiuration is required, then it can be omitted. Note
+that in some cases lines in &lt;screen&gt; sections can be very long.  Sometimes
+this cannot be avoided.</para>
+
+<screen>  &lt;sect2 role="configuration"&gt;
+    &lt;title&gt;Configuring FAM&lt;/title&gt;
+
+    &lt;sect3 id="fam-config"&gt;
+      &lt;title&gt;Config Files&lt;/title&gt;
+
+      &lt;para&gt;&lt;filename&gt;/etc/rpc&lt;/filename&gt;,
+        &lt;filename&gt;/etc/fam.conf&lt;/filename&gt;,
+        &lt;filename&gt;/etc/inetd.conf&lt;/filename&gt;, and
+        &lt;filename&gt;/etc/xinetd.d/fam&lt;/filename&gt; or
+        &lt;filename&gt;/etc/xinetd.conf&lt;/filename&gt;
+      &lt;/para&gt;
+
+      &lt;indexterm zone="fam fam-config">
+        &lt;primary sortas="e-etc-rpc"&gt;/etc/rpc&lt;/primary&gt;
+      &lt;/indexterm&gt;
+      &lt;indexterm zone="fam fam-config"&gt;
+        &lt;primary sortas="e-etc-fam.conf"&gt;/etc/fam.conf&lt;/primary&gt;
+      &lt;/indexterm&gt;
+      &lt;indexterm zone="fam fam-config"&gt;
+        &lt;primary sortas="e-etc-inetd.conf"&gt;/etc/inetd.conf&lt;/primary&gt;
+      &lt;/indexterm&gt;
+      &lt;indexterm zone="fam fam-config"&gt;
+        &lt;primary sortas="e-etc-xinetd.conf"&gt;/etc/xinetd.conf&lt;/primary&gt;
+      &lt;/indexterm&gt;
+      &lt;indexterm zone="fam fam-config"&gt;
+        &lt;primary sortas="e-etc-xinetd.d-sgi_fam"&gt;/etc/xinetd.d/sgi_fam&lt;/primary&gt;
+      &lt;/indexterm&gt;
+    &lt;/sect3&gt;
+
+    &lt;sect3&gt;
+      &lt;title&gt;Configuration Information&lt;/title&gt;
+
+      &lt;para&gt;Configuring the file alteration monitor.&lt;/para&gt;
+
+      &lt;para&gt;If you use &lt;application&gt;inetd&lt;/application&gt;, add the &lt;application&gt;FAM&lt;/application&gt; 
+      entry to &lt;filename&gt;/etc/inetd.conf&lt;/filename&gt; with the following command:&lt;/para&gt;
+
+&lt;screen role="root"&gt;&lt;userinput&gt;echo "sgi_fam/1-2 stream  rpc/tcp wait root /usr/sbin famd fam" \
+    &amp;gt;&amp;gt; /etc/inetd.conf&lt;/userinput&gt;&lt;/screen&gt;
+
+      &lt;para&gt;If you use &lt;application&gt;xinetd&lt;/application&gt;, add an entry to
+      &lt;filename&gt;/etc/xinetd.conf&lt;/filename&gt; with the following command (be
+      sure the "nogroup" group exists):&lt;/para&gt;
+
+&lt;screen role="root"&gt;&lt;userinput&gt;cat &amp;gt;&amp;gt; /etc/xinetd.conf &amp;lt;&amp;lt; "EOF"
+&lt;literal&gt;# description: FAM - file alteration monitor
+    service sgi_fam
+    {
+        type            = RPC UNLISTED
+        socket_type     = stream
+        user            = root
+        group           = nogroup
+        server          = /usr/sbin/famd
+        wait            = yes
+        protocol        = tcp
+        rpc_version     = 2
+        rpc_number      = 391002
+    }&lt;/literal&gt;
+EOF&lt;/userinput&gt;&lt;/screen&gt;
+    &lt;/sect3&gt;
+
+    &lt;sect3 id="fam-boot"&gt;
+      &lt;title&gt;Boot Scripts&lt;/title&gt;
+
+      &lt;para&gt;If you do not have an &lt;command&gt;inetd&lt;/command&gt; daemon installed and have 
+      no wish to install one, you can also start &lt;command&gt;famd&lt;/command&gt; during 
+      system startup by installing the &lt;filename&gt;/etc/rc.d/init.d/fam&lt;/filename&gt;
+      init script included in the
+      &lt;xref linkend="intro-important-bootscripts"/&gt; package.&lt;/para&gt;
+
+&lt;screen role="root"&gt;&lt;userinput&gt;make install-fam&lt;/userinput&gt;&lt;/screen&gt;
+
+      &lt;indexterm zone="fam fam-boot"&gt;
+        &lt;primary sortas="f-fam"&gt;fam&lt;/primary&gt;
+      &lt;/indexterm&gt;
+
+    &lt;/sect3&gt;
+  &lt;/sect2&gt;</screen>
+</sect1>
+
+<sect1>
+<title>Contents Section</title>
+
+<para>The final section describes the contents of the application.</para>
+
+<screen>  &lt;sect2&gt;
+    &lt;title&gt;Contents&lt;/title&gt;
+    &lt;segmentedlist&gt;
+      &lt;segtitle&gt;Installed Program&lt;/segtitle&gt;
+      &lt;segtitle&gt;Installed Library&lt;/segtitle&gt;
+      &lt;segtitle&gt;Installed Directories&lt;/segtitle&gt;
+
+      &lt;seglistitem&gt;
+        &lt;seg&gt;famd&lt;/seg&gt;
+        &lt;seg&gt;libfam.[so,a]&lt;/seg&gt;
+        &lt;seg&gt;None&lt;/seg&gt;
+      &lt;/seglistitem&gt;
+    &lt;/segmentedlist&gt;
+
+    &lt;variablelist&gt;
+      &lt;bridgehead renderas="sect3"&gt;Short Descriptions&lt;/bridgehead&gt;
+      &lt;?dbfo list-presentation="list"?&gt;
+      &lt;?dbhtml list-presentation="table"?&gt;
+
+    &lt;varlistentry id="famd"&gt;
+      &lt;term&gt;&lt;command&gt;famd&lt;/command&gt;&lt;/term&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;is the file alteration monitor daemon.&lt;/para&gt;
+        &lt;indexterm zone="fam famd"&gt;
+          &lt;primary sortas="b-famd"&gt;famd&lt;/primary&gt;
+        &lt;/indexterm&gt;
+      &lt;/listitem&gt;
+    &lt;/varlistentry&gt;
+
+    &lt;varlistentry id="libfam"&gt;
+      &lt;term&gt;&lt;filename class='libraryfile'&gt;libfam.[so,a]&lt;/filename&gt;&lt;/term&gt;
+      &lt;listitem&gt;
+        &lt;para&gt;contains functions that support the file allocation monitor.&lt;/para&gt;
+        &lt;indexterm zone="fam libfam"&gt;
+          &lt;primary sortas="c-libfam"&gt;libfam.[so,a]&lt;/primary&gt;
+        &lt;/indexterm&gt;
+        &lt;/listitem&gt;
+      &lt;/varlistentry&gt;
+    &lt;/variablelist&gt;
+
+  &lt;/sect2&gt;
+&lt;/sect1&gt;</screen>
+</sect1>
+
+<sect1>
+<title>About Tagging</title>
+
+<para>As you can see above, there are serveral places where indexing tags are
+placed into the page.  The tagging has the following format:</para>
+
+<screen>&lt;indexterm zone="id-start id-end"&gt;
+  &lt;primary sortas="X-sortterm"&gt;indexed-item&lt;/primary&gt;
+&lt;/indexterm&gt;</screen>
+
+<para>The zone attribute has two values.  The first will always be to the 
+IDREF in the first &lt;sect1&gt; of the page.  The first a- entry for packages
+will only have one IDREF.  The other entries will have two IDREFS.  The first
+will still be the page IDREF and the second will be an IDREF for the tag
+defining the start of the discussion of the item.   The index will have
+two links for these references: one to the package and one to the
+specific section discussing the item.</para>
+
+
+<para>The 'X' value in the sortas attribute has a specific meaning for the BLFS
+XSL stylesheets.  It refers to the section of the index where the entry will
+be placed.  The values are:</para>
+
+<table id="indexing">
+<title>Index Sections</title>
+<tgroup cols='2' colsep='0' rowsep='0'>
+<thead>
+<row><entry>Label</entry><entry>Rendered in</entry></row>
+</thead>
+<tbody>
+<row><entry>a</entry><entry>Packages</entry></row>
+<row><entry>b</entry><entry>Programs</entry></row>
+<row><entry>c</entry><entry>Libraries</entry></row>
+<row><entry>d</entry><entry>Kernel Configuration</entry></row>
+<row><entry>e</entry><entry>Configuration Files</entry></row>
+<row><entry>f</entry><entry>Bootscripts</entry></row>
+<row><entry>g</entry><entry>Others</entry></row>
+</tbody>
+</tgroup>
+</table>
+
+<para>The value after the dash in the sortas attribute is how the index item will
+be sorted within its section.  It is <emphasis>not</emphasis> case sensitive.</para>
+
+</sect1>
+</chapter>
+

@@ -1,0 +1,25 @@
+Submitted By: David Jensen (djensen at linuxfromscratch dot org)
+Date: 2005-06-08
+Initial Package Version: 4.5.0
+Origin: David Jensen, copied the change from xorg
+Description: Fixes PAGE_MASK error with userspace kernel headers
+
+$LastChangedBy$
+$Date$
+
+--- xc.orig/programs/Xserver/hw/xfree86/fbdevhw/fbdevhw.c	2003-10-30 11:37:16.000000000 -0600
++++ xc/programs/Xserver/hw/xfree86/fbdevhw/fbdevhw.c	2005-06-08 17:04:12.000000000 -0500
+@@ -14,7 +14,12 @@
+ #include "fbdevhw.h"
+ #include "fbpriv.h"
+ 
+-#include "asm/page.h"	/* #define for PAGE_* */
++#if 0
++/* kernel header doesn't work with -ansi */
++# include "asm/page.h"	/* #define for PAGE_* */
++#else
++# define PAGE_MASK               (~(getpagesize() - 1))
++#endif
+ 
+ #include "globals.h"
+ #define DPMS_SERVER

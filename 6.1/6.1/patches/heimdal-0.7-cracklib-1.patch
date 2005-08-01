@@ -1,0 +1,86 @@
+Patch Name:              heimdal-0.7-cracklib-1.patch
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2005-07-25
+Initial Package Version: 0.7 (this patch adapted from an 0.6.1 version patch)
+Upstream Status:         Pending submission
+Origin:                  Randy McMurchy, DJ Lucas and Heimdal sample source code
+Description:             Enables kpasswd and kadmin to use the cracklib library.
+                         CrackLib must be installed using BLFS instructions. See:
+                         http://www.linuxfromscratch.org/blfs/view/svn/postlfs/cracklib.html
+
+$LastChangedBy$
+$Date$
+
+
+diff -Naur heimdal-0.7-orig/lib/kadm5/Makefile.in heimdal-0.7/lib/kadm5/Makefile.in
+--- heimdal-0.7-orig/lib/kadm5/Makefile.in	2005-06-16 16:33:31.000000000 +0000
++++ heimdal-0.7/lib/kadm5/Makefile.in	2005-07-23 23:48:23.000000000 +0000
+@@ -296,7 +296,7 @@
+ LEXLIB = @LEXLIB@
+ LEX_OUTPUT_ROOT = @LEX_OUTPUT_ROOT@
+ LIBOBJS = @LIBOBJS@
+-LIBS = @LIBS@
++LIBS = @LIBS@ -lcrack_heimdal
+ LIBTOOL = @LIBTOOL@
+ LIB_AUTH_SUBDIRS = @LIB_AUTH_SUBDIRS@
+ LIB_NDBM = @LIB_NDBM@
+
+diff -Naur heimdal-0.7-orig/lib/kadm5/password_quality.c heimdal-0.7/lib/kadm5/password_quality.c
+--- heimdal-0.7-orig/lib/kadm5/password_quality.c	2005-06-16 16:28:07.000000000 +0000
++++ heimdal-0.7/lib/kadm5/password_quality.c	2005-07-25 00:31:27.000000000 +0000
+@@ -33,6 +33,7 @@
+ 
+ #include "kadm5_locl.h"
+ #include "kadm5-pwcheck.h"
++#include <crack_heimdal.h>
+ 
+ RCSID("$Id: password_quality.c,v 1.11 2005/05/09 19:17:34 lha Exp $");
+ 
+@@ -63,7 +64,39 @@
+ 	return 0;
+ }
+ 
++/* The following function was inserted to utilize the CrackLib library to 
++   ensure strong passwords.  The cracklib library must be patched before 
++   this function will work. For more information, see:
++   http://www.linuxfromscratch.org/blfs/view/svn/postlfs/cracklib.html
++*/
++
++#if defined(CRACKLIB_HEIMDAL_H) && defined(CRACKLIB_DICTPATH)
++
+ static const char *
++
++min_length_passwd_quality_v0 (krb5_context context,
++                              krb5_principal principal,
++                              krb5_data *password)
++{
++    char *s = malloc(password->length + 1);
++    char *msg;
++    char *strings[2];
++    if(s == NULL)
++        return NULL; /* XXX */
++    strings[0] = principal->name.name_string.val[0]; /* XXX */
++    strings[1] = NULL;
++    memcpy(s, password->data, password->length);
++    s[password->length] = '\0';
++    msg = FascistCheck(s, CRACKLIB_DICTPATH, strings);
++    memset(s, 0, password->length);
++    free(s);
++    return msg;
++}
++
++#else /* Not using CrackLib */
++
++static const char *
++
+ min_length_passwd_quality_v0 (krb5_context context,
+ 			      krb5_principal principal,
+ 			      krb5_data *pwd)
+@@ -80,6 +113,7 @@
+     return NULL;
+ }
+ 
++#endif /* CRACKLIB_HEIMDAL_H && CRACKLIB_DICTPATH */
+ 
+ static int
+ char_class_passwd_quality (krb5_context context,

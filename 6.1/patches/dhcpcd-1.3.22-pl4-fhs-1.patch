@@ -1,0 +1,174 @@
+Submitted By: BLFS Book <blfs-book@linuxfromscratch.org>
+Date: 2003-10-04
+Initial Package Version: 1.3.22-pl4
+Origin: BLFS Book
+Description: Dhcpcd unpatched puts all configuration and temporary files in
+/etc/dhcpc. This becomes very annoying when dhcpcd tells you it's running
+and it's not. You look in /var/run for the PID file, but it's not there,
+the PID file that needs deleting is in /etc/dhcpc. This patch brings this
+program into FHS compliance, but more importantly, puts
+files where you expect them to be.
+
+$LastChangedBy$
+$Date$
+
+diff -Naur dhcpcd-1.3.22-pl4/cache.c dhcpcd-1.3.22-pl4-patched/cache.c
+--- dhcpcd-1.3.22-pl4/cache.c	2002-12-31 03:31:08.000000000 +0100
++++ dhcpcd-1.3.22-pl4-patched/cache.c	2003-01-19 15:33:57.000000000 +0100
+@@ -41,7 +41,7 @@
+ int readDhcpCache()
+ {
+   int i,o;
+-  snprintf(cache_file,sizeof(cache_file),DHCP_CACHE_FILE,ConfigDir,IfNameExt);
++  snprintf(cache_file,sizeof(cache_file),DHCP_CACHE_FILE,CACHE_DIR,IfNameExt);
+   i=open(cache_file,O_RDONLY);
+   if ( i == -1 ) return -1;
+   o=read(i,(char *)&DhcpIface,sizeof(dhcpInterface));
+@@ -54,6 +54,6 @@
+ /*****************************************************************************/
+ void deleteDhcpCache()
+ {
+-  snprintf(cache_file,sizeof(cache_file),DHCP_CACHE_FILE,ConfigDir,IfNameExt);
++  snprintf(cache_file,sizeof(cache_file),DHCP_CACHE_FILE,CACHE_DIR,IfNameExt);
+   unlink(cache_file);
+ }
+diff -Naur dhcpcd-1.3.22-pl4/dhcpcd.8 dhcpcd-1.3.22-pl4-patched/dhcpcd.8
+--- dhcpcd-1.3.22-pl4/dhcpcd.8	2003-01-01 02:31:31.000000000 +0100
++++ dhcpcd-1.3.22-pl4-patched/dhcpcd.8	2003-01-19 15:25:03.000000000 +0100
+@@ -137,7 +137,7 @@
+ will use
+ .I <ConfigDir>
+ directory instead of default
+-.I /etc/dhcpc
++.I /var/lib/dhcpc
+ to store configuration information.
+ .TP
+ .BI \-S
+@@ -177,7 +177,7 @@
+ write the
+ .I <ConfigDir>/dhcpcd-<interface>.info
+ and
+-.I <ConfigDir>/dhcpcd-<interface>.cache
++.I /var/cache/dhcpcd-<interface>.cache
+ files and it does attempt to execute
+ .I <ConfigDir>/dhcpcd.exe
+ script. The pathname of
+@@ -258,7 +258,7 @@
+ to the interface
+ .B dhcpcd
+ will use previously obtained IP address stored in
+-.I <ConfigDir>/dhcpcd-<interface>.cache
++.I /var/cache/dhcpcd-<interface>.cache
+ file. 
+ .TP
+ .BI \-G \ [gateway]
+@@ -281,7 +281,7 @@
+ .SH FILES
+ .PD 0
+ .TP
+-.BI /etc/dhcpc
++.BI /var/lib/dhcpc
+ Default 
+ .I <ConfigDir>
+ directory used for storing files
+@@ -332,7 +332,7 @@
+ .I -d
+ debug flag.
+ .TP
+-.BI <ConfigDir>/dhcpcd-<interface>.cache
++.BI /var/cache/dhcpcd-<interface>.cache
+ Cache file containing the previously assigned IP address and
+ some other things.
+ The word
+@@ -379,7 +379,7 @@
+ .B dhcpcd
+ exits for any reason.
+ .TP
+-.BI <ConfigDir>/dhcpcd-<interface>.pid
++.BI /var/run/dhcpcd-<interface>.pid
+ file containing the process id of
+ .B dhcpcd.
+ The word
+diff -Naur dhcpcd-1.3.22-pl4/dhcpcd.c dhcpcd-1.3.22-pl4-patched/dhcpcd.c
+--- dhcpcd-1.3.22-pl4/dhcpcd.c	2003-01-01 02:26:32.000000000 +0100
++++ dhcpcd-1.3.22-pl4-patched/dhcpcd.c	2003-01-19 15:46:13.000000000 +0100
+@@ -88,7 +88,7 @@
+ {
+   int o;
+   char pidfile[64];
+-  snprintf(pidfile,sizeof(pidfile),PID_FILE_PATH,ConfigDir,IfNameExt);
++  snprintf(pidfile,sizeof(pidfile),PID_FILE_PATH,PID_DIR,IfNameExt);
+   o=open(pidfile,O_RDONLY);
+   if ( o == -1 ) return;
+   close(o);
+diff -Naur dhcpcd-1.3.22-pl4/dhcpconfig.c dhcpcd-1.3.22-pl4-patched/dhcpconfig.c
+--- dhcpcd-1.3.22-pl4/dhcpconfig.c	2002-12-29 23:05:44.000000000 +0100
++++ dhcpcd-1.3.22-pl4-patched/dhcpconfig.c	2003-01-19 15:43:39.000000000 +0100
+@@ -556,7 +556,7 @@
+ tsc:
+   memset(DhcpIface.version,0,sizeof(DhcpIface.version));
+   strncpy(DhcpIface.version,VERSION,sizeof(DhcpIface.version));
+-  snprintf(hostinfo_file_old,sizeof(hostinfo_file_old),DHCP_CACHE_FILE,ConfigDir,IfNameExt);
++  snprintf(hostinfo_file_old,sizeof(hostinfo_file_old),DHCP_CACHE_FILE,CACHE_DIR,IfNameExt);
+   i=open(hostinfo_file_old,O_WRONLY|O_CREAT|O_TRUNC,S_IRUSR+S_IWUSR);
+   if ( i == -1 ||
+       write(i,(char *)&DhcpIface,sizeof(dhcpInterface)) == -1 ||
+diff -Naur dhcpcd-1.3.22-pl4/pathnames.h dhcpcd-1.3.22-pl4-patched/pathnames.h
+--- dhcpcd-1.3.22-pl4/pathnames.h	2002-09-29 17:55:31.000000000 +0200
++++ dhcpcd-1.3.22-pl4-patched/pathnames.h	2003-01-19 15:25:03.000000000 +0100
+@@ -26,6 +26,8 @@
+ #include <paths.h>
+ #include "dhcpcd.h"
+ 
++#define PID_DIR			"/var/run"
++#define CACHE_DIR		"/var/cache"
+ #define PID_FILE_PATH		"%s/"PROGRAM_NAME"-%s.pid"
+ #define DHCP_CACHE_FILE		"%s/"PROGRAM_NAME"-%s.cache"
+ #define DHCP_HOSTINFO		"%s/"PROGRAM_NAME"-%s.info"
+@@ -37,7 +39,7 @@
+ #define NIS_CONF		"/etc/config/yp.conf"
+ #define NTP_CONF		"/etc/config/ntp.conf"
+ #else
+-#define CONFIG_DIR		"/etc/dhcpc"
++#define CONFIG_DIR		"/var/lib/dhcpc"
+ #define RESOLV_CONF		"/etc/resolv.conf"
+ #define NIS_CONF		"/etc/yp.conf"
+ #define NTP_CONF		"/etc/ntp.conf"
+diff -Naur dhcpcd-1.3.22-pl4/signals.c dhcpcd-1.3.22-pl4-patched/signals.c
+--- dhcpcd-1.3.22-pl4/signals.c	2002-01-20 23:51:46.000000000 +0100
++++ dhcpcd-1.3.22-pl4-patched/signals.c	2003-01-19 15:49:33.000000000 +0100
+@@ -33,7 +33,6 @@
+ 
+ extern char		*ProgramName;
+ extern char		*IfNameExt;
+-extern char		*ConfigDir;
+ extern int		DebugFlag;
+ extern jmp_buf		env;
+ extern void		*(*currState)();
+@@ -44,7 +43,7 @@
+   FILE *fp;
+   pid_t pid;
+   char pidfile[64];
+-  snprintf(pidfile,sizeof(pidfile),PID_FILE_PATH,ConfigDir,IfNameExt);
++  snprintf(pidfile,sizeof(pidfile),PID_FILE_PATH,PID_DIR,IfNameExt);
+   fp=fopen(pidfile,"r");
+   if ( fp == NULL ) goto ntrn;
+   fscanf(fp,"%u",&pid);
+@@ -63,7 +62,7 @@
+ {
+   FILE *fp;
+   char pidfile[64];
+-  snprintf(pidfile,sizeof(pidfile),PID_FILE_PATH,ConfigDir,IfNameExt);
++  snprintf(pidfile,sizeof(pidfile),PID_FILE_PATH,PID_DIR,IfNameExt);
+   fp=fopen(pidfile,"w");
+   if ( fp == NULL )
+     {
+@@ -77,7 +76,7 @@
+ void deletePidFile()
+ {
+   char pidfile[64];
+-  snprintf(pidfile,sizeof(pidfile),PID_FILE_PATH,ConfigDir,IfNameExt);
++  snprintf(pidfile,sizeof(pidfile),PID_FILE_PATH,PID_DIR,IfNameExt);
+   unlink(pidfile);
+ }
+ /*****************************************************************************/
