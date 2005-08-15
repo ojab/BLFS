@@ -1,0 +1,66 @@
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2005-08-15
+Initial Package Version: 1.1.23
+Upstream Status:         Not submitted
+Origin:                  Randy McMurchy
+Description:             Fix the Valgrind command, disable using the 'htmldoc'
+                         tool and clean up the output in the test suite script
+
+
+$LastChangedBy$
+$Date$
+
+
+--- cups-1.1.23-orig/test/run-stp-tests.sh	2005-01-03 19:30:00.000000000 +0000
++++ cups-1.1.23/test/run-stp-tests.sh	2005-08-15 04:21:24.000000000 +0000
+@@ -116,11 +116,12 @@
+ 
+ case "$usevalgrind" in
+ 	Y* | y*)
+-		valgrind="valgrind --tool=memcheck --logfile=/tmp/$user/log/valgrind --error-limit=no --leak-check=yes --trace-children=yes"
++		valgrind="valgrind --tool=memcheck --log-file=/tmp/$user/log/valgrind --error-limit=no --leak-check=yes --trace-children=yes"
+ 		echo "Using Valgrind; log files can be found in /tmp/$user/log..."
+ 		;;
+ 
+ 	*)
++		echo "Not using Valgrind"
+ 		valgrind=""
+ 		;;
+ esac
+@@ -428,7 +429,9 @@
+ 
+ echo "<H2>page_log</H2>" >>$strfile
+ echo "<PRE>" >>$strfile
+-cat /tmp/$user/log/page_log >>$strfile
++if [ -f /tmp/$user/log/page_log ]; then
++    cat /tmp/$user/log/page_log >>$strfile;
++fi
+ echo "</PRE>" >>$strfile
+ 
+ #
+@@ -442,10 +445,10 @@
+ htmlfile=`basename $strfile .shtml`.html
+ pdffile=`basename $strfile .shtml`.pdf
+ 
+-htmldoc --numbered --verbose --titleimage ../doc/images/cups-large.gif \
+-	-f $htmlfile $strfile
+-htmldoc --numbered --verbose --titleimage ../doc/images/cups-large.gif \
+-	-f $pdffile $strfile
++#htmldoc --numbered --verbose --titleimage ../doc/images/cups-large.gif \
++#	-f $htmlfile $strfile
++#htmldoc --numbered --verbose --titleimage ../doc/images/cups-large.gif \
++#	-f $pdffile $strfile
+ 
+ echo ""
+ 
+@@ -462,8 +465,8 @@
+ echo ""
+ echo "See the following files for details:"
+ echo ""
+-echo "    $htmlfile"
+-echo "    $pdffile"
++echo "    ./test/$strfile"
++#echo "    $pdffile"
+ echo ""
+ 
+ #
