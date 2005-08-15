@@ -62,6 +62,10 @@ install-bind: create-dirs
 
 install-cups: create-dirs
 	install -m ${MODE} blfs/init.d/cups       ${EXTDIR}/rc.d/init.d/
+	rm -f ${EXTDIR}/rc.d/rc0.d/K00cups
+	rm -f ${EXTDIR}/rc.d/rc2.d/S99cups
+	rm -f ${EXTDIR}/rc.d/rc3.d/S99cups
+	rm -f ${EXTDIR}/rc.d/rc5.d/S99cups
 	ln -sf  ../init.d/cups ${EXTDIR}/rc.d/rc0.d/K00cups
 	ln -sf  ../init.d/cups ${EXTDIR}/rc.d/rc1.d/K00cups
 	ln -sf  ../init.d/cups ${EXTDIR}/rc.d/rc2.d/S25cups
