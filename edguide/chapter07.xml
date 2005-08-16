@@ -22,10 +22,10 @@
 
 <para>When developing instructions to build a package, the editor should
 recommend a preferred build method&mdash;one that is reliable, stable, and performs
-well.  The editor uses his best judgement to determine the appropriate switches
+well.  The editor uses his best judgment to determine the appropriate switches
 and methodology for the typical user in each section.  In some cases, the
 number of options is large and there should be a note placed in the text to
-tell the user to consult other documentaion for additional options.
+tell the user to consult other documentation for additional options.
 </para>
 </section>
 
@@ -51,7 +51,7 @@ start in an empty directory and run:</para>
 <para>When inserting a patch
 in the book, or changing an existing patch, the first choice is to point
 to the package originator's site.  If a custom patch is needed for BLFS,
-it should be placed in the apprpriate location of the patches repository.
+it should be placed in the appropriate location of the patches repository.
 A patch must always go in a directory of the same name as the base package
 without revision numbers.  For instance, all mysql patches go in the mysql
 directory of the patches repository.</para>
@@ -68,13 +68,20 @@ the book renders.</para>
 
 <section id="ch07-anduin">
 <title>BLFS Packages</title>
-<para>The BLFS project has a web/ftp site at anduin.linuxfromscratch.org. 
-This site is a repository for all the packages with build instructions
-in BLFS.  When adding or upgrading a package in the book, the new package should be
-placed in the appropriate directory there.  If necessary, repackage the
-source code as a .bz2 file before upgrading.  Old versions of the package
-should be deleted. Also create a separate
-file that contains the md5sum of the tarball:</para>
+
+<para>The BLFS project has a web/ftp site at anduin.linuxfromscratch.org.  This
+site is a repository for all the packages with build instructions in BLFS.
+When adding or upgrading a package in the book, the new package should be
+placed in the appropriate directory there, generally <filename
+class='directory'>/srv/ftp/BLFS/SVN/&lt;section&gt;</filename>; the section
+should generally be consistent with the first character of the package name, but
+there are some specialized directories for some of the larger packages. All
+files should have a group of <systemitem
+class="groupname">blfseditors</systemitem> and have 664 permissions.</para> 
+
+<para>If necessary, repackage the source code as a .bz2 file before upgrading.
+Old versions of the package should be deleted. Also create a separate file that
+contains the md5sum of the tarball:</para>
 
 <screen><command>md5sum packagename.tar.bz2 > packagename.tar.bz2.md5sum</command></screen>
 
@@ -101,12 +108,12 @@ to read.</para></listitem>
 directory (use class="directory"), a library file (use
 class="libraryfile").</para>
 
-<para>Other extentions that may be used are extention, devicefile, headerfile,
+<para>Other extensions that may be used are extension, devicefile, headerfile,
 partition and symlink.  These are not normally used, but could be used to define
 a file type.</para></listitem>
 
-<listitem><para>systemitem -- similar to filename, but for items thar aren't files.
-Examples are usernames (use class="username"), groups (use class="groupname"),
+<listitem><para>systemitem -- similar to filename, but for items that aren't files.
+Examples are user names (use class="username"), groups (use class="groupname"),
 filesystems (use class="filesystem"), etc.</para></listitem>
 
 <listitem><para>envar -- an environmental variable, can be common or
@@ -142,7 +149,7 @@ encapsulate text that will be used to create (or to be added to) a
 text file.</para></listitem>
 
 <listitem><para>emphasis role="strong" -- used to emphasize some word when 
-there is no other appropiate tag that can be used or when an assumption is made in
+there is no other appropriate tag that can be used or when an assumption is made in
 the instructions that may not always be true. For example, your network connection is
 on &lt;emphasis role=strong&gt;eth0&lt;emphasis&gt;.  Especially prior to
 giving script instructions using that assumption.</para></listitem>
@@ -155,7 +162,7 @@ provided by the book. An example of this use is when explaining
 </itemizedlist>
 
 <note><para>There are several ways to use the userinput, command, option,
-replaceable, parameter, envar, constant, varname, etc., tags.  Don't overdo it.
+replaceable, parameter, envar, constant, varname, etc., tags.  Don't over do it.
 In many cases, the tags will not change the output and will make editing the
 XML text more difficult.  Generally, a single set of tags around a block of
 text is sufficient.</para></note>

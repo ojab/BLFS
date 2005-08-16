@@ -33,7 +33,7 @@ This command is used to pull a SVN tree such as
 <filename>svn://linuxfromscratch.org/BLFS/trunk/BOOK</filename> (the BLFS book)
 from the server.  You should only need to do this once. If we change the
 directory structure (as sometimes is necessary), you <emphasis>may</emphasis>
-occasionally need to delete your local sandbox and re-check it out. If this is
+occasionally need to delete your local sand box and re-check it out. If this is
 going to be needed, it will usually be because the Editor will have made a
 <emphasis>large</emphasis> change and it'll be announced at least on the
 <filename>blfs-book</filename> list.</para>
@@ -43,7 +43,7 @@ going to be needed, it will usually be because the Editor will have made a
 <section id="ch03-add">
 <title>svn add</title>
 
-<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2552205">
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#svn-ch-9-sect-1.2-re-add">
 <userinput>svn add</userinput></ulink>.  When you are creating a new file or
 directory, you need to tell the SVN server about it.  This does that.  Note that
 the file won't appear in the repository until you do an <userinput>svn
@@ -51,20 +51,33 @@ commit</userinput> (see below).</para>
 
 </section>
 
+<section id="ch03-propset">
+<title>svn propset</title>
+
+<para><ulink
+url="http://svnbook.red-bean.com/svnbook/book.html#svn-ch-9-sect-1.2-re-propset">
+<userinput>svn propset</userinput></ulink>.  When you are creating a new file
+or directory, you generally need to tell the SVN to apply properties to the
+file in places that have keywords in a special format such as $Date$.  Note
+that the keyword value won't appear in the file until you do an <userinput>svn
+commit</userinput> (see below).</para>
+
+</section>
+
 <section id="ch03-delete">
 <title>svn delete</title>
 
-<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2553659">
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#svn-ch-9-sect-1.2-re-delete">
 <userinput>svn delete</userinput></ulink>.  This does what it says!  When you
-do an <userinput>svn commit</userinput> the file wil be deleted from your local
-sandbox immediately as well as from the repository after committing.</para>
+do an <userinput>svn commit</userinput> the file will be deleted from your local
+sand box immediately as well as from the repository after committing.</para>
 
 </section>
 
 <section id="ch03-status">
 <title>svn status</title>
 
-<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2557523">
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#svn-ch-9-sect-1.2-re-status">
 <userinput>svn status</userinput></ulink>.  This command prints the status of
 working directories and files.  If you have made local changes, it'll show your
 locally modified items.  If you use the <parameter>--verbose</parameter>
@@ -74,16 +87,16 @@ out-of-date info.</para>
 
 <para>You should always do a manual <userinput>svn status
 --show-updates</userinput> before trying to commit changes in order to check
-that everything is alright and ready to go. </para>
+that everything is OK and ready to go. </para>
 
 </section>
 
 <section id="ch03-update">
 <title>svn update/up</title>
 
-<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2558425">
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#svn-ch-9-sect-1.2-re-update">
 <userinput>svn update</userinput></ulink> or <userinput>svn
-up</userinput>.  This command syncs your local sandbox with the server.
+up</userinput>.  This command syncs your local sand box with the server.
 If you have made local changes, it'll try and merge any changes on the
 server with your changes <emphasis>on your machine</emphasis>.  
 </para>
@@ -93,7 +106,7 @@ server with your changes <emphasis>on your machine</emphasis>.
 <section id="ch03-commit">
 <title>svn commit/ci</title>
 
-<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2552968">
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#svn-ch-9-sect-1.2-re-commit">
 <userinput>svn commit</userinput></ulink> or <userinput>svn ci</userinput>.
 This command recursively sends your changes to the SVN server.  It will commit
 changed files, added files, and deleted files.  The -m option should always be
@@ -105,11 +118,11 @@ used to pass a log message to the command.  Please don't use empty log messages
 <section id="ch03-diff">
 <title>svn diff</title>
 
-<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2553839">
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#svn-ch-9-sect-1.2-re-diff">
 <userinput>svn diff</userinput></ulink>.  This is useful for two different
 purposes.  First, those without write access to the BLFS SVN server can use it
 to generate patches to send to <userinput>blfs-dev</userinput>.  To do this,
-simply edit the files in your local sandbox then run <userinput>svn diff &gt;
+simply edit the files in your local sand box then run <userinput>svn diff &gt;
 FILE.patch</userinput> from the root of your BLFS directory.  You can then
 attach this file to a message to <userinput>blfs-dev</userinput> where someone
 with editing rights will pick it up and apply it to the book.  The second use
@@ -124,10 +137,10 @@ between revisions 168 and 169 of <filename>index.xml</filename>.  </para>
 <section id="ch03-moving">
 <title>svn move</title>
 
-<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#id2556161">
+<para><ulink url="http://svnbook.red-bean.com/svnbook/book.html#svn-ch-9-sect-1.2-re-move">
 <userinput>svn move SRC DEST</userinput></ulink> or <userinput>svn mv SRC
 DEST</userinput>.  This command moves a file from one directory to another or
-renames a file.  The file will be moved on your local sandbox immediately as
+renames a file.  The file will be moved on your local sand box immediately as
 well as from the repository after committing.  </para>
 
 </section>

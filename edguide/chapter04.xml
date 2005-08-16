@@ -91,10 +91,24 @@ major releases and consolidated in the credits section.</para>
 
 <para>If you are adding files, you need to run a <userinput>svn
 add</userinput> command on each of them (something like <userinput>svn
-add mypackage*.xml</userinput> often does the trick.  A good
-trick if you've only added files (not taken any away) is to run a
-<userinput>svn status</userinput> which will give an output something like
-this:
+add mypackage*.xml</userinput> often does the trick.  In most cases you
+will also need to do:
+
+<screen>svn propset svn:keywords "LastChangedBy Date" &lt;filename&gt;</screen>
+
+This command tells svn to substitute the current timestamp and author name
+into the file where it see the construct:
+
+<screen>$LastChangedBy$
+$Date$</screen>
+
+</para>
+
+
+<para>A good method to use if you've only added files (not taken any away) is
+to run a <userinput>svn status</userinput> which will give an output something
+like this:
+
 <screen>mark:~/LFS/BLFS$ svn status --show-updates
 ?                   .chapter04.xml.swp
 ?                   goTidy
@@ -121,7 +135,7 @@ various different letters which all mean different things.</para>
 reports when svn doesn't manage a file.  Generally it means that you've
 forgotten to <userinput>svn add</userinput> a file to the repository but can
 also just be temporary editor files which  <application>svn</application>
-doesn't know what to do with.  If it's just t emporary file, don't worry, it
+doesn't know what to do with.  If it's just t temporary file, don't worry, it
 won't try and commit them when you do a <userinput>svn commit</userinput>
 because you haven't added them.  Instead it'll just leave them alone.</para>
 
@@ -152,24 +166,24 @@ and check the file for conflict markers in the file.
 in the repository has been changed.  The file will be updated when a 
 <userinput>svn update</userinput> is run.</para>
 
-<para>Once you know why you're getting each symbol, and they're all
-correct, you can proceed to the next step.  There are other symbols that
-are not normally encountered.  They are explained in more detail at
-http://svnbook.red-bean.com/svnbook/book.html#id2557523</para>
+<para>Once you know why you're getting each symbol, and they're all correct,
+you can proceed to the next step.  There are other symbols that are not
+normally encountered.  They are explained in more detail at <ulink
+url="http://svnbook.red-bean.com/svnbook/book.html#svn-ch-3-sect-4.3.1"/></para>
 
 </section>
 
 <section id="ch04-checkrender">
-<title>Check that the book renders properly</title>
+<title>Check that the book validates and renders properly</title>
 
-<para>Before commiting any changes, it's important to check that you
-have all the syntax correct and that the book can actually pass through
-<userinput>xsltproc</userinput> without making it belch.  Instructions
-on how to render the book can be found in the 
-<filename>INSTALL</filename> and <filename>README</filename> files in the BOOK
-directory, but generally you can just run <command>make</command> from the
-BOOK directory.
-</para>
+<para>Before committing any changes, it's important to check that you have all
+the syntax correct and that the book can actually pass through
+<userinput>xsltproc</userinput> without making it belch.  Instructions on how
+to render the book can be found in the <filename>INSTALL</filename> and
+<filename>README</filename> files in the BOOK directory, but generally you can
+just run <command>make validate</command> from the BOOK directory to do a
+complete syntax check and a simple <command>make</command> to render the book
+on your local system.  </para>
 
 </section>
 
@@ -179,7 +193,7 @@ BOOK directory.
 <para>Before you actually commit, spend a few seconds thinking about the
 comment you are going to add.  As mentioned in the section on <application>svn</application>
 commands, comments should <emphasis>always</emphasis> be used when
-commiting changes.  Even if the comment is just 'small typo fix', that'll
+committing changes.  Even if the comment is just 'small typo fix', that'll
 do.  Other usual comments are 'update to package-x.y.z' or 'add new
 section BLAH'.</para>
 
@@ -214,7 +228,7 @@ that what the bug is about has been fixed.  Basically, it's our QA
 process. A bug is CLOSEd when a new version of the book is released.</para>
 
 <para>Having completed all of this, you can now go and have a rest.
-Well done, thank you and goodnight.</para>
+Well done, thank you and good night.</para>
 
 </section>
 

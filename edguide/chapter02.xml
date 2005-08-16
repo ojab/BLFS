@@ -14,7 +14,7 @@
 <section id="ch02-introduction">
 <title>Introduction</title>
 
-<para>The shadowfax <application>Subversion</application>
+<para>The LFS <application>Subversion</application>
 (<acronym>SVN</acronym>) server provides services for all of the *LFS projects
 (and some others).  The tree which we are interested in for BLFS editing is
 (unsurprisingly) the BLFS tree.  A complete list of the modules which are
@@ -38,7 +38,7 @@ editors who have belgarath accounts with membership in the appropriate groups.</
 
 <para>This will create a BLFS directory and copy the current working
 tree into it.  When you wish to update your local copy (often called a
-sandbox), simply cd into the directory and run:
+sand box), simply cd into the directory and run:
 
 <screen><userinput>svn update</userinput></screen></para>
 
@@ -53,10 +53,10 @@ into your <filename>~/.ssh</filename> directory on belgarath.  To generate the
 keys run: <screen><userinput>ssh-keygen -t dsa</userinput></screen> When
 prompted as to where to save them, it's probably best to leave them in ~/.ssh
 (as <filename>id_dsa</filename> and <filename>id_dsa.pub</filename>) unless you
-already have ssh keys there.  You can use a null prassphrase, but use of
+already have ssh keys there.  You can use a null passphrase, but use of
 ssh-agent with a good password is recommended.  Having generated your keys,
 upload <filename>~/.ssh/id_dsa.pub</filename> to belgarath and move it to
-<filename>~/.ssh/authorized_keys2</filename> <emphasis>on belgarath</emphasis>.
+<filename>~/.ssh/authorized_keys</filename> <emphasis>on belgarath</emphasis>.
 Your local copy of <filename>id_dsa</filename> and
 <filename>id_dsa.pub</filename> should remain untouched by this.</para>
 

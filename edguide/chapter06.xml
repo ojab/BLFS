@@ -35,17 +35,17 @@ the entity is only used once.  This is done for consistency between applications
 <para>If an HTTP or FTP location is not available, leave the
 entity in place with an one-space string for the missing location.</para>
 
-<para>Units provided should be kilobytes (1024 bytes) or megabytes (1024 kilobytes). 
-Entries less than a 1000 kilobytes should be specified as whole numbers (e.g. 320 KB);
-larger sizes should be accurate to one decimal (e.g. 6.9 MB). 
-SBU entries should be rounded to one decimal.  If the value is less than 
-0.1 SBU, it should be listed as "less than 0.1 SBU."  Very long build
-times (greatehr than 20 SBUs) and be listed as integer values.</para>
+<para>Units provided should be kilobytes (1024 bytes) or megabytes (1024
+kilobytes).  Entries less than a 1000 kilobytes should be specified as whole
+numbers (e.g. 320 KB); larger sizes should be accurate to one decimal (e.g. 6.9
+MB).  SBU entries should be rounded to one decimal.  If the value is less than
+0.1 SBU, it should be listed as "less than 0.1 SBU."  Very long build times
+(greater than 20 SBUs) and be listed as integer values.</para>
 
-<para>File sizes should be measured with the <command>ls -h filename</command>
+<para>File sizes should be measured with the <command>ls -k filename</command>
 command. Build sizes should be measured with a <command>df -k /</command>
 command before the package is unpacked and after the package is installed. Note
-that this assumes that the package is built and installed on the root
+that this assumes that the package is built and installed on the same
 filesystem. Adjust the procedure as necessary for your setup. The difference
 between these measurements is the build size.  Build times should be measured
 with the procedure documented at <ulink
@@ -166,7 +166,7 @@ be omitted.</para>
 <para>Next comes dependencies.  This is one of the most important parts of each
 application.  Dependencies should be listed as <emphasis>Required</emphasis> or
 <emphasis>Optional</emphasis>.  In many cases both are needed, and in some cases
-can be added <emphasis>Recomended</emphasis> dependencies.  Required
+can be added <emphasis>Recommended</emphasis> dependencies.  Required
 dependencies are those packages that are needed to build or run the
 application.  Since the book assumes that the packages are being built from an
 LFS system, no LFS packages should be listed.  If a package and a required
@@ -232,7 +232,7 @@ the instructions are common commands such as <userinput>configure &amp;&amp;
 make &amp;&amp; make install</userinput>, this section can be omitted.  On the
 other hand, this section is the perfect place to explain why a command or
 switch is necessary.  If the Installation Section does not include a particular
-optional comnand or switch, an entry can be made here giving the user
+optional command or switch, an entry can be made here giving the user
 information about the alternative or supplemental option.  Since many packages
 have a large number of options, this explanation is normally reserved for
 optional instructions the editor feels are particularly important. For
@@ -267,7 +267,7 @@ must be used.</para>
 <title>Configuration Section</title>
 
 <para>This section describes any actions the user needs to take to configure the
-application.  If no confiuration is required, then it can be omitted. Note
+application.  If no configuration is required, then it can be omitted. Note
 that in some cases lines in &lt;screen&gt; sections can be very long.  Sometimes
 this cannot be avoided.</para>
 
@@ -404,7 +404,7 @@ EOF&lt;/userinput&gt;&lt;/screen&gt;
 <sect1>
 <title>About Tagging</title>
 
-<para>As you can see above, there are serveral places where indexing tags are
+<para>As you can see above, there are several places where indexing tags are
 placed into the page.  The tagging has the following format:</para>
 
 <screen>&lt;indexterm zone="id-start id-end"&gt;

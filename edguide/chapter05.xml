@@ -36,7 +36,7 @@ outlined in the following sections.</para>
 
 <listitem><para>As the last step, click on the <emphasis>Commit</emphasis>
 button to commit your changes to the database. A log of this will be sent
-to the blfs-book mailinglist.</para></listitem>
+to the blfs-book mailing list.</para></listitem>
 
 </itemizedlist>
 </section>
@@ -61,7 +61,7 @@ have.</para></listitem>
 Those aren't used at the moment.</para></listitem>
 
 <listitem><para>Select the <emphasis>Priority</emphasis>. Use
-your own judgement on how important fixing this bug is. If you're not sure
+your own judgment on how important fixing this bug is. If you're not sure
 just leave the default. Priorities are periodically re-evaluated and
 changed anyways (what may be P5 a month ago may be changed to a P1 now
 because it's finally time to fix it).</para>
