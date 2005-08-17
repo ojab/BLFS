@@ -20,7 +20,7 @@
 Bugzilla for entering new bugs into the system, and fixing/updating
 outstanding bugs.</para>
 
-<para>It's assume you have already logged into Bugzilla before doing anything
+<para>It's assumed you have already logged into Bugzilla before doing anything
 outlined in the following sections.</para>
 
 </section>
@@ -50,12 +50,10 @@ it to Bugzilla.</para>
 <itemizedlist>
 <listitem><para>Go to <ulink url="&blfs-bugzilla;"/></para></listitem>
 
-<listitem><para>Select the proper <emphasis>Version</emphasis>. You most
-always will choose the <emphasis>CVS</emphasis> version. (Note: SVN will be
-added to the options.  Use that if you see it.) The other versions
-are basically there only for people who don't edit the book
-and who want to report a bug against the book version they
-have.</para></listitem>
+<listitem><para>Select the proper <emphasis>Version</emphasis>. You most always
+will choose the <emphasis>SVN</emphasis> version.  The other versions are
+basically there only for people who don't edit the book and who want to report
+a bug against the book version they have.</para></listitem>
 
 <listitem><para>Don't worry about <emphasis>Platform, OS, and Severity</emphasis>. 
 Those aren't used at the moment.</para></listitem>

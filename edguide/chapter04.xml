@@ -135,7 +135,7 @@ various different letters which all mean different things.</para>
 reports when svn doesn't manage a file.  Generally it means that you've
 forgotten to <userinput>svn add</userinput> a file to the repository but can
 also just be temporary editor files which  <application>svn</application>
-doesn't know what to do with.  If it's just t temporary file, don't worry, it
+doesn't know what to do with.  If it's just a temporary file, don't worry, it
 won't try and commit them when you do a <userinput>svn commit</userinput>
 because you haven't added them.  Instead it'll just leave them alone.</para>
 

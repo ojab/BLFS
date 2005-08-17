@@ -16,7 +16,7 @@
 <para>The actual BLFS book itself is written using Docbook-XML
 (http://www.docbook.org/tdg/en/html/) and at first can seem to be a daunting
 tangle of files.  Basically, if you're confused, start by looking at
-<filename>index.xml</filename>.  You can see that the files is a well formed
+<filename>index.xml</filename>.  You can see that the file is a well formed
 xml file that includes other files.  These included files reflect the
 organization of the book.  It is divided into Front Matter, Parts, and
 Appendices.  Parts are divided into Chapters and the Chapters are again
