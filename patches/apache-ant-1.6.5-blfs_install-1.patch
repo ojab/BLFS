@@ -1,6 +1,6 @@
 Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
-Date:                    2004-11-29
-Initial Package Version: 1.6.2
+Date:                    2005-08-19
+Initial Package Version: 1.6.5 (modified version of the 1.6.2 patch - more than a rediff)
 Upstream Status:         Not submitted (LFS/FHS specific)
 Origin:                  Randy McMurchy
 Description:             Modifies the installation layout to conform with 
@@ -9,20 +9,21 @@ Description:             Modifies the installation layout to conform with
 $LastChangedBy$
 $Date$
 
-diff -Naur apache-ant-1.6.2-orig/build.xml apache-ant-1.6.2/build.xml
---- apache-ant-1.6.2-orig/build.xml	2004-07-16 07:57:30.000000000 +0000
-+++ apache-ant-1.6.2/build.xml	2004-11-30 04:13:56.360978512 +0000
-@@ -121,7 +121,8 @@
+
+diff -Naur apache-ant-1.6.5-orig/build.xml apache-ant-1.6.5/build.xml
+--- apache-ant-1.6.5-orig/build.xml	2005-06-02 13:19:54.000000000 +0000
++++ apache-ant-1.6.5/build.xml	2005-08-19 18:55:55.000000000 +0000
+@@ -125,7 +125,8 @@
    <property name="dist.bin" value="${dist.dir}/bin"/>
    <property name="dist.lib" value="${dist.dir}/lib"/>
    <property name="dist.docs" value="${dist.dir}/docs"/>
 -  <property name="dist.etc" value="${dist.dir}/etc"/>
-+  <property name="dist.readme" value="${dist.dir}/readme"/>
++  <property name="dist.readme" value="${dist.dir}/docs/readme"/>
 +  <property name="dist.etc" value="/etc/ant"/>
    <property name="dist.javadocs" value="${dist.dir}/docs/manual/api"/>
  
    <property name="src.dist.dir" value="dist-src"/>
-@@ -921,6 +922,7 @@
+@@ -902,6 +903,7 @@
      <mkdir dir="${dist.dir}"/>
      <mkdir dir="${dist.bin}"/>
      <mkdir dir="${dist.lib}"/>
@@ -30,7 +31,7 @@ diff -Naur apache-ant-1.6.2-orig/build.xml apache-ant-1.6.2/build.xml
  
      <copy todir="${dist.lib}">
        <fileset dir="${build.lib}">
-@@ -999,7 +1001,7 @@
+@@ -980,7 +982,7 @@
        </fileset>
      </copy>
  
@@ -38,11 +39,11 @@ diff -Naur apache-ant-1.6.2-orig/build.xml apache-ant-1.6.2/build.xml
 +    <copy todir="${dist.readme}">
        <fileset dir=".">
          <include name="README"/>
-         <include name="LICENSE"/>
+         <include name="INSTALL"/>
 
-diff -Naur apache-ant-1.6.2-orig/src/script/ant apache-ant-1.6.2/src/script/ant
---- apache-ant-1.6.2-orig/src/script/ant        2004-07-16 07:56:50.000000000 +0000
-+++ apache-ant-1.6.2/src/script/ant     2004-11-30 07:12:48.328471464 +0000
+diff -Naur apache-ant-1.6.5-orig/src/script/ant apache-ant-1.6.5/src/script/ant
+--- apache-ant-1.6.5-orig/src/script/ant	2005-06-02 13:19:04.000000000 +0000
++++ apache-ant-1.6.5/src/script/ant	2005-08-19 18:55:55.000000000 +0000
 @@ -44,8 +44,8 @@
    usejikes=$use_jikes_default
  else
@@ -52,9 +53,9 @@ diff -Naur apache-ant-1.6.2-orig/src/script/ant apache-ant-1.6.2/src/script/ant
 +  if [ -f "/etc/ant/ant.conf" ] ; then
 +    . /etc/ant/ant.conf
    fi
-
+ 
    # load user ant configuration
-@@ -244,7 +244,7 @@
+@@ -241,7 +241,7 @@
    echo $0 '[script options] [options] [target [target2 [target3] ..]]'
    echo 'Script Options:'
    echo '  --help, --h            print this message and ant help'
