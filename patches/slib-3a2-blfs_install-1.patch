@@ -1,0 +1,110 @@
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2005-08-21
+Initial Package Version: 3a2
+Upstream Status:         Not submitted (BLFS specific)
+Origin:                  Randy McMurchy
+Description:             Modifies the Makefile so that it finds the BLFS-installed
+                         Guile and installs SLIB in a subdirectory of the installed
+                         Guile. Also creates additional documentation creation and
+                         installation targets.
+
+$LastChangedBy$
+$Date$
+
+
+diff -Naur slib-orig/Makefile slib/Makefile
+--- slib-orig/Makefile	2005-06-24 01:21:00.000000000 +0000
++++ slib/Makefile	2005-08-22 00:50:37.000000000 +0000
+@@ -25,11 +25,12 @@
+ # directory where `make install' will put executable.
+ bindir = $(exec_prefix)bin/
+ libdir = $(exec_prefix)lib/
+-libslibdir = $(libdir)slib/
++guiledir = $(prefix)share/guile/
++libslibdir = $(guiledir)slib/
+ # directory where `make install' will put manual page.
+-mandir = $(prefix)man/
++mandir = $(prefix)share/man/
+ man1dir = $(mandir)man1/
+-infodir = $(prefix)info/
++infodir = $(prefix)share/info/
+ 
+ PREVDOCS = prevdocs/
+ 
+@@ -146,22 +147,28 @@
+ 	slib.doc clrnamdb.scm
+ 
+ pinstall:	slib.1
+-	test -d $(mandir) || mkdir $(mandir)
+-	test -d $(man1dir) || mkdir $(man1dir)
+-	-cp slib.1 $(man1dir)
++	test -d $(man1dir) || install -v -m755 -d $(man1dir)
++	-install -v -m644 slib.1 $(man1dir)
+ 
+ install:	pinstall clrnamdb.scm
+-	test -d $(libdir) || mkdir $(libdir)
+-	test -d $(libslibdir) || mkdir $(libslibdir)
+-	-cp  $(ifiles) $(sfiles) $(bfiles) $(mkfiles) clrnamdb.scm $(libslibdir)
+-	test -d $(bindir) || mkdir $(bindir)
++	test -d $(libdir) || install -v -m755 -d $(libdir)
++	test -d $(libslibdir) || install -v -m755 -d $(libslibdir)
++	-install -v -m644 $(ifiles) $(sfiles) $(bfiles) $(mkfiles) clrnamdb.scm $(libslibdir)
++	-chmod -v 755 $(libslibdir)*.sh
++	test -d $(bindir) || install -v -m755 -d $(bindir)
+ 	echo '#! /bin/sh'			 > $(bindir)slib
+ 	echo SCHEME_LIBRARY_PATH=$(libslibdir)  >> $(bindir)slib
+ 	echo export SCHEME_LIBRARY_PATH		>> $(bindir)slib
+ 	echo VERSION=$(VERSION)			>> $(bindir)slib
+ 	echo "S48_VICINITY=\"$(LIB)\";export S48_VICINITY" >> $(bindir)slib
+ 	cat slib.sh				>> $(bindir)slib
+-	chmod +x $(bindir)slib
++	chmod -v 755 $(bindir)slib
++	install -v -m755 -d /usr/share/doc/slib-$(VERSION)
++	if [ -f slib.pdf ]; then install -v -m644 slib.pdf /usr/share/doc/slib-$(VERSION); fi
++	if [ -f slib.dvi ]; then install -v -m644 slib.dvi /usr/share/doc/slib-$(VERSION); fi
++	if [ -f slib.ps ]; then install -v -m644 slib.ps /usr/share/doc/slib-$(VERSION); fi
++	if [ -f slib.html ]; then install -v -m644 slib.html /usr/share/doc/slib-$(VERSION); fi
++	if [ -f slib.txt ]; then install -v -m644 slib.txt /usr/share/doc/slib-$(VERSION); fi
+ 
+ uninstall:
+ 	-(cd $(libslibdir); rm $(ifiles) $(sfiles) $(bfiles) $(mkfiles) clrnamdb.scm)
+@@ -171,12 +178,25 @@
+ slib.doc:	slib.1
+ 	nroff -man $< | ul -tunknown >$@
+ 
++pdfdocs:
++	texi2dvi --pdf slib.texi
++
++psdocs:
++	texi2dvi slib.texi
++	dvips -o slib.ps slib.dvi
++
++htmldocs:
++	texi2html slib.texi
++
++txtdocs:
++	lynx -force_html -dump -nolist -width=72 slib.html >slib.txt
++
+ #### Stuff for maintaining SLIB below ####
+ 
+ ver = $(VERSION)
+ version.txi:	Makefile
+ 	echo @set SLIBVERSION $(ver) > version.txi
+-	echo @set SLIBDATE `date +"%B %Y"` >> version.txi
++	echo @set SLIBDATE June 2005 >> version.txi
+ 
+ scheme = scm
+ 
+@@ -232,9 +252,10 @@
+ info:	installinfo
+ installinfo:	$(infodir)slib.info
+ $(infodir)slib.info:	slib.info
+-	cp -p slib.info $(infodir)slib.info
++	install -v -m755 -d $(infodir)
++	install -v -m644 slib.info $(infodir)slib.info
+ 	-install-info $(infodir)slib.info $(infodir)dir
+-	-rm $(infodir)slib.info.gz
++	if [ -f $(infodir)slib.info.gz ]; then rm $(infodir)slib.info.gz; fi
+ infoz:	installinfoz
+ installinfoz:	$(infodir)slib.info.gz
+ $(infodir)slib.info.gz:	$(infodir)slib.info
