@@ -83,7 +83,7 @@ diff -Naur slib-orig/Makefile slib/Makefile
 +	texi2html slib.texi
 +
 +txtdocs:
-+	lynx -force_html -dump -nolist -width=72 slib.html >slib.txt
++	makeinfo --plaintext slib.texi >slib.txt
 +
  #### Stuff for maintaining SLIB below ####
  
