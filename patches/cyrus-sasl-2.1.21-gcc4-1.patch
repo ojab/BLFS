@@ -1,0 +1,24 @@
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2005-08-12
+Initial Package Version: 2.1.21
+Upstream Status:         Not submitted
+Origin:                  Fedora
+                         http://directory.fedora.redhat.com/sources/cyrus-sasl-2.1.20-gcc4.patch
+Description:             Fixes GCC-4 compilation error
+
+$LastChangedBy$
+$Date$
+
+
+diff -Naur cyrus-sasl-2.1.21-orig/lib/client.c cyrus-sasl-2.1.21/lib/client.c
+--- cyrus-sasl-2.1.21-orig/lib/client.c	2004-11-17 14:19:30.000000000 +0000
++++ cyrus-sasl-2.1.21/lib/client.c	2005-08-12 19:59:06.000000000 +0000
+@@ -61,7 +61,7 @@
+ 
+ static cmech_list_t *cmechlist; /* global var which holds the list */
+ 
+-static sasl_global_callbacks_t global_callbacks;
++sasl_global_callbacks_t global_callbacks;
+ 
+ static int _sasl_client_active = 0;
+ 
