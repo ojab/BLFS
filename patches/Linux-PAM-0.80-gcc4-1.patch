@@ -1,0 +1,23 @@
+Submitted By: DJ Lucas (dj_AT_linuxfromscratch_DOT_org)
+Date: 2005-08-28
+Initial Package Version: 0.80
+Origin: RedHat/Fedora pam-0.80-7 SRPM (pam-0.80-cleanup.patch)
+Upstream Status: Unknown
+Description: Fixes segfault in _unix_verify_password().
+
+$LastChangedBy$
+$Date$
+
+
+diff -Naur Linux-PAM-0.80-orig/modules/pam_unix/support.c Linux-PAM-0.80/modules/pam_unix/support.c
+--- Linux-PAM-0.80-orig/modules/pam_unix/support.c	2005-07-08 04:20:07.000000000 -0500
++++ Linux-PAM-0.80/modules/pam_unix/support.c	2005-08-28 00:01:05.000000000 -0500
+@@ -801,7 +801,7 @@
+ 			if (new != NULL) {
+ 
+ 			    const char *login_name;
+-			    const void *void_old;
++			    const void *void_old = NULL;
+ 
+ 
+ 			    login_name = _pammodutil_getlogin(pamh);
