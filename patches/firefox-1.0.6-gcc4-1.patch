@@ -1,0 +1,111 @@
+Submitted By:            Richard Downing <richard at linuxfromscratch dot org>
+Date:                    2005-08-09
+Initial Package Version: 1.0.6
+Upstream Status:         Not known
+Origin:                  http://cvs.fedora.redhat.com
+Description:             Allows firefox-1.0.6 and thunderbird 1.0.6 to compile
+                         with GCC-4.0.1.
+
+$LastChangedBy$
+$Date$
+
+
+diff -Naur mozilla-orig/gfx/src/freetype/nsFreeType.cpp mozilla/gfx/src/freetype/nsFreeType.cpp
+--- mozilla-orig/gfx/src/freetype/nsFreeType.cpp	2004-02-07 15:22:30.000000000 +0000
++++ mozilla/gfx/src/freetype/nsFreeType.cpp	2005-08-24 19:00:41.000000000 +0000
+@@ -96,7 +96,7 @@
+ // Define the FreeType2 functions we resolve at run time.
+ // see the comment near nsFreeType2::DoneFace() for more info
+ //
+-#define NS_FT2_OFFSET(f) (int)&((nsFreeType2*)0)->f
++#define NS_FT2_OFFSET(f) (NS_PTR_TO_INT32(&((nsFreeType2*)0)->f))
+ FtFuncList nsFreeType2::FtFuncs [] = {
+   {"FT_Done_Face",            NS_FT2_OFFSET(nsFT_Done_Face),            PR_TRUE},
+   {"FT_Done_FreeType",        NS_FT2_OFFSET(nsFT_Done_FreeType),        PR_TRUE},
+diff -Naur mozilla-orig/netwerk/protocol/http/src/nsHttpConnectionMgr.cpp mozilla/netwerk/protocol/http/src/nsHttpConnectionMgr.cpp
+--- mozilla-orig/netwerk/protocol/http/src/nsHttpConnectionMgr.cpp	2004-09-01 23:31:03.000000000 +0000
++++ mozilla/netwerk/protocol/http/src/nsHttpConnectionMgr.cpp	2005-08-24 19:00:41.000000000 +0000
+@@ -834,8 +834,8 @@
+ void
+ nsHttpConnectionMgr::OnMsgUpdateParam(nsresult status, void *param)
+ {
+-    PRUint16 name  = (PRUint32(param) & 0xFFFF0000) >> 16;
+-    PRUint16 value =  PRUint32(param) & 0x0000FFFF;
++    PRUint16 name  = (NS_PTR_TO_INT32(param) & 0xFFFF0000) >> 16;
++    PRUint16 value =  NS_PTR_TO_INT32(param) & 0x0000FFFF;
+ 
+     switch (name) {
+     case MAX_CONNECTIONS:
+diff -Naur mozilla-orig/security/nss/lib/pki1/oiddata.h mozilla/security/nss/lib/pki1/oiddata.h
+--- mozilla-orig/security/nss/lib/pki1/oiddata.h	2002-01-04 05:22:07.000000000 +0000
++++ mozilla/security/nss/lib/pki1/oiddata.h	2005-08-24 19:00:41.000000000 +0000
+@@ -43,9 +43,6 @@
+ #include "nsspki1t.h"
+ #endif /* NSSPKI1T_H */
+ 
+-extern const NSSOID nss_builtin_oids[];
+-extern const PRUint32 nss_builtin_oid_count;
+-
+ /*extern const nssAttributeTypeAliasTable nss_attribute_type_aliases[];*/
+ /*extern const PRUint32 nss_attribute_type_alias_count;*/
+ 
+diff -Naur mozilla-orig/security/nss/lib/pki1/pki1.h mozilla/security/nss/lib/pki1/pki1.h
+--- mozilla-orig/security/nss/lib/pki1/pki1.h	2001-07-19 20:40:42.000000000 +0000
++++ mozilla/security/nss/lib/pki1/pki1.h	2005-08-24 19:00:41.000000000 +0000
+@@ -58,6 +58,8 @@
+ /* fgmr 19990505 moved these here from oiddata.h */
+ extern const nssAttributeTypeAliasTable nss_attribute_type_aliases[];
+ extern const PRUint32 nss_attribute_type_alias_count;
++extern const NSSOID nss_builtin_oids[];
++extern const PRUint32 nss_builtin_oid_count;
+ 
+ /*
+  * NSSOID
+diff -Naur mozilla-orig/widget/src/gtk2/nsDragService.cpp mozilla/widget/src/gtk2/nsDragService.cpp
+--- mozilla-orig/widget/src/gtk2/nsDragService.cpp	2005-03-16 00:20:25.000000000 +0000
++++ mozilla/widget/src/gtk2/nsDragService.cpp	2005-08-24 19:00:41.000000000 +0000
+@@ -838,7 +838,7 @@
+             (GtkTargetEntry *)g_malloc(sizeof(GtkTargetEntry));
+         listTarget->target = g_strdup(gMimeListType);
+         listTarget->flags = 0;
+-        listTarget->info = (guint)listAtom;
++        listTarget->info = (guint)(NS_PTR_TO_INT32(listAtom));
+         PR_LOG(sDragLm, PR_LOG_DEBUG,
+                ("automatically adding target %s with id %ld\n",
+                listTarget->target, listAtom));
+@@ -877,7 +877,7 @@
+                              (GtkTargetEntry *)g_malloc(sizeof(GtkTargetEntry));
+                             listTarget->target = g_strdup(gTextUriListType);
+                             listTarget->flags = 0;
+-                            listTarget->info = (guint)listAtom;
++                            listTarget->info = (guint)NS_PTR_TO_INT32(listAtom);
+                             PR_LOG(sDragLm, PR_LOG_DEBUG,
+                                    ("automatically adding target %s with \
+                                    id %ld\n", listTarget->target, listAtom));
+@@ -914,7 +914,7 @@
+                           (GtkTargetEntry *)g_malloc(sizeof(GtkTargetEntry));
+                         target->target = g_strdup(flavorStr);
+                         target->flags = 0;
+-                        target->info = (guint)atom;
++                        target->info = (guint)NS_PTR_TO_INT32(atom);
+                         PR_LOG(sDragLm, PR_LOG_DEBUG,
+                                ("adding target %s with id %ld\n",
+                                target->target, atom));
+@@ -931,7 +931,7 @@
+                              (GtkTargetEntry *)g_malloc(sizeof(GtkTargetEntry));
+                             plainTarget->target = g_strdup(kTextMime);
+                             plainTarget->flags = 0;
+-                            plainTarget->info = (guint)plainAtom;
++                            plainTarget->info = (guint)NS_PTR_TO_INT32(plainAtom);
+                             PR_LOG(sDragLm, PR_LOG_DEBUG,
+                                    ("automatically adding target %s with \
+                                    id %ld\n", plainTarget->target, plainAtom));
+@@ -948,7 +948,7 @@
+                              (GtkTargetEntry *)g_malloc(sizeof(GtkTargetEntry));
+                             urlTarget->target = g_strdup(gMozUrlType);
+                             urlTarget->flags = 0;
+-                            urlTarget->info = (guint)urlAtom;
++                            urlTarget->info = (guint)NS_PTR_TO_INT32(urlAtom);
+                             PR_LOG(sDragLm, PR_LOG_DEBUG,
+                                    ("automatically adding target %s with \
+                                    id %ld\n", urlTarget->target, urlAtom));
