@@ -13,14 +13,14 @@
 
 case "$2" in
         up)
-                boot_mesg "Bringing up the ADSL interface..."
-                /usr/sbin/adsl-start
+                boot_mesg "Bringing up the PPPoE interface..."
+                /usr/sbin/pppoe-start
                 evaluate_retval
         ;;
 
         down)
-                boot_mesg "Bringing down the ADSL interface..."
-                /usr/sbin/adsl-stop
+                boot_mesg "Bringing down the PPPoE interface..."
+                /usr/sbin/pppoe-stop
                 evaluate_retval
         ;;
 
