@@ -1,5 +1,5 @@
 Submitted By: DJ Lucas (dj AT linuxfromscratch DOT org)
-Date: 2005-09-09
+Date: 2005-09-21
 Initial Package Version: 1.5.0
 Origin: Previous gcc-3.4 patch, upstream 6.0 sources, and self.
 Upstream Status: Not Submitted - Upstream targets gcc-3.2.
@@ -8,10 +8,9 @@ Description: Fixes syntax for use with gcc-4.0.x
 $LastChangedBy$
 $Date$
 
-
 diff -Naur jdk-build-orig/deploy/src/javaws/share/native/xmlparser.c jdk-build/deploy/src/javaws/share/native/xmlparser.c
 --- jdk-build-orig/deploy/src/javaws/share/native/xmlparser.c	2004-10-19 14:04:17.000000000 -0500
-+++ jdk-build/deploy/src/javaws/share/native/xmlparser.c	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/deploy/src/javaws/share/native/xmlparser.c	2005-09-21 23:18:55.000000000 -0500
 @@ -50,7 +50,7 @@
   *                               10   | bits  6-11
   *                               10   | bits  0-5
@@ -23,7 +22,7 @@ diff -Naur jdk-build-orig/deploy/src/javaws/share/native/xmlparser.c jdk-build/d
      char c;
 diff -Naur jdk-build-orig/hotspot/src/cpu/i486/vm/i486.ad jdk-build/hotspot/src/cpu/i486/vm/i486.ad
 --- jdk-build-orig/hotspot/src/cpu/i486/vm/i486.ad	2004-10-19 13:41:32.000000000 -0500
-+++ jdk-build/hotspot/src/cpu/i486/vm/i486.ad	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/hotspot/src/cpu/i486/vm/i486.ad	2005-09-21 23:18:55.000000000 -0500
 @@ -246,10 +246,10 @@
  static jlong fp_signmask_pool[(4+1)*2]; // 4*128bits(data) + 128bits(alignment)
  
@@ -41,7 +40,7 @@ diff -Naur jdk-build-orig/hotspot/src/cpu/i486/vm/i486.ad jdk-build/hotspot/src/
  //       from the start of the call to the point where the return address
 diff -Naur jdk-build-orig/hotspot/src/os_cpu/linux_i486/vm/atomic_linux_i486.inline.hpp jdk-build/hotspot/src/os_cpu/linux_i486/vm/atomic_linux_i486.inline.hpp
 --- jdk-build-orig/hotspot/src/os_cpu/linux_i486/vm/atomic_linux_i486.inline.hpp	2004-10-19 13:41:46.000000000 -0500
-+++ jdk-build/hotspot/src/os_cpu/linux_i486/vm/atomic_linux_i486.inline.hpp	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/hotspot/src/os_cpu/linux_i486/vm/atomic_linux_i486.inline.hpp	2005-09-21 23:18:55.000000000 -0500
 @@ -111,7 +111,7 @@
                      "cmpxchg8b (%5); xchgl %%ebx, %1"
                      : "=A" (old_value), "=r" (lo)
@@ -53,7 +52,7 @@ diff -Naur jdk-build-orig/hotspot/src/os_cpu/linux_i486/vm/atomic_linux_i486.inl
  
 diff -Naur jdk-build-orig/hotspot/src/share/vm/asm/assembler.hpp jdk-build/hotspot/src/share/vm/asm/assembler.hpp
 --- jdk-build-orig/hotspot/src/share/vm/asm/assembler.hpp	2004-10-19 13:41:56.000000000 -0500
-+++ jdk-build/hotspot/src/share/vm/asm/assembler.hpp	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/hotspot/src/share/vm/asm/assembler.hpp	2005-09-21 23:18:55.000000000 -0500
 @@ -8,7 +8,10 @@
  
  // This file contains platform-independant assembler declarations.
@@ -67,7 +66,7 @@ diff -Naur jdk-build-orig/hotspot/src/share/vm/asm/assembler.hpp jdk-build/hotsp
  // Labels represent target destinations for jumps and calls.
 diff -Naur jdk-build-orig/hotspot/src/share/vm/c1/c1_CacheLocals.hpp jdk-build/hotspot/src/share/vm/c1/c1_CacheLocals.hpp
 --- jdk-build-orig/hotspot/src/share/vm/c1/c1_CacheLocals.hpp	2004-10-19 13:41:56.000000000 -0500
-+++ jdk-build/hotspot/src/share/vm/c1/c1_CacheLocals.hpp	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/hotspot/src/share/vm/c1/c1_CacheLocals.hpp	2005-09-21 23:18:55.000000000 -0500
 @@ -9,6 +9,7 @@
  class IR;
  class ALocalList;
@@ -78,7 +77,7 @@ diff -Naur jdk-build-orig/hotspot/src/share/vm/c1/c1_CacheLocals.hpp jdk-build/h
  
 diff -Naur jdk-build-orig/hotspot/src/share/vm/gc_implementation/parallelScavenge/parallelScavengeHeap.hpp jdk-build/hotspot/src/share/vm/gc_implementation/parallelScavenge/parallelScavengeHeap.hpp
 --- jdk-build-orig/hotspot/src/share/vm/gc_implementation/parallelScavenge/parallelScavengeHeap.hpp	2004-10-19 13:42:06.000000000 -0500
-+++ jdk-build/hotspot/src/share/vm/gc_implementation/parallelScavenge/parallelScavengeHeap.hpp	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/hotspot/src/share/vm/gc_implementation/parallelScavenge/parallelScavengeHeap.hpp	2005-09-21 23:18:55.000000000 -0500
 @@ -6,6 +6,7 @@
   * SUN PROPRIETARY/CONFIDENTIAL.  Use is subject to license terms.
   */
@@ -89,7 +88,7 @@ diff -Naur jdk-build-orig/hotspot/src/share/vm/gc_implementation/parallelScaveng
  class ParallelScavengeHeap : public CollectedHeap {
 diff -Naur jdk-build-orig/hotspot/src/share/vm/memory/concurrentMarkSweepGeneration.hpp jdk-build/hotspot/src/share/vm/memory/concurrentMarkSweepGeneration.hpp
 --- jdk-build-orig/hotspot/src/share/vm/memory/concurrentMarkSweepGeneration.hpp	2004-10-19 13:42:14.000000000 -0500
-+++ jdk-build/hotspot/src/share/vm/memory/concurrentMarkSweepGeneration.hpp	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/hotspot/src/share/vm/memory/concurrentMarkSweepGeneration.hpp	2005-09-21 23:18:55.000000000 -0500
 @@ -19,6 +19,7 @@
  // means of a sliding mark-compact. (Not yet implemented.)
  
@@ -100,7 +99,7 @@ diff -Naur jdk-build-orig/hotspot/src/share/vm/memory/concurrentMarkSweepGenerat
  class PromotionInfo;
 diff -Naur jdk-build-orig/hotspot/src/share/vm/memory/dump.cpp jdk-build/hotspot/src/share/vm/memory/dump.cpp
 --- jdk-build-orig/hotspot/src/share/vm/memory/dump.cpp	2004-10-19 13:42:14.000000000 -0500
-+++ jdk-build/hotspot/src/share/vm/memory/dump.cpp	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/hotspot/src/share/vm/memory/dump.cpp	2005-09-21 23:18:55.000000000 -0500
 @@ -1035,7 +1035,7 @@
  // Support for a simple checksum of the contents of the class list
  // file to prevent trivial tampering. The algorithm matches that in
@@ -112,7 +111,7 @@ diff -Naur jdk-build-orig/hotspot/src/share/vm/memory/dump.cpp jdk-build/hotspot
  {
 diff -Naur jdk-build-orig/hotspot/src/share/vm/opto/node.hpp jdk-build/hotspot/src/share/vm/opto/node.hpp
 --- jdk-build-orig/hotspot/src/share/vm/opto/node.hpp	2004-10-19 13:42:26.000000000 -0500
-+++ jdk-build/hotspot/src/share/vm/opto/node.hpp	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/hotspot/src/share/vm/opto/node.hpp	2005-09-21 23:18:55.000000000 -0500
 @@ -93,6 +93,7 @@
  #if OPTO_DU_ITERATOR_ASSERT
  class DUIterator;
@@ -123,7 +122,7 @@ diff -Naur jdk-build-orig/hotspot/src/share/vm/opto/node.hpp jdk-build/hotspot/s
  typedef Node** DUIterator_Fast;
 diff -Naur jdk-build-orig/hotspot/src/share/vm/opto/parse.hpp jdk-build/hotspot/src/share/vm/opto/parse.hpp
 --- jdk-build-orig/hotspot/src/share/vm/opto/parse.hpp	2004-10-19 13:42:26.000000000 -0500
-+++ jdk-build/hotspot/src/share/vm/opto/parse.hpp	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/hotspot/src/share/vm/opto/parse.hpp	2005-09-21 23:18:55.000000000 -0500
 @@ -9,7 +9,7 @@
  class InlineTree;
  class Parse;
@@ -135,7 +134,7 @@ diff -Naur jdk-build-orig/hotspot/src/share/vm/opto/parse.hpp jdk-build/hotspot/
  class InlineTree : public ResourceObj {
 diff -Naur jdk-build-orig/hotspot/src/share/vm/prims/jvmtiEnvThreadState.hpp jdk-build/hotspot/src/share/vm/prims/jvmtiEnvThreadState.hpp
 --- jdk-build-orig/hotspot/src/share/vm/prims/jvmtiEnvThreadState.hpp	2004-10-19 13:42:32.000000000 -0500
-+++ jdk-build/hotspot/src/share/vm/prims/jvmtiEnvThreadState.hpp	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/hotspot/src/share/vm/prims/jvmtiEnvThreadState.hpp	2005-09-21 23:18:55.000000000 -0500
 @@ -8,6 +8,10 @@
  #ifndef _JAVA_JVMTIENVTHREADSTATE_H_
  #define _JAVA_JVMTIENVTHREADSTATE_H_
@@ -149,7 +148,7 @@ diff -Naur jdk-build-orig/hotspot/src/share/vm/prims/jvmtiEnvThreadState.hpp jdk
  // class JvmtiFramePop
 diff -Naur jdk-build-orig/hotspot/src/share/vm/prims/jvmtiEventController.cpp jdk-build/hotspot/src/share/vm/prims/jvmtiEventController.cpp
 --- jdk-build-orig/hotspot/src/share/vm/prims/jvmtiEventController.cpp	2004-10-19 13:42:32.000000000 -0500
-+++ jdk-build/hotspot/src/share/vm/prims/jvmtiEventController.cpp	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/hotspot/src/share/vm/prims/jvmtiEventController.cpp	2005-09-21 23:18:55.000000000 -0500
 @@ -10,7 +10,7 @@
  # include "incls/_jvmtiEventController.cpp.incl"
  
@@ -161,7 +160,7 @@ diff -Naur jdk-build-orig/hotspot/src/share/vm/prims/jvmtiEventController.cpp jd
  #endif /*JVMTI_TRACE */
 diff -Naur jdk-build-orig/hotspot/src/share/vm/prims/jvmtiExport.cpp jdk-build/hotspot/src/share/vm/prims/jvmtiExport.cpp
 --- jdk-build-orig/hotspot/src/share/vm/prims/jvmtiExport.cpp	2004-10-19 13:42:32.000000000 -0500
-+++ jdk-build/hotspot/src/share/vm/prims/jvmtiExport.cpp	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/hotspot/src/share/vm/prims/jvmtiExport.cpp	2005-09-21 23:18:55.000000000 -0500
 @@ -13,8 +13,8 @@
  extern struct JVMDI_Interface_1_ jvmdiTrace_Interface;  // temporary
  
@@ -175,7 +174,7 @@ diff -Naur jdk-build-orig/hotspot/src/share/vm/prims/jvmtiExport.cpp jdk-build/h
  #define EVT_TRACE(evt,out)
 diff -Naur jdk-build-orig/hotspot/src/share/vm/runtime/classFileParser.cpp jdk-build/hotspot/src/share/vm/runtime/classFileParser.cpp
 --- jdk-build-orig/hotspot/src/share/vm/runtime/classFileParser.cpp	2004-10-19 13:42:34.000000000 -0500
-+++ jdk-build/hotspot/src/share/vm/runtime/classFileParser.cpp	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/hotspot/src/share/vm/runtime/classFileParser.cpp	2005-09-21 23:18:55.000000000 -0500
 @@ -16,6 +16,9 @@
  
  // We add assert in debug mode when class format is not checked.
@@ -188,7 +187,7 @@ diff -Naur jdk-build-orig/hotspot/src/share/vm/runtime/classFileParser.cpp jdk-b
    if (!b) { fatal(msg); }
 diff -Naur jdk-build-orig/hotspot/src/share/vm/runtime/globals_extension.hpp jdk-build/hotspot/src/share/vm/runtime/globals_extension.hpp
 --- jdk-build-orig/hotspot/src/share/vm/runtime/globals_extension.hpp	2004-10-19 13:42:35.000000000 -0500
-+++ jdk-build/hotspot/src/share/vm/runtime/globals_extension.hpp	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/hotspot/src/share/vm/runtime/globals_extension.hpp	2005-09-21 23:18:55.000000000 -0500
 @@ -110,7 +110,9 @@
  
  #define FLAG_SET_DEFAULT(name, value) ((name) = (value))
@@ -202,7 +201,7 @@ diff -Naur jdk-build-orig/hotspot/src/share/vm/runtime/globals_extension.hpp jdk
  // of a circular dependency on the enum definition.
 diff -Naur jdk-build-orig/hotspot/src/share/vm/runtime/stackMapTable.hpp jdk-build/hotspot/src/share/vm/runtime/stackMapTable.hpp
 --- jdk-build-orig/hotspot/src/share/vm/runtime/stackMapTable.hpp	2004-10-19 13:42:38.000000000 -0500
-+++ jdk-build/hotspot/src/share/vm/runtime/stackMapTable.hpp	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/hotspot/src/share/vm/runtime/stackMapTable.hpp	2005-09-21 23:18:55.000000000 -0500
 @@ -6,6 +6,8 @@
   * SUN PROPRIETARY/CONFIDENTIAL.  Use is subject to license terms.
   */
@@ -214,7 +213,7 @@ diff -Naur jdk-build-orig/hotspot/src/share/vm/runtime/stackMapTable.hpp jdk-bui
    friend class ClassVerifier;
 diff -Naur jdk-build-orig/hotspot/src/share/vm/runtime/thread.hpp jdk-build/hotspot/src/share/vm/runtime/thread.hpp
 --- jdk-build-orig/hotspot/src/share/vm/runtime/thread.hpp	2004-10-19 13:42:40.000000000 -0500
-+++ jdk-build/hotspot/src/share/vm/runtime/thread.hpp	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/hotspot/src/share/vm/runtime/thread.hpp	2005-09-21 23:18:55.000000000 -0500
 @@ -459,9 +459,9 @@
    static ByteSize stack_base_offset()            { return byte_offset_of(Thread, _stack_base ); }
    static ByteSize stack_size_offset()            { return byte_offset_of(Thread, _stack_size ); }
@@ -239,7 +238,7 @@ diff -Naur jdk-build-orig/hotspot/src/share/vm/runtime/thread.hpp jdk-build/hots
  };
 diff -Naur jdk-build-orig/hotspot/src/share/vm/runtime/verificationType.hpp jdk-build/hotspot/src/share/vm/runtime/verificationType.hpp
 --- jdk-build-orig/hotspot/src/share/vm/runtime/verificationType.hpp	2004-10-19 13:42:40.000000000 -0500
-+++ jdk-build/hotspot/src/share/vm/runtime/verificationType.hpp	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/hotspot/src/share/vm/runtime/verificationType.hpp	2005-09-21 23:18:55.000000000 -0500
 @@ -39,6 +39,7 @@
  class ArrType;
  class ObjType;
@@ -250,7 +249,7 @@ diff -Naur jdk-build-orig/hotspot/src/share/vm/runtime/verificationType.hpp jdk-
  // super class of all other inference types
 diff -Naur jdk-build-orig/j2se/make/java/nio/Makefile jdk-build/j2se/make/java/nio/Makefile
 --- jdk-build-orig/j2se/make/java/nio/Makefile	2004-10-19 13:44:54.000000000 -0500
-+++ jdk-build/j2se/make/java/nio/Makefile	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/j2se/make/java/nio/Makefile	2005-09-21 23:18:55.000000000 -0500
 @@ -117,7 +117,7 @@
       $(OBJDIR)/../../../java.lang/java/$(OBJDIRNAME)/FileDescriptor_md.obj
  endif
@@ -262,20 +261,19 @@ diff -Naur jdk-build-orig/j2se/make/java/nio/Makefile jdk-build/j2se/make/java/n
  ifeq ($(PLATFORM), solaris)
 diff -Naur jdk-build-orig/j2se/src/share/native/sun/awt/cmm/spattrio.c jdk-build/j2se/src/share/native/sun/awt/cmm/spattrio.c
 --- jdk-build-orig/j2se/src/share/native/sun/awt/cmm/spattrio.c	2004-10-19 14:00:10.000000000 -0500
-+++ jdk-build/j2se/src/share/native/sun/awt/cmm/spattrio.c	2005-09-08 23:34:46.000000000 -0500
-@@ -866,7 +866,8 @@
++++ jdk-build/j2se/src/share/native/sun/awt/cmm/spattrio.c	2005-09-21 23:20:16.000000000 -0500
+@@ -866,7 +866,7 @@
  			(SpTypeMultiLanguage == Record->DeviceModelDesc.TagType)) {
  			Record++;
  		} else {
 -			((SpProfileSeqDescRecord_t	FAR *)Record)++;
-+			(((SpProfileSeqDescRecord_t	FAR *)Record) + 1 );
-+			Record++;
++			(SpProfileSeqDescRecord_t	FAR *)Record++;
  		}
  	}
  	return SpStatSuccess;
 diff -Naur jdk-build-orig/j2se/src/share/native/sun/awt/cmm/sprof-pr.h jdk-build/j2se/src/share/native/sun/awt/cmm/sprof-pr.h
 --- jdk-build-orig/j2se/src/share/native/sun/awt/cmm/sprof-pr.h	2004-10-19 14:00:11.000000000 -0500
-+++ jdk-build/j2se/src/share/native/sun/awt/cmm/sprof-pr.h	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/j2se/src/share/native/sun/awt/cmm/sprof-pr.h	2005-09-21 23:18:55.000000000 -0500
 @@ -619,7 +619,7 @@
  
  void FAR *SpMalloc (KpInt32_t Size);
@@ -287,7 +285,7 @@ diff -Naur jdk-build-orig/j2se/src/share/native/sun/awt/cmm/sprof-pr.h jdk-build
  KpInt32_t TestHeaderDate(SpDateTime_t *ValA, SpDateTime_t *ValB);
 diff -Naur jdk-build-orig/j2se/src/share/native/sun/font/bidi/uchardir.c jdk-build/j2se/src/share/native/sun/font/bidi/uchardir.c
 --- jdk-build-orig/j2se/src/share/native/sun/font/bidi/uchardir.c	2004-10-19 14:00:29.000000000 -0500
-+++ jdk-build/j2se/src/share/native/sun/font/bidi/uchardir.c	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/j2se/src/share/native/sun/font/bidi/uchardir.c	2005-09-21 23:18:55.000000000 -0500
 @@ -34,6 +34,8 @@
  
  #include "uchardir.h"
@@ -299,7 +297,7 @@ diff -Naur jdk-build-orig/j2se/src/share/native/sun/font/bidi/uchardir.c jdk-bui
  static uint32_t ASCII_LIMIT = 0x80;
 diff -Naur jdk-build-orig/j2se/src/solaris/bin/java_md.c jdk-build/j2se/src/solaris/bin/java_md.c
 --- jdk-build-orig/j2se/src/solaris/bin/java_md.c	2004-10-19 14:01:43.000000000 -0500
-+++ jdk-build/j2se/src/solaris/bin/java_md.c	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/j2se/src/solaris/bin/java_md.c	2005-09-21 23:18:55.000000000 -0500
 @@ -1136,7 +1136,7 @@
                      : /* Inputs */
                      "m" (arg)
@@ -311,7 +309,7 @@ diff -Naur jdk-build-orig/j2se/src/solaris/bin/java_md.c jdk-build/j2se/src/sola
    *ebxp = value_of_ebx;
 diff -Naur jdk-build-orig/j2se/src/solaris/hpi/native_threads/src/interrupt_md.c jdk-build/j2se/src/solaris/hpi/native_threads/src/interrupt_md.c
 --- jdk-build-orig/j2se/src/solaris/hpi/native_threads/src/interrupt_md.c	2004-10-19 14:02:03.000000000 -0500
-+++ jdk-build/j2se/src/solaris/hpi/native_threads/src/interrupt_md.c	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/j2se/src/solaris/hpi/native_threads/src/interrupt_md.c	2005-09-21 23:18:55.000000000 -0500
 @@ -110,8 +110,8 @@
  }
  
@@ -325,7 +323,7 @@ diff -Naur jdk-build-orig/j2se/src/solaris/hpi/native_threads/src/interrupt_md.c
      sigset_t set;
 diff -Naur jdk-build-orig/j2se/src/solaris/hpi/src/system_md.c jdk-build/j2se/src/solaris/hpi/src/system_md.c
 --- jdk-build-orig/j2se/src/solaris/hpi/src/system_md.c	2004-10-19 14:02:04.000000000 -0500
-+++ jdk-build/j2se/src/solaris/hpi/src/system_md.c	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/j2se/src/solaris/hpi/src/system_md.c	2005-09-21 23:18:55.000000000 -0500
 @@ -23,6 +23,7 @@
  #include <dlfcn.h>
  
@@ -336,7 +334,7 @@ diff -Naur jdk-build-orig/j2se/src/solaris/hpi/src/system_md.c jdk-build/j2se/sr
  #include "hpi_init.h"
 diff -Naur jdk-build-orig/j2se/src/solaris/javavm/export/jvm_md.h jdk-build/j2se/src/solaris/javavm/export/jvm_md.h
 --- jdk-build-orig/j2se/src/solaris/javavm/export/jvm_md.h	2004-10-19 14:02:04.000000000 -0500
-+++ jdk-build/j2se/src/solaris/javavm/export/jvm_md.h	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/j2se/src/solaris/javavm/export/jvm_md.h	2005-09-21 23:18:55.000000000 -0500
 @@ -48,7 +48,7 @@
  #define JVM_O_O_APPEND   O_APPEND
  #define JVM_O_EXCL       O_EXCL
@@ -348,7 +346,7 @@ diff -Naur jdk-build-orig/j2se/src/solaris/javavm/export/jvm_md.h jdk-build/j2se
  
 diff -Naur jdk-build-orig/j2se/src/solaris/native/sun/awt/awt_dnd.c jdk-build/j2se/src/solaris/native/sun/awt/awt_dnd.c
 --- jdk-build-orig/j2se/src/solaris/native/sun/awt/awt_dnd.c	2004-10-19 14:02:14.000000000 -0500
-+++ jdk-build/j2se/src/solaris/native/sun/awt/awt_dnd.c	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/j2se/src/solaris/native/sun/awt/awt_dnd.c	2005-09-21 23:18:55.000000000 -0500
 @@ -169,7 +169,7 @@
      return awt_root_window;
  }
@@ -360,7 +358,7 @@ diff -Naur jdk-build-orig/j2se/src/solaris/native/sun/awt/awt_dnd.c jdk-build/j2
  xerror_handler(Display *dpy, XErrorEvent *err) {
 diff -Naur jdk-build-orig/share/plugin/mozilla_headers_ns610/nscore.h jdk-build/share/plugin/mozilla_headers_ns610/nscore.h
 --- jdk-build-orig/share/plugin/mozilla_headers_ns610/nscore.h	2001-05-21 11:34:20.000000000 -0500
-+++ jdk-build/share/plugin/mozilla_headers_ns610/nscore.h	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/share/plugin/mozilla_headers_ns610/nscore.h	2005-09-21 23:18:55.000000000 -0500
 @@ -192,6 +192,10 @@
    #define HAVE_CPP_2BYTE_WCHAR_T
  #endif
@@ -374,7 +372,7 @@ diff -Naur jdk-build-orig/share/plugin/mozilla_headers_ns610/nscore.h jdk-build/
  
 diff -Naur jdk-build-orig/share/plugin/mozilla_headers_ns7/nscore.h jdk-build/share/plugin/mozilla_headers_ns7/nscore.h
 --- jdk-build-orig/share/plugin/mozilla_headers_ns7/nscore.h	2002-09-07 12:12:44.000000000 -0500
-+++ jdk-build/share/plugin/mozilla_headers_ns7/nscore.h	2005-09-08 23:34:46.000000000 -0500
++++ jdk-build/share/plugin/mozilla_headers_ns7/nscore.h	2005-09-21 23:18:55.000000000 -0500
 @@ -202,6 +202,10 @@
    #define HAVE_CPP_2BYTE_WCHAR_T
  #endif
