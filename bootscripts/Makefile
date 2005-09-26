@@ -84,6 +84,16 @@ install-cyrus-sasl: create-dirs
 	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc5.d/S24cyrus-sasl
 	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc6.d/K49cyrus-sasl
 
+install-dbus: create-dirs
+	install -m ${MODE} blfs/init.d/dbus ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc0.d/K30cyrus-sasl
+	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc1.d/K30cyrus-sasl
+	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc2.d/S20cyrus-sasl
+	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc3.d/S20cyrus-sasl
+	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc4.d/S20cyrus-sasl
+	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc5.d/S20cyrus-sasl
+	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc6.d/K30cyrus-sasl
+
 install-dhcp: create-dirs
 	install -m ${MODE} blfs/init.d/dhcp       ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/dhcp ${EXTDIR}/rc.d/rc0.d/K30dhcp

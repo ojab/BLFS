@@ -1,3 +1,7 @@
+2005-09-26 Randy McMurchy <randy@linuxfromscratch.org>
+	* Added D-BUS init script and updated Makefile to include a D-BUS
+	  target
+
 2005-09-10 Igor Zivkovic <igor@linuxfromscratch.org>
 	* Updated PPPoE service script to use the new command names.
 
@@ -31,7 +35,7 @@
 
 2005-03-13 Bruce Dubbs <bdubbs@linuxfromscratch.org>
 	* Updated openldap1 and openldap2 to check for running
-	daemons before starting.
+	  daemons before starting.
 
 2005-03-13 Bruce Dubbs <bdubbs@linuxfromscratch.org>
 	* Added iptables initialization script.
