@@ -1,3 +1,6 @@
+2005-10-01 Randy McMurchy <randy@linuxfromscratch.org>
+	* Added HAL init script and updated Makefile to include a HAL target
+
 2005-09-26 Randy McMurchy <randy@linuxfromscratch.org>
 	* Added D-BUS init script and updated Makefile to include a D-BUS
 	  target

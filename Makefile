@@ -154,6 +154,16 @@ install-gpm: create-dirs
 	ln -sf  ../init.d/gpm ${EXTDIR}/rc.d/rc5.d/S70gpm
 	ln -sf  ../init.d/gpm ${EXTDIR}/rc.d/rc6.d/K10gpm
 
+install-haldaemon: create-dirs
+	install -m ${MODE} blfs/init.d/haldaemon      ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/haldaemon ${EXTDIR}/rc.d/rc0.d/K29haldaemon
+	ln -sf  ../init.d/haldaemon ${EXTDIR}/rc.d/rc1.d/K29haldaemon
+	ln -sf  ../init.d/haldaemon ${EXTDIR}/rc.d/rc2.d/S21haldaemon
+	ln -sf  ../init.d/haldaemon ${EXTDIR}/rc.d/rc3.d/S21haldaemon
+	ln -sf  ../init.d/haldaemon ${EXTDIR}/rc.d/rc4.d/S21haldaemon
+	ln -sf  ../init.d/haldaemon ${EXTDIR}/rc.d/rc5.d/S21haldaemon
+	ln -sf  ../init.d/haldaemon ${EXTDIR}/rc.d/rc6.d/K29haldaemon
+
 install-heimdal: create-dirs
 	install -m ${MODE} blfs/init.d/heimdal        ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/heimdal ${EXTDIR}/rc.d/rc0.d/K42heimdal
