@@ -8,6 +8,7 @@ Description: Fixes syntax for use with gcc-4.0.x
 $LastChangedBy$
 $Date$
 
+
 diff -Naur jdk-build-orig/deploy/src/javaws/share/native/xmlparser.c jdk-build/deploy/src/javaws/share/native/xmlparser.c
 --- jdk-build-orig/deploy/src/javaws/share/native/xmlparser.c	2004-10-19 14:04:17.000000000 -0500
 +++ jdk-build/deploy/src/javaws/share/native/xmlparser.c	2005-09-21 23:18:55.000000000 -0500
