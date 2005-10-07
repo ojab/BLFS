@@ -25,37 +25,6 @@ diff -Naur OOo-build-orig/XmlSearch/src/com/sun/xmlsearch/db/VectorBtree.java OO
  
    public int getIteratorBufferLength() {
      return _blockSize + _vecLen*2;
-diff -Naur OOo-build-orig/berkeleydb/db-3.2.9.patch OOo-build/berkeleydb/db-3.2.9.patch
---- OOo-build-orig/berkeleydb/db-3.2.9.patch	2004-01-09 07:44:30.000000000 -0600
-+++ OOo-build/berkeleydb/db-3.2.9.patch	2005-04-19 01:56:30.317016792 -0500
-@@ -484,3 +484,27 @@
-   	*)
-   	  # Add libc to deplibs on all other systems.
-   	  deplibs="$deplibs -lc"
-+*** misc/db-3.2.9/java/src/com/sleepycat/db/DbEnv.java 2004-12-22 15:25:42.919098136 +0100
-+--- misc/build/db-3.2.9/java/src/com/sleepycat/db/DbEnv.java   2004-12-22 15:26:05.804142962 +0100
-+***************
-+*** 78,86 ****
-+      //
-+      /*package*/ void _notify_dbs()
-+      {
-+!         Enumeration enum = dblist_.elements();
-+!         while (enum.hasMoreElements()) {
-+!             Db db = (Db)enum.nextElement();
-+              db._notify_dbenv_close();
-+          }
-+          dblist_.removeAllElements();
-+--- 78,86 ----
-+      //
-+      /*package*/ void _notify_dbs()
-+      {
-+!         Enumeration enumer = dblist_.elements();
-+!         while (enumer.hasMoreElements()) {
-+!             Db db = (Db)enumer.nextElement();
-+              db._notify_dbenv_close();
-+          }
-+          dblist_.removeAllElements();
-+
 diff -Naur OOo-build-orig/javaunohelper/com/sun/star/comp/helper/Bootstrap.java OOo-build/javaunohelper/com/sun/star/comp/helper/Bootstrap.java
 --- OOo-build-orig/javaunohelper/com/sun/star/comp/helper/Bootstrap.java	2004-03-30 08:23:53.000000000 -0600
 +++ OOo-build/javaunohelper/com/sun/star/comp/helper/Bootstrap.java	2005-04-19 01:56:30.000000000 -0500
