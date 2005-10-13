@@ -1,16 +1,14 @@
 Submitted By: Matthew Burgess <matthew@linuxfromscratch.org>
-Date: 2004-12-30
+Date: 2005-08-06
 Initial Package Version: 6.3
 Upstream Status: From Upstream
-Origin: ftp://ftp.vim.org/pub/vim/patches/6.3/6.3.045
-Description: Fixes a security issue with vim's modeline handling
+Origin: ftp://ftp.vim.org/pub/vim/patches/6.3/6.3.045 and
+        ftp://ftp.vim.org/pub/vim/patches/6.3/6.3.082
+Description: Fixes 2 security issues with vim's modeline handling.
 
-$LastChangedBy$
-$Date$
-
-diff -Naur vim63.orig/runtime/doc/options.txt vim63/runtime/doc/options.txt
---- vim63.orig/runtime/doc/options.txt	2004-06-07 09:05:19.000000000 +0000
-+++ vim63/runtime/doc/options.txt	2004-12-30 11:00:23.971481608 +0000
+diff -Naur vim63/runtime/doc/options.txt lfs63/runtime/doc/options.txt
+--- vim63/runtime/doc/options.txt	2004-06-07 10:05:19.000000000 +0100
++++ lfs63/runtime/doc/options.txt	2005-08-04 23:03:50.000000000 +0100
 @@ -1,4 +1,4 @@
 -*options.txt*	For Vim version 6.3.  Last change: 2004 Jun 01
 +*options.txt*	For Vim version 6.3.  Last change: 2004 Dec 09
@@ -93,9 +91,9 @@ diff -Naur vim63.orig/runtime/doc/options.txt vim63/runtime/doc/options.txt
  						*'titlestring'*
  'titlestring'		string	(default "")
  			global
-diff -Naur vim63.orig/src/option.c vim63/src/option.c
---- vim63.orig/src/option.c	2004-05-15 10:20:06.000000000 +0000
-+++ vim63/src/option.c	2004-12-30 11:00:23.966482368 +0000
+diff -Naur vim63/src/option.c lfs63/src/option.c
+--- vim63/src/option.c	2004-05-15 11:20:06.000000000 +0100
++++ lfs63/src/option.c	2005-08-04 23:03:50.000000000 +0100
 @@ -293,6 +293,7 @@
  #define P_SECURE	0x40000L/* cannot change in modeline or secure mode */
  #define P_GETTEXT	0x80000L/* expand default value with _() */
@@ -220,3 +218,19 @@ diff -Naur vim63.orig/src/option.c vim63/src/option.c
      /* 'term' */
      else if (varp == &T_NAME)
      {
+diff -Naur vim63/src/os_unix.c lfs63/src/os_unix.c
+--- vim63/src/os_unix.c	2004-05-29 12:38:31.000000000 +0100
++++ lfs63/src/os_unix.c	2005-08-04 23:04:20.000000000 +0100
+@@ -4697,6 +4697,12 @@
+     if (!have_wildcard(num_pat, pat))
+ 	return save_patterns(num_pat, pat, num_file, file);
+ 
++# ifdef HAVE_SANDBOX
++    /* Don't allow any shell command in the sandbox. */
++    if (sandbox != 0 && check_secure())
++	return FAIL;
++# endif
++
+     /*
+      * Don't allow the use of backticks in secure and restricted mode.
+      */
