@@ -1,0 +1,32 @@
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2005-10-16
+Initial Package Version: 0.12.2
+Upstream Status:         Submitted to GNOME Bugzilla
+Origin:                  Randy McMurchy
+Description:             Fixes the discovery of the Xdamage and Xfixes libraries
+
+$LastChangedBy$
+$Date$
+
+
+diff -Naur gnome-mag-0.12.2-orig/configure gnome-mag-0.12.2/configure
+--- gnome-mag-0.12.2-orig/configure	2005-10-04 16:20:37.000000000 +0000
++++ gnome-mag-0.12.2/configure	2005-10-16 19:03:30.000000000 +0000
+@@ -23142,7 +23142,7 @@
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-lXdamage  $LIBS"
++LIBS="-lXdamage -lXfixes -lX11 -L/usr/X11R6/lib $LIBS"
+ cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
+ _ACEOF
+@@ -23573,7 +23573,7 @@
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-lXfixes  $LIBS"
++LIBS="-lXfixes -lX11 -L/usr/X11R6/lib $LIBS"
+ cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
+ _ACEOF
