@@ -1,0 +1,35 @@
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2005-10-18
+Initial Package Version: 0.3.8
+Upstream Status:         Committed to GNOME CVS
+Origin:                  Will Walker
+                         (http://bugzilla.gnome.org/attachment.cgi?id=53616&action=view)
+Description:             Fixes http://bugzilla.gnome.org/show_bug.cgi?id=319168
+                         Allows GNOME Speech to use the streaming audio method in
+                         the FreeTTS driver
+
+$LastChangedBy$
+$Date$
+
+
+diff -Naur gnome-speech-0.3.8-orig/drivers/freetts/java/org/GNOME/Speech/FreeTTSSynthesisDriver.java gnome-speech-0.3.8/drivers/freetts/java/org/GNOME/Speech/FreeTTSSynthesisDriver.java
+--- gnome-speech-0.3.8-orig/drivers/freetts/java/org/GNOME/Speech/FreeTTSSynthesisDriver.java	2005-09-29 14:40:31.000000000 +0000
++++ gnome-speech-0.3.8/drivers/freetts/java/org/GNOME/Speech/FreeTTSSynthesisDriver.java	2005-10-18 16:07:16.000000000 +0000
+@@ -200,7 +200,7 @@
+ 		num_voices = voices.length;
+ 		for (i = 0; i < num_voices; i++)
+ 		{
+-			if (voices[i].getDomain () != "general")
++		        if (!(voices[i].getDomain ()).equals("general"))
+ 				continue;
+ 			vi = getVoiceInfo (voices[i]);
+ 			if (voice_spec.name.length () != 0 && !voice_spec.name.equals(vi.name))
+@@ -210,7 +210,7 @@
+ 			
+ 			if (!voices[i].isLoaded ())
+ 			{
+-				if (System.getProperty("ft_audio_player") == "streaming")
++			        if (System.getProperty("ft_audio_player").equals("streaming"))
+ 					voices[i].setAudioPlayer (new JavaStreamingAudioPlayer());
+ 				else
+ 					voices[i].setAudioPlayer (new JavaClipAudioPlayer());
