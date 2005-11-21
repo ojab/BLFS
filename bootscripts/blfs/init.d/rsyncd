@@ -13,7 +13,7 @@
 case "$1" in
 	start)
 		boot_mesg "Starting RSYNC Server..."
-		loadproc /usr/bin/rsync --daemon --compress
+		loadproc /usr/bin/rsync --daemon
 		;;
 
 	stop)

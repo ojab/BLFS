@@ -1,3 +1,9 @@
+2005-11-21 Randy McMurchy <randy@linuxfromscratch.org>
+	* Removed the --compress parameter from the RSync bootscript
+
+2005-10-17 Randy McMurchy <randy@linuxfromscratch.org>
+	* Updated the GDM script to the 2.12 version of GNOME
+
 2005-10-01 Randy McMurchy <randy@linuxfromscratch.org>
 	* Added HAL init script and updated Makefile to include a HAL target
 
