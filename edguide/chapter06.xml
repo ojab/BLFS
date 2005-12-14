@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
-   "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" >
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" >
 
 <chapter id="chapter06">
 <chapterinfo>
@@ -44,12 +44,12 @@ MB).  SBU entries should be rounded to one decimal.  If the value is less than
 
 <para>File sizes should be measured with the <command>ls -k filename</command>
 command. Build sizes should be measured with a <command>df -k /</command>
-command before the package is unpacked and after the package is installed. Note
-that this assumes that the package is built and installed on the same
-filesystem. Adjust the procedure as necessary for your setup. The difference
-between these measurements is the build size.  Build times should be measured
-with the procedure documented at <ulink
-url='http://www.linuxfromscratch.org/~bdubbs/about.html'/>.</para>
+command before the package is unpacked and after the package is installed (with
+any build directories still in place). Note that this assumes that the package
+is built and installed on the same filesystem. Adjust the procedure as
+necessary for your setup. The difference between these measurements is the
+build size.  Build times should be measured with the procedure documented at
+<ulink url='http://www.linuxfromscratch.org/~bdubbs/about.html'/>.</para>
 
 <screen>&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
 &lt;!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
