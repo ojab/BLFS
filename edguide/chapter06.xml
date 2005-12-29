@@ -340,7 +340,7 @@ EOF&lt;/userinput&gt;&lt;/screen&gt;
       no wish to install one, you can also start &lt;command&gt;famd&lt;/command&gt; during 
       system startup by installing the &lt;filename&gt;/etc/rc.d/init.d/fam&lt;/filename&gt;
       init script included in the
-      &lt;xref linkend="intro-important-bootscripts"/&gt; package.&lt;/para&gt;
+      &lt;xref linkend="bootscripts"/&gt; package.&lt;/para&gt;
 
 &lt;screen role="root"&gt;&lt;userinput&gt;make install-fam&lt;/userinput&gt;&lt;/screen&gt;
 
