@@ -66,6 +66,10 @@ the book renders.</para>
 <para>To be developed.  </para>
 </section>
 
+<!-- commenting this out for now as we don't update Anduin
+     any longer. It is done by Justin on the main server
+     and then Anduin is synced via Rsync
+
 <section id="ch07-anduin">
 <title>BLFS Packages</title>
 
@@ -92,6 +96,8 @@ the same directory and md5sums calculated for all files:</para>
 md5sum packagename-x.x* > packagename-x.x.md5sums</command></screen>
 
 </section>
+
+-->
 
 <section id="ch07-tagging">
 <title>Adding Tags</title>
