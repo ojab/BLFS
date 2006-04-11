@@ -29,8 +29,8 @@ case "$1" in
 		# mount for all netfs types and anything that was
 		# mounted with the _netdev option.
 		NETMOUNTS=`/bin/mount \
-			| /bin/grep '_netdev\|smbfs\|ncpfs|\coda\|nfs' \
-			| /usr/bin/cut -d " " -f 3 | /bin/sed 's/$/ /g'`
+			| /bin/grep '_netdev\|smbfs\|ncpfs\|coda\|nfs' \
+			| /usr/bin/cut -d " " -f 3 | /bin/sed ':a;$!N;s/\n/ /;ta'`
 
 		# Check to see if anything was listed from above
 		# (see if anything is actually needs to be unmounted)
@@ -42,7 +42,7 @@ case "$1" in
 
 			# Try and stop processes the nice way
 			# (probably won't work in most cases)
-			/bin/fuser -m -SIGTERM $NETMOUNTS > /dev/null
+			/bin/fuser -SIGTERM -km $NETMOUNTS > /dev/null
 
 			# Check and see if it found anything.  If it
 			# did, then give 3 seconds for things to exit
