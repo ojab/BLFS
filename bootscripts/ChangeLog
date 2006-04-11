@@ -1,3 +1,9 @@
+2006-04-11 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+	* Updated the netfs shutdown script to avoid errors with multiple entries
+
+2006-04-11 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+	* Updated the sshd script to prevent killing ssh in Out Of Memory conditions
+
 2006-02-05 Randy McMurchy <randy@linuxfromscratch.org>
 	* Updated the GDM script to the 2.12.2 version of GNOME
 
