@@ -1,3 +1,6 @@
+2006-04-15 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+	* Updated the ssh shutdown script to wait one second before setting OOM value
+
 2006-04-11 Bruce Dubbs <bdubbs@linuxfromscratch.org>
 	* Updated the netfs shutdown script to avoid errors with multiple entries
 
