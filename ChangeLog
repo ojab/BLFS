@@ -1,3 +1,6 @@
+2006-04-23 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+	* Added qpopper initailization script and updated the Makefile
+
 2006-04-15 Bruce Dubbs <bdubbs@linuxfromscratch.org>
 	* Updated the ssh shutdown script to wait one second before setting OOM value
 
