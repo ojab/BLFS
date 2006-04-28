@@ -1,3 +1,6 @@
+2006-04-27 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+	* Changed autofs order number to 52 so it will be run after cleanfs
+
 2006-04-23 Bruce Dubbs <bdubbs@linuxfromscratch.org>
 	* Added qpopper initailization script and updated the Makefile
 

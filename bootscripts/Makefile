@@ -48,7 +48,7 @@ install-apache: create-dirs
 install-autofs: create-dirs
 	install -m $(MODE) blfs/init.d/autofs    $(EXTDIR)/rc.d/init.d/
 	install -m $(CONFMODE) blfs/sysconfig/autofs.conf $(EXTDIR)/sysconfig/
-	ln -sf  ../init.d/autofs $(EXTDIR)/rc.d/rcsysinit.d/S45autofs
+	ln -sf  ../init.d/autofs $(EXTDIR)/rc.d/rcsysinit.d/S52autofs
 
 install-bind: create-dirs
 	install -m ${MODE} blfs/init.d/bind       ${EXTDIR}/rc.d/init.d/
@@ -466,7 +466,7 @@ uninstall-apache:
 
 uninstall-autofs:
 	rm -f $(EXTDIR)/rc.d/init.d/autofs
-	rm -f $(EXTDIR)/rc.d/rcsysinit.d/S45autofs
+	rm -f $(EXTDIR)/rc.d/rcsysinit.d/S52autofs
 
 uninstall-bind:
 	rm -f ${EXTDIR}/rc.d/init.d/bind
