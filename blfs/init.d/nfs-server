@@ -74,6 +74,12 @@ case "$1" in
 			/bin/umount /proc/fs/nfsd 2>&1 > /dev/null
 			evaluate_retval
 		fi
+
+		# Remove a pid file that isn't done automatically
+		boot_mesg "Removing the rpc.statd pid file if it exists"
+		if [ -f /var/run/rpc.statd.pid ]; then
+		    rm -f /var/run/rpc.statd.pid
+		fi
 		;;
 
 	reload)
