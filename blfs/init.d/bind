@@ -13,7 +13,7 @@
 case "$1" in
 	start)
 		boot_mesg "Starting named..."
-		loadproc /usr/sbin/named -u named -t /home/named -c \
+		loadproc /usr/sbin/named -u named -t /srv/named -c \
 			/etc/named.conf
 		;;
 

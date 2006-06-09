@@ -1,3 +1,6 @@
+2006-06-08 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+	* Updated bind to refer to /srv/named
+
 2006-04-30 Randy McMurchy <randy@linuxfromscratch.org>
 	* Added a command to delete a pid file that the NFS server
 	  leaves behind
