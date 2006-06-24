@@ -1,3 +1,5 @@
+2006-06-24 Randy McMurchy <randy@linuxfromscratch.org>
+	* Updated the HAL script to work with HAL-0.5.7
 
 2006-06-23 Randy McMurchy <randy@linuxfromscratch.org>
 	* Updated the GDM script to the 2.14.2 version of GNOME
