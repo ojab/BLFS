@@ -48,12 +48,7 @@ case "$1" in
 
 		boot_mesg "Stopping NFS nfsd..."
 		# nfsd needs HUP....
-		TEMPSTOPSIG="$STOPSIG"
-		STOPSIG="HUP"
-		## Special case for nfsd with no full path
-		killproc nfsd
-		# return STOPSIG to it's orginal value...
-		STOPSIG="$TEMPSTOPSIG"
+		killproc nfsd HUP
 
 		boot_mesg "Stopping NFS mountd..."
 		killproc /usr/sbin/rpc.mountd
