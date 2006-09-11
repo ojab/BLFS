@@ -23,8 +23,7 @@ case "$1" in
 		boot_mesg "Stopping LDAP slapd Server..."
 		PIDFILE="/srv/ldap/run/slapd.pid"
 		# slapd needs SIGINT
-		STOPSIG="INT"
-		killproc -p ${PIDFILE} /usr/sbin/slapd
+		killproc -p ${PIDFILE} /usr/sbin/slapd INT
 		;;
 
 	restart)
