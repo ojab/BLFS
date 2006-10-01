@@ -4,7 +4,6 @@
 # Based upon lfs-bootscripts-1.12 $network_devices/if{down,up}
 # Rewritten by Nathan Coulson <nathan@linuxfromscratch.org>
 # Adapted for dhcpcd by DJ Lucas <dj@lucasit.com>
-# Modified by Brian Weber to handle an absent carrier on an interface.
 
 #$LastChangedBy$
 #$Date$
@@ -18,13 +17,6 @@ LEASEINFO="/var/lib/dhcpc/dhcpcd-$1.info"
 
 case "$2" in
 	up)
-		# Abort startup and issue a warning if interface lacks a carrier
-		if [ "`/sbin/ip link show $1 2>/dev/null | grep NO-CARRIER`" ]
-		then
-			boot_mesg "$1 lacks carrier. Skipping dhcp setup." ${WARNING}
-			echo_warning
-			exit 0
-		fi
 		boot_mesg -n "Starting dhcpcd on the $1 interface..."
 		# Test to see if there is a stale pid file
 		if [ -f "$PIDFILE" ]
