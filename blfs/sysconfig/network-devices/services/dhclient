@@ -19,13 +19,13 @@ getipstats()
 }
 
 case "$2" in
-        up)
-                boot_mesg "Starting dhclient on the $1 interface..."
-                /sbin/dhclient $1 $DHCP_START
-                # Save the return value
-                RET="$?"
-                # Print the assigned settings if requested
-                if [ "$RET" = "0" -a "$PRINTIP" = "yes" ]; then
+	up)
+		boot_mesg "Starting dhclient on the $1 interface..."
+		/sbin/dhclient $1 $DHCP_START
+		# Save the return value
+		RET="$?"
+		# Print the assigned settings if requested
+		if [ "$RET" = "0" -a "$PRINTIP" = "yes" ]; then
 			# Get info from dhclient.leases file
 			IPADDR=`getipstats | grep "fixed-address" | \
 				sed 's/ fixed-address //' | \
@@ -40,47 +40,47 @@ case "$2" in
 				sed 's/ option domain-name-servers //' | \
 				sed 's/\;//' | sed 's/,/ and /'`
 
-                        if [ "$PRINTALL" = "yes" ]; then
-                                $(exit "$RET")
+			if [ "$PRINTALL" = "yes" ]; then
+				$(exit "$RET")
 				evaluate_retval
-                                boot_mesg "           DHCP Assigned Settings for $1:"
+				boot_mesg "           DHCP Assigned Settings for $1:"
 				boot_mesg_flush
-                                boot_mesg "           IP Address:      $IPADDR"
+				boot_mesg "           IP Address:      $IPADDR"
 				boot_mesg_flush
-                                boot_mesg "           Subnet Mask:     $NETMASK"
+				boot_mesg "           Subnet Mask:     $NETMASK"
 				boot_mesg_flush
-                                boot_mesg "           Default Gateway: $GATEWAY"
+				boot_mesg "           Default Gateway: $GATEWAY"
 				boot_mesg_flush
-                                boot_mesg "           DNS Server:      $DNS"
+				boot_mesg "           DNS Server:      $DNS"
 				boot_mesg_flush
-                        else
-                                boot_mesg " IP Addresss:""$IPADDR"
-                                $(exit "$RET")
+			else
+				boot_mesg " IP Addresss:""$IPADDR"
+				$(exit "$RET")
 				evaluate_retval
-                        fi
-                else
-                        $(exit "$RET")
-                        evaluate_retval
-                fi
-        ;;
+			fi
+		else
+			$(exit "$RET")
+			evaluate_retval
+		fi
+	;;
 
-        down)
-                boot_mesg "Stoping dhclient on the $1 interface..."
+	down)
+		boot_mesg "Stoping dhclient on the $1 interface..."
 		if [ "$DHCP_STOP" = "" ]
 		then
 			# This breaks multiple interfaces please provide
 			# the correct stop arguments.
 			killproc dhclient
 		else
-                	/sbin/dhclient $1 $DHCP_STOP
-                	evaluate_retval
+			/sbin/dhclient $1 $DHCP_STOP
+			evaluate_retval
 		fi
-        ;;
+	;;
 
-        *)
-                echo "Usage: $0 [interface] {up|down}"
-                exit 1
-        ;;
+	*)
+		echo "Usage: $0 [interface] {up|down}"
+		exit 1
+	;;
 esac
 
 # End $network_devices/services/dhclient
