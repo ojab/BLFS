@@ -1,7 +1,12 @@
+2006-10-11 Dan Nicholson <dnicholson@linuxfromscratch.org>
+	* Fixed gpm boot script to accept multiple arguments in the
+	  variables, particularly GPMOPTS. Thanks to Christoph Felkes
+	  for supplying the fix.
+
 2006-06-24 Bruce Dubbs <bdubbs@linuxfromscratch.org>
 	* Updated the openldap and nfs-server scripts to pass appropriate
-      signals to the stop functions.  This change was due to changes
-      in the LFS functions script on 2/06/05!
+	  signals to the stop functions.  This change was due to changes
+	  in the LFS functions script on 2/06/05!
 
 2006-06-24 Randy McMurchy <randy@linuxfromscratch.org>
 	* Updated the HAL script to work with HAL-0.5.7

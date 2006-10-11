@@ -26,7 +26,7 @@ fi
 case "$1" in
 	start)
 		boot_mesg "Starting gpm..."
-		loadproc /usr/sbin/gpm -m "$MDEVICE" -t "$PROTOCOL" "$GPMOPTS"
+		loadproc /usr/sbin/gpm -m $MDEVICE -t $PROTOCOL $GPMOPTS
 		;;
 
 	stop)
