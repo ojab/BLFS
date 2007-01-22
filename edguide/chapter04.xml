@@ -28,7 +28,7 @@ changes:</para>
    <userinput>remove</userinput>ed.</para></listitem>
 <listitem><para>Check that the book renders properly.</para></listitem>
 <listitem><para>Commit it!</para></listitem>
-<listitem><para>Update bugzilla to reflect the changes</para></listitem>
+<listitem><para>Update ticket to reflect the changes</para></listitem>
 </itemizedlist>
 
 </section>
@@ -41,6 +41,26 @@ changes:</para>
 changes without testing them before, and had to change them (in one case
 twice) very quickly when someone noticed.... &lt;/confession mode&gt;
 So learn from our mistakes - check <emphasis>everything</emphasis>.</para>
+
+<para>It is also a good practice to check any installed man pages for
+encoding not supported by the LFS system.  This can be checked by running
+the following script with the current package manpages as arguments:</para>
+
+<screen>#!/bin/sh
+# Begin checkman.sh
+# Usage: find /usr/share/man -type f | xargs checkman.sh
+for a in "$@"
+do
+    # echo "Checking $a..."
+    # Pure-ASCII manual page (possibly except comments) is OK
+    grep -v '.\\"' "$a" | iconv -f US-ASCII -t US-ASCII >/dev/null \
+      2>&amp;1 &amp;&amp; continue
+    # Non-UTF-8 manual page is OK
+    iconv -f UTF-8 -t UTF-8 "$a" >/dev/null 2>&amp;1 || continue
+    # If we got here, we found UTF-8 manual page, bad.
+    echo "UTF-8 manual page: $a" >&amp;2
+done
+# End checkman.sh</screen>
 
 </section>
 
@@ -215,17 +235,13 @@ useful when you've modified files you don't want to commit yet.</para>
 
 </section>
 
-<section id="ch04-bugzilla">
-<title>Update bugzilla</title>
+<section id="ch04-trac">
+<title>Update the Trac Ticket</title>
 
-<para>The final part of updating the book is to update bugzilla.
+<para>The final part of updating the book is to update the Trac ticket.
 This is usually as easy as going to BLFS
-Bugzilla (<ulink url="&blfs-bugzilla;"/>), going to the bug and
-choosing Resolve bug, changing resolution to FIXED.  Note that you
-should <emphasis>not</emphasis> then go back and CLOSE or VERIFY the bug.  The
-person who VERIFYs the bug should be a different editor who has tested
-that what the bug is about has been fixed.  Basically, it's our QA
-process. A bug is CLOSEd when a new version of the book is released.</para>
+Trac (<ulink url="&blfs-trac;"/>), going to the ticket and
+changing resolution to "fixed".</para>
 
 <para>Having completed all of this, you can now go and have a rest.
 Well done, thank you and good night.</para>

@@ -1,6 +1,6 @@
-<!ENTITY version "20050817">
+<!ENTITY version "20070121">
 <!ENTITY releasedate "August 17th, 2005">
 
 <!ENTITY date "$Date$">
 
-<!ENTITY blfs-bugzilla "http://blfs-bugs.linuxfromscratch.org">
+<!ENTITY blfs-trac "http://wiki.linuxfromscratch.org/blfs">

@@ -19,7 +19,7 @@
 (and some others).  The tree which we are interested in for BLFS editing is
 (unsurprisingly) the BLFS tree.  A complete list of the modules which are
 available can be found using the interface at <ulink
-url="http://svn.linuxfromscratch.org/viewcvs.cgi/?root=BLFS"/>.</para>
+url="http://wiki.linuxfromscratch.org/blfs/browser/trunk"/>.</para>
 
 <para>There are two types of SVN access provided to the BLFS tree: anonymous
 read-only access which anyone can use and read-write access granted to active
@@ -73,7 +73,7 @@ RhostsRSAAuthentication yes</screen>
 <para>Once you have this setup, try to checkout the BLFS tree using:
 <screen><userinput>svn co svn+ssh://linuxfromscratch.org/BLFS/trunk/</userinput></screen>
 If this works, you'll get a nice trunk directory listing and you have
-your own sandbox!.  You also have write access so from now on be extra
+your own sandbox!  You also have write access so from now on be extra
 careful but note that <emphasis>no</emphasis> changes will be made until
 you use a <userinput>svn commit</userinput> command.</para>
 
