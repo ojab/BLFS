@@ -1,0 +1,24 @@
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2005-09-10
+Initial Package Version: 2.12.0
+Upstream Status:         Unknown
+Origin:                  Randy McMurchy
+Description:             Fixes linking to libsmbclient if you have Samba
+                         version greater than 3.0.14a
+
+$LastChangedBy$
+$Date$
+
+
+diff -Naur gnome-vfs-2.12.0-orig/modules/smb-method.c gnome-vfs-2.12.0/modules/smb-method.c
+--- gnome-vfs-2.12.0-orig/modules/smb-method.c	2005-06-08 07:19:54.000000000 +0000
++++ gnome-vfs-2.12.0/modules/smb-method.c	2005-09-11 03:33:39.000000000 +0000
+@@ -1486,7 +1486,7 @@
+ 
+ 		/* Important: perform_authentication leaves and re-enters the lock! */
+ 		while (perform_authentication (&actx) > 0) {
+-			r = smb_context->close (smb_context, handle->file);
++			r = smb_context->close_fn (smb_context, handle->file);
+ 			actx.res = (r >= 0) ? GNOME_VFS_OK : gnome_vfs_result_from_errno ();
+ 		}
+ 

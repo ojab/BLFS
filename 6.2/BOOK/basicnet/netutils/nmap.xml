@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+    <!-- Inserted as a reminder to do this. The mention of a test suite
+         is usually right before the root user installation commands. Please
+         delete these 12 (including one blank) lines after you are done.-->
+
+    <!-- Use one of the two mentions below about a test suite,
+         delete the line that is not applicable. Of course, if the
+         test suite uses syntax other than "make check", revise the
+         line to reflect the actual syntax to run the test suite -->
+
+    <!-- <para>This package does not come with a test suite.</para> -->
+    <!-- <para>To test the results, issue: <command>make check</command>.</para> -->
+
+  <!ENTITY nmap-download-http "http://download.insecure.org/nmap/dist/nmap-&nmap-version;.tar.bz2">
+  <!ENTITY nmap-download-ftp  "ftp://ftp.fu-berlin.de/unix/linux/mirrors/gentoo/distfiles/nmap-&nmap-version;.tar.bz2">
+  <!ENTITY nmap-md5sum        "d2b841e97d81d0fac20d18cbeddfa54a">
+  <!ENTITY nmap-size          "2.0 MB">
+  <!ENTITY nmap-buildsize     "21.7 MB">
+  <!ENTITY nmap-time          "0.5 SBU">
+]>
+
+<sect1 id="nmap" xreflabel="Nmap-&nmap-version;">
+  <?dbhtml filename="nmap.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Nmap-&nmap-version;</title>
+
+  <indexterm zone="nmap">
+    <primary sortas="a-Nmap">Nmap</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Nmap</title>
+
+    <para><application>Nmap</application> is a utility for network exploration and
+    security auditing. It supports ping scanning, port scanning and
+    TCP/IP fingerprinting.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&nmap-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&nmap-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &nmap-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &nmap-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &nmap-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &nmap-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Nmap Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="openssl"/>,
+    <xref linkend="pcre"/>,
+    <xref linkend="gtk2"/> (for building the graphical front-end) and
+    <xref linkend="libpcap"/></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/nmap"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Nmap</title>
+
+    <para>Install <application>Nmap</application> by running the following
+    commands:</para>
+
+<screen><userinput>./configure --prefix=/usr &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test-suite:</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>nmap and optionally, nmapfe</seg>
+        <seg>None</seg>
+        <seg>/usr/share/applications and /usr/share/nmap</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="nmap-prog">
+        <term><command>nmap</command></term>
+        <listitem>
+          <para>is a utility for network exploration and security auditing. It
+          supports ping scanning, port scanning and
+          TCP/IP fingerprinting.</para>
+          <indexterm zone="nmap nmap-prog">
+            <primary sortas="b-nmap">nmap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="nmapfe">
+        <term><command>nmapfe</command></term>
+        <listitem>
+          <para>is the graphical front end to <command>nmap</command>.</para>
+          <indexterm zone="nmap nmapfe">
+            <primary sortas="b-nmapfe">nmapfe</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

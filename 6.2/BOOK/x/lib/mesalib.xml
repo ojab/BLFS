@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY mesalib-download-http "http://downloads.sourceforge.net/mesa3d/MesaLib-&mesalib-version;.tar.bz2">
+  <!ENTITY mesalib-download-ftp  " ">
+  <!ENTITY mesalib-md5sum        "61beda590bfc5b4a12e979d5f2d70d7a">
+  <!ENTITY mesalib-size          "3.3 MB">
+  <!ENTITY mesalib-buildsize     "823 MB">
+  <!ENTITY mesalib-time          "1.7 SBU">
+]>
+
+<sect1 id="mesalib" xreflabel="MesaLib-&mesalib-version;">
+  <?dbhtml filename="mesalib.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>MesaLib-&mesalib-version;</title>
+
+  <indexterm zone="mesalib">
+    <primary sortas="a-MesaLib">MesaLib</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to MesaLib</title>
+
+    <para><application>Mesa</application> is an OpenGL compatible 3-D graphics
+    library.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&mesalib-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&mesalib-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &mesalib-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size (including recommended download):
+        &mesalib-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required (including recommended download):
+        &mesalib-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time (including recommended download):
+        &mesalib-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">MesaLib Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="xorg7-lib"/>,
+    <xref linkend="xorg7-util"/>, and
+    <xref linkend="libdrm"/></para>
+
+    <note>
+      <para>It is not recommended to build a newer version of
+      <application>Mesa</application> with <xref linkend="xfree86"/> or
+      <xref linkend="xorg"/>.</para>
+    </note>
+
+    <bridgehead renderas="sect3">Recommended Download</bridgehead>
+    <para><ulink
+    url="http://downloads.sourceforge.net/mesa3d/MesaDemos-&mesalib-version;.tar.bz2">MesaDemos-&mesalib-version;</ulink>
+    provides a demo and a diagnostic program to verify that GL is working
+    properly.</para>
+
+    <bridgehead renderas="sect3">Optional Download</bridgehead>
+    <para><ulink
+    url="http://downloads.sourceforge.net/mesa3d/MesaGLUT-&mesalib-version;.tar.bz2">MesaGLUT-&mesalib-version;</ulink>
+    provides a working <filename class='libraryfile'>libglut</filename>.</para>
+
+    <note>
+      <para>You should extract all three tarballs from the same toplevel
+      directory.  All three files will extract to the
+      <filename class="directory">Mesa-&mesalib-version;</filename>
+      directory.</para>
+    </note>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/mesalib"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of MesaLib</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/xorg7-only.xml"/>
+
+    <para>You will need to adjust the commands below to reflect the
+    installation prefix of the X Window System.  First, correct several
+    hard coded directories in the source files with the following
+    commands:</para>
+
+<screen><userinput>find . -type f -exec sed -i "s@/usr/X11R6@$XORG_PREFIX@g" {} \; &amp;&amp;
+sed -i 's@lib/modules@lib/X11/modules@' src/glx/x11/dri_glx.c &amp;&amp;
+sed -i 's@lib/modules@lib/X11/modules@' \
+    src/mesa/drivers/dri/Makefile.template</userinput></screen>
+
+    <para>Fix an error with output redirection if <command>/bin/sh</command>
+    is not the <application>Bash</application> shell on your system:</para>
+
+<screen><userinput>sed -i 's%&gt;&amp; /dev/null%&gt;/dev/null%' src/mesa/drivers/dri/Makefile.template</userinput></screen>
+
+    <para>Build <application>MesaLib</application>
+    by running the following command:</para>
+
+<screen><userinput>make OPT_FLAGS="-O2 -fno-strict-aliasing" linux-dri-x86</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user,
+    issue the following commands to install
+    <application>MesaLib</application>:</para>
+
+<screen role="root"><userinput>bin/installmesa $XORG_PREFIX</userinput></screen>
+
+    <para>While still the root user, install the modules for
+    Xorg-&xorg7-version; with the following commands.</para>
+
+<screen role="root"><userinput>mkdir -v -p $XORG_PREFIX/lib/X11/modules/dri &amp;&amp;
+install -v -m755 lib/*dri* $XORG_PREFIX/lib/X11/modules/dri</userinput></screen>
+
+    <para>If you've extracted the Demos package as well, then
+    build the test programs with the following commands:</para>
+
+<screen><userinput>sed -i 's@-l$(GLUT_LIB)@@g' configs/default &amp;&amp;
+cd progs/xdemos &amp;&amp;
+make PROGS='glxinfo glxgears'</userinput></screen>
+
+    <para>Install the demos as the
+    <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>install -v -m755 glxinfo glxgears $XORG_PREFIX/bin</userinput></screen>
+
+    <note>
+      <para>Do not remove the Mesa source tree yet, it will be required to
+      build the <xref linkend="xorg7-server"/>.</para>
+    </note>
+
+    <para>Finally, if installing to any prefix other than
+    <filename class="directory">/usr</filename>, you should create symlinks
+    to the GL headers in <filename class="directory">/usr/include</filename>.
+    Execute the following command as the
+    <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>ln -s -v $XORG_PREFIX/include/GL /usr/include</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><command>find...sed -i
+    "s@/usr/X11R6@$XORG_PREFIX@"...</command>:
+    This command corrects several hard coded references to the X11R6 default
+    installation path.</para>
+
+    <para><command>sed -i 's@lib/modules@lib/X11/modules@'
+    src/glx/x11/dri_glx.c</command>: This command corrects a hard coded
+    reference to the module directory.</para>
+
+    <para><command>make OPT_FLAGS=... linux-dri-x86</command>: A bug where
+    OpenGL applications are shifted to the left by 50% can be worked around
+    by adding <option>-fno-strict-aliasing</option> to the compiler flags.
+    Also, the <option>linux-dri-x86</option> target is specified to use a
+    few other helpful flags in addition to the defaults. See the other
+    targets in the <filename class="directory">configs</filename> directory
+    if your architecture is not x86.</para>
+
+    <para><command>bin/installmesa</command>: Mesa uses a custom installation
+    script as opposed to the normal <parameter>install</parameter> make
+    target.</para>
+
+    <para><command>install -v -m755 lib/*dri*
+    $XORG_PREFIX/lib/X11/modules/dri</command>:
+    installs the DRI modules.</para>
+
+    <para><command>sed -i 's@-l$(GLUT_LIB)@@g' configs/default</command>:
+    disables linking against GLUT libraries for the demo programs.</para>
+
+    <para><command>make PROGS='glxinfo glxgears'</command>: build only
+    the glxinfo and glxgears programs.</para>
+
+    <para><command>install -v -m755 glxinfo glxgears
+    $XORG_PREFIX/bin</command>:
+    Installs only the glxinfo and glxgears programs.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>glxgears and glxinfo</seg>
+        <seg>libGL.{so,a}, libGLU.{so,a}, libGLw.{so,a}, libglut.{so,a} and
+        *_dri.so</seg>
+        <seg>$XORG_PREFIX/lib/modules/dri</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="glxgears">
+        <term><filename>glxgears</filename></term>
+        <listitem>
+          <para>a GL demo useful for troubleshooting graphics problems.</para>
+          <indexterm zone="mesalib glxgears">
+            <primary sortas="b-glxgears">glxgears</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="glxinfo">
+        <term><filename>glxinfo</filename></term>
+        <listitem>
+          <para>a diagnostic program that displays information about the
+          graphics hardware and installed GL libraries.</para>
+          <indexterm zone="mesalib glxinfo">
+            <primary sortas="b-glxinfo">glxinfo</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

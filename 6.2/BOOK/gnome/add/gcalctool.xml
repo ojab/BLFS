@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gcalctool-download-http "&gnome-download-http;/gcalctool/5.8/gcalctool-&gcalctool-version;.tar.bz2">
+  <!ENTITY gcalctool-download-ftp  "&gnome-download-ftp;/gcalctool/5.8/gcalctool-&gcalctool-version;.tar.bz2">
+  <!ENTITY gcalctool-md5sum        "9fbf0f2552f6fd1a0fadf54a2125fef2">
+  <!ENTITY gcalctool-size          "1.0 MB">
+  <!ENTITY gcalctool-buildsize     "18.4 MB">
+  <!ENTITY gcalctool-time          "0.2 SBU">
+]>
+
+<sect1 id="gcalctool" xreflabel="gcalctool-&gcalctool-version;">
+  <?dbhtml filename="gcalctool.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>gcalctool-&gcalctool-version;</title>
+
+  <indexterm zone="gcalctool">
+    <primary sortas="a-gcalctool">gcalctool</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to gcalctool</title>
+
+    <para><application>gcalctool</application> is a powerful graphical
+    calculator with financial, logical and scientific modes. It uses a
+    multiple precision package to do its arithmetic to give a high degree
+    of accuracy.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&gcalctool-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&gcalctool-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &gcalctool-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &gcalctool-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &gcalctool-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &gcalctool-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">gcalctool Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="libgnomeui"/> and
+    <xref linkend="gnome-doc-utils"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="intltool"/></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/gcalctool"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of gcalctool</title>
+
+    <para>Install <application>gcalctool</application> by running the following
+    commands:</para>
+
+<screen><userinput>./configure --prefix=$(pkg-config --variable=prefix ORBit-2.0) \
+            --sysconfdir=&gnome-etc-dir; \
+            --localstatedir=/var/lib \
+            --mandir=$(pkg-config \
+                --variable=prefix ORBit-2.0)/share/man &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gnome-prefix.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gnome-sysconfdir.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/scrollkeeper-dir.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gnome-mandir.xml"/>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>gcalctool and gnome-calculator</seg>
+        <seg>None</seg>
+        <seg><envar>$GNOME_PREFIX</envar>/share/{gnome/help/,
+        omf/}gcalctool</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gcalctool-prog">
+        <term><command>gcalctool</command></term>
+        <listitem>
+          <para>is a desktop calculator for
+          <application>GNOME</application>.</para>
+          <indexterm zone="gcalctool gcalctool-prog">
+            <primary sortas="b-gcalctool">gcalctool</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gnome-calculator">
+        <term><command>gnome-calculator</command></term>
+        <listitem>
+          <para>is a symlink to the <command>gcalctool</command>
+          program.</para>
+          <indexterm zone="gcalctool gnome-calculator">
+            <primary sortas="g-gnome-calculator">gnome-calculator</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

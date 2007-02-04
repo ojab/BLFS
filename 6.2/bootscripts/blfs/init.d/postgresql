@@ -1,0 +1,43 @@
+#!/bin/sh
+# Begin $rc_base/init.d/postgresql
+
+# Based on sysklogd script from LFS-3.1 and earlier.
+# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+
+#$LastChangedBy$
+#$Date$
+
+. /etc/sysconfig/rc
+. $rc_functions
+
+case "$1" in
+	start)
+		boot_mesg "Starting PostgreSQL daemon..."
+		su - postgres -c '/usr/bin/pg_ctl start -W -D /srv/pgsql/data \
+				-l /srv/pgsql/data/logfile -o "-i" '
+		evaluate_retval
+		;;
+
+	stop)
+		boot_mesg "Stopping PostgreSQL daemon..."
+		su - postgres -c "/usr/bin/pg_ctl stop -m smart -D /srv/pgsql/data"
+		evaluate_retval
+		;;
+
+	restart)
+		$0 stop
+		sleep 1
+		$0 start
+		;;
+
+	status)
+		su - postgres -c "/usr/bin/pg_ctl status -D /srv/pgsql/data"
+		;;
+
+	*)
+		echo "Usage: $0 {start|stop|restart|status}"
+		exit 1
+		;;
+esac
+
+# End $rc_base/init.d/postgresql

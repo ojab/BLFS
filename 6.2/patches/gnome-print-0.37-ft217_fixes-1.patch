@@ -1,0 +1,65 @@
+Submitted By: Jeremy Utley <jeremy@linuxfromscratch.org>
+Date: 2004-05-10
+Initial Package Version: 0.37
+Upstream Status: Not submitted
+Origin: Me, Myself, and I
+Description: Fixes build of gnome-print with freetype 2.1.7
+
+$LastChangedBy$
+$Date$
+
+diff -aur gnome-print-0.37/installer/gf-pfb.c gnome-print-0.37-new/installer/gf-pfb.c
+--- gnome-print-0.37/installer/gf-pfb.c	2002-01-18 16:23:00.000000000 -0800
++++ gnome-print-0.37-new/installer/gf-pfb.c	2004-04-12 22:54:36.628985475 -0700
+@@ -12,6 +12,7 @@
+ #include <fcntl.h>
+ #include <string.h>
+ #include <ctype.h>
++#include <ft2build.h>
+ #include <freetype/freetype.h>
+ #include "gf-pfb.h"
+ 
+diff -aur gnome-print-0.37/installer/gf-ttf.c gnome-print-0.37-new/installer/gf-ttf.c
+--- gnome-print-0.37/installer/gf-ttf.c	2001-11-05 06:07:28.000000000 -0800
++++ gnome-print-0.37-new/installer/gf-ttf.c	2004-04-12 22:55:09.733365717 -0700
+@@ -32,6 +32,7 @@
+ #include <fcntl.h>
+ #include <string.h>
+ #include <ctype.h>
++#include <ft2build.h>
+ #include <freetype/freetype.h>
+ 
+ #include "gf-ttf.h"
+diff -aur gnome-print-0.37/installer/gnome-font-install.c gnome-print-0.37-new/installer/gnome-font-install.c
+--- gnome-print-0.37/installer/gnome-font-install.c	2002-01-22 13:44:55.000000000 -0800
++++ gnome-print-0.37-new/installer/gnome-font-install.c	2004-04-12 22:53:51.594560489 -0700
+@@ -26,6 +26,7 @@
+ #include <parser.h>
+ #include <xmlmemory.h>
+ /* End of ugly thing */
++#include <ft2build.h>
+ #include <freetype/freetype.h>
+ #include <libgnome/gnome-defs.h>
+ #include <libgnome/gnome-util.h>
+diff -aur gnome-print-0.37/libgnomeprint/gnome-font-private.h gnome-print-0.37-new/libgnomeprint/gnome-font-private.h
+--- gnome-print-0.37/libgnomeprint/gnome-font-private.h	2001-12-05 14:07:58.000000000 -0800
++++ gnome-print-0.37-new/libgnomeprint/gnome-font-private.h	2004-04-12 22:51:50.477410072 -0700
+@@ -22,6 +22,7 @@
+ 
+ BEGIN_GNOME_DECLS
+ 
++#include <ft2build.h>
+ #include <freetype/freetype.h>
+ #include <libgnomeprint/gp-character-block.h>
+ #include <libgnomeprint/gp-fontmap.h>
+diff -aur gnome-print-0.37/libgnomeprint/parseTT.h gnome-print-0.37-new/libgnomeprint/parseTT.h
+--- gnome-print-0.37/libgnomeprint/parseTT.h	2001-11-05 11:27:09.000000000 -0800
++++ gnome-print-0.37-new/libgnomeprint/parseTT.h	2004-04-12 22:52:54.935953966 -0700
+@@ -22,6 +22,7 @@
+ BEGIN_GNOME_DECLS
+ 
+ #include <glib.h>
++#include <ft2build.h>
+ #include <freetype/freetype.h>
+ 
+ /*

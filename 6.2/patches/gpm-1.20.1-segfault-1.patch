@@ -1,0 +1,22 @@
+Submitted By: Alexander E. Patrakov semzx at newmail.ru
+Date: 2003-10-03
+Initial Package Version: 1.20.1
+Origin: http://archives.linuxfromscratch.org/mail-archives/blfs-dev/2003-May/002916.html
+Description: Prevent Segfault under certain conditions.
+
+$LastChangedBy$
+$Date$
+
+diff -urN gpm-1.20.1.old/src/lib/liblow.c gpm-1.20.1/src/lib/liblow.c
+--- gpm-1.20.1.old/src/lib/liblow.c	2002-12-25 03:57:16.000000000 +0500
++++ gpm-1.20.1/src/lib/liblow.c	2003-05-02 21:51:37.000000000 +0600
+@@ -199,7 +199,8 @@
+    Gpm_Stst *new = NULL;
+    char* sock_name = 0;
+ 
+-   option.consolename = NULL;
++   if (!checked_con)
++      option.consolename = NULL;
+ 
+    gpm_report(GPM_PR_DEBUG,"VC: %d",flag);
+ 

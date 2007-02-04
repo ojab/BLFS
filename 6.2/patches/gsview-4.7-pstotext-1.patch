@@ -1,0 +1,59 @@
+Submitted By: BLFS Book <blfs-book at linuxfromscratch dot org>
+Date: 2004-02-01
+Initial Package Version: 4.6
+Origin: http://www.ghostscript.com/
+Description: Fixes text extracting.
+
+$LastChangedBy: djensen $
+$Date: 2005-06-21 09:17:17 -0500 (Tue, 21 Jun 2005) $
+
+--- gsview-4.6/srcunx/gvxdll.c.orig	2004-02-02 00:29:53.000000000 +0000
++++ gsview-4.6/srcunx/gvxdll.c	2004-02-02 00:30:05.000000000 +0000
+@@ -410,13 +410,13 @@
+ 
+ int pstotext_pid = 0;
+ 
+-gint check_pstotext(gpointer data)
++static void pstotext_sighandler(int num)
+ {
+     int rc = 0;
+     int status = 0;
+ 
+     if (pstotext_pid == 0)
+-	return FALSE;	/* pstotext not running, remove timer */
++	return; 	/* pstotext not running */
+ 
+     /* check if pstotext has exited */
+     if ( (rc = waitpid(pstotext_pid, &status, WNOHANG)) > 0 ) {
+@@ -450,9 +450,10 @@
+ 	    unlink(psfile.text_name);
+ 	    psfile.text_name[0] = '\0';
+ 	}
+-	return FALSE;	/* remove timer */
++	return;
+     }
+-    return TRUE;	/* keep checking */
++    if (rc)
++	perror("pstotext_sighandler: waitpid error, ");
+ }
+ 
+ /* start pstotext and wait for it to terminate */
+@@ -547,6 +548,8 @@
+     }
+ 
+     pstotext_pid = fork();
++
++    signal(SIGCHLD, pstotext_sighandler);
+     if (pstotext_pid == 0) {
+ 	/* replace child process with prog */
+ 	if (execvp(nargv[0], nargv) == -1) {
+@@ -558,8 +561,7 @@
+     }
+     else {
+ 	/* parent */
+-	/* Check every second if pstotext has finished */
+-	gtk_timeout_add(1000, check_pstotext, (gpointer)((size_t)pstotext_pid));
++	/* pstotext_sighandler will tell us when it finishes */
+     } 
+     return 0;	/* all is well */
+ }

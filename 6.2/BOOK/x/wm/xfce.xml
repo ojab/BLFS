@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+    <!-- Inserted as a reminder to do this. The mention of a test suite
+         is usually right before the root user installation commands. Please
+         delete these 12 (including one blank) lines after you are done.-->
+
+    <!-- Use one of the two mentions below about a test suite,
+         delete the line that is not applicable. Of course, if the
+         test suite uses syntax other than "make check", revise the
+         line to reflect the actual syntax to run the test suite -->
+
+    <!-- <para>This package does not come with a test suite.</para> -->
+    <!-- <para>To test the results, issue: <command>make check</command>.</para> -->
+
+  <!ENTITY xfce-download-http "http://downloads.sourceforge.net/xfce/xfce-&xfce-version;-src.tar.bz2">
+  <!ENTITY xfce-download-ftp  " ">
+  <!ENTITY xfce-md5sum        "44e126e47657969657ff86fb558d54ea">
+  <!ENTITY xfce-size          "25 MB">
+  <!ENTITY xfce-buildsize     "219 MB (to build and install everything without deleting any sources)">
+  <!ENTITY xfce-time          "3.5 SBU">
+]>
+
+<sect1 id="xfce" xreflabel="XFce-&xfce-version;">
+  <?dbhtml filename="xfce.html" ?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>XFce-&xfce-version;</title>
+
+  <indexterm zone="xfce">
+    <primary sortas="a-xfce">XFce</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to XFce</title>
+
+    <para>The <application>XFce</application> package contains a lightweight
+    desktop environment.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&xfce-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&xfce-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &xfce-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &xfce-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &xfce-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &xfce-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">XFce Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="gtk2"/> and
+    <xref linkend="libxml2"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="gdm"/>,
+    <xref linkend="librsvg"/>
+    (<application>xffm</application> links to <application>librsvg</application>
+    automatically if <application>librsvg</application> is installed),
+    <xref linkend="libgtkhtml"/>,
+    <xref linkend="startup-notification"/>, and
+    <xref linkend="a2ps"/>
+    (required to build <application>xfprint</application>).</para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/xfce"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of XFce</title>
+
+    <para>A bare minimum <application>XFce</application> setup requires
+    installation of the following packages:</para>
+
+    <itemizedlist spacing='compact'>
+      <listitem>
+        <para>libxfce4util-&xfce-version;.2</para>
+      </listitem>
+      <listitem>
+        <para>dbh-1.0.24</para>
+      </listitem>
+      <listitem>
+        <para>libxfcegui4-&xfce-version;</para>
+      </listitem>
+      <listitem>
+        <para>libxfce4mcs-&xfce-version;</para>
+      </listitem>
+      <listitem>
+        <para>xfce-mcs-manager-&xfce-version;</para>
+      </listitem>
+      <listitem>
+        <para>xfwm4-&xfce-version;.2</para>
+      </listitem>
+      <listitem>
+        <para>xfce4-panel-&xfce-version;</para>
+      </listitem>
+      <listitem>
+        <para>xfdesktop-&xfce-version;</para>
+      </listitem>
+      <listitem>
+        <para>xfce-utils-&xfce-version;</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>Install the minimum applications by issuing the following
+    commands:</para>
+
+<screen><userinput>./configure --prefix=/usr --sysconfdir=/etc &amp;&amp;
+make</userinput></screen>
+
+    <para>If you use <xref linkend="gdm"/> as your display manager and would
+    like to be able to log into an <application>XFce</application> session from
+    the login prompt, pass the <parameter>--enable-gdm</parameter> option to
+    the <application>xfce-utils</application>-&xfce-version;
+    <command>configure</command> script (requires <xref linkend="which"/> to be
+    installed at run time).</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <para>In addition, you may choose to install:</para>
+
+    <itemizedlist spacing='compact'>
+      <listitem>
+        <para>gtk-xfce-engine-2.2.8</para>
+      </listitem>
+      <listitem>
+        <para>xfcalendar-&xfce-version;</para>
+      </listitem>
+      <listitem>
+        <para>xfce-mcs-plugins-&xfce-version;</para>
+      </listitem>
+      <listitem>
+        <para>xfce4-appfinder-&xfce-version;</para>
+      </listitem>
+      <listitem>
+        <para>xfce4-icon-theme-&xfce-version;</para>
+      </listitem>
+      <listitem>
+        <para>xfce4-iconbox-&xfce-version;</para>
+      </listitem>
+      <listitem>
+        <para>xfce4-mixer-&xfce-version;</para>
+      </listitem>
+      <listitem>
+        <para>xfce4-session-&xfce-version;</para>
+      </listitem>
+      <listitem>
+        <para>xfce4-systray-&xfce-version;</para>
+      </listitem>
+      <listitem>
+        <para>xfce4-toys-&xfce-version;</para>
+      </listitem>
+      <listitem>
+        <para>xfce4-trigger-launcher-&xfce-version;</para>
+      </listitem>
+      <listitem>
+        <para>xffm-&xfce-version;</para>
+      </listitem>
+      <listitem>
+        <para>xfprint-&xfce-version;</para>
+      </listitem>
+      <listitem>
+        <para>xfwm4-themes-&xfce-version;</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>Install the remaining applications using the following
+    commands:</para>
+
+<screen><userinput>./configure --prefix=/usr --sysconfdir=/etc \
+     --libexecdir=/usr/lib/xfce4 &amp;&amp;
+make</userinput></screen>
+
+    <para>Also, <application>xfprint</application> can be configured with
+    <parameter>--enable-cups</parameter> if you have <xref linkend="cups"/>
+    installed.</para>
+
+    <para>And then as <systemitem class="username">root</systemitem>:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <para>As the <systemitem class="username">root</systemitem> user, move the
+    help documentation to the standard BLFS location and modify the help script to
+    look for it there:</para>
+
+<screen role="root"><userinput>mv -vf /usr/share/xfce4/doc /usr/share/doc/xfce4 &amp;&amp;
+sed -i 's@xfce4/doc@doc/xfce4@' /usr/bin/xfhelp4</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>--sysconfdir=/etc</parameter>:
+    <application>libxfce4util</application>,
+    <application>xfce4-panel</application>,
+    <application>xfdesktop</application>,
+    <application>xfce-utils</application> and
+    <application>xfce4-session</application> require this parameter
+    because the path is built into the library or they install
+    configuration files in <filename class="directory">/etc/xdg</filename>.</para>
+
+    <para><parameter>--libexecdir=/usr/lib/xfce4</parameter>:
+    <application>xfce4-session</application> requires this parameter to
+    install some utility programs to the correct location.</para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring XFce</title>
+
+    <sect3 id='xfce-config'>
+      <title>Configuration Information</title>
+
+      <para><application>XFce</application> will look for the theme index from
+      <xref linkend="hicolor-icon-theme"/> at run-time. Ensure you install the
+      package before launching <application>XFce</application>.</para>
+
+      <para>Issue the command below to create an <filename>.xinitrc</filename>
+      file which will automatically run the appropriate
+      <application>XFce</application> programs when the
+      <application>X</application> Window system is launched. Be sure to backup
+      your existing <filename>.xinitrc</filename> file before
+      proceeding.</para>
+
+<screen><userinput>cat &gt; ~/.xinitrc &lt;&lt; "EOF"
+<literal>xfce-mcs-manager
+xfwm4 --daemon
+xftaskbar4 &amp;
+xfdesktop &amp;
+exec xfce4-panel</literal>
+EOF</userinput></screen>
+
+      <indexterm zone="xfce xfce-config">
+        <primary sortas="e-AA.xinitrc">~/.xinitrc</primary>
+      </indexterm>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>fgr, scramble, startxfce4, xfbook, xfbook4, xfcalendar,
+        xfce-mcs-manager, xfce-setting-show, xfce4-about,
+        xfce4-appfinder, xfce4-iconbox, xfce4-kiosk-query,
+        xfce4-menueditor, xfce4-mixer, xfce4-panel, xfce4-session,
+        xfce4-session-logout, xfce4-tips, xfdesktop, xfdiff4, xffm,
+        xffrequent, xffrequent4, xffstab, xffstab4, xfglob4, xfhelp4,
+        xflock4, xfmime-edit, xfmountdev4, xfrecent, xfrecent4,
+        xfprint-manager, xfprint4, xfrun4, xfsamba4, xftaskbar4,
+        xfterm4, xftrash4, xftree4, and xfwm4</seg>
+        <seg id='xfcelibs'>libxfce4util.{a,so}, libdbh.{a,so}, libxfcegui4.{a,so},
+        libxfce4mcs.{a,so}, libxffm_actions.so, libxffm_basic.so, libxffm_calls.so,
+        libxffm_cpy.so, libxffm_on_demand.so, libxffm_secondary.so, libxffm_tubo.so,
+        libxfsm-4.2.{a,so}</seg>
+        <seg>/usr/lib/xfce4, /usr/share/doc/xfce4, /usr/share/xfce4, /usr/share/xffm
+        and /usr/share/xfwm4</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <indexterm zone="xfce xfcelibs">
+      <primary sortas="c-libxfce4util">libxfce4util.[a,so]</primary>
+    </indexterm>
+
+    <indexterm zone="xfce xfcelibs">
+      <primary sortas="c-libdbh">libdbh.[a,so]</primary>
+    </indexterm>
+
+    <indexterm zone="xfce xfcelibs">
+      <primary sortas="c-libxfcegui4">libxfcegui4.[a,so]</primary>
+    </indexterm>
+
+    <indexterm zone="xfce xfcelibs">
+      <primary sortas="c-libxfce4mcs">libxfce4mcs.[a,so]</primary>
+    </indexterm>
+
+    <indexterm zone="xfce xfcelibs">
+      <primary sortas="c-libxffm_actions.so">libxffm_actions.so</primary>
+    </indexterm>
+
+    <indexterm zone="xfce xfcelibs">
+      <primary sortas="c-libxffm_basic.so">libxffm_basic.so</primary>
+    </indexterm>
+
+    <indexterm zone="xfce xfcelibs">
+      <primary sortas="c-libxffm_calls.so">libxffm_calls.so</primary>
+    </indexterm>
+
+    <indexterm zone="xfce xfcelibs">
+      <primary sortas="c-libxffm_cpy.so">libxffm_cpy.so</primary>
+    </indexterm>
+
+    <indexterm zone="xfce xfcelibs">
+      <primary sortas="c-libxffm_on_demand.so">libxffm_on_demand.so</primary>
+    </indexterm>
+
+    <indexterm zone="xfce xfcelibs">
+      <primary sortas="c-libxffm_secondary.so">libxffm_secondary.so</primary>
+    </indexterm>
+
+    <indexterm zone="xfce xfcelibs">
+      <primary sortas="c-libxffm_tubo.so">libxffm_tubo.so</primary>
+    </indexterm>
+
+    <indexterm zone="xfce xfcelibs">
+      <primary sortas="c-libxfsm-4.2.so">libxfsm-4.2.[a,so]</primary>
+    </indexterm>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="fgr">
+        <term><command>fgr</command></term>
+        <listitem>
+          <para>is a file content search engine for
+          <command>xffm</command>.</para>
+          <indexterm zone="xfce fgr">
+            <primary sortas="b-fgr">fgr</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="startxfce4">
+        <term><command>startxfce4</command></term>
+        <listitem>
+          <para>is a script which starts up the <application>XFce</application> Desktop
+          Environment.</para>
+          <indexterm zone="xfce startxfce4">
+            <primary sortas="b-startxfce4">startxfce4</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfce-mcs-manager">
+        <term><command>xfce-mcs-manager</command></term>
+        <listitem>
+          <para>is the settings manager for
+          <application>XFce</application>.</para>
+          <indexterm zone="xfce xfce-mcs-manager">
+            <primary sortas="b-xfce-mcs-manager">xfce-mcs-manager</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfce4-about">
+        <term><command>xfce4-about</command></term>
+        <listitem>
+          <para>displays the about box.</para>
+          <indexterm zone="xfce xfce4-about">
+            <primary sortas="b-xfce4-about">xfce4-about</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfce4-session">
+        <term><command>xfce4-session</command></term>
+        <listitem>
+          <para>saves the state of your desktop and restores it when you next start
+          <application>XFce</application>.</para>
+          <indexterm zone="xfce xfce4-session">
+            <primary sortas="b-xfce4-session">xfce4-session</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfce-setting-show">
+        <term><command>xfce-setting-show</command></term>
+        <listitem>
+          <para>displays the settings for
+          <application>XFce</application>.</para>
+          <indexterm zone="xfce xfce-setting-show">
+            <primary sortas="b-xfce-setting-show">xfce-setting-show</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfce4-panel">
+        <term><command>xfce4-panel</command></term>
+        <listitem>
+          <para>is the panel manager for <application>XFce</application>.
+          It contains the launcher, clock, mail check, desktop switcher and
+          separator programs.</para>
+          <indexterm zone="xfce xfce4-panel">
+            <primary sortas="b-xfce4-panel">xfce4-panel</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfdesktop">
+        <term><command>xfdesktop</command></term>
+        <listitem>
+          <para> is the desktop manager for
+          <application>XFce</application>.</para>
+          <indexterm zone="xfce xfdesktop">
+            <primary sortas="b-xfdesktop">xfdesktop</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfhelp4">
+        <term><command>xfhelp4</command></term>
+        <listitem>
+          <para>is script that launches a HTML browser to
+          display online documentation. It requires <command>which</command> to
+          run.</para>
+          <indexterm zone="xfce xfhelp4">
+            <primary sortas="b-xfhelp4">xfhelp4</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xflock4">
+        <term><command>xflock4</command></term>
+        <listitem>
+          <para>is a script used to lock the current screen during drag
+          and drop actions.</para>
+          <indexterm zone="xfce xflock4">
+            <primary sortas="b-xflock4">xflock4</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfmountdev4">
+        <term><command>xfmountdev4</command></term>
+        <listitem>
+          <para>mounts a device on the specified mount point and launches
+          <command>xftree4</command>, then unmounts the device when
+          <command>xftree4</command> finishes.</para>
+          <indexterm zone="xfce xfmountdev4">
+            <primary sortas="b-xfmountdev4">xfmountdev4</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfrun4">
+        <term><command>xfrun4</command></term>
+        <listitem>
+          <para>is the program launcher for
+          <application>XFce</application>.</para>
+          <indexterm zone="xfce xfrun4">
+            <primary sortas="b-xfrun4">xfrun4</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfsamba4">
+        <term><command>xfsamba4</command></term>
+        <listitem>
+          <para> is the <application>Samba</application> front end for
+          <application>XFce</application>.</para>
+          <indexterm zone="xfce xfsamba4">
+            <primary sortas="b-xfsamba4">xfsamba4</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xftaskbar4">
+        <term><command>xftaskbar4</command></term>
+        <listitem>
+          <para>is the taskbar manager for
+          <application>XFce</application>.</para>
+          <indexterm zone="xfce xftaskbar4">
+            <primary sortas="b-xftaskbar4">xftaskbar4</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfterm4">
+        <term><command>xfterm4</command></term>
+        <listitem>
+          <para>is a small terminal wrapper to be used as a drag and drop
+          action for the <application>XFce</application> front panel. It requires
+          <command>which</command> to run.</para>
+          <indexterm zone="xfce xfterm4">
+            <primary sortas="b-xfterm4">xfterm4</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xftrash4">
+        <term><command>xftrash4</command></term>
+        <listitem>
+          <para>is a small binary to be used as a drag and drop action for the
+          <application>XFce</application> front panel.</para>
+          <indexterm zone="xfce xftrash4">
+            <primary sortas="b-xftrash4">xftrash4</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xffm">
+        <term><command>xffm</command></term>
+        <listitem>
+          <para>is the file manager for <application>XFce</application>.</para>
+          <indexterm zone="xfce xffm">
+            <primary sortas="b-xftree4">xffm</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xfwm4">
+        <term><command>xfwm4</command></term>
+        <listitem>
+          <para>is an <application>X11</application> window manager for
+          <application>XFce</application>.</para>
+          <indexterm zone="xfce xfwm4">
+            <primary sortas="b-xfwm4">xfwm4</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

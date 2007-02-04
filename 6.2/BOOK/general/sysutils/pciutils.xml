@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY pciutils-download-http "http://www.kernel.org/pub/software/utils/pciutils/pciutils-&pciutils-version;.tar.bz2">
+  <!ENTITY pciutils-download-ftp  "ftp://ftp.kernel.org/pub/software/utils/pciutils/pciutils-&pciutils-version;.tar.bz2">
+  <!ENTITY pciutils-md5sum        "86cc20eaa0360587497a8105d33e57fc">
+  <!ENTITY pciutils-size          "1.1 MB">
+  <!ENTITY pciutils-buildsize     "3.3 MB">
+  <!ENTITY pciutils-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="pciutils" xreflabel="PCI Utilities-&pciutils-version;">
+  <?dbhtml filename="pciutils.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>PCI Utilities-&pciutils-version;</title>
+
+  <indexterm zone="pciutils">
+    <primary sortas="a-PCI-Utilities">PCI Utilities</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to PCI Utilities</title>
+
+    <para>The <application>PCI Utilities</application> package
+    is a set of programs for listing PCI devices, inspecting
+    their status and setting their configuration registers.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&pciutils-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&pciutils-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &pciutils-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &pciutils-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &pciutils-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &pciutils-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/pciutils"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of PCI Utilities</title>
+
+    <para>Install <application>PCI Utilities</application> by
+    running the following commands:</para>
+
+<screen><userinput>sed -i 's/null ;/null 2>\&amp;1 ;/' update-pciids.sh &amp;&amp;
+make PREFIX=/usr</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make PREFIX=/usr install</userinput></screen>
+
+    <para>Some packages require the PCI static library. To install the library
+    and headers, issue the following commands as the
+    <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>install -v -m 755 -d /usr/include/pci &amp;&amp;
+install -v -m 644 lib/libpci.a /usr/lib &amp;&amp;
+install -v -m 644 lib/*.h /usr/include/pci</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><command>sed -i 's/null ;/null 2>\&amp;1 ;/'
+    update-pciids.sh</command>: This command suppresses some unneeded screen
+    output from the <command>update-pciids</command> command if you don't have
+    either <application>Lynx</application> or <application>Wget</application>
+    installed by redirecting the stderr output of the embedded
+    <command>which</command> command to <filename>/dev/null</filename>.</para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring PCI Utilities</title>
+
+    <para>The <filename>pci.ids</filename> data file is constantly being
+    updated. To get a current version of this file, run
+    <command>update-pciids</command> as the <systemitem
+    class="username">root</systemitem> user. This program requires the
+    <xref linkend='which'/> script or program to find <xref linkend='curl'/>,
+    <xref linkend='wget'/> or <xref linkend='lynx'/> which are used to
+    download the most current file, and then replace the existing file in
+    <filename class='directory'>/usr/share</filename>.</para>
+
+    <para>You may wish to add an entry to
+    <systemitem class="username">root</systemitem>'s (or any other user who
+    has write privilege to <filename class='directory'>/usr/share</filename>)
+    crontab to automatically update the <filename>pci.ids</filename> file
+    periodically.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>lspci, setpci and update-pciids</seg>
+        <seg>libpci.a</seg>
+        <seg>/usr/include/pci</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="lspci">
+        <term><command>lspci</command></term>
+        <listitem>
+          <para>is a utility for displaying information about all PCI buses in the
+          system and all devices connected to them.</para>
+          <indexterm zone="pciutils lspci">
+            <primary sortas="b-lspci">lspci</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="setpci">
+        <term><command>setpci</command></term>
+        <listitem>
+          <para>is a utility for querying and configuring PCI devices.</para>
+          <indexterm zone="pciutils setpci">
+            <primary sortas="b-setpci">setpci</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="update-pciids">
+        <term><command>update-pciids</command></term>
+        <listitem>
+          <para>fetches the current version of the PCI ID list. Requires
+          <xref linkend="curl"/>, <xref linkend="wget"/> or
+          <xref linkend="lynx"/>.</para>
+          <indexterm zone="pciutils update-pciids">
+            <primary sortas="b-update-pciids">update-pciids</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libpci">
+      <term><filename role='library'>libpci.a</filename></term>
+      <listitem>
+        <para> is the static library that allows applications to access the PCI
+        subsystem.</para>
+        <indexterm zone="pciutils libpci">
+          <primary sortas="c-libpci">libpci.a</primary>
+        </indexterm>
+      </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

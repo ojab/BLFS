@@ -1,0 +1,34 @@
+Submitted By: David Jensen (djensen at linuxfromscratch dot org)
+Date: 2005-07-26
+Initial Package Version: 1.0.9
+Origin: David Jensen
+Upstream Status: not submitted
+Description: Allows the pcm/oss plugin to build without installing jack.
+ 
+$LastChangedBy$
+$Date$
+
+diff -Naur alsa-plugins-1.0.9.orig/configure alsa-plugins-1.0.9/configure
+--- alsa-plugins-1.0.9.orig/configure	2005-05-27 08:19:18.000000000 -0500
++++ alsa-plugins-1.0.9/configure	2005-07-26 12:58:49.000000000 -0500
+@@ -18747,7 +18747,7 @@
+   else
+      { { echo "$as_me:$LINENO: error: Library requirements (jack >= 0.98) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&5
+ echo "$as_me: error: Library requirements (jack >= 0.98) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them." >&2;}
+-   { (exit 1); exit 1; }; }
++    }
+   fi
+ 
+ 
+diff -Naur alsa-plugins-1.0.9.orig/pcm/Makefile.in alsa-plugins-1.0.9/pcm/Makefile.in
+--- alsa-plugins-1.0.9.orig/pcm/Makefile.in	2005-05-27 08:19:14.000000000 -0500
++++ alsa-plugins-1.0.9/pcm/Makefile.in	2005-07-26 12:59:12.000000000 -0500
+@@ -134,7 +134,7 @@
+ sharedstatedir = @sharedstatedir@
+ sysconfdir = @sysconfdir@
+ target_alias = @target_alias@
+-SUBDIRS = oss jack
++SUBDIRS = oss
+ subdir = pcm
+ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+ mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs

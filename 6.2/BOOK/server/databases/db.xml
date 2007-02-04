@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY db-download-http "http://downloads.sleepycat.com/db-&db-version;.tar.gz">
+  <!ENTITY db-download-ftp  "ftp://ftp.sleepycat.com/releases/db-&db-version;.tar.gz">
+  <!ENTITY db-md5sum        "d84dff288a19186b136b0daf7067ade3">
+  <!ENTITY db-size          "7.9 MB">
+  <!ENTITY db-buildsize     "66.7 MB (additional 100 MB to run parallel standard test suite)">
+  <!ENTITY db-time          "1.4 SBU (builds all bindings, add an additional 145 SBU to run parallel standard test suite)">
+]>
+
+<sect1 id="db" xreflabel="Berkeley DB-&db-version;">
+  <?dbhtml filename="db.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Berkeley DB-&db-version;</title>
+
+  <indexterm zone="db">
+    <primary sortas="a-Berkeley-DB">Berkeley DB</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Berkeley DB</title>
+
+    <para>The <application>Berkeley DB</application> package contains programs
+    and utilities used by many other applications for database related
+    functions. This package is also installed during LFS and may already exist
+    on your system. It is listed here in BLFS as well because you may need to
+    reinstall it if you need the additional language bindings or the RPC
+    server. If you do reinstall <application>Berkeley DB</application>, ensure
+    you use the &lfs-bdb-version; version used in the LFS book.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&db-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&db-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &db-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &db-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &db-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &db-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Required patch: <ulink
+        url="http://www.sleepycat.com/update/4.4.20/patch.4.4.20.1"/></para>
+      </listitem>
+      <listitem>
+        <para>Required patch: <ulink
+        url="http://www.sleepycat.com/update/4.4.20/patch.4.4.20.2"/></para>
+      </listitem>
+      <listitem>
+        <para>Required patch: <ulink
+        url="http://www.sleepycat.com/update/4.4.20/patch.4.4.20.3"/></para>
+      </listitem>
+      <listitem>
+        <para>Required patch: <ulink
+        url="http://www.sleepycat.com/update/4.4.20/patch.4.4.20.4"/></para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Berkeley DB Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="tcl"/>,
+    <xref linkend="jdk"/>, and
+    <ulink url="http://www.gnu.org/software/sharutils/">sharutils</ulink>
+    (for the <command>uudecode</command> command)</para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/db"/></para>
+
+  </sect2>
+
+  <sect2 role="testing">
+    <title>Testing Berkeley DB</title>
+
+    <para>You may want to skip ahead to <xref linkend="bdb-installation"/>. The
+    test suite can take up to 150 SBUs and has a few bugs causing a report of
+    <quote>Regression tests failed</quote>. However, running the test suite is
+    a very exhaustive test of your hardware, perhaps pushing your machine
+    harder (especially disk I/O) than it will ever see during production use.
+    Note that you must have <application>Tcl</application> installed to run the
+    test suite.</para>
+
+    <para>Build for the <application>Berkeley DB</application> test by running
+    the following commands:</para>
+
+<screen><userinput>for PATCH in ../patch.4.4.20.{1..4}; do patch -Np0 -i $PATCH; done &amp;&amp;
+cd build_unix &amp;&amp;
+../dist/configure --prefix=/usr \
+                  --enable-test \
+                  --enable-tcl  \
+                  --with-tcl=/usr/lib &amp;&amp;
+make</userinput></screen>
+
+    <para>To test the results, start <command>tclsh</command>:</para>
+
+<screen><userinput>tclsh</userinput></screen>
+
+    <para>From the <command>tclsh</command> prompt (<prompt>%&nbsp;</prompt>),
+    run:</para>
+
+<screen><userinput>source ../test/test.tcl
+run_parallel 5 run_std
+exit</userinput></screen>
+
+    <para>Clean up the source tree with the following command:</para>
+
+<screen><userinput>make realclean &amp;&amp;
+cd ..</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="installation" id="bdb-installation">
+    <title>Installation of Berkeley DB</title>
+
+    <para>The installation commands below are identical to the commands used
+    in the LFS book. If you installed <application>Berkeley DB</application>
+    in LFS, and you don't add anything to the <command>configure</command>
+    script, you'll end up with exactly what you already have. The additional
+    parameters you can use are listed in the Command Explanations section
+    below. Install <application>Berkeley DB</application> by running the
+    following commands:</para>
+
+<screen><userinput>for PATCH in ../patch.4.4.20.{1..4}; do patch -Np0 -i $PATCH; done &amp;&amp;
+cd build_unix &amp;&amp;
+../dist/configure --prefix=/usr \
+                  --enable-compat185 \
+                  --enable-cxx &amp;&amp;
+make</userinput></screen>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make docdir=/usr/share/doc/db-&db-version; install &amp;&amp;
+chown -v root:root /usr/bin/db_* /usr/lib/libdb* /usr/include/db* &amp;&amp;
+chown -v root:root /usr/bin/berkeley_db_svc &amp;&amp;
+chown -v -R root:root /usr/share/doc/db-&db-version;</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><command>cd build_unix &amp;&amp;
+    ../dist/configure --prefix=/usr...</command>:
+    This replaces the normal <command>./configure</command> command, as
+    <application>Berkeley DB</application> comes with various
+    build directories for different platforms.</para>
+
+    <para><parameter>--enable-compat185</parameter>: This switch enables
+    building the DB-1.85 compatibility API.</para>
+
+    <para><parameter>--enable-cxx</parameter>: This switch enables building
+    C++ API libraries.</para>
+
+    <para><parameter>--enable-tcl --with-tcl=/usr/lib</parameter>:
+    Enables <application>Tcl</application> support in DB and creates the
+    <filename class="libraryfile">libdb_tcl</filename> libraries.</para>
+
+    <para><parameter>--enable-java</parameter>: Enables
+    <application>Java</application> support in DB and creates the
+    <filename class='libraryfile'>libdb_java</filename> libraries.</para>
+
+    <para><parameter>--enable-rpc</parameter>: Enables building the
+    <application>Berkeley DB</application> RPC server.</para>
+
+    <para><command>make docdir=/usr/share/doc/db-&db-version;
+    install</command>: This installs the documentation in
+    the correct location instead of
+    <filename class='directory'>/usr/docs</filename>.</para>
+
+    <para><command>chown -v root:root /usr/bin/berkeley_db_svc</command>:
+    This command changes the ownership of the RPC server program. It is only
+    required if you passed <parameter>--enable-rpc</parameter> to the
+    <command>configure</command> script.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <para>Only the program and libraries not installed in LFS are listed here,
+    the others can be found at <ulink
+    url="&lfs-root;/chapter06/db.html#contents-db"/> as they were initially
+    installed during the building of LFS.</para>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>berkeley_db_svc</seg>
+        <seg>libdb_java.{so,a} and libdb_tcl.{so,a}</seg>
+        <seg>/usr/share/doc/db-&db-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="berkeley_db_svc">
+        <term><command>berkeley_db_svc</command></term>
+        <listitem>
+          <para>is the <application>Berkeley DB</application>
+          RPC server.</para>
+          <indexterm zone="db berkeley_db_svc">
+            <primary sortas="b-berkeley_db_svc">berkeley_db_svc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <!-- These are left in so that if LFS ever dumps BDB, it is easy to
+           restore this information
+
+      <varlistentry id="db_archive">
+        <term><command>db_archive</command></term>
+        <listitem>
+          <para>prints the pathnames of log files that are no longer in
+          use.</para>
+          <indexterm zone="db db_archive">
+            <primary sortas="b-db_archive">db_archive</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="db_checkpoint">
+        <term><command>db_checkpoint</command></term>
+        <listitem>
+          <para>is a daemon process used to monitor and checkpoint database
+          logs.</para>
+          <indexterm zone="db db_checkpoint">
+            <primary sortas="b-db_checkpoint">db_checkpoint</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="db_deadlock">
+        <term><command>db_deadlock</command></term>
+        <listitem>
+          <para>is used to abort lock requests when deadlocks are
+          detected.</para>
+          <indexterm zone="db db_deadlock">
+            <primary sortas="b-db_deadlock">db_deadlock</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="db_dump">
+        <term><command>db_dump</command></term>
+        <listitem>
+          <para>converts database files to a flat file format readable by
+          <command>db_load</command>.</para>
+          <indexterm zone="db db_dump">
+            <primary sortas="b-db_dump">db_dump</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="db_load">
+        <term><command>db_load</command></term>
+        <listitem>
+          <para>is used to create database files from flat files created with
+          <command>db_dump</command>.</para>
+          <indexterm zone="db db_load">
+            <primary sortas="b-db_load">db_load</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="db_printlog">
+        <term><command>db_printlog</command></term>
+        <listitem>
+          <para>converts database log files to human readable text.</para>
+          <indexterm zone="db db_printlog">
+            <primary sortas="b-db_printlog">db_printlog</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="db_recover">
+        <term><command>db_recover</command></term>
+        <listitem>
+          <para>is used to restore a database to a consistent state after a
+          failure.</para>
+          <indexterm zone="db db_recover">
+            <primary sortas="b-db_recover">db_recover</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="db_stat">
+        <term><command>db_stat</command></term>
+        <listitem>
+          <para>displays database environment statistics.</para>
+          <indexterm zone="db db_stat">
+            <primary sortas="b-db_stat">db_stat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="db_upgrade">
+        <term><command>db_upgrade</command></term>
+        <listitem>
+          <para>is used to upgrade database files to a newer version of
+          <application>Berkeley DB</application>.</para>
+          <indexterm zone="db db_upgrade">
+            <primary sortas="b-db_upgrade">db_upgrade</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="db_verify">
+        <term><command>db_verify</command></term>
+        <listitem>
+          <para>is used to run consistency checks on database files.</para>
+          <indexterm zone="db db_verify">
+            <primary sortas="b-db_verify">db_verify</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      -->
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

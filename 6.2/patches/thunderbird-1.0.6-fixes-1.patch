@@ -1,0 +1,49 @@
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2005-08-26
+Initial Package Version: 1.0.6
+Upstream Status:         Not submitted
+Origin:                  Multiple sources (Randy McMurchy, Kevin Somervill
+                         and Fedora/Gentoo mail lists)
+Description:             Fixes:
+                         1) moves prefs.js installation from /usr/bin/defaults
+                            to /usr/lib/thunderbird-1.0.6/defaults 
+                         2) profile locking problem is resolved
+                         3) makes it so that if you click on a mailto: URL
+                            it will open up the message compose window with
+                            the To: field filled out
+
+$LastChangedBy$
+$Date$
+
+
+diff -Naur mozilla-orig/mail/app/Makefile.in mozilla/mail/app/Makefile.in
+--- mozilla-orig/mail/app/Makefile.in	2004-11-12 18:50:37.000000000 +0000
++++ mozilla/mail/app/Makefile.in	2005-08-26 04:31:50.000000000 +0000
+@@ -307,4 +307,4 @@
+ 	$(INSTALL) $^ $(DIST)/bin/defaults/profile
+ 
+ install:: $(srcdir)/profile/prefs.js
+-	$(SYSINSTALL) $(IFLAGS1) $^ $(destdir)$(bindir)/defaults/profile
++	$(SYSINSTALL) $(IFLAGS1) $^ $(DESTDIR)$(mozappdir)/defaults/profile
+diff -Naur mozilla-orig/mail/app/mozilla.in mozilla/mail/app/mozilla.in
+--- mozilla-orig/mail/app/mozilla.in	2004-07-24 23:58:06.000000000 +0000
++++ mozilla/mail/app/mozilla.in	2005-08-26 04:31:50.000000000 +0000
+@@ -108,7 +108,9 @@
+ if [ $found = 0 ]; then
+   # Check default compile-time libdir
+   if [ -x "$moz_libdir/run-mozilla.sh" ]; then
++
+     dist_bin="$moz_libdir"
++    run_moz="$dist_bin/run-mozilla.sh"
+   else 
+     echo "Cannot find mozilla runtime directory. Exiting."
+     exit 1
+@@ -187,7 +189,7 @@
+ 			# We should use an existing instance, as _USE_EXIST=$_USE_EXIST=-1
+ 			_open_type="window"
+ 			#_open_type="tab"
+-			_remote_cmd="openURL(${_optLast} , new-${_open_type})"
++			_remote_cmd="mailto(${_optLast})"
+ 			"${run_moz}" "$MOZ_CLIENT_PROGRAM" -a "${progbase}" "${_remote_cmd}"
+ 			unset _remote_cmd _open_type
+ 			exit $?

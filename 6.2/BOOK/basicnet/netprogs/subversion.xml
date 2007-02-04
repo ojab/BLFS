@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+    <!-- Inserted as a reminder to do this. The mention of a test suite
+         is usually right before the root user installation commands. Please
+         delete these 12 (including one blank) lines after you are done.-->
+
+    <!-- Use one of the two mentions below about a test suite,
+         delete the line that is not applicable. Of course, if the
+         test suite uses syntax other than "make check", revise the
+         line to reflect the actual syntax to run the test suite -->
+
+    <!-- <para>This package does not come with a test suite.</para> -->
+    <!-- <para>To test the results, issue: <command>make check</command>.</para> -->
+
+  <!ENTITY subversion-download-http "http://subversion.tigris.org/tarballs/subversion-&subversion-version;.tar.bz2">
+  <!ENTITY subversion-download-ftp  " ">
+  <!ENTITY subversion-md5sum        "07b95963968ae345541ca99d0e7bf082">
+  <!ENTITY subversion-size          "6.7 MB">
+
+  <!ENTITY subversion-buildsize     "100 MB (additional 57 MB to install all bindings and 465 MB to run all test suites)">
+  <!ENTITY subversion-time          "1.7 SBU (add 1.1 SBU for bindings and 20-60 minutes to run test suites)">
+
+  <!ENTITY svn-neon-version         "0.25.5">
+]>
+
+<sect1 id="subversion" xreflabel="Subversion-&subversion-version;">
+  <?dbhtml filename="subversion.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Subversion-&subversion-version;</title>
+
+  <indexterm zone="subversion">
+    <primary sortas="a-Subversion">Subversion</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Subversion</title>
+
+    <para><application>Subversion</application> is a version control
+    system that is designed to be a compelling replacement for
+    <application>CVS</application> in the open source community. It
+    extends and enhances <application>CVS</application>' feature set,
+    while maintaining a similar interface for those already familiar with
+    <application>CVS</application>. These instructions install the client
+    and server software used to manipulate a
+    <application>Subversion</application> repository. Creation of a repository
+    is covered at <xref linkend="svnserver"/>.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&subversion-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&subversion-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &subversion-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &subversion-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &subversion-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &subversion-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <!--
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Required patch if using
+        <application>Swig</application>-1.3.25 and you wish
+        to build the <application>Perl</application> bindings: <ulink
+        url="&patch-root;/patches/subversion-&subversion-version;-swig_1.3.25-1.patch"/></para>
+      </listitem>
+    </itemizedlist>
+    -->
+
+    <bridgehead renderas="sect3">Subversion Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="python"/>
+    (required to run the test suite),
+    <!-- <xref linkend="db"/>, -->
+    <xref linkend="apache"/> or
+    <ulink url="http://apr.apache.org/">Apache Portable Runtime</ulink>,
+    <ulink url="http://www.webdav.org/neon/">neon-&svn-neon-version;</ulink>,
+    <xref linkend="jdk"/> (to build the Java bindings),
+    <ulink url="http://www.junit.org/">JUnit</ulink>
+    (required for running the Java bindings test suite and requires
+    <xref linkend="unzip"/>),
+    <ulink url="http://www.inet.no/dante/">Dante</ulink>
+    (alternate Java compiler), and
+    <ulink url="http://oss.software.ibm.com/developerworks/opensource/jikes/">
+    Jikes</ulink> (another alternate Java compiler)</para>
+
+    <bridgehead renderas="sect4">Optional for the Bundled Version of
+    <application>Neon</application></bridgehead>
+    <para role="optional"><xref linkend="pkgconfig"/>,
+    <xref linkend="libxml2"/> or <xref linkend="expat"/>,
+    <xref linkend="openssl"/>,
+    <xref linkend="heimdal"/> or <xref linkend="mitkrb"/></para>
+
+    <bridgehead renderas="sect4">Optional for the Bundled Version of
+    <application>Apache Portable Runtime</application></bridgehead>
+    <para role="optional"><xref linkend="expat"/> and
+    <xref linkend="gdbm"/></para>
+    <!-- <xref linkend="db"/>, -->
+
+    <bridgehead renderas="sect4">Optional to Build the
+    <application>SWIG</application> Bindings</bridgehead>
+    <para role="optional"><ulink url="http://www.swig.org">SWIG</ulink>,
+    <xref linkend="python"/>, and
+    <xref linkend="ruby"/></para>
+
+    <para>Note that the <application>Python</application>,
+    <application>Perl</application> and <application>Ruby</application>
+    bindings will not compile properly with the current version of
+    <application>SWIG</application>. To build the bindings, you must have
+    <application>SWIG</application>-1.3.{24,25} installed. Complete
+    instructions for building the <application>SWIG</application> bindings
+    can be found in the <application>Subversion</application> source tree
+    file <filename>./subversion/bindings/swig/INSTALL</filename>.</para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/subversion"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Subversion</title>
+
+    <caution>
+      <para>For reasons that are not yet fully understood,
+      <application>Subversion</application> repositories based on some versions
+      of <application>Berkeley DB</application> (notably 4.4.x) may not perform
+      reliably. Though there have been no reports of corrupted databases caused
+      by this issue, the <application>Subversion</application> test suite may
+      report a failure in one of the tests due to problems opening a repository
+      based on <application>Berkeley DB</application>. This issue only affects
+      BDB-based repositories on a local installation and does not affect access
+      to a BDB-based repository on a remote system built with older versions of
+      <application>Subversion</application> or
+      <application>Berkeley DB</application>.</para>
+
+      <para>For these reasons, the <application>Berkeley DB</application>
+      back-end is disabled, and any local BDB-based repositories you may have
+      will be unavailable after installing <application>Subversion</application>
+      using the following instructions. Please reference the information at
+      <ulink
+      url="http://svnbook.red-bean.com/en/1.1/ch05s03.html#svn-ch-5-sect-3.5"/>
+      if you need to migrate your repositores.</para>
+    </caution>
+
+    <para>Install <application>Subversion</application> by running the
+    following commands:</para>
+
+<screen><userinput>./configure --prefix=/usr \
+            --without-berkeley-db \
+            --with-installbuilddir=/usr/lib/apr-0 &amp;&amp;
+make</userinput></screen>
+
+    <note>
+      <para>If you have <application>Apache</application> installed, pass
+      the <option>--with-apr=/usr</option> and
+      <option>--with-apr-util=/usr</option> switches to the
+      <command>configure</command> script. Otherwise,
+      <application>Subversion</application> will overwrite APR and APR-utils
+      from the <application>Apache</application> installation with the source
+      distribution files. You may also need to pass
+      <option>--with-apxs=/usr/sbin/apxs</option> as <command>apxs</command>
+      might not be in an unprivileged user's <envar>PATH</envar> and won't be
+      properly discovered. Additionally if you have
+      <application>Apache</application> installed, you may safely remove the
+      <parameter>--with-installbuilddir=/usr/lib/apr-0</parameter> parameter
+      as it will have no effect.</para>
+    </note>
+
+    <para>If you passed the <option>--enable-javahl</option> parameter to
+    <command>configure</command> and wish to build the Java bindings, issue
+    the following command:</para>
+
+<screen><userinput>make javahl</userinput></screen>
+
+    <para>If you passed the <option>-with-swig</option> parameter to
+    <command>configure</command> and wish to build the
+    <application>Perl</application>, <application>Python</application> and/or
+    <application>Ruby</application> bindings, issue any or all of the following
+    commands:</para>
+
+<screen><userinput>make swig-pl &amp;&amp;
+make swig-py &amp;&amp;
+make swig-rb</userinput></screen>
+
+    <para>To test the results of the <application>Subversion</application>
+    build, issue: <command>make check</command>. This will take quite a long
+    time.</para>
+
+    <note>
+      <para>The <computeroutput>fs-base-test</computeroutput> is known to fail
+      with issues surrounding the Berkely database installation. As mentioned
+      earlier, it is not yet fully understood why this test fails.</para>
+    </note>
+
+    <para>To test the results of the Java bindings build, issue
+    <command>make check-javahl</command>. Note you must have the
+    <application>JUnit</application> (version 3.8.x) testing framework
+    installed.</para>
+
+    <para>To test the results of any or all of the
+    <application>SWIG</application> bindings, you can use the following
+    commands:</para>
+
+<screen><userinput>make check-swig-pl &amp;&amp;
+make check-swig-py &amp;&amp;
+make check-swig-rb</userinput></screen>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role='root'><userinput>make install &amp;&amp;
+rm doc/{Makefile,doxygen.conf} &amp;&amp;
+find doc -type d -exec chmod 755 {} \; &amp;&amp;
+find doc -type f -exec chmod 644 {} \; &amp;&amp;
+install -v -m755 -d /usr/share/doc/subversion-&subversion-version; &amp;&amp;
+cp -v -R doc/* /usr/share/doc/subversion-&subversion-version;</userinput></screen>
+
+    <para>If you built the Java bindings, issue the following command
+    as the <systemitem class="username">root</systemitem> user to install
+    them:</para>
+
+<screen role='root'><userinput>make install-javahl</userinput></screen>
+
+    <para>If you built any of the <application>SWIG</application> bindings,
+    issue any or all of the following commands as the
+    <systemitem class="username">root</systemitem> user to install them:</para>
+
+<screen role='root'><userinput>make install-swig-pl &amp;&amp;
+
+make install-swig-py &amp;&amp;
+echo /usr/lib/svn-python \
+    &gt; /usr/lib/python2.4/site-packages/subversion.pth &amp;&amp;
+
+make install-swig-rb</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>--with-installbuilddir=/usr/lib/apr-0</parameter>:
+    This parameter is used (and only has an effect if you used the source
+    provided version of Apache Portable Runtime) to force the installation
+    of some APR-related support programs to
+    <filename class="directory">/usr/lib/apr-0</filename> instead of
+    <filename class="directory">/usr/build</filename>.</para>
+
+    <para><option>--with-neon=<replaceable>&lt;prefix&gt;</replaceable></option>:
+    This option should be used if you wish to use a system-installed version
+    of <application>neon</application>.</para>
+
+    <para><option>--with-ssl</option>: This switch enables
+    <application>OpenSSL</application> support in
+    <application>neon</application> (only required if you use the bundled
+    version of <application>neon</application>).</para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Subversion</title>
+
+    <sect3 id="subversion-config">
+      <title>Config Files</title>
+
+      <para><filename>~/.subversion/config</filename> and
+      <filename>/etc/subversion/config</filename></para>
+
+      <indexterm zone="subversion subversion-config">
+        <primary sortas="e-AA.subversion/config">~/.subversion/config</primary>
+      </indexterm>
+
+      <indexterm zone="subversion subversion-config">
+        <primary sortas="e-etc-subversion-config">/etc/subversion/config</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para><filename>/etc/subversion/config</filename> is the
+      <application>Subversion</application> system-wide configuration file.
+      This file is used to specify defaults for different
+      <command>svn</command> commands.</para>
+
+      <para><filename>~/.subversion/config</filename> is the user's personal
+      configuration file. It is used to override the system-wide defaults
+      set in <filename>/etc/subversion/config</filename>.</para>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>svn, svnadmin, svndumpfilter, svnlook, svnserve, svnversion, and
+        optionally, neon-config and apr-config</seg>
+        <seg>libsvn*.{so,a} and optionally, libneon.{so,a} and the mod_dav_svn.so,
+        and mod_authz_svn.so <application>Apache HTTP</application>
+        DSO modules</seg>
+        <seg>/etc/subversion, /usr/include/neon (optional), /usr/include/subversion-1,
+        /usr/lib/perl5/site_perl/&lfs-perl-version;/i686-linux/auto/SVN (optional),
+        /usr/lib/perl5/site_perl/&lfs-perl-version;/i686-linux/SVN (optional),
+        /usr/lib/svn-javahl (optional), /usr/lib/svn-python (optional),
+        /usr/share/doc/neon-&svn-neon-version; (optional), and
+        /usr/share/doc/subversion-&subversion-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="svn">
+        <term><command>svn</command></term>
+        <listitem>
+          <para>is a command-line client program used to access
+          <application>Subversion</application> repositories.</para>
+          <indexterm zone="subversion svn">
+            <primary sortas="b-svn">svn</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="svnadmin">
+        <term><command>svnadmin</command></term>
+        <listitem>
+          <para>is a tool for creating, tweaking or repairing a
+          <application>Subversion</application> repository.</para>
+          <indexterm zone="subversion svnadmin">
+            <primary sortas="b-svnadmin">svnadmin</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="svndumpfilter">
+        <term><command>svndumpfilter</command></term>
+        <listitem>
+          <para>is a program for filtering <application>Subversion</application>
+          repository dumpfile format streams.</para>
+          <indexterm zone="subversion svndumpfilter">
+            <primary sortas="b-svndumpfilter">svndumpfilter</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="svnlook">
+        <term><command>svnlook</command></term>
+        <listitem>
+          <para>is a tool for inspecting a
+          <application>Subversion</application> repository.</para>
+          <indexterm zone="subversion svnlook">
+            <primary sortas="b-svnlook">svnlook</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="svnserve">
+        <term><command>svnserve</command></term>
+        <listitem>
+          <para>is a custom standalone server program, able to run as a
+          daemon process or invoked by SSH.</para>
+          <indexterm zone="subversion svnserve">
+           <primary sortas="b-svnserve">svnserve</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="svnversion">
+        <term><command>svnversion</command></term>
+        <listitem>
+          <para>is used to report the version number and state of a
+          working <application>Subversion</application> repository copy.</para>
+          <indexterm zone="subversion svnversion">
+            <primary sortas="b-svnversion">svnversion</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="neon-config">
+        <term><command>neon-config</command></term>
+        <listitem>
+          <para>is a script which provides information about an installed
+          copy of the <application>neon</application> library.</para>
+          <indexterm zone="subversion neon-config">
+            <primary sortas="b-neon-config">neon-config</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libsvn_star">
+        <term><filename class='libraryfile'>libsvn_*.{so,a}</filename></term>
+        <listitem>
+          <para>are the support libraries used by the
+          <application>Subversion</application> programs.</para>
+          <indexterm zone="subversion libsvn_star">
+            <primary sortas="c-libsvn_star">libsvn_*.{so,a}</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libneon">
+        <term><filename class='libraryfile'>libneon.{so,a}</filename></term>
+        <listitem>
+          <para>is used as a high-level interface to common
+          HTTP and WebDAV methods.</para>
+          <indexterm zone="subversion libneon">
+            <primary sortas="c-libneon">libneon.{so,a}</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mod_authz_svn">
+        <term><filename class='libraryfile'>mod_authz_svn.so</filename></term>
+        <listitem>
+          <para>is a plug-in module for the <application>Apache</application>
+          HTTP server, used to authenticate users to a
+          <application>Subversion</application> repository over the Internet or an
+          intranet.</para>
+          <indexterm zone="subversion mod_authz_svn">
+            <primary sortas="c-mod_authz_svn">mod_authz_svn.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mod_dav_svn">
+        <term><filename class='libraryfile'>mod_dav_svn.so</filename></term>
+        <listitem>
+          <para>is a plug-in module for the <application>Apache</application>
+          HTTP server, used to make a
+          <application>Subversion</application> repository available to others over the
+          Internet or an intranet.</para>
+          <indexterm zone="subversion mod_dav_svn">
+            <primary sortas="c-mod_authz_svn">mod_dav_svn.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

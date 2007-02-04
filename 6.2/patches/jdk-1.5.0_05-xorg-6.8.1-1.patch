@@ -1,0 +1,27 @@
+Submitted By: DJ Lucas (dj AT linuxfromscratch DOT org)
+Date: 2004-11-27
+Initial Package Version: 1.5.0
+Origin: DJ Lucas
+Description: Xorg 6.8.1 builds a shared libXm by default.  The build will fail
+             as the ifeq is done on the static 2.1 libXm.  This forces linking
+             against the shared libXm in /usr/X11R6/lib.
+
+$LastChangedBy$
+$Date$
+
+
+--- jdk-build-orig/j2se/make/sun/awt/mawt.gmk	2004-10-19 13:45:09.000000000 -0500
++++ jdk-build/j2se/make/sun/awt/mawt.gmk	2004-11-26 18:32:20.177820800 -0600
+@@ -130,9 +130,9 @@
+ 	ifeq ($(ARCH_DATA_MODEL), 64)
+             LIBXT = -lXt
+         else
+-	    LIBXT = /usr/X11R6/lib/libXt.a
+-	    LIBSM = /usr/X11R6/lib/libSM.a
+-	    LIBICE = /usr/X11R6/lib/libICE.a
++	    LIBXT = -lXt
++	    LIBSM =
++	    LIBICE =
+ 	endif
+     endif
+ else

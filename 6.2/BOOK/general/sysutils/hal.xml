@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY hal-download-http "http://freedesktop.org/~david/dist/hal-&hal-version;.tar.gz">
+  <!ENTITY hal-download-ftp  "ftp://ftp.fu-berlin.de/unix/linux/mirrors/gentoo/distfiles/hal-&hal-version;.tar.gz">
+  <!ENTITY hal-md5sum        "d7a7741808ba130f8aff3f5d3b5689e4">
+  <!ENTITY hal-size          "1.5 MB">
+  <!ENTITY hal-buildsize     "19.0 MB">
+  <!ENTITY hal-time          "0.5 SBU">
+]>
+
+<sect1 id="hal" xreflabel="HAL-&hal-version;">
+  <?dbhtml filename="hal.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>HAL-&hal-version;</title>
+
+  <indexterm zone="hal">
+    <primary sortas="a-HAL">HAL</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to HAL</title>
+
+    <para><application>HAL</application> is a hardware abstraction layer, which
+    is a piece of software that provides a view of the various hardware
+    attached to a system. In addition to this, <application>HAL</application>
+    keeps detailed metadata for each piece of hardware and provides hooks such
+    that system and desktop-level software can react to changes in the hardware
+    configuration in order to maintain system policy.</para>
+
+    <para>The most important goal of <application>HAL</application> is to
+    provide plug-and-play facilities for UNIX-like desktops with focus on
+    providing a rich and extensible description of device characteristics and
+    features. One example of the functionality provided by
+    <application>HAL</application> is when you plug in a USB storage device.
+    <application>HAL</application> can automatically create a mount point in
+    <filename class="directory">/media</filename> and mount the device.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&hal-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&hal-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &hal-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &hal-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &hal-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &hal-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">HAL Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="glib2"/>,
+    <xref linkend="dbus"/> (see the <xref linkend="hal-requirements"/>),
+    <xref linkend="python"/>, and
+    <xref linkend="perl-xml-parser"/></para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended"><xref linkend="pciutils"/>
+    (with a current <filename>pci.ids</filename> file) and
+    <xref linkend="usbutils"/>
+    (with a current <filename>usb.ids</filename> file)</para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="pkgconfig"/>,
+    <xref linkend="intltool"/>,
+    <xref linkend="libusb"/>,
+    <xref linkend="doxygen"/>, and
+    <xref linkend="docbook-utils"/></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/hal"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of HAL</title>
+
+    <para>You must create a dedicated user and group before installing the
+    package. Though the default BLFS instructions run the
+    <application>HAL</application> daemon as the
+    <systemitem class="username">root</systemitem> user, a configuration file
+    is installed which has the dedicated user's name hard-coded in it. This
+    causes a confusing message to be generated when starting the
+    <application>D-BUS</application> daemon. Issue the following commands as
+    the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>groupadd -g 19 haldaemon &amp;&amp;
+useradd -c "HAL Daemon User" -d /dev/null -u 19 \
+        -g haldaemon -s /bin/false haldaemon</userinput></screen>
+
+    <para>Install <application>HAL</application> by running the following
+    commands:</para>
+
+<screen><userinput>./configure --prefix=/usr \
+            --sysconfdir=/etc \
+            --libexecdir=/usr/lib/hal \
+            --localstatedir=/var &amp;&amp;
+make</userinput></screen>
+
+    <para>To test the results, issue <command>make check</command>.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+install -v -m755 -d /var/run/hald</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>--libexecdir=/usr/lib/hal</parameter>: This parameter
+    forces the installation of libexec files to
+    <filename class='directory'>/usr/lib/hal</filename> instead of
+    <filename class='directory'>/usr/libexec</filename>.</para>
+
+    <para><parameter>--localstatedir=/var</parameter>: This parameter forces
+    the creation of the <filename>pid</filename> file to
+    <filename class='directory'>/var/run/hald</filename> instead of
+    <filename class='directory'>/usr/var/run/hald</filename>.</para>
+
+  </sect2>
+
+  <sect2 id="hal-runtime-dependencies" xreflabel="GNOME-Python">
+    <title>Run-Time Dependencies</title>
+
+    <para>The <xref linkend="hal-device-manager"/> program requires several
+    additional packages to be installed before it will run. The list is
+    significant and requires a substantial commitment to install them. It is
+    left up to you to determine if the time and effort spent installing the
+    following packages is worth using the <command>hal-device-manager</command>
+    program.</para>
+
+    <para>Though the only requirement to run the
+    <command>hal-device-manager</command> program is installing
+    <ulink url="&gnome-download-http;/gnome-python/">
+    GNOME-Python</ulink>, the dependency list is staggering. The following
+    list does not include the dependencies already identified in the BLFS
+    book. For example, <application>libgnome</application> already lists
+    <application>GNOME VFS</application>, <application>GConf</application>,
+    etc., so they are not repeated here. Note that some of the dependencies
+    have their own dependencies, which have their own, and so forth and so
+    on.</para>
+
+    <itemizedlist>
+      <listitem>
+        <para><ulink
+          url="&gnome-download-http;/gnome-python/">GNOME-Python</ulink>
+        </para>
+
+        <itemizedlist>
+          <listitem>
+            <para><ulink
+              url="http://www.pygtk.org/">PyGTK</ulink> (required)
+            </para>
+
+            <itemizedlist>
+              <listitem>
+                <para><ulink
+                  url="http://www.cairographics.org/pycairo">Pycairo</ulink> (optional)
+                </para>
+
+                <itemizedlist>
+                  <listitem>
+                    <para><ulink
+                      url="http://www.cairographics.org/snapshots/">libsvg-cairo</ulink> (optional)
+                    </para>
+
+                    <itemizedlist>
+                      <listitem>
+                        <para><ulink
+                          url="http://www.cairographics.org/snapshots/">libsvg</ulink> (required)
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+
+                  </listitem>
+                  <listitem>
+                    <para><ulink
+                      url="http://www.pygtk.org/">PyGTK</ulink> (optional, and circular)
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para><ulink
+                      url="http://sourceforge.net/projects/numpy">Numerical Python</ulink> (optional)
+                    </para>
+                  </listitem>
+                </itemizedlist>
+
+              </listitem>
+              <listitem>
+                <para><ulink
+                  url="http://sourceforge.net/projects/numpy">Numerical Python</ulink> (optional)
+                </para>
+              </listitem>
+              <listitem>
+                <para><xref linkend="libglade"/> (required)</para>
+              </listitem>
+            </itemizedlist>
+
+          </listitem>
+          <listitem>
+            <para><xref linkend="libgnomeui"/> (optional)</para>
+          </listitem>
+          <listitem>
+            <para><xref linkend="libgnome"/> (required)</para>
+          </listitem>
+          <listitem>
+            <para><ulink
+              url="&gnome-download-http;/pyorbit/">PyORBit</ulink> (optional)
+            </para>
+
+            <itemizedlist>
+              <listitem>
+                <para><xref linkend="ORBit2"/> (required)</para>
+              </listitem>
+            </itemizedlist>
+
+          </listitem>
+        </itemizedlist>
+
+      </listitem>
+    </itemizedlist>
+
+    <note>
+      <para>The dependency list is designed to start at the bottom and work
+      your way up until the last package to install is
+      <application>GNOME-Python</application>. Note that the dependencies
+      marked as <quote>required</quote> are required for the package it is
+      listed under. For example, you don't need to install
+      <application>ORBit</application> if you don't plan on installing
+      <application>PyORBit</application>. The minimum packages you could
+      install to support running <xref linkend="hal-device-manager"/> would be
+      (in this order): <xref linkend="libgnome"/>, <xref linkend="libglade"/>,
+      <ulink url="http://www.pygtk.org/">PyGTK</ulink> and <ulink
+      url="&gnome-download-http;/gnome-python/">
+      GNOME-Python</ulink>.</para>
+    </note>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring HAL</title>
+
+    <sect3 id="hal-config">
+      <title>Config Files</title>
+      <para><filename>/etc/dbus-1/system.d/hal.conf</filename>,
+      <filename>/etc/dbus-1/system.d/halusers.conf</filename> and
+      <filename>/etc/hal/*</filename></para>
+
+      <indexterm zone="hal hal-config">
+        <primary sortas="e-etc-dbus-1-system.d-hal.conf">/etc/dbus-1/system.d/hal.conf</primary>
+      </indexterm>
+
+      <indexterm zone="hal hal-config">
+        <primary sortas="e-etc-dbus-1-system.d-halusers.conf">/etc/dbus-1/system.d/halusers.conf</primary>
+      </indexterm>
+
+      <indexterm zone="hal hal-config">
+        <primary sortas="e-etc-hal-star">/etc/hal/*</primary>
+      </indexterm>
+    </sect3>
+
+    <sect3><title>Configuration Information</title>
+
+      <para>The default setup for <application>HAL</application> is to allow
+      only certain users to invoke methods such as Mount(). These are
+      the <systemitem class="username">root</systemitem> user and the user
+      determined to be at the active console using <ulink
+      url="&blfs-wiki;/linux-pam">pam_console</ulink>. If you are not set
+      up to use <xref linkend="linux-pam"/> and <ulink
+      url="&blfs-wiki;/linux-pam">pam_console</ulink>, create a group that
+      is allowed to invoke <application>HAL</application> methods with the
+      following commands:</para>
+
+<screen role="root"><userinput>groupadd -g 61 halusers &amp;&amp;
+cat &gt; /etc/dbus-1/system.d/halusers.conf &lt;&lt; "EOF"
+<literal>&lt;!DOCTYPE busconfig PUBLIC
+ "-//freedesktop//DTD D-BUS Bus Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/dbus/1.0/busconfig.dtd"&gt;
+&lt;busconfig&gt;
+
+  &lt;!-- Allow users in the halusers group invoke HAL methods --&gt;
+  &lt;policy group="halusers"&gt;
+    &lt;allow send_interface="org.freedesktop.Hal.Device.SystemPowerManagement"/&gt;
+    &lt;allow send_interface="org.freedesktop.Hal.Device.LaptopPanel"/&gt;
+    &lt;allow send_interface="org.freedesktop.Hal.Device.Volume"/&gt;
+    &lt;allow send_interface="org.freedesktop.Hal.Device.Volume.Crypto"/&gt;
+  &lt;/policy&gt;
+
+&lt;/busconfig&gt;</literal>
+EOF</userinput></screen>
+
+      <para>Now add the users you would like to the <systemitem
+      class="groupname">halusers</systemitem> group to use
+      <application>HAL</application>. Note that these users still need
+      to have appropriate permissions to access the devices that
+      <application>HAL</application> will invoke its methods on.</para>
+
+      <para>With the above configuration in place, authorized users now
+      have the ability to unmount disk partitions mounted at non-standard
+      locations such as <filename class='directory'>/pub</filename>. If
+      you'd like to restrict this policy to only drives which are considered
+      removable or hotpluggable, add the following configuration file as
+      the <systemitem class='username'>root</systemitem> user:</para>
+
+<screen role="root"><userinput>cat &gt; /etc/hal/fdi/policy/no-fixed-drives.fdi &lt;&lt; "EOF"
+<literal>&lt;?xml version="1.0" encoding="UTF-8"?&gt; &lt;!-- -*- SGML -*- --&gt;
+
+&lt;!-- Don't allow HAL methods on disks that are not
+     removable or hotpluggable --&gt;
+
+&lt;deviceinfo version="0.2"&gt;
+&lt;device&gt;
+  &lt;match key="@block.storage_device:storage.hotpluggable" bool="false"&gt;
+    &lt;match key="@block.storage_device:storage.removable" bool="false"&gt;
+      &lt;merge key="volume.ignore" type="bool"&gt;true&lt;/merge&gt;
+    &lt;/match&gt;
+  &lt;/match&gt;
+&lt;/device&gt;
+&lt;/deviceinfo&gt;</literal>
+EOF</userinput></screen>
+
+      <para><application>HAL</application> only provides the methods such
+      as Mount() to act on hardware. In order to take advantage of these,
+      a <application>HAL</application> event handler such as
+      <xref linkend="gnome-volume-manager"/> or <ulink
+      url="http://ivman.sourceforge.net/">Ivman</ulink> should be
+      installed.</para>
+
+      <!-- Following note is only relevant for HAL-0.5.7.x.
+           Fixed upstream. -->
+      <note>
+        <para><application>HAL</application> will ignore any devices listed
+        in <filename>/etc/fstab</filename> for the purpose of automounting.
+        You must remove any listings for devices that you would like
+        automounted such as CD-ROMs or USB keys.</para>
+      </note>
+
+    <!-- This section commented out for now until it is determined what should
+         be placed in this section
+
+         FIXME: I think this information is still relevant with the
+         exception of its interaction with /etc/fstab. Needs investigation.
+
+      <para>No configuration is necessary for the majority of installations
+      on systems configured with ISO-8859-1 compatible locales. The defaults
+      should work just fine. For some installations, tweaking of the various
+      policies may be required. One such configuration change necessary in some
+      locales is identifying the <option>iocharset</option> and
+      <option>codepage</option> variables in the
+      <filename>/etc/fstab</filename> entries created by the
+      <command>fstab-sync</command> program. If changes are required to the
+      configuration so that your locale is properly identified in the entries
+      created in <filename>/etc/fstab</filename>, issue the following commands
+      as the <systemitem class="username">root</systemitem> user (you must
+      substitute the proper data for the
+      <replaceable>&lt;iocharset&gt;</replaceable> and
+      <replaceable>&lt;codepage&gt;</replaceable> info):</para>
+
+<screen role="root"><userinput>install -v -m755 -d /etc/hal/fdi/policy/30user &amp;&amp;
+cat &gt; /etc/hal/fdi/policy/30user/30user-policy.fdi &lt;&lt; "EOF"
+<literal>&lt;?xml version="1.0" encoding="UTF-8"?&gt; &lt;!- -*- SGML -*- -&gt;
+
+&lt;!-
+This file is used to set custom options to the HAL policy settings.
+The default policy settings are defined in files contained in the
+/usr/share/hal/fdi/policy directories. User defined customizations
+should be in files contained in the /etc/hal/fdi/policy directories.
+-&gt;
+
+&lt;deviceinfo version="0.2"&gt;
+
+  &lt;device&gt;
+    &lt;match key="info.udi"
+        string="/org/freedesktop/Hal/devices/computer"&gt;
+
+      &lt;!- Set the iocharset variable in the /etc/fstab file entry -&gt;
+      &lt;merge
+        key="storage.policy.default.mount_option.iocharset=<replaceable>&lt;iocharset&gt;</replaceable>"
+        type="bool"&gt;true&lt;/merge&gt;
+
+      &lt;!- Set the codepage variable in the /etc/fstab file entry -&gt;
+      &lt;merge
+        key="storage.policy.default.mount_option.codepage=<replaceable>&lt;codepage&gt;</replaceable>"
+        type="bool"&gt;true&lt;/merge&gt;
+
+    &lt;/match&gt;
+  &lt;/device&gt;
+
+&lt;/deviceinfo&gt;</literal>
+
+EOF</userinput></screen>
+
+      <note>
+        <para>The previous commands created a file named
+        <filename>/etc/hal/fdi/policy/30user/30user-policy.fdi</filename>. To
+        ease readability of the file, put everything between the
+        &lt;angle brackets&gt; and &lt;merge&gt;&lt;/merge&gt; tags on one
+        line. You must have at least one space character
+        where the ends of the lines were. The file would then look like this
+        (trimmed at the top and bottom for brevity):</para>
+
+<screen><literal>  &lt;device&gt;
+    &lt;match key="<replaceable>&lt;text&gt;</replaceable>" string="<replaceable>&lt;text&gt;</replaceable>"&gt;
+
+      &lt;!- Set the iocharset variable in the /etc/fstab file entry -&gt;
+      &lt;merge key="<replaceable>&lt;iocharset text&gt;</replaceable>" type="bool"&gt;true&lt;/merge&gt;
+
+      &lt;!- Set the codepage variable in the /etc/fstab file entry -&gt;
+      &lt;merge key="<replaceable>&lt;codepage text&gt;</replaceable>" type="bool"&gt;true&lt;/merge&gt;
+
+    &lt;/match&gt;
+  &lt;/device&gt;</literal></screen>
+
+      </note>
+
+    -->
+
+    </sect3>
+
+    <sect3  id="hal-init">
+      <title>Boot Script</title>
+
+      <para>To automatically start the <command>hald</command> daemon
+      when the system is rebooted, install the
+      <filename>/etc/rc.d/init.d/haldaemon</filename>
+      bootscript from the
+      <xref linkend="bootscripts"/> package.</para>
+
+      <indexterm zone="hal hal-init">
+        <primary sortas="f-haldaemon">haldaemon</primary>
+      </indexterm>
+
+      <!-- Not sure if this is still required any longer as the HAL daemon
+           used to hang if you didn't first restart the DBUS daemon. This is
+           not the case any longer, but it still seems that D-Bus should be
+           restarted, as the hald.conf file is read by the D-BUS daemon.
+           Leaving it in for now until it is positively confirmed it is not
+           required. -->
+
+      <important>
+        <para>If the system-wide <application>D-BUS</application> daemon was
+        running during the installation of <application>HAL</application>,
+        ensure you stop and restart the <application>D-BUS</application>
+        daemon before attempting to start the <command>hald</command>
+        daemon.</para>
+      </important>
+
+<screen role="root"><userinput>make install-haldaemon</userinput></screen>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>hal-device, hal-device-manager,
+        hal-find-by-capability, hal-find-by-property, hal-get-property,
+        hal-set-property, hald and lshal</seg>
+        <seg>libhal.{so,a} and libhal-storage,{so,a}</seg>
+        <seg>/etc/hal, /usr/include/hal, /usr/lib/hal,
+        /usr/share/doc/hal-&hal-version;, /usr/share/hal
+        and /var/run/hald</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="hal-device">
+        <term><command>hal-device</command></term>
+        <listitem>
+          <para>is used to create, remove or show a
+          <application>HAL</application> device.</para>
+          <indexterm zone="hal hal-device">
+            <primary sortas="b-hal-device">hal-device</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="hal-device-manager">
+        <term><command>hal-device-manager</command></term>
+        <listitem>
+          <para>shows a graphical representation of all the devices
+          <application>HAL</application> is aware of. This program requires
+          <xref linkend="hal-runtime-dependencies"/>. Here is a <ulink
+          url="http://cvs.freedesktop.org/*checkout*/hal/hal/doc/spec/hal-devices1.png">
+          screenshot</ulink> of <command>hal-device-manager</command>
+          communicating with the HAL daemon and displaying a tree of device
+          objects. The shown properties in the screenshot are for a device
+          object representing a hard disk.</para>
+          <indexterm zone="hal hal-device-manager">
+            <primary sortas="b-hal-device-manager">hal-device-manager</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="hal-find-by-capability">
+        <term><command>hal-find-by-capability</command></term>
+        <listitem>
+          <para>prints the Unique Device Identifiers for
+          <application>HAL</application> device objects of a given
+          capability.</para>
+          <indexterm zone="hal hal-find-by-capability">
+            <primary sortas="b-hal-find-by-capability">hal-find-by-capability</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="hal-find-by-property">
+        <term><command>hal-find-by-property</command></term>
+        <listitem>
+          <para>prints the Unique Device Identifiers for
+          <application>HAL</application> device objects where a given property
+          assumes a given value.</para>
+          <indexterm zone="hal hal-find-by-property">
+            <primary sortas="b-hal-find-by-property">hal-find-by-property</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="hal-get-property">
+        <term><command>hal-get-property</command></term>
+        <listitem>
+          <para>retrieves a property from a device.</para>
+          <indexterm zone="hal hal-get-property">
+            <primary sortas="b-hal-get-property">hal-get-property</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="hal-set-property">
+        <term><command>hal-set-property</command></term>
+        <listitem>
+          <para>attempts to set property for a device. Note that, due to
+          security considerations, it may not be possible to set a
+          property.</para>
+          <indexterm zone="hal hal-set-property">
+            <primary sortas="b-hal-set-property">hal-set-property</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="hald">
+        <term><command>hald</command></term>
+        <listitem>
+          <para>is the <application>HAL</application> daemon program.</para>
+          <indexterm zone="hal hald">
+            <primary sortas="b-hald">hald</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="lshal">
+        <term><command>lshal</command></term>
+        <listitem>
+          <para>shows all devices and their properties. If the --monitor option
+          is given then the device list and all devices are monitored for
+          changes.</para>
+          <indexterm zone="hal lshal">
+            <primary sortas="b-lshal">lshal</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libhal">
+        <term><filename class='libraryfile'>libhal.{so,a}</filename></term>
+        <listitem>
+          <para>contains the API functions required by the
+          <application>HAL</application> programs.</para>
+          <indexterm zone="hal libhal">
+            <primary sortas="c-libhal">libhal.{so,a}</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libhal-storage">
+        <term><filename class='libraryfile'>libhal-storage.{so,a}</filename></term>
+        <listitem>
+          <para>contains the API functions required by the
+          <application>HAL</application> storage and volume utility
+          programs.</para>
+          <indexterm zone="hal libhal-storage">
+            <primary sortas="c-libhal-storage">libhal-storage.{so,a}</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

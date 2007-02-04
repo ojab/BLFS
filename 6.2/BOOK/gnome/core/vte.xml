@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY vte-download-http "&gnome-download-http;/vte/0.12/vte-&vte-version;.tar.bz2">
+  <!ENTITY vte-download-ftp  "&gnome-download-ftp;/vte/0.12/vte-&vte-version;.tar.bz2">
+  <!ENTITY vte-md5sum        "7cb1bd6ca528bc4db5ec685549fd3eb1">
+  <!ENTITY vte-size          "974 KB">
+  <!ENTITY vte-buildsize     "25.3 MB">
+  <!ENTITY vte-time          "0.7 SBU">
+]>
+
+<sect1 id="vte" xreflabel="VTE-&vte-version;">
+  <?dbhtml filename="vte.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>VTE-&vte-version;</title>
+
+  <indexterm zone="vte">
+    <primary sortas="a-VTE">VTE</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to VTE</title>
+
+    <para>The <application>VTE</application> package contains a termcap
+    file implementation for terminal emulators.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&vte-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&vte-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &vte-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &vte-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &vte-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &vte-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">VTE Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="gtk2"/> and
+    <xref linkend="perl-xml-parser"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="gtk-doc"/>,
+    <xref linkend="intltool"/>, and
+    <ulink url="http://www.pygtk.org/">PyGTK</ulink>
+    (requires <xref linkend="python"/>)</para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/vte"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of VTE</title>
+
+    <para>Install <application>VTE</application> by running the following
+    commands:</para>
+
+<screen><userinput>sed -i 's%\\177:%&amp;kh=\\EOH:@7=\\EOF:%' termcaps/xterm &amp;&amp;
+sed -i 's/FT2_LIBS $LIBS/&amp; $X_LIBS/' configure &amp;&amp;
+sed -i -e 's/^ssfe_LDADD =.*$/&amp; -lncurses/' \
+       -e 's/^LDFLAGS =.*$/&amp; @X_LIBS@/' \
+    src/Makefile.in &amp;&amp;
+
+./configure --prefix=/usr \
+            --libexecdir=/usr/lib/vte &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><command>sed -i ... termcaps/xterm</command>: The
+    <keysym>Home</keysym> and <keysym>End</keysym> keys are broken in the
+    <command>xterm</command> termcap file. This <command>sed</command> command
+    fixes them.</para>
+
+    <para><command>sed -i ... configure</command>: If you pass the
+    <option>--with-glX</option> parameter to the <command>configure</command>
+    script, <command>configure</command> will fail because it doesn't include
+    the <application>X Window System</application> library directory in the
+    <envar>LDFLAGS</envar> in one of the checks. This command adds the required
+    directory. This command is not required if your
+    <application>X Window System</application> libraries are located in
+    <filename class='directory'>/usr/lib</filename>.</para>
+
+    <para><command>sed -i ... src/Makefile.in</command>: For the same reason
+    the previous <command>sed</command> command is used, this one does a
+    similar modification to fix the <filename>Makefile</filename> used to
+    build the programs and library. This <command>sed</command> also fixes an
+    issue by adding the <filename class='libraryfile'>libncurses</filename>
+    library to the <envar>LDFLAGS</envar> for building the
+    <command>ssfe</command> program. This issue is also caused by passing the
+    additional parameters to the <command>configure</command> script.</para>
+
+    <para><parameter>--libexecdir=/usr/lib/vte</parameter>: This parameter
+    causes the libexec files to be installed in the preferred location of
+    <filename class="directory">/usr/lib/vte</filename>
+    instead of <filename class="directory">/usr/libexec</filename>.</para>
+
+    <para><option>--with-xft2 --with-pangox --with-glX</option>: These
+    parameters can be passed to the <command>configure</command> script
+    to enable additional drawing methods in the
+    <application>VTE</application> library.</para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gtk-doc-rebuild.xml"/>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>vte</seg>
+        <seg>libvte.{so,a} and the vtemodule.{so,a}
+        <application>Python</application> module</seg>
+        <seg>/usr/include/vte, /usr/lib/vte, /usr/share/gtk-doc/html/vte,
+        and /usr/share/vte</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="vte-prog">
+        <term><command>vte</command></term>
+        <listitem>
+          <para>is a test application for the <application>VTE</application>
+          libraries.</para>
+          <indexterm zone="vte vte-prog">
+            <primary sortas="b-vte">vte</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libvte">
+        <term><filename class='libraryfile'>libvte.{so,a}</filename></term>
+        <listitem>
+          <para>provide the functions necessary to implement a
+          <quote>termcap file</quote> for terminal emulators.</para>
+          <indexterm zone="vte libvte">
+            <primary sortas="c-libvte">libvte.{so,a}</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

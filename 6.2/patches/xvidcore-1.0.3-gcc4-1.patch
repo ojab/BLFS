@@ -1,0 +1,23 @@
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2005-08-28
+Initial Package Version: 1.0.3
+Upstream Status:         Not submitted
+Origin:                  Randy McMurchy
+Description:             Removes a command line option to the compiler so that
+                         the package will build using GCC-4
+
+$LastChangedBy$
+$Date$
+
+
+diff -Naur xvidcore-1.0.3-orig/build/generic/configure xvidcore-1.0.3/build/generic/configure
+--- xvidcore-1.0.3-orig/build/generic/configure	2004-12-19 11:38:55.000000000 +0000
++++ xvidcore-1.0.3/build/generic/configure	2005-08-28 21:24:36.000000000 +0000
+@@ -1326,7 +1326,6 @@
+ our_cflags_defaults="$our_cflags_defaults -O2"
+ our_cflags_defaults="$our_cflags_defaults -fstrength-reduce"
+ our_cflags_defaults="$our_cflags_defaults -finline-functions"
+-our_cflags_defaults="$our_cflags_defaults -freduce-all-givs"
+ our_cflags_defaults="$our_cflags_defaults -ffast-math"
+ our_cflags_defaults="$our_cflags_defaults -fomit-frame-pointer"
+ 

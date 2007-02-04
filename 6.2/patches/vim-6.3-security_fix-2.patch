@@ -1,0 +1,236 @@
+Submitted By: Matthew Burgess <matthew@linuxfromscratch.org>
+Date: 2005-08-06
+Initial Package Version: 6.3
+Upstream Status: From Upstream
+Origin: ftp://ftp.vim.org/pub/vim/patches/6.3/6.3.045 and
+        ftp://ftp.vim.org/pub/vim/patches/6.3/6.3.082
+Description: Fixes 2 security issues with vim's modeline handling.
+
+diff -Naur vim63/runtime/doc/options.txt lfs63/runtime/doc/options.txt
+--- vim63/runtime/doc/options.txt	2004-06-07 10:05:19.000000000 +0100
++++ lfs63/runtime/doc/options.txt	2005-08-04 23:03:50.000000000 +0100
+@@ -1,4 +1,4 @@
+-*options.txt*	For Vim version 6.3.  Last change: 2004 Jun 01
++*options.txt*	For Vim version 6.3.  Last change: 2004 Dec 09
+ 
+ 
+ 		  VIM REFERENCE MANUAL	  by Bram Moolenaar
+@@ -139,6 +139,9 @@
+ (the ^[ is a real <Esc> here, use CTRL-V <Esc> to enter it)
+ The advantage over a mapping is that it works in all situations.
+ 
++The t_xx options cannot be set from a |modeline| or in the |sandbox|, for
++security reasons.
++
+ The listing from ":set" looks different from Vi.  Long string options are put
+ at the end of the list.  The number of options is quite large.	The output of
+ "set all" probably does not fit on the screen, causing Vim to give the
+@@ -945,6 +948,7 @@
+ 	accidentally overwriting existing files with a backup file.  You might
+ 	prefer using ".bak", but make sure that you don't have files with
+ 	".bak" that you want to keep.
++	Only normal file name characters can be used, "/\*?[|<>" are illegal.
+ 
+ 						*'backupskip'* *'bsk'*
+ 'backupskip' 'bsk'	string	(default: "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*")
+@@ -2407,6 +2411,7 @@
+ 	type that is actually stored with the file.
+ 	This option is not copied to another buffer, independent of the 's' or
+ 	'S' flag in 'cpoptions'.
++	Only normal file name characters can be used, "/\*?[|<>" are illegal.
+ 
+ 						*'fillchars'* *'fcs'*
+ 'fillchars' 'fcs'	string	(default "vert:|,fold:-")
+@@ -3599,6 +3604,7 @@
+ 	Setting this option to a valid keymap name has the side effect of
+ 	setting 'iminsert' to one, so that the keymap becomes effective.
+ 	'imsearch' is also set to one, unless it was -1
++	Only normal file name characters can be used, "/\*?[|<>" are illegal.
+ 
+ 					*'keymodel'* *'km'*
+ 'keymodel' 'km'		string	(default "")
+@@ -3690,6 +3696,7 @@
+ 	matter what $LANG is set to: >
+ 		:set langmenu=nl_NL.ISO_8859-1
+ <	When 'langmenu' is empty, |v:lang| is used.
++	Only normal file name characters can be used, "/\*?[|<>" are illegal.
+ 	If your $LANG is set to a non-English language but you do want to use
+ 	the English menus: >
+ 		:set langmenu=none
+@@ -4310,6 +4317,7 @@
+ 	Using 'patchmode' for compressed files appends the extension at the
+ 	end (e.g., "file.gz.orig"), thus the resulting name isn't always
+ 	recognized as a compressed file.
++	Only normal file name characters can be used, "/\*?[|<>" are illegal.
+ 
+ 					*'path'* *'pa'* *E343* *E345* *E347*
+ 'path' 'pa'		string	(default on Unix: ".,/usr/include,,"
+@@ -4424,6 +4432,8 @@
+ 	in the standard printer dialog.
+ 	If the option is empty, then vim will use the system default printer
+ 	for ":hardcopy!"
++	This option cannot be set from a |modeline| or in the |sandbox|, for
++	security reasons.
+ 
+ 					*'printencoding'* *'penc'* *E620*
+ 'printencoding' 'penc'	String	(default empty, except for:
+@@ -5711,6 +5721,7 @@
+ 	Syntax autocommand event is triggered with the value as argument.
+ 	This option is not copied to another buffer, independent of the 's' or
+ 	'S' flag in 'cpoptions'.
++	Only normal file name characters can be used, "/\*?[|<>" are illegal.
+ 
+ 					*'tabstop'* *'ts'*
+ 'tabstop' 'ts'		number	(default 8)
+@@ -6089,6 +6100,8 @@
+ 	This option will be used for the window title when exiting Vim if the
+ 	original title cannot be restored.  Only happens if 'title' is on or
+ 	'titlestring' is not empty.
++	This option cannot be set from a |modeline| or in the |sandbox|, for
++	security reasons.
+ 						*'titlestring'*
+ 'titlestring'		string	(default "")
+ 			global
+diff -Naur vim63/src/option.c lfs63/src/option.c
+--- vim63/src/option.c	2004-05-15 11:20:06.000000000 +0100
++++ lfs63/src/option.c	2005-08-04 23:03:50.000000000 +0100
+@@ -293,6 +293,7 @@
+ #define P_SECURE	0x40000L/* cannot change in modeline or secure mode */
+ #define P_GETTEXT	0x80000L/* expand default value with _() */
+ #define P_NOGLOB       0x100000L/* do not use local value for global vimrc */
++#define P_NFNAME       0x200000L/* only normal file name chars allowed */
+ 
+ /*
+  * options[] is initialized here.
+@@ -413,7 +414,7 @@
+     {"backupdir",   "bdir", P_STRING|P_EXPAND|P_VI_DEF|P_COMMA|P_NODUP|P_SECURE,
+ 			    (char_u *)&p_bdir, PV_NONE,
+ 			    {(char_u *)DFLT_BDIR, (char_u *)0L}},
+-    {"backupext",   "bex",  P_STRING|P_VI_DEF,
++    {"backupext",   "bex",  P_STRING|P_VI_DEF|P_NFNAME,
+ 			    (char_u *)&p_bex, PV_NONE,
+ 			    {
+ #ifdef VMS
+@@ -846,7 +847,7 @@
+     {"fileformats", "ffs",  P_STRING|P_VIM|P_COMMA|P_NODUP,
+ 			    (char_u *)&p_ffs, PV_NONE,
+ 			    {(char_u *)DFLT_FFS_VI, (char_u *)DFLT_FFS_VIM}},
+-    {"filetype",    "ft",   P_STRING|P_ALLOCED|P_VI_DEF|P_NOGLOB,
++    {"filetype",    "ft",   P_STRING|P_ALLOCED|P_VI_DEF|P_NOGLOB|P_NFNAME,
+ #ifdef FEAT_AUTOCMD
+ 			    (char_u *)&p_ft, PV_FT,
+ 			    {(char_u *)"", (char_u *)0L}
+@@ -1284,7 +1285,7 @@
+ 			    {(char_u *)0L, (char_u *)0L}
+ #endif
+ 			    },
+-    {"keymap",	    "kmp",  P_STRING|P_ALLOCED|P_VI_DEF|P_RBUF|P_RSTAT,
++    {"keymap",	    "kmp",  P_STRING|P_ALLOCED|P_VI_DEF|P_RBUF|P_RSTAT|P_NFNAME,
+ #ifdef FEAT_KEYMAP
+ 			    (char_u *)&p_keymap, PV_KMAP,
+ 			    {(char_u *)"", (char_u *)0L}
+@@ -1330,7 +1331,7 @@
+ 			    {(char_u *)NULL,
+ #endif
+ 				(char_u *)0L}},
+-    {"langmenu",    "lm",   P_STRING|P_VI_DEF,
++    {"langmenu",    "lm",   P_STRING|P_VI_DEF|P_NFNAME,
+ #if defined(FEAT_MENU) && defined(FEAT_MULTI_LANG)
+ 			    (char_u *)&p_lm, PV_NONE,
+ #else
+@@ -1562,7 +1563,7 @@
+ 			    {(char_u *)0L, (char_u *)0L}
+ #endif
+ 			    },
+-    {"patchmode",   "pm",   P_STRING|P_VI_DEF,
++    {"patchmode",   "pm",   P_STRING|P_VI_DEF|P_NFNAME,
+ 			    (char_u *)&p_pm, PV_NONE,
+ 			    {(char_u *)"", (char_u *)0L}},
+     {"path",	    "pa",   P_STRING|P_EXPAND|P_VI_DEF|P_COMMA|P_NODUP,
+@@ -1595,7 +1596,7 @@
+ 			    (char_u *)NULL, PV_NONE,
+ #endif
+ 			    {(char_u *)FALSE, (char_u *)0L}},
+-    {"printdevice", "pdev", P_STRING|P_VI_DEF,
++    {"printdevice", "pdev", P_STRING|P_VI_DEF|P_SECURE,
+ #ifdef FEAT_PRINTER
+ 			    (char_u *)&p_pdev, PV_NONE,
+ 			    {(char_u *)"", (char_u *)0L}
+@@ -1981,7 +1982,7 @@
+     {"switchbuf",   "swb",  P_STRING|P_VI_DEF|P_COMMA|P_NODUP,
+ 			    (char_u *)&p_swb, PV_NONE,
+ 			    {(char_u *)"", (char_u *)0L}},
+-    {"syntax",	    "syn",  P_STRING|P_ALLOCED|P_VI_DEF|P_NOGLOB,
++    {"syntax",	    "syn",  P_STRING|P_ALLOCED|P_VI_DEF|P_NOGLOB|P_NFNAME,
+ #ifdef FEAT_SYN_HL
+ 			    (char_u *)&p_syn, PV_SYN,
+ 			    {(char_u *)"", (char_u *)0L}
+@@ -2086,7 +2087,7 @@
+ 			    (char_u *)NULL, PV_NONE,
+ #endif
+ 			    {(char_u *)85L, (char_u *)0L}},
+-    {"titleold",    NULL,   P_STRING|P_VI_DEF|P_GETTEXT,
++    {"titleold",    NULL,   P_STRING|P_VI_DEF|P_GETTEXT|P_SECURE,
+ #ifdef FEAT_TITLE
+ 			    (char_u *)&p_titleold, PV_NONE,
+ 			    {(char_u *)N_("Thanks for flying Vim"),
+@@ -2321,7 +2322,7 @@
+ 			    {(char_u *)0L, (char_u *)0L}},
+ 
+ /* terminal output codes */
+-#define p_term(sss, vvv)   {sss, NULL, P_STRING|P_VI_DEF|P_RALL, \
++#define p_term(sss, vvv)   {sss, NULL, P_STRING|P_VI_DEF|P_RALL|P_SECURE, \
+ 			    (char_u *)&vvv, PV_NONE, \
+ 			    {(char_u *)"", (char_u *)0L}},
+ 
+@@ -3302,7 +3303,8 @@
+ 	errmsg = NULL;
+ 	startarg = arg;		/* remember for error message */
+ 
+-	if (STRNCMP(arg, "all", 3) == 0 && !isalpha(arg[3]))
++	if (STRNCMP(arg, "all", 3) == 0 && !isalpha(arg[3])
++						&& !(opt_flags & OPT_MODELINE))
+ 	{
+ 	    /*
+ 	     * ":set all"  show all options.
+@@ -3318,7 +3320,7 @@
+ 	    else
+ 		showoptions(1, opt_flags);
+ 	}
+-	else if (STRNCMP(arg, "termcap", 7) == 0)
++	else if (STRNCMP(arg, "termcap", 7) == 0 && !(opt_flags & OPT_MODELINE))
+ 	{
+ 	    showoptions(2, opt_flags);
+ 	    show_termcodes();
+@@ -4604,6 +4606,15 @@
+ 	errmsg = e_secure;
+     }
+ 
++    /* Check for a "normal" file name in some options.  Disallow a path
++     * separator (slash and/or backslash), wildcards and characters that are
++     * often illegal in a file name. */
++    else if ((options[opt_idx].flags & P_NFNAME)
++				   && vim_strpbrk(*varp, "/\\*?[|<>") != NULL)
++    {
++	errmsg = e_invarg;
++    }
++
+     /* 'term' */
+     else if (varp == &T_NAME)
+     {
+diff -Naur vim63/src/os_unix.c lfs63/src/os_unix.c
+--- vim63/src/os_unix.c	2004-05-29 12:38:31.000000000 +0100
++++ lfs63/src/os_unix.c	2005-08-04 23:04:20.000000000 +0100
+@@ -4697,6 +4697,12 @@
+     if (!have_wildcard(num_pat, pat))
+ 	return save_patterns(num_pat, pat, num_file, file);
+ 
++# ifdef HAVE_SANDBOX
++    /* Don't allow any shell command in the sandbox. */
++    if (sandbox != 0 && check_secure())
++	return FAIL;
++# endif
++
+     /*
+      * Don't allow the use of backticks in secure and restricted mode.
+      */

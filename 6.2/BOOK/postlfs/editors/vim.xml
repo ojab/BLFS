@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+    <!-- Inserted as a reminder to do this. The mention of a test suite
+         is usually right before the root user installation commands. Please
+         delete these 12 (including one blank) lines after you are done.-->
+
+    <!-- Use one of the two mentions below about a test suite,
+         delete the line that is not applicable. Of course, if the
+         test suite uses syntax other than "make check", revise the
+         line to reflect the actual syntax to run the test suite -->
+
+    <!-- <para>This package does not come with a test suite.</para> -->
+    <!-- <para>To test the results, issue: <command>make check</command>.</para> -->
+
+  <!ENTITY vim-download-http "http://ftp.at.vim.org/pub/vim/unix/vim-&vim-version;.tar.bz2">
+  <!ENTITY vim-download-ftp  "ftp://ftp.vim.org/pub/vim/unix/vim-&vim-version;.tar.bz2">
+  <!ENTITY vim-md5sum        "4ca69757678272f718b1041c810d82d8">
+  <!ENTITY vim-size          "6.3 MB">
+  <!ENTITY vim-buildsize     "73 MB">
+  <!ENTITY vim-time          "0.8 SBU">
+]>
+
+<sect1 id="vim" xreflabel="Vim-&vim-version;">
+  <?dbhtml filename="vim.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Vim-&vim-version;</title>
+
+  <indexterm zone="vim">
+    <primary sortas="a-Vim">Vim</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Vim</title>
+
+    <para>The <application>Vim</application> package, which is an
+    abbreviation for VI IMproved, contains a <command>vi</command>
+    clone with extra features as compared to the original
+    <command>vi</command>.</para>
+
+    <para>The default LFS instructions install <application>vim</application>
+    as a part of the base system. If you would prefer to link
+    <application>vim</application> against <application>X</application>,
+    you should recompile <application>vim</application> to enable GUI mode.
+    There is no need for special instructions since
+    <application>X</application> support is automatically detected.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&vim-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&vim-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &vim-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &vim-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &vim-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &vim-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing='compact'>
+      <listitem>
+        <para>Recommended Patch: <ulink
+          url="&patch-root;/vim-&vim-version;-fixes-14.patch"/></para>
+      </listitem>
+      <listitem>
+        <para>Recommended Patch: <ulink
+          url="&patch-root;/vim-&vim-version;-mandir-1.patch"/></para>
+      </listitem>
+      <listitem>
+        <para>Translated Vim messages: <ulink
+        url="http://ftp.at.vim.org/pub/vim/extra/vim-&vim-version;-lang.tar.gz"/>
+      </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Vim Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended"><xref linkend="x-window-system"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="gtk2"/> OR
+    <xref linkend="lesstif"/> OR
+    <xref linkend="GTK"/>,
+    <xref linkend="python"/>,
+    <xref linkend="tcl"/>,
+    <xref linkend="ruby"/>, and
+    <xref linkend="gpm"/></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/vim"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Vim</title>
+
+    <note>
+      <para>If you recompile <application>Vim</application> to link against
+      <application>X</application>, and your <application>X</application>
+      libraries are not on the root partition, you will no longer have an editor
+      for use in emergencies. You may choose to install an additional editor,
+      not link <application>Vim</application> against
+      <application>X</application>, or move the current <command>vim</command>
+      executable to the <filename class="directory">/bin</filename> directory
+      under a different name such as <filename>vi</filename>.</para>
+    </note>
+
+    <para>If desired, unpack the translated messages archive:</para>
+
+<screen><userinput>tar -xf ../vim-&vim-version;-lang.tar.gz --strip-components=1</userinput></screen>
+
+    <para>Install <application>Vim</application> by running the following
+    commands:</para>
+
+<screen><userinput>patch -Np1 -i ../vim-&vim-version;-fixes-14.patch &amp;&amp;
+patch -Np1 -i ../vim-&vim-version;-mandir-1.patch &amp;&amp;
+echo '#define SYS_VIMRC_FILE "/etc/vimrc"' &gt;&gt; src/feature.h &amp;&amp;
+echo '#define SYS_GVIMRC_FILE "/etc/gvimrc"' &gt;&gt; src/feature.h &amp;&amp;
+./configure --prefix=/usr --with-features=huge &amp;&amp;
+make</userinput></screen>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <para>By default, Vim's documentation is installed in <filename
+    class="directory">/usr/share/vim</filename>.  The following symlink allows
+    the documentation to be accessed via <filename
+    class="directory">/usr/share/doc/vim-7.0</filename>, making it consistent
+    with the location of documentation for other packages:</para>
+
+<screen role="root"><userinput>ln -snfv ../vim/vim70/doc /usr/share/doc/vim-7.0</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><command>patch &hellip;</command>: These patches are the same as LFS
+    and update the package with upstream patches and ensure the man pages
+    are placed in the proper locations.</para>
+
+    <para><parameter>--with-features=huge</parameter>: This switch enables all
+    the additional features available in <application>Vim</application>.</para>
+
+    <para><option>--enable-gui=no</option>: This will prevent compilation of the
+    GUI. <application>Vim</application> will still link against
+    <application>X</application> so that some nice eye-candy such as updating the
+    title bar of an <application>Xterm</application> window are available.</para>
+
+    <para><option>--without-x</option>: If you prefer not to link
+    <application>Vim</application> against <application>X</application>, use
+    this switch.</para>
+
+    <para><option>--enable-perlinterp</option>, <option>--enable-pythoninterp</option>,
+    <option>--enable-tclinterp</option>, <option>--enable-rubyinterp</option>:
+    Thses options include the Perl, Python, Tcl, or Ruby interpreters that allow
+    using other application code in <application>vim</application> scripts.</para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Vim</title>
+
+    <sect3 id='vim-config'>
+      <title>Config Files</title>
+
+      <para><filename>/etc/vimrc</filename> and
+      <filename>~/.vimrc</filename></para>
+
+      <indexterm zone="vim vim-config">
+        <primary sortas="e-etc-vimrc">/etc/vimrc</primary>
+      </indexterm>
+
+      <indexterm zone="vim vim-config">
+        <primary sortas="e-AA.vimrc">~/.vimrc</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3 id='vim-init'>
+      <title>Configuration Information</title>
+
+      <para><application>Vim-7.0</application> introduced an
+      integrated spell checker that doesn't requires additional libraries to be
+      installed.  To enable the spell checker you can set the following in
+      one of the configuration files: </para>
+
+<screen><literal>set spell
+spelllang=en,ru</literal></screen>
+
+      <para>By default, <application>Vim</application> only installs spell
+      files for the English language.  If a spell file is not available for
+      your language, then <application>Vim</application> will call
+      <filename>$VIMRUNTIME/plugin/spellfile.vim</filename> and will try to
+      obtain the *.spl and optionally *.sug from the vim ftp server, using the
+      <filename>$VIMRUNTIME/plugin/netrw</filename> plugin.</para>
+
+      <para>Alternatively you can manually download the *.spl and *.sug files
+      from: <ulink url="ftp://ftp.vim.org/pub/vim/runtime/spell/"/> and save
+      them to <filename class="directory"> ~/.vim/spell </filename> or in
+      <filename class="directory">
+      /usr/share/vim/vim70/spell/</filename>.</para>
+
+      <para>For more information about the spell checker and some other
+      features in  <application>Vim-&vim-version;</application> (such us
+      vimgrep, tab-pages, and omni-completion), issue the following command inside
+      <application>Vim</application>:</para>
+
+<screen><literal>:help version7</literal></screen>
+
+      <para>For additional information on setting up
+      <application>Vim</application> configuration files, see <xref
+      linkend="postlfs-config-vimrc"/> and <ulink
+      url='http://www.vi-improved.org/vimrc.php'/>.  </para>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <para>A list of the reinstalled files, along with their short
+    descriptions can be found in the <ulink
+    url="&lfs-root;/chapter06/vim.html#contents-vim">LFS Vim Installation
+    Instrutions</ulink></para>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>gview, gvim, gvimdiff, rgview, and rgvim</seg>
+        <seg>None</seg>
+        <seg>/usr/share/vim</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gview">
+        <term><command>gview</command></term>
+        <listitem>
+          <para>starts <command>gvim</command> in read-only mode.</para>
+          <indexterm zone="vim gview">
+            <primary sortas="b-gview">gview</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gvim">
+        <term><command>gvim</command></term>
+        <listitem>
+          <para>is the editor that runs under <application>X</application>
+          and includes a GUI.</para>
+          <indexterm zone="vim gvim">
+            <primary sortas="b-gvim">gvim</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gvimdiff">
+        <term><command>gvimdiff</command></term>
+        <listitem>
+          <para>edits two or three versions of a file with
+          <command>gvim</command> and shows the differences.</para>
+          <indexterm zone="vim gvimdiff">
+            <primary sortas="b-gvimdiff">gvimdiff</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rgview">
+        <term><command>rgview</command></term>
+        <listitem>
+          <para>is a restricted version of <command>gview</command>.</para>
+          <indexterm zone="vim rgview">
+            <primary sortas="b-rgview">rgview</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rgvim">
+        <term><command>rgvim</command></term>
+        <listitem>
+          <para>is a restricted version of <command>gvim</command>. </para>
+          <indexterm zone="vim gvim">
+            <primary sortas="b-gvim">gvim</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY x7drivers-download-http "http://xorg.freedesktop.org/releases/individual/driver/">
+  <!ENTITY x7drivers-download-ftp  "ftp://ftp.x.org/pub/individual/driver/">
+  <!ENTITY x7drivers-md5sum        "&files-anduin;/xorg/md5sums">
+  <!ENTITY x7drivers-size          "18.7 MB">
+  <!ENTITY x7drivers-buildsize     "60.3 MB">
+  <!ENTITY x7drivers-time          "6.9 SBU">
+
+]>
+
+<sect1 id="xorg7-driver" xreflabel="Xorg Drivers">
+  <?dbhtml filename="x7driver.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Xorg Drivers</title>
+
+  <indexterm zone="xorg7-driver">
+    <primary sortas="a-xorg7-driver">Xorg Drivers</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Xorg Drivers</title>
+
+    <para>The <application>Xorg</application> drivers provide the means
+    for the xserver to take advantage of installed hardware.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&x7drivers-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&x7drivers-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: <ulink url="&x7drivers-md5sum;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download size: &x7drivers-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &x7drivers-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &x7drivers-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Xorg Drivers Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="xorg7-server"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="mesalib"/></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url='&blfs-wiki;/Xorg7Drivers'/></para>
+
+  </sect2>
+
+  <sect2>
+    <title>Downloading Xorg Drivers</title>
+
+    <para>To download the needed files using <application>wget</application>,
+    use the following commands:</para>
+
+<screen><userinput>wget &files-anduin;/xorg/driver-7.1.wget &amp;&amp;
+mkdir driver &amp;&amp;
+cd driver &amp;&amp;
+wget -B http://xorg.freedesktop.org/releases/individual/driver/ \
+     -i ../driver-7.1.wget</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Xorg Drivers</title>
+
+    <para>The <application>xf86-input-evdev</application> package installs
+    a man page with character encoding not displayable using the
+    <application>Man-db</application> package. Issue the following command
+    before building the package to change the offending encoding to
+    characters <command>man</command> can properly display.</para>
+
+<screen><userinput>sed -i "s/\xc3\xb8/\\\\[\/o]/" man/evdev.man</userinput></screen>
+
+    <warning><para>It is very important not to build display drivers that
+    cannot be used with your hardware.  For instance, do not build Sun drivers
+    for an x86 PC as the Sun drivers will expect to see SPARC symbols
+    exported from the kernel.  Failure to follow this warning will result
+    in a display lockup, which requires a hard reboot, when configuring
+    <application>Xorg</application> for the first time.</para></warning>
+
+    <para>Install the drivers by running the following commands for each
+    package:</para>
+
+<screen><userinput>./configure $XORG_CONFIG \
+    --with-xorg-module-dir=$XORG_PREFIX/lib/X11/modules &amp;&amp;
+make</userinput></screen>
+
+    <para>These packages do not provide test suites.</para>
+
+    <para>Now as the <systemitem class="username">root</systemitem>
+    user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>--with-xorg-module-dir=...</parameter>: This switch
+    ensures that the drivers are installed into the correct directory.</para>
+
+  </sect2>
+
+</sect1>

@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gimp-download-http "http://ftp.gwdg.de/pub/misc/grafik/gimp/gimp/v2.2/gimp-&gimp-version;.tar.bz2">
+  <!ENTITY gimp-download-ftp  "ftp://ftp.gimp.org/pub/gimp/v2.2/gimp-&gimp-version;.tar.bz2">
+  <!ENTITY gimp-md5sum        "6a1906db60166a88317f2df5f195a57d">
+  <!ENTITY gimp-size          "12.8 MB">
+  <!ENTITY gimp-buildsize     "508 MB (includes installing the help system)">
+  <!ENTITY gimp-time          "4.9 SBU (additional 0.7 SBU to run the test suite
+                              and additional 7.1 SBU to build the help files)">
+
+  <!ENTITY gimp-help-version  "0.10">
+  <!ENTITY gimp-help-download "ftp://ftp.gimp.org/pub/gimp/help/gimp-help-2-&gimp-help-version;.tar.gz">
+  <!ENTITY gimp-help-size     "39.9 MB">
+  <!ENTITY gimp-help-md5sum   "22a1e10c314c5547fe8721c4f6f0b30a">
+]>
+
+<sect1 id="gimp" xreflabel="GIMP-&gimp-version;">
+  <?dbhtml filename="gimp.html" ?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>GIMP-&gimp-version;</title>
+
+  <indexterm zone="gimp">
+    <primary sortas="a-GIMP">GIMP</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to GIMP</title>
+
+    <para>The <application>GIMP</application> package contains
+    the GNU Image Manipulation Program. This is useful for
+    photo retouching, image composition and image authoring.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&gimp-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&gimp-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &gimp-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &gimp-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &gimp-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &gimp-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing='compact'>
+      <title>Help System</title>
+      <listitem>
+        <para>Optional help files: <ulink url="&gimp-help-download;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &gimp-help-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &gimp-help-size;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">GIMP Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="gtk2"/>,
+    <xref linkend="libart_lgpl"/>, and
+    <xref linkend="perl-xml-parser"/></para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+    <xref linkend="gimp-print"/>,
+    <xref linkend="libjpeg"/>, and
+    <xref linkend="libtiff"/></para>
+
+    <note>
+      <para>If the recommended dependencies are not installed, the
+      <command>configure</command> switches below will need to be modified as
+      explained in <xref linkend='gimp-cmd-explanations'/> below.</para>
+    </note>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+    <xref linkend="libmng"/>,
+    <xref linkend="librsvg"/>,
+    <xref linkend="aalib"/>,
+    <xref linkend="lcms"/>,
+    <xref linkend="libexif"/>,
+    <xref linkend="libgtkhtml"/> (required to build the help system browser plugin),
+    <xref linkend="libxslt"/>,
+    <ulink url="http://www.pygtk.org/">PyGTK</ulink> (requires
+    <xref linkend="python"/>),
+    <xref linkend="gtk-doc"/>,
+    an <xref linkend="server-mail"/> (that provides a
+    <command>sendmail</command> program),
+    <xref linkend="alsa"/>, and
+    <ulink url="http://wvware.sourceforge.net/libwmf.html">libwmf</ulink></para>
+
+    <bridgehead renderas="sect4">Optional (for Building Documentation from
+    the Help Tarball)</bridgehead>
+    <para role="optional">
+    <xref linkend="libxslt"/>,
+    <xref linkend="DocBook"/>,
+    <xref linkend="docbook-xsl"/>, and
+    <xref linkend="imagemagick"/> (only needed to optimize PNG images)</para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/gimp"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of GIMP</title>
+
+    <para>Install <application>GIMP</application> by running
+    the following commands:</para>
+
+<screen><userinput>./configure --prefix=/usr \
+            --sysconfdir=/etc \
+            --datadir=/usr/share &amp;&amp;
+make</userinput></screen>
+
+    <para>To test the results, issue: <command>make check</command>.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+install -v -m755 -d /usr/share/doc/gimp-&gimp-version; &amp;&amp;
+install -v -m644 docs/{Wilber*,keybindings.txt,quick_reference.ps} \
+    /usr/share/doc/gimp-&gimp-version;</userinput></screen>
+
+    <para>The <filename>gimp-help</filename> tarball contains a help system
+    designed for use with external web browsers, the internal
+    <application>GIMP</application> help browser, and HTML renderers.
+    The tarball only contains the XML sources, so you will need
+    the <command>xsltproc</command> program from <xref linkend="libxslt"/>
+    to build the HTML files.</para>
+
+    <para>If you downloaded the <filename>gimp-help</filename> tarball, change
+    directories out of the <application>GIMP</application> source tree to
+    the root of your build directory. Now unpack the
+    <filename>gimp-help</filename> tarball and change directories to the
+    root of the newly created source tree (as an unprivileged user).
+    Issue the following commands to install the help files:</para>
+
+<screen><userinput>./configure &amp;&amp;
+make</userinput></screen>
+
+    <para>In order to use the <option>--enable-convert</option> parameter to
+    the <command>configure</command> script, you must have the
+    <command>convert</command> program from <xref linkend="imagemagick"/>
+    installed.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands" id='gimp-cmd-explanations'>
+    <title>Command Explanations</title>
+
+    <para><parameter>--datadir=/usr/share</parameter>: This parameter is
+    required because there is a subtle bug in
+    <application>Autoconf-2.59</application> which causes the
+    <command>configure</command> script to mishandle the
+    <envar>datarootdir</envar> variable. Fortunately, passing
+    <parameter>--datadir=</parameter> works around the problem.</para>
+
+    <para><option>--disable-print</option>: This option will disable print
+    support and is necessary if <application>Gimp-Print</application> is not
+    installed.</para>
+
+    <para><option>--without-libjpeg</option>: This option is necessary if
+    <application>libjpeg</application> is not installed.</para>
+
+    <para><option>--without-libtiff</option>: This option is necessary if
+    <application>libtiff</application> is not installed.</para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gtk-doc-rebuild.xml"/>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring GIMP</title>
+
+    <sect3 id="gimp-config">
+      <title>Config Files</title>
+
+      <para><filename>/etc/gimp/2.0/*</filename> and
+      <filename>~/.gimp-2.0/gimprc</filename></para>
+
+      <indexterm zone="gimp gimp-config">
+        <primary sortas="e-AA.gimp-2.0/gimprc">~/.gimp-2.0/gimprc</primary>
+      </indexterm>
+
+      <indexterm zone="gimp gimp-config">
+        <primary sortas="e-etc-gimp-2.0-star">/etc/gimp/2.0/*</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para><application>GIMP</application> executes a configuration wizard
+      for each user upon their initial use of the program.</para>
+
+      <para><application>GIMP</application> executes the
+      <command>mozilla</command> web browser by default to view the help
+      files.  If you do not have <application>Mozilla</application>, or
+      prefer a different web browser, you can set a new system value in
+      <filename>/etc/gimp/2.0/gimprc</filename>.  Execute the following
+      command as the <systemitem class="username">root</systemitem> user,
+      replacing <replaceable>&lt;browser&gt;</replaceable> with your
+      preferred web browser:</para>
+
+<screen role="root"><userinput>echo '(web-browser "<replaceable>&lt;browser&gt;</replaceable> %s")' &gt;&gt; /etc/gimp/2.0/gimprc</userinput></screen>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>gimp, gimp-2.2, gimp-remote, gimp-remote-2.2,
+        and gimptool-2.0</seg>
+        <seg>libgimp-2.0.so, libgimpbase-2.0.so, libgimpcolor-2.0.so,
+        libgimpmath-2.0.so, libgimpmodule-2.0.so, libgimpthumb-2.0.so,
+        libgimpui-2.0.so, libgimpwidgets-2.0.so, and many other modules and
+        plugin libraries</seg>
+        <seg>/etc/gimp, /usr/include/gimp-2.0, /usr/lib/gimp,
+        /usr/share/doc/gimp-&gimp-version;, /usr/share/gimp and
+        /usr/share/gtk-doc/html/libgimp{,base,color,math,module,thumb,widgets}</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gimp-prog">
+        <term><command>gimp</command></term>
+        <listitem>
+          <para>is a symbolic link to <command>gimp-2.2</command>.</para>
+          <indexterm zone="gimp gimp-prog">
+            <primary sortas="g-gimp">gimp</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gimp-2.2">
+        <term><command>gimp-2.2</command></term>
+        <listitem>
+          <para>is an image manipulation program. It works with a variety
+          of image formats and provides a large selection of tools.</para>
+          <indexterm zone="gimp gimp-2.2">
+            <primary sortas="b-gimp-2.2">gimp-2.2</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gimp-remote">
+        <term><command>gimp-remote</command></term>
+        <listitem>
+          <para>is a symbolic link to <command>gimp-remote-2.2</command>.</para>
+          <indexterm zone="gimp gimp-remote">
+            <primary sortas="g-gimp-remote">gimp-remote</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gimp-remote-2.2">
+        <term><command>gimp-remote-2.2</command></term>
+        <listitem>
+          <para>is a small utility that tells a running
+          <application>GIMP</application> to open a local or remote
+          image file.</para>
+          <indexterm zone="gimp gimp-remote-2.2">
+            <primary sortas="b-gimp-remote-2.2">gimp-remote-2.2</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gimptool-2.0">
+        <term><command>gimptool-2.0</command></term>
+        <listitem>
+          <para>is a tool that can build plug-ins or scripts and install them
+          if they are distributed in one source file.
+          <command>gimptool-2.0</command> can also be used by programs that
+          need to know what libraries and include-paths
+          <application>GIMP</application> was compiled with.</para>
+          <indexterm zone="gimp gimptool-2.0">
+            <primary sortas="b-gimptool-2.0">gimptool-2.0</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgimp-2.0">
+        <term><filename class='libraryfile'>libgimp-2.0.so</filename></term>
+        <listitem>
+          <para> provides C bindings for <application>GIMP</application>'s
+          Procedural Database (PDB) which offers an interface to core functions
+          and to functionality provided by plug-ins.</para>
+          <indexterm zone="gimp libgimp-2.0">
+            <primary sortas="c-libgimp-2.0">libgimp-2.0.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgimpbase-2.0">
+        <term><filename class='libraryfile'>libgimpbase-2.0.so</filename></term>
+        <listitem>
+          <para>provides the C functions for basic <application>GIMP</application>
+          functionality such as determining enumeration data types, gettext
+          translation, determining <application>GIMP</application>'s version
+          number and capabilities, handling data files and accessing the
+          environment.</para>
+          <indexterm zone="gimp libgimpbase-2.0">
+            <primary sortas="c-libgimpbase-2.0">libgimpbase-2.0.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgimpcolor-2.0">
+        <term><filename class='libraryfile'>libgimpcolor-2.0.so</filename></term>
+        <listitem>
+          <para>provides the C functions relating to RGB, HSV and CMYK colors as
+          well as converting colors between different color models and performing
+          adaptive supersampling on an area.</para>
+          <indexterm zone="gimp libgimpcolor-2.0">
+            <primary sortas="c-libgimpcolor-2.0">libgimpcolor-2.0.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgimpmath-2.0">
+        <term><filename class='libraryfile'>libgimpmath-2.0.so</filename></term>
+        <listitem>
+          <para>contains C functions which provide mathematical definitions and
+          macros, manipulate 3x3 transformation matrices, set up and manipulate
+          vectors and the MD5 message-digest algorithm.</para>
+          <indexterm zone="gimp libgimpmath-2.0">
+            <primary sortas="c-libgimpmath-2.0">libgimpmath-2.0.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgimpmodule-2.0">
+        <term><filename class='libraryfile'>libgimpmodule-2.0.so</filename></term>
+        <listitem>
+          <para>provides the C functions which implements module loading using
+          GModule and keeps a list of GimpModule's found in a given
+          searchpath.</para>
+          <indexterm zone="gimp libgimpmodule-2.0">
+            <primary sortas="c-libgimpmodule-2.0">libgimpmodule-2.0.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgimpthumb-2.0">
+        <term><filename class='libraryfile'>libgimpthumb-2.0.so</filename></term>
+        <listitem>
+          <para>provides the C functions for handling
+          <application>GIMP</application>'s thumbnail objects.</para>
+          <indexterm zone="gimp libgimpthumb-2.0">
+            <primary sortas="c-libgimpthumb-2.0">libgimpthumb-2.0.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgimpui-2.0">
+        <term><filename class='libraryfile'>libgimpui-2.0.so</filename></term>
+        <listitem>
+          <para>contains the <application>GIMP</application> common user
+          interface functions.</para>
+          <indexterm zone="gimp libgimpui-2.0">
+            <primary sortas="c-libgimpui-2.0">libgimpui-2.0.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgimpwidgets-2.0">
+        <term><filename class='libraryfile'>libgimpwidgets-2.0.so</filename></term>
+        <listitem>
+          <para>contains <application>GIMP</application>
+          and <application>GTK</application> widget creation and
+          manipulation functions.</para>
+          <indexterm zone="gimp libgimpwidgets-2.0">
+            <primary sortas="c-libgimpwidgets-2.0">libgimpwidgets-2.0.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

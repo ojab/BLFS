@@ -1,0 +1,22 @@
+Submitted By: Richard A Downing <richard at linuxfromscratch dot org>
+Date: 2005-09-05
+Initial Package Version: 1.4.2
+Upstream Status: In CVS
+Origin: http://lists.gnupg.org/pipermail/gnupg-announce/2005q3/000200.html
+Description: Required patch if --with-libcurl is applied to configure.
+
+diff -Naur gnupg-1.4.2/g10/keyserver.c gnupg-1.4.2/g10/keyserver.c
+--- gnupg-1.4.2/g10/keyserver.c	2005-07-22 15:55:11.000000000 +0000
++++ gnupg-1.4.2/g10/keyserver.c	2005-09-05 09:22:23.000000000 +0000
+@@ -860,7 +860,9 @@
+ static const char *
+ keyserver_typemap(const char *type)
+ {
+-  if(strcmp(type,"ldaps")==0)
++  if(strcmp(type,"ldap")==0)
++    return "ldap";
++  else if(strcmp(type,"ldaps")==0)
+     return "ldap";
+   else if(curl_can_handle(type))
+     return "curl";
+

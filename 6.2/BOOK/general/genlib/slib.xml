@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY slib-download-http "http://swiss.csail.mit.edu/ftpdir/scm/OLD/slib&slib-version;.tar.gz">
+  <!ENTITY slib-download-ftp  " ">
+  <!ENTITY slib-md5sum        "eec6e9193c3c86254f7176dd8a833c4c">
+  <!ENTITY slib-size          "846 KB">
+  <!ENTITY slib-buildsize     "19.5 MB (includes building and installing all docs)">
+  <!ENTITY slib-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="slib" xreflabel="SLIB-&slib-version;">
+  <?dbhtml filename="slib.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>SLIB-&slib-version;</title>
+
+  <indexterm zone="slib">
+    <primary sortas="a-SLIB">SLIB</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to SLIB</title>
+
+    <para>The <application>SLIB</application> package is a portable library for
+    the <application>Scheme</application> programming language. It provides a
+    platform independent framework for using <quote>packages</quote> of
+    <application>Scheme</application> procedures and syntax.
+    <application>SLIB</application> contains useful packages for all
+    <application>Scheme</application> implementations, including
+    <application>Guile</application>. Its catalog can be transparently extended
+    to accommodate packages specific to a site, implementation, user or
+    directory.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&slib-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&slib-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &slib-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &slib-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &slib-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &slib-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing='compact'>
+      <listitem>
+        <para>Required Patch: <ulink
+        url="&patch-root;/slib-&slib-version;-blfs_install-2.patch"/></para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">SLIB Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="guile"/></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/slib"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of SLIB</title>
+
+    <para>Install <application>SLIB</application> by issuing the following
+    commands:</para>
+
+<screen><userinput>patch -Np1 -i ../slib-&slib-version;-blfs_install-2.patch &amp;&amp;
+make</userinput></screen>
+
+    <para>If you have <application>teTeX</application> installed and wish to
+    build PDF, Postscript, HTML and text documentation, issue any or all of
+    the following commands:</para>
+
+<screen><userinput>make pdfdocs &amp;&amp;
+make psdocs &amp;&amp;
+make htmldocs &amp;&amp;
+make txtdocs</userinput></screen>
+
+    <para>This package does not come with a functional test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make prefix=/usr/ install &amp;&amp;
+
+ln -v -s ../slib /usr/share/guile/1.6 &amp;&amp;
+
+make prefix=/usr/ catalogs &amp;&amp;
+
+mv -v /usr/share/guile/1.6/slibcat /usr/share/guile &amp;&amp;
+ln -v -s ../slibcat /usr/share/guile/1.6 &amp;&amp;
+
+make prefix=/usr/ installinfo</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><command>make prefix=/usr/ catalogs</command>: This command builds
+    the <application>SLIB</application> <application>Scheme</application>
+    implementation catalog.</para>
+
+    <para><command>make prefix=/usr/ installinfo</command>: This commands
+    installs the <command>info</command> documentation.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>slib</seg>
+        <seg>a <application>Scheme</application> library system</seg>
+        <seg>/usr/share/guile/slib and /usr/share/doc/slib-&slib-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="slib-prog">
+        <term><command>slib</command></term>
+        <listitem>
+          <para>is a shell script used to initialize
+          <application>SLIB</application> in a named
+          <application>Scheme</application> implementation. It can also be
+          used to initialize an <application>SLIB</application> session using
+          a given executable.</para>
+          <indexterm zone="slib slib-prog">
+            <primary sortas="b-slib">slib</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

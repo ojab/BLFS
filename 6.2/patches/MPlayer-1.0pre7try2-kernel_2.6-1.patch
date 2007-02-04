@@ -1,0 +1,23 @@
+Submitted By: Jim Gifford (jim at linuxfromscratch dot org)
+Date: 2004-04-29
+Initial Package Version: 1.0pre4
+Origin: Jim Gifford
+Upstream Status: Sent
+Description: Fixes Compile Issues with the 2.6 Kernel
+ 
+$LastChangedBy$
+$Date$
+
+diff -Naur MPlayer-1.0pre4.orig/osdep/kerneltwosix.h MPlayer-1.0pre4/osdep/kerneltwosix.h
+--- MPlayer-1.0pre4.orig/osdep/kerneltwosix.h	2004-01-10 09:48:15.000000000 +0000
++++ MPlayer-1.0pre4/osdep/kerneltwosix.h	2004-04-30 02:10:54.429252761 +0000
+@@ -1,9 +1,3 @@
+ #include <linux/version.h>
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,5,70)
+-#define __KERNEL__
+-#include <linux/thread_info.h>
+-#include <linux/list.h>
+-#undef __KERNEL__
+-#endif
+ 
+ 

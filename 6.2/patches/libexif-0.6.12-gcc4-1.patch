@@ -1,0 +1,24 @@
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2005-09-08
+Initial Package Version: 0.6.12
+Upstream Status:         This patch is from upstream CVS
+Origin:                  Upstream CVS
+                         http://cvs.sourceforge.net/viewcvs.py/libexif/libexif/libexif/exif-utils.c?r1=1.10&r2=1.11&sortby=date
+Description:             Fixes GCC-4.0.x build problems
+
+$LastChangedBy$
+$Date$
+
+
+diff -Naur libexif-0.6.12-orig/libexif/exif-utils.c libexif-0.6.12/libexif/exif-utils.c
+--- libexif-0.6.12-orig/libexif/exif-utils.c	2005-03-13 02:27:13.000000000 +0000
++++ libexif-0.6.12/libexif/exif-utils.c	2005-09-08 15:09:59.000000000 +0000
+@@ -83,7 +83,7 @@
+ 	}
+ }
+ 
+-static ExifSShort
++ExifSShort
+ exif_get_sshort (const unsigned char *buf, ExifByteOrder order)
+ {
+ 	if (!buf) return 0;

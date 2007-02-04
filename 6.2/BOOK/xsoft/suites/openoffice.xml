@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!-- <!ENTITY openoffice-download-http "http://download.openoffice.org/&openoffice-version;/source.html"> -->
+  <!-- <!ENTITY openoffice-download-ftp  "ftp://ftp.ussg.iu.edu/pub/openoffice/stable/&openoffice-version;/OOo_&openoffice-version;_src.tar.gz"> -->
+  <!ENTITY openoffice-download-http "&sources-anduin-http;/o/OOo_&openoffice-version;_src.tar.gz">
+  <!ENTITY openoffice-download-ftp  "&sources-anduin-ftp;/o/OOo_&openoffice-version;_src.tar.gz">
+  <!ENTITY openoffice-md5sum        "f68832ff3458664ae2b741ec67d30104">
+  <!ENTITY openoffice-size          "294 MB">
+  <!ENTITY openoffice-buildsize     "6 GB">
+  <!ENTITY openoffice-time          "129 SBU">
+]>
+
+<sect1 id="openoffice" xreflabel="OpenOffice-&openoffice-version;">
+  <?dbhtml filename="openoffice.html" ?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>OpenOffice-&openoffice-version;</title>
+
+  <indexterm zone="openoffice">
+    <primary sortas="a-OpenOffice">OpenOffice</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to OpenOffice</title>
+
+    <para><application>OpenOffice</application> is an office suite, the
+    open source sibling of <application>StarOffice</application>.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&openoffice-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&openoffice-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &openoffice-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &openoffice-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &openoffice-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &openoffice-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing='compact'>
+
+      <listitem>
+        <para>Required patch:
+        <ulink url="&patch-root;/OOo_&openoffice-version;-xauth-1.patch"/>
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>Required patch if
+        <application>Linux-PAM</application>-&linux-pam-version; is not
+        installed:
+        <ulink url="&patch-root;/OOo_&openoffice-version;-no_pam-1.patch"/></para>
+      </listitem>
+
+      <listitem>
+        <para>Required patch if building against the system-installed
+        Mozilla products (<application>NSS</application>,
+        <application>Firefox</application>, or
+        <application>Seamonkey</application>):
+        <ulink url="&patch-root;/OOo_&openoffice-version;-system_mozilla_fixes-1.patch"/>
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>Required download if you wish to build the in-tree
+        <application>Mozilla</application> browser:
+        <ulink url="ftp://ftp.mozilla.org/pub/mozilla.org/mozilla/releases/mozilla1.7.5/source/mozilla-source-1.7.5.tar.gz"/></para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">OpenOffice Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="apache-ant"/>,
+    <xref linkend="gtk2"/>,
+    <xref linkend="libidl"/>,
+    <xref linkend="libxml2"/>,
+    <application>Perl Modules</application>
+    <xref linkend="perl-xml-parser"/> and
+    <xref linkend="perl-archive-zip"/>,
+    <xref linkend="tcsh"/>,
+    <xref linkend="unzip"/>,
+    <xref linkend="which"/>, and
+    <xref linkend="zip"/></para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended"><xref linkend="libart_lgpl"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><ulink
+    url="http://packages.debian.org/testing/libdevel/libaltlinuxhyph-dev">ALTLinuxhyph</ulink>,
+    <ulink url="http://boost.sourceforge.net/">boost</ulink>,
+    <xref linkend="cups"/>,
+    <xref linkend="curl"/>,
+    <!-- <xref linkend="db"/>, THIS IS CURRENTLY BROKEN!  Internal version is
+    4.2.x, just too different.  Using the system db (which must be rebuilt
+    with java bindings) results in a segfault of javac and gcj because of
+    xalan caching leading to OOM killing the process.  Experimental patches
+    exist, but require that libxslt is used in place of xalan....big change,
+    not quite ready for the book. -->
+    <xref linkend="desktop-file-utils"/>,
+    <ulink url="http://www.easysw.com/epm/">EPM</ulink>,
+    <xref linkend="evolution"/>,
+    <xref linkend="gnome-vfs"/>,
+    <ulink url="http://www.cs.man.ac.uk/~toby/alan/software/">GPC</ulink>,
+    <xref linkend="kde"/>,
+    <xref linkend="libjpeg"/>,
+    <ulink url="http://www.mega-nerd.com/libsndfile/">libsndfile</ulink>,
+    <xref linkend="libtiff"/>,
+    <ulink url="http://freshmeat.net/projects/libwpd/">libwpd</ulink>,
+    <xref linkend="linux-pam"/>,
+    <xref linkend="seamonkey"/> (must be built against the system
+    <xref linkend="nss"/>) or <xref linkend="firefox"/> (with ldap support),
+    <ulink url="http://lingucomponent.openoffice.org/MySpell-3.zip">MySpell</ulink>,
+    <ulink url="http://lingucomponent.openoffice.org/thesaurus.html">MyThes</ulink>,
+    <xref linkend="nas"/>,
+    <ulink url="http://www.webdav.org/neon/">neon</ulink>,
+    <xref linkend="openldap"/>,
+    <ulink url="http://www.portaudio.com/">PortAudio</ulink>,
+    <xref linkend="python"/>,
+    <ulink url="http://www.gingerall.com/charlie/ga/xml/p_sab.xml">Sablotron</ulink>,
+    <xref linkend="sane"/>,
+    <xref linkend="startup-notification"/>,
+    <ulink url="http://sourceforge.net/projects/stlport/">STLPort</ulink>, and
+    <xref linkend="unixodbc"/></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/openoffice"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of OpenOffice</title>
+
+    <para>Apply all of the downloaded patches:</para>
+
+<screen><userinput>for PATCH in ../OOo_&openoffice-version;-*.patch
+    do patch -Np1 -i ${PATCH}
+done</userinput></screen>
+
+    <para>If you wish to build an in-tree <application>Mozilla</application>,
+    as opposed to using a system wide installation, copy the
+    <application>Mozilla</application> source tarball into the source
+    tree:</para>
+
+<screen><userinput>cp ../mozilla-source-1.7.5.tar.gz moz/download/</userinput></screen>
+
+    <para>If you want to optimize the build, edit the appropriate makefile in
+    <filename>solenv/inc/</filename> and add the desired optimization
+    flags to the <envar>CFLAGSOPT</envar> variable. The makefiles are arch
+    specific, for instance edit <filename>solenv/inc/unxlngi6.mk</filename>
+    for i686.  Some users have reported problems with
+    <option>-fomit-frame-pointer</option>. The best option is to not use any
+    custom optimizations. The following command removes an incorrect
+    <option>-mcpu</option> option in several of the makefiles:</para>
+
+<screen><userinput>sed -i '/^ARCH_FLAGS\*=/d' solenv/inc/unx{lngi{4,5,6},fbsdi}.mk</userinput></screen>
+
+    <para>Configure <application>OpenOffice</application> using the following
+    commands:</para>
+
+    <note><para>Because of the complexity of the
+    <application>OpenOffice</application> build system, it is not possible to
+    provide generic build instructions for all systems.  You should review
+    the output of <command>config_office/configure --help</command> and take
+    advantage of any system installed programs and libraries available using
+    the <parameter>--enable</parameter>, <parameter>--disable</parameter>,  and
+    <parameter>--with-system-*</parameter> parameters.</para></note>
+
+    <warning><para>Do not use the <parameter>--with-system-db</parameter>
+    switch.  The <application>BerkeleyDB</application> that is installed with
+    LFS is too new for this version of
+    <application>OpenOffice</application>.</para></warning>
+
+<screen><userinput>cd config_office/ &amp;&amp;
+autoreconf &amp;&amp;
+./configure --prefix=/opt/openoffice-&openoffice-version; \
+    --enable-libart --disable-fontooo --disable-gnome-vfs \
+    --without-fonts --with-system-stdlibs --with-system-freetype \
+    --with-system-expat --with-system-libxml --with-system-zlib \
+    --enable-build-mozilla --with-build-version=BLFS \
+    --with-package-format=native --disable-binfilter &amp;&amp;
+cd ..</userinput></screen>
+
+    <para><application>OpenOffice</application> fails to compile if
+    <command>umask</command> is set to something exotic. The build can also
+    fail if the <envar>LANG</envar> or <envar>LC_ALL</envar> environment
+    variables are set. Use the following commands to change your
+    environment accordingly:</para>
+
+<screen><userinput>umask 0022 &amp;&amp;
+unset LANG LC_ALL</userinput></screen>
+
+    <para>Compile <application>OpenOffice</application> using the following
+    commands:</para>
+
+<screen><userinput>./bootstrap &amp;&amp;
+. LinuxIntelEnv.Set.sh &amp;&amp;
+dmake</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Install <application>OpenOffice</application> as the
+    <systemitem class="username">root</systemitem> user with the
+    following commands:</para>
+
+<screen role="root"><userinput>cd instsetoo_native/unxlngi6.pro/OpenOffice/\
+native/install/en-US/linux-2.6-intel/buildroot/opt &amp;&amp;
+cp -r -v openoffice.org2.0 /opt/openoffice-&openoffice-version;</userinput></screen>
+
+    <para>Still as the <systemitem class="username">root</systemitem>
+    user:</para>
+
+<screen role="root"><userinput>for appl in sbase scalc sdraw simpress smath soffice spadmin swriter
+do
+    ln -v -sf /opt/openoffice-&openoffice-version;/program/$appl /usr/bin/$appl
+done</userinput></screen>
+
+    <para>The icons are not installed by default.  While still the
+    <systemitem class="username">root</systemitem> user, install the icons
+    with the following commands:</para>
+
+<screen role="root"><userinput>cd ../../../../../../../../../sysui/desktop/icons &amp;&amp;
+install -v -d /usr/share/icons/{HighContrast,hicolor,locolor} -m755 &amp;&amp;
+cp -r -v HighContrast/*x* /usr/share/icons/HighContrast &amp;&amp;
+cp -r -v hicolor/*x* /usr/share/icons/hicolor &amp;&amp;
+cp -r -v locolor/*x* /usr/share/icons/locolor</userinput></screen>
+
+    <para>If you have installed <xref linkend="desktop-file-utils"/> and use
+    <application>KDE</application>, there is no further configuration
+    necessary.  If you use <application>Gnome</application>, you should copy
+    the <filename>*.desktop</filename> files to
+    <filename>/usr/share/applications</filename> with the following
+    commands as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>install -v -d /usr/share/applications -m 755 &amp;&amp;
+cd /opt/openoffice-&openoffice-version;/share/xdg/ &amp;&amp;
+for appl in *.desktop
+do
+    sed -i '/Exec/d' $appl
+    echo "Exec=/usr/bin/s`echo $appl | sed 's/.desktop//'`" >> $appl
+    sed -i '/Icon/d' $appl
+    echo "Icon=`echo $appl | sed 's/.desktop//'`" >> $appl
+done &amp;&amp;
+sed -i 's@bin/sprinteradmin@bin/spadmin@' printeradmin.desktop &amp;&amp;
+cp -v *.desktop /usr/share/applications</userinput></screen>
+
+    <para>Finally, if you'd like to edit <application>OpenOffice</application>
+    documents directly from <application>Mozilla</application> or
+    <application>Firefox</application>, create a symbolic link in your
+    plugins directory to
+    <filename>/opt/openoffice-&openoffice-version;/program/libnpsoplugin.so</filename>.
+    Additionally, you must enable the plugin from the
+    <parameter>Internet Options</parameter> within any
+    <application>OpenOffice</application> application.</para>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>--enable-libart</parameter>: This switch forces the use
+    of libart instead of <application>gpc</application> for polygon
+    clipping.</para>
+
+    <para><parameter>--enable-libsn</parameter>: This switch enables the use
+    of <application>startup-notification</application>.</para>
+
+    <para><parameter>--disable-fontooo</parameter>: Use
+    <application>Fontconfig</application> instead of FontOOo.</para>
+
+    <para><parameter>--disable-gnome-vfs</parameter>: Disable the use of
+    <application>Gnome Virtual File System</application> libraries.  Omit
+    this switch if you have Gnome installed.</para>
+
+    <para><parameter>--without-fonts</parameter>: Do not install Bitstream
+    Vera fonts since they are already included in X Window System
+    Environment.</para>
+
+    <para><parameter>--with-system-*</parameter>: Use the system libraries
+    and programs instead of building the source packages included in the build
+    tree.</para>
+
+    <para><parameter>--enable-build-mozilla</parameter>: Build the in-tree
+    <application>Mozilla</application> suite.</para>
+
+    <para><parameter>--with-build-version=BLFS</parameter>:
+    Appends "BLFS" to the end of the version string.</para>
+
+    <para><parameter>--with-package-format=native</parameter>: This switch
+    disables the build of <application>RPM</application> packages.</para>
+
+    <para><parameter>--disable-binfilter</parameter>: This switch disables the
+    build of legacy <application>StarOffice-5</application> import
+    filters.</para>
+
+    <para><parameter>--with-firefox</parameter>: Enables the use of
+    <application>Firefox</application> in place of the full
+    <application>Mozilla</application> suite.  This will disable the use
+    of a <application>Thunderbird</application> address book as a data
+    source.</para>
+
+    <para><parameter>--disable-cups</parameter>: Disable the use of
+    <application>CUPS</application> for printing.</para>
+
+    <para><parameter>--with-lang=<replaceable>&lt;LANG&gt;</replaceable></parameter>:
+    Makes an install set for the desired language. ENUS is the default.</para>
+
+    <para><parameter>--with-dict=<replaceable>&lt;LANG&gt;</replaceable></parameter>:
+    This switch installs dictionaries for the desired languages. ENUS is
+    the default.</para>
+
+    <para><command>./bootstrap</command>: Build the
+    <application>dmake</application> utility required to complete the
+    build.</para>
+
+    <para><command>dmake</command>: Compile the package.</para>
+
+    <para><command>for appl in *.desktop...</command>: Edit the
+    <filename>*.desktop</filename> files for use with a standard BLFS
+    system.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>scalc, sdraw, simpress, smath, soffice, spadmin, and swriter.</seg>
+        <seg><application>OpenOffice</application> libraries</seg>
+        <seg>/opt/openoffice-&openoffice-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="sbase">
+        <term><command>sbase</command></term>
+        <listitem>
+          <para>is a database application.</para>
+          <indexterm zone="openoffice sbase">
+            <primary sortas="b-sbase">sbase</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="scalc">
+        <term><command>scalc</command></term>
+        <listitem>
+          <para>is a spreadsheet application.</para>
+          <indexterm zone="openoffice scalc">
+            <primary sortas="b-scalc">scalc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sdraw">
+        <term><command>sdraw</command></term>
+        <listitem>
+          <para>is a drawing application.</para>
+          <indexterm zone="openoffice sdraw">
+            <primary sortas="b-sdraw">sdraw</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="simpress">
+        <term><command>simpress</command></term>
+        <listitem>
+          <para>is a presentation application.</para>
+          <indexterm zone="openoffice simpress">
+            <primary sortas="b-simpress">simpress</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="smath">
+        <term><command>smath</command></term>
+        <listitem>
+          <para>is a mathematical formula editor.</para>
+          <indexterm zone="openoffice smath">
+            <primary sortas="b-smath">smath</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="soffice">
+        <term><command>soffice</command></term>
+        <listitem>
+          <para>opens a base window with access to all
+          <application>OpenOffice</application> applications.</para>
+          <indexterm zone="openoffice soffice">
+            <primary sortas="b-soffice">soffice</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="spadmin">
+        <term><command>spadmin</command></term>
+        <listitem>
+          <para>is the <application>OpenOffice</application> printer
+          configuration utility.</para>
+          <indexterm zone="openoffice spadmin">
+            <primary sortas="b-spadmin">spadmin</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="swriter">
+        <term><command>swriter</command></term>
+        <listitem>
+          <para>is a word processing application.</para>
+          <indexterm zone="openoffice swriter">
+            <primary sortas="b-swriter">swriter</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

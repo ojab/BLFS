@@ -1,0 +1,20 @@
+Submitted By: BLFS Book <blfs-book@linuxfromscratch.org>
+Date: 2003-10-03
+Initial Package Version: 1.06
+Origin: NA
+Description: Fix innvocation of flex.
+
+$LastChangedBy$
+$Date$
+
+--- bc-1.06/configure.orig	2003-03-09 23:54:37.000000000 -0600
++++ bc-1.06/configure	2003-03-09 23:55:00.000000000 -0600
+@@ -2245,7 +2245,7 @@
+ 
+ 
+ if test "$LEX" = "flex" ; then
+- LEX="flex -I8"
++ LEX="flex -I"
+ else
+  if test "$bcrl" = "y" ; then
+   echo "configure: warning: readline works only with flex." 1>&2

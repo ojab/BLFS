@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY metacity-download-http "&gnome-download-http;/metacity/&gnome-version;/metacity-&metacity-version;.tar.bz2">
+  <!ENTITY metacity-download-ftp  "&gnome-download-ftp;/metacity/&gnome-version;/metacity-&metacity-version;.tar.bz2">
+  <!ENTITY metacity-md5sum        "a14c4a07e456a2590452d6c9db2e5153">
+  <!ENTITY metacity-size          "1.8 MB">
+  <!ENTITY metacity-buildsize     "54.9 MB">
+  <!ENTITY metacity-time          "0.6 SBU">
+]>
+
+<sect1 id="metacity" xreflabel="Metacity-&metacity-version;">
+  <?dbhtml filename="metacity.html" ?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Metacity-&metacity-version;</title>
+
+  <indexterm zone="metacity">
+    <primary sortas="a-metacity">Metacity</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Metacity</title>
+
+    <para>The <application>Metacity</application> package contains a window
+    manager. This is useful for organizing and displaying windows.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&metacity-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&metacity-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &metacity-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &metacity-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &metacity-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &metacity-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Metacity Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="gtk2"/> and
+    <xref linkend="perl-xml-parser"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="startup-notification"/>
+    (recommended if you are installing <application>GNOME</application>-2),
+    <xref linkend="GConf"/>
+    (recommended if you are installing <application>GNOME</application>-2),
+    <xref linkend="intltool"/>, and
+    <ulink url="http://freedesktop.org/Software/xlibs">libXcomposite</ulink>*</para>
+
+    <para>* <application>libXcomposite</application> can optionally be used,
+    but here's what the <application>Metacity</application> package maintainer
+    has to say about it in the <command>configure</command> script if the
+    package is found: <quote>Not building compositing manager by default now,
+    must enable explicitly to get it. And it doesn't work, so don't bother
+    unless you want to hack on it...</quote></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/metacity"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Metacity</title>
+
+    <para><application>Metacity</application> will look for an
+    <application>X Render</application> <application>pkg-config</application>
+    file. If you use <application>XFree86</application> as your
+    <application>X</application> Window system, ensure this file exists
+    (<filename>/usr/X11R6/lib/pkgconfig/xrender.pc</filename>).</para>
+
+    <para>Install <application>Metacity</application> by running the following
+    commands:</para>
+
+<screen><userinput>./configure --prefix=/usr \
+            --libexecdir=/usr/lib/metacity \
+            --sysconfdir=/etc &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+install -v -m755 -d /usr/share/doc/metacity-&metacity-version; &amp;&amp;
+install -v -m644 README rationales.txt doc/*.txt \
+    /usr/share/doc/metacity-&metacity-version;</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+    <option>--with-gconf-schema-file-dir=&gnome-etc-dir;/gconf/schemas</option>:
+    Use this option if you are installing <application>Metacity</application> for
+    a GNOME-2 installation.</para>
+
+  </sect2>
+
+  <sect2 role="configuration" id="metacity-config">
+    <title>Configuring Metacity</title>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>To automatically start the <application>Metacity</application>
+      window manager when you issue the <command>startx</command> command,
+      append to (or create) <filename>.xinitrc</filename> using the command
+      below (not required if you are installing
+      <application>Metacity</application> for a
+      <application>GNOME-2</application> installation). Ensure
+      you backup your current <filename>~/.xinitrc</filename> before
+      proceeding:</para>
+
+      <indexterm zone="metacity metacity-config">
+        <primary sortas="e-AA.xinitrc">~/.xinitrc</primary>
+      </indexterm>
+
+<screen><userinput>cat &gt;&gt; ~/.xinitrc &lt;&lt; "EOF"
+<literal>xterm &amp;
+exec metacity</literal>
+EOF</userinput></screen>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>metacity, metacity-message, metacity-theme-viewer
+        and metacity-window-demo</seg>
+        <seg>libmetacity-private.{so,a}</seg>
+        <seg>/usr/include/metacity-1,
+        /usr/lib/metacity,
+        /usr/share/doc/metacity-&metacity-version;,
+        /usr/share/gnome/wm-properties,
+        /usr/share/metacity and
+        /usr/share/themes/{AgingGorilla,Atlanta,Bright,Crux,Esco,Metabox,Simple}</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="metacity-prog">
+        <term><command>metacity</command></term>
+        <listitem>
+          <para>is a window manager used mainly by
+          <application>GNOME</application>.</para>
+          <indexterm zone="metacity metacity-prog">
+            <primary sortas="b-metacity">metacity</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="metacity-theme-viewer">
+        <term><command>metacity-theme-viewer</command></term>
+        <listitem>
+          <para>allows you to preview any installed
+          <application>Metacity</application> theme. When designing a new
+          <application>Metacity</application> theme, you can use
+          <command>metacity-theme-viewer</command> to measure the performance
+          of a window frame option, and to preview the option.</para>
+          <indexterm zone="metacity metacity-theme-viewer">
+            <primary
+            sortas="b-metacity-theme-viewer">metacity-theme-viewer</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="metacity-window-demo">
+        <term><command>metacity-window-demo</command></term>
+        <listitem>
+          <para>demonstrates various kinds of windows that window managers and
+          window manager themes should handle.</para>
+          <indexterm zone="metacity metacity-window-demo">
+            <primary sortas="b-metacity-window-demo">metacity-window-demo</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

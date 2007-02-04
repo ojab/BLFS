@@ -1,0 +1,35 @@
+Submitted By: DJ Lucas <dj_At_linuxfromscratch_DOT_org>
+Date: 2005-04-27
+Origin: http://www.openoffice.org/issues/show_bug.cgi?id=40937
+Initial Package Version: 1.1.4
+Description: Fixes double free issues with glibc-2.3.4
+Upstream Status: Applied
+
+$LastChangedBy$
+$Date$
+
+
+--- openoffice.org.orig/rsc/source/rscpp/cpp1.c	2005-01-17 20:21:38.000000000 +0000
++++ openoffice.org/rsc/source/rscpp/cpp1.c	2005-01-18 20:45:45.000000000 +0000
+@@ -421,9 +421,6 @@
+ #endif
+         if( pCppOut != stdout && pCppOut != stderr )
+             fclose( pCppOut );
+-        if( pCppIn != stdin )
+-            fclose( pCppIn  );
+-
+ 
+         if (errors > 0) {
+             fprintf(stderr, (errors == 1)
+--- openoffice.org.orig/rsc/source/rscpp/cpp6.c	2005-01-17 20:21:39.000000000 +0000
++++ openoffice.org/rsc/source/rscpp/cpp6.c	2005-01-18 20:46:15.000000000 +0000
+@@ -878,7 +878,8 @@
+                     goto newline;               /* process the line     */
+                 }
+                 else {
+-                    fclose(file->fp);           /* Close finished file  */
++		    if( file->fp != stdin )
++                        fclose(file->fp);           /* Close finished file  */
+                     if ((infile = file->parent) != NULL) {
+                         /*
+                          * There is an "ungotten" newline in the current

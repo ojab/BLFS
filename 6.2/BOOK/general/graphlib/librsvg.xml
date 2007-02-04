@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY librsvg-download-http "&gnome-download-http;/librsvg/2.14/librsvg-&librsvg-version;.tar.bz2">
+  <!ENTITY librsvg-download-ftp  "&gnome-download-ftp;/librsvg/2.14/librsvg-&librsvg-version;.tar.bz2">
+  <!ENTITY librsvg-md5sum        "945617bb094975d7353a3852302297c1">
+  <!ENTITY librsvg-size          "415 KB">
+  <!ENTITY librsvg-buildsize     "12.5 MB">
+  <!ENTITY librsvg-time          "0.4 SBU">
+]>
+
+<sect1 id="librsvg" xreflabel="librsvg-&librsvg-version;">
+  <?dbhtml filename="librsvg.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>librsvg-&librsvg-version;</title>
+
+  <indexterm zone="librsvg">
+    <primary sortas="a-Librsvg">Librsvg</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to librsvg</title>
+
+    <para>The <application>librsvg</application> package contains
+    <filename class="libraryfile">librsvg</filename> libraries and tools used to
+    manipulate, convert and view Scalable Vector Graphic (SVG) images.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&librsvg-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&librsvg-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &librsvg-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &librsvg-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &librsvg-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &librsvg-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <!-- This shouldn't be required any longer as BLFS Moz stuff isn't
+         looked for, and if it were, we now fix the pkgconfig files
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Required patch (if you have <xref linkend="nss"/> installed):
+        <ulink
+        url="&patch-root;/librsvg-&librsvg-version;-system_nspr-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    -->
+
+    <bridgehead renderas="sect3">librsvg Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="gtk2"/>,
+    <xref linkend="libxml2"/>,
+    <xref linkend="libart_lgpl"/>, and
+    <xref linkend="popt"/></para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended"><xref linkend="libcroco"/> and
+    <xref linkend="libgsf"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="gnome-vfs"/>,
+    <xref linkend="libgnomeprintui"/>,
+    <!-- Commenting these out for now as these package have native SVG capability
+    <xref linkend="seamonkey"/> or <xref linkend="firefox"/>,
+    -->
+    <ulink url="http://www.mozilla.org/products/mozilla1.x/">Mozilla</ulink>,
+    <xref linkend="gtk-doc"/>, and
+    <xref linkend="docbook-utils"/></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/librsvg"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of librsvg</title>
+
+    <para>Install <application>librsvg</application> by running the following
+    commands:</para>
+
+<screen><userinput>./configure --prefix=/usr --sysconfdir=/etc &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <!-- commenting this out as BLFS installation of Firefox and SeaMonkey
+         have built-in SVG render capability and don't need this plugin
+
+    <para>If you have <application>Firefox</application> installed, create
+    symlinks to the plugins using the following command as the
+    <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>ln -v -s /usr/lib/mozilla/plugins/libmozsvgdec.{so,a} \
+    /usr/lib/firefox-&firefox-version;/plugins</userinput></screen>
+
+    -->
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>--disable-gtk-doc</parameter>: This parameter prevents
+    the rebuilding of documentation during the <command>make</command>
+    command. It will also prevent the existing documentation in the source
+    tree from being installed.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>rsvg, rsvg-convert and rsvg-view</seg>
+        <seg>librsvg-2.{so,a}, <application>GTK+</application> modules and
+        optionally a <application>Mozilla</application> plugin</seg>
+        <seg>/usr/include/librsvg-2 and /usr/share/gtk-doc/html/rsvg</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="rsvg">
+        <term><command>rsvg</command></term>
+        <listitem>
+          <para>is used to covert SVG images into PNG, JPEG and
+          ICO raster images.</para>
+          <indexterm zone="librsvg rsvg">
+            <primary sortas="b-rsvg">rsvg</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rsvg-view">
+        <term><command>rsvg-view</command></term>
+        <listitem>
+          <para>is used to view an SVG file in an <application>X</application>
+          window.</para>
+          <indexterm zone="librsvg rsvg-view">
+            <primary sortas="b-rsvg-view">rsvg-view</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="librsvg-lib">
+        <term><filename class='libraryfile'>librsvg-2.{so,a}</filename></term>
+        <listitem>
+          <para> libraries provide the functions to render Scalable Vector
+          Graphics.</para>
+          <indexterm zone="librsvg librsvg-lib">
+            <primary sortas="c-librsvg">librsvg-2.{so,a}</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gedit-download-http "&gnome-download-http;/gedit/&gnome-version;/gedit-&gedit-version;.tar.bz2">
+  <!ENTITY gedit-download-ftp  "&gnome-download-ftp;/gedit/&gnome-version;/gedit-&gedit-version;.tar.bz2">
+  <!ENTITY gedit-md5sum        "189d4d9128eca1162a782744cb324aea">
+  <!ENTITY gedit-size          "2.3 MB">
+  <!ENTITY gedit-buildsize     "64.9 MB">
+  <!ENTITY gedit-time          "0.7 SBU">
+]>
+
+<sect1 id="gedit" xreflabel="gedit-&gedit-version;">
+  <?dbhtml filename="gedit.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>gedit-&gedit-version;</title>
+
+  <indexterm zone="gedit">
+    <primary sortas="a-gedit">gedit</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to gedit</title>
+
+    <para>The <application>gedit</application> package contains a lightweight
+    UTF-8 text editor for the <application>GNOME</application> desktop.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&gedit-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&gedit-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &gedit-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &gedit-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &gedit-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &gedit-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">gedit Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="libgnomeui"/>,
+    <xref linkend="gnome-doc-utils"/>,
+    <xref linkend="gtksourceview"/>, and
+    <xref linkend="which"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="intltool"/>,
+    <xref linkend="aspell"/>,
+    <xref linkend="pyxml"/>, and
+    <ulink url="&gnome-download-http;/gnome-python-desktop/2.14/">gnome-python-desktop</ulink>
+    (requires <ulink url="http://www.pygtk.org/">PyGTK</ulink> and can use
+    <ulink url="&gnome-download-http;/gnome-python/">GNOME-Python</ulink> and
+    <ulink url="&gnome-download-http;/pyorbit/">PyORBit</ulink>)</para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/gedit"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of gedit</title>
+
+    <para>Install <application>gedit</application> by running the following
+    commands:</para>
+
+<screen><userinput>./configure --prefix=$(pkg-config --variable=prefix ORBit-2.0) \
+            --sysconfdir=&gnome-etc-dir; \
+            --localstatedir=/var/lib \
+            --mandir=$(pkg-config \
+                --variable=prefix ORBit-2.0)/share/man &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gnome-prefix.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gnome-sysconfdir.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/scrollkeeper-dir.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gnome-mandir.xml"/>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring gedit</title>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>There is no way in the preferences to change the color of
+      highlighted (such as when you search for text and it is found) text.
+      If you wish to change the color, issue the following command as the
+      <systemitem class="username">root</systemitem> user (substitute your
+      color of choice):</para>
+
+<screen role="root"><userinput>sed -i 's/FFFF78/<replaceable>&lt;some-color-you-like&gt;</replaceable>/' gedit/gedit-document.c</userinput></screen>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>gedit and gnome-text-editor</seg>
+        <seg><application>gedit</application> plugin modules</seg>
+        <seg>The following subdirectories of <envar>$GNOME_PREFIX</envar>/:
+        include/gedit-&gnome-version;,
+        lib/gedit-2,
+        share/{gedit-2, {gnome/help, omf}/gedit}</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gedit-prog">
+        <term><command>gedit</command></term>
+        <listitem>
+          <para>is a lightweight text editor.</para>
+          <indexterm zone="gedit gedit-prog">
+            <primary sortas="b-gedit">gedit</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gnome-text-editor">
+        <term><command>gnome-text-editor</command></term>
+        <listitem>
+          <para>is a symlink to <command>gedit</command>.</para>
+          <indexterm zone="gedit gnome-text-editor">
+            <primary sortas="g-gnome-text-editor">gnome-text-editor</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

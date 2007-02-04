@@ -1,0 +1,25 @@
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2005-10-03
+Initial Package Version: 1.4.2
+Upstream Status:         N/A (package is not in active development)
+Origin:                  Gentoo Development
+                         http://dev.gentoo.org/~halcy0n/overlay/gnome-base/gnome-libs/files/
+Description:             Fixes a GCC-4.0.x build problem
+
+$LastChangedBy$
+$Date$
+
+
+diff -Naur gnome-libs-1.4.2-orig/gtk-xmhtml/XmHTMLI.h gnome-libs-1.4.2/gtk-xmhtml/XmHTMLI.h
+--- gnome-libs-1.4.2-orig/gtk-xmhtml/XmHTMLI.h	1999-07-29 01:26:28.000000000 +0000
++++ gnome-libs-1.4.2/gtk-xmhtml/XmHTMLI.h	2005-10-03 23:56:19.000000000 +0000
+@@ -1058,9 +1058,6 @@
+ #include "gtk-xmhtml-p.h"
+ 
+ void gtk_xmhtml_set_outline (GtkXmHTML *html, int flag);
+-void my_x_query_colors(GdkColormap *colormap,
+-		       GdkColor    *colors,
+-		       gint         ncolors);
+ void
+ gtk_xmhtml_set_colors (GtkXmHTML *html,
+ 		       Pixel foreground,

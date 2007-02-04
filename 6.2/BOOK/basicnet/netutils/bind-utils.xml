@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+    <!-- Inserted as a reminder to do this. The mention of a test suite
+         is usually right before the root user installation commands. Please
+         delete these 12 (including one blank) lines after you are done.-->
+
+    <!-- Use one of the two mentions below about a test suite,
+         delete the line that is not applicable. Of course, if the
+         test suite uses syntax other than "make check", revise the
+         line to reflect the actual syntax to run the test suite -->
+
+    <!-- <para>This package does not come with a test suite.</para> -->
+    <!-- <para>To test the results, issue: <command>make check</command>.</para> -->
+
+  <!ENTITY bind-download-http   "http://gd.tuwien.ac.at/infosys/servers/isc/bind9/&bind-version;/bind-&bind-version;.tar.gz">
+  <!ENTITY bind-download-ftp    "ftp://ftp.isc.org/isc/bind9/&bind-version;/bind-&bind-version;.tar.gz">
+  <!ENTITY bind-md5sum          "b5cad77aa7912bf7b4cb770cfc42fdad">
+  <!ENTITY bind-size            "5.2 MB">
+  <!ENTITY bind-utils-buildsize "56.4 MB">
+  <!ENTITY bind-utils-time      "0.5 SBU">
+]>
+
+<sect1 id="bind-utils" xreflabel="BIND Utilities-&bind-version;">
+  <?dbhtml filename="bind-utils.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>BIND Utilities-&bind-version;</title>
+
+  <indexterm zone="bind-utils">
+    <primary sortas="a-BIND-Utilities">BIND Utilities</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to BIND Utilities</title>
+
+    <para><application>BIND Utilities</application> is not a separate
+    package, it is a collection of the client side programs that are included
+    with <xref linkend="bind"/>. The <application>BIND</application>
+    package includes the client side programs <command>nslookup</command>,
+    <command>dig</command> and <command>host</command>. If you install
+    <application>BIND</application> server, these programs will be installed
+    automatically. This section is for those users who don't need the complete
+    <application>BIND</application> server, but need these
+    client side applications.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&bind-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&bind-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &bind-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &bind-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &bind-utils-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &bind-utils-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">BIND Utilities Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="openssl"/></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/bind-utils"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of BIND Utilities</title>
+
+    <para>Install <application>BIND Utilities</application> by
+    running the following commands:</para>
+
+<screen><userinput>./configure --prefix=/usr &amp;&amp;
+make -C lib/dns &amp;&amp;
+make -C lib/isc &amp;&amp;
+make -C lib/bind9 &amp;&amp;
+make -C lib/isccfg &amp;&amp;
+make -C lib/lwres &amp;&amp;
+make -C bin/dig</userinput></screen>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role='root'><userinput>make -C bin/dig install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><command>make -C lib/...</command>: These commands build the
+    libraries that are needed for the client programs.</para>
+
+    <para><command>make -C bin/dig</command>: This command  builds the
+    client programs.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>dig, host, and nslookup</seg>
+        <seg>None</seg>
+        <seg>None</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+
+    <para>See the program descriptions in the <xref linkend="bind"/>
+    section.</para>
+
+  </sect2>
+
+</sect1>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gnumeric-download-http "&gnome-download-http;/gnumeric/1.6/gnumeric-&gnumeric-version;.tar.bz2">
+  <!ENTITY gnumeric-download-ftp  "&gnome-download-ftp;/gnumeric/1.6/gnumeric-&gnumeric-version;.tar.bz2">
+  <!ENTITY gnumeric-md5sum        "78ffd75ae6abc3bb20dd04407a082a26">
+  <!ENTITY gnumeric-size          "12.0 MB">
+  <!ENTITY gnumeric-buildsize     "187.0 MB">
+  <!ENTITY gnumeric-time          "2.8 SBU (includes creating HTML documentation)">
+]>
+
+<sect1 id="gnumeric" xreflabel="Gnumeric-&gnumeric-version;">
+  <?dbhtml filename="gnumeric.html" ?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Gnumeric-&gnumeric-version;</title>
+
+  <indexterm zone="gnumeric">
+    <primary sortas="a-Gnumeric">Gnumeric</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Gnumeric</title>
+
+    <para>The <application>Gnumeric</application> package contains a
+    spreadsheet program. This is useful for financial analysis.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&gnumeric-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&gnumeric-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &gnumeric-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &gnumeric-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &gnumeric-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &gnumeric-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Gnumeric Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="libgnomeprintui"/> and
+    <xref linkend="goffice"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="python"/>,
+    <ulink url="http://www.pygtk.org/">PyGTK</ulink>,
+    <xref linkend="libgnomeui"/> (combined with the
+    <filename class='libraryfile'>libgsf-gnome-1</filename> library from the
+    <xref linkend="libgsf"/> package will provide GNOME-2 support),
+    <xref linkend="gnome-doc-utils"/> (to convert the XML help documentation
+    into HTML),
+    <ulink url="http://www.gnome-db.org/">libgnomedb</ulink>
+    (requires <ulink url="http://www.gnome-db.org/">libgda</ulink>),
+    <ulink url="http://pxlib.sourceforge.net/">pxlib</ulink>,
+    <ulink url="http://www.frodol.dds.nl/psiconv/index.html">Psiconv</ulink>,
+    <ulink url="http://www.maemo.org/">Hildon</ulink>, and
+    <ulink url="http://packages.ubuntu.com/warty/libdevel/libgb-dev">Gnome
+    Basic</ulink> (this package is no longer under active development)</para>
+
+    <note>
+      <para>Though only a run-time dependency, if you don't install the
+      <xref linkend="yelp"/> package, the built-in help functionality in
+      <application>Gnumeric</application> will not be available.</para>
+    </note>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/gnumeric"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Gnumeric</title>
+
+    <para>Install <application>Gnumeric</application> by running the following
+    commands:</para>
+
+<screen><userinput>./configure --prefix=/usr \
+            --sysconfdir=&gnome-etc-dir; \
+            --localstatedir=/var/lib &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role='root'><userinput>make install</userinput></screen>
+
+    <para>There is a bug in the program. The help system looks for the docs in
+    one location, but they are actually installed in the wrong place. See
+    <ulink url="http://bugzilla.gnome.org/show_bug.cgi?id=330339"/>. If you have
+    <xref linkend="yelp"/> installed and would like to be able to use it to view
+    the help documentation from within <application>Gnumeric</application>, work
+    around the problem by creating a symbolic link. As
+    <systemitem class="username">root</systemitem>:</para>
+
+<screen role='root'><userinput>ln -vsf /usr/share/gnome/help/gnumeric \
+        /usr/share/gnumeric/&gnumeric-version;/doc</userinput></screen>
+
+    <para>If you have GNOME installed in a prefix other than /usr, as the
+    <systemitem class="username">root</systemitem> user create the
+    following symlink for the <application>Gnumeric</application>
+    <application>Bonobo</application> server file:</para>
+
+<screen role='root'><userinput>ln -v -s /usr/lib/bonobo/servers/GNOME_Gnumeric.server \
+    $(pkg-config --variable=prefix ORBit-2.0)/lib/bonobo/servers</userinput></screen>
+
+    <para>If you have <xref linkend="gnome-doc-utils"/> installed you can
+    convert the XML help files into HTML by issuing the following commands:</para>
+
+<screen><userinput>./configure \
+    --prefix=$(pkg-config --variable=prefix gnome-doc-utils) &amp;&amp;
+make -C doc html</userinput></screen>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user,
+    install the documentation files:</para>
+
+<screen role='root'><userinput>install -v -m755 -d /usr/share/doc/gnumeric-&gnumeric-version;/figures &amp;&amp;
+install -v -m644 doc/C/html/* /usr/share/doc/gnumeric-&gnumeric-version; &amp;&amp;
+install -v -m644 doc/C/figures/* \
+    /usr/share/doc/gnumeric-&gnumeric-version;/figures &amp;&amp;
+ln -v -s /usr/share/xml/docbook/xsl-stylesheets-&docbook-xsl-version;/images \
+    /usr/share/doc/gnumeric-&gnumeric-version;/stylesheet</userinput></screen>
+
+    <para>If you wish to install the Developer documentation, issue the
+    following commands as the
+    <systemitem class="username">root</systemitem> user:</para>
+
+<screen role='root'><userinput>install -v -m755 -d /usr/share/doc/gnumeric-&gnumeric-version;/developer &amp;&amp;
+install -v -m644 doc/developer/* \
+    /usr/share/doc/gnumeric-&gnumeric-version;/developer &amp;&amp;
+rm -v /usr/share/doc/gnumeric-&gnumeric-version;/developer/Makefile*</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gnome-sysconfdir.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/scrollkeeper-dir.xml"/>
+
+    <para><parameter>--prefix=$(pkg-config
+    --variable=prefix gnome-doc-utils)</parameter>:
+    This rebuilds the <filename>Makefile</filename>s with the same prefix as
+    <application>GNOME Doc Utils</application></para>
+
+    <para><command>make -C doc html</command>: This command runs
+    <command>make</command> in the <filename class="directory">doc</filename>
+    directory with html as the <filename>Makefile</filename> target.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>gnumeric, gnumeric-&gnumeric-version;, and ssconvert</seg>
+        <seg>numerous filters, plugins and <application>GNOME</application>
+        components</seg>
+        <seg>/usr/lib/gnumeric,
+        /usr/share/doc/gnumeric-&gnumeric-version;, and
+        /usr/share/{{,gnome/help/, omf/, pixmaps/}gnumeric,mc}</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gnumeric-prog">
+        <term><command>gnumeric</command></term>
+        <listitem>
+          <para>is a symlink to
+          <command>gnumeric-&gnumeric-version;</command></para>
+          <indexterm zone="gnumeric gnumeric-prog">
+            <primary sortas="g-gnumeric">gnumeric</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gnumeric-1">
+        <term><command>gnumeric-&gnumeric-version;</command></term>
+        <listitem>
+          <para>is <application>GNOME</application>'s spreadsheet
+          application.</para>
+          <indexterm zone="gnumeric gnumeric-1">
+            <primary sortas="b-gnumeric-&gnumeric-version;">gnumeric-&gnumeric-version;</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ssconvert">
+        <term><command>ssconvert</command></term>
+        <listitem>
+          <para>is a command line utility to convert spreadsheet files
+          between various spreadsheet file formats.</para>
+          <indexterm zone="gnumeric ssconvert">
+            <primary sortas="b-ssconvert">ssconvert</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

@@ -1,0 +1,6 @@
+<!ENTITY version "20070121">
+<!ENTITY releasedate "August 17th, 2005">
+
+<!ENTITY date "$Date$">
+
+<!ENTITY blfs-trac "http://wiki.linuxfromscratch.org/blfs">

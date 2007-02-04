@@ -1,0 +1,35 @@
+Submitted By:            Randy McMurchy <randy_at_linuxfromscratch_dot_org>
+Date:                    2004-11-24
+Initial Package Version: 0.11.8
+Upstream Status:         Not submitted
+Origin:                  Randy McMurchy
+Description:             Fixes the Perl and Python bindings installation
+
+$LastChangedBy$
+$Date$
+
+diff -Naur pilot-link-0.11.8-orig/bindings/Makefile.in pilot-link-0.11.8/bindings/Makefile.in
+--- pilot-link-0.11.8-orig/bindings/Makefile.in	2003-07-01 19:09:05.000000000 +0000
++++ pilot-link-0.11.8/bindings/Makefile.in	2004-11-24 20:58:11.834533112 +0000
+@@ -344,7 +344,11 @@
+ 	cd $(srcdir)/Python && $(PYTHON) setup.py build
+ 
+ python-install: python-build
+-	cd $(srcdir)/Python && $(PYTHON) setup.py install --prefix=$(prefix) --root=$(DESTDIR)
++	if test -z $(DESTDIR); then \
++		cd $(srcdir)/Python && $(PYTHON) setup.py install --prefix=$(prefix); \
++	else \
++		cd $(srcdir)/Python && $(PYTHON) setup.py install --prefix=$(prefix) --root=$(DESTDIR); \
++	fi
+ 
+ python-clean: Python/setup.py
+ 	-cd $(srcdir)/Python && $(PYTHON) setup.py clean 
+@@ -355,7 +359,7 @@
+ #
+ 
+ Perl/Makefile: Perl/Makefile.PL
+-	cd Perl && $(PERL) Makefile.PL INSTALLDIRS=vendor
++	cd Perl && $(PERL) Makefile.PL
+ 
+ perl-build: Perl/Makefile
+ 	cd Perl && $(MAKE) PREFIX=$(DESTDIR)$(prefix)

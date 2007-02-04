@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY tk-download-http "http://downloads.sourceforge.net/tcl/tk&tk-version;-src.tar.gz">
+  <!ENTITY tk-download-ftp  " ">
+<!--  <!ENTITY tk-download-ftp  "ftp://ftp.us.xemacs.org/pub/tcl/tcl8_4/tk&tk-version;-src.tar.gz"> -->
+  <!ENTITY tk-md5sum        "0a16d4d9398e43cbb85784c85fb807a4">
+  <!ENTITY tk-size          "3.2 MB">
+  <!ENTITY tk-buildsize     "23.3 MB">
+  <!ENTITY tk-time          "0.4 SBU">
+  <!-- Ensure this is updated when Tk moves to the 8.5.x branch -->
+  <!ENTITY tk-ver           "8.4">
+  <!-- Ensure the above is updated when Tk moves to the 8.5.x branch -->
+]>
+
+<sect1 id="tk" xreflabel="Tk-&tk-version;">
+  <?dbhtml filename="tk.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Tk-&tk-version;</title>
+
+  <indexterm zone="tk">
+    <primary sortas="a-Tk">Tk</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Tk</title>
+
+    <para>The <application>Tk</application> package contains a
+    TCL GUI Toolkit.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&tk-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&tk-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &tk-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &tk-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &tk-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &tk-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Tk Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="x-window-system"/> and
+    <xref linkend="tcl"/></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/tk"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Tk</title>
+
+<para>Install <application>Tk</application> by running the following
+commands:</para>
+
+<!-- This is removed per discussion and fairly vigorous testing
+sed -i -e "s:${PWD}:/usr/lib:" \
+       -e "s:$(dirname ${PWD}):/usr/include/tk&tk-ver;:" \
+    tkConfig.sh</userinput></screen>
+-->
+
+<screen><userinput>cd unix &amp;&amp;
+./configure --prefix=/usr --enable-threads &amp;&amp;
+make</userinput></screen>
+
+    <para>Running the tests is not recommended. Some tests may crash your X
+    Server. To test the results anyway, issue: <command>make test</command>.
+    Ensure you run it from an X Window display device with the GLX extensions
+    loaded, else the tests will hang.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+make install-private-headers &amp;&amp;
+ln -v -sf wish&tk-ver; /usr/bin/wish</userinput></screen>
+
+<!-- This is removed per discussion and fairly vigorous testing
+install -v -m755 -d /usr/include/tk&tk-ver;/{unix,generic} &amp;&amp;
+install -v -m644 *.h /usr/include/tk&tk-ver;/unix/ &amp;&amp;
+install -v -m644 ../generic/*.h /usr/include/tk&tk-ver;/generic/ &amp;&amp;
+rm -v -f /usr/include/tk&tk-ver;/generic/tk{,{,Plat}Decls}.h &amp;&amp;
+ln -v -nsf ../../include/tk&tk-ver; /usr/lib/tk&tk-ver;/include &amp;&amp;
+ln -v -sf libtk&tk-ver;.so /usr/lib/libtk.so &amp;&amp;
+ln -v -sf wish&tk-ver; /usr/bin/wish</userinput></screen>
+-->
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>--enable-threads</parameter>: This switch forces the
+    package to build with thread support.</para>
+
+    <para><command>make install-private-headers</command>: This command is
+    used to install the <application>Tk</application> library interface
+    headers used by other packages if they link to the
+    <application>Tk</application> library.</para>
+
+    <para><command>ln -v -sf wish&tk-ver; /usr/bin/wish</command>: This
+    command is used to create a compatibility symbolic link to the
+    <command>wish&tk-ver;</command> file as many packages expect a file
+    named <command>wish</command>.</para>
+
+    <!-- This is removed per discussion and fairly vigorous testing
+    <para><command>sed -i -e ... tkConfig.sh</command>: The
+    <application>Tk</application> package expects that its source tree is
+    preserved so that packages depending on it for their compilation
+    can utilize it. This <command>sed</command> removes the references to the
+    build directory and replaces them with saner system-wide locations.</para>
+
+    <para><command>install ...</command>: These commands install the internal
+    headers into a system-wide location.</para>
+
+    <para><command>ln -v -sf ...</command>: These commands create compatibility
+    symbolic links.</para>
+    -->
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>wish and wish&tk-ver;</seg>
+        <seg>libtk.so and libtkstub&tk-ver;.a</seg>
+        <seg>/usr/lib/tk&tk-ver;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="wish">
+        <term><command>wish</command></term>
+        <listitem>
+          <para> is a symlink to the <command>wish&tk-ver;</command>
+          program.</para>
+          <indexterm zone="tk wish">
+            <primary sortas="g-wish">wish</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="wish-eight">
+        <term><command>wish&tk-ver;</command></term>
+        <listitem>
+          <para> is a simple shell containing the
+          <application>Tk</application> toolkit that creates a main window and
+          then processes <application>Tcl</application> commands.</para>
+          <indexterm zone="tk wish-eight">
+            <primary sortas="b-wish&tk-ver;">wish&tk-ver;</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libtk">
+        <term><filename role="library">libtk.so</filename></term>
+        <listitem>
+          <para>contains the API functions required
+          by <application>Tk</application>.</para>
+          <indexterm zone="tk libtk">
+            <primary sortas="c-libtk">libtk.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

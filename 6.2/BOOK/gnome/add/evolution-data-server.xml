@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY evolution-data-server-download-http "&gnome-download-http;/evolution-data-server/1.6/evolution-data-server-&evolution-data-server-version;.tar.bz2">
+  <!ENTITY evolution-data-server-download-ftp  "&gnome-download-ftp;/evolution-data-server/1.6/evolution-data-server-&evolution-data-server-version;.tar.bz2">
+  <!ENTITY evolution-data-server-md5sum        "e40343fa6a80916da3f4d1ba5d118c89">
+  <!ENTITY evolution-data-server-size          "7.0 MB">
+  <!ENTITY evolution-data-server-buildsize     "171 MB">
+  <!ENTITY evolution-data-server-time          "3.4 SBU (additional 0.5 SBU to run the test suite)">
+]>
+
+<sect1 id="evolution-data-server"
+xreflabel="Evolution Data Server-&evolution-data-server-version;">
+  <?dbhtml filename="evolution-data-server.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Evolution Data Server-&evolution-data-server-version;</title>
+
+  <indexterm zone="evolution-data-server">
+    <primary sortas="a-Evolution-Data-Server">Evolution Data Server</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Evolution Data Server</title>
+
+    <para>The <application>Evolution Data Server</application> package provides
+    a unified backend for programs that work with contacts, tasks, and calendar
+    information. It was originally developed for
+    <application>Evolution</application> (hence the name), but is now used by
+    other packages as well.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&evolution-data-server-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&evolution-data-server-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &evolution-data-server-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &evolution-data-server-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &evolution-data-server-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &evolution-data-server-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Evolution Data Server Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="libgnomeui"/> and
+    <xref linkend="libsoup"/></para>
+
+    <bridgehead renderas="sect4">Recommended
+    (For SSL and S/MIME support)</bridgehead>
+    <para role="recommended"><xref linkend="nss"/></para>
+
+    <para>The <application>NSS</application> package is not required if you
+    have <xref linkend="firefox"/>, <xref linkend="thunderbird"/>,
+    <xref linkend="seamonkey"/> or
+    <ulink url="http://www.mozilla.org/products/mozilla1.x/">Mozilla</ulink>
+    installed. These packages contain internal copies of
+    <application>NSS</application> (or they used a system-installed copy).
+    If any of the four packages are installed, one way or another you will
+    already have NSS/NSPR libraries on your system.</para>
+
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="openldap"/>,
+    an <xref linkend="server-mail"/> (that provides a
+    <command>sendmail</command> command),
+    <xref linkend="heimdal"/> or <xref linkend="mitkrb"/>,
+    <ulink url="http://www.pdc.kth.se/kth-krb/">krb4</ulink>,
+    <xref linkend="gtk-doc"/>, and
+    <xref linkend="docbook-utils"/></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/evolution-data-server"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Evolution Data Server</title>
+
+    <para>Install <application>Evolution Data Server</application> by running
+    the following commands:</para>
+
+    <note>
+      <para>The instructions below assume you have the NSS/NSPR libraries
+      installed on your system. If you elected not to install
+      <application>NSS</application> (or one of the other packages mentioned
+      above), you'll need to remove the following two parameter settings from
+      the <command>configure</command> command below:</para>
+
+      <literallayout><parameter>            --enable-nss
+            --enable-smime</parameter></literallayout>
+
+      <para>The <application>Evolution</application>
+      <command>configure</command> script only looks for the stand-alone
+      <application>NSS</application> package and the
+      <application>Mozilla</application> and
+      <application>Firefox</application> browsers for the NSS/NSPR libraries.
+      If you are using <application>Thunderbird</application> as your source
+      for the NSS/NSPR libraries, you will have to add the following two
+      parameter settings to the <command>configure</command> command
+      below:</para>
+
+      <literallayout><parameter>            --with-nspr-includes=/usr/include/nspr
+            --with-nss-includes=/usr/include/nss</parameter></literallayout>
+    </note>
+
+<screen><userinput>./configure --prefix=$(pkg-config --variable=prefix ORBit-2.0) \
+            --libexecdir=$(pkg-config --variable=prefix \
+                ORBit-2.0)/lib/evolution-data-server-1.2 \
+            --enable-nntp \
+            --enable-nss \
+            --enable-smime &amp;&amp;
+make</userinput></screen>
+
+    <para>To test the results, issue: <command>make -k check</command>. At
+    least one test is known to fail and 18 are known to pass.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gnome-prefix.xml"/>
+
+    <para><parameter>--libexecdir=$(pkg-config --variable=prefix
+    ORBit-2.0)/lib/evolution-data-server-1.2</parameter>: This parameter causes
+    the libexec files to be installed in the preferred location of
+    <filename
+    class="directory">$GNOME_PREFIX/lib/evolution-data-server-1.2</filename>
+    instead of <filename
+    class="directory">$GNOME_PREFIX/libexec</filename>.</para>
+
+    <para><parameter>--enable-nntp</parameter>: This parameter is used to build
+    the Usenet news (NNTP) backend.</para>
+
+    <para><parameter>--enable-nss</parameter>: This parameter is used to pull
+    in the Mozilla Network Security Services libraries for SSL support.</para>
+
+    <para><parameter>--enable-smime</parameter>: This parameter is used to pull
+    in the Mozilla Network Security Services libraries for S/MIME
+    support.</para>
+
+    <!--
+    <para><parameter>-with-{nspr,nss}-includes</parameter>: This parameter is
+    used to identify where the Mozilla Network Security Services interface
+    headers are located. By default,
+    <application>Evolution Data Server</application> uses
+    <filename>mozilla-{nss,nspr}.pc</filename> files to locate the headers
+    and chances are you will not have <application>Mozilla</application>
+    installed.</para>
+    -->
+
+    <note>
+      <para>To enable many of the optional dependencies, review the information
+      from <command>./configure --help</command> for the necessary parameters
+      you must pass to the <command>configure</command> script.</para>
+    </note>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>None</seg>
+        <seg>libcamel-1.2.so, libcamel-provider-1.2.so, libebook-1.2.so,
+        libecal-1.2.so, libedata-book-1.2.so, libedata-cal-1.2.so,
+        libedataserver-1.2.so, libedataserverui-1.2.so, libegroupwise-1.2.so,
+        libexchange-storage-1.2.so and numerous provider and extension
+        modules.</seg>
+        <seg>The following subdirectories of <envar>$GNOME_PREFIX</envar>/:
+        include/evolution-data-server-1.6,
+        lib/evolution-data-server-1.2,
+        share/{evolution-data-server-1.6,
+        gtk-doc/html/libe{book,cal,data{,server}},
+        idl/evolution-data-server-1.2,
+        pixmaps/evolution-data-server-1.6}</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libe.so">
+        <term><filename class='libraryfile'>libe*.so</filename></term>
+        <listitem>
+          <para>libraries are client, backend and utility libraries for the
+          <application>Evolution</application> address books, calendar and data
+          servers.</para>
+          <indexterm zone="evolution-data-server libe.so">
+            <primary sortas="c-libe.so">libe*.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

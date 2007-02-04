@@ -1,0 +1,42 @@
+Submitted By: DJ Lucas <dj_At_linuxfromscratch_DOT_org>
+Date: 2004-12-12
+Origin: Self
+Initial Package Version: 1.1.3
+Description: Fixes build when used with system freetype-2.1.5+.
+Upstream Status: Not submitted
+
+$LastChangedBy$
+$Date$
+
+--- OOo_1.1.3_src-orig/vcl/source/glyphs/gcach_ftyp.cxx	2004-08-27 05:00:20.000000000 -0500
++++ OOo_1.1.3_src/vcl/source/glyphs/gcach_ftyp.cxx	2004-12-08 01:25:05.690230824 -0600
+@@ -77,12 +77,13 @@
+ #include <osl/file.hxx>
+ #include <osl/thread.hxx>
+ 
+-#include "freetype/freetype.h"
+-#include "freetype/ftglyph.h"
+-#include "freetype/ftoutln.h"
+-#include "freetype/tttables.h"
+-#include "freetype/tttags.h"
+-#include "freetype/ttnameid.h"
++#include <ft2build.h>
++#include <freetype/freetype.h>
++#include <freetype/ftglyph.h>
++#include <freetype/ftoutln.h>
++#include <freetype/tttables.h>
++#include <freetype/tttags.h>
++#include <freetype/ttnameid.h>
+ 
+ #ifndef FREETYPE_PATCH
+     // VERSION_MINOR in freetype.h is too coarse
+--- OOo_1.1.3_src-orig/vcl/source/glyphs/gcach_layout.cxx	2004-01-09 12:13:49.000000000 -0600
++++ OOo_1.1.3_src/vcl/source/glyphs/gcach_layout.cxx	2004-12-08 01:26:45.845004984 -0600
+@@ -68,6 +68,7 @@
+ #endif
+ 
+ #ifndef _SV_GCACHFTYP_HXX
++#include <ft2build.h>
+ #include <freetype/freetype.h>
+ #include <gcach_ftyp.hxx>
+ #endif
