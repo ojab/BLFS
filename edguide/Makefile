@@ -1,3 +1,8 @@
+#
+# $LastChangedBy$
+# $Date$
+#
+#
 
 OUTPUTDIR = $(HOME)/public_html/edguide/
 
@@ -8,7 +13,13 @@ edguide:
 	xsltproc --xinclude --nonet -stringparam base.dir $(OUTPUTDIR) \
 	       edguide.xsl index.xml
 	cp *.css $(OUTPUTDIR)
-#	sh goTidy $(OUTPUTDIR)
+
+	for filename in `find $(OUTPUTDIR) -name "*.html"`; do \
+	  tidy -config tidy.conf $$filename; \
+	  true; \
+	  sh obfuscate.sh $$filename; \
+	  sed -i -e "s@text/html@application/xhtml+xml@g" $$filename; \
+	done;
 
 
 validate:
