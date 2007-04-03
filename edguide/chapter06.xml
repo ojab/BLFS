@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-   "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" >
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" >
 
 <chapter id="chapter06">
   <chapterinfo>
@@ -60,7 +60,7 @@
   url='http://www.linuxfromscratch.org/~bdubbs/about.html'/>.</para>
 
 <screen>&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
-&lt;!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+&lt;!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
    "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
   &lt;!ENTITY % general-entities SYSTEM "../../general.ent"&gt;
   %general-entities;
