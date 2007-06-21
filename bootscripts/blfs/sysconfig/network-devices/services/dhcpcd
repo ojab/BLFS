@@ -24,7 +24,7 @@ case "$2" in
 			ps `cat "$PIDFILE"` | grep dhcpcd > /dev/null
 			if [ $? != 0 ]
 			then
-				rm -f /var/run/dhcpcd-$1.pid > /dev/null
+				rm -f $PIDFILE > /dev/null
 			else
 				boot_mesg "dhcpcd already running!" ${WARNING}
 				echo_warning
@@ -36,7 +36,7 @@ case "$2" in
 		RET="$?"
 		# Print the assigned settings if requested
 		if [ "$RET" = "0" -a "$PRINTIP" = "yes" ]; then
-			. /var/lib/dhcpc/dhcpcd-$1.info
+			. $LEASEINFO
 			if [ "$PRINTALL" = "yes" ]; then
 				echo ""
 				echo_ok
