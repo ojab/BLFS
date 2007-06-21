@@ -1,4 +1,7 @@
 2007-06-20 Dan Nicholson <dnicholson@linuxfromscratch.org>
+	* Update lease info path for dhcpcd-3.x.
+
+2007-06-20 Dan Nicholson <dnicholson@linuxfromscratch.org>
 	* Use proper references for the pid and lease files in the dhcpcd
 	  service script.
 
