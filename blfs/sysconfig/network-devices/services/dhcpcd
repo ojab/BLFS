@@ -13,7 +13,7 @@
 . $IFCONFIG
 
 PIDFILE="/var/run/dhcpcd-$1.pid"
-LEASEINFO="/var/lib/dhcpc/dhcpcd-$1.info"
+LEASEINFO="/var/lib/dhcpcd/dhcpcd-$1.info"
 
 case "$2" in
 	up)
