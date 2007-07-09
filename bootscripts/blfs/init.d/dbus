@@ -10,17 +10,20 @@
 . /etc/sysconfig/rc
 . $rc_functions
 
+pidfile=/var/run/dbus/pid
+socket=/var/run/dbus/system_bus_socket
+
 case "$1" in
         start)
                 boot_mesg "Starting the D-Bus Messagebus Daemon..."
-                loadproc /usr/bin/dbus-daemon --config-file=/etc/dbus-1/system.conf
+                /usr/bin/dbus-uuidgen --ensure
+                loadproc -p "$pidfile" /usr/bin/dbus-daemon --system
                 ;;
 
         stop)
                 boot_mesg "Stopping the D-Bus Messagebus Daemon..."
-                killproc /usr/bin/dbus-daemon
-                rm /var/run/dbus/pid
-                rm /var/run/dbus/system_bus_socket
+                killproc -p "$pidfile" /usr/bin/dbus-daemon
+                [ $? -eq 0 ] && rm -f "$socket"
                 ;;
 
         restart)
