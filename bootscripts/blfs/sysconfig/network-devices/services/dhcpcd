@@ -46,12 +46,12 @@ case "$2" in
 				boot_mesg_flush
 				boot_mesg "           Subnet Mask:     $NETMASK"
 				boot_mesg_flush
-				boot_mesg "           Default Gateway: $GATEWAY"
+				boot_mesg "           Default Gateway: $GATEWAYS"
 				boot_mesg_flush
-				boot_mesg "           DNS Server:      $DNS"
+				boot_mesg "           DNS Server:      $DNSSERVERS"
 				boot_mesg_flush
 			else
-				boot_mesg " IP Addresss: ""$IPADDR"
+				boot_mesg " IP Addresss: $IPADDR"
 				echo_ok
 			fi
 		else
@@ -63,43 +63,23 @@ case "$2" in
 
 	down)
 		boot_mesg -n "Stopping dhcpcd on the $1 interface..."
-		# Do nothing with the client daemon if we have an infinate 
-		# lease time as the client exits when started in this case,
-		# just echo OK.
-		if [ -e $LEASEINFO ]
+		if [ -z "$DHCP_STOP" ]
 		then
-			. $LEASEINFO
-
-			if [ "$LEASETIME" = "4294967295" ]
-			then
-				# do nothing, just echo ok
+			echo ""
+			killproc -p "$PIDFILE" /sbin/dhcpcd
+		else
+			/sbin/dhcpcd $1 $DHCP_STOP &> /dev/null
+			RET="$?"
+			if [ "$RET" -eq 0 ]; then
 				echo ""
 				echo_ok
-			else
-			if [ -n "$DHCP_STOP" ]
-			then
-				/sbin/dhcpcd $1 $DHCP_STOP &> /dev/null
-				RET="$?"
-				if [ "$RET" -eq 0 ]; then
-					echo ""
-					echo_ok
-				elif [ "$RET" -eq 1 ]; then
-					boot_mesg "dhcpcd not running!" ${WARNING}
-					echo_warning
-				else
-					echo ""
-					echo_failure
-				fi
+			elif [ "$RET" -eq 1 ]; then
+				boot_mesg "dhcpcd not running!" ${WARNING}
+				echo_warning
 			else
 				echo ""
-				killproc dhcpcd
+				echo_failure
 			fi
-		    fi
-		else
-			boot_mesg -n "LEASEINFO Test failed! - " ${WARNING}
-			boot_mesg "dhcpcd is not running!" ${WARNING}
-			echo_warning
-			exit 1
 		fi
 	;;
 

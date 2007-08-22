@@ -1,3 +1,6 @@
+2007-08-22 DJ Lucas <dj@linuxfromscratch.org>
+	* Updated the dhcpcd service script to comply with dhcpcd-3.0.19+.
+
 2007-07-09 Dan Nicholson <dnicholson@linuxfromscratch.org>
 	* Updated the D-Bus bootscript to call dbus-uuidgen on start and
 	  use the system pid file.
