@@ -1,3 +1,9 @@
+2007-10-21 Dan Nicholson <dnicholson@linuxfromscratch.org>
+	* Fixed the samba and sshd scripts to reference the pid files in
+	  /var/run. This ensures that the correct processes are killed and
+	  queried. Also changed the dbus script to use the pid file in the
+	  status target, too.
+
 2007-08-22 DJ Lucas <dj@linuxfromscratch.org>
 	* Updated the dhcpcd service script to comply with dhcpcd-3.0.19+.
 

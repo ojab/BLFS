@@ -33,7 +33,7 @@ case "$1" in
                 ;;
 
         status)
-                statusproc /usr/bin/dbus-daemon
+                statusproc -p $pidfile /usr/bin/dbus-daemon
                 ;;
 
         *)
