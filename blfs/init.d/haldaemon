@@ -10,15 +10,17 @@
 . /etc/sysconfig/rc
 . $rc_functions
 
+pidfile=/var/run/hald/pid
+
 case "$1" in
 	start)
 		boot_mesg "Starting the HAL Daemon..."
-		loadproc /usr/sbin/hald --use-syslog
+		loadproc -p $pidfile /usr/sbin/hald --use-syslog
 		;;
 
 	stop)
 		boot_mesg "Stopping the HAL Daemon..."
-		killproc /usr/sbin/hald
+		killproc -p $pidfile /usr/sbin/hald
 		;;
 
 	restart)
@@ -28,7 +30,7 @@ case "$1" in
 		;;
 
 	status)
-		statusproc /usr/sbin/hald
+		statusproc -p $pidfile /usr/sbin/hald
 		;;
 
 	*)

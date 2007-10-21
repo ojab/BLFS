@@ -10,17 +10,19 @@
 . /etc/sysconfig/rc
 . $rc_functions
 
+pidfile=/var/run/gdm.pid
+
 export PATH=$PATH:/opt/gnome-2.18.3/bin:/opt/gnome-2.18.3/sbin
 
 case "$1" in
 	start)
 		boot_mesg "Starting GDM..."
-		loadproc gdm
+		loadproc -p $pidfile gdm
 		;;
 
 	stop)
 		boot_mesg "Stopping GDM..."
-		if [ -f /var/run/gdm.pid ]; then
+		if [ -f $pidfile ]; then
 			loadproc gdm-stop
 		fi
 		;;
