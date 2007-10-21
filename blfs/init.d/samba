@@ -10,29 +10,32 @@
 . /etc/sysconfig/rc
 . $rc_functions
 
+smbdpid=/var/run/smbd.pid
+nmbdpid=/var/run/nmbd.pid
+
 case "$1" in
 	start)
 		boot_mesg "Starting nmbd..."
-		loadproc /usr/sbin/nmbd -D
+		loadproc -p $nmbdpid /usr/sbin/nmbd -D
 
 		boot_mesg "Starting smbd..."
-		loadproc /usr/sbin/smbd -D
+		loadproc -p $smbdpid /usr/sbin/smbd -D
 		;;
 
 	stop)
 		boot_mesg "Stopping smbd..."
-		killproc /usr/sbin/smbd
+		killproc -p $smbdpid /usr/sbin/smbd
 
 		boot_mesg "Stopping nmbd..."
-		killproc /usr/sbin/nmbd
+		killproc -p $nmbdpid /usr/sbin/nmbd
                 ;;
 
 	reload)
 		boot_mesg "Reloading smbd..."
-		reloadproc /usr/sbin/smbd
+		reloadproc -p $smbpid /usr/sbin/smbd
 
 		boot_mesg "Reloading nmbd..."
-		reloadproc /usr/sbin/nmbd
+		reloadproc -p $nmbdpid /usr/sbin/nmbd
 		;;
 
 	restart)
@@ -42,8 +45,8 @@ case "$1" in
 		;;
 
 	status)
-		statusproc /usr/sbin/nmbd
-		statusproc /usr/sbin/smbd
+		statusproc -p $nmbdpid /usr/sbin/nmbd
+		statusproc -p $smbdpid /usr/sbin/smbd
 		;;
 
 	*)

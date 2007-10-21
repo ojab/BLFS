@@ -10,23 +10,25 @@
 . /etc/sysconfig/rc
 . $rc_functions
 
+pidfile=/var/run/sshd.pid
+
 case "$1" in
     start)
         boot_mesg "Starting SSH Server..."
         # Also prevent ssh from being killed by out of memory conditions
-        loadproc /usr/sbin/sshd 
+        loadproc -p $pidfile /usr/sbin/sshd
         sleep 1
-        echo "-16" >/proc/`cat /var/run/sshd.pid`/oom_adj
+        echo "-16" >/proc/`cat $pidfile`/oom_adj
         ;;
 
     stop)
         boot_mesg "Stopping SSH Server..."
-        killproc /usr/sbin/sshd
+        killproc -p $pidfile /usr/sbin/sshd
         ;;
 
     reload)
         boot_mesg "Reloading SSH Server..."
-        reloadproc /usr/sbin/sshd
+        reloadproc -p $pidfile /usr/sbin/sshd
         ;;
 
     restart)
@@ -36,7 +38,7 @@ case "$1" in
         ;;
 
     status)
-        statusproc /usr/sbin/sshd
+        statusproc $pidfile /usr/sbin/sshd
         ;;
 
     *)
