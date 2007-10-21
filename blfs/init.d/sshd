@@ -38,7 +38,7 @@ case "$1" in
         ;;
 
     status)
-        statusproc $pidfile /usr/sbin/sshd
+        statusproc -p $pidfile /usr/sbin/sshd
         ;;
 
     *)
