@@ -21,11 +21,6 @@ case "$1" in
 		killproc /usr/sbin/dhcpd
 		;;
 
-	reload)
-		boot_mesg "Reloading DHCP Server..."
-		reloadproc /usr/sbin/dhcpd
-		;;
-
 	restart)
 		$0 stop
 		sleep 1
@@ -37,7 +32,7 @@ case "$1" in
 		;;
 
 	*)
-		echo "Usage: $0 {start|stop|reload|restart|status}"
+		echo "Usage: $0 {start|stop|restart|status}"
 		exit 1
 		;;
 esac
