@@ -59,7 +59,7 @@ case "$1" in
 			# for broken behavior of smbmount, and also to make
 			# certain that netmounts without the _netdev option
 			# will still get unmounted.
-			/bin/umount -a -O _netdev
+			/bin/umount -af -O _netdev
 			# save the retval
 			if [ $? != 0 ]
 			then
@@ -69,7 +69,7 @@ case "$1" in
 			# Now catch the rest of the network filesystems
 			# by fstype.  This list can be extended later as
 			# more network filesystems are supported by mount.
-			/bin/umount -a -t coda,ncpfs,nfs,smbfs
+			/bin/umount -af -t coda,ncpfs,nfs,smbfs
 			if [ $? = 0 ]
 			then
 				[ -z $NERRVAL ]
