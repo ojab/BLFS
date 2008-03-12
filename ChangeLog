@@ -1,5 +1,11 @@
+2008-03-12 Dan Nicholson <dnicholson@linuxfromscratch.org>
+	* Revert usage of pid files from a few commits ago except for
+	  samba, which needs to know the correct process to kill. See
+	  LFS ticket #2160 and add back these changes when that can be
+	  depended on.
+
 2008-03-06 Bruce Dubbs <bdubbs@linuxfromscratch.org>
-  * Fixed calls in autofs to echo_failure
+	* Fixed calls in autofs to echo_failure
 
 2007-12-21 Dan Nicholson <dnicholson@linuxfromscratch.org>
 	* Removed the reload target from the dhcp script since dhcpd

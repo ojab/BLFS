@@ -17,12 +17,12 @@ case "$1" in
         start)
                 boot_mesg "Starting the D-Bus Messagebus Daemon..."
                 /usr/bin/dbus-uuidgen --ensure
-                loadproc -p "$pidfile" /usr/bin/dbus-daemon --system
+                loadproc /usr/bin/dbus-daemon --system
                 ;;
 
         stop)
                 boot_mesg "Stopping the D-Bus Messagebus Daemon..."
-                killproc -p "$pidfile" /usr/bin/dbus-daemon
+                killproc /usr/bin/dbus-daemon
                 [ $? -eq 0 ] && rm -f "$socket"
                 ;;
 
@@ -33,7 +33,7 @@ case "$1" in
                 ;;
 
         status)
-                statusproc -p $pidfile /usr/bin/dbus-daemon
+                statusproc /usr/bin/dbus-daemon
                 ;;
 
         *)

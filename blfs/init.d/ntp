@@ -7,18 +7,16 @@
 . /etc/sysconfig/rc
 . $rc_functions
 
-pidfile=/var/run/ntpd.pid
-
 case "$1" in
 	start)
 		boot_mesg "Starting ntpd..."
 		ntpd -gqx
-		loadproc -p $pidfile /usr/sbin/ntpd
+		loadproc /usr/sbin/ntpd
 		;;
 
 	stop)
 		boot_mesg "Stopping ntpd..."
-		killproc -p $pidfile /usr/sbin/ntpd
+		killproc /usr/sbin/ntpd
 		;;
 
 	restart)
@@ -28,7 +26,7 @@ case "$1" in
 		;;
 
 	status)
-		statusproc -p $pidfile /usr/sbin/ntpd
+		statusproc /usr/sbin/ntpd
 		;;
 
 	*)
