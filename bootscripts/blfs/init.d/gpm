@@ -23,18 +23,15 @@ if [ -z "$MDEVICE" ] || [ -z "$PROTOCOL" ]
 	exit 1;
 fi
 
-pidfile=/var/run/gpm.pid
-
 case "$1" in
 	start)
 		boot_mesg "Starting gpm..."
-		loadproc -p $pidfile /usr/sbin/gpm \
-			-m $MDEVICE -t $PROTOCOL $GPMOPTS
+		loadproc /usr/sbin/gpm -m $MDEVICE -t $PROTOCOL $GPMOPTS
 		;;
 
 	stop)
 		boot_mesg "Stopping gpm..."
-		killproc -p $pidfile /usr/sbin/gpm
+		killproc /usr/sbin/gpm
 		;;
 
 	restart)
@@ -44,7 +41,7 @@ case "$1" in
 		;;
 
 	status)
-		statusproc -p $pidfile /usr/sbin/gpm
+		statusproc /usr/sbin/gpm
 		;;
 
 	*)

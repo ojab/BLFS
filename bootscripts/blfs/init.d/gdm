@@ -17,7 +17,7 @@ export PATH=$PATH:/opt/gnome-2.18.3/bin:/opt/gnome-2.18.3/sbin
 case "$1" in
 	start)
 		boot_mesg "Starting GDM..."
-		loadproc -p $pidfile gdm
+		loadproc gdm
 		;;
 
 	stop)
