@@ -28,6 +28,8 @@ install-service-ipx: create-service-dir
 
 install-service-pppoe: create-service-dir
 	install -m ${MODE} blfs/sysconfig/network-devices/services/pppoe    ${EXTDIR}/sysconfig/network-devices/services
+	install -d -m ${DIRMODE} ${EXTDIR}/ppp/peers
+	install -m ${CONFMODE} blfs/ppp/pppoe ${EXTDIR}/ppp/peers
 
 install-alsa: create-dirs
 	install -m ${MODE} blfs/init.d/alsa       ${EXTDIR}/rc.d/init.d/

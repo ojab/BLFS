@@ -1,3 +1,6 @@
+2008-03-15 Alexander E. Patrakov <alexander@linuxfromscratch.org>
+	* Imported the new pppoe service script from the LiveCD repository.
+
 2008-03-12 Dan Nicholson <dnicholson@linuxfromscratch.org>
 	* Revert usage of pid files from a few commits ago except for
 	  samba, which needs to know the correct process to kill. See
