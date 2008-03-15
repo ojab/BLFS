@@ -10,18 +10,17 @@
 
 . /etc/sysconfig/rc
 . $rc_functions
+. $IFCONFIG
 
 case "$2" in
         up)
                 boot_mesg "Bringing up the PPPoE interface..."
-                /usr/sbin/pppoe-start
-                evaluate_retval
+                loadproc -p /var/run/ppp-${1}.pid pppd call pppoe ${1} linkname ${1} ${PPP_OPTS}
         ;;
 
         down)
                 boot_mesg "Bringing down the PPPoE interface..."
-                /usr/sbin/pppoe-stop
-                evaluate_retval
+                killproc -p /var/run/ppp-${1}.pid pppd
         ;;
 
         *)
