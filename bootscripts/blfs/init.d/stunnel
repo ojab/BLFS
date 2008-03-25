@@ -13,12 +13,12 @@
 case "$1" in
         start)
                 boot_mesg "Starting the Stunnel Daemon..."
-                loadproc /usr/sbin/stunnel
+                loadproc /usr/bin/stunnel
                 ;;
 
         stop)
                 boot_mesg "Stopping the Stunnel Daemon..."
-                killproc /usr/sbin/stunnel
+                killproc /usr/bin/stunnel
                 ;;
 
         restart)
@@ -28,7 +28,7 @@ case "$1" in
                 ;;
 
         status)
-                statusproc /usr/sbin/stunnel
+                statusproc /usr/bin/stunnel
                 ;;
 
         *)
