@@ -1,0 +1,44 @@
+The following is a list of all the files that may be overwritten by the
+Heimdal package. Some of the files below may not exist on your system
+if you've not installed the Inetutils or Qpopper packages. The files
+are presented in the 'mv' commands below as you may want to cut and
+paste and run the commands on your system.
+
+Note that the /bin/login and /bin/su programs are listed even though
+there are specific instructions in the BLFS Heimdal page to rename
+them. They are listed here for completeness.
+
+
+mv /usr/bin/ftp                       /usr/bin/ftp.INETUTILS
+mv /usr/bin/rcp                       /usr/bin/rcp.INETUTILS
+mv /usr/bin/rsh                       /usr/bin/rsh.INETUTILS
+mv /usr/bin/telnet                    /usr/bin/telnet.INETUTILS
+ls -l                                 /usr/bin/*INETUTILS
+
+mv /bin/login                         /bin/login.SHADOW
+mv /bin/su                            /bin/su.SHADOW
+ls -l                                 /bin/*SHADOW
+
+mv /usr/sbin/ftpd                     /usr/sbin/ftpd.INETUTILS
+mv /usr/sbin/rshd                     /usr/sbin/rshd.INETUTILS
+mv /usr/sbin/telnetd                  /usr/sbin/telnetd.INETUTILS
+mv /usr/sbin/popper                   /usr/sbin/popper.QPOPPER
+ls -l                                 /usr/sbin/*{INETUTILS,QPOPPER}
+
+mv /usr/share/man/man1/login.1        /usr/share/man/man1/login.1.SHADOW
+mv /usr/share/man/man1/su.1           /usr/share/man/man1/su.1.SHADOW
+mv /usr/share/man/man1/ftp.1          /usr/share/man/man1/ftp.1.INETUTILS
+mv /usr/share/man/man1/rcp.1          /usr/share/man/man1/rcp.1.INETUTILS
+mv /usr/share/man/man1/rsh.1          /usr/share/man/man1/rsh.1.INETUTILS
+mv /usr/share/man/man1/telnet.1       /usr/share/man/man1/telnet.1.INETUTILS
+ls -l                                 /usr/share/man/man1/*{SHADOW,INETUTILS}
+
+mv /usr/share/man/man5/login.access.5 /usr/share/man/man5/login.access.5.SHADOW
+mv /usr/share/man/man5/ftpusers.5     /usr/share/man/man5/ftpusers.5.INETUTILS
+ls -l                                 /usr/share/man/man5/*{SHADOW,INETUTILS}
+
+mv /usr/share/man/man8/ftpd.8         /usr/share/man/man8/ftpd.8.INETUTILS
+mv /usr/share/man/man8/rshd.8         /usr/share/man/man8/rshd.8.INETUTILS
+mv /usr/share/man/man8/telnetd.8      /usr/share/man/man8/telnetd.8.INETUTILS
+ls -l                                 /usr/share/man/man8/*INETUTILS
+

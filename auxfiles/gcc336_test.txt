@@ -1,0 +1,119 @@
+Native configuration is i686-pc-linux-gnu
+
+		=== g++ tests ===
+
+
+Running target unix
+
+		=== g++ Summary ===
+
+# of expected passes		8266
+# of expected failures		98
+# of untested testcases		9
+# of unsupported tests		15
+/home/rml/build/gcc-build/gcc/testsuite/../g++ version 3.3.6
+
+		=== gcc tests ===
+
+
+Running target unix
+FAIL: gcc.dg/duff-2.c (test for excess errors)
+
+		=== gcc Summary ===
+
+# of expected passes		21488
+# of unexpected failures	1
+# of expected failures		69
+# of unsupported tests		101
+/home/rml/build/gcc-build/gcc/xgcc version 3.3.6
+
+
+		=== libstdc++-v3 check-abi Summary ===
+
+# of added symbols:		 51
+# of missing symbols:		 0
+# of incompatible symbols:	 0
+
+
+		=== libstdc++-v3 tests ===
+
+
+Running target unix
+XPASS: 22_locale/collate_byname.cc execution test
+XPASS: 22_locale/collate_members_char.cc execution test
+XPASS: 22_locale/collate_members_wchar_t.cc execution test
+XPASS: 22_locale/ctype_is_char.cc execution test
+XPASS: 22_locale/ctype_is_wchar_t.cc execution test
+XPASS: 22_locale/members.cc execution test
+XPASS: 22_locale/messages_byname.cc execution test
+XPASS: 22_locale/messages_members_char.cc execution test
+XPASS: 22_locale/money_get_members_char.cc execution test
+XPASS: 22_locale/money_get_members_wchar_t.cc execution test
+XPASS: 22_locale/money_put_members_char.cc execution test
+XPASS: 22_locale/money_put_members_wchar_t.cc execution test
+XPASS: 22_locale/moneypunct_byname.cc execution test
+XPASS: 22_locale/moneypunct_members_char.cc execution test
+XPASS: 22_locale/moneypunct_members_wchar_t.cc execution test
+XPASS: 22_locale/num_get_members_char.cc execution test
+XPASS: 22_locale/num_get_members_wchar_t.cc execution test
+XPASS: 22_locale/num_put_members_char.cc execution test
+XPASS: 22_locale/num_put_members_wchar_t.cc execution test
+XPASS: 22_locale/numpunct_byname.cc execution test
+XPASS: 22_locale/numpunct_members_char.cc execution test
+XPASS: 22_locale/numpunct_members_wchar_t.cc execution test
+XPASS: 22_locale/time_get_members_char.cc execution test
+XPASS: 22_locale/time_get_members_wchar_t.cc execution test
+XPASS: 22_locale/time_put_members_char.cc execution test
+XPASS: 22_locale/time_put_members_wchar_t.cc execution test
+
+		=== libstdc++-v3 Summary ===
+
+# of expected passes		453
+# of unexpected successes	26
+# of expected failures		2
+
+Compiler version: 3.3.6 
+Platform: i686-pc-linux-gnu
+configure flags: --host=i686-pc-linux-gnu --prefix=/opt/gcc-3.3.6 
+                 --enable-shared --enable-languages=c,c++ 
+                 --enable-threads=posix
+
+
+====================================================================
+                   Summarized Output Follows
+====================================================================
+
+		=== g++ Summary ===
+
+# of expected passes		8266
+# of expected failures		98
+# of untested testcases		9
+# of unsupported tests		15
+/home/rml/build/gcc-build/gcc/testsuite/../g++ version 3.3.6
+
+--
+		=== gcc Summary ===
+
+# of expected passes		21488
+# of unexpected failures	1
+# of expected failures		69
+# of unsupported tests		101
+/home/rml/build/gcc-build/gcc/xgcc version 3.3.6
+
+--
+		=== libstdc++-v3 check-abi Summary ===
+
+# of added symbols:		 51
+# of missing symbols:		 0
+# of incompatible symbols:	 0
+
+--
+		=== libstdc++-v3 Summary ===
+
+# of expected passes		453
+# of unexpected successes	26
+# of expected failures		2
+
+Compiler version: 3.3.6 
+Platform: i686-pc-linux-gnu
+
