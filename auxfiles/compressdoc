@@ -1,5 +1,5 @@
 #!/bin/bash
-# VERSION: 20080421.1112
+# VERSION: 20080421.1121
 # $LastChangedBy$
 # $Date$
 #
@@ -30,6 +30,9 @@
 # Modified 20080421 by Dan Nicholson to properly execute the correct
 # compressdoc when working recursively. This means the same compressdoc
 # will be used whether a full path was given or it was resolved from PATH.
+#
+# Modified 20080421 by Dan Nicholson to be more robust with directories
+# that don't exist or don't have sufficient permissions.
 #
 # TODO:
 #     - choose a default compress method to be based on the available
@@ -284,6 +287,14 @@ if [ -z "$MAN_DIR" ]; then
   exit 1
 fi
 
+# Check that the specified directories actually exist and are readable
+for DIR in $MAN_DIR; do
+  if [ ! -d "$DIR" -o ! -r "$DIR" ]; then
+    echo "Directory '$DIR' does not exist or is not readable"
+    exit 1
+  fi
+done
+
 # Fake?
 if [ "$FAKE" != "no" ]; then
   echo "Actual parameters used:"
@@ -323,6 +334,10 @@ fi
 if [ "$BACKUP" = "yes" ]; then
   for DIR in $MAN_DIR; do
     cd "${DIR}/.."
+    if [ ! -w "`pwd`" ]; then
+      echo "Directory '`pwd`' is not writable"
+      exit 1
+    fi
     DIR_NAME=`basename "${DIR}"`
     echo "Backing up $DIR..." > $DEST_FD0
     [ -f "${DIR_NAME}.tar.old" ] && rm -f "${DIR_NAME}.tar.old"
@@ -337,6 +352,10 @@ fi
 # I need to take into account the localized man, so I'm going recursive
 for DIR in $MAN_DIR; do
   MEM_DIR=`pwd`
+  if [ ! -w "$DIR" ]; then
+    echo "Directory '$DIR' is not writable"
+    exit 1
+  fi
   cd "$DIR"
   for FILE in *; do
     # Fixes the case were the directory is empty
