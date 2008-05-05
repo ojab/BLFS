@@ -65,7 +65,7 @@ case "$2" in
 	;;
 
 	down)
-		boot_mesg "Stoping dhclient on the $1 interface..."
+		boot_mesg "Stopping dhclient on the $1 interface..."
 		if [ "$DHCP_STOP" = "" ]
 		then
 			# This breaks multiple interfaces please provide
