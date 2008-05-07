@@ -6,7 +6,8 @@
 5cd16a2e51ca7b96a3081c7486ff98b9  libfontenc-1.0.4.tar.bz2
 dfd5de47e232db0891410bec8ee6707b  libFS-1.0.0.tar.bz2
 071f96648ac25c8e87a3de11a7de2d8a  libICE-1.0.3.tar.bz2
-b73cbd5bc3cd268722a624a5f1318fde  liblbxutil-1.0.1.tar.bz2
+# lbxproxy deprecated since Xorg-7.1
+# b73cbd5bc3cd268722a624a5f1318fde  liblbxutil-1.0.1.tar.bz2
 6b81ffe486d76c380d08f92285758d84  liboldX-1.0.1.tar.bz2
 184cbf502b3cd5d7ba5f9d1290a99606  libSM-1.0.3.tar.bz2
 337b379fd00a67345b083100c4e6ba95  libWindowsWM-1.0.0.tar.bz2

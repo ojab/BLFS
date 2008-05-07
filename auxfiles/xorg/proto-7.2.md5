@@ -32,4 +32,5 @@ b6a96ffdae084e27487a58314008b000  xf86rushproto-1.1.2.tar.bz2
 f00844a63d6e76b69eb0eb5e41eed843  xf86vidmodeproto-2.2.2.tar.bz2
 1cc292c562962ad0ad3a253cae68c632  xineramaproto-1.1.2.tar.bz2
 2ed80e90992e7455eaac4c3e977ebd01  xproto-7.0.10.tar.bz2
-d28007a50976204960fc1fc07b4ca093  xproxymanagementprotocol-1.0.2.tar.bz2
+# proxymngr deprecated since Xorg-7.1
+# d28007a50976204960fc1fc07b4ca093  xproxymanagementprotocol-1.0.2.tar.bz2

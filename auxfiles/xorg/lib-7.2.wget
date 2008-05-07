@@ -19,7 +19,8 @@ libXv-1.0.3.tar.bz2
 libAppleWM-1.0.0.tar.bz2
 libdmx-1.0.2.tar.bz2
 libFS-1.0.0.tar.bz2
-liblbxutil-1.0.1.tar.bz2
+# lbxproxy deprecated since Xorg-7.1
+# liblbxutil-1.0.1.tar.bz2
 liboldX-1.0.1.tar.bz2
 libWindowsWM-1.0.0.tar.bz2
 libXaw-1.0.3.tar.bz2

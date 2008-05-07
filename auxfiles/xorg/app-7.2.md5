@@ -11,12 +11,14 @@ c7b2f8a938749d41dc86db6bd1e6a4ca  fslsfonts-1.0.1.tar.bz2
 99144743ab3cbb9cf37090fdc9e747db  fstobdf-1.0.2.tar.bz2
 50df9a5718b3cb6544a1c9f38b392b09  iceauth-1.0.1.tar.bz2
 8c04178b7f78014567b6b8b2b7d7a10f  ico-1.0.1.tar.bz2
-9d5045a5c76b1fe360221b967a5aa0e9  lbxproxy-1.0.1.tar.bz2
+# lbxproxy deprecated since Xorg-7.1
+# 9d5045a5c76b1fe360221b967a5aa0e9  lbxproxy-1.0.1.tar.bz2
 827a1ac5adf9aadd0c13b54a897e297b  listres-1.0.1.tar.bz2
 4d0f89a23f77e22f1671a77bf0898955  mkfontdir-1.0.3.tar.bz2
 1d608771aca9695b828cec1e34178fd1  mkfontscale-1.0.3.tar.bz2
 91f49547f9ed3cd0137c8b7c3183e360  oclock-1.0.1.tar.bz2
-aad44d0f65b97fd6d564b1d2ae510bb1  proxymngr-1.0.1.tar.bz2
+# proxymngr deprecated since Xorg-7.1
+# aad44d0f65b97fd6d564b1d2ae510bb1  proxymngr-1.0.1.tar.bz2
 255222b3ab3af671289a6b4844e9f393  rgb-1.0.1.tar.bz2
 99aea04a27197056368a4431f30f9cdb  rstart-1.0.2.tar.bz2
 08c7f078fc351196c21db3a8206d482d  scripts-1.0.1.tar.bz2
