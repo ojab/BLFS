@@ -1,3 +1,6 @@
+$LastChangedBy$
+$Date$
+
 The following is a list of all the files that may be overwritten by the
 Heimdal package. Some of the files below may not exist on your system
 if you've not installed the Inetutils or Qpopper packages. The files

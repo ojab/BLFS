@@ -1,3 +1,6 @@
+$LastChangedBy$
+$Date$
+
 ./configure --prefix=/usr \
             --sysconfdir=/etc \
             --with-apxs2 \
