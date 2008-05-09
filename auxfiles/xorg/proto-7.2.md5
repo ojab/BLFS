@@ -1,6 +1,7 @@
 # Xorg-7 protocol package MD5 sums
 # $LastChangedBy$
 # $Date$
+#
 d5d7c69837cc7dcbf2aa181ff423ab20  applewmproto-1.0.3.tar.bz2
 95c29d9d10bf2868996c0c47a3b9a8dc  bigreqsproto-1.0.2.tar.bz2
 54f1fbd567f57093df054f8440a60a5e  compositeproto-0.3.1.tar.bz2

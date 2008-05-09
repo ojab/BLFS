@@ -1,6 +1,7 @@
 # Xorg-7 protocol packages
 # $LastChangedBy$
 # $Date$
+#
 applewmproto-1.0.3.tar.bz2
 bigreqsproto-1.0.2.tar.bz2
 compositeproto-0.3.1.tar.bz2
