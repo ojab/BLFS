@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gnome-system-monitor-download-http "&gnome-download-http;/gnome-system-monitor/&gnome-version;/gnome-system-monitor-&gnome-system-monitor-version;.tar.bz2">
+  <!ENTITY gnome-system-monitor-download-ftp  "&gnome-download-ftp;/gnome-system-monitor/&gnome-version;/gnome-system-monitor-&gnome-system-monitor-version;.tar.bz2">
+  <!ENTITY gnome-system-monitor-md5sum        "860047e636522af2c068dddb5df883bd">
+  <!ENTITY gnome-system-monitor-size          "1.7 MB">
+  <!ENTITY gnome-system-monitor-buildsize     "23 MB">
+  <!ENTITY gnome-system-monitor-time          "0.3 SBU">
+]>
+
+<sect1 id="gnome-system-monitor"
+xreflabel="GNOME System Monitor-&gnome-system-monitor-version;">
+  <?dbhtml filename="gnome-system-monitor.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>GNOME System Monitor-&gnome-system-monitor-version;</title>
+
+  <indexterm zone="gnome-system-monitor">
+    <primary sortas="a-GNOME System Monitor">GNOME System Monitor</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to GNOME System Monitor</title>
+
+    <para>The <application>GNOME System Monitor</application> package contains
+    <command>gnome-system-monitor</command>, GNOME's replacement for
+    <command>gtop</command>.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP):
+        <ulink url="&gnome-system-monitor-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP):
+        <ulink url="&gnome-system-monitor-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &gnome-system-monitor-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &gnome-system-monitor-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &gnome-system-monitor-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &gnome-system-monitor-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">GNOME System Monitor Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="gnome-vfs"/>,
+    <xref linkend="gnome-icon-theme"/>,
+    <xref linkend="gnome-doc-utils"/>,
+    <xref linkend="libwnck"/>, and
+    <xref linkend="libgtop"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="intltool"/></para>
+
+    <bridgehead renderas="sect4">Recommended (by the package developer) Run-time
+    Component</bridgehead>
+    <para role="recommended"><ulink url="http://www.nongnu.org/gksu/">libgksu2</ulink></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/gnome-system-monitor"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of GNOME System Monitor</title>
+
+    <para>Install <application>GNOME System Monitor</application> by running
+    the following commands:</para>
+
+<screen><userinput>./configure --prefix=$(pkg-config --variable=prefix ORBit-2.0) \
+            --sysconfdir=&gnome-etc-dir; \
+            --localstatedir=/var/lib &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+<!-- This should not be necessary any longer, but leaving it as a comment
+
+<note><para><command>make install</command> will need path access to
+<filename class="directory">$GNOME_PREFIX/bin</filename>. If you use the
+root account for installation of the package and your preinstallation changes
+were made only to a user's account, you will need to adjust root's path prior
+to running <command>make install</command>.</para></note>
+
+ -->
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gnome-prefix.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gnome-sysconfdir.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/scrollkeeper-dir.xml"/>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>gnome-system-monitor</seg>
+        <seg>None</seg>
+        <seg><envar>$GNOME_PREFIX</envar>/share/{gnome/help, omf}/gnome-system-monitor</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gnome-system-monitor-prog">
+        <term><command>gnome-system-monitor</command></term>
+        <listitem>
+          <para>displays the process tree and hardware meters.</para>
+          <indexterm zone="gnome-system-monitor gnome-system-monitor-prog">
+            <primary sortas="b-gnome-system-monitor">gnome-system-monitor</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

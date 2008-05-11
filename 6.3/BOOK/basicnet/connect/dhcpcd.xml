@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY dhcpcd-download-http "http://download.berlios.de/dhcpcd/dhcpcd-&dhcpcd-version;.tar.bz2">
+  <!ENTITY dhcpcd-download-ftp  "ftp://ftp.osuosl.org/pub/gentoo/distfiles/dhcpcd-&dhcpcd-version;.tar.bz2">
+  <!ENTITY dhcpcd-md5sum        "90d6df62d663bdea65d5905023377b39">
+  <!ENTITY dhcpcd-size          "32.5 KB">
+  <!ENTITY dhcpcd-buildsize     "0.3 MB">
+  <!ENTITY dhcpcd-time          "less than 0.1 SBU">
+]>
+
+<sect1 id="dhcpcd" xreflabel="dhcpcd-&dhcpcd-version;">
+  <?dbhtml filename="dhcpcd.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>dhcpcd-&dhcpcd-version;</title>
+
+  <indexterm zone="dhcpcd">
+    <primary sortas="a-dhcpcd">dhcpcd</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to dhcpcd</title>
+
+    <para><application>dhcpcd</application> is an implementation of the
+    DHCP client specified in RFC2131. This is useful for connecting
+    your computer to a network which uses DHCP to assign network
+    addresses.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&dhcpcd-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&dhcpcd-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &dhcpcd-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &dhcpcd-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &dhcpcd-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &dhcpcd-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/dhcpcd"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of dhcpcd</title>
+
+    <para>Install <application>dhcpcd</application> by running the following
+    commands:</para>
+
+<screen><userinput>make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring dhcpcd</title>
+
+    <sect3 id="dhcpcd-config">
+      <title>Config Files</title>
+
+      <para><filename>/etc/dhcpcd.sh</filename></para>
+
+      <indexterm zone="dhcpcd dhcpcd-config">
+        <primary sortas="e-etc-dhcpcd-sh">/etc/dhcpcd.sh</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3 id="dhcpcd-init">
+      <title>Configuration Information</title>
+
+      <para>To configure <command>dhcpcd</command>, you need to first install
+      the network service script,
+      <filename>/etc/sysconfig/network-devices/services/dhcpcd</filename>
+      included in the <xref linkend="bootscripts"/> package
+      (as user <systemitem class="username">root</systemitem>):</para>
+
+      <indexterm zone="dhcpcd dhcpcd-init">
+        <primary sortas="f-dhcpcd">dhcpcd (service script)</primary>
+      </indexterm>
+
+<screen role='root'><userinput>make install-service-dhcpcd</userinput></screen>
+
+      <para>Whenever <command>dhcpcd</command> configures or shuts down
+      a network interface, it executes the script
+      <filename>/etc/dhcpcd.sh</filename>. This script can be
+      customized to perform additional actions for the network interface.
+      See the man page of <command>dhcpcd</command> for more details. An
+      example file is shipped in the tarball which can be used to send
+      the interface details to syslog.</para>
+
+      <para id="dhcpcd-config2">Finally, as the <systemitem
+      class="username">root</systemitem> user create the
+      <filename>/etc/sysconfig/network-devices/ifconfig.eth0/dhcpcd</filename>
+      configuration file using the following commands.  Adjust appropriately
+      for additional interfaces:</para>
+
+      <indexterm zone="dhcpcd dhcpcd-config2">
+        <primary sortas="e-etc-sysconfig-dhcpcd">/etc/sysconfig/.../dhcpcd</primary>
+      </indexterm>
+
+<screen role='root'><userinput>install -v -d /etc/sysconfig/network-devices/ifconfig.eth0 &amp;&amp;
+cat &gt; /etc/sysconfig/network-devices/ifconfig.eth0/dhcpcd &lt;&lt; "EOF"
+<literal>ONBOOT="yes"
+SERVICE="dhcpcd"
+DHCP_START="<replaceable>&lt;insert appropriate start options here&gt;</replaceable>"
+DHCP_STOP="-k <replaceable>&lt;insert additional stop options here&gt;</replaceable>"
+
+# Set PRINTIP="yes" to have the script print
+# the DHCP assigned IP address
+PRINTIP="no"
+
+# Set PRINTALL="yes" to print the DHCP assigned values for
+# IP, SM, DG, and 1st NS. This requires PRINTIP="yes".
+PRINTALL="no"</literal>
+EOF</userinput></screen>
+
+      <para>For more information on the appropriate <envar>DHCP_START</envar> and
+      <envar>DHCP_STOP</envar> values, examine the man page for
+      <command>dhcpcd</command>.</para>
+
+      <note>
+        <para id="dhcpcd-config3">The default behavior of
+        <command>dhcpcd</command> is to overwrite (after making backup copies)
+        <filename>/etc/resolv.conf</filename>, <filename>/etc/yp.conf</filename> and
+        <filename>/etc/ntp.conf</filename> with new files containing information from
+        the DHCP server. If this is undesirable, review the
+        <command>dhcpcd</command> man page for switches to add to the
+        <envar>DHCP_START</envar> value.</para>
+      </note>
+
+      <indexterm zone="dhcpcd dhcpcd-config3">
+        <primary sortas="e-etc-resolv.conf">/etc/resolv.conf</primary>
+      </indexterm>
+
+      <indexterm zone="dhcpcd dhcpcd-config3">
+        <primary sortas="e-etc-yp.conf">/etc/yp.conf</primary>
+      </indexterm>
+
+      <indexterm zone="dhcpcd dhcpcd-config3">
+        <primary sortas="e-etc-ntp.conf">/etc/ntp.conf</primary>
+      </indexterm>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>dhcpcd</seg>
+        <seg>None</seg>
+        <seg>None</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="dhcpcd-prog">
+        <term><command>dhcpcd</command></term>
+        <listitem>
+          <para>is an implementation of the DHCP client specified
+          in RFC2131 (when -r option is not specified) and RFC1541
+          (when -r option is specified).</para>
+          <indexterm zone="dhcpcd dhcpcd-prog">
+            <primary sortas="b-dhcpcd">dhcpcd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

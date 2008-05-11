@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY zsh-download-http "http://downloads.sourceforge.net/zsh/zsh-&zsh-version;.tar.bz2">
+  <!ENTITY zsh-download-ftp  " ">
+  <!ENTITY zsh-md5sum        "16f399af1081ad3c303a794c9c7dc47e">
+  <!ENTITY zsh-size          "2.5 MB">
+  <!ENTITY zsh-buildsize     "49 MB (includes installing all documentation)">
+  <!ENTITY zsh-time          "0.8 SBU">
+
+  <!ENTITY zsh-doc-md5sum    "cab29228a90f58b1431a66ab24a0a0c2">
+]>
+
+<sect1 id="zsh" xreflabel="ZSH-&zsh-version;">
+  <?dbhtml filename="zsh.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>ZSH-&zsh-version;</title>
+
+  <indexterm zone="zsh">
+    <primary sortas="a-ZSH">ZSH</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to ZSH</title>
+
+    <para>The <application>ZSH</application> package contains a command
+    interpreter (shell) usable as an interactive login shell and as
+    a shell script command processor. Of the standard shells,
+    <application>ZSH</application> most closely resembles
+    <application>KSH</application> but includes many enhancements.</para>
+
+    <note>
+      <para>This version of <application>ZSH</application> is a development
+      release.  The BLFS staff has determined that it provides a stable
+      program which works properly with multibyte locales (e.g., UTF-8).
+      To find the current stable release, refer to the
+      <ulink url="http://www.zsh.org/">ZSH home page</ulink> and compile
+      <application>ZSH</application> with the same instructions.</para>
+    </note>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&zsh-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&zsh-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &zsh-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &zsh-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &zsh-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &zsh-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Optional Documentation: <ulink
+        url="http://downloads.sourceforge.net/zsh/zsh-&zsh-version;-doc.tar.bz2"/></para>
+      </listitem>
+      <listitem>
+        <para>MD5 sum: &zsh-doc-md5sum;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">ZSH Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="pcre"/> and
+    <ulink url="http://packages.debian.org/stable/source/libcap">libcap</ulink>
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/zsh"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of ZSH</title>
+
+    <para>If you downloaded the optional documentation, unpack it with
+    the following command:</para>
+
+<screen><userinput>tar --strip-components=1 -xvf ../zsh-&zsh-version;-doc.tar.bz2</userinput></screen>
+
+    <para>Install <application>ZSH</application> by running the following
+    commands:</para>
+
+<screen><userinput>./configure --prefix=/usr \
+            --bindir=/bin \
+            --sysconfdir=/etc/zsh \
+            --enable-etcdir=/etc/zsh &amp;&amp;
+make</userinput></screen>
+
+    <para>If you have <xref linkend="tetex"/> installed, you can build
+    additional formats of the documentation by issuing any or all of
+    the following commands:</para>
+
+<screen><userinput>texi2pdf  Doc/zsh.texi -o Doc/zsh.pdf &amp;&amp;
+texi2html Doc/zsh.texi --output=Doc/zsh_1file_t.html &amp;&amp;
+makeinfo  Doc/zsh.texi --html --no-split --no-headers \
+                       -o Doc/zsh_1file_m.html &amp;&amp;
+makeinfo  Doc/zsh.texi --plaintext -o Doc/zsh.txt</userinput></screen>
+
+    <para>To test the results, issue: <command>make check</command>.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+make infodir=/usr/share/info install.info</userinput></screen>
+
+    <para>If you downloaded the optional documentation, install it by issuing
+    the following commands as the
+    <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make htmldir=/usr/share/doc/zsh-&zsh-version;/html install.html &amp;&amp;
+install -v -m644 Doc/zsh.dvi /usr/share/doc/zsh-&zsh-version;</userinput></screen>
+
+    <para>If you built any additional formats of the documentation, install
+    them by issuing the following command as the
+    <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>install -v -m644 Doc/{zsh_1file*,*.{pdf,txt}} \
+        /usr/share/doc/zsh-&zsh-version;</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>--sysconfdir=/etc/zsh</parameter> and
+    <parameter>--enable-etcdir=/etc/zsh</parameter>: These parameters are
+    used so that all the <application>ZSH</application> configuration files
+    are consolidated into the <filename class='directory'>/etc/zsh</filename>
+    directory. Omit these parameters if you wish to retain historical
+    compatibility by having all the files located in the
+    <filename class='directory'>/etc</filename> directory.</para>
+
+    <para><parameter>--bindir=/bin</parameter>: This parameter places the
+    <command>zsh</command> binaries into the root filesystem.</para>
+
+    <para><parameter>--enable-cap</parameter>: This parameter enables
+    POSIX capabilities.</para>
+
+    <para><parameter>--enable-pcre</parameter>: This parameter allows to use
+    the <application>PCRE</application> regular expression library in shell
+    builtins. Note: Linking <application>ZSH</application> dynamically against
+    <application>PCRE</application>, produces a runtime dependency on
+    <filename class='libraryfile'>libpcre.so</filename>. If
+    <filename class='directory'>/usr</filename> is a separate mount point and
+    <command>zsh</command> needs to be available at boot time, either you
+    have to statically link <application>ZSH</application> against
+    <application>PCRE</application> (you can examine the
+    <filename>config.modules</filename> file on how to link statically the
+    module), or move the library to <filename class='directory'>/lib</filename>
+    as follows:</para>
+
+<screen role="root"><userinput>mv -v /usr/lib/libpcre.so.* /lib/ &amp;&amp;
+ln -v -sf ../../lib/libpcre.so.0 /usr/lib/libpcre.so</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring ZSH</title>
+
+    <sect3 id="zsh-config">
+      <title>Config Files</title>
+
+      <para>There are a whole host of configuration files for
+      <application>ZSH</application> including
+      <filename>/etc/zsh/zshenv</filename>,
+      <filename>/etc/zsh/zprofile</filename>,
+      <filename>/etc/zsh/zshrc</filename>,
+      <filename>/etc/zsh/zlogin</filename> and
+      <filename>/etc/zsh/zlogout</filename>.
+      You can find more information on these in the <filename>zsh(1)</filename>
+      and related manual pages.</para>
+
+      <indexterm zone="zsh zsh-config">
+        <primary sortas="e-etc-zsh-zshenv">/etc/zsh/zshenv</primary>
+      </indexterm>
+
+      <indexterm zone="zsh zsh-config">
+        <primary sortas="e-etc-zsh-zprofile">/etc/zsh/zprofile</primary>
+      </indexterm>
+
+      <indexterm zone="zsh zsh-config">
+        <primary sortas="e-etc-zsh-zshrc">/etc/zsh/zshrc</primary>
+      </indexterm>
+
+      <indexterm zone="zsh zsh-config">
+        <primary sortas="e-etc-zsh-zlogin">/etc/zsh/zlogin</primary>
+      </indexterm>
+
+      <indexterm zone="zsh zsh-config">
+        <primary sortas="e-etc-zsh-zlogout">/etc/zsh/zlogout</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>Update <filename>/etc/shells</filename> to include the
+      <application>ZSH</application> shell program names (as the
+      <systemitem class="username">root</systemitem> user):</para>
+
+<screen role="root"><userinput>cat &gt;&gt; /etc/shells &lt;&lt; "EOF"
+<literal>/bin/zsh
+/bin/zsh-&zsh-version;</literal>
+EOF</userinput></screen>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>zsh and zsh-&zsh-version;</seg>
+        <seg>Numerous plugin helper modules</seg>
+        <seg>/etc/zsh, /usr/lib/zsh, /usr/share/doc/zsh-&zsh-version; and
+        /usr/share/zsh</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Description</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="zsh-prog">
+        <term><command>zsh</command></term>
+        <listitem>
+          <para>is a shell which has command-line editing, built-in spelling
+          correction, programmable command completion, shell functions (with
+          autoloading), a history mechanism, and a host of other features.</para>
+          <indexterm zone="zsh zsh-prog">
+            <primary sortas="b-zsh">zsh</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

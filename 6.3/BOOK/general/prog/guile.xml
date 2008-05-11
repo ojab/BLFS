@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY guile-download-http "http://ftp.gnu.org/pub/gnu/guile/guile-&guile-version;.tar.gz">
+  <!ENTITY guile-download-ftp  "ftp://ftp.gnu.org/pub/gnu/guile/guile-&guile-version;.tar.gz">
+  <!ENTITY guile-md5sum        "a4b64a992deae0532f8015bcc6c40784">
+  <!ENTITY guile-size          "3.7 MB">
+  <!ENTITY guile-buildsize     "49 MB (additional 40 MB to install all the docs)">
+  <!ENTITY guile-time          "1.2 SBU (includes building all documentation)">
+]>
+
+<sect1 id="guile" xreflabel="Guile-&guile-version;">
+<?dbhtml filename="guile.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Guile-&guile-version;</title>
+
+  <indexterm zone="guile">
+    <primary sortas="a-Guile">Guile</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Guile</title>
+
+    <para>The <application>Guile</application> package contains the Project
+    GNU's extension language library. <application>Guile</application> also
+    contains a stand alone <application>Scheme</application> interpreter.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&guile-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&guile-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &guile-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &guile-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &guile-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &guile-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <!-- <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Required patch: <ulink
+        url="&patch-root;/guile-&guile-version;-gcc4-1.patch"/></para>
+      </listitem>
+      <listitem>
+        <para>Required patch: <ulink
+        url="&patch-root;/guile-&guile-version;-slib-1.patch"/></para>
+      </listitem>
+    </itemizedlist> -->
+
+    <bridgehead renderas="sect3">Guile Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="gmp"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="required"><xref linkend="emacs"/></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/guile"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Guile</title>
+
+    <para>Install <application>Guile</application> by running the following
+    commands:</para>
+
+<screen><userinput>sed -i -e '20,$ d' \
+       -e 's|slib)|&amp;)\n(load-from-path "slib/guile.init")|' \
+    ice-9/slib.scm
+
+./configure --prefix=/usr &amp;&amp;
+make</userinput></screen>
+
+    <para>If you have <xref linkend="tetex"/> installed and wish to
+    build alternate formats of the documentation, issue the following
+    commands:</para>
+
+<screen><userinput>for DIRNAME in goops r5rs ref tutorial
+do
+  make -k -C doc/$DIRNAME pdf ps html
+done &amp;&amp;
+
+makeinfo --plaintext -o doc/goops/goops.txt doc/goops/goops.texi &amp;&amp;
+makeinfo --plaintext -o doc/r5rs/r5rs.txt doc/r5rs/r5rs.texi &amp;&amp;
+makeinfo --plaintext -o doc/ref/guile.txt doc/ref/guile.texi &amp;&amp;
+makeinfo --plaintext -o doc/tutorial/guile-tut.txt \
+    doc/tutorial/guile-tut.texi &amp;&amp;
+
+unset DIRNAME</userinput></screen>
+
+    <para>To test the results, issue: <command>make check</command>.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+
+find examples -name "Makefile*" -exec rm {} \; &amp;&amp;
+install -v -m755 -d /usr/share/doc/guile-&guile-version; &amp;&amp;
+cp -v -R examples   /usr/share/doc/guile-&guile-version;</userinput></screen>
+
+    <para>If you built the alternate formats of the documentation, install them
+    using the following commands issued by the
+    <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>for DIRNAME in goops r5rs ref tutorial
+do
+  install -v -m755 -d /usr/share/doc/guile-&guile-version;/$DIRNAME/html
+  install -v -m644 doc/$DIRNAME/*.{pdf,ps,dvi,txt} \
+      /usr/share/doc/guile-&guile-version;/$DIRNAME
+  if [ -d doc/$DIRNAME/$DIRNAME.html ]; then
+    install -v -m644 doc/$DIRNAME/$DIRNAME.html/* \
+        /usr/share/doc/guile-&guile-version;/$DIRNAME/html
+  fi
+done &amp;&amp;
+
+install -v -m644 doc/goops/hierarchy.{eps,png} \
+    /usr/share/doc/guile-&guile-version;/goops &amp;&amp;
+install -v -m644 doc/ref/guile.html/* \
+    /usr/share/doc/guile-&guile-version;/ref/html &amp;&amp;
+install -v -m644 doc/tutorial/guile-tut.html/* \
+    /usr/share/doc/guile-&guile-version;/tutorial/html</userinput></screen>
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><command>sed -i -e '20,$ d' -e '...' ice-9/slib.scm</command>:
+    This command is used to modify the <application>Guile</application>
+    <application>SLIB</application> initialization script. There are
+    incompatibilities with newer versions of <application>SLIB</application>
+    and this command modifes the script to use the installed
+    <application>SLIB</application> script.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>guile, guile-config, guile-snarf, and guile-tools</seg>
+        <seg>libguile.{so,a}, libguile-srfi-srfi-*.{so,a} and
+        /libguilereadline-v-17.{so,a}</seg>
+        <seg>/usr/include/guile, /usr/include/libguile,
+        /usr/share/doc/guile-&guile-version; and /usr/share/guile</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="guile-prog">
+        <term><command>guile</command></term>
+        <listitem>
+          <para>is a stand-alone Scheme interpreter for
+          <application>Guile</application>.</para>
+          <indexterm zone="guile guile-prog">
+            <primary sortas="b-guile">guile</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="guile-config">
+        <term><command>guile-config</command></term>
+        <listitem>
+          <para>is a <application>Guile</application> script which provides
+          the information necessary to link your programs against the
+          <application>Guile</application> library, in much the same way
+          <xref linkend="pkgconfig"></xref> does.</para>
+          <indexterm zone="guile guile-config">
+            <primary sortas="b-guile-config">guile-config</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="guile-snarf">
+        <term><command>guile-snarf</command></term>
+        <listitem>
+          <para>is a script to parse declarations in your
+          <application>C</application> code for <application>Scheme</application>
+          visible <application>C</application> functions, i
+          <application>Scheme</application> objects to be used by
+          <application>C</application> code, etc.</para>
+          <indexterm zone="guile guile-snarf">
+            <primary sortas="b-guile-snarf">guile-snarf</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="guile-tools">
+        <term><command>guile-tools</command></term>
+        <listitem>
+          <para>is a wrapper program installed along with
+          <command>guile</command> which knows where a particular
+          module is installed and calls it passing its args to a program.</para>
+          <indexterm zone="guile guile-tools">
+            <primary sortas="b-guile-tools">guile-tools</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

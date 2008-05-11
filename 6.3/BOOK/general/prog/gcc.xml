@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gcc-download-http  "http://ftp.gnu.org/gnu/gcc/gcc-&gcc-version;/gcc-&gcc-version;.tar.bz2">
+  <!ENTITY gcc-download-ftp   "ftp://ftp.gnu.org/gnu/gcc/gcc-&gcc-version;/gcc-&gcc-version;.tar.bz2">
+  <!ENTITY gcc-md5sum         "a4a3eb15c96030906d8494959eeda23c">
+  <!ENTITY gcc-size           "39.7 MB">
+  <!ENTITY gcc-buildsize      "1.9 GB">
+  <!ENTITY gcc-time           "77 SBU (build, test and install all compilers)">
+
+  <!ENTITY gnat-download-http "https://libre.adacore.com/dynamic/download_page">
+  <!ENTITY gnat-md5sum        "659b7f57e00b73ecaa4863dabea5e0e2">
+  <!ENTITY gnat-size          "44.6 MB">
+]>
+
+<sect1 id="gcc" xreflabel="GCC-&gcc-version;">
+  <?dbhtml filename="gcc.html" ?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>GCC-&gcc-version;</title>
+
+  <indexterm zone="gcc">
+    <primary sortas="a-gcc-4-0">GCC-&gcc-version;</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to GCC</title>
+
+    <para>The <application>GCC</application> package contains GNU compilers.
+    This package is useful for compiling programs written in C, C++, Fortran,
+    Java, Objective C and Ada. Also included is GNU Treelang. Treelang is a
+    sample language, useful only to help people understand how to implement a
+    new language front end to GCC. It is not a useful language in itself other
+    than as an example or basis for building a new language. Therefore only
+    language developers are likely to have an interest in it.</para>
+
+    <note>
+      <para>The Fortran compiler included with the
+      <application>GCC</application>-4.x package now aims to be conformant
+      with the Fortran 95 standard, not the Fortran 77 standard as all previous
+      versions of <application>GCC</application> have been. Please note the
+      following paragraph copied directly from the
+      <application>GCC</application>-&gcc-version; <command>gfortran</command>
+      man page.</para>
+
+      <para><quote>Gfortran is not yet a fully conformant Fortran 95 compiler.
+      It can generate code for most constructs and expressions, but work
+      remains to be done. In particular, there are known deficiencies with
+      ENTRY, NAMELIST, and sophisticated use of MODULES, POINTERS and DERIVED
+      TYPES. For those whose Fortran codes conform to either the Fortran 77
+      standard or the GNU Fortran 77 language, we recommend to use
+      <command>g77</command> from <application>GCC</application>
+      3.4.x</quote></para>
+
+      <para>Instructions to install the 3.4.6 version of the Fortran compiler
+      can be found in <xref linkend="gcc3"/> and on the
+      <ulink url="&blfs-wiki;/gcc3">BLFS
+      Wiki</ulink>.</para>
+    </note>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&gcc-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&gcc-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &gcc-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &gcc-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &gcc-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &gcc-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">GCC Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended"><xref linkend="dejagnu"/></para>
+
+    <bridgehead renderas="sect4">Optional (Required to Build the Fortran
+    Compiler)</bridgehead>
+    <para role="optional"><xref linkend="gmp"/> and
+    <ulink url="http://www.mpfr.org/">MPFR</ulink></para>
+
+    <note>
+      <para>If you plan to compile Ada, you will need to install
+      <application>GNAT</application> temporarily to satisfy the circular
+      dependency when you recompile <application>GCC</application>
+      to include Ada. The download location shown below requires that you
+      create an account on the AdaCore site before you can download the
+      package. Nothing is required other than a valid email address.</para>
+
+      <para><emphasis role='strong'>Ensure you download the 2005 version of the
+      GNAT compiler. The 2006 version will not work. The file name you need is:
+      <filename>gnat-gpl-2005-i686-gnu-linux-gnu-libc2.3-bin.tar.gz</filename>.</emphasis>
+      </para>
+    </note>
+
+    <bridgehead renderas="sect3">GNAT GPL 2005 Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&gnat-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &gnat-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &gnat-size;</para>
+      </listitem>
+    </itemizedlist>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/gcc"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of GNAT</title>
+
+    <para>Install <application>GNAT</application> by running the following
+    command as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make ins-all prefix=/opt/gnat</userinput></screen>
+
+    <para>The <application>GNAT</application> compiler can be
+    invoked by executing the <command>gcc</command> binary installed
+    in <filename class='directory'>/opt/gnat/bin</filename>.</para>
+
+    <para>You may now remove the <application>GNAT</application>
+    source directory:</para>
+
+<screen><userinput>cd .. &amp;&amp;
+rm -rf gnat-gpl-2005-i686-gnu-linux-gnu-libc2.3-bin</userinput></screen>
+
+    <para>Prepare to compile <application>GCC</application> by placing the
+    <application>GNAT</application> version of <command>gcc</command> at the
+    beginning of the <envar>PATH</envar> variable by using the following
+    commands:</para>
+
+<screen><userinput>PATH_HOLD=$PATH &amp;&amp;
+export PATH=/opt/gnat/bin:$PATH_HOLD</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of GCC</title>
+
+    <para>Install <application>GCC</application> by running the
+    following commands:</para>
+
+    <important>
+      <para>The installation process may overwrite your existing
+      <application>GCC</application> <command>gcc</command> and
+      <command>c++</command> compilers and libraries. It is highly recommended
+      that you have the <application>Tcl</application>,
+      <application>Expect</application> and <application>DejaGnu</application>
+      packages installed before beginning the build so you can run the full
+      suite of tests.</para>
+
+      <para>Do not continue with the <command>make install</command> command
+      until you are confident the build was successful. You can compare your
+      test results with those found at
+      <ulink url="http://gcc.gnu.org/ml/gcc-testresults/"/>. There's also an
+      i686 platform test result produced by an LFS-SVN-20070304 system at
+      <ulink url="&files-anduin;/gcc412_test.txt"/>. You
+      may also want to refer to the information found in the
+      <application>GCC</application> section of Chapter 6 in the LFS
+      book (<ulink url="&lfs-root;/chapter06/gcc.html"/>).</para>
+    </important>
+
+    <para>The instructions below perform a <quote><command>make
+    bootstrap</command></quote> instead of just a plain
+    <quote><command>make</command></quote> intentionally. Even though it is
+    assumed that the current version of <application>GCC</application> is
+    installed in LFS, because this installation includes the Ada compiler as an
+    installed language, a bootstrap is required. The GNAT compiler must be used
+    for stage1 of the bootstrap in order to build Ada. If the process didn't
+    use a <quote>bootstrap</quote> you could end up having a
+    <command>gcc</command> installed on the system that was produced by a
+    foriegn compiler.</para>
+
+<screen><userinput>sed -i 's/install_to_$(INSTALL_DEST) //' libiberty/Makefile.in &amp;&amp;
+sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in &amp;&amp;
+sed -i 's/@have_mktemp_command@/yes/' gcc/gccbug.in &amp;&amp;
+mkdir ../gcc-build &amp;&amp;
+cd ../gcc-build &amp;&amp;
+../gcc-&gcc-version;/configure \
+    --prefix=/usr \
+    --libexecdir=/usr/lib \
+    --enable-shared \
+    --enable-threads=posix \
+    --enable-__cxa_atexit \
+    --enable-clocale=gnu \
+    --enable-languages=c,c++,ada,fortran,java,objc,treelang &amp;&amp;
+make bootstrap &amp;&amp;
+make -k check &amp;&amp;
+../gcc-&gcc-version;/contrib/test_summary</userinput></screen>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+ln -v -sf ../usr/bin/cpp /lib &amp;&amp;
+ln -v -sf gcc /usr/bin/cc &amp;&amp;
+chown -v -R root:root \
+    /usr/lib/gcc/i686-pc-linux-gnu/&gcc-version;/include &amp;&amp;
+chown -v -R root:root \
+    /usr/lib/gcc/i686-pc-linux-gnu/&gcc-version;/ada{lib,include}</userinput></screen>
+
+    <para>The <filename class='libraryfile'>libffi</filename> interface header
+    is installed in a location where other packages will not be able to find
+    it. If you included Java as one of the installed languages, create a
+    symbolic link in <filename class='directory'>/usr/include</filename> to
+    remedy this:</para>
+
+<screen role="root"><userinput>ln -v -sf `find /usr/lib/gcc -name ffitarget.h` /usr/include</userinput></screen>
+
+    <para>As the <systemitem class="username">root</systemitem> user, remove the
+    <application>GNAT</application> installation:</para>
+
+<screen role="root"><userinput>rm -rf /opt/gnat</userinput></screen>
+
+    <para>Now, as the unprivileged user, restore your old
+    <envar>PATH</envar>:</para>
+
+<screen><userinput>export PATH=$PATH_HOLD &amp;&amp;
+unset PATH_HOLD</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>The three <command>sed</command> commands are the same ones used
+    during the build of LFS. A fourth one in LFS is ommitted intentionally,
+    due to the bootstrap build.</para>
+
+    <para><command>mkdir ../gcc-build; cd ../gcc-build</command>: The
+    <application>GCC</application> documentation recommends
+    building the package in a dedicated build directory.</para>
+
+    <para><parameter>--enable-shared --enable-threads=posix
+    --enable-__cxa_atexit</parameter>: These parameters are required to build
+    the <application>C++</application> libraries to published standards.</para>
+
+    <para><parameter>--enable-clocale=gnu</parameter>: This command is a
+    failsafe for incomplete locale data.</para>
+
+    <para>
+    <parameter>--enable-languages=c,c++,ada,fortran,java,objc,treelang</parameter>:
+    This command identifies which languages to build. You may modify this command
+    to remove undesired languages.</para>
+
+    <para><command>make -k check</command>: This command runs the test suite
+    without stopping if any errors are encountered.</para>
+
+    <para><command>../gcc-&gcc-version;/contrib/test_summary</command>: This
+    command will produce a summary of the test suite results. You can append
+    <command>| grep -A7 Summ</command> to the command to produce an even more
+    condensed version of the summary. You may also wish to redirect the output
+    to a file for review and comparison later on.</para>
+
+    <para><command>ln -v -sf ../usr/bin/cpp /lib</command>: This command
+    creates a link to the C PreProcessor as some packages expect it to be
+    installed in the <filename class='directory'>/lib</filename>
+    directory.</para>
+
+    <para><command>ln -v -sf gcc /usr/bin/cc</command>: This link is created as
+    some packages refer to the C compiler using an alternate name.</para>
+
+    <para><command>chown -v -R root:root
+    /usr/lib/gcc/i686-pc-linux-gnu/...</command>:
+    If the package is built by a user other than root, the ownership of the
+    installed <filename class='directory'>include</filename> and
+    <filename class='directory'>adalib</filename> directories (and their
+    contents) will be incorrect. These commands change the ownership to the
+    <systemitem class="username">root</systemitem> user and group . Omit the
+    command changing the Ada directories if you did not include Ada as one of
+    the installed languages.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>addr2name.awk, fastjar, gcj, gcj-dbtool,gcjh, gfortran, gij,
+        gjnih, gnat, gnatbind, gnatbl, gnatchop, gnatclean, gnatfind, gnatkr,
+        gnatlink, gnatls, gnatmake, gnatname, gnatprep, gnatxref, gprmake,
+        grepjar, grmic, grmiregistry, gtreelang, jcf-dump, jv-convert, jv-scan
+        and architecture specific names for gcj and gcjh</seg>
+        <seg>libffi.{so,a}, libgcj.{so,a}, libgfortran.{so,a},
+        libgfortranbegin.a, libgij.{so,a}, libobjc.{so,a} and numerous other
+        run-time libraries and executables in /usr/lib/gcc</seg>
+        <seg>/usr/include/c++/&gcc-version;/{gcj,gnu,java,javax,org},
+             /usr/lib/gcc/i686-pc-linux-gnu/&gcc-version;/ada{include,lib},
+             /usr/lib/gcj-&gcc-version;,
+             /usr/lib/security
+             and /usr/share/java</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <para>Some program and library names and descriptions are not listed here,
+    but can be found at
+    <ulink url="&lfs-root;/chapter06/gcc.html#contents-gcc"/> as they were
+    initially installed during the building of LFS.</para>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="addr2name.awk">
+        <term><command>addr2name.awk</command></term>
+        <listitem>
+          <para> emulates some of the functionality of addr2line.</para>
+          <indexterm zone="gcc addr2name.awk">
+            <primary sortas="b-addr2name.awk">addr2name.awk</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="fastjar-gcc">
+        <term><command>fastjar</command></term>
+        <listitem>
+          <para>is an archive tool for <application>Java</application> archives.</para>
+          <indexterm zone="gcc fastjar-gcc">
+            <primary sortas="b-fastjar">fastjar</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gcj">
+        <term><command>gcj</command></term>
+        <listitem>
+          <para>is an ahead-of-time compiler for the
+          <application>Java</application> language.</para>
+          <indexterm zone="gcc gcj">
+            <primary sortas="b-gcj">gcj</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gcj-dbtool">
+        <term><command>gcj-dbtool</command></term>
+        <listitem>
+          <para>is a tool for creating and manipulating class file mapping
+          databases.</para>
+          <indexterm zone="gcc gcj-dbtool">
+            <primary sortas="b-gcj-dbtool">gcj-dbtool</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gcjh">
+        <term><command>gcjh</command></term>
+        <listitem>
+          <para>generates header files from <application>Java</application>
+          class files.</para>
+          <indexterm zone="gcc gcjh">
+            <primary sortas="b-gcjh">gcjh</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gfortran">
+        <term><command>gfortran</command></term>
+        <listitem>
+          <para>is the <application>Fortran</application> compiler invoked by
+          <command>gcc</command>.</para>
+          <indexterm zone="gcc gfortran">
+            <primary sortas="b-gfortran">gfortran</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gij">
+        <term><command>gij</command></term>
+        <listitem>
+          <para>is the GNU interpreter for <application>Java</application>
+          bytecode.</para>
+          <indexterm zone="gcc gij">
+            <primary sortas="b-gij">gij</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gjnih">
+        <term><command>gjnij</command></term>
+        <listitem>
+          <para>is used to generate JNI header files from class files. Running
+          it is equivalent to running <command>gcjh -jni</command>.</para>
+          <indexterm zone="gcc gjnih">
+            <primary sortas="b-gjnih">gjnih</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gnat">
+        <term><command>gnat</command></term>
+        <listitem>
+          <para>is the <application>Ada</application> compiler invoked by
+          <command>gcc</command>.</para>
+          <indexterm zone="gcc gnat">
+            <primary sortas="b-gnat">gnat</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gnatbind">
+        <term><command>gnatbind</command></term>
+        <listitem>
+          <para>is used to bind compiled objects.</para>
+          <indexterm zone="gcc gnatbind">
+            <primary sortas="b-gnatbind">gnatbind</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gnatbl">
+        <term><command>gnatbl</command></term>
+        <listitem>
+          <para>is the <application>Ada</application> linker.</para>
+          <indexterm zone="gcc gnatbl">
+            <primary sortas="b-gnatbl">gnatbl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gnatchop">
+        <term><command>gnatchop</command></term>
+        <listitem>
+          <para>is useful for renaming files to meet the standard
+          <application>Ada</application> default file naming conventions.</para>
+          <indexterm zone="gcc gnatchop">
+            <primary sortas="b-gnatchop">gnatchop</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gnatclean">
+        <term><command>gnatclean</command></term>
+        <listitem>
+          <para>is used to remove files associated with a
+          <application>GNAT</application> project.</para>
+          <indexterm zone="gcc gnatclean">
+            <primary sortas="b-gnatclean">gnatclean</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gnatfind">
+        <term><command>gnatfind</command></term>
+        <listitem>
+          <para> is the <application>GNAT</application> definition/use finder.</para>
+          <indexterm zone="gcc gnatfind">
+            <primary sortas="b-gnatfind">gnatfind</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gnatkr">
+        <term><command>gnatkr</command></term>
+        <listitem>
+          <para>is used to determine the crunched name for a given file, when
+          crunched to a specified maximum length.</para>
+          <indexterm zone="gcc gnatkr">
+            <primary sortas="b-gnatkr">gnatkr</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gnatlink">
+        <term><command>gnatlink</command></term>
+        <listitem>
+          <para>is used to link programs and build an executable file.</para>
+          <indexterm zone="gcc gnatlink">
+            <primary sortas="b-gnatlink">gnatlink</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gnatls">
+        <term><command>gnatls</command></term>
+        <listitem>
+          <para>is the compiled unit browser.</para>
+          <indexterm zone="gcc gnatls">
+            <primary sortas="b-gnatls">gnatls</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gnatmake">
+        <term><command>gnatmake</command></term>
+        <listitem>
+          <para>is an automatic <command>make</command> facility.</para>
+          <indexterm zone="gcc gnatmake">
+            <primary sortas="b-gnatmake">gnatmake</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gnatname">
+        <term><command>gnatname</command></term>
+        <listitem>
+          <para>will list the files associated with a
+          <application>GNAT</application> project.</para>
+          <indexterm zone="gcc gnatname">
+            <primary sortas="b-gnatname">gnatname</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gnatprep">
+        <term><command>gnatprep</command></term>
+        <listitem>
+          <para>is the <application>GNAT</application> external preprocessor.</para>
+          <indexterm zone="gcc gnatprep">
+            <primary sortas="b-gnatprep">gnatprep</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gnatxref">
+        <term><command>gnatxref</command></term>
+        <listitem>
+          <para>is the <application>GNAT</application> cross-referencer.</para>
+          <indexterm zone="gcc gnatxref">
+            <primary sortas="b-gnatxref">gnatxref</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gprmake">
+        <term><command>gprmake</command></term>
+        <listitem>
+          <para>is a tool used to create <filename>Makefile</filename>s that
+          support compilation by multiple languages.</para>
+          <indexterm zone="gcc gprmake">
+            <primary sortas="b-gprmake">gprmake</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grepjar">
+        <term><command>grepjar</command></term>
+        <listitem>
+          <para>searches <filename>jar</filename> files for a pattern.</para>
+          <indexterm zone="gcc grepjar">
+            <primary sortas="b-grepjar">grepjar</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grmic-gcc">
+        <term><command>grmic</command></term>
+        <listitem>
+          <para>generates stubs for Remote Method Invocation.</para>
+          <indexterm zone="gcc grmic-gcc">
+            <primary sortas="b-grmic">grmic</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="grmiregistry-gcc">
+        <term><command>grmiregistry</command></term>
+        <listitem>
+          <para> starts a remote object registry on the current host.</para>
+          <indexterm zone="gcc grmiregistry-gcc">
+            <primary sortas="b-grmiregistry">grmiregistry</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="gtreelang">
+        <term><command>gtreelang</command></term>
+        <listitem>
+          <para>is largely a cut down version of C, designed to showcase the
+          features of the <application>GCC</application> code generation back
+          end. Only those features that are directly supported by the
+          <application>GCC</application> code generation back end are
+          implemented. Features are implemented in a manner which is easiest
+          and clearest to implement. Not all or even most code generation back
+          end features are implemented. The intention is to add features
+          incrementally until most features of the
+          <application>GCC</application> back end are implemented in
+          Treelang.</para>
+          <indexterm zone="gcc gtreelang">
+            <primary sortas="b-gtreelang">gtreelang</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jcf-dump">
+        <term><command>jcf-dump</command></term>
+        <listitem>
+          <para>prints information about <application>Java</application>
+          class files.</para>
+          <indexterm zone="gcc jcf-dump">
+            <primary sortas="b-jcf-dump">jcf-dump</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jv-convert">
+        <term><command>jv-convert</command></term>
+        <listitem>
+          <para>converts files from one encoding to another.</para>
+          <indexterm zone="gcc jv-convert">
+            <primary sortas="b-jv-convert">jv-convert</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="jv-scan">
+        <term><command>jv-scan</command></term>
+        <listitem>
+          <para>prints information about <application>Java</application>
+          source files.</para>
+          <indexterm zone="gcc jv-scan">
+            <primary sortas="b-jv-scan">jv-scan</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

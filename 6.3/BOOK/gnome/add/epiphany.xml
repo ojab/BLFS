@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY epiphany-download-http "&gnome-download-http;/epiphany/&gnome-version;/epiphany-&epiphany-version;.tar.bz2">
+  <!ENTITY epiphany-download-ftp  "&gnome-download-ftp;/epiphany/&gnome-version;/epiphany-&epiphany-version;.tar.bz2">
+  <!ENTITY epiphany-md5sum        "2e77f3f0651a27cac29224e82c3cc793">
+  <!ENTITY epiphany-size          "4.7 MB">
+  <!ENTITY epiphany-buildsize     "91 MB">
+  <!ENTITY epiphany-time          "1.3 SBU">
+]>
+
+<sect1 id="epiphany" xreflabel="Epiphany-&epiphany-version;">
+  <?dbhtml filename="epiphany.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Epiphany-&epiphany-version;</title>
+
+  <indexterm zone="epiphany">
+    <primary sortas="a-Epiphany">Epiphany</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Epiphany</title>
+
+    <para><application>Epiphany</application> is a simple yet powerful
+    <application>GNOME</application> web browser targeted at non-technical
+    users. Its principles are simplicity and standards compliance.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&epiphany-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&epiphany-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &epiphany-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &epiphany-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &epiphany-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &epiphany-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Epiphany Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="gnome-desktop"/>,
+    <xref linkend="startup-notification"/>,
+    <xref linkend="iso-codes"/>, and
+    a mozilla.org Gecko layout engine
+    (<xref linkend="seamonkey"/> or
+    <xref linkend="firefox"/> or
+    <xref linkend="thunderbird"/> or
+    <ulink url="http://www.mozilla.org/products/mozilla1.x/">Mozilla</ulink>)</para>
+
+    <bridgehead renderas="sect4">Optional for Python Support</bridgehead>
+    <para role="optional"><xref linkend="pygtk"/> (including the gtk module)
+    and <xref linkend="gnome-python"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><ulink
+     url="http://www.abisource.com/projects/enchant/">Enchant</ulink>,
+    <xref linkend="intltool"/>, and
+    <xref linkend="gtk-doc"/></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/epiphany"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Epiphany</title>
+
+    <para>Install <application>Epiphany</application> by running the following
+    commands:</para>
+
+<screen><userinput>./configure --prefix=$(pkg-config --variable=prefix ORBit-2.0) \
+            --sysconfdir=&gnome-etc-dir; \
+            --localstatedir=/var/lib \
+            --mandir=$(pkg-config \
+                --variable=prefix ORBit-2.0)/share/man &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <para>A <application>D-BUS</application> service script was installed in
+    the previous step. If the <envar>$GNOME_PREFIX</envar> is anything other
+    than <filename class='directory'>/usr</filename>, as the
+    <systemitem class="username">root</systemitem> user you should add the
+    <filename class='directory'>$GNOME_PREFIX/share/dbus-1/services</filename>
+    directory to the local session configuration as described in the
+    <xref linkend="dbus"/> configuration section.</para>
+
+    <para>If you have <application>GNOME-Python</application> installed, the
+    <application>Epiphany</application> <application>Python</application>
+    extension is automatically built. If your $GNOME_PREFIX is anything but
+    <filename class='directory'>/usr</filename> and you have
+    <application>GNOME-Python</application> installed, as the
+    <systemitem class="username">root</systemitem> user create the following
+    symbolic link in the <application>PyGTK</application> extensions directory
+    of <filename class='directory'>/usr/share</filename>:</para>
+
+<screen role="root"><userinput>ln -v -s $GNOME_PREFIX/share/pygtk/2.0/defs/epiphany.defs \
+    /usr/share/pygtk/2.0/defs</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gnome-prefix.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gnome-sysconfdir.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/scrollkeeper-dir.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gnome-mandir.xml"/>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>epiphany</seg>
+        <seg>None</seg>
+        <seg>The following subdirectories of <envar>$GNOME_PREFIX</envar>/:
+        include/epiphany-2.14,
+        lib/epiphany,
+        share/{,gnome/help/, gtk-doc/html/, omf/}epiphany</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="epiphany-prog">
+        <term><command>epiphany</command></term>
+        <listitem>
+          <para>is a <application>GNOME</application> web browser based on
+          the <application>Mozilla</application> rendering engine.</para>
+          <indexterm zone="epiphany epiphany-prog">
+            <primary sortas="b-epiphany">epiphany</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

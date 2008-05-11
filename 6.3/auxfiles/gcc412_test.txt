@@ -1,0 +1,123 @@
+$LastChangedBy$
+$Date$
+
+                === acats tests ===
+
+                === acats Summary ===
+# of expected passes		2317
+# of unexpected failures	0
+Native configuration is i686-pc-linux-gnu
+
+                === g++ tests ===
+
+Running target unix
+XPASS: g++.dg/tree-ssa/pr14814.C scan-tree-dump-times &this 0
+XPASS: g++.old-deja/g++.other/init5.C execution test
+
+                === g++ Summary ===
+
+# of expected passes		12408
+# of unexpected successes	2
+# of expected failures		66
+# of unsupported tests		69
+/home/rml/build/gcc-builddir/gcc/testsuite/g++/../../g++  version 4.1.2
+
+                === gcc tests ===
+
+Running target unix
+
+                === gcc Summary ===
+
+# of expected passes		38985
+# of expected failures		101
+# of untested testcases		28
+# of unsupported tests		246
+/home/rml/build/gcc-builddir/gcc/xgcc  version 4.1.2
+
+                === gfortran tests ===
+
+Running target unix
+XPASS: gfortran.dg/csqrt_2.f  -O0  execution test
+XPASS: gfortran.dg/csqrt_2.f  -O1  execution test
+XPASS: gfortran.dg/csqrt_2.f  -O2  execution test
+XPASS: gfortran.dg/csqrt_2.f  -O3 -fomit-frame-pointer  execution test
+XPASS: gfortran.dg/csqrt_2.f  -O3 -fomit-frame-pointer -funroll-loops  execution test
+XPASS: gfortran.dg/csqrt_2.f  -O3 -fomit-frame-pointer -funroll-all-loops -finline-functions  execution test
+XPASS: gfortran.dg/csqrt_2.f  -O3 -g  execution test
+XPASS: gfortran.dg/csqrt_2.f  -Os  execution test
+
+                === gfortran Summary ===
+
+# of expected passes		13622
+# of unexpected successes	8
+# of expected failures		5
+# of unsupported tests		16
+/home/rml/build/gcc-builddir/gcc/testsuite/gfortran/../../gfortran  version 4.1.2
+
+                === objc tests ===
+
+Running target unix
+
+                === objc Summary ===
+
+# of expected passes		1722
+# of unsupported tests		22
+/home/rml/build/gcc-builddir/gcc/xgcc  version 4.1.2
+
+                === treelang tests ===
+
+Running target unix
+
+                === treelang Summary ===
+
+# of expected passes		50
+
+                === libffi tests ===
+
+Running target unix
+
+                === libffi Summary ===
+
+# of expected passes		228
+# of unsupported tests		2
+
+                === libjava tests ===
+
+Running target unix
+
+                === libjava Summary ===
+
+# of expected passes		4060
+# of expected failures		10
+# of untested testcases		8
+
+                === libmudflap tests ===
+
+Running target unix
+
+                === libmudflap Summary ===
+
+# of expected passes		1799
+
+                === libstdc++ tests ===
+
+Running target unix
+XPASS: 26_numerics/cmath/c99_classification_macros_c.cc (test for excess errors)
+
+                === libstdc++ Summary ===
+
+# of expected passes		3398
+# of unexpected successes	1
+# of expected failures		12
+# of unsupported tests		324
+
+Compiler version: 4.1.2 
+Platform: i686-pc-linux-gnu
+configure flags: --prefix=/usr
+                 --libexecdir=/usr/lib
+                 --enable-shared
+                 --enable-threads=posix
+                 --enable-__cxa_atexit
+                 --enable-clocale=gnu
+                 --enable-languages=c,ada,c++,fortran,java,objc,treelang
+

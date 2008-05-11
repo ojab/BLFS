@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY xine-lib-download-http "http://downloads.sourceforge.net/xine/xine-lib-&xine-lib-version;.tar.bz2">
+  <!ENTITY xine-lib-download-ftp  "&gentoo-ftp-repo;/xine-lib-&xine-lib-version;.tar.bz2">
+  <!ENTITY xine-lib-md5sum        "b7254614c78c8b0f1652b8dc06f80b3a">
+  <!ENTITY xine-lib-size          "7.1 MB">
+  <!ENTITY xine-lib-buildsize     "233 MB">
+  <!ENTITY xine-lib-time          "6.1 SBU">
+]>
+
+<sect1 id="xine-lib" xreflabel="xine Libraries-&xine-lib-version;">
+  <?dbhtml filename="xine-lib.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Xine Libraries-&xine-lib-version;</title>
+
+  <indexterm zone="xine-lib">
+    <primary sortas="a-Xine-Libraries">Xine Libraries</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Xine Libraries</title>
+
+    <para>The <application>xine Libraries</application> package contains xine
+    libraries. These are useful for interfacing with external plug-ins that
+    allow the flow of information from the source to the screen and
+    speakers.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&xine-lib-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&xine-lib-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &xine-lib-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &xine-lib-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &xine-lib-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &xine-lib-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Xine Libraries Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="x-window-system"/> and
+    <xref linkend="esound"/> or OSS or
+    <xref linkend="alsa"/> or <xref linkend="arts"/> or
+    <ulink url="http://pulseaudio.org/">PulseAudio</ulink> or
+    <ulink url="http://jackaudio.org/">JACK</ulink></para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended"><xref linkend="pkgconfig"/> and  <xref linkend="ffmpeg"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="aalib"/>,
+    <xref linkend="libmng"/>,
+    <xref linkend="sdl"/>,
+    <xref linkend="libfame"/>,
+    <xref linkend="libvorbis"/>,
+    <xref linkend="speex"/>,
+    <xref linkend="gnome-vfs"/>,
+    <xref linkend="flac"/>,
+    <xref linkend="samba3"/>,
+    <xref linkend="imagemagick"/>,
+    <ulink url="http://www.directfb.org/">DirectFB</ulink>,
+    <ulink url="http://www.theora.org/">Theora</ulink>,
+    <ulink url="http://sam.zoy.org/projects/libcaca/">libcaca</ulink>,
+    <ulink url="http://sourceforge.net/projects/modplug-xmms/">libmodplug</ulink>,
+    <ulink url="http://www.gnu.org/software/libcdio/">libcdio</ulink>,
+    <ulink url="http://www.vcdimager.org/">VCDImager</ulink>,
+    <ulink url="http://www.musepack.net/">libmpcdec</ulink>,
+    <ulink url="http://www.wavpack.com/">WavPack</ulink>,
+    <ulink url="http://dxr3.sourceforge.net/">libdxr3</ulink>,
+
+<!-- XFREE86
+    <ulink url="http://sourceforge.net/projects/unichrome/">XvMC Wrapper</ulink>
+    (only if you have XFree86 installed),
+XFREE86 -->
+
+    <ulink url="http://sourceforge.net/projects/sgmltools-lite/">sgmltools-lite</ulink>,
+    and <ulink url="http://www.xfig.org/">Transfig</ulink></para>
+
+    <para>The developers recommended that you use the internal source tree
+    versions of <xref linkend="liba52"/>, libdts (now <ulink
+    url="http://www.videolan.org/developers/libdca.html">libdca</ulink>), <ulink
+    url="http://sourceforge.net/projects/dvd/">libdvdnav</ulink>, and <xref
+    linkend="libmad"/> and not system-installed versions.</para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/xine-lib"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Xine Libraries</title>
+
+    <para>Install <application>xine Libraries</application> by running the
+    following commands:</para>
+
+<screen><userinput>./configure --prefix=/usr --enable-static --with-external-ffmpeg \
+            --docdir=/usr/share/doc/xine-lib-&xine-lib-version; &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><option>--enable-static</option>: This switch is used to enable
+    building the static library as some programs link against it.</para>
+
+    <para><option>--with-external-ffmpeg</option>: This switch enables use of
+    an external <application>FFmpeg</application> library.  The internaly built
+    library produces poor resuts with some video files.</para>
+
+    <!-- See BLFS ticket 2476 for more info on the ffmpeg option.  -->
+
+    <para><option>--docdir=/usr/share/xine-lib-&xine-lib-version;</option>:
+    This switch causes the documentation to be installed into a versioned
+    instead of the default
+    <filename class="directory">/usr/share/doc/xine-lib</filename>.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Fonts</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>xine-config</seg>
+        <seg>libxine.{a,so} and numerous plugin modules and video extensions</seg>
+        <seg>Output display engine fonts located in
+        /usr/share/xine/libxine1/fonts</seg>
+        <seg>/usr/include/xine, /usr/lib/xine, /usr/share/xine, and
+        /usr/share/doc/xine-lib-&xine-lib-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="xine-config">
+        <term><command>xine-config</command></term>
+        <listitem>
+          <para>provides information to programs trying to link with the
+          <application>xine</application> libraries.</para>
+          <indexterm zone="xine-lib xine-config">
+            <primary sortas="b-xine-config">xine-config</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libxine">
+        <term><filename class='libraryfile'>libxine.so</filename></term>
+        <listitem>
+          <para> provides the API for processing audio/video files.</para>
+          <indexterm zone="xine-lib libxine">
+            <primary sortas="c-libxine">libxine.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

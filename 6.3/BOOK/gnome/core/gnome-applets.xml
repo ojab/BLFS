@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gnome-applets-download-http "&gnome-download-http;/gnome-applets/&gnome-version;/gnome-applets-&gnome-applets-version;.tar.bz2">
+  <!ENTITY gnome-applets-download-ftp  "&gnome-download-ftp;/gnome-applets/&gnome-version;/gnome-applets-&gnome-applets-version;.tar.bz2">
+  <!ENTITY gnome-applets-md5sum        "db3ef99c00335798f30fc0a9162c0257">
+  <!ENTITY gnome-applets-size          "7.1 MB">
+  <!ENTITY gnome-applets-buildsize     "118 MB">
+  <!ENTITY gnome-applets-time          "1.1 SBU">
+]>
+
+<sect1 id="gnome-applets" xreflabel="GNOME Applets-&gnome-applets-version;">
+  <?dbhtml filename="gnome-applets.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>GNOME Applets-&gnome-applets-version;</title>
+
+  <indexterm zone="gnome-applets">
+    <primary sortas="a-GNOME-Applets">GNOME Applets</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to GNOME Applets</title>
+
+    <para>The <application>GNOME Applets</application> package contains
+    small applications which generally run in the background and display
+    their output to the <application>GNOME</application> panel.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&gnome-applets-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&gnome-applets-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &gnome-applets-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &gnome-applets-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &gnome-applets-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &gnome-applets-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">GNOME Applets Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="scrollkeeper"/>,
+    <xref linkend="gail"/>,
+    <xref linkend="gnome-icon-theme"/>,
+    <xref linkend="gnome-panel"/></para>
+
+    <bridgehead renderas="sect4">Optional to Build the Invest Applet</bridgehead>
+    <para role="optional"><xref linkend="pygtk"/> (including the gtk and
+    gtk.libglade modules) and <xref linkend="gnome-python-desktop"/>
+    (including the gnomeapplet module)</para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="libgtop"/>,
+    <xref linkend="control-center"/>,
+    <xref linkend="gst-plugins-base"/>,
+    <xref linkend="hal"/>,
+    <xref linkend="libgnomekbd"/>,
+    <xref linkend="gucharmap"/>,
+    <xref linkend="system-tools-backends"/>,
+    <xref linkend="docbook-utils"/>,
+    <ulink url="http://club.pep.ne.jp/~ishioka/Software/Linux/libapm-e.html">libapm</ulink>, and
+    <ulink url="http://www.galago-project.org/news/index.php">libnotify</ulink></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/gnome-applets"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of GNOME Applets</title>
+
+    <para>Install <application>GNOME Applets</application> by
+    running the following commands:</para>
+
+<screen><userinput>./configure --prefix=$(pkg-config --variable=prefix ORBit-2.0) \
+            --sysconfdir=&gnome-etc-dir; \
+            --localstatedir=/var/lib \
+            --libexecdir=$(pkg-config \
+                --variable=prefix ORBit-2.0)/lib/gnome-applets \
+            --mandir=$(pkg-config \
+                --variable=prefix ORBit-2.0)/share/man &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+make -C man install-man</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gnome-prefix.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gnome-sysconfdir.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/scrollkeeper-dir.xml"/>
+
+    <para><parameter>--libexecdir=$(pkg-config --variable=prefix
+    ORBit-2.0)/lib/gnome-applets</parameter>: This parameter causes the libexec
+    files to be installed in the preferred location of
+    in <filename class="directory">$GNOME_PREFIX/lib/gnome-applets</filename>
+    instead of
+    <filename class="directory">$GNOME_PREFIX/libexec</filename>.</para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gnome-mandir.xml"/>
+
+    <para><command>make -C man install-man</command>: This command installs
+    the man-pages that are not installed during
+    <command>make install</command>.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>cpufreq-selector</seg>
+        <seg>None</seg>
+        <seg>The following subdirectories of <envar>$GNOME_PREFIX</envar>/:
+        include/libgweather,
+        lib/gnome-applets,
+        share/{gnome-applets, {gnome/help,omf}/{too many to list},
+        pixmaps/{accessx-status-applet, cpufreq-applet, stickynotes},
+        xmodmap}</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+</sect1>

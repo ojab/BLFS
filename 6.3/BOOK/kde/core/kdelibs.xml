@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY kdelibs-download-http "&kde-download-http;/kdelibs-&kde-version;.tar.bz2">
+  <!ENTITY kdelibs-download-ftp  "&kde-download-ftp;/kdelibs-&kde-version;.tar.bz2">
+  <!ENTITY kdelibs-md5sum        "55e5f00874933d1a7ba7c95e369a205e">
+  <!ENTITY kdelibs-size          "15.0 MB">
+  <!ENTITY kdelibs-buildsize     "276 MB (additional 431 MB for API docs)">
+  <!ENTITY kdelibs-time          "15 SBU (additional 1.25 SBU for API docs)">
+]>
+
+<sect1 id="kdelibs" xreflabel="kdelibs-&kde-version;">
+  <?dbhtml filename="kdelibs.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Kdelibs-&kde-version;</title>
+
+  <indexterm zone="kdelibs">
+    <primary sortas="a-kdelibs">Kdelibs</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Kdelibs</title>
+
+    <para>This package includes programs and libraries that are central to the
+    development and execution of a <application>KDE</application> program,
+    as well as internationalization files for these libraries, miscellaneous
+    HTML documentation, theme modules and regression tests.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing='compact'>
+      <listitem>
+        <para>Download (HTTP): <ulink url="&kdelibs-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&kdelibs-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &kdelibs-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &kdelibs-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &kdelibs-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &kdelibs-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Kdelibs Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="qt"/></para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended"><xref linkend="aRts"/>,
+    <xref linkend="libjpeg"/>,
+    <xref linkend="libart_lgpl"/>,
+    <xref linkend="libxml2"/>,
+    <xref linkend="libxslt"/>,
+    <xref linkend="pcre"/>,
+    <xref linkend="gamin"/>,
+    <xref linkend="openssl"/>, and
+    <xref linkend="libidn"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="libtiff"/>,
+    <xref linkend="aspell"/>,
+    <xref linkend="cups"/>,
+    <xref linkend="alsa"/>,
+    <xref linkend="heimdal"/> or <xref linkend="mitkrb"/>,
+    <ulink url="http://www.openexr.com/">OpenEXR</ulink>,
+    <ulink url="http://www.ece.uvic.ca/~mdadams/jasper/">JasPer</ulink>,
+    <ulink url="http://www.lua.org/">Lua</ulink> (version &lt; 5.1),
+    <ulink url="http://www.opensource.apple.com/darwinsource/tarballs/apsl/">mDNSResponder</ulink>,
+    <ulink url="http://sourceforge.net/projects/libthai">LibThai</ulink>,
+    <ulink url="http://www.ivrix.org.il/projects/spell-checker/">Hspell</ulink>,
+    <ulink url="ftp://oss.sgi.com/projects/xfs/cmd_tars/">libacl</ulink>
+    (requires <ulink url="ftp://oss.sgi.com/projects/xfs/cmd_tars/">libattr</ulink>),
+    <xref linkend="sudo"/>,
+    <xref linkend="graphviz"/>, and
+    <xref linkend="doxygen"/></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/kdelibs"/></para>
+
+  </sect2>
+
+  <sect2 id="kdelibs-runtime-dependencies"
+         xreflabel="KDE Libraries Runtime Dependencies">
+    <title>Run-Time Dependencies</title>
+
+    <para>The <application>KDE</application> libraries access other programs at
+    run time. One additional package that has not been mentioned already is
+    <ulink url="http://packages.debian.org/unstable/source/pmount/">
+    pmount</ulink>.  This enables auto-mounting of hotplugged devices at
+    /media/[device_name] for any user without any fstab modification. It is
+    needed to enable the full integration of <application>KDE</application>
+    with <xref linkend="hal"/>.</para>
+
+  </sect2>
+
+  <sect2 role="installation" id="kdelibs-install"
+         xreflabel="the installation of kdelibs">
+    <title>Installation of Kdelibs</title>
+
+    <para>Install <application>kdelibs</application> with:</para>
+
+<screen><userinput>./configure --prefix=&kde-dir; \
+            --sysconfdir=/etc/kde \
+            --disable-debug \
+            --disable-dependency-tracking &amp;&amp;
+LD_LIBRARY_PATH="$QTDIR/lib" make</userinput></screen>
+
+    <note>
+      <para>If you wish to create the API documentation and you have
+      <application>Doxygen</application> and <application>Graphviz</application>
+      installed, <command>make apidox</command> must be done before
+      <command>make install</command>. This applies to all packages which
+      can utilize <application>Doxygen</application>.</para>
+
+      <para>The <command>make apidox</command> command generates a lot of
+      errors and warnings.  In some cases it complains that Helvetica fonts are
+      missing and substitutes a font that does not fit boxes properly.  You can
+      add the font by downloading the <ulink
+      url="ftp://ftp.gnome.ru/fonts/urw/release/">URW Fonts </ulink> and
+      unpacking them into <filename class='directory'>~/.fonts</filename>.
+      <command>fc-cache</command> should also be run to update the font
+      properties on your system.</para>
+
+      <para>The documents generated are HTML and are found in <filename
+      class='directory'>&kde-dir;/share/doc/HTML/en/kdelibs-apidocs</filename>.
+      </para>
+    </note>
+
+    <para>This package does not come with a test suite that works with
+    <application>GCC</application>-&gcc-version;.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role='root'><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>--prefix=&kde-dir;</parameter>: This option tells the process
+    to install the package in <filename class="directory">&kde-dir;</filename>.</para>
+
+    <para><parameter>--disable-debug</parameter>: This option causes the
+    package to be compiled without debugging code.</para>
+
+    <para><parameter>--disable-dependency-tracking</parameter>: This option
+    speeds up one time builds.</para>
+
+<!--
+    <para><parameter>- -enable-fast-malloc=full</parameter>: This option tells
+    <application>KDE</application> programs to use an internal memory
+    allocation scheme optimized for <application>KDE</application>.</para>
+-->
+
+    <para><parameter>--sysconfdir=/etc/kde</parameter>: This option places
+    configuration files in compliance with the <ulink
+    url='http://www.pathname.com/fhs/pub/fhs-2.3.html#ETCHOSTSPECIFICSYSTEMCONFIGURATION'
+    >Filesystem Hierarchy Standard</ulink>.  If you omit this parameter, the
+    configuration files will be placed in <filename
+    class='directory'>$KDE_PREFIX/etc</filename> which may be desirable if
+    you have multiple versions of <application>KDE</application> installed.</para>
+
+    <para><parameter>LD_LIBRARY_PATH="$QTDIR/lib" make</parameter>: A bug in the
+    <application>kdelibs</application> build system prevents <application>Qt</application>
+    from being found by the Makefiles if <application>Qt</application> was
+    installed in <filename class='directory'>/opt</filename>. Setting LD_LIBRARY_PATH
+    works around the problem.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>Numerous <application>KDE</application> support programs:
+        artsmessage, checkXML, cupsdconf, cupsdoprint, dcop, dcopclient,
+        dcopfind, dcopidl, dcopidl2cpp, dcopidlng, dcopobject, dcopquit,
+        dcopref, dcopserver, dcopserver_shutdown, dcopstart, filesharelist,
+        fileshareset, imagetops, kab2kabc, kaddprinterwizard, kbuildsycoca,
+        kcmshell, kconf_update, kconfig_compiler, kcookiejar, kde-config,
+        kde-menu, kded, kdeinit, kdeinit_shutdown, kdeinit_wrapper, kdesu_stub,
+        kdontchangethehostname, kdostartupconfig, kfile, kfmexec, kgrantpty,
+        khotnewstuff, kinstalltheme, kio_http_cache_cleaner, kio_uiserver,
+        kioexec, kioslave, klauncher, kmailservice, kpac_dhcp_helper,
+        ksendbugmail, kshell, kstartupconfig, ksvgtopng, ktelnetservice,
+        ktradertest, kunittestmodrunner, kwrapper, lnusertemp,
+        make_driver_db_cups, make_driver_db_lpr, makekdewidgets, meinproc,
+        preparetips, and start_kdeinit</seg>
+        <seg>Numerous <application>KDE</application> libraries and helper
+        modules</seg>
+        <seg>/etc/kde and the following subdirectories of &kde-dir;/:
+        include/{dnssd, dom, kabc, kate, kdeprint, kdesu, khexedit, kio, kjs,
+        kmdi, kmediaplayer, knewstuff, kparts, kresources, ksettings, kspell2,
+        ktexteditor, kunittest, libkmid}, lib/kde3, and share/{applications,
+        apps, autostart, config, doc, emoticons, icons, mimelnk, services} </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="kdelib-programs">
+        <term>KDE Support Programs</term>
+        <listitem>
+          <para>are essential support programs needed by other
+          <application>KDE</application> applications.</para>
+          <indexterm zone="kdelibs kdelib-programs">
+            <primary sortas="b-kdelib-programs">KDE Support Programs</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kde-libraries">
+        <term>KDE Libraries</term>
+        <listitem>
+          <para>contain essential functions that are needed by
+          <application>KDE</application> applications.</para>
+          <indexterm zone="kdelibs kde-libraries">
+            <primary sortas="c-kde-libraries">kde-libraries</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>The number of programs and libraries installed by
+    <application>kdelibs</application> prohibits an explanation of each one
+    in this section. Instead, see the <ulink url="http://docs.kde.org/">KDE
+    Documentation</ulink>.</para>
+
+  </sect2>
+
+</sect1>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "general.ent">
+  %general-entities;
+]>
+
+<chapter id="chapter01">
+  <chapterinfo>
+    <othername>$Author$</othername>
+    <date>$Date$</date>
+  </chapterinfo>
+  <title>BLFS Development</title>
+  <?dbhtml filename="chapter01.html" ?>
+
+  <para>The actual BLFS book itself is written using Docbook-XML
+  (http://www.docbook.org/tdg/en/html/) and at first can seem to be a daunting
+  tangle of files.  Basically, if you're confused, start by looking at
+  <filename>index.xml</filename>.  You can see that the file is a well formed
+  xml file that includes other files.  These included files reflect the
+  organization of the book.  It is divided into Front Matter, Parts, and
+  Appendices.  Parts are divided into Chapters and the Chapters are again
+  divided into Sections.  Each Section generally represents one specific
+  topic.</para>
+
+  <para>BLFS development takes place using three main systems.  First, the
+  mailing lists <emphasis>blfs-dev</emphasis>, <emphasis>blfs-book</emphasis>,
+  and (to a lesser extent) <emphasis>blfs-support</emphasis>.  Second, the Trac
+  Wiki and ticket tracking system, and third the
+  <application>Subversion</application> repository where the book itself is stored.
+  All of these services are provided by the server
+  <emphasis>linuxfromscratch.org</emphasis> also known as
+  <emphasis>quantum.linuxfromscratch.org</emphasis>.  This single server provides
+  mailing lists, web hosting, <application>Subversion</application> hosting, ftp
+  hosting, the Trac system, and basically everything used to work on the BLFS
+  project.</para>
+
+  <para>Anyone can subscribe to any of the mailing lists provided by quantum.
+  You can find a good description of the mailing lists at <ulink
+  url="http://www.linuxfromscratch.org/mail.html"/>.</para>
+
+  <para>The Trac Wiki and ticket tracking system for BLFS can be found at <ulink
+  url="&blfs-trac;"/>.  In order to be able to add, remove and edit tickets, you
+  need to have an account and make sure you are logged in whenever you wish to
+  perform such an action.  You can query and read the ticket database without
+  logging in or creating a user.  Note that all Trac tickets are copied to
+  the <emphasis>blfs-book</emphasis> mailing list and that all editors should be
+  subscribed to this and the <emphasis>blfs-dev</emphasis> list at a
+  minimum.</para>
+
+  <para>Finally, there is the Subversion (svn) server which will be discussed in
+  the following chapters.</para>
+
+</chapter>

@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY evolution-download-http "&gnome-download-http;/evolution/2.10/evolution-&evolution-version;.tar.bz2">
+  <!ENTITY evolution-download-ftp  "&gnome-download-ftp;/evolution/2.10/evolution-&evolution-version;.tar.bz2">
+  <!ENTITY evolution-md5sum        "09cc60b037849b3c9b34961eb7da217f">
+  <!ENTITY evolution-size          "26 MB">
+  <!ENTITY evolution-buildsize     "355 MB">
+  <!ENTITY evolution-time          "10 SBU">
+]>
+
+<sect1 id="evolution" xreflabel="Evolution-&evolution-version;">
+  <?dbhtml filename="evolution.html" ?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Evolution-&evolution-version;</title>
+
+  <indexterm zone="evolution">
+    <primary sortas="a-Evolution">Evolution</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Evolution</title>
+
+    <para>The <application>Evolution</application> package contains an
+    integrated mail, calendar and address book suite designed for the
+    <application>GNOME-2</application> environment.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&evolution-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&evolution-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &evolution-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &evolution-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &evolution-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &evolution-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Evolution Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="gtkhtml"/>,
+    <xref linkend="gnome-doc-utils"/>, and
+    <xref linkend="evolution-data-server"/></para>
+
+    <bridgehead renderas="sect4">Recommended
+    (For SSL and S/MIME support)</bridgehead>
+    <para role="recommended"><xref linkend="nss"/></para>
+
+    <para>The <application>NSS</application> package is not required if you
+    have <xref linkend="firefox"/>, <xref linkend="thunderbird"/>,
+    <xref linkend="seamonkey"/> or
+    <ulink url="http://www.mozilla.org/products/mozilla1.x/">Mozilla</ulink>
+    installed. These packages contain internal copies of
+    <application>NSS</application> (or they used a system-installed copy).
+    If any of the four packages are installed, one way or another you will
+    already have NSS/NSPR libraries on your system.</para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="openldap"/>,
+    <xref linkend="hal"/>,
+    <xref linkend="dbus-glib"/>,
+    <ulink url="&gnome-download-http;/gnome-spell/1.0/">GNOME Spell</ulink>,
+    <xref linkend="heimdal"/> or <xref linkend="mitkrb"/>,
+    <ulink url="http://www.pdc.kth.se/kth-krb/">krb4</ulink>,
+    <ulink url="&gnome-download-http;/gnome-pilot-conduits/2.0/">GNOME
+    Pilot conduits</ulink>
+    (requires <xref linkend="pilot-link"/> then
+    <ulink url="&gnome-download-http;/gnome-pilot/2.0/">GNOME Pilot</ulink>),
+    <ulink url="http://gstreamer.freedesktop.org/">GStreamer-0.8.x</ulink>,
+    <ulink url="http://www.gnome.org/projects/NetworkManager/">NetworkManager</ulink>
+    (<ulink url="&gnome-download-http;/NetworkManager/">download</ulink>),
+    <ulink url="http://www.galago-project.org/news/index.php">libnotify</ulink>,
+    <ulink url="http://www.mono-project.com/Main_Page">Mono</ulink>,
+    <!-- <xref linkend="kdebase"/>, -->
+    <xref linkend="intltool"/>,
+    <xref linkend="gtk-doc"/>, and
+    <xref linkend="docbook-utils"/></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/evolution"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Evolution</title>
+
+    <para>Install <application>Evolution</application> by running the following
+    commands:</para>
+
+    <note>
+      <para>The instructions below assume you have the NSS/NSPR libraries
+      installed on your system. If you elected not to install
+      <application>NSS</application> (or one of the other packages mentioned
+      above), you'll need to remove the following two parameter settings from
+      the <command>configure</command> command below:</para>
+
+      <literallayout><parameter>            --enable-nss
+            --enable-smime</parameter></literallayout>
+
+      <para>The <application>Evolution</application>
+      <command>configure</command> script only looks for the stand-alone
+      <application>NSS</application> package and the
+      <application>Mozilla</application> and
+      <application>Firefox</application> browsers for the NSS/NSPR libraries.
+      If you are using <application>Thunderbird</application> as your source
+      for the NSS/NSPR libraries, you will have to add the following two
+      parameter settings to the <command>configure</command> command
+      below:</para>
+
+      <literallayout><parameter>            --with-nspr-includes=/usr/include/nspr
+            --with-nss-includes=/usr/include/nss</parameter></literallayout>
+    </note>
+
+<screen><userinput>./configure --prefix=$(pkg-config --variable=prefix ORBit-2.0) \
+            --sysconfdir=&gnome-etc-dir; \
+            --localstatedir=/var/lib \
+            --libexecdir=$(pkg-config \
+                --variable=prefix ORBit-2.0)/lib \
+            --enable-nntp \
+            --enable-nss \
+            --enable-smime &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+ln -v -s evolution-2.10 \
+    $(pkg-config --variable=prefix ORBit-2.0)/bin/evolution</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <!-- There doesn't appear to be any need for this
+    <para><parameter>-\-disable-gtk-doc</parameter>: This parameter disables
+    building the API documentation if you have
+    <application>GTK-Doc</application> installed. Remove this parameter if
+    you wish to build and install the documentation.</para>
+    -->
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gnome-prefix.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gnome-sysconfdir.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/scrollkeeper-dir.xml"/>
+
+    <para><parameter>--libexecdir=$(pkg-config --variable=prefix
+    ORBit-2.0)/lib</parameter>: This parameter causes the libexec
+    files to be installed in the preferred location of
+    <filename class="directory">$GNOME_PREFIX/lib/evolution</filename> instead
+    of <filename
+    class="directory">$GNOME_PREFIX/libexec/evolution</filename>.</para>
+
+    <para><parameter>--enable-nntp</parameter>: This parameter is used to build
+    the Usenet news (NNTP) backend.</para>
+
+    <para><parameter>--enable-nss</parameter>: This parameter is used to pull
+    in the Mozilla Network Security Services libraries for SSL support.</para>
+
+    <para><parameter>--enable-smime</parameter>: This parameter is used to pull
+    in the Mozilla Network Security Services libraries for S/MIME
+    support.</para>
+
+    <!--
+    <para><parameter>-with-{nspr,nss}-includes</parameter>: This parameter is
+    used to identify where the Mozilla Network Security Services interface
+    headers are located. By default, <application>Evolution</application> uses
+    <filename>mozilla-{nss,nspr}.pc</filename> files to locate the headers
+    and chances are you will not have <application>Mozilla</application>
+    installed.</para>
+    -->
+
+    <para><option>--with-openldap</option>: This parameter will compile
+    LDAP support into <application>Evolution</application>.</para>
+
+    <para><option>--with-krb5</option>: This parameter will compile
+    <application>Kerberos5</application> support into
+    <application>Evolution</application>.</para>
+
+    <para><option>--with-pilot-conduits</option>: This parameter will build
+    the <application>GNOME Pilot</application> conduits allowing you to
+    synchronize <application>Evolution</application> data on a Palm
+    device.</para>
+
+    <para><command>ln -v -s evolution-2.10 $(pkg-config
+    --variable=prefix ORBit-2.0)/bin/evolution</command>: This optional command
+    creates a convenience symlink to the <command>evolution-2.10</command>
+    binary.</para>
+
+    <para><option>--with-kde-applnk-path=<replaceable>&lt;$KDE_PREFIX/share/applnk&gt;</replaceable></option>:
+    Use this parameter if you wnat the installation process to create a
+    <filename class="extension">.desktop</filename> file in the KDE global
+    desktop file directory.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>evolution and evolution-2.10</seg>
+        <seg>$GNOME_PREFIX/lib/evolution/2.10/* (contains support libraries,
+        conduits, and other components)</seg>
+        <seg>The following subdirectories of <envar>$GNOME_PREFIX</envar>/:
+        include/evolution-2.10,
+        lib/evolution,
+        share/{{,omf/}evolution, {gnome/help,idl}/evolution-2.10}</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="evolution-prog">
+        <term><command>evolution</command></term>
+        <listitem>
+          <para>is a symlink to the <command>evolution-2.10</command>
+          program.</para>
+          <indexterm zone="evolution evolution-prog">
+            <primary sortas="g-evolution">evolution</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="evolution-2.10">
+        <term><command>evolution-2.10</command></term>
+        <listitem>
+          <para>is an email, calendar and address book suite.</para>
+          <indexterm zone="evolution evolution-2.10">
+            <primary sortas="b-evolution-2.10">evolution-2.10</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

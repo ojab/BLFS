@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "general.ent">
+  %general-entities;
+]>
+
+<chapter id="chapter04">
+  <chapterinfo>
+    <othername>$Author$</othername>
+    <date>$Date$</date>
+  </chapterinfo>
+
+  <title>Committing Changes - Policy</title>
+  <?dbhtml filename="chapter04.html" ?>
+
+  <section id="ch04-introduction">
+    <title>Introduction</title>
+
+    <para>Here is a summary list of things to do before committing
+    changes:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>Test the instructions you are adding or changing</para>
+      </listitem>
+      <listitem>
+        <para>Update <filename>general.ent</filename> with the new date</para>
+      </listitem>
+      <listitem>
+        <para>Update <filename>introduction/welcome/changelog.xml</filename></para>
+      </listitem>
+      <listitem>
+        <para>Check that all relevant files have been
+        <command>svn add</command>ed or <command>remove</command>d</para>
+      </listitem>
+      <listitem>
+        <para>Check that any new files have had the property settings updated with
+        <command>svn propset</command></para>
+      </listitem>
+      <listitem>
+        <para>Check that the book validates</para>
+      </listitem>
+      <listitem>
+        <para>Check that the book renders properly</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>You should now be ready to commit your changes and update the Trac
+    ticket to reflect the changes.</para>
+
+  </section>
+
+  <section id="ch04-test">
+    <title>Test the instructions</title>
+
+    <para>This may seem <emphasis>really</emphasis> obvious but
+    <emphasis>&lt;confession mode&gt;</emphasis> some have
+    actually committed small changes without testing them first, and had to
+    change them (in one case twice) very quickly when someone
+    noticed<emphasis>&lt;/confession mode&gt;</emphasis>.
+    So learn from our mistakes &mdash; check
+    <emphasis>everything</emphasis>.</para>
+
+    <para>It is also a good practice to check any installed man pages for
+    encoding not supported by the LFS system.  This can be checked by running
+    the following script with the current package manpages as arguments:</para>
+
+<screen>#!/bin/sh
+# Begin checkman.sh
+# Usage: find /usr/share/man -type f | xargs checkman.sh
+for a in "$@"
+do
+    # echo "Checking $a..."
+    # Pure-ASCII manual page (possibly except comments) is OK
+    grep -v '.\\"' "$a" | iconv -f US-ASCII -t US-ASCII >/dev/null \
+      2>&amp;1 &amp;&amp; continue
+    # Non-UTF-8 manual page is OK
+    iconv -f UTF-8 -t UTF-8 "$a" >/dev/null 2>&amp;1 || continue
+    # If we got here, we found UTF-8 manual page, bad.
+    echo "UTF-8 manual page: $a" >&amp;2
+done
+# End checkman.sh</screen>
+
+  </section>
+
+  <section id="ch04-updategeneralent">
+    <title>Updating <filename>general.ent</filename></title>
+
+    <para>The <filename>general.ent</filename> file contains entities that are
+    used in multiple XML files throughout the book. Normally, it will contain
+    version numbers of each package as well as general information such as the
+    book's version number and release date. When making an update, the
+    day/month/year and releasedate entities should be updated. The version
+    numbers of packages should be updated as appropriate.</para>
+
+
+    <section>
+      <title>Updating the date</title>
+
+      <para>The following elements should be updated whenever
+      <emphasis>any</emphasis> change (including small typo fixes) is made:</para>
+
+<screen>&lt;!ENTITY day "01"&gt;
+&lt;!ENTITY month "08"&gt;
+&lt;!ENTITY year "2005"&gt;
+&lt;!ENTITY releasedate "August &amp;day;st, &amp;year"&gt;</screen>
+
+      <para>The two dates <emphasis>must</emphasis> correspond.</para>
+
+    </section>
+
+  </section>
+
+  <section id="ch04-updatechangelog">
+    <title>Update introduction/welcome/changelog.xml</title>
+
+    <para>Changelog updates should <emphasis>always</emphasis> be provided
+    with the exception of small typo fixes.  You don't need to add "fixed
+    small typo in XXX" to the changelog otherwise it would become too large
+    and make picking out meaningful updates difficult.</para>
+
+    <para>Changelog updates should be in a standard format. Note that there
+    is only one entry for each day that there are changes, however, there
+    can be many entries for any particular day. Here is an example:</para>
+
+<screen>&lt;listitem&gt;
+  &lt;para&gt;April 29th, 2002&lt;/para&gt;
+  &lt;itemizedlist&gt;
+    &lt;listitem&gt;
+      &lt;para&gt;[markh] - Add DHCP_STOP variable to DHCP scripts.&lt;/para&gt;
+    &lt;/listitem&gt;
+    &lt;listitem&gt;
+      &lt;para&gt;[markh] - Added the Imlib package.&lt;/para&gt;
+    &lt;/listitem&gt;
+  &lt;/itemizedlist&gt;
+&lt;/listitem&gt;</screen>
+
+    <para>Replace <userinput>[markh]</userinput> with your belgarath userid.</para>
+
+    <para>Changelog entries are always added to the top of the file. They are
+    cleaned out after major releases and consolidated in the credits
+    section.</para>
+
+  </section>
+
+  <section id="ch04-checkfiles">
+    <title>Check all relevant files have been added and removed</title>
+
+    <para>If you are adding files, you need to run a <command>svn
+    add</command> command on each of them (something like <command>svn
+    add mypackage*.xml</command> often does the trick. In most cases you
+    will also need to set the property settings on each new file:</para>
+
+<screen>svn propset svn:keywords "LastChangedBy Date" &lt;mypackage*.xml&gt;</screen>
+
+    <para>This command tells svn to substitute the current timestamp and author
+    name into the file where it see the construct:</para>
+
+<screen>$LastChangedBy$
+$Date$</screen>
+
+    <para>A good method to use if you've only added files (not taken any away) is
+    to run an <command>svn status</command> command which will produce output
+    something like this:</para>
+
+<screen>mark:~/LFS/BLFS$ svn status --show-updates
+?                   .chapter04.xml.swp
+?                   goTidy
+MM           2539   chapter01.xml
+MM           2539   chapter02.xml
+MM     *     2539   chapter03.xml
+MM           2539   chapter04.xml
+C            2539   chapter05.xml
+MM           2539   chapter06.xml
+M            2539   general.ent
+MM           2539   preface.xml
+MM           2539   bookinfo.xml
+ M           2539   index.xml
+A               0   edguide.xsl
+D            2539   stylesheets
+D            2539   stylesheets/edguide.xsl
+M            2539   Makefile
+Status against revision:   2539</screen>
+
+    <para>If you look at the first column, you will see various different
+    letters which all mean different things.</para>
+
+    <para><computeroutput>?</computeroutput>: This is what
+    <application>SVN</application> reports when it doesn't manage a file.
+    Generally it means that you've forgotten to <command>svn add</command> a
+    file to the repository but can also just be temporary editor files which
+    <application>SVN</application> doesn't know what to do with. If it's just a
+    temporary file, don't worry, it won't try and commit them when you do a
+    <command>svn commit</command> because you haven't added them. Instead it
+    will just leave them alone.</para>
+
+    <para><computeroutput>A</computeroutput>: This is a file which has been
+    scheduled to be added to the repository with an <command>svn add</command>
+    but has not yet been committed. When you're ready to commit it, simply do a
+    <command>svn add</command> on it (and don't forget that nearly all
+    <application>SVN</application> operations can be performed on as many files
+    at once as you like. If you specify no file, it will either give you an
+    error (if it doesn't make sense; like with <command>svn add</command> or
+    <command>delete</command>) or it will simply perform the action on all
+    files from that directory downwards in the tree (for example with
+    <command>svn commit</command>).</para>
+
+    <para><computeroutput>D</computeroutput>: This is a file which has been
+    removed from the repository using <command>svn delete</command> but has
+    not yet been committed. The equivalent of <quote>A</quote> for added
+    files.</para>
+
+    <para><computeroutput>C</computeroutput>:  This means that you have made
+    local changes but at the same time someone has made remote changes which
+    can't be automatically merged with yours. You will have to go through the
+    files and sort out the conflict yourself. Due to the nature of the BLFS
+    book, this doesn't happen very often. One way to fix this problem is to do
+    a  <command>svn update</command> (abbreviated as <command>svn up</command>)
+    and check the file for conflict markers in the file.</para>
+
+    <para><computeroutput>*</computeroutput>: An asterisk in column eight means
+    that the file in the repository has been changed. The file will be updated
+    in your local sand box when an <command>svn update</command> is
+    issued.</para>
+
+    <para>Once you know why you're getting each symbol, and they're all correct,
+    you can proceed to the next step.  There are other symbols that are not
+    normally encountered.  They are explained in more detail at <ulink
+    url="http://svnbook.red-bean.com/en/1.2/svn.tour.cycle.html#svn.tour.cycle.examine.status"/>.</para>
+
+  </section>
+
+  <section id="ch04-checkrender">
+    <title>Check that the book validates and renders properly</title>
+
+    <para>Before committing any changes, it's important to check that you have
+    all the syntax correct and that the book can actually pass through
+    <command>xsltproc</command> without errors. Instructions on how
+    to render the book can be found in the <filename>INSTALL</filename> and
+    <filename>README</filename> files in the BOOK directory, but generally you
+    can just run <command>make validate</command> from the BOOK directory to do
+    a complete syntax check and a simple <command>make</command> to render the
+    book on your local system.  Note that you must have the required dependency
+    packages installed on your local system.</para>
+
+  </section>
+
+  <section id="ch04-commit">
+    <title>Commit it!</title>
+
+    <para>Before you actually commit, spend a few seconds thinking about the
+    comment (log message) you are going to add. As mentioned in the section on
+    <application>SVN</application> commands, comments should
+    <emphasis>always</emphasis> be used when committing changes. Even if the
+    comment is just 'small typo fix', that will do. Other usual comments are
+    <quote>Updated to package-x.y.z</quote> or <quote>Added new section
+    BLAH</quote>.</para>
+
+    <para>To commit, you use the <command>svn commit</command> or
+    <command>svn ci</command> command. A good example of a commit command could
+    be:</para>
+
+<screen><userinput>svn ci -m "Added new package baldrick" index.xml \
+introduction/welcome/changelog.xml introduction/welcome/credits.xml \
+postlfs/postlfs.xml postlfs/config/baldrick/baldrick*.xml</userinput></screen>
+
+    <para>If you have only made the changes regarding this package to your
+    local tree, then you can save time by simply running:</para>
+
+<screen><userinput>svn ci -m "Added new package baldrick"</userinput></screen>
+
+    <para>from the root of your local BLFS sandbox. The first command is more
+    useful when you've modified files you don't want to commit yet.</para>
+
+  </section>
+
+  <section id="ch04-trac">
+    <title>Update the Trac Ticket</title>
+
+    <para>The final part of updating the book is to update the Trac ticket.
+    This is usually as easy as going to BLFS Trac (<ulink url="&blfs-trac;"/>),
+    opening the ticket, adding a short note what was done and changing the
+    resolution to <quote>fixed</quote>.</para>
+
+    <para>Having completed all of this, you can now go and have a rest.
+    Well done, thank you and good night.</para>
+
+  </section>
+
+</chapter>

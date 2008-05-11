@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gnome-keyring-download-http "&gnome-download-http;/gnome-keyring/0.8/gnome-keyring-&gnome-keyring-version;.tar.bz2">
+  <!ENTITY gnome-keyring-download-ftp  "&gnome-download-ftp;/gnome-keyring/0.8/gnome-keyring-&gnome-keyring-version;.tar.bz2">
+  <!ENTITY gnome-keyring-md5sum        "24b15dedcf40c1c60d0fb989370d80ff">
+  <!ENTITY gnome-keyring-size          "448 KB">
+  <!ENTITY gnome-keyring-buildsize     "8 MB">
+  <!ENTITY gnome-keyring-time          "0.1 SBU">
+]>
+
+<sect1 id="gnome-keyring" xreflabel="gnome-keyring-&gnome-keyring-version;">
+  <?dbhtml filename="gnome-keyring.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>gnome-keyring-&gnome-keyring-version;</title>
+
+  <indexterm zone="gnome-keyring">
+    <primary sortas="a-Gnome-keyring">Gnome-keyring</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to gnome-keyring</title>
+
+    <para>The <application>gnome-keyring</application> package contains a
+    daemon that keeps passwords and other secrets for users.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&gnome-keyring-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&gnome-keyring-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &gnome-keyring-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &gnome-keyring-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &gnome-keyring-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &gnome-keyring-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">gnome-keyring Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required"><xref linkend="gtk2"/> and
+    <xref linkend="perl-xml-parser"/></para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="dbus"/> and
+    <xref linkend="intltool"/></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/gnome-keyring"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of gnome-keyring</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/without-gnome.xml"/>
+
+    <para>Install <application>gnome-keyring</application> by running the
+    following commands:</para>
+
+<screen><userinput>./configure --prefix=$(pkg-config --variable=prefix ORBit-2.0) \
+            --libexecdir=$(pkg-config \
+                --variable=prefix ORBit-2.0)/lib/gnome-keyring &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+install -v -m755 -d $(pkg-config \
+        --variable=prefix ORBit-2.0)/share/doc/gnome-keyring-&gnome-keyring-version; &amp;&amp;
+install -v -m644 *.txt $(pkg-config \
+        --variable=prefix ORBit-2.0)/share/doc/gnome-keyring-&gnome-keyring-version;</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2003/XInclude"
+    href="../../xincludes/gnome-prefix.xml"/>
+
+    <para><parameter>--libexecdir=$(pkg-config --variable=prefix
+    ORBit-2.0)/lib/gnome-keyring</parameter>: This parameter causes the libexec
+    files to be installed in the preferred location of
+    <filename class="directory">$GNOME_PREFIX/lib/gnome-keyring</filename>
+    instead of
+    <filename class="directory">$GNOME_PREFIX/libexec</filename>.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>gnome-keyring-daemon</seg>
+        <seg>libgnome-keyring.so</seg>
+        <seg>The following subdirectories of <envar>$GNOME_PREFIX</envar>/:
+        include/gnome-keyring-1,
+        lib/gnome-keyring and
+        share/doc/gnome-keyring-&gnome-keyring-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gnome-keyring-daemon">
+        <term><command>gnome-keyring-daemon</command></term>
+        <listitem>
+          <para>is a session daemon that keeps passwords for users.</para>
+          <indexterm zone="gnome-keyring gnome-keyring-daemon">
+            <primary sortas="b-gnome-keyring-daemon">gnome-keyring-daemon</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libgnome-keyring">
+        <term><filename class='libraryfile'>libgnome-keyring.so</filename></term>
+        <listitem>
+          <para>let other applications utilize
+          <command>gnome-keyring-daemon</command>.</para>
+          <indexterm zone="gnome-keyring libgnome-keyring">
+            <primary sortas="c-libgnome-keyring">libgnome-keyring.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

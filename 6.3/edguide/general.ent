@@ -1,0 +1,10 @@
+<!-- $LastChangedBy$ -->
+<!-- $Date$ -->
+
+<!ENTITY version "20070403">
+<!ENTITY releasedate "April 3rd, 2007">
+
+<!ENTITY date "$Date$">
+
+<!ENTITY blfs-trac "http://wiki.linuxfromscratch.org/blfs">
+

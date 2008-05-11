@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY nmap-download-http "&sources-anduin-http;/n/nmap-&nmap-version;.tar.bz2">
+  <!ENTITY nmap-download-ftp  "&gentoo-ftp-repo;/nmap-&nmap-version;.tar.bz2">
+  <!ENTITY nmap-md5sum        "ea50419f99472200c4184a304e3831ea">
+  <!ENTITY nmap-size          "2.1 MB">
+  <!ENTITY nmap-buildsize     "21 MB">
+  <!ENTITY nmap-time          "0.3 SBU">
+]>
+
+<sect1 id="nmap" xreflabel="Nmap-&nmap-version;">
+  <?dbhtml filename="nmap.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Nmap-&nmap-version;</title>
+
+  <indexterm zone="nmap">
+    <primary sortas="a-Nmap">Nmap</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Nmap</title>
+
+    <para><application>Nmap</application> is a utility for network exploration
+    and security auditing. It supports ping scanning, port scanning and
+    TCP/IP fingerprinting.</para>
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&nmap-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&nmap-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &nmap-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &nmap-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &nmap-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &nmap-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Nmap Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="openssl"/>,
+    <xref linkend="pcre"/>,
+    <xref linkend="libpcap"/>,
+    <xref linkend="gtk2"/> (for building the graphical front-end), and
+    <ulink url="http://sourceforge.net/projects/libdnet/">libdnet</ulink></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/nmap"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Nmap</title>
+
+    <para>Install <application>Nmap</application> by running the following
+    commands:</para>
+
+<screen><userinput>./configure --prefix=/usr &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>nmap and optionally, nmapfe and xnmap</seg>
+        <seg>None</seg>
+        <seg>/usr/share/nmap</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="nmap-prog">
+        <term><command>nmap</command></term>
+        <listitem>
+          <para>is a utility for network exploration and security auditing. It
+          supports ping scanning, port scanning and
+          TCP/IP fingerprinting.</para>
+          <indexterm zone="nmap nmap-prog">
+            <primary sortas="b-nmap">nmap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="nmapfe">
+        <term><command>nmapfe</command></term>
+        <listitem>
+          <para>is the graphical front end to <command>nmap</command>.</para>
+          <indexterm zone="nmap nmapfe">
+            <primary sortas="b-nmapfe">nmapfe</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xnmap">
+        <term><command>xnmap</command></term>
+        <listitem>
+          <para>is a symbolic link to <command>nmapfe</command>.</para>
+          <indexterm zone="nmap xnmap">
+            <primary sortas="f-xnmap">xnmap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
