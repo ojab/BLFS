@@ -50,7 +50,8 @@ xev-1.0.2.tar.bz2
 xeyes-1.0.1.tar.bz2
 xf86dga-1.0.2.tar.bz2
 xfd-1.0.1.tar.bz2
-xfindproxy-1.0.1.tar.bz2
+# proxymngr deprecated since Xorg-7.1
+# xfindproxy-1.0.1.tar.bz2
 xfontsel-1.0.2.tar.bz2
 xfs-1.0.5.tar.bz2
 xfsinfo-1.0.1.tar.bz2
