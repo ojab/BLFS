@@ -48,7 +48,8 @@ e3008eb0655da3026c162a5597d70869  xev-1.0.2.tar.bz2
 033f14f7c4e30d1f4edbb22d5ef86883  xeyes-1.0.1.tar.bz2
 66feef21fb4e769cc1e2f193ae461a8c  xf86dga-1.0.2.tar.bz2
 c72abd90f50ef459bc14b39ec9fcc7f8  xfd-1.0.1.tar.bz2
-5df3a162429bdd6ce5aea3ca5f6365b8  xfindproxy-1.0.1.tar.bz2
+# proxymngr deprecated since Xorg-7.1
+# 5df3a162429bdd6ce5aea3ca5f6365b8  xfindproxy-1.0.1.tar.bz2
 288fe4cf8a990e4e602aac16dd9109fb  xfontsel-1.0.2.tar.bz2
 3fc73b5e39a1fe8b8d96563c8144cffe  xfs-1.0.5.tar.bz2
 e98b18fbce1261de30b1de819d86f48a  xfsinfo-1.0.1.tar.bz2
