@@ -53,7 +53,8 @@ c72abd90f50ef459bc14b39ec9fcc7f8  xfd-1.0.1.tar.bz2
 288fe4cf8a990e4e602aac16dd9109fb  xfontsel-1.0.2.tar.bz2
 3fc73b5e39a1fe8b8d96563c8144cffe  xfs-1.0.5.tar.bz2
 e98b18fbce1261de30b1de819d86f48a  xfsinfo-1.0.1.tar.bz2
-0dbde8b3867032b9e4a383d46dfd7e48  xfwp-1.0.1.tar.bz2
+# proxymngr deprecated since Xorg-7.1
+# 0dbde8b3867032b9e4a383d46dfd7e48  xfwp-1.0.1.tar.bz2
 45d8fa3c85d4bfda87251798fd605a45  xgamma-1.0.1.tar.bz2
 72fc8dd68f585000c0a542eba0264571  xgc-1.0.1.tar.bz2
 5300c9aafa58878c8f6e85379d5c199c  xhost-1.0.1.tar.bz2
@@ -82,7 +83,8 @@ c1558277f4a010473ff0744845c49537  xplsprinters-1.0.1.tar.bz2
 7157156809c7f432ae401859b0465ffe  xrandr-1.0.2.tar.bz2
 380b2ef545306354cc150834de567be7  xrdb-1.0.3.tar.bz2
 1228f890f86148e4e6ae22aa73118cbb  xrefresh-1.0.2.tar.bz2
-5f65e24f8a225e255beb2059e33d6b37  xrx-1.0.1.tar.bz2
+# proxymngr deprecated since Xorg-7.1
+# 5f65e24f8a225e255beb2059e33d6b37  xrx-1.0.1.tar.bz2
 1b781a0802c7b8fb9619a6665607b3f0  xset-1.0.2.tar.bz2
 d074e79d380b031d2f60e4cd56538c93  xsetmode-1.0.0.tar.bz2
 c94ea103e27e370e4e5030e50c5d5d69  xsetpointer-1.0.0.tar.bz2
