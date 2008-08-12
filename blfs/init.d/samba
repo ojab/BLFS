@@ -32,7 +32,7 @@ case "$1" in
 
 	reload)
 		boot_mesg "Reloading smbd..."
-		reloadproc -p $smbpid /usr/sbin/smbd
+		reloadproc -p $smbdpid /usr/sbin/smbd
 
 		boot_mesg "Reloading nmbd..."
 		reloadproc -p $nmbdpid /usr/sbin/nmbd
