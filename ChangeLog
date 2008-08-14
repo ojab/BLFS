@@ -1,3 +1,7 @@
+2008-08-12 Thomas Trepl <thomas@linuxfromscratch.org>
+	* Fix a mistyped variable name in Samba init script which
+	  causes the reload action to fail
+
 2008-03-25 Randy McMurchy <randy@linuxfromscratch.org>
 	* Updated the Stunnel init script to reflect that upstream has
 	  moved the stunnel binary from /usr/sbin to /usr/bin
