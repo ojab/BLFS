@@ -73,6 +73,33 @@
 
     <para>To be developed.</para>
 
+    <section id="ch07-bootscripts">
+      <title>Editing/Adding Bootscripts</title>
+
+      <para>When you make an update to the bootscripts there are three
+      things that need to be done:</para>
+
+      <itemizedlist>
+
+        <listitem><para>The actual update to the bootscripts. Edit the scripts
+        to enhance their functionality or fix bugs or even create new bootscripts
+        in case there are new packages the bootscripts belong to.</para></listitem>
+
+        <listitem><para>Update the ChangeLog file in the bootscripts. Note that
+        there is a separate changelog for the bootscripts. The actual book
+        changelog doesn't need an update.</para></listitem>
+
+        <listitem><para>Update the "blfs-bootscripts-version" entity in the
+        book's general.ent file.</para></listitem>
+
+      </itemizedlist>
+
+      <note><para>If you fail to do #3, then the automated process which
+      creates a new version of the bootscripts tarball won't do its job, so #3
+      is an important step in the process.</para></note>
+
+    </section>
+
   </section>
 
   <!-- commenting this out for now as we don't update Anduin
