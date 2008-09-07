@@ -1,0 +1,38 @@
+#!/bin/sh
+# Begin $rc_base/init.d/alsa
+
+### BEGIN INIT INFO
+# Provides:            alsa
+# Required-Start:      
+# Should-Start:
+# Required-Stop:       $network
+# Should-Stop:         $remote_fs
+# Default-Start:
+# Default-Stop:        0 6
+# Short-Description:   Saves the current volume of all sound channels.
+# Description:         Saves the current volume of all sound channels on
+#                      shutdown so that they can be restored on next boot.
+# X-LFS-Default-Start:
+# X-LFS-Default-Stop:  K35
+# X-LFS-Provided-By:   BLFS
+### END INIT INFO
+
+
+. /lib/lsb/init-functions
+
+MESSAGE="Stopping ALSA...    Saving volumes..."
+
+case "$1" in
+
+        stop)
+                /usr/sbin/alsactl store
+                evaluate_retval generic
+                ;;
+
+        *)
+                echo "Usage: $0 stop"
+                exit 1
+                ;;
+esac
+
+# End $rc_base/init.d/alsa
