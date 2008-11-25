@@ -1,0 +1,33 @@
+# Xorg-7.4 protocol package MD5 sums
+# $LastChangedBy$
+# $Date$
+#
+d5d7c69837cc7dcbf2aa181ff423ab20  applewmproto-1.0.3.tar.bz2
+95c29d9d10bf2868996c0c47a3b9a8dc  bigreqsproto-1.0.2.tar.bz2
+6281344d656d4e0c8e9db4918efe3d1d  compositeproto-0.4.tar.bz2
+33ee591e0b1ca5ad7902934541db7d24  damageproto-1.1.0.tar.bz2
+d80acad88411e7944b9b085463d53302  dmxproto-2.2.2.tar.bz2
+2507b5d0f4b2848147fbddd155aa6cfe  evieext-1.0.2.tar.bz2
+8b298cc3424597f8138c7faf7763dce9  fixesproto-4.0.tar.bz2
+60df6b625074a9790e28543dcea71651  fontcacheproto-0.1.2.tar.bz2
+c946f166107b016a21cc7a02e1132724  fontsproto-2.0.2.tar.bz2
+e60951628422663e60faeb400f27bac1  glproto-1.4.9.tar.bz2
+3a532379f226c34b36a5c585999f75e4  inputproto-1.4.4.tar.bz2
+6092cdb0a1225f95356ddbe6c2abaad5  kbproto-1.0.3.tar.bz2
+e2e45564f8ce22e00e1360e79c8ccdeb  randrproto-1.2.1.tar.bz2
+0ed4706564a34fc2aff724aa16d3ff00  recordproto-1.13.2.tar.bz2
+598bc9a493deee2e48e4434e94467189  renderproto-0.9.3.tar.bz2
+b823b314e37eb19dae1f297951d2e933  resourceproto-1.0.2.tar.bz2
+5d551850e6f4acdf49a13f4eb3a5bbfa  scrnsaverproto-1.1.0.tar.bz2
+3b713239e5e6b269b31cb665563358df  trapproto-3.4.3.tar.bz2
+44292d74a9a3c94b1ecb9d77a0da83e8  videoproto-2.2.2.tar.bz2
+ed5416cf7e2ba6e66641c88f12768c0c  windowswmproto-1.0.3.tar.bz2
+fde0b050901f024b19159cdacdcfbd20  xcmiscproto-1.1.2.tar.bz2
+3a2e0252e853ab30b3bff05ac92ec61c  xextproto-7.0.3.tar.bz2
+a318c1e86123832d7b0c95fc7d47ef35  xf86bigfontproto-1.1.2.tar.bz2
+42fdcebc66efac02ab4beec2b1b0ad6e  xf86dgaproto-2.0.3.tar.bz2
+01470d088da3a8a3deefa8e1f45d69cb  xf86driproto-2.0.4.tar.bz2
+acae8edeb05a406f7f60bcbb218a8f1d  xf86miscproto-0.9.2.tar.bz2
+f00844a63d6e76b69eb0eb5e41eed843  xf86vidmodeproto-2.2.2.tar.bz2
+1cc292c562962ad0ad3a253cae68c632  xineramaproto-1.1.2.tar.bz2
+7d26f45dca52632712a696e0631dc17b  xproto-7.0.13.tar.bz2

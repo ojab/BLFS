@@ -1,0 +1,10 @@
+# Xorg-7.4 utility packages
+# $LastChangedBy$
+# $Date$
+#
+gccmakedep-1.0.2.tar.bz2
+imake-1.0.2.tar.bz2
+lndir-1.0.1.tar.bz2
+makedepend-1.0.1.tar.bz2
+util-macros-1.1.6.tar.bz2
+xorg-cf-files-1.0.2.tar.bz2
