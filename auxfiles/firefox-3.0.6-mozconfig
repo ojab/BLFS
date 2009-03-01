@@ -1,0 +1,72 @@
+# mozconfig to build firefox3 on top of an existing xulrunner
+# - if you do not wish to build xulrunner first, make the changes
+# noted for a 'standalone' browser
+
+# first pick up the browser defaults
+. $topsrcdir/browser/config/mozconfig
+mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../firefox-build
+
+ac_add_options --enable-application=browser
+
+ac_add_options --prefix=/usr
+ac_add_options --enable-optimize
+
+# pthreads option only applies to nspr.
+# enable this if building standalone browser without separate nspr
+#ac_add_options --with-pthreads
+
+# don't let mozilla projects build their own copies of libraries
+# if they are available as shared libs on the system:
+# everyone should have these
+ac_add_options --with-system-zlib
+ac_add_options --with-system-bz2
+ac_add_options --with-system-jpeg
+
+# comment this if you did not build cairo
+oac_add_options --enable-system-cairo
+
+# comment this if you did not build little cms
+ac_add_options --enable-system-lcms
+
+# comment this if you did not build sqlite
+ac_add_options --enable-system-sqlite
+
+# comment this if you did not patch libpng for apng
+ac_add_options --with-system-png
+
+# comment this if you have built dbus-glib
+ac_add_options --disable-dbus
+
+# comment this if you have gnome-vfs and want to
+# integrate firefox into your gnome desktop
+ac_add_options --disable-gnomevfs
+
+# comment this if you wish to distribute binaries,
+# or if you prefer a browser called 'minefield'
+ac_add_options --enable-official-branding
+
+# mochitest is often problematic
+ac_add_options --disable-mochitest
+
+# uncomment this if curl is NOT present
+#ac_add_option --disable-crashreporter
+
+# this is for xulrunner not firefox
+#ac_add_options --disable-javaxpcom
+
+# the installer and updater are not appropriate if you build from source
+ac_add_options --disable-installer
+ac_add_options --disable-updater
+
+# this is an anti-phishing option
+ac_add_options --enable-safe-browsing
+
+# point to xulrunner - comment this if stand-alone browser
+ac_add_options --with-libxul-sdk=/usr/lib/xulrunner-devel-1.9.0.6
+
+# we built these either as part of xulrunner, or separately
+# comment these for standalone browser unless you have separate
+# nss and nspr
+ac_add_options --with-system-nss
+ac_add_options --with-system-nspr
+

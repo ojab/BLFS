@@ -1,0 +1,68 @@
+# mozconfig to build xulrunner from firefox3 source
+# use a build directory
+mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../xulrunner-build
+
+# specify that we want to build xulrunner
+ac_add_options --enable-application=xulrunner
+
+ac_add_options --prefix=/usr
+ac_add_options --enable-optimize
+
+# pthreads option only applies to nspr.
+# we will build nspr here, so thread it nicely
+ac_add_options --with-pthreads
+
+# don't let mozilla projects build their own copies of libraries
+# if they are available as shared libs on the system:
+# everyone should have these
+ac_add_options --with-system-zlib
+ac_add_options --with-system-bz2
+ac_add_options --with-system-jpeg
+
+# comment this if you did not build cairo
+ac_add_options --enable-system-cairo
+
+# comment this if you did not build little cms
+ac_add_options --enable-system-lcms
+
+# comment this if you did not build sqlite
+ac_add_options --enable-system-sqlite
+
+# comment this if you did not patch libpng for apng
+ac_add_options --with-system-png
+
+# comment this if you have built dbus-glib
+ac_add_options --disable-dbus
+
+# comment this if you have gnome-vfs and want to
+# integrate gecko into your gnome desktop
+ac_add_options --disable-gnomevfs
+
+# this is NOT available for xulrunner
+#ac_add_options --enable-official-branding
+
+# mochitest is often problematic
+ac_add_options --disable-mochitest
+
+# uncomment this if you did not build curl
+#ac_add_option --disable-crashreporter
+
+# comment this if you have a java compiler
+ac_add_options --disable-javaxpcom
+
+# the installer and updater are not appropriate if you build from source
+ac_add_options --disable-installer
+ac_add_options --disable-updater
+
+# this is an anti-phishing option
+ac_add_options --enable-safe-browsing
+
+# if you have a reason to use a separate nss and nspr, uncomment these
+# and comment the pthreads option above
+#ac_add_options --with-system-nss
+#ac_add_options --with-system-nspr
+
+# save some space on the install: comment this if you want to run a
+# debugger on any of the xulrunner libraries
+ac_add_options --enable-strip
+
