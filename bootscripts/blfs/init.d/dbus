@@ -23,7 +23,7 @@ case "$1" in
         stop)
                 boot_mesg "Stopping the D-Bus Messagebus Daemon..."
                 killproc /usr/bin/dbus-daemon
-                [ $? -eq 0 ] && rm -f "$socket"
+                [ $? -eq 0 ] && rm -f "$socket" "$pidfile"
                 ;;
 
         restart)
