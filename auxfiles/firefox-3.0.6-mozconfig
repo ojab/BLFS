@@ -50,7 +50,7 @@ ac_add_options --enable-official-branding
 ac_add_options --disable-mochitest
 
 # uncomment this if curl is NOT present
-#ac_add_option --disable-crashreporter
+#ac_add_options --disable-crashreporter
 
 # this is for xulrunner not firefox
 #ac_add_options --disable-javaxpcom

@@ -45,7 +45,7 @@ ac_add_options --disable-gnomevfs
 ac_add_options --disable-mochitest
 
 # uncomment this if you did not build curl
-#ac_add_option --disable-crashreporter
+#ac_add_options --disable-crashreporter
 
 # comment this if you have a java compiler
 ac_add_options --disable-javaxpcom
