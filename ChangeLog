@@ -1,10 +1,14 @@
+2009-03-02 Randy McMurchy <randy@linuxfromscratch.org>
+	* Modified the D-BUS boot script "stop" section so that the PID
+	  file is removed when the daemon is stopped.
+
 2008-08-12 Thomas Trepl <thomas@linuxfromscratch.org>
 	* Fix a mistyped variable name in Samba init script which
-	  causes the reload action to fail
+	  causes the reload action to fail.
 
 2008-03-25 Randy McMurchy <randy@linuxfromscratch.org>
 	* Updated the Stunnel init script to reflect that upstream has
-	  moved the stunnel binary from /usr/sbin to /usr/bin
+	  moved the stunnel binary from /usr/sbin to /usr/bin.
 
 2008-03-15 Alexander E. Patrakov <alexander@linuxfromscratch.org>
 	* Imported the new pppoe service script from the LiveCD repository.
@@ -16,7 +20,7 @@
 	  depended on.
 
 2008-03-06 Bruce Dubbs <bdubbs@linuxfromscratch.org>
-	* Fixed calls in autofs to echo_failure
+	* Fixed calls in autofs to echo_failure.
 
 2007-12-21 Dan Nicholson <dnicholson@linuxfromscratch.org>
 	* Removed the reload target from the dhcp script since dhcpd
