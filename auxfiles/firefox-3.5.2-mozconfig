@@ -117,7 +117,7 @@ ac_add_options --disable-updater
 # Firefox name embedded in them. Due to license restrictions, you
 # may not distribute binaries created using this option.  It also
 # means you get a popup EULA when you first run firefox.
-# If you disable this, the browser will call itself Minefield.
+# If you disable this, the browser will call itself Shiretoki.
 ac_add_options --enable-official-branding
 
 # Use the anti-phishing measures (a blacklist of sites).
