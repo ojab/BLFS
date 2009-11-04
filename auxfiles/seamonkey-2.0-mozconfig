@@ -86,4 +86,4 @@ ac_add_options --enable-ldap
 # installation and is used to locate SeaMonkey's installed files. This
 # option is not required for end-user browsing, and is only used for
 # development purposes.
-#ac_add_options --with-default-mozilla-five-home=/usr/lib/seamonkey-1.1.8
+#ac_add_options --with-default-mozilla-five-home=/usr/lib/seamonkey-2.0
