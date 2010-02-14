@@ -2,9 +2,10 @@
 # Begin mkblfscas.sh
 # Script to populate  OpenSSL's CApath from a bundle of PEM formatted CAs
 
+# Version number is obtained from the version of nss.
 if test -z "${1}"
 then
-    VERSION=`date --utc +%Y%m%d`
+    VERSION="3.12.4.5"
 else
   VERSION="${1}"
 fi

@@ -7,12 +7,14 @@
 # http://cvs.fedoraproject.org/viewvc/rpms/ca-certificates/devel/mkcabundle.pl
 #
 
+# This script modified to use a local copy of certdata.txt obtained from the 
+# latest version of the firefox source tree.  The certdata.txt file can be
+# found in mozilla-$version/security/nss/lib/ckfw/builtins/certdata.txt
 
-my $cvsroot = ':pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot';
-my $certdata = 'mozilla/security/nss/lib/ckfw/builtins/certdata.txt';
+my $certdata = './certdata.txt';
 
-open(IN, "cvs -d $cvsroot co -p $certdata|")
-    || die "could not check out certdata.txt";
+open(IN, "cat $certdata|")
+    || die "could not open  certdata.txt";
 
 my $incert = 0;
 
