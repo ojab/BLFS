@@ -1,0 +1,154 @@
+LAST_UPDATED: Obtained from SVN: tags/gcc_4_4_1_release revision 149916
+
+		=== acats tests ===
+
+		=== acats Summary ===
+# of expected passes		2315
+# of unexpected failures	0
+Native configuration is i686-pc-linux-gnu
+
+		=== g++ tests ===
+
+
+Running target unix
+
+		=== g++ Summary ===
+
+# of expected passes		19834
+# of expected failures		156
+# of unsupported tests		99
+/home/rml/build/gcc-build/gcc/testsuite/g++/../../g++  version 4.4.1 (GCC) 
+
+		=== gcc tests ===
+
+
+Running target unix
+FAIL: gcc.target/i386/avx-vmovntdq-256-1.c (test for excess errors)
+WARNING: gcc.target/i386/avx-vmovntdq-256-1.c compilation failed to produce executable
+FAIL: gcc.target/i386/avx-vmovntpd-256-1.c (test for excess errors)
+WARNING: gcc.target/i386/avx-vmovntpd-256-1.c compilation failed to produce executable
+FAIL: gcc.target/i386/avx-vmovntps-256-1.c (test for excess errors)
+WARNING: gcc.target/i386/avx-vmovntps-256-1.c compilation failed to produce executable
+
+		=== gcc Summary ===
+
+# of expected passes		56674
+# of unexpected failures	3
+# of expected failures		189
+# of unsupported tests		436
+/home/rml/build/gcc-build/gcc/xgcc  version 4.4.1 (GCC) 
+
+		=== gfortran tests ===
+
+
+Running target unix
+
+		=== gfortran Summary ===
+
+# of expected passes		28991
+# of expected failures		10
+# of unsupported tests		105
+/home/rml/build/gcc-build/gcc/testsuite/gfortran/../../gfortran  version 4.4.1 (GCC) 
+
+		=== gnat tests ===
+
+
+Running target unix
+
+		=== gnat Summary ===
+
+# of expected passes		612
+# of expected failures		6
+		=== obj-c++ tests ===
+
+
+Running target unix
+XPASS: obj-c++.dg/comp-types-10.mm (test for excess errors)
+WARNING: obj-c++.dg/lookup-2.mm compilation failed to produce executable
+WARNING: obj-c++.dg/try-catch-2.mm compilation failed to produce executable
+WARNING: obj-c++.dg/try-catch-9.mm compilation failed to produce executable
+
+		=== obj-c++ Summary ===
+
+# of expected passes		436
+# of unexpected successes	1
+# of expected failures		9
+# of unsupported tests		13
+/home/rml/build/gcc-build/gcc/testsuite/obj-c++/../../g++  version 4.4.1 (GCC) 
+
+		=== objc tests ===
+
+
+Running target unix
+
+		=== objc Summary ===
+
+# of expected passes		1874
+# of expected failures		7
+# of unsupported tests		24
+/home/rml/build/gcc-build/gcc/xgcc  version 4.4.1 (GCC) 
+
+		=== libffi tests ===
+
+
+Running target unix
+
+		=== libffi Summary ===
+
+# of expected passes		1389
+# of unsupported tests		10
+		=== libgomp tests ===
+
+
+Running target unix
+
+		=== libgomp Summary ===
+
+# of expected passes		2406
+		=== libjava tests ===
+
+
+Running target unix
+
+		=== libjava Summary ===
+
+# of expected passes		2574
+		=== libmudflap tests ===
+
+
+Running target unix
+FAIL: libmudflap.c++/pass41-frag.cxx execution test
+FAIL: libmudflap.c++/pass41-frag.cxx (-static) execution test
+FAIL: libmudflap.c++/pass41-frag.cxx (-O2) execution test
+FAIL: libmudflap.c++/pass41-frag.cxx (-O3) execution test
+
+		=== libmudflap Summary ===
+
+# of expected passes		1890
+# of unexpected failures	4
+		=== libstdc++ tests ===
+
+
+Running target unix
+XPASS: 26_numerics/headers/cmath/c99_classification_macros_c.cc (test for excess errors)
+
+		=== libstdc++ Summary ===
+
+# of expected passes		5869
+# of unexpected successes	1
+# of expected failures		79
+# of unsupported tests		336
+
+Compiler version: 4.4.1 (GCC) 
+Platform: i686-pc-linux-gnu
+configure flags: --prefix=/usr 
+                 --libexecdir=/usr/lib 
+                 --with-system-zlib 
+                 --enable-shared 
+                 --enable-threads=posix 
+                 --enable-__cxa_atexit 
+                 --disable-multilib 
+                 --enable-bootstrap 
+                 --enable-clocale=gnu 
+                 --enable-languages=c,c++,ada,fortran,java,objc,obj-c++
+
