@@ -4,7 +4,7 @@
 ### BEGIN INIT INFO
 # Provides:            gdm
 # Required-Start:      $network
-# Should-Start:        alsa cups haldaemon $remote_fs samba sshd
+# Should-Start:        cups haldaemon $remote_fs samba sshd
 # Required-Stop:       $network
 # Should-Stop:         alsa cups haldaemon $remote_fs samba sshd
 # Default-Start:       5
