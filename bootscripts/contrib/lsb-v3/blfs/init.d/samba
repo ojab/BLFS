@@ -4,7 +4,7 @@
 ### BEGIN INIT INFO
 # Provides:            samba
 # Required-Start:      $network
-# Should-Start:        
+# Should-Start:        cups 
 # Required-Stop:       $network
 # Should-Stop:         $remote_fs
 # Default-Start:       3 4 5
@@ -12,8 +12,6 @@
 # Short-Description:   Provides SMB (Windows) networking.
 # Description:         Starts Samba smbd and nmbd processess which provide
 #                      connectivity to SMB (Windows) networks.
-# X-LFS-Default-Start: S45
-# X-LFS-Default-Stop:  K48
 # X-LFS-Provided-By:   BLFS
 ### END INIT INFO
 
