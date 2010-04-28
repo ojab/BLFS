@@ -1,5 +1,5 @@
 #!/bin/sh
-# Begin $rc_base/init.d/haldaemon
+# Begin /etc/init.d/haldaemon
 
 ### BEGIN INIT INFO
 # Provides:            haldaemon
@@ -47,4 +47,4 @@ case "$1" in
 		;;
 esac
 
-# End $rc_base/init.d/haldaemon
+# End /etc/init.d/haldaemon

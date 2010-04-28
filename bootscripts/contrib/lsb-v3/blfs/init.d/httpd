@@ -5,14 +5,12 @@
 # Provides:            httpd
 # Required-Start:      $syslog $local_fs $network
 # Should-Start:        $remote_fs
-# Required-Stop:
-# Should-Stop:
+# Required-Stop:       $network
+# Should-Stop:         $remote_fs
 # Default-Start:       2 3 4 5
 # Default-Stop:        0 1 6
 # Short-Description:   Apache HTTP Daemon
 # Description:         Controls the Apache HTTP Daemon
-# X-LFS-Default-Start: S32
-# X-LFS-Default-Stop:  K28
 # X-LFS-Provided-By:   BLFS
 ### END INIT INFO
 
@@ -53,5 +51,5 @@ case "$1" in
 
 esac
 
-# End /etc/init.d/gpm
+# End /etc/init.d/httpd
 

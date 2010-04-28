@@ -1,1 +1,5 @@
+20100428  * [dj] - Added netfs script.
+          * [dj] - Added random script.
+          * [dj] - Corrected deps on all scripts and cleand up comments.
+
 20080907  * [dj] - Initial commit (partial). 

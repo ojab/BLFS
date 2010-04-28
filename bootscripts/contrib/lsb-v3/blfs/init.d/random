@@ -3,12 +3,12 @@
 
 ### BEGIN INIT INFO
 # Provides:            random
-# Required-Start:
+# Required-Start:      $syslog
 # Should-Start:
-# Required-Stop:       $network
-# Should-Stop:
-# Default-Start:       1 2 3 4 5
-# Default-Stop:        0 6
+# Required-Stop:       $syslog
+# Should-Stop:         
+# Default-Start:       2 3 4 5
+# Default-Stop:        0 1 6
 # Short-Description:   Loads/Saves the random seed. 
 # Description:         Loads/Saves teh random seed.
 # X-LFS-Provided-By:   BLFS

@@ -5,14 +5,12 @@
 # Provides:            ntp
 # Required-Start:      $time $network
 # Should-Start:
-# Required-Stop:
-# Should-Stop:
+# Required-Stop:       $network
+# Should-Stop:         $remote_fs
 # Default-Start:       3 4 5
 # Default-Stop:        0 1 2 6
 # Short-Description:   NTP Network Time Protocal
 # Description:         NTP Syncronizes time with time servers worldwide
-# X-LFS-Default-Start: S26
-# X-LFS-Default-Stop:  K46
 # X-LFS-Provided-By:   BLFS
 ### END INIT INFO
 
