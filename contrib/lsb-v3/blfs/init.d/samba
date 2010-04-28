@@ -4,9 +4,9 @@
 ### BEGIN INIT INFO
 # Provides:            samba
 # Required-Start:      $network
-# Should-Start:        cups 
+# Should-Start:        $remote_fs cups 
 # Required-Stop:       $network
-# Should-Stop:         $remote_fs
+# Should-Stop:         $remote_fs cups
 # Default-Start:       3 4 5
 # Default-Stop:        0 1 2 6
 # Short-Description:   Provides SMB (Windows) networking.
@@ -66,4 +66,4 @@ case "$1" in
 
 esac
 
-# End $rc_base/init.d/samba
+# End /etc/init.d/samba

@@ -12,8 +12,6 @@
 # Short-Description:   General Purpose Mouse (service)
 # Description:         The gpm service is used to provide mouse services
 #                      to console applications.
-# X-LFS-Default-Start: S70
-# X-LFS-Default-Stop:  K10
 # X-LFS-Provided-By:   BLFS
 ### END INIT INFO
 

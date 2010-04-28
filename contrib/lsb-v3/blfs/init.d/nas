@@ -1,5 +1,5 @@
 #!/bin/sh
-# Begin $rc_base/init.d/nas
+# Begin /etc/init.d/nas
 
 ### BEGIN INIT INFO
 # Provides:            nas
@@ -50,4 +50,4 @@ case "$1" in
                 ;;
 esac
 
-# End $rc_base/init.d/nasd
+# End /etc/init.d/nasd

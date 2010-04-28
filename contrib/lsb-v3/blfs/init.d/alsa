@@ -1,5 +1,5 @@
 #!/bin/sh
-# Begin $rc_base/init.d/alsa
+# Begin /etc/init.d/alsa
 
 ### BEGIN INIT INFO
 # Provides:            alsa
@@ -33,4 +33,4 @@ case "$1" in
                 ;;
 esac
 
-# End $rc_base/init.d/alsa
+# End /etc/init.d/alsa
