@@ -2,11 +2,11 @@
 # Begin /etc/init.d/gdm
 
 ### BEGIN INIT INFO
-# Provides:            gpm
-# Required-Start:      $network dbus
-# Should-Start:        $remote_fs
-# Required-Stop:       $network dbus
-# Should-Stop:         $remote_fs
+# Provides:            gdm
+# Required-Start:      $network
+# Should-Start:        alsa cups haldaemon $remote_fs samba sshd
+# Required-Stop:       $network
+# Should-Stop:         alsa cups haldaemon $remote_fs samba sshd
 # Default-Start:       5
 # Default-Stop:        0 1 2 3 4 6
 # Short-Description:   Starts/Stops the Gnome Display Manager (GUI Login). 

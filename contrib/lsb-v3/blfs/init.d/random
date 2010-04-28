@@ -1,0 +1,44 @@
+#!/bin/sh
+# Begin /etc/init.d/random
+
+### BEGIN INIT INFO
+# Provides:            random
+# Required-Start:
+# Should-Start:
+# Required-Stop:       $network
+# Should-Stop:
+# Default-Start:       1 2 3 4 5
+# Default-Stop:        0 6
+# Short-Description:   Loads/Saves the random seed. 
+# Description:         Loads/Saves teh random seed.
+# X-LFS-Provided-By:   BLFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+
+case "$1" in
+    start)
+        MESSAGE="Initializing kernel random number generator..."
+        if [ -f /var/tmp/random-seed ]; then
+            /bin/cat /var/tmp/random-seed >/dev/urandom
+        fi
+        /bin/dd if=/dev/urandom of=/var/tmp/random-seed \
+            count=1 &>/dev/null
+        evaluate_retval generic
+        ;;
+
+    stop)
+        MESSAGE="Saving random seed..."
+        /bin/dd if=/dev/urandom of=/var/tmp/random-seed \
+            count=1 &>/dev/null
+        evaluate_retval generic
+        ;;
+
+    *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+        ;;
+esac
+
+# End /etc/init.d/random

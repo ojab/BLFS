@@ -24,10 +24,6 @@ install-alsa: create-dirs
 	install -m ${MODE} blfs/init.d/alsa       ${EXTDIR}/init.d/
 	/usr/lib/lsb/install_initd ${EXTDIR}/init.d/alsa
 
-install-named: create-dirs
-	install -m ${MODE} blfs/init.d/named       ${EXTDIR}/init.d/
-	/usr/lib/lsb/install_initd ${EXTDIR}/init.d/named
-
 install-cups: create-dirs
 	install -m ${MODE} blfs/init.d/cups       ${EXTDIR}/init.d/
 	rm -f ${EXTDIR}/rc0.d/K36cups
@@ -63,9 +59,17 @@ install-httpd: create-dirs
 	install -m ${MODE} blfs/init.d/httpd     ${EXTDIR}/init.d/
 	/usr/lib/lsb/install_initd ${EXTDIR}/init.d/httpd
 
+install-named: create-dirs
+	install -m ${MODE} blfs/init.d/named       ${EXTDIR}/init.d/
+	/usr/lib/lsb/install_initd ${EXTDIR}/init.d/named
+
 install-nas: create-dirs
 	install -m ${MODE} blfs/init.d/nas        ${EXTDIR}/init.d/
 	/usr/lib/lsb/install_initd ${EXTDIR}/init.d/nas
+
+install-netfs: create-dirs
+	install -m ${MODE} blfs/init.d/netfs      ${EXTDIR}/init.d/
+	/usr/lib/lsb/install_initd ${EXTDIR}/init.d/netfs
 
 install-ntpd: create-dirs
 	install -m ${MODE} blfs/init.d/ntpd       ${EXTDIR}/init.d/
@@ -78,6 +82,10 @@ install-openldap1: create-dirs
 install-postfix: create-dirs
 	install -m ${MODE} blfs/init.d/postfix    ${EXTDIR}/init.d/
 	/usr/lib/lsb/install_initd ${EXTDIR}/init.d/postfix
+
+install-random: create-dirs
+	install -m ${MODE} blfs/init.d/random     ${EXTDIR}/init.d/
+	/usr/lib/lsb/install_initd ${EXTDIR}/init.d/random
 
 install-samba: create-dirs
 	install -m ${MODE} blfs/init.d/samba      ${EXTDIR}/init.d/
