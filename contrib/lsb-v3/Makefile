@@ -63,10 +63,6 @@ install-httpd: create-dirs
 	install -m ${MODE} blfs/init.d/httpd     ${EXTDIR}/init.d/
 	/usr/lib/lsb/install_initd ${EXTDIR}/init.d/httpd
 
-install-named: create-dirs
-	install -m ${MODE} blfs/init.d/named       ${EXTDIR}/init.d/
-	/usr/lib/install_initd ${EXTDIR}/init.d/named
-
 install-nas: create-dirs
 	install -m ${MODE} blfs/init.d/nas        ${EXTDIR}/init.d/
 	/usr/lib/lsb/install_initd ${EXTDIR}/init.d/nas
