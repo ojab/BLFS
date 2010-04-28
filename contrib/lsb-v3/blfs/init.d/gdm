@@ -4,9 +4,9 @@
 ### BEGIN INIT INFO
 # Provides:            gdm
 # Required-Start:      $network
-# Should-Start:        cups haldaemon $remote_fs samba sshd
+# Should-Start:        cups haldaemon random $remote_fs samba sshd
 # Required-Stop:       $network
-# Should-Stop:         alsa cups haldaemon $remote_fs samba sshd
+# Should-Stop:         alsa cups haldaemon random $remote_fs samba sshd
 # Default-Start:       5
 # Default-Stop:        0 1 2 3 4 6
 # Short-Description:   Starts/Stops the Gnome Display Manager (GUI Login). 
@@ -16,32 +16,37 @@
 
 . /lib/lsb/init-functions
 
-BIN_FILE="/opt/gnome-2.18.3/sbin/gdm"
+GNOME_PREFIX="/opt/gnome"
+BIN_FILE="${GNOME_PREFIX}/sbin/gdm"
+PIDFILE="/var/run/gdm.pid"
 
 chk_stat
 
 case "$1" in
     start)
         MESSAGE="Starting GDM..."
-        /opt/gnome-2.20/sbin/gdm
+        ${GNOME_PREFIX}/sbin/gdm
         evaluate_retval generic
         ;;
 
     stop)
-        MESSAGE="Stopping GDM..."
-        /opt/gnome-2.20/sbin/gdm-stop
-        evaluate_retval generic
+        if [ -f "$PIDFILE" ]
+        then
+            MESSAGE="Stopping GDM..."
+            ${GNOME_PREFIX}/sbin/gdm-stop
+            evaluate_retval generic
+        fi
         ;;
 
     reload)
         MESSAGE="Reloding GDM (Safe)..."
-        /opt/gnome-2.20/sbin/gdm-safe-restart
+        ${GNOME_PREFIX}/sbin/gdm-safe-restart
         evaluate_retval generic
         ;;
 
     restart)
         MESSAGE="Restarting GDM..."
-        /opt/gnome-2.20/sbin/gdm-restart
+        ${GNOME_PREFIX}/sbin/gdm-restart
         evaluate_retval generic
         ;;
 
