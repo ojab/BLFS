@@ -4,9 +4,9 @@
 ### BEGIN INIT INFO
 # Provides:            samba
 # Required-Start:      $network
-# Should-Start:        $remote_fs cups 
+# Should-Start:        $remote_fs cups slapd ntpd
 # Required-Stop:       $network
-# Should-Stop:         $remote_fs cups
+# Should-Stop:         $remote_fs cups slapd ntpd
 # Default-Start:       3 4 5
 # Default-Stop:        0 1 2 6
 # Short-Description:   Provides SMB (Windows) networking.
@@ -26,6 +26,10 @@ case "$1" in
         MESSAGE="smbd..."
         start_daemon /usr/sbin/smbd -D
         evaluate_retval start
+
+#        MESSAGE="winbind..."
+#        start_daemon /usr/sbin/winbindd
+#        evaluate_retval start
     ;;
 
     stop)
@@ -36,6 +40,10 @@ case "$1" in
         MESSAGE="nmbd..."
         killproc /usr/sbin/nmbd
         evaluate_retval stop
+
+#        MESSAGE="winbind..."
+#        killproc /usr/sbin/winbindd
+#        evaluate_retval stop
     ;;
 
 	reload)
@@ -46,6 +54,10 @@ case "$1" in
         MESSAGE="nmbd..."
         killproc -HUP /usr/sbin/nmbd
         evlauate_retval reload
+
+#        MESSAGE="winbind..."
+#        killproc -HUP /usr/sbin/winbindd
+#        evaluate_retval reload
     ;;
 
     restart)

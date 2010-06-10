@@ -75,9 +75,9 @@ install-ntpd: create-dirs
 	install -m ${MODE} blfs/init.d/ntpd       ${EXTDIR}/init.d/
 	/usr/lib/lsb/install_initd ${EXTDIR}/init.d/ntpd
 
-install-openldap1: create-dirs
-	install -m ${MODE} blfs/init.d/openldap1  ${EXTDIR}/init.d/openldap
-	/usr/lib/lsb/install_initd ${EXTDIR}/init.d/openldap
+install-slapd: create-dirs
+	install -m ${MODE} blfs/init.d/slapd  ${EXTDIR}/init.d/slapd
+	/usr/lib/lsb/install_initd ${EXTDIR}/init.d/slapd
 
 install-postfix: create-dirs
 	install -m ${MODE} blfs/init.d/postfix    ${EXTDIR}/init.d/
@@ -108,7 +108,7 @@ install-sshd: create-dirs
 	install-named \
 	install-nas \
 	install-ntpd \
-	install-openldap1 \
 	install-postfix \
 	install-samba \
+	install-slapd \
 	install-sshd 
