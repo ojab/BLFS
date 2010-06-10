@@ -1,12 +1,12 @@
 #!/bin/sh
-# Begin /etc/init.d/openldap
+# Begin /etc/init.d/slapd
 
 ### BEGIN INIT INFO
-# Provides:            openldap
+# Provides:            slapd
 # Required-Start:      $network
-# Should-Start:
+# Should-Start:        $remote_fs ntpd
 # Required-Stop:       $network
-# Should-Stop:         $remote_fs
+# Should-Stop:         $remote_fs ntpd
 # Default-Start:       3 4 5
 # Default-Stop:        0 1 2 6
 # Short-Description:   Starts OpenLDAP slapd.
@@ -50,4 +50,4 @@ case "$1" in
 
 esac
 
-# End /etc/init.d/openldap
+# End /etc/init.d/slapd

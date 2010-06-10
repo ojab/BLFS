@@ -2,7 +2,7 @@
 # Begin /etc/init.d/ntpd
 
 ### BEGIN INIT INFO
-# Provides:            ntp
+# Provides:            ntpd
 # Required-Start:      $time $network
 # Should-Start:
 # Required-Stop:       $network
