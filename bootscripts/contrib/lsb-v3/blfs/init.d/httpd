@@ -7,8 +7,8 @@
 # Should-Start:        $remote_fs
 # Required-Stop:       $network
 # Should-Stop:         $remote_fs
-# Default-Start:       2 3 4 5
-# Default-Stop:        0 1 6
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
 # Short-Description:   Apache HTTP Daemon
 # Description:         Controls the Apache HTTP Daemon
 # X-LFS-Provided-By:   BLFS
