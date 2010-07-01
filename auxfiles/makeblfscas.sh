@@ -5,7 +5,7 @@
 # Version number is obtained from the version of nss.
 if test -z "${1}"
 then
-    VERSION="3.12.5"
+    VERSION="3.12.6"
 else
   VERSION="${1}"
 fi
