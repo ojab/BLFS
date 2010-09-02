@@ -5,7 +5,7 @@
 # Version number is obtained from the version of nss.
 if test -z "${1}"
 then
-    VERSION="3.12.6"
+    VERSION="3.12.7.0"
 else
   VERSION="${1}"
 fi
@@ -45,6 +45,14 @@ do
   echo "generated PEM file with hash ${keyhash} for ${object}"
   mv "${TEMPDIR}/certs/${certbegin}" "${TEMPDIR}/certs/${keyhash}.pem"
 done
+
+# Remove expired CAs
+if test -f "${TEMPDIR}/certs/8f111d69.pem"; then
+  rm "${TEMPDIR}/certs/8f111d69.pem"
+fi
+if test -f "${TEMPDIR}/certs/f2cce23a.pem"; then
+  rm "${TEMPDIR}/certs/f2cce23a.pem"
+fi
 
 cd "${TEMPDIR}"
 tar -jcf "${TARBALL}" certs/
