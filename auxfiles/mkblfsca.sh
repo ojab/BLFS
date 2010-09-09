@@ -62,17 +62,17 @@ do
   cp "${tempfile}" tempfile.cer
   "${CONVERTSCRIPT}" > tempfile.crt
   keyhash=`openssl x509 -noout -in tempfile.crt -hash`
-  mv tempfile.crt "certs/${keyhash}.crt"
+  mv tempfile.crt "certs/${keyhash}.pem"
   rm -f tempfile.cer "${tempfile}"
-  echo "Created ${keyhash}.crt"
+  echo "Created ${keyhash}.pem"
 done
 
 # Remove blacklisted files
 # MD5 Collision Proof of Concept CA
-if test -f certs/8f111d69.crt
+if test -f certs/8f111d69.pem
 then
   echo "Certificate 8f111d69 is not trusted!  Removing..."
-  rm -f certs/8f111d69.crt
+  rm -f certs/8f111d69.pem
 fi
 
 # Finally, generate the tarball and clean up.
