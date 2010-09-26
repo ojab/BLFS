@@ -6,7 +6,7 @@
 975ade3f238c1eb10705da0a91e6e8e7  iceauth-1.0.3.tar.bz2
 9365ac66d19186eaf030482d312fca06  mkfontdir-1.0.5.tar.bz2
 96ca346f185c0ab48e42bf5bb0375da5  mkfontscale-1.0.7.tar.bz2
-00e834c3cbfd990e9d7d5ddc834242df  sessreg-1.0.5.tar.bz2
+8c8fcda19f4cffe573d43ec9b8255f8e  sessreg-1.0.6.tar.bz2
 2f902e0a89aaf2b19e06e7f26c6efb3a  setxkbmap-1.1.0.tar.bz2
 ba7dbde81be24fc1bd4156b360e5f8cf  smproxy-1.0.3.tar.bz2
 0865e14c73c08fa8c501ae877298ee9f  twm-1.0.4.tar.bz2
@@ -21,8 +21,8 @@ cb304d1ce562ac48b68eedeba38c662f  xdriinfo-1.0.3.tar.bz2
 5f98c0a2725a33d60ef4956befe078fb  xev-1.0.4.tar.bz2
 e8a88bf1a18f35b724619849dca97f4f  xgamma-1.0.3.tar.bz2
 c7f91b4a750d297f269c2a0a3206a1b2  xhost-1.0.3.tar.bz2
-fe1696cab2fbed6fa059d0cd1c53ac13  xinit-1.2.0.tar.bz2
-3e8a5f1faccc8ab00c6190e5a34e0a45  xinput-1.5.0.tar.bz2
+56f2d202b3dc10fcd21931a67bb270f7  xinit-1.2.1.tar.bz2
+8cec6023f90180cb8e4be31d98c43fda  xinput-1.5.2.tar.bz2
 38c387bacdc01038c8ac280588792bcf  xkbcomp-1.1.1.tar.bz2
 8d3c1485c2dd62ea7395a37377958a39  xkbevd-1.1.0.tar.bz2
 369a21641b7ca983d6641298e51d97f8  xkbutils-1.0.2.tar.bz2
