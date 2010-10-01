@@ -1,3 +1,7 @@
+2010-08-25 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+	* Modified the ntp startup script to only run
+	  nppd -gx
+
 2009-03-02 Randy McMurchy <randy@linuxfromscratch.org>
 	* Modified the D-BUS boot script "stop" section so that the PID
 	  file is removed when the daemon is stopped.

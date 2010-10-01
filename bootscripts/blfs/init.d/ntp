@@ -10,8 +10,7 @@
 case "$1" in
 	start)
 		boot_mesg "Starting ntpd..."
-		ntpd -gqx
-		loadproc /usr/sbin/ntpd
+		loadproc /usr/sbin/ntpd gx
 		;;
 
 	stop)
