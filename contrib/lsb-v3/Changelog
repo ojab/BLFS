@@ -1,3 +1,6 @@
+20100703  * [dj] - Added fcron script.
+            [dj] - Corrected .PHONY targets in Makefile.
+
 20100610  * [dj] - Added winbind to samba script.
             [dj] - Renamed openldap1 to slapd
             [dj] - Chaned provides for ntpd script to ntpd
