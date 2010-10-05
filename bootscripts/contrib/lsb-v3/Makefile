@@ -43,6 +43,10 @@ install-dbus: create-dirs
 	install -m ${MODE} blfs/init.d/dbus ${EXTDIR}/init.d/
 	/usr/lib/lsb/install_initd ${EXTDIR}/init.d/dbus
 
+install-fcron: create-dirs
+	install -m ${MODE} blfs/init.d/fcron ${EXTDIR}/init.d/
+	/usr/lib/lsb/install_initd ${EXTDIR}/init.d/fcron
+
 install-gdm: create-dirs
 	install -m ${MODE} blfs/init.d/gdm        ${EXTDIR}/init.d/
 	/usr/lib/lsb/install_initd ${EXTDIR}/init.d/gdm
@@ -102,13 +106,19 @@ install-sshd: create-dirs
 	install-alsa \
 	install-cups \
 	install-cyrus-sasl \
+	install-dbus \
+	install-fcron \
 	install-gdm \
 	install-gpm \
+	install-haldaemon \
 	install-httpd \
 	install-named \
 	install-nas \
+	install-netfs \
 	install-ntpd \
 	install-postfix \
+	install-random \
 	install-samba \
 	install-slapd \
-	install-sshd 
+	install-sshd
+
