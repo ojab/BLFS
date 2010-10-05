@@ -27,8 +27,7 @@ chk_stat
 case "$1" in
 
     start)
-        ${BIN_FILE} -gqx &&
-        start_daemon -p "${PIDFILE}" "${BIN_FILE}"
+        start_daemon -p "${PIDFILE}" "${BIN_FILE}" -gx
         evaluate_retval start
     ;;
 
@@ -41,7 +40,7 @@ case "$1" in
         # Restart service (if running) or start service
         killproc -p "${PIDFILE}" "${BIN_FILE}" &&
         sleep 1 &&
-        start_daemon -p "${PIDFILE}" "${BIN_FILE}"
+        start_daemon -p "${PIDFILE}" "${BIN_FILE}" -gx
         evaluate_retval restart
     ;;
 

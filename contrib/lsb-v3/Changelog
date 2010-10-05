@@ -1,5 +1,6 @@
-20100703  * [dj] - Added fcron script.
+20101005  * [dj] - Added fcron script.
             [dj] - Corrected .PHONY targets in Makefile.
+            [dj] - Synced with BLFS npt script for nptd.
 
 20100610  * [dj] - Added winbind to samba script.
             [dj] - Renamed openldap1 to slapd
