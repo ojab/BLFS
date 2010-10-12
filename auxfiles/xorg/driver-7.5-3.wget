@@ -17,6 +17,7 @@ xf86-video-apm-1.2.3.tar.bz2
 xf86-video-ark-0.7.3.tar.bz2
 xf86-video-ast-0.91.10.tar.bz2
 xf86-video-ati-6.13.2.tar.bz2
+# This driver is knows not to build on current xorg
 #xf86-video-chips-1.2.3.tar.bz2
 xf86-video-cirrus-1.3.2.tar.bz2
 xf86-video-dummy-0.3.4.tar.bz2
