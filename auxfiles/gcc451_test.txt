@@ -1,0 +1,75 @@
+LAST_UPDATED: Obtained from SVN: tags/gcc_4_5_1_release revision 162774
+
+Native configuration is i686-pc-linux-gnu
+
+		=== g++ tests ===
+
+
+Running target unix
+
+		=== g++ Summary ===
+
+# of expected passes		22354
+# of expected failures		149
+# of unsupported tests		116
+/build/gcc-build/gcc/testsuite/g++/../../g++  version 4.5.1 (GCC) 
+
+		=== gcc tests ===
+
+
+Running target unix
+WARNING: program timed out.
+FAIL: gcc.dg/pr43058.c (test for excess errors)
+
+		=== gcc Summary ===
+
+# of expected passes		60980
+# of unexpected failures	1
+# of expected failures		166
+# of unsupported tests		673
+/build/gcc-build/gcc/xgcc  version 4.5.1 (GCC) 
+
+		=== libgomp tests ===
+
+
+Running target unix
+
+		=== libgomp Summary ===
+
+# of expected passes		1029
+		=== libmudflap tests ===
+
+
+Running target unix
+FAIL: libmudflap.c/pass46-frag.c (-O2) (test for excess errors)
+FAIL: libmudflap.c/pass46-frag.c (-O2) (test for excess errors)
+FAIL: libmudflap.c/fail31-frag.c (-O3) output pattern test
+FAIL: libmudflap.c/pass45-frag.c (-O3) execution test
+FAIL: libmudflap.c/pass45-frag.c (-O3) output pattern test
+FAIL: libmudflap.c/pass45-frag.c (-O3) execution test
+FAIL: libmudflap.c/pass45-frag.c (-O3) output pattern test
+FAIL: libmudflap.c/pass46-frag.c (-O3) (test for excess errors)
+FAIL: libmudflap.c/pass46-frag.c (-O3) (test for excess errors)
+FAIL: libmudflap.c++/pass41-frag.cxx execution test
+FAIL: libmudflap.c++/pass41-frag.cxx ( -O) execution test
+FAIL: libmudflap.c++/pass41-frag.cxx (-O2) execution test
+FAIL: libmudflap.c++/pass41-frag.cxx (-O3) execution test
+
+		=== libmudflap Summary ===
+
+# of expected passes		1414
+# of unexpected failures	13
+		=== libstdc++ tests ===
+
+
+Running target unix
+
+		=== libstdc++ Summary ===
+
+# of expected passes		7071
+# of expected failures		95
+# of unsupported tests		339
+
+Compiler version: 4.5.1 (GCC) 
+Platform: i686-pc-linux-gnu
+configure flags: --prefix=/usr --libexecdir=/usr/lib --enable-shared --enable-threads=posix --enable-__cxa_atexit --enable-clocale=gnu --disable-bootstrap --disable-multilib --with-system-zlib --enable-languages=c,c++
