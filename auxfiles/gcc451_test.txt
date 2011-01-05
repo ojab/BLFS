@@ -1,5 +1,10 @@
 LAST_UPDATED: Obtained from SVN: tags/gcc_4_5_1_release revision 162774
 
+		=== acats tests ===
+
+		=== acats Summary ===
+# of expected passes		2321
+# of unexpected failures	0
 Native configuration is i686-pc-linux-gnu
 
 		=== g++ tests ===
@@ -12,7 +17,7 @@ Running target unix
 # of expected passes		22354
 # of expected failures		149
 # of unsupported tests		116
-/build/gcc-build/gcc/testsuite/g++/../../g++  version 4.5.1 (GCC) 
+/home/rml/build/gcc-build/gcc/testsuite/g++/../../g++  version 4.5.1 (GCC) 
 
 		=== gcc tests ===
 
@@ -23,11 +28,60 @@ FAIL: gcc.dg/pr43058.c (test for excess errors)
 
 		=== gcc Summary ===
 
-# of expected passes		60980
+# of expected passes		60981
 # of unexpected failures	1
 # of expected failures		166
-# of unsupported tests		673
-/build/gcc-build/gcc/xgcc  version 4.5.1 (GCC) 
+# of unsupported tests		672
+/home/rml/build/gcc-build/gcc/xgcc  version 4.5.1 (GCC) 
+
+		=== gfortran tests ===
+
+
+Running target unix
+
+		=== gfortran Summary ===
+
+# of expected passes		33431
+# of expected failures		20
+# of unsupported tests		137
+/home/rml/build/gcc-build/gcc/testsuite/gfortran/../../gfortran  version 4.5.1 (GCC) 
+
+		=== gnat tests ===
+
+
+Running target unix
+
+		=== gnat Summary ===
+
+# of expected passes		758
+# of expected failures		7
+# of unsupported tests		2
+		=== obj-c++ tests ===
+
+
+Running target unix
+WARNING: obj-c++.dg/lookup-2.mm -fgnu-runtime compilation failed to produce executable
+WARNING: obj-c++.dg/try-catch-2.mm -fgnu-runtime compilation failed to produce executable
+WARNING: obj-c++.dg/try-catch-9.mm -fgnu-runtime compilation failed to produce executable
+
+		=== obj-c++ Summary ===
+
+# of expected passes		440
+# of expected failures		3
+# of unsupported tests		14
+/home/rml/build/gcc-build/gcc/testsuite/obj-c++/../../g++  version 4.5.1 (GCC) 
+
+		=== objc tests ===
+
+
+Running target unix
+
+		=== objc Summary ===
+
+# of expected passes		1882
+# of expected failures		7
+# of unsupported tests		20
+/home/rml/build/gcc-build/gcc/xgcc  version 4.5.1 (GCC) 
 
 		=== libgomp tests ===
 
@@ -36,7 +90,7 @@ Running target unix
 
 		=== libgomp Summary ===
 
-# of expected passes		1029
+# of expected passes		2494
 		=== libmudflap tests ===
 
 
@@ -57,7 +111,7 @@ FAIL: libmudflap.c++/pass41-frag.cxx (-O3) execution test
 
 		=== libmudflap Summary ===
 
-# of expected passes		1414
+# of expected passes		1770
 # of unexpected failures	13
 		=== libstdc++ tests ===
 
@@ -72,4 +126,4 @@ Running target unix
 
 Compiler version: 4.5.1 (GCC) 
 Platform: i686-pc-linux-gnu
-configure flags: --prefix=/usr --libexecdir=/usr/lib --enable-shared --enable-threads=posix --enable-__cxa_atexit --enable-clocale=gnu --disable-bootstrap --disable-multilib --with-system-zlib --enable-languages=c,c++
+configure flags: --prefix=/usr --libexecdir=/usr/lib --with-system-zlib --enable-shared --enable-threads=posix --enable-__cxa_atexit --disable-multilib --enable-bootstrap --enable-clocale=gnu --enable-languages=c,c++,ada,fortran,objc,obj-c++
