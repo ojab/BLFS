@@ -1,0 +1,135 @@
+# This file contains the options used in the Firefox build. You may
+# need to specify additional options for your specific build needs.
+# Use the information provided by running './configure --help' to
+# help you determine if you need to add any additional options.
+# Some additional options can be added by uncommenting the examples
+# in this file or adding options by inserting a line containing
+# 'ac_add_options --some-option-you-need'.  Be aware that some accepted
+# options, such as '--with-system-bz2', do not affect the build.
+
+# Specify that Firefox should be built. Note that this line is commented out
+# because it is redundant with the next setting.
+#ac_add_options --enable-application=browser
+
+# Use the default settings specified in the source tree. The
+# --enable-application=browser is set in this file.
+. $topsrcdir/browser/config/mozconfig
+
+# Create an object directory and specify to build the package in that
+# directory. If desired, modify the location of the object directory
+# to a directory inside the source tree by removing '../' from the
+# line below.
+mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../firefox-build
+
+# Specify the installation prefix. If you would prefer Firefox installed in a
+# different prefix, modify the line below to fit your needs (the system.conf
+# configuration file will always be installed to /etc/gre.d).
+ac_add_options --prefix=/usr
+
+# Apply a minimal level of optimization (-O).
+ac_add_options --enable-optimize
+
+# These options are used so that the Firefox binaries are linked to
+# the system-installed copies of the specified libraries instead of
+# the source tree code which may not be the most recent versions.
+# With the exception of libsqlite3, the libraries are statically linked.
+
+# (Options to use system installed libraries)
+# Using the shipped version of libsqlite3 has been reported to cause
+# problems with other applications which were using sqlite3.
+# Only comment this line if you know exactly what you are doing!
+ac_add_options --enable-system-sqlite
+
+# Comment this only if you want to use whatever patched version of cairo
+# is in the shipped mozilla tree, together with the system headers.
+ac_add_options --enable-system-cairo
+
+# Comment this if you have not installed lcms.
+ac_add_options --enable-system-lcms
+
+# Comment this if you did not build libjpeg before GTK+-2.
+ac_add_options --with-system-jpeg
+
+# These two options enable support for building Xulrunner with
+# system-installed versions of the Network Security Services (NSS)
+# and Netscape Portable Runtime (NSPR) libraries. Comment them if
+# you wish to use the included copies (not recommended).
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+
+# Comment this if you have not built png with the apng patch.
+ac_add_options --with-system-png
+
+# The pthreads option is only used when building nspr
+# Uncomment this if you build the included nspr.
+#ac_add_options --with-pthreads
+
+# Zlib is included in LFS. Do not comment this line.
+ac_add_options --with-system-zlib
+
+# (Options to disable parts of the package)
+# This option is used to disable the a11y support in the Xulrunner
+# binaries. Comment out this option if you require a11y support.
+ac_add_options --disable-accessibility
+
+# Uncomment this if you did not build cURL.
+#ac_add_options --disable-crashreporter
+
+# Comment this if you have built DBus-Glib.
+ac_add_options --disable-dbus
+
+# Comment this if you have Gnome-VFS and libgnomeui, and wish to
+# integrate Firefox into your gnome desktop
+ac_add_options --disable-gnomevfs
+
+# Comment this if you have wireless-tools installed and wish to use the new
+# Necko WiFi scanning.
+ac_add_options --disable-necko-wifi
+
+# Comment this if you have installed libnotify.
+ac_add_options --disable-libnotify
+
+# This option is added so that the Mozilla Installer program is not
+# built or installed. The program is not required for a BLFS
+# installation of Xulrunner.
+ac_add_options --disable-installer
+
+# If you enable javaxpcom, you must have a java compiler installed.
+ac_add_options --disable-javaxpcom
+
+# This option is added so that test libraries and programs are not
+# built. These would only be required for debugging purposes.
+ac_add_options --disable-tests
+
+# Disable the updater, which is not appropriate if you build from source.
+ac_add_options --disable-updater
+
+# (options to add extra parts of the package)
+# This option causes the installed Firefox binaries to have the official
+# Firefox name embedded in them. Due to license restrictions, you
+# may not distribute binaries created using this option.  It also
+# means you get a popup EULA when you first run firefox.
+ac_add_options --enable-official-branding
+
+# Use the anti-phishing measures (a blacklist of sites).
+ac_add_options --enable-safe-browsing
+
+# This option is used so that the debugging symbols are removed from
+# the installed binaries during the installation process. Comment out
+# this option if you may have a need to retain the debugging symbols
+# in the installed binaries (the resulting binaries will be about 7MB
+# bigger).
+ac_add_options --enable-strip
+
+# Uncomment this option if you desire support for dual-monitor
+# display using the X-Window Xinerama libraries.
+#ac_add_options --enable-xinerama
+
+# This option identifies the default binary directory of the Xulrunner
+# installation and is used to locate Xulrunner's installed files. This
+# option is is only used for development purposes.
+#ac_add_options --with-default-mozilla-five-home=/usr/lib/firefox-3.6.13
+
+# Point to the xulrunner libraries - comment these fo
+ac_add_options --with-system-libxul
+ac_add_options --with-libxul-sdk=/usr/lib/xulrunner-devel-1.9.2.13
