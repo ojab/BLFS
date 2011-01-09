@@ -108,7 +108,8 @@ ac_add_options --disable-updater
 # This option causes the installed Firefox binaries to have the official
 # Firefox name embedded in them. Due to license restrictions, you
 # may not distribute binaries created using this option.  It also
-# means you get a popup EULA when you first run firefox.
+# means you get a popup EULA when you first run a Xulrunner Gecko engined
+# application.
 ac_add_options --enable-official-branding
 
 # Use the anti-phishing measures (a blacklist of sites).
