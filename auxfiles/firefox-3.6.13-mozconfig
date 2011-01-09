@@ -22,8 +22,7 @@
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../firefox-build
 
 # Specify the installation prefix. If you would prefer Firefox installed in a
-# different prefix, modify the line below to fit your needs (the system.conf
-# configuration file will always be installed to /etc/gre.d).
+# different prefix, modify the line below to fit your needs.
 ac_add_options --prefix=/usr
 
 # Apply a minimal level of optimization (-O).
@@ -108,7 +107,7 @@ ac_add_options --disable-updater
 # This option causes the installed Firefox binaries to have the official
 # Firefox name embedded in them. Due to license restrictions, you
 # may not distribute binaries created using this option.  It also
-# means you get a popup EULA when you first run firefox.
+# means you get a popup EULA when you first run Firefox.
 ac_add_options --enable-official-branding
 
 # Use the anti-phishing measures (a blacklist of sites).
@@ -125,11 +124,11 @@ ac_add_options --enable-strip
 # display using the X-Window Xinerama libraries.
 #ac_add_options --enable-xinerama
 
-# This option identifies the default binary directory of the Xulrunner
-# installation and is used to locate Xulrunner's installed files. This
+# This option identifies the default binary directory of the Firefox
+# installation and is used to locate Firefox's installed files. This
 # option is is only used for development purposes.
 #ac_add_options --with-default-mozilla-five-home=/usr/lib/firefox-3.6.13
 
-# Point to the xulrunner libraries - comment these fo
+# Point to the Xulrunner libraries - comment these for a standalone browser.
 ac_add_options --with-system-libxul
 ac_add_options --with-libxul-sdk=/usr/lib/xulrunner-devel-1.9.2.13
