@@ -1,0 +1,48 @@
+#!/bin/sh
+# Begin $rc_base/init.d/virtuoso
+
+# Based on sysklogd script from LFS-3.1 and earlier.
+# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+
+#$LastChangedBy$
+#$Date$
+
+. /etc/sysconfig/rc
+. $rc_functions
+
+virtuoso_db="/var/lib/virtuoso/db"
+
+case "$1" in
+    start)
+        boot_mesg "Starting Virtuoso Universal Server..."
+	cd $virtuoso_db
+        loadproc /usr/bin/virtuoso-t
+        ;;
+
+    stop)
+        boot_mesg "Stopping Virtuoso Universal Server..."
+        killproc /usr/bin/virtuoso-t
+        ;;
+
+    reload)
+        boot_mesg "Reloading Virtuoso Universal Server..."
+        reloadproc /usr/bin/virtuoso-t
+        ;;
+
+    restart)
+        $0 stop
+        sleep 1
+        $0 start
+        ;;
+
+    status)
+        statusproc /usr/bin/virtuoso-t
+        ;;
+
+    *)
+        echo "Usage: $0 {start|stop|reload|restart|status}"
+        exit 1
+        ;;
+esac
+
+# End $rc_base/init.d/virtuoso
