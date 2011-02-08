@@ -1,0 +1,51 @@
+#!/bin/sh
+# Begin $rc_base/init.d/soprano
+
+# Based on sysklogd script from LFS-3.1 and earlier.
+# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+
+#$LastChangedBy$
+#$Date$
+
+. /etc/sysconfig/rc
+. $rc_functions
+
+. /etc/sysconfig/soprano
+
+case "$1" in
+    start)
+        boot_mesg "Starting Soprano Server..."
+        HOME=$SOPRANO_STORAGE /usr/bin/sopranod \
+                     --storagedir $SOPRANO_STORAGE \
+                     --backend $SOPRANO_BACKEND \
+                     $SOPRANO_OPTIONS &
+        evaluate_retval
+        ;;
+
+    stop)
+        boot_mesg "Stopping Soprano Server..."
+        killproc /usr/bin/sopranod
+        ;;
+
+    reload)
+        boot_mesg "Reloading Soprano Server..."
+        reloadproc /usr/bin/sopranod
+        ;;
+
+    restart)
+        $0 stop
+        sleep 1
+        $0 start
+        ;;
+
+    status)
+        statusproc /usr/bin/sopranod
+        ;;
+
+    *)
+        echo "Usage: $0 {start|stop|reload|restart|status}"
+        exit 1
+        ;;
+esac
+
+# End $rc_base/init.d/soprano

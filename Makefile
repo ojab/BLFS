@@ -375,6 +375,16 @@ install-sendmail: create-dirs
 	ln -sf  ../init.d/sendmail ${EXTDIR}/rc.d/rc5.d/S35sendmail
 	ln -sf  ../init.d/sendmail ${EXTDIR}/rc.d/rc6.d/K25sendmail
 
+install-soprano: create-dirs
+	install -m ${MODE} blfs/init.d/soprano    ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/soprano ${EXTDIR}/rc.d/rc0.d/K35soprano
+	ln -sf  ../init.d/soprano ${EXTDIR}/rc.d/rc1.d/K35soprano
+	ln -sf  ../init.d/soprano ${EXTDIR}/rc.d/rc2.d/K35soprano
+	ln -sf  ../init.d/soprano ${EXTDIR}/rc.d/rc3.d/S48soprano
+	ln -sf  ../init.d/soprano ${EXTDIR}/rc.d/rc4.d/S48soprano
+	ln -sf  ../init.d/soprano ${EXTDIR}/rc.d/rc5.d/S48soprano
+	ln -sf  ../init.d/soprano ${EXTDIR}/rc.d/rc6.d/K35soprano
+
 install-qpopper: create-dirs
 	install -m ${MODE} blfs/init.d/qpopper   ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc0.d/K23qpopper
@@ -422,6 +432,16 @@ install-sysstat: create-dirs
 install-usb: create-dirs
 	install -m ${MODE} blfs/init.d/usb        ${EXTDIR}/rc.d/init.d/
 	ln -sf ../init.d/usb ${EXTDIR}/rc.d/rcsysinit.d/S90usb
+
+install-virtuoso: create-dirs
+	install -m ${MODE} blfs/init.d/virtuoso   ${EXTDIR}/rc.d/init.d/
+	ln -sf ../init.d/virtuoso ${EXTDIR}/rc.d/rc0.d/K40virtuoso
+	ln -sf ../init.d/virtuoso ${EXTDIR}/rc.d/rc1.d/K40virtuoso
+	ln -sf ../init.d/virtuoso ${EXTDIR}/rc.d/rc2.d/K40virtuoso
+	ln -sf ../init.d/virtuoso ${EXTDIR}/rc.d/rc3.d/S47virtuoso
+	ln -sf ../init.d/virtuoso ${EXTDIR}/rc.d/rc4.d/S47virtuoso
+	ln -sf ../init.d/virtuoso ${EXTDIR}/rc.d/rc5.d/S47virtuoso
+	ln -sf ../init.d/virtuoso ${EXTDIR}/rc.d/rc6.d/K40virtuoso
 
 install-vsftpd: create-dirs
 	install -m ${MODE} blfs/init.d/vsftpd     ${EXTDIR}/rc.d/init.d/
@@ -807,6 +827,16 @@ uninstall-usb:
 	rm -f ${EXTDIR}/rc.d/init.d/usb
 	rm -f ${EXTDIR}/rc.d/rcsysinit.d/S90usb
 
+uninstall-virtuoso:
+	rm -f ${EXTDIR}/rc.d/init.d/virtuoso
+	rm -f ${EXTDIR}/rc.d/rc0.d/K40virtuoso
+	rm -f ${EXTDIR}/rc.d/rc1.d/K40virtuoso
+	rm -f ${EXTDIR}/rc.d/rc2.d/K40virtuoso
+	rm -f ${EXTDIR}/rc.d/rc3.d/S47virtuoso
+	rm -f ${EXTDIR}/rc.d/rc4.d/S47virtuoso
+	rm -f ${EXTDIR}/rc.d/rc5.d/S47virtuoso
+	rm -f ${EXTDIR}/rc.d/rc6.d/K40virtuoso
+
 uninstall-vsftpd:
 	rm -f ${EXTDIR}/rc.d/init.d/vsftpd
 	rm -f ${EXTDIR}/rc.d/rc0.d/K28vsftpd
@@ -873,11 +903,13 @@ uninstall-xinetd:
 	install-rsync \
 	install-samba \
 	install-sendmail \
+	install-soprano \
 	install-sshd \
 	install-stunnel \
 	install-svn \
 	install-sysstat \
 	install-vsftpd \
+	install-virtuoso \
 	install-usb \
 	install-winbind \
 	install-xinetd \
@@ -912,10 +944,12 @@ uninstall-xinetd:
 	uninstall-rsync \
 	uninstall-samba \
 	uninstall-sendmail \
+	uninstall-soprano \
 	uninstall-sshd \
 	uninstall-stunnel \
 	uninstall-svn \
 	uninstall-sysstat \
+	uninstall-virtuoso \
 	uninstall-vsftpd \
 	uninstall-usb \
 	uninstall-winbind \
