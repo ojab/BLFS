@@ -1,4 +1,5 @@
 ETCDIR=/etc
+LIBDIR=${DESTDIR}/lib/services
 EXTDIR=${DESTDIR}${ETCDIR}
 MODE=754
 DIRMODE=755
@@ -16,12 +17,13 @@ create-dirs:
 
 create-service-dir:
 	install -d -m ${DIRMODE} ${EXTDIR}/sysconfig/network-devices/services
+	install -d -m ${DIRMODE} ${LIBDIR}
 
 install-service-dhclient: create-service-dir
 	install -m ${MODE} blfs/sysconfig/network-devices/services/dhclient ${EXTDIR}/sysconfig/network-devices/services
 
 install-service-dhcpcd: create-service-dir
-	install -m ${MODE} blfs/sysconfig/network-devices/services/dhcpcd   ${EXTDIR}/sysconfig/network-devices/services
+	install -m ${MODE} blfs/services/dhcpcd  ${LIBDIR}
 
 install-service-ipx: create-service-dir
 	install -m ${MODE} blfs/sysconfig/network-devices/services/ipx      ${EXTDIR}/sysconfig/network-devices/services
