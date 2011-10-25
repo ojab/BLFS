@@ -39,15 +39,15 @@ install-alsa: create-dirs
 	ln -sf  ../init.d/alsa ${EXTDIR}/rc.d/rc1.d/K35alsa
 	ln -sf  ../init.d/alsa ${EXTDIR}/rc.d/rc6.d/K35alsa
 
-install-apache: create-dirs
-	install -m ${MODE} blfs/init.d/apache     ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/apache ${EXTDIR}/rc.d/rc0.d/K28apache
-	ln -sf  ../init.d/apache ${EXTDIR}/rc.d/rc1.d/K28apache
-	ln -sf  ../init.d/apache ${EXTDIR}/rc.d/rc2.d/K28apache
-	ln -sf  ../init.d/apache ${EXTDIR}/rc.d/rc3.d/S32apache
-	ln -sf  ../init.d/apache ${EXTDIR}/rc.d/rc4.d/S32apache
-	ln -sf  ../init.d/apache ${EXTDIR}/rc.d/rc5.d/S32apache
-	ln -sf  ../init.d/apache ${EXTDIR}/rc.d/rc6.d/K28apache
+install-httpd: create-dirs
+	install -m ${MODE} blfs/init.d/httpd     ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/httpd ${EXTDIR}/rc.d/rc0.d/K28httpd
+	ln -sf  ../init.d/httpd ${EXTDIR}/rc.d/rc1.d/K28httpd
+	ln -sf  ../init.d/httpd ${EXTDIR}/rc.d/rc2.d/K28httpd
+	ln -sf  ../init.d/httpd ${EXTDIR}/rc.d/rc3.d/S32httpd
+	ln -sf  ../init.d/httpd ${EXTDIR}/rc.d/rc4.d/S32httpd
+	ln -sf  ../init.d/httpd ${EXTDIR}/rc.d/rc5.d/S32httpd
+	ln -sf  ../init.d/httpd ${EXTDIR}/rc.d/rc6.d/K28httpd
 
 install-autofs: create-dirs
 	install -m $(MODE) blfs/init.d/autofs    $(EXTDIR)/rc.d/init.d/
