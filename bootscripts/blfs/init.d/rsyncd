@@ -1,8 +1,6 @@
 #!/bin/sh
-# Begin /etc/init.d/rsyncd
-
 #######################################################################
-# Begin ntpd
+# Begin /etc/init.d/rsyncd
 #
 # Description : Start rsync server
 #
