@@ -1,8 +1,6 @@
 #!/bin/sh
-# Begin /etc/init.d/httpd
-
 #######################################################################
-# Begin ntpd
+# Begin /etc/init.d/httpd
 #
 # Description : Start Apache Web Server
 #
