@@ -1,56 +1,61 @@
 #!/bin/sh
-# Begin $rc_base/init.d/postfix
+# Begin /etc/init.d/postfix
 
-# Based on sysklogd script from LFS-3.1 and earlier.
-# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+### BEGIN INIT INFO
+# Provides:            postfix
+# Required-Start:      $syslog $local_fs $network
+# Should-Start:        $remote_fs
+# Required-Stop:       $network
+# Should-Stop:         $remote_fs
+# Default-Start:       2 3 4 5
+# Default-Stop:        0 1 6
+# Short-Description:   Postfix MTA
+# Description:         Controls the Postfix Mail Transfer Agent
+# X-LFS-Provided-By:   BLFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
 
 #$LastChangedBy$
 #$Date$
 
-. /etc/sysconfig/rc
-. $rc_functions
+BINFILE=/usr/lib/postfix/master
+PIDFILE=/var/spool/postfix/pid/master.pid
 
 case "$1" in
-	start)
-		boot_mesg "Starting Postfix..."
-		loadproc /usr/sbin/postfix start
-		;;
+   start)
+      log_info_msg "Starting Postfix..."
+      start_daemon -p "${PIDFILE}" /usr/sbin/postfix start 2> /dev/null
+      evaluate_retval 
+      ;;
 
-	stop)
-		boot_mesg "Stopping Postfix..."
-		loadproc /usr/sbin/postfix stop
-		;;
+   stop)
+      log_info_msg "Stopping Postfix..."
+      killproc -p "${PIDFILE}" ${BINFILE}
+      evaluate_retval
+      ;;
 
-	reload)
-		boot_mesg "Reloading Postfix..."
-		loadproc /usr/sbin/postfix reload
-		;;
+   reload)
+      log_info_msg "Reloading Postfix..."
+      killproc -p "${PIDFILE}" ${BINFILE} -HUP
+      evaluate_retval
+      ;;
 
-	abort)
-		boot_mesg "Aborting Postfix..."
-		loadproc /usr/sbin/postfix abort
-		;;
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
 
-	flush)
-		boot_mesg "Flushing Postfix..."
-		loadproc /usr/sbin/postfix flush
-		;;
+   status)
+      echo -n "postfix: "
+      statusproc  -p "${PIDFILE}" ${BINFILE}
+      ;;
 
-	check)
-		boot_mesg "Checking Postfix..."
-		loadproc /usr/sbin/postfix check
-		;;
-
-	restart)
-		$0 stop
-		sleep 1
-		$0 start
-		;;
-
-	*)
-		echo "Usage: $0 {start|stop|reload|abort|flush|check|restart}"
-		exit 1
-		;;
+   *)
+      echo "Usage: $0 {start|stop|reload|restart|status}"
+      exit 1
+      ;;
 esac
 
-# End $rc_base/init.d/postfix
+# End /etc/init.d/postfix
