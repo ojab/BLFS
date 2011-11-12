@@ -1,58 +1,71 @@
 #!/bin/sh
-# Begin $rc_base/init.d/samba
+# Begin /etc/init.d/samba
 
-# Based on sysklogd script from LFS-3.1 and earlier.
-# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+### BEGIN INIT INFO
+# Provides:            samba
+# Required-Start:      $network
+# Should-Start:        $remote_fs cups slapd ntpd
+# Required-Stop:       $network
+# Should-Stop:         $remote_fs cups slapd ntpd
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Provides SMB (Windows) networking.
+# Description:         Starts Samba smbd and nmbd processess which provide
+#                      connectivity to SMB (Windows) networks.
+# X-LFS-Provided-By:   BLFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
 
 #$LastChangedBy$
 #$Date$
 
-. /etc/sysconfig/rc
-. $rc_functions
-
-smbdpid=/var/run/smbd.pid
-nmbdpid=/var/run/nmbd.pid
-
 case "$1" in
-	start)
-		boot_mesg "Starting nmbd..."
-		loadproc -p $nmbdpid /usr/sbin/nmbd -D
+   start)
+      log_info_msg "Starting nmbd..."
+      start_daemon /usr/sbin/nmbd -D
+      evaluate_retval
 
-		boot_mesg "Starting smbd..."
-		loadproc -p $smbdpid /usr/sbin/smbd -D
-		;;
+      log_info_msg "Starting smbd..."
+      start_daemon /usr/sbin/smbd -D
+      evaluate_retval
+      ;;
 
-	stop)
-		boot_mesg "Stopping smbd..."
-		killproc -p $smbdpid /usr/sbin/smbd
+   stop)
+      log_info_msg "Stopping smbd..."
+      killproc /usr/sbin/smbd
+      evaluate_retval
 
-		boot_mesg "Stopping nmbd..."
-		killproc -p $nmbdpid /usr/sbin/nmbd
-                ;;
+      log_info_msg "Stopping nmbd..."
+      killproc /usr/sbin/nmbd
+      evaluate_retval
+      ;;
 
-	reload)
-		boot_mesg "Reloading smbd..."
-		reloadproc -p $smbdpid /usr/sbin/smbd
+   reload)
+      log_info_msg "Reloading smbd..."
+      killproc /usr/sbin/smbd -HUP
+      evaluate_retval
 
-		boot_mesg "Reloading nmbd..."
-		reloadproc -p $nmbdpid /usr/sbin/nmbd
-		;;
+      log_info_msg "Reloading nmbd..."
+      killproc /usr/sbin/nmbd -HUP
+      evaluate_retval
+      ;;
 
-	restart)
-		$0 stop
-		sleep 1
-		$0 start
-		;;
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
 
-	status)
-		statusproc -p $nmbdpid /usr/sbin/nmbd
-		statusproc -p $smbdpid /usr/sbin/smbd
-		;;
+   status)
+      statusproc /usr/sbin/nmbd
+      statusproc /usr/sbin/smbd
+      ;;
 
-	*)
-		echo "Usage: $0 {start|stop|reload|restart|status}"
-		exit 1
-		;;
+   *)
+      echo "Usage: $0 {start|stop|reload|restart|status}"
+      exit 1
+      ;;
 esac
 
-# End $rc_base/init.d/samba
+# End /etc/init.d/samba
