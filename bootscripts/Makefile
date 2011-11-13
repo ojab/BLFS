@@ -367,6 +367,16 @@ install-samba: create-dirs
 	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc5.d/S45samba
 	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc6.d/K48samba
 
+install-swat: create-dirs
+	install -m ${MODE} blfs/init.d/swat      ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc0.d/K47swat
+	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc1.d/K47swat
+	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc2.d/K47swat
+	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc3.d/S46swat
+	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc4.d/S46swat
+	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc5.d/S46swat
+	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc6.d/K47swat
+
 install-sendmail: create-dirs
 	install -m ${MODE} blfs/init.d/sendmail   ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/sendmail ${EXTDIR}/rc.d/rc0.d/K25sendmail
