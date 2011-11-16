@@ -11,7 +11,7 @@ Based on the original lfs-chunked.xsl created by Matthew Burgess -->
                 version="1.0">
 
   	<!-- We use XHTML -->
-  <xsl:import href="http://docbook.sourceforge.net/release/xsl/1.69.1/xhtml/chunk.xsl"/>
+  <xsl:import href="http://docbook.sourceforge.net/release/xsl/current/xhtml/chunk.xsl"/>
   <xsl:param name="chunker.output.encoding" select="'ISO-8859-1'"/>
   <xsl:param name="chunk.section.depth" select="0"/>
 
