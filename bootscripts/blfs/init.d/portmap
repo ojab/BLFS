@@ -1,21 +1,47 @@
 #!/bin/sh
+########################################################################
+# Begin portmap 
+#
+# Description : Start portmap daemon
+#
+# Author      : Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : LFS 7.0
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            portmap
+# Required-Start:      network
+# Should-Start:
+# Required-Stop:       sendsignals
+# Should-Stop:
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Starts the portmap daemon.
+# Description:         Starts the portmap daemon to convert RPC program numbers
+#                      into DARPA protocol port numbers. It must be running in 
+#                      order to make RPC# calls.
+# X-LFS-Provided-By:   LFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
 # Begin $rc_base/init.d/portmap
 
 #$LastChangedBy$
 #$Date$
 
-. /etc/sysconfig/rc
-. $rc_functions
-
 case "$1" in
 	start)
-		boot_mesg "Starting RPC Portmap"
-		loadproc /sbin/portmap
+		log_info_msg "Starting RPC Portmap"
+		start_daemon /sbin/portmap
+      evaluate_retval
 		;;
 
 	stop)
-		boot_mesg "Stopping Portmap"
+		log_info_msg "Stopping Portmap"
 		killproc /sbin/portmap
+      evaluate_retval
 		;;
 
 	restart)
@@ -35,4 +61,5 @@ case "$1" in
 
 esac
 
-# End $rc_base/init.d/portmap
+# End /etc/init.d/portmap
+
