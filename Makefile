@@ -20,7 +20,7 @@ create-service-dir:
 	install -d -m ${DIRMODE} ${LIBDIR}
 
 install-service-dhclient: create-service-dir
-	install -m ${MODE} blfs/sysconfig/network-devices/services/dhclient ${EXTDIR}/sysconfig/network-devices/services
+	install -m ${MODE} blfs/services/dhclient ${LIBDIR}
 
 install-service-dhcpcd: create-service-dir
 	install -m ${MODE} blfs/services/dhcpcd  ${LIBDIR}
