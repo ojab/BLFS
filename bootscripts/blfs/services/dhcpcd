@@ -8,8 +8,8 @@
 
 # Call with: IFCONFIG=<filename> /lib/services/dhcpcd <IFACE> <up | down>
 
-#$LastChangedBy: bdubbs $
-#$Date: 2005-08-01 13:29:19 -0600 (Mon, 01 Aug 2005) $
+#$LastChangedBy$
+#$Date$
 
 . /lib/lsb/init-functions
 . $IFCONFIG
@@ -38,7 +38,7 @@ case "$2" in
        ;;
 
      down)
-       log_info_msg "Stoping dhcpcd on the $1 interface..."
+       log_info_msg "Stopping dhcpcd on the $1 interface..."
 
        if [ -z "$DHCP_STOP" ]; then
           killproc -p "${PIDFILE}" /sbin/dhcpcd
