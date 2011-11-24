@@ -347,6 +347,16 @@ install-random: create-dirs
 	ln -sf  ../init.d/random ${EXTDIR}/rc.d/rc5.d/S25random
 	ln -sf  ../init.d/random ${EXTDIR}/rc.d/rc6.d/K45random
 
+install-rpcbind: create-dirs
+	install -m ${MODE} blfs/init.d/rpcbind    ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/rpcbind ${EXTDIR}/rc.d/rc0.d/K49rpcbind
+	ln -sf  ../init.d/rpcbind ${EXTDIR}/rc.d/rc1.d/K49rpcbind
+	ln -sf  ../init.d/rpcbind ${EXTDIR}/rc.d/rc2.d/K49rpcbind
+	ln -sf  ../init.d/rpcbind ${EXTDIR}/rc.d/rc3.d/S22rpcbind
+	ln -sf  ../init.d/rpcbind ${EXTDIR}/rc.d/rc4.d/S22rpcbind
+	ln -sf  ../init.d/rpcbind ${EXTDIR}/rc.d/rc5.d/S22rpcbind
+	ln -sf  ../init.d/rpcbind ${EXTDIR}/rc.d/rc6.d/K49rpcbind
+
 install-rsyncd: create-dirs
 	install -m ${MODE} blfs/init.d/rsyncd     ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/rsyncd ${EXTDIR}/rc.d/rc0.d/K30rsyncd
