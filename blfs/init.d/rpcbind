@@ -1,0 +1,67 @@
+#!/bin/sh
+########################################################################
+# Begin rpcbind
+#
+# Description : Start rpcbind daemon
+#
+# Author      : Ken Moffat - ken@linuxfromscratch.org, based on portmap
+#               script by Bruce Dubbs
+#
+# Version     : LFS 7.0
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            rpcbind
+# Required-Start:      network
+# Should-Start:
+# Required-Stop:       sendsignals
+# Should-Stop:
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Starts the rpcbind daemon.
+# Description:         Starts the rpcbind daemon to convert RPC program numbers
+#                      into DARPA protocol port numbers. It must be running in
+#                      order to make RPC# calls.  Replaces portmap, which does
+#                      not work with libtirpc.
+# X-LFS-Provided-By:   LFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+# Begin $rc_base/init.d/rpcbind
+
+#$LastChangedBy$
+#$Date$
+
+case "$1" in
+	start)
+		log_info_msg "Starting rpcbind"
+		start_daemon /sbin/rpcbind
+      evaluate_retval
+		;;
+
+	stop)
+		log_info_msg "Stopping Prpcbind"
+		killproc /sbin/rpcbind
+      evaluate_retval
+		;;
+
+	restart)
+		$0 stop
+		sleep 1
+		$0 start
+		;;
+
+	status)
+		statusproc /sbin/rpcbind
+		;;
+
+	*)
+		echo "Usage: $0 {start|stop|restart|status}"
+		exit 1
+		;;
+
+esac
+
+# End /etc/init.d/rpcbind
+
