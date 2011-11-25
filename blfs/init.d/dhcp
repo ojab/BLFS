@@ -1,24 +1,45 @@
 #!/bin/sh
-# Begin $rc_base/init.d/dhcp
+########################################################################
+# Begin dhcp
+#
+# Description : Start dhcp daemon
+#
+# Author      : 
+#
+# Version     : LFS 7.0
+#
+########################################################################
 
-# Based on sysklogd script from LFS-3.1 and earlier.
-# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+### BEGIN INIT INFO
+# Provides:            dhcp
+# Required-Start:      network
+# Should-Start:
+# Required-Stop:       sendsignals
+# Should-Stop:
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Starts the dhcp server
+# Description:         Starts the dhcp server to provide IP addresses.
+# X-LFS-Provided-By:   LFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+# Begin $rc_base/init.d/dhcp
 
 #$LastChangedBy$
 #$Date$
 
-. /etc/sysconfig/rc
-. $rc_functions
-
 case "$1" in
 	start)
-		boot_mesg "Starting DHCP Server..."
-		loadproc /usr/sbin/dhcpd -q eth1
+		log_info_msg "Starting DHCP Server..."
+		start_daemon /usr/sbin/dhcpd -q eth1
+		evaluate_retval
 		;;
 
 	stop)
-		boot_mesg "Stopping DHCP Server..."
+		log_info_msg "Stopping DHCP Server..."
 		killproc /usr/sbin/dhcpd
+		evaluate_retval
 		;;
 
 	restart)
