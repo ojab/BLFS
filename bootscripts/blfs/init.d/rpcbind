@@ -41,7 +41,7 @@ case "$1" in
 		;;
 
 	stop)
-		log_info_msg "Stopping Prpcbind"
+		log_info_msg "Stopping rpcbind"
 		killproc /sbin/rpcbind
       evaluate_retval
 		;;
