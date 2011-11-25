@@ -1,29 +1,49 @@
 #!/bin/sh
-# Begin $rc_base/init.d/netfs
+########################################################################
+# Begin netfs
+#
+# Description : Mount network filesystems
+#
+# Author      : Nathan Coulson - conathan@conet.dyndns.org
+#		DJ Lucas - dj@lucasit.com
+#
+# Version     : LFS 7.0
+#
+########################################################################
 
-# Based on sysklogd script from LFS-3.1 and earlier.
-# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
-# netfs script written by Nathan Coulson - conathan@conet.dyndns.org
-# and by DJ Lucas - dj@lucasit.com
+### BEGIN INIT INFO
+# Provides:		nfs mounts
+# Required-Start:	network
+# Should-Start:
+# Required-Stop:	sendsignals
+# Should-Stop:
+# Default-Start:	3 4 5
+# Default-Stop:		0 1 2 6
+# Short-Description:	Mounts network volumes.
+# Description:		Mounts anything marked as _netdev, and umounts
+#			any mounted _netfs,smbfs,ncpfd,coda, nfs
+#			volumes
+# X-LFS-Provided-By:	LFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+# Begin $rc_base/init.d/netfs
 
 #$LastChangedBy$
 #$Date$
-
-. /etc/sysconfig/rc
-. $rc_functions
 
 case "$1" in
 	start)
 		# The following line mounts all entries in fstab that
 		# have the _netdev option.  This is required for network
 		# filesystems to be mounted at boot time.
-		boot_mesg "Mounting network volumes..."
+		log_info_msg "Mounting network volumes..."
 		/bin/mount -a -O _netdev
 		evaluate_retval
 		;;
 
 	stop)
-		boot_mesg -n "Unmounting network volumes..."
+		log_info_msg "Unmounting network volumes..."
 
 		# The following line obtains a list from the output of
 		# mount for all netfs types and anything that was
@@ -81,7 +101,7 @@ case "$1" in
 			fi
 		else
 			# There is nothing mounted
-			boot_mesg "No network volumes mounted!"
+			log_info_msg "No network volumes mounted!"
 			# print a nice '[  OK  ]' message
 			echo_ok
 		fi
