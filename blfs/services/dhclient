@@ -3,7 +3,7 @@
 
 # Origianlly based upon lfs-bootscripts-1.12 $NETWORK_DEVICES/if{down,up}
 # Rewritten by Nathan Coulson <nathan@linuxfromscratch.org>
-# Adapted for dhclient by DJ Lucas <dj@lucasit.com>
+# Adapted for dhclient by DJ Lucas <dj@linuxfromscratch.org>
 # Update for LFS 7.0 by Ken Moffat <ken@linuxfromscratch.org>
 
 # Call with: IFCONFIG=<filename> /lib/services/dhclient <IFACE> <up | down>
