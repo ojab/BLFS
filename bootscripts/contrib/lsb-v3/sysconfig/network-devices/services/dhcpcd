@@ -3,7 +3,7 @@
 
 # Based upon lfs-bootscripts-1.12 $NETWORK_DEVICES/if{down,up}
 # Rewritten by Nathan Coulson <nathan@linuxfromscratch.org>
-# Adapted for dhcpcd by DJ Lucas <dj@lucasit.com>
+# Adapted for dhcpcd by DJ Lucas <dj@linuxfromscratch.org>
 
 #$LastChangedBy: bdubbs $
 #$Date: 2005-08-01 13:29:19 -0600 (Mon, 01 Aug 2005) $

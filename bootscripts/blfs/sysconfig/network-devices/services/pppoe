@@ -3,7 +3,7 @@
 
 # Based upon lfs-bootscripts-1.12 $network_devices/if{down,up}
 # Rewritten by Nathan Coulson <nathan@linuxfromscratch.org>
-# Adapted for pppoe by DJ Lucas <dj@lucasit.com>
+# Adapted for pppoe by DJ Lucas <dj@linuxfromscratch.org>
 
 #$LastChangedBy$
 #$Date$
