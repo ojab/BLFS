@@ -32,32 +32,32 @@
 #$Date$
 
 case "$1" in
-	start)
-		log_info_msg "Starting RPC Portmap"
-		start_daemon /sbin/portmap
-      evaluate_retval
-		;;
+   start)
+       log_info_msg "Starting RPC Portmap"
+       start_daemon /sbin/portmap
+       evaluate_retval
+       ;;
 
-	stop)
-		log_info_msg "Stopping Portmap"
-		killproc /sbin/portmap
-      evaluate_retval
-		;;
+   stop)
+       log_info_msg "Stopping Portmap"
+       killproc /sbin/portmap
+       evaluate_retval
+       ;;
 
-	restart)
-		$0 stop
-		sleep 1
-		$0 start
-		;;
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
 
-	status)
-		statusproc /sbin/portmap
-		;;
+   status)
+      statusproc /sbin/portmap
+      ;;
 
-	*)
-		echo "Usage: $0 {start|stop|restart|status}"
-		exit 1
-		;;
+   *)
+      echo "Usage: $0 {start|stop|restart|status}"
+      exit 1
+      ;;
 
 esac
 
