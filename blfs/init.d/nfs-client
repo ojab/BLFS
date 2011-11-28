@@ -33,30 +33,30 @@
 #$Date$
 
 case "$1" in
-	start)
-		log_info_msg "Starting NFS statd..."
-		start_daemon /usr/sbin/rpc.statd
-		;;
+   start)
+      log_info_msg "Starting NFS statd..."
+      start_daemon /usr/sbin/rpc.statd
+      ;;
 
-	stop)
-		log_info_msg "Stopping NFS statd..."
-		killproc /usr/sbin/rpc.statd
-		;;
+   stop)
+      log_info_msg "Stopping NFS statd..."
+      killproc /usr/sbin/rpc.statd
+      ;;
 
-	restart)
-		$0 stop
-		sleep 1
-		$0 start
-		;;
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
 
-	status)
-		statusproc /usr/sbin/rpc.statd
-		;;
+   status)
+      statusproc /usr/sbin/rpc.statd
+      ;;
 
-	*)
-		echo "Usage: $0 {start|stop|restart|status}"
-		exit 1
-		;;
+   *)
+      echo "Usage: $0 {start|stop|restart|status}"
+      exit 1
+      ;;
 esac
 
 # End $rc_base/init.d/nfs-client

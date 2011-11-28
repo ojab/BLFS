@@ -34,32 +34,32 @@
 #$Date$
 
 case "$1" in
-	start)
-		log_info_msg "Starting rpcbind"
-		start_daemon /sbin/rpcbind
+   start)
+      log_info_msg "Starting rpcbind"
+      start_daemon /sbin/rpcbind
       evaluate_retval
-		;;
+      ;;
 
-	stop)
-		log_info_msg "Stopping rpcbind"
-		killproc /sbin/rpcbind
+   stop)
+      log_info_msg "Stopping rpcbind"
+      killproc /sbin/rpcbind
       evaluate_retval
-		;;
+      ;;
 
-	restart)
-		$0 stop
-		sleep 1
-		$0 start
-		;;
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
 
-	status)
-		statusproc /sbin/rpcbind
-		;;
+   status)
+      statusproc /sbin/rpcbind
+      ;;
 
-	*)
-		echo "Usage: $0 {start|stop|restart|status}"
-		exit 1
-		;;
+   *)
+      echo "Usage: $0 {start|stop|restart|status}"
+      exit 1
+      ;;
 
 esac
 

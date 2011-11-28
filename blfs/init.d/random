@@ -35,27 +35,27 @@
 #$Date$
 
 case "$1" in
-	start)
-		log_info_msg "Initializing kernel random number generator..."
-		if [ -f /var/tmp/random-seed ]; then
-			/bin/cat /var/tmp/random-seed >/dev/urandom
-		fi
-		/bin/dd if=/dev/urandom of=/var/tmp/random-seed \
-			count=1 &>/dev/null
-		evaluate_retval
-		;;
+   start)
+      log_info_msg "Initializing kernel random number generator..."
+      if [ -f /var/tmp/random-seed ]; then
+         /bin/cat /var/tmp/random-seed >/dev/urandom
+      fi
+      /bin/dd if=/dev/urandom of=/var/tmp/random-seed \
+        count=1 &>/dev/null
+      evaluate_retval
+      ;;
 
-	stop)
-		log_info_msg "Saving random seed..."
-		/bin/dd if=/dev/urandom of=/var/tmp/random-seed \
-			count=1 &>/dev/null
-		evaluate_retval
-		;;
+   stop)
+      log_info_msg "Saving random seed..."
+      /bin/dd if=/dev/urandom of=/var/tmp/random-seed \
+        count=1 &>/dev/null
+      evaluate_retval
+      ;;
 
-	*)
-		echo "Usage: $0 {start|stop}"
-		exit 1
-		;;
+   *)
+      echo "Usage: $0 {start|stop}"
+      exit 1
+      ;;
 esac
 
 # End $rc_base/init.d/random

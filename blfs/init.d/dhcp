@@ -30,32 +30,32 @@
 #$Date$
 
 case "$1" in
-	start)
-		log_info_msg "Starting DHCP Server..."
-		start_daemon /usr/sbin/dhcpd -q eth1
-		evaluate_retval
-		;;
+   start)
+      log_info_msg "Starting DHCP Server..."
+      start_daemon /usr/sbin/dhcpd -q eth1
+      evaluate_retval
+      ;;
 
-	stop)
-		log_info_msg "Stopping DHCP Server..."
-		killproc /usr/sbin/dhcpd
-		evaluate_retval
-		;;
+   stop)
+      log_info_msg "Stopping DHCP Server..."
+      killproc /usr/sbin/dhcpd
+      evaluate_retval
+      ;;
 
-	restart)
-		$0 stop
-		sleep 1
-		$0 start
-		;;
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
 
-	status)
-		statusproc /usr/sbin/dhcpd
-		;;
+   status)
+      statusproc /usr/sbin/dhcpd
+      ;;
 
-	*)
-		echo "Usage: $0 {start|stop|restart|status}"
-		exit 1
-		;;
+   *)
+      echo "Usage: $0 {start|stop|restart|status}"
+      exit 1
+      ;;
 esac
 
 # End $rc_base/init.d/dhcp

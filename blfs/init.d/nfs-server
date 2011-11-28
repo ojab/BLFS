@@ -1,15 +1,15 @@
  #!/bin/sh
 #!/bin/sh
-########################################################################
+############################################################################
 # Begin nfs-server
 #
 # Description : Start nfs server
 #
-# Author      : 
+# Author      : Changes for LFS-7.0 by Ken Moffat <ken@linuxfromscratch.org>
 #
 # Version     : LFS 7.0
 #
-########################################################################
+############################################################################
 
 ### BEGIN INIT INFO
 # Provides:            nfs server
@@ -33,97 +33,97 @@
  . /etc/sysconfig/nfs-server
 
  case "$1" in
-	start)
-		log_info_msg "Starting NFS mountd..."
-		start_daemon /usr/sbin/rpc.mountd
+   start)
+      log_info_msg "Starting NFS mountd..."
+      start_daemon /usr/sbin/rpc.mountd
 
-		log_info_msg "Starting NFS nfsd..."
-		start_daemon /usr/sbin/rpc.nfsd -p $PORT $PROCESSES
+      log_info_msg "Starting NFS nfsd..."
+      start_daemon /usr/sbin/rpc.nfsd -p $PORT $PROCESSES
 
-		log_info_msg "Starting NFS statd..."
-		start_daemon /usr/sbin/rpc.statd
+      log_info_msg "Starting NFS statd..."
+      start_daemon /usr/sbin/rpc.statd
 
-		if [ "$QUOTAS" = "yes" ]; then
-			log_info_msg "Starting NFS rquotad..."
-			start_daemon /usr/sbin/rpc.rquotad
-		fi
+      if [ "$QUOTAS" = "yes" ]; then
+         log_info_msg "Starting NFS rquotad..."
+         start_daemon /usr/sbin/rpc.rquotad
+      fi
 
-		# NFSD support only in 2.6 kernel
-		/bin/uname -r | /bin/grep "2.6" 2>&1 > /dev/null
-		if [ $? = 0 ]; then
-			log_info_msg "Mounting nfsd virtual filesystem..."
-			/bin/mount -t nfsd none /proc/fs/nfsd 2>&1 > /dev/null
-			evaluate_retval
-		fi
+      # NFSD support only in 2.6 kernel
+      /bin/uname -r | /bin/grep "2.6" 2>&1 > /dev/null
+      if [ $? = 0 ]; then
+         log_info_msg "Mounting nfsd virtual filesystem..."
+         /bin/mount -t nfsd none /proc/fs/nfsd 2>&1 > /dev/null
+         evaluate_retval
+      fi
 
-		# Make certain that the list is refreshed on
-		# a restart.
-		log_info_msg "Exporting NFS Filesystems..."
-		/usr/sbin/exportfs -ra 2>&1 > /dev/null
-		evaluate_retval
-		;;
+      # Make certain that the list is refreshed on
+      # a restart.
+      log_info_msg "Exporting NFS Filesystems..."
+      /usr/sbin/exportfs -ra 2>&1 > /dev/null
+      evaluate_retval
+      ;;
 
-	stop)
-		log_info_msg "Stopping NFS statd..."
-		killproc /usr/sbin/rpc.statd
+   stop)
+      log_info_msg "Stopping NFS statd..."
+      killproc /usr/sbin/rpc.statd
 
-		log_info_msg "Stopping NFS nfsd..."
-		# nfsd needs HUP....
-		killproc nfsd HUP
+      log_info_msg "Stopping NFS nfsd..."
+      # nfsd needs HUP....
+      killproc nfsd HUP
 
-		log_info_msg "Stopping NFS mountd..."
-		killproc /usr/sbin/rpc.mountd
+      log_info_msg "Stopping NFS mountd..."
+      killproc /usr/sbin/rpc.mountd
 
-		if [ "$QUOTAS" = "yes" ]; then
-			log_info_msg "Stopping NFS rquotad..."
-			killproc /usr/sbin/rpc.rquotad
-		fi
+      if [ "$QUOTAS" = "yes" ]; then
+         log_info_msg "Stopping NFS rquotad..."
+         killproc /usr/sbin/rpc.rquotad
+      fi
 
-		log_info_msg "Refreshing NFS Exported Filesystems..."
-		/usr/sbin/exportfs -au 2>&1 > /dev/null
-		evaluate_retval
+      log_info_msg "Refreshing NFS Exported Filesystems..."
+      /usr/sbin/exportfs -au 2>&1 > /dev/null
+      evaluate_retval
 
-		# NFSD support only in 2.6 kernel
-                 /bin/uname -r | /bin/grep "2.6" 2>&1 > /dev/null
-                 if [ $? = 0 ]; then
-			log_info_msg "Unmounting NFS Virtual Filesystem..."
-			/bin/umount /proc/fs/nfsd 2>&1 > /dev/null
-			evaluate_retval
-		fi
+      # NFSD support only in 2.6 kernel
+      /bin/uname -r | /bin/grep "2.6" 2>&1 > /dev/null
+      if [ $? = 0 ]; then
+         log_info_msg "Unmounting NFS Virtual Filesystem..."
+         /bin/umount /proc/fs/nfsd 2>&1 > /dev/null
+         evaluate_retval
+      fi
 
-		# Remove a pid file that isn't done automatically
-		log_info_msg "Removing the rpc.statd pid file if it exists"
-		if [ -f /var/run/rpc.statd.pid ]; then
-		    rm -f /var/run/rpc.statd.pid
-		fi
-		;;
+      # Remove a pid file that isn't done automatically
+      log_info_msg "Removing the rpc.statd pid file if it exists"
+      if [ -f /var/run/rpc.statd.pid ]; then
+         rm -f /var/run/rpc.statd.pid
+      fi
+      ;;
 
-	reload)
-		log_info_msg "Reloading NFS Server..."
-		/usr/sbin/exportfs -ra
-		evaluate_retval
-		;;
+   reload)
+      log_info_msg "Reloading NFS Server..."
+      /usr/sbin/exportfs -ra
+      evaluate_retval
+      ;;
 
-	restart)
-		$0 stop
-		sleep 1
-		$0 start
-		;;
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
 
-	status)
-		statusproc /usr/sbin/rpc.mountd
-		## Special case for nfsd with no full path
-		statusproc nfsd
-		statusproc /usr/sbin/rpc.statd
-		if [ "$QUOTA" = "yes" ]; then
-			statusproc rpc.rquotad
-		fi
-		;;
+   status)
+      statusproc /usr/sbin/rpc.mountd
+      ## Special case for nfsd with no full path
+      statusproc nfsd
+      statusproc /usr/sbin/rpc.statd
+      if [ "$QUOTA" = "yes" ]; then
+         statusproc rpc.rquotad
+      fi
+      ;;
 
-	*)
-		echo "Usage: $0 {start|stop|reload|restart|status}"
-		exit 1
-		;;
+   *)
+      echo "Usage: $0 {start|stop|reload|restart|status}"
+      exit 1
+      ;;
 esac
 
 # End $rc_base/init.d/nfs-server
