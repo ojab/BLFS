@@ -28,7 +28,6 @@
 ### END INIT INFO
 
 . /lib/lsb/init-functions
-# Begin $rc_base/init.d/rpcbind
 
 #$LastChangedBy$
 #$Date$
