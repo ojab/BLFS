@@ -11,16 +11,16 @@
 ########################################################################
 
 ### BEGIN INIT INFO
-# Provides:            $svnserve
-# Required-Start:
-# Should-Start:
-# Required-Stop:       $sendsignals
-# Should-Stop:
+# Provides:            mysql
+# Required-Start:      $network
+# Should-Start:        $remote_fs
+# Required-Stop:       $network
+# Should-Stop:         $remote_fs
 # Default-Start:       3 4 5
 # Default-Stop:        0 1 2 6
 # Short-Description:   Starts MySQL server.
 # Description:         Starts MySQL server.
-# X-LFS-Provided-By:   LFS
+# X-LFS-Provided-By:   BLFS / LFS 7.0
 ### END INIT INFO
 
 . /lib/lsb/init-functions

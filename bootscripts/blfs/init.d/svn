@@ -2,7 +2,7 @@
 ########################################################################
 # Begin /etc/init.d/svn
 #
-# Description : Start sshd daemon
+# Description : Start Subversion server
 #
 # Author      : Bruce Dubbs - bdubbs@linuxfromscratch.org
 #
@@ -11,16 +11,16 @@
 ########################################################################
 
 ### BEGIN INIT INFO
-# Provides:            $svnserve
-# Required-Start:      
-# Should-Start:
-# Required-Stop:       $sendsignals
-# Should-Stop:
+# Provides:            svn
+# Required-Start:      $network
+# Should-Start:        $remote_fs
+# Required-Stop:       $network
+# Should-Stop:         $remote_fs
 # Default-Start:       3 4 5
 # Default-Stop:        0 1 2 6
 # Short-Description:   Starts subersion server.
 # Description:         Starts subversion version control system server daemon.
-# X-LFS-Provided-By:   LFS
+# X-LFS-Provided-By:   BLFS / LFS 7.0
 ### END INIT INFO
 
 . /lib/lsb/init-functions
@@ -29,32 +29,32 @@
 #$Date$
 
 case "$1" in
-	start)
-		log_info_msg "Starting Subversion..."
-		start_daemon /usr/bin/svnserve -d -r /srv/svn/repositories
-      evaluate_retval
+        start)
+                log_info_msg "Starting Subversion..."
+                start_daemon /usr/bin/svnserve -d -r /srv/svn/repositories
+                evaluate_retval
 		;;
 
-	stop)
-		log_info_msg "Stopping Subversion..."
-		killproc /usr/bin/svnserve.orig
-      evaluate_retval
-		;;
+        stop)
+                log_info_msg "Stopping Subversion..."
+                killproc /usr/bin/svnserve.orig
+                evaluate_retval
+                ;;
 
-	restart)
-		$0 stop
-		sleep 1
-		$0 start
-		;;
+        restart)
+                $0 stop
+                sleep 1
+                $0 start
+                ;;
 
-	status)
-		statusproc /usr/bin/svnserve.orig
-		;;
+        status)
+                statusproc /usr/bin/svnserve.orig
+                ;;
 
-	*)
-		echo "Usage: $0 {start|stop|restart|status}"
-		exit 1
-		;;
+        *)
+                echo "Usage: $0 {start|stop|restart|status}"
+                exit 1
+                ;;
 esac
 
 # End /etc/init.d/svn

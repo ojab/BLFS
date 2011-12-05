@@ -14,7 +14,7 @@
 ### BEGIN INIT INFO
 # Provides:            ntpd
 # Required-Start:      $time $network
-# Should-Start:
+# Should-Start:        $remote_fs
 # Required-Stop:       $network
 # Should-Stop:         $remote_fs
 # Default-Start:       3 4 5
