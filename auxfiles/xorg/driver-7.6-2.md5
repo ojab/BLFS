@@ -1,0 +1,56 @@
+# Xorg-7.6-2 driver package MD5 sums
+# $LastChangedBy$
+# $Date$
+#
+a03721cae66c475e5f6513fa51142869  xf86-input-acecad-1.5.0.tar.bz2
+8231f6ce1c477eac653c9deb527fa3cb  xf86-input-aiptek-1.4.1.tar.bz2
+f33fe9413bde68936d8909206a13e8a1  xf86-input-evdev-2.6.0.tar.bz2
+19b55812b018a63e597d579d4cec9cdb  xf86-input-joystick-1.6.0.tar.bz2
+# dc77181330f983c7d0ec1ea1592c2ca7  xf86-input-vmmouse-12.7.0.tar.bz2
+93821f21e807260b05431c62437a8b32  xf86-input-void-1.4.0.tar.bz2
+a3743a971b3acb7de3d2eefc8b1a4834  xf86-video-apm-1.2.3.tar.bz2
+ff0cb9cb0a7f36cc6f556deed7327798  xf86-video-ark-0.7.3.tar.bz2
+e25c6a55e9d07cc6054d6affc1231296  xf86-video-ast-0.93.9.tar.bz2
+19126c8421a05d9605883dcf7498d876  xf86-video-ati-6.14.3.tar.bz2
+# 7aed07116e56c0630f62d7d34d7526e1  xf86-video-chips-1.2.4.tar.bz2
+8195d03ed0be0975c03441e66a9f53b3  xf86-video-cirrus-1.3.2.tar.bz2
+1cf99415c998994f2e88575f942b364c  xf86-video-dummy-0.3.4.tar.bz2
+53a533d9e0c2da50962282526bace074  xf86-video-fbdev-0.4.2.tar.bz2
+# a99c521db731c2f1df309057a8465e4c  xf86-video-geode-2.11.12.tar.bz2
+# 83a5df9af1efeb077e9f21a7b421a01f  xf86-video-glide-1.1.0.tar.bz2
+a8458d1b6331c142c8377298c6fecddd  xf86-video-glint-1.2.6.tar.bz2
+103316abb2dc466219c027afc5a71691  xf86-video-i128-1.3.4.tar.bz2
+4ac1318788f62159965f15131c869e7a  xf86-video-i740-1.3.2.tar.bz2
+6d7b1f199dba5820f250888b136186ff  xf86-video-intel-2.17.0.tar.bz2
+ae62936e11af4fc0fac9f2db601a844f  xf86-video-mach64-6.9.0.tar.bz2
+f967fb3e655f6f68aa3f495eaadcaac2  xf86-video-mga-1.4.13.tar.bz2
+423b82b776444f88adbf207fb6a82c1a  xf86-video-neomagic-1.2.5.tar.bz2
+# 923baa1ee0429f03ed19ec0be6a4f62b  xf86-video-newport-0.2.3.tar.bz2
+b12f0b2114849d1a542d8084732573d3  xf86-video-nv-2.1.18.tar.bz2
+# f2481d98ef54febf5bffbb88a2a2426d  xf86-video-openchrome-0.2.904.tar.bz2
+2b90854a62a4d45d652062f582dc8d13  xf86-video-r128-6.8.1.tar.bz2
+75cc28125077acb7344955294545553b  xf86-video-rendition-4.2.4.tar.bz2
+5eb06d88533fb327d067928faeb20860  xf86-video-s3-0.6.3.tar.bz2
+6517bbbf808c700502d51acdc44662f8  xf86-video-s3virge-1.10.4.tar.bz2
+4dfb647b1ebeaa42a235362643f5b085  xf86-video-savage-2.3.3.tar.bz2
+9ca392e16028a2f7c3ebc57f0aa4c1aa  xf86-video-siliconmotion-1.7.5.tar.bz2
+dd930928b5ed7fcf34e3be4d43202ec7  xf86-video-sis-0.10.3.tar.bz2
+1d7a1d4d09aa953bf09acb8467b16a59  xf86-video-sisusb-0.9.4.tar.bz2
+# 559c95f044a31cfe7f71453e9b89c35b  xf86-video-sunbw2-1.1.0.tar.bz2
+# 8e4bd0a6b155cb861356e7430d667aee  xf86-video-suncg14-1.1.1.tar.bz2
+# bb6c4def5cfb0959b72dccb661473d4a  xf86-video-suncg3-1.1.1.tar.bz2
+# bc9904a9129aaf73408568ae1e2fa65f  xf86-video-suncg6-1.1.1.tar.bz2
+# 1bb374fe5ab3ed780d353b2b12ba6255  xf86-video-sunffb-1.2.1.tar.bz2
+# 14fe008620940a674981912fa02ae133  xf86-video-sunleo-1.2.0.tar.bz2
+# b064a8d2f3d481ec36ef9ac17e13a77d  xf86-video-suntcx-1.1.1.tar.bz2
+8161bbf2b100c21b609163f0010766b3  xf86-video-tdfx-1.4.3.tar.bz2
+bcbceda78395de74544c83b46a7700cd  xf86-video-tga-1.2.1.tar.bz2
+7a646ba7033dd4eb10d38dca8682b391  xf86-video-trident-1.3.4.tar.bz2
+fa441774f8bf516a5c6331d64231a39d  xf86-video-tseng-1.2.4.tar.bz2
+2251ae2a0a905764941cd7b098e85ad1  xf86-video-v4l-0.2.0.tar.bz2
+07fa32958aff9b463dd3af5481ef6626  xf86-video-vesa-2.3.0.tar.bz2
+# 579bee487309b1bdc8329bf627d43413  xf86-video-vmware-11.0.3.tar.bz2
+ce8b848e00883ecb88b21ca03891b780  xf86-video-voodoo-1.2.4.tar.bz2
+# d6b5d25dfd61fa5113216d10a6dcbb50  xf86-video-wsfb-0.3.0.tar.bz2
+b4ac771ae81b52fca9b6fa68006a258a  xf86-video-xgi-1.6.0.tar.bz2
+# 0ebf98f1beaf911a242c79647cc08fbf  xf86-video-xgixp-1.8.0.tar.bz2
