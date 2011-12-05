@@ -11,10 +11,10 @@
 ########################################################################
 
 ### BEGIN INIT INFO
-# Provides:            portmap
-# Required-Start:      network
+# Provides:            $portmap
+# Required-Start:      $network
 # Should-Start:
-# Required-Stop:       sendsignals
+# Required-Stop:       $network
 # Should-Stop:
 # Default-Start:       3 4 5
 # Default-Stop:        0 1 2 6

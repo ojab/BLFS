@@ -12,17 +12,17 @@
 ########################################################################
 
 ### BEGIN INIT INFO
-# Provides:    nfs mounts
-# Required-Start: nfs-client nfs-server
-# Should-Start:
-# Required-Stop:  sendsignals
-# Should-Stop:
-# Default-Start:  3 4 5
-# Default-Stop:   0 1 2 6
+# Provides:          $remote_fs
+# Required-Start:    $network
+# Should-Start:      nfs-client nfs-server
+# Required-Stop:     $network
+# Should-Stop:       nfs-server nfs-client
+# Default-Start:     3 4 5
+# Default-Stop:      0 1 2 6
 # Short-Description: Mounts network volumes.
-# Description:    Mounts anything marked as _netdev, and umounts
-#        any mounted _netfs, smbfs, ncpfd,coda, or nfs volumes
-# X-LFS-Provided-By: LFS
+# Description:       Mounts anything marked as _netdev, and umounts and mounted
+#                    _netfs, smbfs, ncpfd, coda, or nfs volumes
+# X-LFS-Provided-By: BLFS / LFS 7.0
 ### END INIT INFO
 
 . /lib/lsb/init-functions
