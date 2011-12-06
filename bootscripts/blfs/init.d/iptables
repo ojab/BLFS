@@ -1,22 +1,45 @@
 #!/bin/sh
-# Begin $rc_base/init.d/iptables
+########################################################################
+# Begin nfs-client
+#
+# Description : Start statd
+#
+# Authors     : Ken Moffat - ken@linuxfromscratch.org
+#               Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : LFS 7.0
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:          iptables
+# Required-Start:    
+# Should-Start:
+# Required-Stop:     $local_fs
+# Should-Stop:
+# Default-Start:     3 4 5
+# Default-Stop:     
+# Short-Description: Starts statd
+# Description:       rpc.statd provides file locking on nfs.
+# X-LFS-Provided-By: BLFS / LFS 7.0
+### END INIT INFO
+
+. /lib/lsb/init-functions
 
 #$LastChangedBy$
 #$Date$
 
-. /etc/sysconfig/rc
-. $rc_functions
-
 case "$1" in
     start)
         if [ -x /etc/rc.d/rc.iptables ]; then
-          boot_mesg "Starting iptables..."
-          loadproc /etc/rc.d/rc.iptables
+          log_info_msg "Starting iptables..."
+          /etc/rc.d/rc.iptables
+          evaluate_retval
         fi
         ;;
 
     lock)
-        boot_mesg "Locking system iptables firewall..."
+        log_info_msg "Locking system iptables firewall..."
         /sbin/iptables --policy INPUT   DROP
         /sbin/iptables --policy OUTPUT  DROP
         /sbin/iptables --policy FORWARD DROP
@@ -28,11 +51,11 @@ case "$1" in
         /sbin/iptables -t mangle --delete-chain
         /sbin/iptables -A INPUT  -i lo -j ACCEPT
         /sbin/iptables -A OUTPUT -o lo -j ACCEPT
-	boot_mesg_flush
+        evaluate_retval
         ;;
 
     clear)
-        boot_mesg "Clearing system iptables iptables..."
+        log_info_msg "Clearing system iptables iptables..."
         /sbin/iptables --policy INPUT   ACCEPT
         /sbin/iptables --policy OUTPUT  ACCEPT
         /sbin/iptables --policy FORWARD ACCEPT
@@ -42,7 +65,7 @@ case "$1" in
         /sbin/iptables           --delete-chain
         /sbin/iptables -t nat    --delete-chain
         /sbin/iptables -t mangle --delete-chain
-	boot_mesg_flush
+        evaluate_retval
         ;;
 
     status)
@@ -57,4 +80,4 @@ case "$1" in
         ;;
 esac
 
-# End $rc_base/init.d/iptables
+# End /etc/init.d/iptables
