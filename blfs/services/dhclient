@@ -21,66 +21,66 @@ getipstats()
 }
 
 case "$2" in
-	up)
-		log_info_msg "\nStarting dhclient on the $1 interface..."
+   up)
+      log_info_msg "\nStarting dhclient on the $1 interface..."
 
-		/sbin/dhclient $1 $DHCP_START
-		# Save the return value
-		RET="$?"
-	        # Print the assigned settings if requested
-	        if [ "$RET" = "0" -a "$PRINTIP" = "yes" ]; then
-			# Get info from dhclient.leases file
-			IPADDR=`getipstats | grep "fixed-address" | \
-				sed 's/ fixed-address //' | \
-				sed 's/\;//'`
-			NETMASK=`getipstats | grep "subnet-mask" | \
-				sed 's/ option subnet-mask //' | \
-				sed 's/\;//'`
-			GATEWAY=`getipstats | grep "routers" | \
-				sed 's/ option routers //' | \
-				sed 's/\;//'`
-			DNS=`getipstats | grep "domain-name-servers" | \
-				sed 's/ option domain-name-servers //' | \
-				sed 's/\;//' | sed 's/,/ and /'`
+      /sbin/dhclient $1 $DHCP_START
+      # Save the return value
+      RET="$?"
+           # Print the assigned settings if requested
+           if [ "$RET" = "0" -a "$PRINTIP" = "yes" ]; then
+         # Get info from dhclient.leases file
+         IPADDR=`getipstats | grep "fixed-address" | \
+            sed 's/ fixed-address //' | \
+            sed 's/\;//'`
+         NETMASK=`getipstats | grep "subnet-mask" | \
+            sed 's/ option subnet-mask //' | \
+            sed 's/\;//'`
+         GATEWAY=`getipstats | grep "routers" | \
+            sed 's/ option routers //' | \
+            sed 's/\;//'`
+         DNS=`getipstats | grep "domain-name-servers" | \
+            sed 's/ option domain-name-servers //' | \
+            sed 's/\;//' | sed 's/,/ and /'`
 
-			if [ "$PRINTALL" = "yes" ]; then
-				# this is messy, the messages are on one very long
-				# line on the screen and in the log
-				log_info_msg "           DHCP Assigned Settings for $1:"
-				log_info_msg "           IP Address:      $IPADDR"
-				log_info_msg "           Subnet Mask:     $NETMASK"
-				log_info_msg "           Default Gateway: $GATEWAY"
-				log_info_msg "           DNS Server:      $DNS"
-				$(exit "$RET")
-				evaluate_retval
-			else
-				log_info_msg " IP Addresss:""$IPADDR"
-				$(exit "$RET")
-				evaluate_retval
-			fi
-		else
-			$(exit "$RET")
-			evaluate_retval
-		fi
-	;;
+         if [ "$PRINTALL" = "yes" ]; then
+            # this is messy, the messages are on one very long
+            # line on the screen and in the log
+            log_info_msg "           DHCP Assigned Settings for $1:"
+            log_info_msg "           IP Address:      $IPADDR"
+            log_info_msg "           Subnet Mask:     $NETMASK"
+            log_info_msg "           Default Gateway: $GATEWAY"
+            log_info_msg "           DNS Server:      $DNS"
+            $(exit "$RET")
+            evaluate_retval
+         else
+            log_info_msg " IP Addresss:""$IPADDR"
+            $(exit "$RET")
+            evaluate_retval
+         fi
+      else
+         $(exit "$RET")
+         evaluate_retval
+      fi
+   ;;
 
-	down)
-		log_info_msg "Stopping dhclient on the $1 interface..."
+   down)
+      log_info_msg "Stopping dhclient on the $1 interface..."
 
-		if [ -z "$DHCP_STOP" ]; then
-			# This breaks multiple interfaces please provide
-			# the correct stop arguments.
-			killproc dhclient
-		else
-			/sbin/dhclient $1 $DHCP_STOP
-			evaluate_retval
-		fi
-	;;
+      if [ -z "$DHCP_STOP" ]; then
+         # This breaks multiple interfaces please provide
+         # the correct stop arguments.
+         killproc dhclient
+      else
+         /sbin/dhclient $1 $DHCP_STOP
+         evaluate_retval
+      fi
+   ;;
 
-	*)
-		echo "Usage: $0 [interface] {up|down}"
-		exit 1
-	;;
+   *)
+      echo "Usage: $0 [interface] {up|down}"
+      exit 1
+   ;;
 esac
 
 # End services/dhclient

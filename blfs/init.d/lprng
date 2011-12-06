@@ -12,9 +12,9 @@
 
 ### BEGIN INIT INFO
 # Provides:            lprng
-# Required-Start:      $network
+# Required-Start:      $local_fs
 # Should-Start:        $remote_fs
-# Required-Stop:       $network
+# Required-Stop:       $local_fs
 # Should-Stop:         $remote_fs
 # Default-Start:       3 4 5
 # Default-Stop:        0 1 2 6
@@ -30,38 +30,38 @@
 #$Date$
 
 case "$1" in
-	start)
-		log_info_msg "Starting lpd..."
-		start_daemon /usr/sbin/lpd
+   start)
+      log_info_msg "Starting lpd..."
+      start_daemon /usr/sbin/lpd
       evaluate_retval
-		;;
+      ;;
 
-	stop)
-		log_info_msg "Stopping lpd..."
-		killproc /usr/sbin/lpd
+   stop)
+      log_info_msg "Stopping lpd..."
+      killproc /usr/sbin/lpd
       evaluate_retval
-		;;
+      ;;
 
-	reload)
-		boot_mesg "Reloading lpd..."
-		killproc /usr/sbin/lpd -HUP
+   reload)
+      boot_mesg "Reloading lpd..."
+      killproc /usr/sbin/lpd -HUP
       evaluate_retval
-		;;
+      ;;
 
-	restart)
-		$0 stop
-		sleep 1
-		$0 start
-		;;
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
 
-	status)
-		statusproc /usr/sbin/lpd
-		;;
+   status)
+      statusproc /usr/sbin/lpd
+      ;;
 
-	*)
-		echo "Usage: $0 {start|stop|reload|restart|status}"
-		exit 1
-		;;
+   *)
+      echo "Usage: $0 {start|stop|reload|restart|status}"
+      exit 1
+      ;;
 esac
 
 # End /etc/init.d/lprng

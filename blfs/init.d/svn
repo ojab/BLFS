@@ -33,7 +33,7 @@ case "$1" in
                 log_info_msg "Starting Subversion..."
                 start_daemon /usr/bin/svnserve -d -r /srv/svn/repositories
                 evaluate_retval
-		;;
+                ;;
 
         stop)
                 log_info_msg "Stopping Subversion..."
