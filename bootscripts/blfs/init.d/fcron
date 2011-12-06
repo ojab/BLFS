@@ -3,10 +3,10 @@
 
 ### BEGIN INIT INFO
 # Provides:            fcron
-# Required-Start:      $network
-# Should-Start:        $remote_fs
-# Required-Stop:       $network
-# Should-Stop:         $remote_fs
+# Required-Start:      $local_fs 
+# Should-Start:        $remote_fs $syslog
+# Required-Stop:       $local_fs
+# Should-Stop:         $remote_fs $syslog
 # Default-Start:       3 4 5
 # Default-Stop:        0 1 2 6
 # Short-Description:   Starts fcron.
@@ -16,40 +16,38 @@
 
 . /lib/lsb/init-functions
 
-MESSAGE="FCron Daemon"
 BIN_FILE="/usr/sbin/fcron"
-PIDFILE="/var/run/fcron.pid"
 
 #$LastChangedBy$
 #$Date$
 
 case "$1" in
-	start)
-		log_info_msg "Starting fcron..."
-		start_daemon ${BIN_FILE}
+   start)
+      log_info_msg "Starting fcron..."
+      start_daemon ${BIN_FILE}
       evaluate_retval
-		;;
+      ;;
 
-	stop)
-		log_info_msg "Stopping fcron..."
-		killproc ${BIN_FILE}
+   stop)
+      log_info_msg "Stopping fcron..."
+      killproc ${BIN_FILE}
       evaluate_retval
-		;;
+      ;;
 
-	restart)
-		$0 stop
-		sleep 1
-		$0 start
-		;;
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
 
-	status)
-		statusproc ${BIN_FILE}
-		;;
+   status)
+      statusproc ${BIN_FILE}
+      ;;
 
-	*)
-		echo "Usage: $0 {start|stop|restart|status}"
-		exit 1
-		;;
+   *)
+      echo "Usage: $0 {start|stop|restart|status}"
+      exit 1
+      ;;
 esac
 
-# End $rc_base/init.d/fcron
+# End /etc/init.d/fcron

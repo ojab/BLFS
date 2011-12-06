@@ -11,10 +11,10 @@
 ########################################################################
 
 ### BEGIN INIT INFO
-# Provides:            $svnserve
-# Required-Start:      
+# Provides:            ftpd
+# Required-Start:      $remote_fs
 # Should-Start:
-# Required-Stop:       $sendsignals
+# Required-Stop:       $remote_fs
 # Should-Stop:
 # Default-Start:       3 4 5
 # Default-Stop:        0 1 2 6
@@ -29,38 +29,38 @@
 #$Date$
 
 case "$1" in
-	start)
-		log_info_msg "Starting vsFTPD Server..."
-		start_daemon /usr/sbin/vsftpd
+   start)
+      log_info_msg "Starting vsFTPD Server..."
+      start_daemon /usr/sbin/vsftpd
       evaluate_retval
-		;;
+      ;;
 
-	stop)
-		log_info_msg "Stopping vsFTPD Server..."
-		killproc /usr/sbin/vsftpd
+   stop)
+      log_info_msg "Stopping vsFTPD Server..."
+      killproc /usr/sbin/vsftpd
       evaluate_retval
-		;;
+      ;;
 
-	reload)
-		log_info_msg "Reloading vsFTPD Server..."
-		killproc /usr/sbin/vsftpd -HUP
+   reload)
+      log_info_msg "Reloading vsFTPD Server..."
+      killproc /usr/sbin/vsftpd -HUP
       evaluate_retval
-		;;
+      ;;
 
-	restart)
-		$0 stop
-		sleep 1
-		$0 start
-		;;
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
 
-	status)
-		statusproc /usr/sbin/vsftpd
-		;;
+   status)
+      statusproc /usr/sbin/vsftpd
+      ;;
 
-	*)
-		echo "Usage: $0 {start|stop|reload|restart|status}"
-		exit 1
-		;;
+   *)
+      echo "Usage: $0 {start|stop|reload|restart|status}"
+      exit 1
+      ;;
 esac
 
 # End /etc/init.d/vsftpd
