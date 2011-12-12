@@ -1,3 +1,6 @@
+2011-12-12 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Fix Makefile for httpd for consistency
+
 2011-12-05 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Updated most scripts to be combatible with LFS 7.0.
      See http://wiki.linuxfromscratch.org/blfs/browser/trunk/bootscripts
