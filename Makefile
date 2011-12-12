@@ -501,15 +501,15 @@ uninstall-alsa:
 	rm -f ${EXTDIR}/rc.d/rc1.d/K35alsa
 	rm -f ${EXTDIR}/rc.d/rc6.d/K35alsa
 
-uninstall-apache:
-	rm -f ${EXTDIR}/rc.d/init.d/apache
-	rm -f ${EXTDIR}/rc.d/rc0.d/K28apache
-	rm -f ${EXTDIR}/rc.d/rc1.d/K28apache
-	rm -f ${EXTDIR}/rc.d/rc2.d/K28apache
-	rm -f ${EXTDIR}/rc.d/rc3.d/S32apache
-	rm -f ${EXTDIR}/rc.d/rc4.d/S32apache
-	rm -f ${EXTDIR}/rc.d/rc5.d/S32apache
-	rm -f ${EXTDIR}/rc.d/rc6.d/K28apache
+uninstall-httpd:
+	rm -f ${EXTDIR}/rc.d/init.d/httpd
+	rm -f ${EXTDIR}/rc.d/rc0.d/K28httpd
+	rm -f ${EXTDIR}/rc.d/rc1.d/K28httpd
+	rm -f ${EXTDIR}/rc.d/rc2.d/K28httpd
+	rm -f ${EXTDIR}/rc.d/rc3.d/S32httpd
+	rm -f ${EXTDIR}/rc.d/rc4.d/S32httpd
+	rm -f ${EXTDIR}/rc.d/rc5.d/S32httpd
+	rm -f ${EXTDIR}/rc.d/rc6.d/K28httpd
 
 uninstall-autofs:
 	rm -f $(EXTDIR)/rc.d/init.d/autofs
@@ -895,7 +895,7 @@ uninstall-xinetd:
 	install-service-ipx \
 	install-service-pppoe \
 	install-alsa \
-	install-apache \
+	install-httpd \
 	install-bind \
 	install-cups \
 	install-cyrus-sasl \
@@ -936,7 +936,7 @@ uninstall-xinetd:
 	install-winbind \
 	install-xinetd \
 	uninstall-alsa \
-	uninstall-apache \
+	uninstall-httpd \
 	uninstall-bind \
 	uninstall-cups \
 	uninstall-cyrus-sasl \
