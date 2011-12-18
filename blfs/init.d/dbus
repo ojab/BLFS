@@ -36,7 +36,7 @@ case "$1" in
       log_info_msg "Starting the D-Bus Messagebus Daemon..."
       mkdir -p /run/dbus
       /usr/bin/dbus-uuidgen --ensure
-      loadproc /usr/bin/dbus-daemon --system
+      start_daemon /usr/bin/dbus-daemon --system
       evaluate_retval
       ;;
 
