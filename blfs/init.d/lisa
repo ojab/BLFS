@@ -1,47 +1,63 @@
 #!/bin/sh
-# Begin $rc_base/init.d/lisa
+########################################################################
+# Begin lisa
+#
+# Description : 
+#
+# Author      : Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : LFS 7.0
+#
+########################################################################
 
-# Based on sysklogd script from LFS-3.1 and earlier.
-# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+### BEGIN INIT INFO
+# Provides:            lisa
+# Required-Start:      network
+# Should-Start:
+# Required-Stop:       sendsignals
+# Should-Stop:
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Starts lisa daemon.
+# Description:         Starts Trinity lisa daemon.
+# X-LFS-Provided-By:   LFS
+### END INIT INFO
+
+TRINITY_PREFIX=/opt/trinity
+. /lib/lsb/init-functions
 
 #$LastChangedBy$
 #$Date$
 
-. /etc/sysconfig/rc
-. $rc_functions
-
-export PATH=$PATH:/opt/kde/bin
+export PATH=$PATH:$TRINITY_PREFIX/bin
 
 case "$1" in
-        start)
-                boot_mesg "Starting LISA Daemon..."
-                loadproc /opt/kde/bin/lisa
-                ;;
+   start)
+      log_info_msg "Starting LISA Daemon..."
+      start_daemon $TRINITY_PREFIX/bin/lisa
+      evaluate_retval
+      ;;
 
-        stop)
-                boot_mesg "Stopping LISA Daemon..."
-                killproc /opt/kde/bin/lisa
-                ;;
+   stop)
+      log_info_msg "Stopping LISA Daemon..."
+      killproc $TRINITY_PREFIX/bin/lisa
+      evaluate_retval
+      ;;
 
-        reload)
-                boot_mesg "Reloading LISA Daemon..."
-                reloadproc /opt/kde/bin/lisa
-                ;;
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
 
-        restart)
-                $0 stop
-                sleep 1
-                $0 start
-                ;;
+   status)
+      statusproc $TRINITY_PREFIX/bin/lisa
+      ;;
 
-        status)
-                statusproc /opt/kde/bin/lisa
-                ;;
-
-        *)
-                echo "Usage: $0 {start|stop|reload|restart|status}"
-                exit 1
-                ;;
+   *)
+      echo "Usage: $0 {start|stop|restart|status}"
+      exit 1
+      ;;
 esac
 
-# End $rc_base/init.d/lisa
+# End /etc/init.d/lisa
