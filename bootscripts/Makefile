@@ -11,7 +11,7 @@ all:
 	@echo "Select an appropriate install target from the above list" ; exit 1
 
 create-dirs:
-	install -d -m ${DIRMODE} ${EXTDIR}/rc.d/rc{0,1,2,3,4,5,6,sysinit}.d
+	install -d -m ${DIRMODE} ${EXTDIR}/rc.d/rc{0,1,2,3,4,5,6,S}.d
 	install -d -m ${DIRMODE} ${EXTDIR}/rc.d/init.d
 	install -d -m ${DIRMODE} ${EXTDIR}/sysconfig
 
@@ -24,6 +24,9 @@ install-service-dhclient: create-service-dir
 
 install-service-dhcpcd: create-service-dir
 	install -m ${MODE} blfs/services/dhcpcd  ${LIBDIR}
+
+install-service-bridge: create-service-dir
+	install -m ${MODE} blfs/services/bridge  ${LIBDIR}
 
 install-service-ipx: create-service-dir
 	install -m ${MODE} blfs/sysconfig/network-devices/services/ipx      ${EXTDIR}/sysconfig/network-devices/services
@@ -52,7 +55,7 @@ install-httpd: create-dirs
 install-autofs: create-dirs
 	install -m $(MODE) blfs/init.d/autofs    $(EXTDIR)/rc.d/init.d/
 	install -m $(CONFMODE) blfs/sysconfig/autofs.conf $(EXTDIR)/sysconfig/
-	ln -sf  ../init.d/autofs $(EXTDIR)/rc.d/rcsysinit.d/S52autofs
+	ln -sf  ../init.d/autofs $(EXTDIR)/rc.d/rcS.d/S52autofs
 
 install-bind: create-dirs
 	install -m ${MODE} blfs/init.d/bind       ${EXTDIR}/rc.d/init.d/
@@ -449,11 +452,7 @@ install-svn: create-dirs
 
 install-sysstat: create-dirs
 	install -m ${MODE} blfs/init.d/sysstat    ${EXTDIR}/rc.d/init.d/
-	ln -sf ../init.d/sysstat ${EXTDIR}/rc.d/rcsysinit.d/S85sysstat
-
-install-usb: create-dirs
-	install -m ${MODE} blfs/init.d/usb        ${EXTDIR}/rc.d/init.d/
-	ln -sf ../init.d/usb ${EXTDIR}/rc.d/rcsysinit.d/S90usb
+	ln -sf ../init.d/sysstat ${EXTDIR}/rc.d/rcS.d/S85sysstat
 
 install-virtuoso: create-dirs
 	install -m ${MODE} blfs/init.d/virtuoso   ${EXTDIR}/rc.d/init.d/
@@ -513,7 +512,7 @@ uninstall-httpd:
 
 uninstall-autofs:
 	rm -f $(EXTDIR)/rc.d/init.d/autofs
-	rm -f $(EXTDIR)/rc.d/rcsysinit.d/S52autofs
+	rm -f $(EXTDIR)/rc.d/rcS.d/S52autofs
 
 uninstall-bind:
 	rm -f ${EXTDIR}/rc.d/init.d/bind
@@ -843,11 +842,7 @@ uninstall-svn:
 
 uninstall-sysstat:
 	rm -f ${EXTDIR}/rc.d/init.d/sysstat
-	rm -f ${EXTDIR}/rc.d/rcsysinit.d/S85sysstat
-
-uninstall-usb:
-	rm -f ${EXTDIR}/rc.d/init.d/usb
-	rm -f ${EXTDIR}/rc.d/rcsysinit.d/S90usb
+	rm -f ${EXTDIR}/rc.d/rcS.d/S85sysstat
 
 uninstall-virtuoso:
 	rm -f ${EXTDIR}/rc.d/init.d/virtuoso
@@ -932,7 +927,6 @@ uninstall-xinetd:
 	install-sysstat \
 	install-vsftpd \
 	install-virtuoso \
-	install-usb \
 	install-winbind \
 	install-xinetd \
 	uninstall-alsa \
@@ -973,6 +967,5 @@ uninstall-xinetd:
 	uninstall-sysstat \
 	uninstall-virtuoso \
 	uninstall-vsftpd \
-	uninstall-usb \
 	uninstall-winbind \
 	uninstall-xinetd

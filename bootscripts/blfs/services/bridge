@@ -1,0 +1,56 @@
+#!/bin/sh
+########################################################################
+# Begin /lib/services/bridge
+#
+# Description : Bridge Boot Script
+#
+# Authors     : Nathan Coulson - nathan@linuxfromscratch.org
+#               Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : LFS-7.0
+#
+########################################################################
+
+. /lib/lsb/init-functions
+. ${IFCONFIG}
+
+if [ -n "${INTERFACE}" ]; then
+   log_failure_msg "INTERFACES variable missing from ${IFCONFIG}"
+   exit 1
+fi
+
+case "${2}" in
+   up)
+      log_info_msg "Creating the ${1} interface..."
+      brctl addbr ${1}
+      evaluate_retval
+      for I in ${INTERFACES}; do
+         log_info_msg "Adding ${I} to ${1}..."
+         ip link set ${I} up &&
+         brctl addif ${1} ${I}
+         evaluate_retval
+      done
+   ;;
+   
+   down)
+      for I in ${INTERFACES}; do
+         log_info_msg "Removing ${I} from ${1}..."
+         ip link set ${I} down &&
+         brctl delif ${1} ${I}
+         evaluate_retval
+      done
+
+      log_info_msg "Bringing down the ${1} interface..."
+      ip link set ${1} down
+      brctl delbr ${1}
+      evaluate_retval
+   ;;
+   
+   *)
+      echo "Usage: ${0} [interface] {up|down}"
+      exit 1
+   ;;
+esac
+
+# End /lib/services/bridge
+
