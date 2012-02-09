@@ -1,0 +1,60 @@
+#!/bin/sh
+########################################################################
+# Begin $rc_base/init.d/avahi
+#
+# Description : Avahi daemon loader
+#
+# Authors     : William Immendorf - will.immendorf@gmail.com, with some fixes by BLFS Trac user Ringlis.
+#
+# Version     : 00.00
+#
+# Notes       : Based off of the LFS 6.4 sysklogd script. This controlls all but the AutoIP daemon (I haven't been able to start that).
+#
+########################################################################
+
+. /etc/sysconfig/rc
+. ${rc_functions}
+
+case "${1}" in
+	start)
+		boot_mesg "Starting the Avahi daemon..."
+		loadproc avahi-daemon -D
+
+		boot_mesg "Starting the Avahi mDNS/DNS-SD Server Conf. Daemon..."
+		loadproc avahi-dnsconfd -D
+		;;
+
+	stop)
+		boot_mesg "Stopping the Avahi mDNS/DNS-SD Server Conf. Daemon..."
+		avahi-dnsconfd -k
+		evaluate_retval
+
+		boot_mesg "Stopping the Avahi daemon..."
+		avahi-daemon -k
+		evaluate_retval
+		;;
+
+	reload)
+		boot_mesg "Reloading the Avahi mDNS/DNS-SD Server Conf. Daemon..."
+		reloadproc avahi-dnsconfd -r
+
+		boot_mesg "Reloading the Avahi daemon..."
+		reloadproc avahi-daemon -r
+		;;
+	restart)
+		${0} stop
+		sleep 1
+		${0} start
+		;;
+
+	status)
+		statusproc avahi-daemon
+		statusproc avahi-dnsconfd
+		;;
+	*)
+		echo "Usage: ${0} {start|stop|reload|restart|status}"
+		exit 1
+		;;
+esac
+
+# End $rc_base/init.d/avahi

@@ -1,3 +1,6 @@
+2012-02-09 Wayne Blaszczyk <wblaszcz@linuxfromscratch.org>
+   * Added avahi script and modified the Makefile accordingly
+
 2011-12-12 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Fix Makefile for httpd for consistency
 
