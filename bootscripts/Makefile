@@ -57,6 +57,16 @@ install-autofs: create-dirs
 	install -m $(CONFMODE) blfs/sysconfig/autofs.conf $(EXTDIR)/sysconfig/
 	ln -sf  ../init.d/autofs $(EXTDIR)/rc.d/rcS.d/S52autofs
 
+install-avahi: create-dirs
+	install -m ${MODE} blfs/init.d/avahi     ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/avahi ${EXTDIR}/rc.d/rc0.d/K28avahi
+	ln -sf  ../init.d/avahi ${EXTDIR}/rc.d/rc1.d/K28avahi
+	ln -sf  ../init.d/avahi ${EXTDIR}/rc.d/rc2.d/K49avahi
+	ln -sf  ../init.d/avahi ${EXTDIR}/rc.d/rc3.d/S21avahi
+	ln -sf  ../init.d/avahi ${EXTDIR}/rc.d/rc4.d/S21avahi
+	ln -sf  ../init.d/avahi ${EXTDIR}/rc.d/rc5.d/S21avahi
+	ln -sf  ../init.d/avahi ${EXTDIR}/rc.d/rc6.d/K28avahi
+
 install-bind: create-dirs
 	install -m ${MODE} blfs/init.d/bind       ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/bind ${EXTDIR}/rc.d/rc0.d/K49bind
@@ -514,6 +524,16 @@ uninstall-autofs:
 	rm -f $(EXTDIR)/rc.d/init.d/autofs
 	rm -f $(EXTDIR)/rc.d/rcS.d/S52autofs
 
+uninstall-avahi:
+	rm -f ${EXTDIR}/rc.d/init.d/avahi
+	rm -f ${EXTDIR}/rc.d/rc0.d/K28avahi
+	rm -f ${EXTDIR}/rc.d/rc1.d/K28avahi
+	rm -f ${EXTDIR}/rc.d/rc2.d/K49avahi
+	rm -f ${EXTDIR}/rc.d/rc3.d/S21avahi
+	rm -f ${EXTDIR}/rc.d/rc4.d/S21avahi
+	rm -f ${EXTDIR}/rc.d/rc5.d/S21avahi
+	rm -f ${EXTDIR}/rc.d/rc6.d/K28avahi
+
 uninstall-bind:
 	rm -f ${EXTDIR}/rc.d/init.d/bind
 	rm -f ${EXTDIR}/rc.d/rc0.d/K49bind
@@ -890,6 +910,7 @@ uninstall-xinetd:
 	install-service-ipx \
 	install-service-pppoe \
 	install-alsa \
+	install-avahi \
 	install-httpd \
 	install-bind \
 	install-cups \
@@ -930,6 +951,7 @@ uninstall-xinetd:
 	install-winbind \
 	install-xinetd \
 	uninstall-alsa \
+	uninstall-avahi \
 	uninstall-httpd \
 	uninstall-bind \
 	uninstall-cups \
