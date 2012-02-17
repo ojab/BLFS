@@ -34,7 +34,7 @@ case "$1" in
    start)
       log_info_msg "Starting named..."
       start_daemon /usr/sbin/named -u named -t /srv/named -c /etc/named.conf
-      ievaluate_retval
+      evaluate_retval
       ;;
 
    stop)
