@@ -5,10 +5,9 @@ MODE=754
 DIRMODE=755
 CONFMODE=644
 
-# The grep can probably be improved upon.
 all:
 	@grep "^install" Makefile | cut -d ":" -f 1
-	@echo "Select an appropriate install target from the above list" ; exit 1
+	@echo "Select an appropriate install target from the above list" 
 
 create-dirs:
 	install -d -m ${DIRMODE} ${EXTDIR}/rc.d/rc{0,1,2,3,4,5,6,S}.d

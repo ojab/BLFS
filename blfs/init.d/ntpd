@@ -32,7 +32,7 @@
 case "$1" in
    start)
       log_info_msg "Starting ntpd..."
-      start_daemon /usr/sbin/ntpd -gx
+      start_daemon /usr/sbin/ntpd -g
       evaluate_retval
       ;;
 
