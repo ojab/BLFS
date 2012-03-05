@@ -1,40 +1,75 @@
 #!/bin/sh
-# Begin $rc_base/init.d/cyrus-sasl
+########################################################################
+# Begin cyrus-sasl
+#
+# Description : Cyrus SASL Boot Script
+#
+# Authors     : Armin K. <krejzi@email.com>
+#
+# Version     : BLFS SVN
+#
+# Notes       : Not enabled by default.
+#
+########################################################################
 
-# Based on sysklogd script from LFS-3.1 and earlier.
-# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+### BEGIN INIT INFO
+# Provides:            saslauthd
+# Required-Start:      $local_fs
+# Should-Start:
+# Required-Stop:       $local_fs
+# Should-Stop:
+# Default-Start:       2 3 4 5
+# Default-Stop:        0 1 6
+# Short-Description:   saslauthd startup script
+# Description:         This script starts the saslauthd daemon. It is
+#                      configured using the file /etc/sysconfig/cyrus-sasl.
+# X-LFS-Provided-By:   BLFS
+### END INIT INFO
 
-#$LastChangedBy$
-#$Date$
+. /lib/lsb/init-functions
+. /etc/sysconfig/cyrus-sasl
 
-. /etc/sysconfig/rc
-. $rc_functions
+DAEMON="/usr/sbin/saslauthd -a $AUTHMECH $OPTIONS"
 
-case "$1" in
-	start)
-		boot_mesg "Starting the Cyrus SASL Server..."
-		loadproc /usr/sbin/saslauthd -a [authmech]
-		;;
+case "${1}" in
+   start)
 
-	stop)
-		boot_mesg "Stopping the Cyrus SASL Server..."
-		killproc /usr/sbin/saslauthd
-		;;
+      if [ "$START" != "yes" ]; then
+         MSG="Configure saslauthd in /etc/sysconfig/cyrus-sasl"
+         log_failure_msg "$MSG and set START to yes"
+         exit 1
+      fi
 
-	restart)
-		$0 stop
-		sleep 1
-		$0 start
-		;;
+      if [ -z "$AUTHMECH" ]; then
+         MSG="You need to select auth mechanism in"
+         log_failure_msg "$MSG /etc/sysconfig/cyrus-sasl"
+         exit 1
+      fi
 
-	status)
-		statusproc /usr/sbin/saslauthd
-		;;
+      if [ ! -d /var/run/saslauthd ]; then
+         install -d -o root -g root -m 711 /var/run/saslauthd
+      fi
 
-	*)
-		echo "Usage: $0 {start|stop|restart|status}"
-		exit 1
-		;;
-esac
+      log_info_msg "Starting SASL Authentication Daemon saslauthd"
+      start_daemon ${DAEMON}
+      ;;
 
-# End $rc_base/init.d/cyrus-sasl
+   stop)
+      log_info_msg "Stopping SASL Authentication Daemon saslauthd"
+      killproc /usr/sbin/saslauthd
+      ;;
+
+   restart)
+      ${0} stop
+      sleep 1
+      ${0} start
+      ;;
+
+   *)
+      echo "Usage: ${0} {start|stop|restart}"
+      exit 1
+      ;;
+ esac
+exit 0
+
+# End cyrus-sasl

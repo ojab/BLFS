@@ -95,6 +95,7 @@ install-cups: create-dirs
 
 install-cyrus-sasl: create-dirs
 	install -m ${MODE} blfs/init.d/cyrus-sasl ${EXTDIR}/rc.d/init.d/
+	install -m ${CONFMODE} blfs/sysconfig/cyrus-sasl ${EXTDIR}/sysconfig/
 	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc0.d/K49cyrus-sasl
 	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc1.d/K49cyrus-sasl
 	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc2.d/S24cyrus-sasl
