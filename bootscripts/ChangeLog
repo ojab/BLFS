@@ -1,3 +1,6 @@
+2012-03-10 DJ Lucas <dj@linuxfromscratch.org>
+   * Fix dependency information for postfix script.
+
 2012-02-09 Wayne Blaszczyk <wblaszcz@linuxfromscratch.org>
    * Added avahi script and modified the Makefile accordingly
 
