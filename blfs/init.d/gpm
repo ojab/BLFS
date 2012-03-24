@@ -40,7 +40,7 @@ case "${1}" in
          log_failure_msg
          exit 2
       fi
-      start_daemon /usr/sbin/gpm -m "${MDEVICE}" -t "${PROTOCOL}" "${GPMOPTS}"
+      start_daemon /usr/sbin/gpm -m "${MDEVICE}" -t "${PROTOCOL}" ${GPMOPTS}
       evaluate_retval
       ;;
 
