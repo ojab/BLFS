@@ -24,6 +24,7 @@ case "${2}" in
    up)
       log_info_msg "Creating the ${1} interface..."
       brctl addbr ${1}
+      ip link set ${1} up &&
       evaluate_retval
       for I in ${INTERFACES}; do
          log_info_msg "Adding ${I} to ${1}..."

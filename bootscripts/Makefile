@@ -134,16 +134,6 @@ install-exim: create-dirs
 	ln -sf  ../init.d/exim ${EXTDIR}/rc.d/rc5.d/S35exim
 	ln -sf  ../init.d/exim ${EXTDIR}/rc.d/rc6.d/K25exim
 
-install-fam: create-dirs
-	install -m ${MODE} blfs/init.d/fam      ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/fam ${EXTDIR}/rc.d/rc0.d/K37fam
-	ln -sf  ../init.d/fam ${EXTDIR}/rc.d/rc1.d/K37fam
-	ln -sf  ../init.d/fam ${EXTDIR}/rc.d/rc2.d/S23fam
-	ln -sf  ../init.d/fam ${EXTDIR}/rc.d/rc3.d/S23fam
-	ln -sf  ../init.d/fam ${EXTDIR}/rc.d/rc4.d/S23fam
-	ln -sf  ../init.d/fam ${EXTDIR}/rc.d/rc5.d/S23fam
-	ln -sf  ../init.d/fam ${EXTDIR}/rc.d/rc6.d/K39fam
-
 install-fcron: create-dirs
 	install -m ${MODE} blfs/init.d/fcron      ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/fcron ${EXTDIR}/rc.d/rc0.d/K08fcron
@@ -173,16 +163,6 @@ install-gpm: create-dirs
 	ln -sf  ../init.d/gpm ${EXTDIR}/rc.d/rc4.d/S70gpm
 	ln -sf  ../init.d/gpm ${EXTDIR}/rc.d/rc5.d/S70gpm
 	ln -sf  ../init.d/gpm ${EXTDIR}/rc.d/rc6.d/K10gpm
-
-install-haldaemon: create-dirs
-	install -m ${MODE} blfs/init.d/haldaemon      ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/haldaemon ${EXTDIR}/rc.d/rc0.d/K29haldaemon
-	ln -sf  ../init.d/haldaemon ${EXTDIR}/rc.d/rc1.d/K29haldaemon
-	ln -sf  ../init.d/haldaemon ${EXTDIR}/rc.d/rc2.d/S21haldaemon
-	ln -sf  ../init.d/haldaemon ${EXTDIR}/rc.d/rc3.d/S21haldaemon
-	ln -sf  ../init.d/haldaemon ${EXTDIR}/rc.d/rc4.d/S21haldaemon
-	ln -sf  ../init.d/haldaemon ${EXTDIR}/rc.d/rc5.d/S21haldaemon
-	ln -sf  ../init.d/haldaemon ${EXTDIR}/rc.d/rc6.d/K29haldaemon
 
 install-heimdal: create-dirs
 	install -m ${MODE} blfs/init.d/heimdal        ${EXTDIR}/rc.d/init.d/
@@ -240,16 +220,6 @@ install-mysql: create-dirs
 	ln -sf  ../init.d/mysql ${EXTDIR}/rc.d/rc5.d/S34mysql
 	ln -sf  ../init.d/mysql ${EXTDIR}/rc.d/rc6.d/K26mysql
 
-install-nas: create-dirs
-	install -m ${MODE} blfs/init.d/nas        ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/nas ${EXTDIR}/rc.d/rc0.d/K35nas
-	ln -sf  ../init.d/nas ${EXTDIR}/rc.d/rc1.d/K35nas
-	ln -sf  ../init.d/nas ${EXTDIR}/rc.d/rc2.d/K35nas
-	ln -sf  ../init.d/nas ${EXTDIR}/rc.d/rc3.d/S30nas
-	ln -sf  ../init.d/nas ${EXTDIR}/rc.d/rc4.d/S30nas
-	ln -sf  ../init.d/nas ${EXTDIR}/rc.d/rc5.d/S30nas
-	ln -sf  ../init.d/nas ${EXTDIR}/rc.d/rc6.d/K35nas
-
 install-netfs: create-dirs
 	install -m ${MODE} blfs/init.d/netfs      ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/netfs ${EXTDIR}/rc.d/rc0.d/K47netfs
@@ -292,16 +262,6 @@ install-ntpd: create-dirs
 
 install-openldap1: create-dirs
 	install -m ${MODE} blfs/init.d/openldap1  ${EXTDIR}/rc.d/init.d/openldap
-	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc0.d/K46openldap
-	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc1.d/K46openldap
-	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc2.d/K46openldap
-	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc3.d/S25openldap
-	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc4.d/S25openldap
-	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc5.d/S25openldap
-	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc6.d/K46openldap
-
-install-openldap2: create-dirs
-	install -m ${MODE} blfs/init.d/openldap2  ${EXTDIR}/rc.d/init.d/openldap
 	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc0.d/K46openldap
 	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc1.d/K46openldap
 	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc2.d/K46openldap
@@ -494,16 +454,6 @@ install-winbind: create-dirs
 	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc5.d/S50winbind
 	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc6.d/K49winbind
 
-install-xinetd: create-dirs
-	install -m ${MODE} blfs/init.d/xinetd     ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/xinetd ${EXTDIR}/rc.d/rc0.d/K49xinetd
-	ln -sf  ../init.d/xinetd ${EXTDIR}/rc.d/rc1.d/K49xinetd
-	ln -sf  ../init.d/xinetd ${EXTDIR}/rc.d/rc2.d/K49xinetd
-	ln -sf  ../init.d/xinetd ${EXTDIR}/rc.d/rc3.d/S23xinetd
-	ln -sf  ../init.d/xinetd ${EXTDIR}/rc.d/rc4.d/S23xinetd
-	ln -sf  ../init.d/xinetd ${EXTDIR}/rc.d/rc5.d/S23xinetd
-	ln -sf  ../init.d/xinetd ${EXTDIR}/rc.d/rc6.d/K49xinetd
-
 uninstall-alsa:
 	rm -f ${EXTDIR}/rc.d/init.d/alsa
 	rm -f ${EXTDIR}/rc.d/rc0.d/K35alsa
@@ -583,16 +533,6 @@ uninstall-exim:
 	rm -f ${EXTDIR}/rc.d/rc4.d/S35exim
 	rm -f ${EXTDIR}/rc.d/rc5.d/S35exim
 	rm -f ${EXTDIR}/rc.d/rc6.d/K25exim
-
-uninstall-fam:
-	rm -f ${EXTDIR}/rc.d/init.d/fam
-	rm -f ${EXTDIR}/rc.d/rc0.d/K37fam
-	rm -f ${EXTDIR}/rc.d/rc1.d/K37fam
-	rm -f ${EXTDIR}/rc.d/rc2.d/S23fam
-	rm -f ${EXTDIR}/rc.d/rc3.d/S23fam
-	rm -f ${EXTDIR}/rc.d/rc4.d/S23fam
-	rm -f ${EXTDIR}/rc.d/rc5.d/S23fam
-	rm -f ${EXTDIR}/rc.d/rc6.d/K39fam
 
 uninstall-fcron:
 	rm -f ${EXTDIR}/rc.d/init.d/fcron
@@ -680,16 +620,6 @@ uninstall-mysql:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S34mysql
 	rm -f ${EXTDIR}/rc.d/rc6.d/K26mysql
 
-uninstall-nas:
-	rm -f ${EXTDIR}/rc.d/init.d/nas
-	rm -f ${EXTDIR}/rc.d/rc0.d/K35nas
-	rm -f ${EXTDIR}/rc.d/rc1.d/K35nas
-	rm -f ${EXTDIR}/rc.d/rc2.d/K35nas
-	rm -f ${EXTDIR}/rc.d/rc3.d/S30nas
-	rm -f ${EXTDIR}/rc.d/rc4.d/S30nas
-	rm -f ${EXTDIR}/rc.d/rc5.d/S30nas
-	rm -f ${EXTDIR}/rc.d/rc6.d/K35nas
-
 uninstall-netfs:
 	rm -f ${EXTDIR}/rc.d/init.d/netfs
 	rm -f ${EXTDIR}/rc.d/rc0.d/K47netfs
@@ -731,16 +661,6 @@ uninstall-ntp:
 	rm -f ${EXTDIR}/rc.d/rc6.d/K46ntp
 
 uninstall-openldap1:
-	rm -f ${EXTDIR}/rc.d/init.d/openldap
-	rm -f ${EXTDIR}/rc.d/rc0.d/K46openldap
-	rm -f ${EXTDIR}/rc.d/rc1.d/K46openldap
-	rm -f ${EXTDIR}/rc.d/rc2.d/K46openldap
-	rm -f ${EXTDIR}/rc.d/rc3.d/S25openldap
-	rm -f ${EXTDIR}/rc.d/rc4.d/S25openldap
-	rm -f ${EXTDIR}/rc.d/rc5.d/S25openldap
-	rm -f ${EXTDIR}/rc.d/rc6.d/K46openldap
-
-uninstall-openldap2:
 	rm -f ${EXTDIR}/rc.d/init.d/openldap
 	rm -f ${EXTDIR}/rc.d/rc0.d/K46openldap
 	rm -f ${EXTDIR}/rc.d/rc1.d/K46openldap
@@ -894,16 +814,6 @@ uninstall-winbind:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S50winbind
 	rm -f ${EXTDIR}/rc.d/rc6.d/K49winbind
 
-uninstall-xinetd:
-	rm -f ${EXTDIR}/rc.d/init.d/xinetd
-	rm -f ${EXTDIR}/rc.d/rc0.d/K49xinetd
-	rm -f ${EXTDIR}/rc.d/rc1.d/K49xinetd
-	rm -f ${EXTDIR}/rc.d/rc2.d/K49xinetd
-	rm -f ${EXTDIR}/rc.d/rc3.d/S23xinetd
-	rm -f ${EXTDIR}/rc.d/rc4.d/S23xinetd
-	rm -f ${EXTDIR}/rc.d/rc5.d/S23xinetd
-	rm -f ${EXTDIR}/rc.d/rc6.d/K49xinetd
-
 .PHONY: all create-dirs create-service-dir \
 	install-service-dhclient \
 	install-service-dhcpcd \
@@ -926,13 +836,11 @@ uninstall-xinetd:
 	install-lisa \
 	install-lprng \
 	install-mysql \
-	install-nas \
 	install-netfs \
 	install-nfs-client \
 	install-nfs-server \
 	install-ntp \
 	install-openldap1 \
-	install-openldap2 \
 	install-portmap \
 	install-postfix \
 	install-postgresql \
@@ -949,7 +857,6 @@ uninstall-xinetd:
 	install-vsftpd \
 	install-virtuoso \
 	install-winbind \
-	install-xinetd \
 	uninstall-alsa \
 	uninstall-avahi \
 	uninstall-httpd \
@@ -967,13 +874,11 @@ uninstall-xinetd:
 	uninstall-lisa \
 	uninstall-lprng \
 	uninstall-mysql \
-	uninstall-nas \
 	uninstall-netfs \
 	uninstall-nfs-client \
 	uninstall-nfs-server \
 	uninstall-ntp \
 	uninstall-openldap1 \
-	uninstall-openldap2 \
 	uninstall-portmap \
 	uninstall-postfix \
 	uninstall-postgresql \
@@ -990,4 +895,3 @@ uninstall-xinetd:
 	uninstall-virtuoso \
 	uninstall-vsftpd \
 	uninstall-winbind \
-	uninstall-xinetd
