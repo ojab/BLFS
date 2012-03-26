@@ -13,7 +13,7 @@
 ### BEGIN INIT INFO
 # Provides:            dbus
 # Required-Start:      cleanfs
-# Should-Start:
+# Should-Start:        $remote_fs
 # Required-Stop:       sendsignals
 # Should-Stop:
 # Default-Start:       2 3 4 5

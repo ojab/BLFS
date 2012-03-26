@@ -108,10 +108,10 @@ install-dbus: create-dirs
 	install -m ${MODE} blfs/init.d/dbus ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc0.d/K30dbus
 	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc1.d/K30dbus
-	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc2.d/S20dbus
-	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc3.d/S20dbus
-	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc4.d/S20dbus
-	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc5.d/S20dbus
+	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc2.d/S29dbus
+	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc3.d/S29dbus
+	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc4.d/S29dbus
+	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc5.d/S29dbus
 	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc6.d/K30dbus
 
 install-dhcp: create-dirs
