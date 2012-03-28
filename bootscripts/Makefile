@@ -190,16 +190,6 @@ install-kerberos: create-dirs
 	ln -sf ../init.d/kerberos ${EXTDIR}/rc.d/rc5.d/S28kerberos
 	ln -sf ../init.d/kerberos ${EXTDIR}/rc.d/rc6.d/K42kerberos
 
-install-lisa: create-dirs
-	install -m ${MODE} blfs/init.d/lisa       ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc0.d/K35lisa
-	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc1.d/K35lisa
-	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc2.d/K35lisa
-	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc3.d/S30lisa
-	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc4.d/S30lisa
-	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc5.d/S30lisa
-	ln -sf  ../init.d/lisa ${EXTDIR}/rc.d/rc6.d/K35lisa
-
 install-lprng: create-dirs
 	install -m ${MODE} blfs/init.d/lprng      ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/lprng ${EXTDIR}/rc.d/rc0.d/K00lprng
@@ -269,16 +259,6 @@ install-openldap1: create-dirs
 	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc4.d/S25openldap
 	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc5.d/S25openldap
 	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc6.d/K46openldap
-
-install-portmap: create-dirs
-	install -m ${MODE} blfs/init.d/portmap    ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/portmap ${EXTDIR}/rc.d/rc0.d/K49portmap
-	ln -sf  ../init.d/portmap ${EXTDIR}/rc.d/rc1.d/K49portmap
-	ln -sf  ../init.d/portmap ${EXTDIR}/rc.d/rc2.d/K49portmap
-	ln -sf  ../init.d/portmap ${EXTDIR}/rc.d/rc3.d/S22portmap
-	ln -sf  ../init.d/portmap ${EXTDIR}/rc.d/rc4.d/S22portmap
-	ln -sf  ../init.d/portmap ${EXTDIR}/rc.d/rc5.d/S22portmap
-	ln -sf  ../init.d/portmap ${EXTDIR}/rc.d/rc6.d/K49portmap
 
 install-postfix: create-dirs
 	install -m ${MODE} blfs/init.d/postfix    ${EXTDIR}/rc.d/init.d/
@@ -444,16 +424,6 @@ install-vsftpd: create-dirs
 	ln -sf ../init.d/vsftpd ${EXTDIR}/rc.d/rc5.d/S32vsftpd
 	ln -sf ../init.d/vsftpd ${EXTDIR}/rc.d/rc6.d/K28vsftpd
 
-install-winbind: create-dirs
-	install -m ${MODE} blfs/init.d/winbind    ${EXTDIR}/rc.d/init.d/
-	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc0.d/K49winbind
-	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc1.d/K49winbind
-	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc2.d/K49winbind
-	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc3.d/S50winbind
-	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc4.d/S50winbind
-	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc5.d/S50winbind
-	ln -sf ../init.d/winbind ${EXTDIR}/rc.d/rc6.d/K49winbind
-
 uninstall-alsa:
 	rm -f ${EXTDIR}/rc.d/init.d/alsa
 	rm -f ${EXTDIR}/rc.d/rc0.d/K35alsa
@@ -590,16 +560,6 @@ uninstall-kerberos:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S28kerberos
 	rm -f ${EXTDIR}/rc.d/rc6.d/K42kerberos
 
-uninstall-lisa:
-	rm -f ${EXTDIR}/rc.d/init.d/lisa
-	rm -f ${EXTDIR}/rc.d/rc0.d/K35lisa
-	rm -f ${EXTDIR}/rc.d/rc1.d/K35lisa
-	rm -f ${EXTDIR}/rc.d/rc2.d/K35lisa
-	rm -f ${EXTDIR}/rc.d/rc3.d/S30lisa
-	rm -f ${EXTDIR}/rc.d/rc4.d/S30lisa
-	rm -f ${EXTDIR}/rc.d/rc5.d/S30lisa
-	rm -f ${EXTDIR}/rc.d/rc6.d/K35lisa
-
 uninstall-lprng:
 	rm -f ${EXTDIR}/rc.d/init.d/lprng
 	rm -f ${EXTDIR}/rc.d/rc0.d/K00lprng
@@ -669,16 +629,6 @@ uninstall-openldap1:
 	rm -f ${EXTDIR}/rc.d/rc4.d/S25openldap
 	rm -f ${EXTDIR}/rc.d/rc5.d/S25openldap
 	rm -f ${EXTDIR}/rc.d/rc6.d/K46openldap
-
-uninstall-portmap:
-	rm -f ${EXTDIR}/rc.d/init.d/portmap
-	rm -f ${EXTDIR}/rc.d/rc0.d/K49portmap
-	rm -f ${EXTDIR}/rc.d/rc1.d/K49portmap
-	rm -f ${EXTDIR}/rc.d/rc2.d/K49portmap
-	rm -f ${EXTDIR}/rc.d/rc3.d/S22portmap
-	rm -f ${EXTDIR}/rc.d/rc4.d/S22portmap
-	rm -f ${EXTDIR}/rc.d/rc5.d/S22portmap
-	rm -f ${EXTDIR}/rc.d/rc6.d/K49portmap
 
 uninstall-postfix:
 	rm -f ${EXTDIR}/rc.d/init.d/postfix
@@ -804,16 +754,6 @@ uninstall-vsftpd:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S32vsftpd
 	rm -f ${EXTDIR}/rc.d/rc6.d/K28vsftpd
 
-uninstall-winbind:
-	rm -f ${EXTDIR}/rc.d/init.d/winbind
-	rm -f ${EXTDIR}/rc.d/rc0.d/K49winbind
-	rm -f ${EXTDIR}/rc.d/rc1.d/K49winbind
-	rm -f ${EXTDIR}/rc.d/rc2.d/K49winbind
-	rm -f ${EXTDIR}/rc.d/rc3.d/S50winbind
-	rm -f ${EXTDIR}/rc.d/rc4.d/S50winbind
-	rm -f ${EXTDIR}/rc.d/rc5.d/S50winbind
-	rm -f ${EXTDIR}/rc.d/rc6.d/K49winbind
-
 .PHONY: all create-dirs create-service-dir \
 	install-service-dhclient \
 	install-service-dhcpcd \
@@ -833,7 +773,6 @@ uninstall-winbind:
 	install-heimdal \
 	install-iptables \
 	install-kerberos \
-	install-lisa \
 	install-lprng \
 	install-mysql \
 	install-netfs \
@@ -841,7 +780,6 @@ uninstall-winbind:
 	install-nfs-server \
 	install-ntp \
 	install-openldap1 \
-	install-portmap \
 	install-postfix \
 	install-postgresql \
 	install-proftpd \
@@ -856,7 +794,6 @@ uninstall-winbind:
 	install-sysstat \
 	install-vsftpd \
 	install-virtuoso \
-	install-winbind \
 	uninstall-alsa \
 	uninstall-avahi \
 	uninstall-httpd \
@@ -871,7 +808,6 @@ uninstall-winbind:
 	uninstall-heimdal \
 	uninstall-iptables \
 	uninstall-kerberos \
-	uninstall-lisa \
 	uninstall-lprng \
 	uninstall-mysql \
 	uninstall-netfs \
@@ -879,7 +815,6 @@ uninstall-winbind:
 	uninstall-nfs-server \
 	uninstall-ntp \
 	uninstall-openldap1 \
-	uninstall-portmap \
 	uninstall-postfix \
 	uninstall-postgresql \
 	uninstall-proftpd \
@@ -894,4 +829,3 @@ uninstall-winbind:
 	uninstall-sysstat \
 	uninstall-virtuoso \
 	uninstall-vsftpd \
-	uninstall-winbind \
