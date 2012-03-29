@@ -12,7 +12,7 @@
 
 ### BEGIN INIT INFO
 # Provides:            sshd
-# Required-Start:      network
+# Required-Start:      $network
 # Should-Start:
 # Required-Stop:       sendsignals
 # Should-Stop:
