@@ -33,16 +33,12 @@
 
  case "$1" in
    start)
-      log_info_msg "Starting NFS mountd..."
-      start_daemon /usr/sbin/rpc.mountd
+      log_info_msg "Starting NFS statd..."
+      start_daemon /usr/sbin/rpc.statd
       evaluate_retval
 
       log_info_msg "Starting NFS nfsd..."
       start_daemon /usr/sbin/rpc.nfsd -p $PORT $PROCESSES
-      evaluate_retval
-
-      log_info_msg "Starting NFS statd..."
-      start_daemon /usr/sbin/rpc.statd
       evaluate_retval
 
       if [ "$QUOTAS" = "yes" ]; then
@@ -50,6 +46,10 @@
          start_daemon /usr/sbin/rpc.rquotad
          evaluate_retval
       fi
+
+      log_info_msg "Starting NFS mountd..."
+      start_daemon /usr/sbin/rpc.mountd
+      evaluate_retval
 
       # NFSD support only in 2.6 kernel
       /bin/uname -r | /bin/grep "^2.6" 2>&1 > /dev/null
