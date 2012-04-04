@@ -1,3 +1,6 @@
+2012-04-05 Ken Moffat <ken@linuxfromscratch.org>
+   * Fix the nfs-server - from 'Crider' in ticket #3325.
+
 2012-03-10 DJ Lucas <dj@linuxfromscratch.org>
    * Fix dependency information for postfix script.
 
