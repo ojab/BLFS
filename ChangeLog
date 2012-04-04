@@ -1,4 +1,6 @@
 2012-04-05 Ken Moffat <ken@linuxfromscratch.org>
+   * Update postgresql to the new style.
+
    * Fix the nfs-server - from 'Crider' in ticket #3325.
 
 2012-03-10 DJ Lucas <dj@linuxfromscratch.org>
