@@ -250,8 +250,9 @@ install-ntpd: create-dirs
 	ln -sf  ../init.d/ntpd ${EXTDIR}/rc.d/rc5.d/S26ntpd
 	ln -sf  ../init.d/ntpd ${EXTDIR}/rc.d/rc6.d/K46ntpd
 
-install-openldap1: create-dirs
-	install -m ${MODE} blfs/init.d/openldap1  ${EXTDIR}/rc.d/init.d/openldap
+install-openldap: create-dirs
+	install -m ${MODE} blfs/init.d/openldap ${EXTDIR}/rc.d/init.d/openldap
+	install -m ${CONFMODE} blfs/sysconfig/openldap ${EXTDIR}/sysconfig/
 	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc0.d/K46openldap
 	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc1.d/K46openldap
 	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc2.d/K46openldap
