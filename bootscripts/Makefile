@@ -114,6 +114,16 @@ install-dbus: create-dirs
 	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc5.d/S29dbus
 	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc6.d/K30dbus
 
+install-wicd: create-dirs
+	install -m ${MODE} blfs/init.d/wicd ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc0.d/K20wicd
+	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc1.d/K20wicd
+	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc2.d/S30wicd
+	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc3.d/S30wicd
+	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc4.d/S30wicd
+	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc5.d/S30wicd
+	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc6.d/K20wicd
+		
 install-dhcp: create-dirs
 	install -m ${MODE} blfs/init.d/dhcp       ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/dhcp ${EXTDIR}/rc.d/rc0.d/K30dhcp
