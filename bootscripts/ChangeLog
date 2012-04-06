@@ -1,3 +1,11 @@
+2012-04-06 Armin K. <krejzi@email.com>
+   * Rewrote cyrus-sasl script to be compatible with LFS 7.0+.
+     This was done earlier, but no changelog entry was added.
+
+   * Rewrote openldap script to be compatible with LFS 7.0+.
+
+   * Rewrote kerberos script to be compatible with LFS 7.0+.
+
 2012-04-05 Ken Moffat <ken@linuxfromscratch.org>
    * Update postgresql to the new style.
 

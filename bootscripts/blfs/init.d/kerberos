@@ -1,50 +1,63 @@
 #!/bin/sh
-# Begin $rc_base/init.d/kerberos
+########################################################################
+# Begin kerberos
+#
+# Description : MIT Kerberos Boot Script.
+#
+# Authors     : Armin K. <krejzi@email.com>
+#
+# Version     : BLFS SVN
+#
+# Notes       :
+#
+########################################################################
 
-# Based on sysklogd script from LFS-3.1 and earlier.
-# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+### BEGIN INIT INFO
+# Provides:          kerberos
+# Required-Start:    $local_fs $remote_fs $network $syslog
+# Required-Stop:     $local_fs $remote_fs $network $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: MIT Kerberos KDC and Admin Server
+# Description:       Starts, stops or restarts the MIT Kerberos KDC
+#                    and Admin Server
+# X-LFS-Provided-By: BLFS
+### END INIT INFO
 
-#$LastChangedBy$
-#$Date$
+. /lib/lsb/init-functions
 
-. /etc/sysconfig/rc
-. $rc_functions
+case "${1}" in
+   start)
+      log_info_msg "Starting Kerberos KDC krb5kdc"
+      start_daemon /usr/sbin/krb5kdc
+      log_info_msg "Starting Kerberos administrative server kadmind"
+      start_daemon /usr/sbin/kadmind
+      ;;
 
-case "$1" in
-        start)  
-                boot_mesg "Starting Kerberos Authentication..."
-                loadproc krb5kdc
-                boot_mesg "Starting Kerberos Admin Daemon..."
-                loadproc kadmind
-                ;;
+   stop)
+      log_info_msg "Stopping Kerberos administrative server kadmind"
+      killproc /usr/sbin/kadmind
+      log_info_msg "Stopping Kerberos KDC krb5kdc"
+      killproc /usr/sbin/krb5kdc
+      ;;
 
-        stop)
-                boot_mesg "Stopping Kerberos Authentication..."
-                killproc krb5kdc
-                boot_mesg "Stopping Kerberos Admin Daemon..."
-                killproc kadmind
-                ;;
+   restart)
+      ${0} stop
+      sleep 1
+      ${0} start
+      ;;
 
-        reload)
-                boot_mesg "Reloading Kerberos Authentication..."
-                reloadproc krb5kdc
-                boot_mesg "Reloading Kerberos Admin Daemon..."
-                reloadproc kadmind
-                ;;
+   status)
+      statusproc /usr/sbin/krb5kdc
+      statusproc /usr/sbin/kadmind
+      ;;
 
-        restart)
-                $0 stop
-                sleep 1
-                $0 start
-                ;;
-
-        status)
-                statusproc
-                ;;
-
-        *)
-                echo "Usage: $0 {start|stop|reload|restart|status}"
-                exit 1
-                ;;
+   *)
+      echo "Usage: ${0} {start|stop|restart|status}"
+      exit 1
+      ;;
 esac
-# End $rc_base/init.d/kerberos
+
+exit 0
+
+# End kerberos
