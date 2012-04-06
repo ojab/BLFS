@@ -230,6 +230,16 @@ install-netfs: create-dirs
 	ln -sf  ../init.d/netfs ${EXTDIR}/rc.d/rc5.d/S28netfs
 	ln -sf  ../init.d/netfs ${EXTDIR}/rc.d/rc6.d/K47netfs
 
+install-networkmanager: create-dirs
+	install -m ${MODE} blfs/init.d/networkmanager ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/networkmanager ${EXTDIR}/rc.d/rc0.d/K28networkmanager
+	ln -sf  ../init.d/networkmanager ${EXTDIR}/rc.d/rc1.d/K28networkmanager
+	ln -sf  ../init.d/networkmanager ${EXTDIR}/rc.d/rc2.d/S33networkmanager
+	ln -sf  ../init.d/networkmanager ${EXTDIR}/rc.d/rc3.d/S33networkmanager
+	ln -sf  ../init.d/networkmanager ${EXTDIR}/rc.d/rc4.d/S33networkmanager
+	ln -sf  ../init.d/networkmanager ${EXTDIR}/rc.d/rc5.d/S33networkmanager
+	ln -sf  ../init.d/networkmanager ${EXTDIR}/rc.d/rc6.d/K28networkmanager
+
 install-nfs-client: create-dirs
 	install -m ${MODE} blfs/init.d/nfs-client ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/nfs-client ${EXTDIR}/rc.d/rc0.d/K48nfs-client
@@ -600,6 +610,16 @@ uninstall-netfs:
 	rm -f ${EXTDIR}/rc.d/rc4.d/S28netfs
 	rm -f ${EXTDIR}/rc.d/rc5.d/S28netfs
 	rm -f ${EXTDIR}/rc.d/rc6.d/K47netfs
+
+uninstall-networkmanager:
+	rm -f ${EXTDIR}/rc.d/init.d/networkmanager
+	rm -f ${EXTDIR}/rc.d/rc0.d/K28networkmanager
+	rm -f ${EXTDIR}/rc.d/rc1.d/K28networkmanager
+	rm -f ${EXTDIR}/rc.d/rc2.d/S33networkmanager
+	rm -f ${EXTDIR}/rc.d/rc3.d/S33networkmanager
+	rm -f ${EXTDIR}/rc.d/rc4.d/S33networkmanager
+	rm -f ${EXTDIR}/rc.d/rc5.d/S33networkmanager
+	rm -f ${EXTDIR}/rc.d/rc6.d/K28networkmanager
 
 uninstall-nfs-client:
 	rm -f ${EXTDIR}/rc.d/init.d/nfs-client
