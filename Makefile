@@ -60,10 +60,10 @@ install-avahi: create-dirs
 	install -m ${MODE} blfs/init.d/avahi     ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/avahi ${EXTDIR}/rc.d/rc0.d/K28avahi
 	ln -sf  ../init.d/avahi ${EXTDIR}/rc.d/rc1.d/K28avahi
-	ln -sf  ../init.d/avahi ${EXTDIR}/rc.d/rc2.d/K49avahi
-	ln -sf  ../init.d/avahi ${EXTDIR}/rc.d/rc3.d/S21avahi
-	ln -sf  ../init.d/avahi ${EXTDIR}/rc.d/rc4.d/S21avahi
-	ln -sf  ../init.d/avahi ${EXTDIR}/rc.d/rc5.d/S21avahi
+	ln -sf  ../init.d/avahi ${EXTDIR}/rc.d/rc2.d/S34avahi
+	ln -sf  ../init.d/avahi ${EXTDIR}/rc.d/rc3.d/S34avahi
+	ln -sf  ../init.d/avahi ${EXTDIR}/rc.d/rc4.d/S34avahi
+	ln -sf  ../init.d/avahi ${EXTDIR}/rc.d/rc5.d/S34avahi
 	ln -sf  ../init.d/avahi ${EXTDIR}/rc.d/rc6.d/K28avahi
 
 install-bind: create-dirs
@@ -469,10 +469,10 @@ uninstall-avahi:
 	rm -f ${EXTDIR}/rc.d/init.d/avahi
 	rm -f ${EXTDIR}/rc.d/rc0.d/K28avahi
 	rm -f ${EXTDIR}/rc.d/rc1.d/K28avahi
-	rm -f ${EXTDIR}/rc.d/rc2.d/K49avahi
-	rm -f ${EXTDIR}/rc.d/rc3.d/S21avahi
-	rm -f ${EXTDIR}/rc.d/rc4.d/S21avahi
-	rm -f ${EXTDIR}/rc.d/rc5.d/S21avahi
+	rm -f ${EXTDIR}/rc.d/rc2.d/S34avahi
+	rm -f ${EXTDIR}/rc.d/rc3.d/S34avahi
+	rm -f ${EXTDIR}/rc.d/rc4.d/S34avahi
+	rm -f ${EXTDIR}/rc.d/rc5.d/S34avahi
 	rm -f ${EXTDIR}/rc.d/rc6.d/K28avahi
 
 uninstall-bind:

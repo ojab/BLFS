@@ -1,6 +1,9 @@
 2012-04-07 Armin K. <krejzi@email.com>
    * Added NetworkManager bootscript.
 
+   * Fixed avahi script startup order. Thanks to Wayne
+     for reporting the issue.
+
 2012-04-06 Armin K. <krejzi@email.com>
    * Rewrote cyrus-sasl script to be compatible with LFS 7.0+.
      This was done earlier, but no changelog entry was added.
