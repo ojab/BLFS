@@ -13,7 +13,7 @@
 ########################################################################
 
 ### BEGIN INIT INFO
-# Provides:          openldap
+# Provides:          slapd
 # Required-Start:    $remote_fs $network $syslog
 # Required-Stop:     $remote_fs $network $syslog
 # Default-Start:     2 3 4 5
