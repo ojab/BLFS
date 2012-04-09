@@ -1,3 +1,6 @@
+2012-04-09 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Update network service scripts for consistency with LFS.
+
 2012-04-07 Armin K. <krejzi@email.com>
    * Added NetworkManager bootscript.
 
