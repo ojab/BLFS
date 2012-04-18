@@ -51,14 +51,6 @@
       start_daemon /usr/sbin/rpc.mountd
       evaluate_retval
 
-      # NFSD support only in 2.6 kernel
-      /bin/uname -r | /bin/grep "^2.6" 2>&1 > /dev/null
-      if [ $? = 0 ]; then
-         log_info_msg "Mounting nfsd virtual filesystem..."
-         /bin/mount -t nfsd none /proc/fs/nfsd 2>&1 > /dev/null
-         evaluate_retval
-      fi
-
       # Make certain that the list is refreshed on a restart.
       log_info_msg "Exporting NFS Filesystems..."
       /usr/sbin/exportfs -ra 2>&1 > /dev/null
@@ -70,13 +62,9 @@
       /usr/sbin/exportfs -au 2>&1 > /dev/null
       evaluate_retval
 
-      # NFSD support only in 2.6 kernel
-      /bin/uname -r | /bin/grep "2.6" 2>&1 > /dev/null
-      if [ $? = 0 ]; then
-         log_info_msg "Unmounting NFS Virtual Filesystem..."
-         /bin/umount /proc/fs/nfsd 2>&1 > /dev/null
-         evaluate_retval
-      fi
+      log_info_msg "Unmounting NFS Virtual Filesystem..."
+      /bin/umount /proc/fs/nfsd 2>&1 > /dev/null
+      evaluate_retval
 
       if [ "$QUOTAS" = "yes" ]; then
          log_info_msg "Stopping NFS rquotad..."

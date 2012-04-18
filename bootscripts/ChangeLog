@@ -1,3 +1,7 @@
+2012-04-18 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Add cifs to netfs stop function.
+   * Remove obsolete kernel version tests in nfs-server.
+
 2012-04-09 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Update network service scripts for consistency with LFS.
 
