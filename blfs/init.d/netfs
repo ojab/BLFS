@@ -47,7 +47,7 @@ case "$1" in
       # mount for all netfs types and anything that was
       # mounted with the _netdev option.
       NETMOUNTS=`/bin/mount \
-         | /bin/grep '_netdev\|smbfs\|ncpfs\|coda\|nfs' \
+         | /bin/grep '_netdev\|smbfs\|ncpfs\|coda\|nfs\|cifs' \
          | /usr/bin/cut -d " " -f 3 | /bin/sed ':a;$!N;s/\n/ /;ta'`
 
       # Check to see if anything was listed from above
@@ -81,7 +81,7 @@ case "$1" in
          # Now catch the rest of the network filesystems
          # by fstype.  This list can be extended later as
          # more network filesystems are supported by mount.
-         /bin/umount -af -t coda,ncpfs,nfs,smbfs,nfsd
+         /bin/umount -af -t coda,ncpfs,nfs,smbfs,nfsd,cifs
 
          if [ $? = 0  -a  $NERRVAL = 0 ]; then
            (exit 0)
