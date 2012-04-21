@@ -33,7 +33,7 @@ pidfile=/run/stunnel-swat.pid
 case "$1" in
    start)
       log_info_msg "Starting swat..."
-      start_daemon /usr/sbin/stunnel $config
+      start_daemon /usr/bin/stunnel $config
       evaluate_retval
       ;;
 
