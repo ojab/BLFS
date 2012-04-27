@@ -1,3 +1,6 @@
+2012-04-27 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Update autofs script to be compatible with LFS
+
 2012-04-20 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Correct start path in swat
    * Update proftpd for LFS 7.0+
