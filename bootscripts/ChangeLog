@@ -1,3 +1,6 @@
+2012-05-01 Armin K. <krejzi@email.com>
+   * Rewrote gdm script to be compatible with LFS 7.0+.
+
 2012-04-27 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Update autofs script to be compatible with LFS
 
