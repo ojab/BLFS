@@ -63,4 +63,4 @@ case "$1" in
       ;;
 esac
 
-# End /etc/init.d/messagebus
+# End /etc/init.d/dbus
