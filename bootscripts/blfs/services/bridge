@@ -14,6 +14,15 @@
 . /lib/lsb/init-functions
 . ${IFCONFIG}
 
+# Make compatible with older versions of init-functions
+unset is_true
+
+is_true()
+{
+   [ "$1" = "1" ] || [ "$1" = "yes" ] || [ "$1" = "true" ] ||  
+   [ "$1" = "y" ] || [ "$1" = "t"   ]
+}
+
 if [ -z "${INTERFACE_COMPONENTS}" ]; then
    log_failure_msg "INTERFACE_COMPONENTS variable missing from ${IFCONFIG}"
    exit 1

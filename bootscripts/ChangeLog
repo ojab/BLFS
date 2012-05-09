@@ -1,3 +1,7 @@
+2012-05-09 Bruce Dubbs <ken@linuxfromscratch.org>
+   * Make service scripts compatible with older versions of 
+     init-functions.
+
 2012-05-06 Bruce Dubbs <ken@linuxfromscratch.org>
    * Update exim script to be compatible with LFS 7.0+.
 
