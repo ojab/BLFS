@@ -56,6 +56,16 @@ install-autofs: create-dirs
 	install -m $(CONFMODE) blfs/sysconfig/autofs.conf $(EXTDIR)/sysconfig/
 	ln -sf  ../init.d/autofs $(EXTDIR)/rc.d/rcS.d/S52autofs
 
+install-atd: create-dirs
+	install -m ${MODE} blfs/init.d/atd       ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/atd ${EXTDIR}/rc.d/rc0.d/K29atd
+	ln -sf  ../init.d/atd ${EXTDIR}/rc.d/rc1.d/K29atd
+	ln -sf  ../init.d/atd ${EXTDIR}/rc.d/rc2.d/S68atd
+	ln -sf  ../init.d/atd ${EXTDIR}/rc.d/rc3.d/S68atd
+	ln -sf  ../init.d/atd ${EXTDIR}/rc.d/rc4.d/S68atd
+	ln -sf  ../init.d/atd ${EXTDIR}/rc.d/rc5.d/S68atd
+	ln -sf  ../init.d/atd ${EXTDIR}/rc.d/rc6.d/K29atd
+
 install-avahi: create-dirs
 	install -m ${MODE} blfs/init.d/avahi     ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/avahi ${EXTDIR}/rc.d/rc0.d/K28avahi
@@ -445,6 +455,16 @@ install-vsftpd: create-dirs
 	ln -sf ../init.d/vsftpd ${EXTDIR}/rc.d/rc5.d/S32vsftpd
 	ln -sf ../init.d/vsftpd ${EXTDIR}/rc.d/rc6.d/K28vsftpd
 
+uninstall-atd: 
+	rm -f ${EXTDIR}/rc.d/init.d/atd
+	rm -f ${EXTDIR}/rc.d/rc0.d/K29atd
+	rm -f ${EXTDIR}/rc.d/rc1.d/K29atd
+	rm -f ${EXTDIR}/rc.d/rc2.d/S68atd
+	rm -f ${EXTDIR}/rc.d/rc3.d/S68atd
+	rm -f ${EXTDIR}/rc.d/rc4.d/S68atd
+	rm -f ${EXTDIR}/rc.d/rc5.d/S68atd
+	rm -f ${EXTDIR}/rc.d/rc6.d/K29atd
+
 uninstall-alsa:
 	rm -f ${EXTDIR}/rc.d/init.d/alsa
 	rm -f ${EXTDIR}/rc.d/rc0.d/K35alsa
@@ -790,6 +810,7 @@ uninstall-vsftpd:
 	install-service-dhcpcd \
 	install-service-ipx \
 	install-service-pppoe \
+	install-atd \
 	install-alsa \
 	install-avahi \
 	install-httpd \
@@ -825,6 +846,7 @@ uninstall-vsftpd:
 	install-sysstat \
 	install-vsftpd \
 	install-virtuoso \
+	uninstall-atd \
 	uninstall-alsa \
 	uninstall-avahi \
 	uninstall-httpd \
