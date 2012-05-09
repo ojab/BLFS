@@ -1,4 +1,5 @@
 2012-05-09 Bruce Dubbs <ken@linuxfromscratch.org>
+   * Add atd script.
    * Make service scripts compatible with older versions of 
      init-functions.
 
