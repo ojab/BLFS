@@ -24,7 +24,6 @@
 ### END INIT INFO
 
 . /lib/lsb/init-functions
-# Begin $rc_base/init.d/dhcp
 
 #$LastChangedBy$
 #$Date$
@@ -58,4 +57,4 @@ case "$1" in
       ;;
 esac
 
-# End $rc_base/init.d/dhcp
+# End /etc/init.d/dhcp
