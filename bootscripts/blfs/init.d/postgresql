@@ -61,4 +61,4 @@ case "$1" in
       ;;
 esac
 
-# End $rc_base/init.d/postgresql
+# End /etc/init.d/postgresql

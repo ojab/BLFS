@@ -1,5 +1,5 @@
 #!/bin/sh
-# Begin $rc_base/init.d/sysstat
+# Begin /etc/init.d/sysstat
 ########################################################################
 # Begin ntpd
 #

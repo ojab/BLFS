@@ -1,24 +1,41 @@
 #!/bin/sh
-# Begin $rc_base/init.d/sendmail
+########################################################################
+# Begin sendmail
+#
+# Description : Starts Sendmail Mail Trasfer Agent
+#
+# Author      : Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : LFS 7.2
+#
+########################################################################
 
-# Based on sysklogd script from LFS-3.1 and earlier.
-# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+### BEGIN INIT INFO
+# Provides:            sendmail
+# Required-Start:      $syslog $local_fs $network
+# Should-Start:        $remote_fs openldap mysql postgresql saslauthd
+# Required-Stop:       $network
+# Should-Stop:         $remote_fs openldap mysql postgresql saslauthd
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Sendmail MTA
+# Description:         Controls the Sendmail Mail Transfer Agent
+# X-LFS-Provided-By:   BLFS / LFS 7.2
+### END INIT INFO
 
-#$LastChangedBy$
-#$Date$
-
-. /etc/sysconfig/rc
-. $rc_functions
+. /lib/lsb/init-functions
 
 case "$1" in
 	start)
-		boot_mesg "Starting sendmail..."
-		loadproc /usr/sbin/sendmail -bs -bd -q5m start
+		log_info_msg "Starting sendmail..."
+		start_daemon /usr/sbin/sendmail -bs -bd -q5m start
+      evaluate_retval
 		;;
 
 	stop)
-		boot_mesg "Stopping Sendmail..."
+		log_info_msg "Stopping Sendmail..."
 		killproc /usr/sbin/sendmail
+      evaluate_retval
 		;;
 
 	status)
@@ -37,4 +54,4 @@ case "$1" in
 		;;
 esac
 
-# End $rc_base/init.d/sendmail
+# End /etc/init.d/sendmail

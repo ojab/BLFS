@@ -1,35 +1,51 @@
 #!/bin/sh
-# Begin $rc_base/init.d/soprano
+########################################################################
+# Begin soprano
+#
+# Description :
+#
+# Author      : Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : LFS 7.2
+#
+########################################################################
 
-# Based on sysklogd script from LFS-3.1 and earlier.
-# Rewritten by Gerard Beekmans  - gerard@linuxfromscratch.org
+### BEGIN INIT INFO
+# Provides:            sopranod
+# Required-Start:      $syslog $local_fs $network
+# Should-Start:        $remote_fs 
+# Required-Stop:       $network
+# Should-Stop:         $remote_fs 
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Controls the soprano (QRDF) daemon
+# Description:         Controls the soprano (QRDF) daemon
+# X-LFS-Provided-By:   BLFS / LFS 7.0
+### END INIT INFO
 
-#$LastChangedBy$
-#$Date$
-
-. /etc/sysconfig/rc
-. $rc_functions
-
-. /etc/sysconfig/soprano
+. /lib/lsb/init-functions
+[ -r /etc/sysconfig/soprano ] && . /etc/sysconfig/soprano
 
 case "$1" in
     start)
-        boot_mesg "Starting Soprano Server..."
-        HOME=$SOPRANO_STORAGE /usr/bin/sopranod \
+        log_info_msg "Starting Soprano Server..."
+        HOME=$SOPRANO_STORAGE /usr/bin/sopranod    \
                      --storagedir $SOPRANO_STORAGE \
-                     --backend $SOPRANO_BACKEND \
+                     --backend $SOPRANO_BACKEND    \
                      $SOPRANO_OPTIONS &
         evaluate_retval
         ;;
 
     stop)
-        boot_mesg "Stopping Soprano Server..."
+        log_info_msg "Stopping Soprano Server..."
         killproc /usr/bin/sopranod
+        evaluate_retval
         ;;
 
     reload)
-        boot_mesg "Reloading Soprano Server..."
-        reloadproc /usr/bin/sopranod
+        log_info_msg "Reloading Soprano Server..."
+        killproc /usr/bin/sopranod -HUP
+        evaluate_retval
         ;;
 
     restart)
@@ -48,4 +64,4 @@ case "$1" in
         ;;
 esac
 
-# End $rc_base/init.d/soprano
+# End /etc/init.d/soprano
