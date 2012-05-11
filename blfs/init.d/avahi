@@ -14,7 +14,7 @@
 ### BEGIN INIT INFO
 # Provides:            avahi
 # Required-Start:      $syslog $local_fs $network
-# Should-Start:        $remote_fs 
+# Should-Start:        $remote_fs
 # Required-Stop:       $network
 # Should-Stop:         $remote_fs
 # Default-Start:       3 4 5
@@ -28,35 +28,35 @@
 
 case "${1}" in
    start)
-      log_info_msg "Starting the Avahi daemon..."
-      start_daemon /usr/sbin/avahi-daemon -D
+      log_info_msg "Starting the Avahi Daemon"
+      /usr/sbin/avahi-daemon -D
       evaluate_retval
 
-      log_info_msg "Starting the Avahi mDNS/DNS-SD Server Conf. Daemon..."
-      start_daemon /usr/sbin/avahi-dnsconfd -D
+      log_info_msg "Starting the Avahi mDNS/DNS-SD Configuration Daemon"
+      /usr/sbin/avahi-dnsconfd -D
       evaluate_retval
       ;;
 
    stop)
-      log_info_msg "Stopping the Avahi mDNS/DNS-SD Server Conf. Daemon..."
+      log_info_msg "Stopping the Avahi mDNS/DNS-SD Configuration Daemon"
       /usr/sbin/avahi-dnsconfd -k
       evaluate_retval
 
-      log_info_msg "Stopping the Avahi daemon..."
+      log_info_msg "Stopping the Avahi Daemon"
       /usr/sbin/avahi-daemon -k
       evaluate_retval
       ;;
 
    reload)
-      log_info_msg "Reloading the Avahi mDNS/DNS-SD Server Conf. Daemon..."
+      log_info_msg "Reloading the Avahi mDNS/DNS-SD Configuration Daemon"
       /usr/sbin/avahi-dnsconfd -r
       evaluate_retval
 
-      boot_mesg "Reloading the Avahi daemon..."
+      boot_mesg "Reloading the Avahi Daemon"
       /usr/sbin/avahi-daemon -r
       evaluate_retval
       ;;
-   
+
    restart)
       ${0} stop
       sleep 1
