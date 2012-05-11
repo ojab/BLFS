@@ -2,7 +2,7 @@
 ########################################################################
 # Begin avahi
 #
-# Description : Avahi daemon loader
+# Description : Avahi Boot Script
 #
 # Authors     : William Immendorf - will.immendorf@gmail.com
 #               Bruce Dubbs - bdubbs@linuxfromscratch.org
@@ -52,7 +52,7 @@ case "${1}" in
       /usr/sbin/avahi-dnsconfd -r
       evaluate_retval
 
-      boot_mesg "Reloading the Avahi Daemon"
+      log_info_msg "Reloading the Avahi Daemon"
       /usr/sbin/avahi-daemon -r
       evaluate_retval
       ;;
