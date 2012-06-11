@@ -1,0 +1,37 @@
+# Xorg-7.7-1 library package md5sums
+# $LastChangedBy: $
+# $Date: $
+#
+#e591bed408275337cd3f3324c622047e  libAppleWM-1.4.1.tar.bz2
+782ced3a9e754dfeb53a8a006a75eb1a  libdmx-1.1.2.tar.bz2
+a2a861f142c3b4367f14fc14239fc1f7  libfontenc-1.1.1.tar.bz2
+645f83160cf7b562734e2038045106d1  libFS-1.0.4.tar.bz2
+471b5ca9f5562ac0d6eac7a0bf650738  libICE-1.0.8.tar.bz2
+399a419ac6a54f0fc07c69c9bdf452dc  libpciaccess-0.13.1.tar.bz2
+766de9d1e1ecf8bf74cebe2111d8e2bd  libSM-1.2.1.tar.bz2
+#274b2b5620a524fd7bb739edb97317f5  libWindowsWM-1.0.1.tar.bz2
+78b4b3bab4acbdf0abcfca30a8c70cc6  libX11-1.5.0.tar.bz2
+f39942f2cab379fc9b4c3731bf191b84  libXaw-1.0.11.tar.bz2
+a60e0b5c276d0aa9e2d3b982c98f61c8  libXcomposite-0.4.3.tar.bz2
+52efa81b7f26c8eda13510a2fba98eea  libXcursor-1.1.13.tar.bz2
+44774e1a065158b52f1a0da5100cebec  libXdamage-1.1.3.tar.bz2
+71251a22bc47068d60a95f50ed2ec3cf  libXext-1.3.1.tar.bz2
+678071bd7f9f7467e2fc712d81022318  libXfixes-5.0.tar.bz2
+6851da5dae0a6cf5f7c9b9e2b05dd3b4  libXfont-1.4.5.tar.bz2
+78d64dece560c9e8699199f3faa521c0  libXft-2.3.1.tar.bz2
+78ee882e1ff3b192cf54070bdb19938e  libXi-1.6.1.tar.bz2
+cb45d6672c93a608f003b6404f1dd462  libXinerama-1.1.2.tar.bz2
+19e6533ae64abba0773816a23f2b9507  libxkbfile-1.0.8.tar.bz2
+a4efff8de85bd45dd3da124285d10c00  libXmu-1.1.1.tar.bz2
+7ae7eff7a14d411e84a67bd166bcec1a  libXpm-3.5.10.tar.bz2
+92473da2fccf5fac665be4fa4f2037fa  libXrandr-1.3.2.tar.bz2
+ee62f4c7f0f16ced4da63308963ccad2  libXrender-0.9.7.tar.bz2
+80d0c6d8522fa7a645e4f522e9a9cd20  libXres-1.0.6.tar.bz2
+7a773b16165e39e938650bcc9027c1d5  libXScrnSaver-1.2.2.tar.bz2
+a6f137ae100e74ebe3b71eb4a38c40b3  libXt-1.1.3.tar.bz2
+e8abc5c00c666f551cf26aa53819d592  libXtst-1.2.1.tar.bz2
+5e1ac203ccd3ce3e89755ed1fbe75b0b  libXv-1.0.7.tar.bz2
+3340c99ff556ea2457b4be47f5cb96fa  libXvMC-1.0.7.tar.bz2
+b7f38465c46e7145782d37dbb9da8c09  libXxf86dga-1.1.3.tar.bz2
+ffd93bcedd8b2b5aeabf184e7b91f326  libXxf86vm-1.1.2.tar.bz2
+84c66908cf003ad8c272b0eecbdbaee3  xtrans-1.2.7.tar.bz2

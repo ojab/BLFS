@@ -1,0 +1,33 @@
+# Xorg-7.7-1 protocol packages
+# $LastChangedBy: $
+# $Date: $
+#
+bigreqsproto-1.1.2.tar.bz2
+compositeproto-0.4.2.tar.bz2
+damageproto-1.2.1.tar.bz2
+dmxproto-2.3.1.tar.bz2
+dri2proto-2.6.tar.bz2
+fixesproto-5.0.tar.bz2
+fontsproto-2.1.2.tar.bz2
+glproto-1.4.15.tar.bz2
+inputproto-2.2.tar.bz2
+kbproto-1.0.6.tar.bz2
+randrproto-1.3.2.tar.bz2
+recordproto-1.14.2.tar.bz2
+renderproto-0.11.1.tar.bz2
+resourceproto-1.2.0.tar.bz2
+scrnsaverproto-1.2.2.tar.bz2
+videoproto-2.3.1.tar.bz2
+xcmiscproto-1.2.2.tar.bz2
+xextproto-7.2.1.tar.bz2
+xf86bigfontproto-1.2.0.tar.bz2
+xf86dgaproto-2.1.tar.bz2
+xf86driproto-2.1.1.tar.bz2
+xf86vidmodeproto-2.3.1.tar.bz2
+xineramaproto-1.2.1.tar.bz2
+xproto-7.0.23.tar.bz2
+# The following protocol headers pacakages are not included by default as they
+# are not appropriate on a Linux system, but are included here to make the list
+# complete.
+applewmproto-1.4.2.tar.bz2
+windowswmproto-1.0.4.tar.bz2
