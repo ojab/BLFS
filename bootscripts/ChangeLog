@@ -1,9 +1,12 @@
-2012-05-09 Bruce Dubbs <ken@linuxfromscratch.org>
+2012-06-17 DJ Lucas <dj@linuxfromscratch.org>
+   * Fix sshd return value when stopping without running.
+
+2012-05-09 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Add atd script.
    * Make service scripts compatible with older versions of 
      init-functions.
 
-2012-05-06 Bruce Dubbs <ken@linuxfromscratch.org>
+2012-05-06 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Update exim script to be compatible with LFS 7.0+.
 
 2012-05-02 Ken Moffat <ken@linuxfromscratch.org>
