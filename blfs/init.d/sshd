@@ -42,8 +42,6 @@ case "$1" in
     stop)
         log_info_msg "Stopping SSH Server..."
         killproc -p "/run/sshd.pid" /usr/sbin/sshd
-        fi
-        
         evaluate_retval
         ;;
 
