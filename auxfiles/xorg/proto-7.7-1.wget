@@ -29,5 +29,5 @@ xproto-7.0.23.tar.bz2
 # The following protocol headers pacakages are not included by default as they
 # are not appropriate on a Linux system, but are included here to make the list
 # complete.
-applewmproto-1.4.2.tar.bz2
-windowswmproto-1.0.4.tar.bz2
+#applewmproto-1.4.2.tar.bz2
+#windowswmproto-1.0.4.tar.bz2
