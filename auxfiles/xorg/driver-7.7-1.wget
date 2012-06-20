@@ -1,6 +1,6 @@
 # Xorg-7.7-1 driver packages
-# $LastChangedBy: $
-# $Date: $
+# $LastChangedBy$
+# $Date$
 #
 xf86-input-evdev-2.7.0.tar.bz2
 xf86-input-joystick-1.6.1.tar.bz2
