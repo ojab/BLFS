@@ -86,6 +86,17 @@ install-bind: create-dirs
 	ln -sf  ../init.d/bind ${EXTDIR}/rc.d/rc5.d/S22bind
 	ln -sf  ../init.d/bind ${EXTDIR}/rc.d/rc6.d/K49bind
 
+install-bluetooth: create-dirs
+	install -m ${MODE} blfs/init.d/bluetooth ${EXTDIR}/rc.d/init.d/bluetooth
+	install -m ${CONFMODE} blfs/sysconfig/bluetooth ${EXTDIR}/sysconfig/bluetooth
+	ln -sf  ../init.d/bluetooth ${EXTDIR}/rc.d/rc0.d/K27bluetooth
+	ln -sf  ../init.d/bluetooth ${EXTDIR}/rc.d/rc1.d/K27bluetooth
+	ln -sf  ../init.d/bluetooth ${EXTDIR}/rc.d/rc2.d/S35bluetooth
+	ln -sf  ../init.d/bluetooth ${EXTDIR}/rc.d/rc3.d/S35bluetooth
+	ln -sf  ../init.d/bluetooth ${EXTDIR}/rc.d/rc4.d/S35bluetooth
+	ln -sf  ../init.d/bluetooth ${EXTDIR}/rc.d/rc5.d/S35bluetooth
+	ln -sf  ../init.d/bluetooth ${EXTDIR}/rc.d/rc6.d/K27bluetooth
+
 install-cups: create-dirs
 	install -m ${MODE} blfs/init.d/cups       ${EXTDIR}/rc.d/init.d/
 	rm -f ${EXTDIR}/rc.d/rc0.d/K36cups
@@ -104,8 +115,8 @@ install-cups: create-dirs
 	ln -sf  ../init.d/cups ${EXTDIR}/rc.d/rc6.d/K00cups
 
 install-cyrus-sasl: create-dirs
-	install -m ${MODE} blfs/init.d/cyrus-sasl ${EXTDIR}/rc.d/init.d/
-	install -m ${CONFMODE} blfs/sysconfig/cyrus-sasl ${EXTDIR}/sysconfig/
+	install -m ${MODE} blfs/init.d/cyrus-sasl ${EXTDIR}/rc.d/init.d/cyrus-sasl
+	install -m ${CONFMODE} blfs/sysconfig/cyrus-sasl ${EXTDIR}/sysconfig/cyrus-sasl
 	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc0.d/K49cyrus-sasl
 	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc1.d/K49cyrus-sasl
 	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc2.d/S24cyrus-sasl
@@ -241,7 +252,7 @@ install-netfs: create-dirs
 	ln -sf  ../init.d/netfs ${EXTDIR}/rc.d/rc6.d/K47netfs
 
 install-networkmanager: create-dirs
-	install -m ${MODE} blfs/init.d/networkmanager ${EXTDIR}/rc.d/init.d/
+	install -m ${MODE} blfs/init.d/networkmanager ${EXTDIR}/rc.d/init.d/networkmanager
 	ln -sf  ../init.d/networkmanager ${EXTDIR}/rc.d/rc0.d/K28networkmanager
 	ln -sf  ../init.d/networkmanager ${EXTDIR}/rc.d/rc1.d/K28networkmanager
 	ln -sf  ../init.d/networkmanager ${EXTDIR}/rc.d/rc2.d/S33networkmanager
@@ -282,10 +293,10 @@ install-ntpd: create-dirs
 
 install-openldap: create-dirs
 	install -m ${MODE} blfs/init.d/openldap ${EXTDIR}/rc.d/init.d/openldap
-	install -m ${CONFMODE} blfs/sysconfig/openldap ${EXTDIR}/sysconfig/
+	install -m ${CONFMODE} blfs/sysconfig/openldap ${EXTDIR}/sysconfig/openldap
 	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc0.d/K46openldap
 	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc1.d/K46openldap
-	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc2.d/K46openldap
+	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc2.d/S25openldap
 	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc3.d/S25openldap
 	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc4.d/S25openldap
 	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc5.d/S25openldap
@@ -505,6 +516,17 @@ uninstall-bind:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S22bind
 	rm -f ${EXTDIR}/rc.d/rc6.d/K49bind
 
+uninstall-bluetooth:
+	rm -f ${EXTDIR}/rc.d/init.d/bluetooth
+	rm -f ${EXTDIR}/sysconfig/bluetooth
+	rm -f ${EXTDIR}/rc.d/rc0.d/K27bluetooth
+	rm -f ${EXTDIR}/rc.d/rc1.d/K27bluetooth
+	rm -f ${EXTDIR}/rc.d/rc2.d/S35bluetooth
+	rm -f ${EXTDIR}/rc.d/rc3.d/S35bluetooth
+	rm -f ${EXTDIR}/rc.d/rc4.d/S35bluetooth
+	rm -f ${EXTDIR}/rc.d/rc5.d/S35bluetooth
+	rm -f ${EXTDIR}/rc.d/rc6.d/K27bluetooth
+
 uninstall-cups:
 	rm -f ${EXTDIR}/rc.d/init.d/cups
 	rm -f ${EXTDIR}/rc.d/rc0.d/K00cups
@@ -517,6 +539,7 @@ uninstall-cups:
 
 uninstall-cyrus-sasl:
 	rm -f ${EXTDIR}/rc.d/init.d/cyrus-sasl
+	rm -f ${EXTDIR}/sysconfig/cyrus-sasl
 	rm -f ${EXTDIR}/rc.d/rc0.d/K49cyrus-sasl
 	rm -f ${EXTDIR}/rc.d/rc1.d/K49cyrus-sasl
 	rm -f ${EXTDIR}/rc.d/rc2.d/S24cyrus-sasl
@@ -671,11 +694,12 @@ uninstall-ntp:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S26ntp
 	rm -f ${EXTDIR}/rc.d/rc6.d/K46ntp
 
-uninstall-openldap1:
+uninstall-openldap:
 	rm -f ${EXTDIR}/rc.d/init.d/openldap
+	rm -f ${EXTDIR}/sysconfig/openldap
 	rm -f ${EXTDIR}/rc.d/rc0.d/K46openldap
 	rm -f ${EXTDIR}/rc.d/rc1.d/K46openldap
-	rm -f ${EXTDIR}/rc.d/rc2.d/K46openldap
+	rm -f ${EXTDIR}/rc.d/rc2.d/S25openldap
 	rm -f ${EXTDIR}/rc.d/rc3.d/S25openldap
 	rm -f ${EXTDIR}/rc.d/rc4.d/S25openldap
 	rm -f ${EXTDIR}/rc.d/rc5.d/S25openldap
@@ -815,6 +839,7 @@ uninstall-vsftpd:
 	install-avahi \
 	install-httpd \
 	install-bind \
+	install-bluetooth \
 	install-cups \
 	install-cyrus-sasl \
 	install-dhcp \
@@ -828,10 +853,11 @@ uninstall-vsftpd:
 	install-lprng \
 	install-mysql \
 	install-netfs \
+	install-networkmanager \
 	install-nfs-client \
 	install-nfs-server \
 	install-ntp \
-	install-openldap1 \
+	install-openldap \
 	install-postfix \
 	install-postgresql \
 	install-proftpd \
@@ -851,6 +877,7 @@ uninstall-vsftpd:
 	uninstall-avahi \
 	uninstall-httpd \
 	uninstall-bind \
+	uninstall-bluetooth \
 	uninstall-cups \
 	uninstall-cyrus-sasl \
 	uninstall-dhcp \
@@ -864,10 +891,11 @@ uninstall-vsftpd:
 	uninstall-lprng \
 	uninstall-mysql \
 	uninstall-netfs \
+	uninstall-networkmanager \
 	uninstall-nfs-client \
 	uninstall-nfs-server \
 	uninstall-ntp \
-	uninstall-openldap1 \
+	uninstall-openldap \
 	uninstall-postfix \
 	uninstall-postgresql \
 	uninstall-proftpd \
@@ -881,4 +909,4 @@ uninstall-vsftpd:
 	uninstall-svn \
 	uninstall-sysstat \
 	uninstall-virtuoso \
-	uninstall-vsftpd \
+	uninstall-vsftpd

@@ -1,3 +1,6 @@
+2012-06-02 Armin K. <krejzi@email.com>
+   * Added BlueZ bootscript
+
 2012-06-17 DJ Lucas <dj@linuxfromscratch.org>
    * Fix sshd return value when stopping without running.
 
