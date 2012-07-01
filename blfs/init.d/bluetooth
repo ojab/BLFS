@@ -1,0 +1,130 @@
+#!/bin/sh
+########################################################################
+# Begin bluetooth
+#
+# Description : BlueZ Boot Script
+#
+# Authors     : Armin K. <krejzi@email.com>
+#
+# Version     : BLFS SVN
+#
+# Notes       : Configurable through /etc/sysconfig/bluetooth
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            bluetooth
+# Required-Start:      $local_fs $syslog dbus
+# Required-Stop:       $local_fs $syslog
+# Default-Start:       2 3 4 5
+# Default-Stop:        0 1 6
+# Short-Description:   Starts bluetooth daemons
+# X-LFS-Provided-By:   BLFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+HIDD_ENABLE="false"
+PAND_ENABLE="false"
+DUND_ENABLE="false"
+
+RFCOMM_ENABLE="false"
+
+HIDD_OPTIONS=""
+PAND_OPTIONS=""
+DUND_OPTIONS=""
+
+if [ -f "/etc/sysconfig/bluetooth" ]; then
+   . /etc/sysconfig/bluetooth
+fi
+
+case "${1}" in
+   start)
+
+      log_info_msg "Starting Bluetooth daemon bluetooth \n"
+      start_daemon /usr/sbin/bluetoothd
+
+      if [ "$HIDD_ENABLE" = "true" ]; then
+        log_info_msg "Starting Bluetooth HID daemon hidd \n"
+        start_daemon /usr/sbin/hidd "$HIDD_OPTIONS"
+      fi
+
+      if [ "$RFCOMM_ENABLE" = "true" ]; then
+        /usr/bin/rfcomm -f /etc/bluetooth/rfcomm.conf bind all || true
+      fi
+
+      if [ "$PAND_ENABLE" = "true" ]; then
+        log_info_msg "Starting Bluetooth PAN daemon pand \n"
+        start_daemon /usr/bin/pand "$PAND_OPTIONS"
+      fi
+
+      if [ "$DUND_ENABLE" = "true" ]; then
+        log_info_msg "Starting Bluetooth DUN daemon dund \n"
+        start_daemon /usr/bin/dund "$DUND_OPTIONS"
+      fi
+
+      ;;
+
+   stop)
+
+      if [ "$DUND_ENABLE" = "true" ]; then
+        log_info_msg "Stopping Bluetooth DUN daemon dund \n"
+        killproc /usr/bin/dund
+      fi
+
+      if [ "$PAND_ENABLE" = "true" ]; then
+        log_info_msg "Stopping Bluetooth PAN daemon pand \n"
+        killproc /usr/bin/pand
+      fi
+
+      if [ "$RFCOMM_ENABLE" = "true" ]; then
+        /usr/bin/rfcomm release all || true
+      fi
+
+      if [ "$HIDD_ENABLE" = "true" ]; then
+        log_info_msg "Stopping Bluetooth HID daemon hidd \n"
+        killproc /usr/sbin/hidd
+      fi
+
+      log_info_msg "Stopping Bluetooth daemon bluetoothd \n"
+      killproc /usr/sbin/bluetoothd
+
+      ;;
+
+   restart)
+
+      ${0} stop
+      sleep 1
+      ${0} start
+
+      ;;
+
+   status)
+
+      statusproc /usr/sbin/bluetoothd
+
+      if [ "$HIDD_ENABLE" = "true" ]; then
+        statusproc /usr/sbin/hidd
+      fi
+
+      if [ "$PAND_ENABLE" = "true" ]; then
+        statusproc /usr/bin/pand
+      fi
+
+      if [ "$DUND_ENABLE" = "true" ]; then
+        statusproc /usr/bin/dund
+      fi
+
+      ;;
+
+   *)
+
+      echo "Usage: ${0} {start|stop|restart|status}"
+      exit 1
+
+      ;;
+esac
+
+exit 0
+
+# End bluetooth
