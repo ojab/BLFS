@@ -67,6 +67,10 @@
     Note that the keyword value won't appear in the file until you do an
     <command>svn commit</command> (see below).</para>
 
+    <para>Normally, the command you want is
+<screen><userinput>svn propset svn:keywords "Date LastChangedBy" /path/to/filename.xml</userinput></screen>
+    </para>
+
   </section>
 
   <section id="ch03-delete">

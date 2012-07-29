@@ -479,14 +479,21 @@ EOF&lt;/userinput&gt;&lt;/screen&gt;
 
     <para>The value after the dash in the sortas attribute is how the index
     item will be sorted within its section. It is <emphasis>not</emphasis>
-    case sensitive.</para>
+    case sensitive. Do not abbreviate the text for the &lt;primary&gt; field in
+    a misguided attempt to keep it within one line of your term : the text is
+    what will be shown at the left of <filename>longindex.html</filename>,
+    where items containing '...' as part of their directories will look very
+    strange.</para>
 
     <para>For configuration files in section 'e' the prefix to the file name has
     to be in a specific format. Mostly, this means the full directory path, but
     with '/' replaced by '-', e.g. e-etc-sgml.conf for
     <literal>/etc/sgml.conf</literal>.  However, for a user&apos;s dot files use
-    e-AA- without the dot e.g. for <literal>~/.pangorc</literal> use
-    e-AA-pangorc.</para>
+    e-AA e.g. for <literal>~/.pangorc</literal> use e-AA.pangorc. For variables
+    prefixed by a dollar sign, use 'e-A.' e.g. 'e-A.exp_library-expect.rc' for
+    <literal>$exp_library/expect.rc</literal>. Do not use the 'e-A' form
+    without the dot - that will display correctly, but it will collate after the
+    ~/ entries instead of before them.</para>
 
     <para>Section 'g' is typically used for perl modules, in the Foo::Bar format
     for two-word names (not Foo-Bar), and can also be used for anything else
