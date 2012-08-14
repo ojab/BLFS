@@ -1,3 +1,5 @@
+SHELL=/bin/bash
+
 ETCDIR=/etc
 LIBDIR=${DESTDIR}/lib/services
 EXTDIR=${DESTDIR}${ETCDIR}
