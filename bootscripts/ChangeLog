@@ -1,3 +1,8 @@
+2012-08-14 Armin K. <krejzi@email.com>
+   * Renamed cyrus-sasl bootscript to saslauthd
+   * Renamed openldap bootscript to slapd
+   * Renamed kerberos bootscript to krb5
+
 2012-06-02 Armin K. <krejzi@email.com>
    * Added BlueZ bootscript
 
