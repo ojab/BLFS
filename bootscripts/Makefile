@@ -147,15 +147,16 @@ install-wicd: create-dirs
 	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc5.d/S30wicd
 	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc6.d/K20wicd
 		
-install-dhcp: create-dirs
-	install -m ${MODE} blfs/init.d/dhcp       ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/dhcp ${EXTDIR}/rc.d/rc0.d/K30dhcp
-	ln -sf  ../init.d/dhcp ${EXTDIR}/rc.d/rc1.d/K30dhcp
-	ln -sf  ../init.d/dhcp ${EXTDIR}/rc.d/rc2.d/K30dhcp
-	ln -sf  ../init.d/dhcp ${EXTDIR}/rc.d/rc3.d/S30dhcp
-	ln -sf  ../init.d/dhcp ${EXTDIR}/rc.d/rc4.d/S30dhcp
-	ln -sf  ../init.d/dhcp ${EXTDIR}/rc.d/rc5.d/S30dhcp
-	ln -sf  ../init.d/dhcp ${EXTDIR}/rc.d/rc6.d/K30dhcp
+install-dhcpd: create-dirs
+	install -m ${MODE} blfs/init.d/dhcpd       ${EXTDIR}/rc.d/init.d/dhcpd
+	install -m ${CONFMODE} blfs/sysconfig/dhcpd ${EXTDIR}/sysconfig/dhcpd
+	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc0.d/K30dhcpd
+	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc1.d/K30dhcpd
+	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc2.d/K30dhcpd
+	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc3.d/S30dhcpd
+	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc4.d/S30dhcpd
+	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc5.d/S30dhcpd
+	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc6.d/K30dhcpd
 
 install-exim: create-dirs
 	install -m ${MODE} blfs/init.d/exim       ${EXTDIR}/rc.d/init.d/
@@ -550,15 +551,16 @@ uninstall-saslauthd:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S24saslauthd
 	rm -f ${EXTDIR}/rc.d/rc6.d/K49saslauthd
 
-uninstall-dhcp:
-	rm -f ${EXTDIR}/rc.d/init.d/dhcp
-	rm -f ${EXTDIR}/rc.d/rc0.d/K30dhcp
-	rm -f ${EXTDIR}/rc.d/rc1.d/K30dhcp
-	rm -f ${EXTDIR}/rc.d/rc2.d/K30dhcp
-	rm -f ${EXTDIR}/rc.d/rc3.d/S30dhcp
-	rm -f ${EXTDIR}/rc.d/rc4.d/S30dhcp
-	rm -f ${EXTDIR}/rc.d/rc5.d/S30dhcp
-	rm -f ${EXTDIR}/rc.d/rc6.d/K30dhcp
+uninstall-dhcpd:
+	rm -f ${EXTDIR}/rc.d/init.d/dhcpd
+	rm -f ${EXTDIR}/sysconfig/dhcpd
+	rm -f ${EXTDIR}/rc.d/rc0.d/K30dhcpd
+	rm -f ${EXTDIR}/rc.d/rc1.d/K30dhcpd
+	rm -f ${EXTDIR}/rc.d/rc2.d/K30dhcpd
+	rm -f ${EXTDIR}/rc.d/rc3.d/S30dhcpd
+	rm -f ${EXTDIR}/rc.d/rc4.d/S30dhcpd
+	rm -f ${EXTDIR}/rc.d/rc5.d/S30dhcpd
+	rm -f ${EXTDIR}/rc.d/rc6.d/K30dhcpd
 
 uninstall-exim:
 	rm -f ${EXTDIR}/rc.d/init.d/exim
@@ -844,7 +846,7 @@ uninstall-vsftpd:
 	install-bluetooth \
 	install-cups \
 	install-saslauthd \
-	install-dhcp \
+	install-dhcpd \
 	install-exim \
 	install-fcron \
 	install-gdm \
@@ -882,7 +884,7 @@ uninstall-vsftpd:
 	uninstall-bluetooth \
 	uninstall-cups \
 	uninstall-saslauthd \
-	uninstall-dhcp \
+	uninstall-dhcpd \
 	uninstall-exim \
 	uninstall-fcron \
 	uninstall-gdm \

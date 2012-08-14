@@ -2,6 +2,10 @@
    * Renamed cyrus-sasl bootscript to saslauthd
    * Renamed openldap bootscript to slapd
    * Renamed kerberos bootscript to krb5
+   * Renamed dhcp bootscript to dhcpd and made it configurable
+     through /etc/sysconfig/dhcpd
+   * Updated dhclient network service to be compatible with latest
+     instructions for ISC DHCP.
 
 2012-06-02 Armin K. <krejzi@email.com>
    * Added BlueZ bootscript
