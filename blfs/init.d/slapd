@@ -1,6 +1,6 @@
 #!/bin/sh
 ########################################################################
-# Begin openldap
+# Begin slapd
 #
 # Description : OpenLDAP Boot Script
 #
@@ -8,7 +8,7 @@
 #
 # Version     : BLFS SVN
 #
-# Notes       : Can be configured through /etc/sysconfig/openldap.
+# Notes       : Can be configured through /etc/sysconfig/slapd.
 #
 ########################################################################
 
@@ -26,8 +26,8 @@
 
 SLAPD_OPTIONS=""
 
-if [ -f "/etc/sysconfig/openldap" ]; then
-   . /etc/sysconfig/openldap
+if [ -f "/etc/sysconfig/slapd" ]; then
+   . /etc/sysconfig/slapd
 fi
 
 case "${1}" in
@@ -69,4 +69,4 @@ esac
 
 exit 0
 
-# End openldap
+# End slapd

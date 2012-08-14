@@ -114,16 +114,16 @@ install-cups: create-dirs
 	ln -sf  ../init.d/cups ${EXTDIR}/rc.d/rc5.d/S25cups
 	ln -sf  ../init.d/cups ${EXTDIR}/rc.d/rc6.d/K00cups
 
-install-cyrus-sasl: create-dirs
-	install -m ${MODE} blfs/init.d/cyrus-sasl ${EXTDIR}/rc.d/init.d/cyrus-sasl
-	install -m ${CONFMODE} blfs/sysconfig/cyrus-sasl ${EXTDIR}/sysconfig/cyrus-sasl
-	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc0.d/K49cyrus-sasl
-	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc1.d/K49cyrus-sasl
-	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc2.d/S24cyrus-sasl
-	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc3.d/S24cyrus-sasl
-	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc4.d/S24cyrus-sasl
-	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc5.d/S24cyrus-sasl
-	ln -sf  ../init.d/cyrus-sasl ${EXTDIR}/rc.d/rc6.d/K49cyrus-sasl
+install-saslauthd: create-dirs
+	install -m ${MODE} blfs/init.d/saslauthd ${EXTDIR}/rc.d/init.d/saslauthd
+	install -m ${CONFMODE} blfs/sysconfig/saslauthd ${EXTDIR}/sysconfig/saslauthd
+	ln -sf  ../init.d/saslauthd ${EXTDIR}/rc.d/rc0.d/K49saslauthd
+	ln -sf  ../init.d/saslauthd ${EXTDIR}/rc.d/rc1.d/K49saslauthd
+	ln -sf  ../init.d/saslauthd ${EXTDIR}/rc.d/rc2.d/S24saslauthd
+	ln -sf  ../init.d/saslauthd ${EXTDIR}/rc.d/rc3.d/S24saslauthd
+	ln -sf  ../init.d/saslauthd ${EXTDIR}/rc.d/rc4.d/S24saslauthd
+	ln -sf  ../init.d/saslauthd ${EXTDIR}/rc.d/rc5.d/S24saslauthd
+	ln -sf  ../init.d/saslauthd ${EXTDIR}/rc.d/rc6.d/K49saslauthd
 
 install-dbus: create-dirs
 	install -m ${MODE} blfs/init.d/dbus ${EXTDIR}/rc.d/init.d/
@@ -211,15 +211,15 @@ install-iptables: create-dirs
 	ln -sf  ../init.d/iptables ${EXTDIR}/rc.d/rc4.d/S19iptables
 	ln -sf  ../init.d/iptables ${EXTDIR}/rc.d/rc5.d/S19iptables
 
-install-kerberos: create-dirs
-	install -m ${MODE} blfs/init.d/kerberos ${EXTDIR}/rc.d/init.d/
-	ln -sf ../init.d/kerberos ${EXTDIR}/rc.d/rc0.d/K42kerberos
-	ln -sf ../init.d/kerberos ${EXTDIR}/rc.d/rc1.d/K42kerberos
-	ln -sf ../init.d/kerberos ${EXTDIR}/rc.d/rc2.d/K42kerberos
-	ln -sf ../init.d/kerberos ${EXTDIR}/rc.d/rc3.d/S28kerberos
-	ln -sf ../init.d/kerberos ${EXTDIR}/rc.d/rc4.d/S28kerberos
-	ln -sf ../init.d/kerberos ${EXTDIR}/rc.d/rc5.d/S28kerberos
-	ln -sf ../init.d/kerberos ${EXTDIR}/rc.d/rc6.d/K42kerberos
+install-krb5: create-dirs
+	install -m ${MODE} blfs/init.d/krb5 ${EXTDIR}/rc.d/init.d/
+	ln -sf ../init.d/krb5 ${EXTDIR}/rc.d/rc0.d/K42krb5
+	ln -sf ../init.d/krb5 ${EXTDIR}/rc.d/rc1.d/K42krb5
+	ln -sf ../init.d/krb5 ${EXTDIR}/rc.d/rc2.d/K42krb5
+	ln -sf ../init.d/krb5 ${EXTDIR}/rc.d/rc3.d/S28krb5
+	ln -sf ../init.d/krb5 ${EXTDIR}/rc.d/rc4.d/S28krb5
+	ln -sf ../init.d/krb5 ${EXTDIR}/rc.d/rc5.d/S28krb5
+	ln -sf ../init.d/krb5 ${EXTDIR}/rc.d/rc6.d/K42krb5
 
 install-lprng: create-dirs
 	install -m ${MODE} blfs/init.d/lprng      ${EXTDIR}/rc.d/init.d/
@@ -291,16 +291,16 @@ install-ntpd: create-dirs
 	ln -sf  ../init.d/ntpd ${EXTDIR}/rc.d/rc5.d/S26ntpd
 	ln -sf  ../init.d/ntpd ${EXTDIR}/rc.d/rc6.d/K46ntpd
 
-install-openldap: create-dirs
-	install -m ${MODE} blfs/init.d/openldap ${EXTDIR}/rc.d/init.d/openldap
-	install -m ${CONFMODE} blfs/sysconfig/openldap ${EXTDIR}/sysconfig/openldap
-	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc0.d/K46openldap
-	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc1.d/K46openldap
-	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc2.d/S25openldap
-	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc3.d/S25openldap
-	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc4.d/S25openldap
-	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc5.d/S25openldap
-	ln -sf  ../init.d/openldap ${EXTDIR}/rc.d/rc6.d/K46openldap
+install-slapd: create-dirs
+	install -m ${MODE} blfs/init.d/slapd ${EXTDIR}/rc.d/init.d/slapd
+	install -m ${CONFMODE} blfs/sysconfig/slapd ${EXTDIR}/sysconfig/slapd
+	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc0.d/K46slapd
+	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc1.d/K46slapd
+	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc2.d/S25slapd
+	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc3.d/S25slapd
+	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc4.d/S25slapd
+	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc5.d/S25slapd
+	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc6.d/K46slapd
 
 install-postfix: create-dirs
 	install -m ${MODE} blfs/init.d/postfix    ${EXTDIR}/rc.d/init.d/
@@ -537,16 +537,16 @@ uninstall-cups:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S25cups
 	rm -f ${EXTDIR}/rc.d/rc6.d/K00cups
 
-uninstall-cyrus-sasl:
-	rm -f ${EXTDIR}/rc.d/init.d/cyrus-sasl
-	rm -f ${EXTDIR}/sysconfig/cyrus-sasl
-	rm -f ${EXTDIR}/rc.d/rc0.d/K49cyrus-sasl
-	rm -f ${EXTDIR}/rc.d/rc1.d/K49cyrus-sasl
-	rm -f ${EXTDIR}/rc.d/rc2.d/S24cyrus-sasl
-	rm -f ${EXTDIR}/rc.d/rc3.d/S24cyrus-sasl
-	rm -f ${EXTDIR}/rc.d/rc4.d/S24cyrus-sasl
-	rm -f ${EXTDIR}/rc.d/rc5.d/S24cyrus-sasl
-	rm -f ${EXTDIR}/rc.d/rc6.d/K49cyrus-sasl
+uninstall-saslauthd:
+	rm -f ${EXTDIR}/rc.d/init.d/saslauthd
+	rm -f ${EXTDIR}/sysconfig/saslauthd
+	rm -f ${EXTDIR}/rc.d/rc0.d/K49saslauthd
+	rm -f ${EXTDIR}/rc.d/rc1.d/K49saslauthd
+	rm -f ${EXTDIR}/rc.d/rc2.d/S24saslauthd
+	rm -f ${EXTDIR}/rc.d/rc3.d/S24saslauthd
+	rm -f ${EXTDIR}/rc.d/rc4.d/S24saslauthd
+	rm -f ${EXTDIR}/rc.d/rc5.d/S24saslauthd
+	rm -f ${EXTDIR}/rc.d/rc6.d/K49saslauthd
 
 uninstall-dhcp:
 	rm -f ${EXTDIR}/rc.d/init.d/dhcp
@@ -614,15 +614,15 @@ uninstall-iptables:
 	rm -f ${EXTDIR}/rc.d/rc4.d/S19iptables
 	rm -f ${EXTDIR}/rc.d/rc5.d/S19iptables
 
-uninstall-kerberos:
-	rm -f ${EXTDIR}/rc.d/init.d/kerberos
-	rm -f ${EXTDIR}/rc.d/rc0.d/K42kerberos
-	rm -f ${EXTDIR}/rc.d/rc1.d/K42kerberos
-	rm -f ${EXTDIR}/rc.d/rc2.d/K42kerberos
-	rm -f ${EXTDIR}/rc.d/rc3.d/S28kerberos
-	rm -f ${EXTDIR}/rc.d/rc4.d/S28kerberos
-	rm -f ${EXTDIR}/rc.d/rc5.d/S28kerberos
-	rm -f ${EXTDIR}/rc.d/rc6.d/K42kerberos
+uninstall-krb5:
+	rm -f ${EXTDIR}/rc.d/init.d/krb5
+	rm -f ${EXTDIR}/rc.d/rc0.d/K42krb5
+	rm -f ${EXTDIR}/rc.d/rc1.d/K42krb5
+	rm -f ${EXTDIR}/rc.d/rc2.d/K42krb5
+	rm -f ${EXTDIR}/rc.d/rc3.d/S28krb5
+	rm -f ${EXTDIR}/rc.d/rc4.d/S28krb5
+	rm -f ${EXTDIR}/rc.d/rc5.d/S28krb5
+	rm -f ${EXTDIR}/rc.d/rc6.d/K42krb5
 
 uninstall-lprng:
 	rm -f ${EXTDIR}/rc.d/init.d/lprng
@@ -694,16 +694,16 @@ uninstall-ntp:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S26ntp
 	rm -f ${EXTDIR}/rc.d/rc6.d/K46ntp
 
-uninstall-openldap:
-	rm -f ${EXTDIR}/rc.d/init.d/openldap
-	rm -f ${EXTDIR}/sysconfig/openldap
-	rm -f ${EXTDIR}/rc.d/rc0.d/K46openldap
-	rm -f ${EXTDIR}/rc.d/rc1.d/K46openldap
-	rm -f ${EXTDIR}/rc.d/rc2.d/S25openldap
-	rm -f ${EXTDIR}/rc.d/rc3.d/S25openldap
-	rm -f ${EXTDIR}/rc.d/rc4.d/S25openldap
-	rm -f ${EXTDIR}/rc.d/rc5.d/S25openldap
-	rm -f ${EXTDIR}/rc.d/rc6.d/K46openldap
+uninstall-slapd:
+	rm -f ${EXTDIR}/rc.d/init.d/slapd
+	rm -f ${EXTDIR}/sysconfig/slapd
+	rm -f ${EXTDIR}/rc.d/rc0.d/K46slapd
+	rm -f ${EXTDIR}/rc.d/rc1.d/K46slapd
+	rm -f ${EXTDIR}/rc.d/rc2.d/S25slapd
+	rm -f ${EXTDIR}/rc.d/rc3.d/S25slapd
+	rm -f ${EXTDIR}/rc.d/rc4.d/S25slapd
+	rm -f ${EXTDIR}/rc.d/rc5.d/S25slapd
+	rm -f ${EXTDIR}/rc.d/rc6.d/K46slapd
 
 uninstall-postfix:
 	rm -f ${EXTDIR}/rc.d/init.d/postfix
@@ -841,7 +841,7 @@ uninstall-vsftpd:
 	install-bind \
 	install-bluetooth \
 	install-cups \
-	install-cyrus-sasl \
+	install-saslauthd \
 	install-dhcp \
 	install-exim \
 	install-fcron \
@@ -849,7 +849,7 @@ uninstall-vsftpd:
 	install-gpm \
 	install-heimdal \
 	install-iptables \
-	install-kerberos \
+	install-krb5 \
 	install-lprng \
 	install-mysql \
 	install-netfs \
@@ -857,7 +857,7 @@ uninstall-vsftpd:
 	install-nfs-client \
 	install-nfs-server \
 	install-ntp \
-	install-openldap \
+	install-slapd \
 	install-postfix \
 	install-postgresql \
 	install-proftpd \
@@ -879,7 +879,7 @@ uninstall-vsftpd:
 	uninstall-bind \
 	uninstall-bluetooth \
 	uninstall-cups \
-	uninstall-cyrus-sasl \
+	uninstall-saslauthd \
 	uninstall-dhcp \
 	uninstall-exim \
 	uninstall-fcron \
@@ -887,7 +887,7 @@ uninstall-vsftpd:
 	uninstall-gpm \
 	uninstall-heimdal \
 	uninstall-iptables \
-	uninstall-kerberos \
+	uninstall-krb5 \
 	uninstall-lprng \
 	uninstall-mysql \
 	uninstall-netfs \
@@ -895,7 +895,7 @@ uninstall-vsftpd:
 	uninstall-nfs-client \
 	uninstall-nfs-server \
 	uninstall-ntp \
-	uninstall-openldap \
+	uninstall-slapd \
 	uninstall-postfix \
 	uninstall-postgresql \
 	uninstall-proftpd \
