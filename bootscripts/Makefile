@@ -469,6 +469,16 @@ install-vsftpd: create-dirs
 	ln -sf ../init.d/vsftpd ${EXTDIR}/rc.d/rc5.d/S32vsftpd
 	ln -sf ../init.d/vsftpd ${EXTDIR}/rc.d/rc6.d/K28vsftpd
 
+install-xinetd: create-dirs
+	install -m ${MODE} blfs/init.d/xinetd     ${EXTDIR}/rc.d/init.d/
+	ln -sf ../init.d/xinetd ${EXTDIR}/rc.d/rc0.d/K49xinetd
+	ln -sf ../init.d/xinetd ${EXTDIR}/rc.d/rc1.d/K49xinetd
+	ln -sf ../init.d/xinetd ${EXTDIR}/rc.d/rc2.d/K49xinetd
+	ln -sf ../init.d/xinetd ${EXTDIR}/rc.d/rc3.d/S23xinetd
+	ln -sf ../init.d/xinetd ${EXTDIR}/rc.d/rc4.d/S23xinetd
+	ln -sf ../init.d/xinetd ${EXTDIR}/rc.d/rc5.d/S23xinetd
+	ln -sf ../init.d/xinetd ${EXTDIR}/rc.d/rc6.d/K49xinetd
+
 uninstall-atd: 
 	rm -f ${EXTDIR}/rc.d/init.d/atd
 	rm -f ${EXTDIR}/rc.d/rc0.d/K29atd
