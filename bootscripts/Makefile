@@ -365,16 +365,6 @@ install-rsyncd: create-dirs
 	ln -sf  ../init.d/rsyncd ${EXTDIR}/rc.d/rc5.d/S30rsyncd
 	ln -sf  ../init.d/rsyncd ${EXTDIR}/rc.d/rc6.d/K30rsyncd
 
-install-samba: create-dirs
-	install -m ${MODE} blfs/init.d/samba      ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc0.d/K48samba
-	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc1.d/K48samba
-	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc2.d/K48samba
-	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc3.d/S45samba
-	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc4.d/S45samba
-	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc5.d/S45samba
-	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc6.d/K48samba
-
 install-swat: create-dirs
 	install -m ${MODE} blfs/init.d/swat      ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc0.d/K47swat
@@ -468,6 +458,16 @@ install-vsftpd: create-dirs
 	ln -sf ../init.d/vsftpd ${EXTDIR}/rc.d/rc4.d/S32vsftpd
 	ln -sf ../init.d/vsftpd ${EXTDIR}/rc.d/rc5.d/S32vsftpd
 	ln -sf ../init.d/vsftpd ${EXTDIR}/rc.d/rc6.d/K28vsftpd
+
+install-winbindd: create-dirs
+	install -m ${MODE} blfs/init.d/winbindd      ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/winbindd ${EXTDIR}/rc.d/rc0.d/K49winbindd
+	ln -sf  ../init.d/winbindd ${EXTDIR}/rc.d/rc1.d/K49winbindd
+	ln -sf  ../init.d/winbindd ${EXTDIR}/rc.d/rc2.d/K49winbindd
+	ln -sf  ../init.d/winbindd ${EXTDIR}/rc.d/rc3.d/S50winbindd
+	ln -sf  ../init.d/winbindd ${EXTDIR}/rc.d/rc4.d/S50winbindd
+	ln -sf  ../init.d/winbindd ${EXTDIR}/rc.d/rc5.d/S50winbindd
+	ln -sf  ../init.d/winbindd ${EXTDIR}/rc.d/rc6.d/K49winbindd
 
 install-xinetd: create-dirs
 	install -m ${MODE} blfs/init.d/xinetd     ${EXTDIR}/rc.d/init.d/
@@ -843,6 +843,26 @@ uninstall-vsftpd:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S32vsftpd
 	rm -f ${EXTDIR}/rc.d/rc6.d/K28vsftpd
 
+uninstall-winbindd:
+	rm -f ${EXTDIR}/rc.d/init.d/winbindd
+	rm -f ${EXTDIR}/rc.d/rc0.d/K49winbindd
+	rm -f ${EXTDIR}/rc.d/rc1.d/K49winbindd
+	rm -f ${EXTDIR}/rc.d/rc2.d/K49winbindd
+	rm -f ${EXTDIR}/rc.d/rc3.d/S50winbindd
+	rm -f ${EXTDIR}/rc.d/rc4.d/S50winbindd
+	rm -f ${EXTDIR}/rc.d/rc5.d/S50winbindd
+	rm -f ${EXTDIR}/rc.d/rc6.d/K49winbindd
+
+uninstall-xinetd:
+	rm -f ${EXTDIR}/rc.d/init.d/xinetd
+	rm -f ${EXTDIR}/rc.d/rc0.d/K49xinetd
+	rm -f ${EXTDIR}/rc.d/rc1.d/K49xinetd
+	rm -f ${EXTDIR}/rc.d/rc2.d/K49xinetd
+	rm -f ${EXTDIR}/rc.d/rc3.d/S23xinetd
+	rm -f ${EXTDIR}/rc.d/rc4.d/S23xinetd
+	rm -f ${EXTDIR}/rc.d/rc5.d/S23xinetd
+	rm -f ${EXTDIR}/rc.d/rc6.d/K49xinetd
+
 .PHONY: all create-dirs create-service-dir \
 	install-service-dhclient \
 	install-service-dhcpcd \
@@ -886,6 +906,8 @@ uninstall-vsftpd:
 	install-sysstat \
 	install-vsftpd \
 	install-virtuoso \
+	install-winbindd \
+	install-xinetd \
 	uninstall-atd \
 	uninstall-alsa \
 	uninstall-avahi \
@@ -923,4 +945,6 @@ uninstall-vsftpd:
 	uninstall-svn \
 	uninstall-sysstat \
 	uninstall-virtuoso \
-	uninstall-vsftpd
+	uninstall-vsftpd   \
+	uninstall-winbindd \
+	uninstall-xinetd
