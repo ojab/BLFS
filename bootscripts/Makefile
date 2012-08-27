@@ -405,6 +405,16 @@ install-qpopper: create-dirs
 	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc5.d/S37qpopper
 	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc6.d/K23qpopper
 
+install-samba: create-dirs
+	install -m ${MODE} blfs/init.d/samba      ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc0.d/K48samba
+	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc1.d/K48samba
+	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc2.d/K48samba
+	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc3.d/S45samba
+	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc4.d/S45samba
+	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc5.d/S45samba
+	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc6.d/K48samba
+
 install-sshd: create-dirs
 	install -m ${MODE} blfs/init.d/sshd       ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/sshd ${EXTDIR}/rc.d/rc0.d/K30sshd
