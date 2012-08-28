@@ -2,7 +2,7 @@
 ########################################################################
 # Begin nfs-client
 #
-# Description : Start statd
+# Description : Start iptables
 #
 # Authors     : Ken Moffat - ken@linuxfromscratch.org
 #               Bruce Dubbs - bdubbs@linuxfromscratch.org
@@ -19,8 +19,8 @@
 # Should-Stop:
 # Default-Start:     3 4 5
 # Default-Stop:     
-# Short-Description: Starts statd
-# Description:       rpc.statd provides file locking on nfs.
+# Short-Description: Loads iptables rules.
+# Description:       Iptables provides firewall for Linux systems.
 # X-LFS-Provided-By: BLFS / LFS 7.0
 ### END INIT INFO
 

@@ -11,15 +11,16 @@
 ########################################################################
 
 ### BEGIN INIT INFO
-# Provides:            rsyncdd
+# Provides:            rsyncd
 # Required-Start:      $syslog $local_fs $network
 # Should-Start:        $remote_fs
 # Required-Stop:       $network
 # Should-Stop:         $remote_fs
 # Default-Start:       3 4 5
 # Default-Stop:        0 1 2 6
-# Short-Description:   Apache HTTP Server
-# Description:         Controls the Apache HTTP Daemon
+# Short-Description:   Starts rsync daemon.
+# Description:         Starts rsync daemon which is used to copy
+#                      files from and to remote machines.
 # X-LFS-Provided-By:   BLFS / LFS 7.0
 ### END INIT INFO
 
