@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY xfburn-download-http
+    "http://archive.xfce.org/src/apps/xfburn/0.4/xfburn-&xfburn-version;.tar.bz2">
+  <!ENTITY xfburn-download-ftp  " ">
+  <!ENTITY xfburn-md5sum        "147cdc2d909e751125be16103b8dc81f">
+  <!ENTITY xfburn-size          "640 KB">
+  <!ENTITY xfburn-buildsize     "17 MB">
+  <!ENTITY xfburn-time          "0.3 SBU">
+]>
+
+<sect1 id="xfburn" xreflabel="xfburn-&xfburn-version;">
+  <?dbhtml filename="xfburn.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>xfburn-&xfburn-version;</title>
+
+  <indexterm zone="xfburn">
+    <primary sortas="a-xfburn">xfburn</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Xfburn</title>
+
+    <para>
+      <application>Xfburn</application> is a <application>Gtk 2</application>
+      GUI frontend for <application>Libisoburn</application>. This is useful for
+      creating CDs and DVDs from files on your computer or ISO images downloaded
+      from elsewhere.
+    </para>
+
+    &lfs72_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&xfburn-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&xfburn-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &xfburn-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &xfburn-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &xfburn-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &xfburn-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Xfburn Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="exo"/>,
+      <xref linkend="libxfcegui4"/> and
+      <xref linkend="libisoburn"/>.
+    </para>
+
+    <para condition="html" role="usernotes">
+      User Notes: <ulink url="&blfs-wiki;/xfburn"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Xfburn</title>
+
+    <para>
+      Install <application>Xfburn</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>sed -i '/&lt;glib.h&gt;/a#include &lt;glib-object.h&gt;' xfburn/xfburn-settings.h &amp;&amp;
+./configure --prefix=/usr --disable-static &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>sed -i '/&lt;glib.h&gt;/a#include &lt;glib-object.h&gt;'
+      xfburn/xfburn-settings.h</command>: This sed is needed to compile with
+      <application>Exo</application> 0.8 and <application>Glib</application>
+      2.32 installed.
+    </para>
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>xfburn.</seg>
+        <seg>/usr/share/xfburn.</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="xfburn-prog">
+        <term><command>xfburn</command></term>
+        <listitem>
+          <para>
+            is a <application>Gtk 2</application> application for creating CDs
+            and DVDs.
+          </para>
+          <indexterm zone="xfburn xfburn-prog">
+            <primary sortas="b-xfburn">xfburn</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+</sect1>

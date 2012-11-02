@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libreoffice-core-download-http
+           "http://download.documentfoundation.org/libreoffice/src/&libreoffice-version;/libreoffice-core-&libreoffice-dlversion;.tar.xz">
+  <!ENTITY libreoffice-core-download-ftp  " ">
+  <!ENTITY libreoffice-core-md5sum        "ae171ba4633cc72dba4451b1bdd3385e">
+  <!ENTITY libreoffice-core-size          "105 MB">
+  <!ENTITY libreoffice-buildsize          "5.2 GB (360 MB installed)">
+  <!ENTITY libreoffice-time               "60 SBU">
+]>
+
+<sect1 id="libreoffice" xreflabel="LibreOffice-&libreoffice-version;">
+  <?dbhtml filename="libreoffice.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>LibreOffice-&libreoffice-version;</title>
+
+  <indexterm zone="libreoffice">
+    <primary sortas="a-LibreOffice">LibreOffice</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to LibreOffice</title>
+
+    <para>
+      <application>LibreOffice</application> is a full-featured office suite.
+      It is largely compatible with <application>Microsoft Office</application>
+      and is descended from <application>OpenOffice.org</application>.
+    </para>
+
+    &lfs72_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Core Download (HTTP): <ulink url="&libreoffice-core-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Core Download (FTP): <ulink url="&libreoffice-core-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Core Download MD5 sum: &libreoffice-core-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Core Download size: &libreoffice-core-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &libreoffice-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &libreoffice-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/libreoffice-core-&libreoffice-dlversion;-boost_fix-1.patch"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Required patch:
+          <ulink url="&patch-root;/libreoffice-core-&libreoffice-dlversion;-poppler_fix-1.patch"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+    
+    <bridgehead renderas="sect3">LibreOffice Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="cups"/>,
+      <xref linkend="curl"/> or <xref linkend="wget"/>,
+      <xref linkend="gperf"/>,
+      <xref linkend="gtk2"/> or <xref linkend="gtk3"/>,
+      <application>Perl Modules</application>
+      <xref linkend="perl-archive-zip"/> and
+      <xref linkend="perl-xml-parser"/>,
+      <xref linkend="unzip"/>,
+      <xref linkend="which"/> and
+      <xref linkend="zip"/>.
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <note>
+      <para>
+        Most of these packages are recommended because if they're not installed,
+        the build process will compile and install its own (often older)
+        version. If you're using <application>GCC 4.7</application>, some of
+        those older packages will fail to compile.
+      </para>
+    </note>
+
+    <para role="recommended">
+      <xref linkend="boost"/>,
+      <xref linkend="db"/>,
+      <xref linkend="expat"/>,
+      <xref linkend="gst-plugins-base"/>,
+      <xref linkend="libjpeg"/>,
+      <xref linkend="libgsf"/>,
+      <xref linkend="libpng"/>,
+      <xref linkend="librsvg"/>,
+      <xref linkend="libxml2"/> and <xref linkend="libxslt"/>,
+      <xref linkend="neon"/>,
+      <xref linkend="nss"/>,
+      <xref linkend="poppler"/>,
+      <xref linkend="openssl"/> and
+      <xref linkend="redland"/>.
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <ulink url="http://hunspell.sourceforge.net/">Hunspell</ulink>,
+      <xref linkend="mysql"/>,
+      <ulink url="http://sourceforge.net/projects/hunspell/files/MyThes/">MyThes</ulink>,
+      <xref linkend="postgresql"/>,
+      <ulink url="http://sampleicc.sourceforge.net/">SampleICC</ulink>,
+      <ulink url="http://hci.iwr.uni-heidelberg.de/vigra">Vigra</ulink> and
+      <xref linkend="zenity"/>.
+    </para>
+
+    <para condition="html" role="usernotes">
+      User Notes: <ulink url="&blfs-wiki;/libreoffice"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of LibreOffice</title>
+
+    <warning>
+      <para>
+        Untaring the libreoffice-core-&libreoffice-dlversion; tarball as
+        <systemitem class="username">root</systemitem> has the curious effect of
+        changing the ownership of the <emphasis>parent</emphasis> directory
+        to a user with numerical id 11012 and with the permissions set to allow
+        read, write and execute for that user only! If you untared as
+        <systemitem class="username">root</systemitem> in your home folder you
+        could end up unable to log in again :/ If you untared it in
+        <filename class="directory">/usr</filename> you would find your user
+        account unable to access any file in
+        <filename class="directory">/usr</filename>.
+      </para>
+
+      <para>
+        You can avoid this unpleasantness by
+        <emphasis>not</emphasis> untaring it as
+        <systemitem class="username">root</systemitem>. If you must untar it as
+        <systemitem class="username">root</systemitem> pass the option
+        <option>--no-overwrite-dir</option> to tar. This is the default when you
+        untar as a user but has to be passed as an option when untaring as
+        <systemitem class="username">root</systemitem>:
+      </para>
+    </warning>
+
+<screen role="root"><userinput>tar -xf libreoffice-core-&libreoffice-dlversion;.tar.xz --no-overwrite-dir &amp;&amp;
+cd libreoffice-core-&libreoffice-dlversion;</userinput></screen>
+
+    <para>
+      Install <application>LibreOffice</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>patch -Np1 -i ../libreoffice-core-&libreoffice-dlversion;-boost_fix-1.patch &amp;&amp;
+patch -Np1 -i ../libreoffice-core-&libreoffice-dlversion;-poppler_fix-1.patch &amp;&amp;
+./autogen.sh --prefix=/usr             \
+             --disable-binfilter       \
+             --disable-gconf           \
+             --disable-mozilla         \
+             --disable-odk             \
+             --disable-postgresql-sdbc \
+             --with-system-boost       \
+             --with-system-cairo       \
+             --with-system-curl        \
+             --with-system-db          \
+             --with-system-expat       \
+             --with-system-gettext     \
+             --with-system-icu         \
+             --with-system-jpeg        \
+             --with-system-libpng      \
+             --with-system-libxml      \
+             --with-system-neon        \
+             --with-system-nss         \
+             --with-system-openssl     \
+             --with-system-poppler     \
+             --with-system-redland     \
+             --with-system-zlib        \
+             --without-java            \
+             --with-num-cpus=$(getconf _NPROCESSORS_ONLN) &amp;&amp;
+./download                                                &amp;&amp;
+mkdir -p ../libreoffice-downloads                         &amp;&amp;
+cp src/*.{xz,gz,txt,zip,bz2,tgz,jar,dll,oxt} \
+      src/*LICENSE* ../libreoffice-downloads              &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install                                 &amp;&amp;
+SOFFICE=/usr/lib/libreoffice/program/soffice &amp;&amp;
+for program in base calc draw impress math writer
+do
+  echo '#!/bin/bash' > /usr/bin/${program}
+  echo "exec ${SOFFICE} --nologo --${program} \"\${@}\"" >> /usr/bin/${program}
+  chmod 755 /usr/bin/${program}
+done          &amp;&amp;
+unset SOFFICE &amp;&amp;
+ln -sfv ../lib/libreoffice/program/spadmin /usr/bin/printeradmin &amp;&amp;
+ln -sfv ../lib/libreoffice/program/unopkg /usr/bin               &amp;&amp;
+cp sysui/desktop/man/{libreoffice,unopkg}.1 /usr/share/man/man1  &amp;&amp;
+for res in 16 32 48 128 256
+do
+  mkdir -p /usr/share/icons/hicolor/${res}x${res}/{apps,mimetypes}
+  cp sysui/desktop/icons/hicolor/${res}x${res}/apps/*.png \
+    /usr/share/icons/hicolor/${res}x${res}/apps
+  cp sysui/desktop/icons/hicolor/${res}x${res}/mimetypes/*.png \
+    /usr/share/icons/hicolor/${res}x${res}/mimetypes
+done &amp;&amp;
+gtk-update-icon-cache /usr/share/icons/hicolor</userinput></screen>
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+    
+    <para>
+      <option>--enable-gtk3</option>: Add this option if you've installed and
+      want to use <application>Gtk+-3</application>.
+    </para>
+
+    <para>
+      <option>--disable-gstreamer</option>: Add this option if you've not
+      installed <xref linkend="gst-plugins-base"/>.
+    </para>
+
+    <para>
+      <option>--disable-binfilter</option>: These "binfilters" enable
+      <application>LibreOffice</application> to open legacy
+      <application>Star Office</application> format documents. Compiling
+      <application>binfilter</application> requires
+      <application>Java</application>.
+    </para>
+
+    <para>
+      <option>--disable-gconf</option>: Remove this option if you want to
+      compile LibreOffice with GConf support.
+    </para>
+
+    <para>
+      <option>--disable-mozilla</option>: This option stops
+      <application>LibreOffice</application> trying to compile an old version
+      of <application>SeaMonkey</application>.
+    </para>
+
+    <para>
+      <option>--disable-odk</option>: This option disables installing the
+      office development kit. Remove this option if you want to develop a
+      <application>LibreOffice</application> based application.
+    </para>
+
+    <para>
+      <option>--disable-postgresql-sdbc</option>: This option disables compiling
+      LibreOffice with the ability to connect to a PostgreSQL database. If you
+      would like LibreOffice to be able to connect to a PostgreSQL database
+      remove this option. If you have installed PostgreSQL on your system and
+      would like LibreOffice to use that rather than compile its own copy, add
+      the option <option>--with-system-postgresql</option>.
+    </para>
+
+    <para>
+      <option>--with-system- ...</option>: These options prevent
+      <application>LibreOffice</application> trying to compile its own
+      versions of these dependencies. If you've not installed
+      some of the dependencies, remove the corresponding option.
+    </para>
+
+    <para>
+      <option>--with-num-cpus=$(getconf _NPROCESSORS_ONLN)</option>: This option
+      tells <application>LibreOffice</application> to use all your CPUs to
+      compile in parallel and speed up the build.
+    </para>
+
+    <para>
+      <option>--with-lang="pt-BR"</option>: This option sets what languages to
+      support. en-US is always included by default. To list several languages,
+      separate them with a space. For all languages, use --with-lang=ALL
+    </para>
+
+    <para>
+      For a list of the available languages, configure it --with-lang=ALL and
+      then after you've run ./download:
+      <command>ls translations/source</command>
+    </para>
+
+    <para>
+      <option>--without-java</option>: This option compiles
+      <application>LibreOffice</application> without
+      <application>Java</application> support.
+    </para>
+
+    <para>
+      <option>--with-vendor=LFS-BLFS</option>: This option sets LFS-BLFS as the
+      vendor which is mentioned when you click About on the toolbar.
+    </para>
+
+    <para>
+      <command>./download</command>: The build process runs the
+      <command>download</command> script which downloads some 470 MB of
+      tarballs. We run the download script to get it out of the way at the
+      start so we can make a backup copy of the downloaded files.
+    </para>
+
+    <para>
+      <command>mkdir -p ../libreoffice-downloads;
+      cp src/*.{xz,gz,txt,zip,bz2,tgz,jar,dll,oxt} src/*LICENSE*
+      ../libreoffice-downloads</command>: this makes a backup copy
+      of the downloaded files so you don't have to download them again if you
+      decide to recompile <application>LibreOffice</application>. In that case,
+      just start with:
+      <command>mkdir src; cp ../libreoffice-downloads/* src</command>
+    </para>
+
+    <para>
+      <command>for program in base calc draw impress math writer ...</command>:
+      These commands create 6 simple shell scripts in
+      <filename class="directory">/usr/bin</filename> that can be used to launch
+      <application>LibreOffice</application> in its various forms. If you like
+      seeing the <application>LibreOffice</application> splash screen, remove
+      the "--nologo" option.
+    </para>
+
+    <para>
+      <command>for res in 16 32 48 128 256 ...</command>: These commands copy
+      various icons into the hicolor icon theme used by
+      <application>Gtk+</application>.
+    </para>
+
+    <para>
+      <command>gtk-update-icon-cache /usr/share/icons/hicolor</command>: This
+      command rebuilds
+      <filename>/usr/share/icons/hicolor/icon-theme.cache</filename> to include
+      the new icons.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring LibreOffice</title>
+
+    <para>
+      If you use a desktop environment like <application>Gnome</application>
+      or <application>KDE</application> and want the programs to show up in the
+      panel's menu, as the <systemitem class="username">root</systemitem> user,
+      create some simple desktop files:
+    </para>
+
+<screen role="root"><userinput>mkdir -p /usr/share/applications &amp;&amp;
+for program in base calc draw impress math writer
+do echo "[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=${program^}
+Comment=LibreOffice ${program^}
+Icon=${program}
+Exec=${program}
+Categories=Office;Application;
+StartupNotify=true
+Terminal=false" > /usr/share/applications/${program}.desktop
+done &amp;&amp;
+echo "[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Printer Administration
+Comment=LibreOffice Printer Administration
+Icon=printeradmin
+Exec=printeradmin
+Categories=Office;Printing;Application;
+StartupNotify=true
+Terminal=false" > /usr/share/applications/printeradmin.desktop</userinput></screen>
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>
+          base, calc, draw, impress, math,
+          printeradmin and writer
+        </seg>
+        <seg>
+          /usr/lib/libreoffice
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="base">
+        <term><command>base</command></term>
+        <listitem>
+          <para>
+            is a database manager.
+          </para>
+          <indexterm zone="libreoffice base">
+            <primary sortas="b-base">base</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="calc">
+        <term><command>calc</command></term>
+        <listitem>
+          <para>
+            is a spreadsheet program.
+          </para>
+          <indexterm zone="libreoffice calc">
+            <primary sortas="b-calc">calc</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="draw">
+        <term><command>draw</command></term>
+        <listitem>
+          <para>
+            is a vector graphics editor and diagramming tool.
+          </para>
+          <indexterm zone="libreoffice draw">
+            <primary sortas="b-draw">draw</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="impress">
+        <term><command>impress</command></term>
+        <listitem>
+          <para>
+            can edit and display powerpoint presentations.
+          </para>
+          <indexterm zone="libreoffice impress">
+            <primary sortas="b-impress">impress</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="math">
+        <term><command>math</command></term>
+        <listitem>
+          <para>
+            is a mathematical formula editor.
+          </para>
+          <indexterm zone="libreoffice math">
+            <primary sortas="b-math">math</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="printeradmin">
+        <term><command>printeradmin</command></term>
+        <listitem>
+          <para>
+            is a graphical interface to enable you to change your personal
+            printing preferences, which are saved in
+            <filename>~/.cups/lpoptions</filename>.
+          </para>
+          <indexterm zone="libreoffice printeradmin">
+            <primary sortas="b-printeradmin">printeradmin</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="unopkg">
+        <term><command>unopkg</command></term>
+        <listitem>
+          <para>
+            is a tool to manage <application>LibreOffice</application>
+            extensions from the command line.
+          </para>
+          <indexterm zone="libreoffice unopkg">
+            <primary sortas="b-unopkg">unopkg</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="writer">
+        <term><command>writer</command></term>
+        <listitem>
+          <para>
+            is a word processor.
+          </para>
+          <indexterm zone="libreoffice writer">
+            <primary sortas="b-writer">writer</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

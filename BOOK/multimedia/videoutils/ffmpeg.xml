@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY ffmpeg-download-http
+    "http://ffmpeg.org/releases/ffmpeg-&ffmpeg-version;.tar.bz2">
+  <!ENTITY ffmpeg-download-ftp  " ">
+  <!ENTITY ffmpeg-md5sum        "3ed526cea20c1bffb5a37f7730f710bd">
+  <!ENTITY ffmpeg-size          "6.2 MB">
+  <!ENTITY ffmpeg-buildsize     "90 MB (plus 805 MB for tests)">
+  <!ENTITY ffmpeg-time          "3.2 SBU (plus 2.0 SBU for tests)">
+]>
+
+<sect1 id="ffmpeg" xreflabel="FFmpeg-&ffmpeg-version;">
+  <?dbhtml filename="ffmpeg.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>FFmpeg-&ffmpeg-version;</title>
+
+  <indexterm zone="ffmpeg">
+    <primary sortas="a-FFmpeg">FFmpeg</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to FFmpeg</title>
+
+    <para>
+      <application>FFmpeg</application> is a solution to record, convert and
+      stream audio and video. It is a very fast video and audio converter and it
+      can also acquire from a live audio/video source. Designed to be intuitive,
+      the command-line interface (<command>ffmpeg</command>) tries to figure out
+      all the parameters, when possible. <application>FFmpeg</application> can
+      also convert from any sample rate to any other, and resize video on the
+      fly with a high quality polyphase filter.
+      <application>FFmpeg</application> can use a video4linux compatible video
+      source and any Open Sound System audio source.
+    </para>
+
+    &lfs72_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&ffmpeg-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&ffmpeg-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &ffmpeg-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &ffmpeg-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &ffmpeg-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &ffmpeg-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">FFmpeg Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="faac"/>,
+      <xref linkend="freetype2"/>,
+      <xref linkend="lame"/>,
+      <xref linkend="libtheora"/>,
+      <xref linkend="libvorbis"/>,
+      <xref linkend="libvpx"/>,
+      <xref linkend="openjpeg"/>,
+      <xref linkend="openssl"/>,
+      <xref linkend="sdl"/>,
+      <xref linkend="speex"/>,
+      <xref linkend="xorg7-lib"/>,
+      <xref linkend="xvid"/>, and
+      <xref linkend="yasm"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="gnutls"/>,
+      <ulink url="http://www.videolan.org/developers/x264.html">x264</ulink>,
+      <ulink url="http://sourceforge.net/projects/opencore-amr">OpenCore AMR</ulink>,
+      <ulink url="http://libgsm.sourcearchive.com/">GSM</ulink>,
+      <ulink url="http://sourceforge.net/projects/libdc1394">libdc1394</ulink>,
+      <ulink url="http://svn.mplayerhq.hu/nut/src/trunk/">libnut</ulink> (SVN checkout),
+      <ulink url="http://xavs.sourceforge.net/">libxavs</ulink> (SVN checkout),
+      <ulink url="http://sourceforge.net/projects/librtmp">librtmp</ulink>,
+      <ulink url="http://diracvideo.org/">libschroedinger</ulink>,
+      <ulink url="http://medialibrary.sourceforge.net/">MediaLibrary</ulink>,
+      <ulink url="http://connect.creativelabs.com/openal/default.aspx">OpenAL</ulink>,
+      <ulink url="http://tipok.org.ua/node/17">libaacplus</ulink>,
+      <ulink url="http://code.google.com/p/libass/">libass</ulink>,
+      <ulink url="http://www.celt-codec.org/">libcelt</ulink>,
+      <ulink url="http://ftp.gnu.org/pub/gnu/libcdio/">libcdio</ulink>,
+      <ulink url="http://sourceforge.net/projects/opencvlibrary/">libopencv</ulink>,
+      <ulink url="http://sourceforge.net/projects/libdc1394/">libdc1394</ulink>,
+      <ulink url="http://linuxtv.org/downloads/v4l-utils/">libv4l2</ulink>, and
+      <ulink url="http://www.nongnu.org/texi2html">texi2html</ulink>
+        (to build HTML documentation).</para>
+
+    <bridgehead renderas="sect4">Optional (For Hardware Video Decoding)</bridgehead>
+    <para role="optional">
+      <ulink url="http://cgit.freedesktop.org/vaapi/libva/">VA API</ulink>
+      with corresponding drivers, including:
+      <ulink url="http://cgit.freedesktop.org/vaapi/intel-driver/">Intel Driver (i965 chipsets only)</ulink>,
+      <ulink url="http://www.splitted-desktop.com/static/libva/xvba-video/">XVBA Driver for Radeon Cards</ulink> and
+      <ulink url="http://cgit.freedesktop.org/vaapi/vdpau-driver/">VDPAU Driver for NVidia Cards</ulink>
+      (requires <ulink url="http://cgit.freedesktop.org/~aplattner/libvdpau/">libvdpau</ulink>).
+    </para>
+
+    <para condition="html" role="usernotes">
+      User Notes: <ulink url="&blfs-wiki;/ffmpeg"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of FFmpeg</title>
+
+    <para>If you have not installed <application>Xorg</application> in
+    <filename class='directory'>/usr</filename>, tell <filename>configure</filename> 
+    where to find it:</para>
+
+<screen><userinput>export LIBRARY_PATH=$XORG_PREFIX/lib</userinput></screen>
+
+    <para>
+      Install <application>FFmpeg</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr        \
+            --disable-debug      \
+            --enable-shared      \
+            --disable-static     \
+            --enable-gpl         \
+            --enable-x11grab     \
+            --enable-postproc    \
+            --enable-version3    \
+            --enable-nonfree     \
+            --enable-libfaac     \
+            --enable-libfreetype \
+            --enable-libmp3lame  \
+            --enable-libopenjpeg \
+            --enable-libspeex    \
+            --enable-libtheora   \
+            --enable-libvorbis   \
+            --enable-libvpx      \
+            --enable-libxvid     \
+            --enable-libpulse    \
+            --enable-openssl     &amp;&amp;
+make</userinput></screen>
+
+<!--
+    <para>To convert the docs to html use the following commands:</para>
+
+<screen><userinput>sed -i '/@top/d;/ignore$/d'    doc/*.texi                   &amp;&amp;
+sed -i '/@include avoptions/d' doc/avtools-common-opts.texi &amp;&amp;
+
+for DOC in doc/*.texi; do
+   makeinfo - -html - -no-split -o ${DOC%texi}html ${DOC}
+done</userinput></screen>
+-->
+
+    <para>
+      If you have <xref linkend="doxygen"/> installed and wish to create the API
+      documentation (takes about 444 MB of space, 26 SBU), issue the command
+      <command>doxygen</command>.
+    </para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem>
+    user:</para>
+
+<screen role="root"><userinput>make install                                 &amp;&amp;
+mkdir -p           /usr/share/doc/ffmpeg-&ffmpeg-version; &amp;&amp;
+cp    -v doc/*.txt /usr/share/doc/ffmpeg-&ffmpeg-version;</userinput></screen>
+
+    <para>The tests, if desired, need to be run after installation.  
+    To test the package, run <command>make check</command>.</para>
+
+    <para>
+      The <application>FFmpeg</application> source contains a tool called
+      <command>qt-faststart</command> that can modify QuickTime formatted movies
+      (mov or mp4) so that the header information is located at the beginning of
+      the file instead of the end. This allows video players to begin playing
+      the content before the entire file has been downloaded. An example of
+      where this is useful for preparing videos before uploading them to
+      YouTube. If need <command>qt-faststart</command>, you can compile it with
+      gcc. As the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen><userinput>gcc tools/qt-faststart.c -o /usr/bin/qt-faststart</userinput></screen>
+
+    <para>
+      If you used <command>doxygen</command> to create the API documentation,
+      install it by issuing the following commands as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>mkdir -p         /usr/share/doc/ffmpeg-&ffmpeg-version;/api &amp;&amp;
+cp    -av doxy/* /usr/share/doc/ffmpeg-&ffmpeg-version;/api</userinput></screen>
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <option>--enable-gpl</option>: This switch enables the use of GPL code and
+      permits support for postprocessing, swscale and many other features.
+    </para>
+
+    <para>
+      <option>--enable-shared</option>: This switch is needed to build the
+      shared libraries, otherwise only static libraries are built and installed.
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+    <para>
+      <option>--enable-<replaceable>&lt;codec&gt;</replaceable></option>:
+      <application>FFmpeg</application> comes with code to compile decoders for
+      almost every codec you could think of. The only reason to enable a
+      specific codec (and make <application>FFmpeg</application> link to the
+      prerequisite shared library installed on your system) is to make ffmpeg
+      compile an <emphasis>encoder</emphasis> for that codec.
+      <application>FFmpeg</application> is an excellent collection of decoders.
+      If you just want to use <application>FFmpeg</application> to watch video
+      or listen to music (via other applications like
+      <application>Gstreamer</application> or Xine) then you will not benefit
+      from linking FFmpeg to another library.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring FFmpeg</title>
+
+    <sect3 id="ffmpeg-config">
+      <title>Config Files</title>
+
+      <para><filename>/etc/ffserver.conf</filename> and
+      <filename>~/.ffmpeg/ffserver-config</filename></para>
+
+      <indexterm zone="ffmpeg ffmpeg-config">
+        <primary
+        sortas="e-AA.ffmpeg-ffserver-config">~/.ffmpeg/ffserver-config</primary>
+      </indexterm>
+
+      <indexterm zone="ffmpeg ffmpeg-config">
+        <primary sortas="e-etc-ffserver.conf">/etc/ffserver.conf</primary>
+      </indexterm>
+
+      <para>
+        You'll find a sample <command>ffserver</command> configuration file at
+        <filename>doc/ffserver.conf</filename> in the source tree.
+      </para>
+    </sect3>
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          ffmpeg,
+          ffplay,
+          ffprobe,
+          ffserver and
+          qt-faststart
+        </seg>
+        <seg>
+          libavcodec.so,
+          libavdevice.so,
+          libavfilter.so,
+          libavformat.so,
+          libavutil.so,
+          libpostproc.so,
+          libswresample and
+          libswscale.so
+        </seg>
+        <seg>
+          /usr/include/libavcodec,
+          /usr/include/libavdevice,
+          /usr/include/libavfilter,
+          /usr/include/libavformat,
+          /usr/include/libavutil,
+          /usr/include/libpostproc,
+          /usr/include/libswresample
+          /usr/include/libswscale,
+          /usr/share/ffmpeg and
+          /usr/share/doc/ffmpeg-&ffmpeg-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="ffmpeg-prog">
+        <term><command>ffmpeg</command></term>
+        <listitem>
+          <para>
+            is a command-line tool to convert video files, network streams and
+            input from a TV card to several video formats.
+          </para>
+          <indexterm zone="ffmpeg ffmpeg-prog">
+            <primary sortas="b-ffmpeg">ffmpeg</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ffplay">
+        <term><command>ffplay</command></term>
+        <listitem>
+          <para>
+            is a very simple and portable media player using the
+            <filename>ffmpeg</filename> libraries and the SDL library.
+          </para>
+          <indexterm zone="ffmpeg ffplay">
+            <primary sortas="b-ffplay">ffplay</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ffprobe">
+        <term><command>ffprobe</command></term>
+        <listitem>
+          <para>
+            gathers information from multimedia streams and prints it in a human
+            and machine-readable fashion.
+          </para>
+          <indexterm zone="ffmpeg ffprobe">
+            <primary sortas="b-ffprobe">ffprobe</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ffserver">
+        <term><command>ffserver</command></term>
+        <listitem>
+          <para>
+            is a streaming server for everything that <command>ffmpeg</command>
+            could use as input (files, streams, TV card input, webcam, etc).
+          </para>
+          <indexterm zone="ffmpeg ffserver">
+            <primary sortas="b-ffserver">ffserver</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="qt-faststart">
+        <term><command>qt-faststart</command></term>
+        <listitem>
+          <para>
+            moves the index file to the front of quicktime (mov/mp4) videos.
+          </para>
+          <indexterm zone="ffmpeg qt-faststart">
+            <primary sortas="b-qt-faststart">qt-faststart</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libavcodec">
+        <term><filename class="libraryfile">libavcodec.so</filename></term>
+        <listitem>
+          <para>
+            is a library containing the <application>FFmpeg</application> codecs
+            (both encoding and decoding).
+          </para>
+          <indexterm zone="ffmpeg libavcodec">
+            <primary sortas="c-libavcodec">libavcodec.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libavdevice">
+        <term><filename class="libraryfile">libavdevice.so</filename></term>
+        <listitem>
+          <para>
+            is the <application>FFmpeg</application> device handling library.
+          </para>
+          <indexterm zone="ffmpeg libavdevice">
+            <primary sortas="c-libavdevice">libavdevice.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libavfilter">
+        <term><filename class="libraryfile">libavfilter.so</filename></term>
+        <listitem>
+          <para>
+            is a library of filters that can alter video or audio between the
+            decoder and the encoder (or output).
+          </para>
+          <indexterm zone="ffmpeg libavfilter">
+            <primary sortas="c-libavfilter">libavfilter.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libavformat">
+        <term><filename class="libraryfile">libavformat.so</filename></term>
+        <listitem>
+          <para>
+            is a library containing the file formats handling (mux and demux
+            code for several formats) used by <command>ffplay</command> as well
+            as allowing the generation of  audio or video streams.
+          </para>
+          <indexterm zone="ffmpeg libavformat">
+            <primary sortas="c-libavformat">libavformat.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libavutil">
+        <term><filename class="libraryfile">libavutil.so</filename></term>
+        <listitem>
+          <para>is the <application>FFmpeg</application> utility library.</para>
+          <indexterm zone="ffmpeg libavutil">
+            <primary sortas="c-libavutil">libavutil.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libpostproc">
+        <term><filename class="libraryfile">libpostproc.so</filename></term>
+        <listitem>
+          <para>
+            is the <application>FFmpeg</application> post processing library.
+          </para>
+          <indexterm zone="ffmpeg libpostproc">
+            <primary sortas="c-libpostproc">libpostproc.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libswresample">
+        <term><filename class="libraryfile">libswresample.so</filename></term>
+        <listitem>
+          <para>
+            is the <application>FFmpeg</application> audio rescaling library,
+            it contains functions for converting audio sample formats.
+          </para>
+          <indexterm zone="ffmpeg libswresample">
+            <primary sortas="c-libswresample">libswresample.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libswscale">
+        <term><filename class="libraryfile">libswscale.so</filename></term>
+        <listitem>
+          <para>
+            is the <application>FFmpeg</application> image rescaling library.
+          </para>
+          <indexterm zone="ffmpeg libswscale">
+            <primary sortas="c-libswscale">libswscale.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+</sect1>

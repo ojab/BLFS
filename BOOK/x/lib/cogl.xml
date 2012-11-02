@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY cogl-download-http "&gnome-download-http;/cogl/1.12/cogl-&cogl-version;.tar.xz">
+  <!ENTITY cogl-download-ftp  "&gnome-download-ftp;/cogl/1.12/cogl-&cogl-version;.tar.xz">
+  <!ENTITY cogl-md5sum        "2ec55647764ee208182fbe07ee9f7e9c">
+  <!ENTITY cogl-size          "1.3 MB">
+  <!ENTITY cogl-buildsize     "45 MB">
+  <!ENTITY cogl-time          "0.5 SBU">
+]>
+
+<sect1 id="cogl" xreflabel="Cogl-&cogl-version;">
+  <?dbhtml filename="cogl.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Cogl-&cogl-version;</title>
+
+  <indexterm zone="cogl">
+    <primary sortas="a-Cogl">Cogl</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Cogl</title>
+
+    <para>
+      <application>Cogl</application> is a modern 3D graphics API with associated
+      utility APIs designed to expose the features of 3D graphics hardware using
+      a direct state access API design, as opposed to the state-machine style
+      of OpenGL.
+    </para>
+
+    &lfs72_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&cogl-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&cogl-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &cogl-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &cogl-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &cogl-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &cogl-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Cogl Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="gdk-pixbuf"/>,
+      <xref linkend="mesalib"/> and
+      <xref linkend="pango"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="gobject-introspection"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="gtk-doc"/>
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+      <ulink url="&blfs-wiki;/cogl"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Cogl</title>
+
+    <para>
+      Install <application>Cogl</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/gtk-doc-rebuild.xml"/>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          libcogl-pango.so and libcogl.so
+       </seg>
+        <seg>
+         /usr/include/cogl and
+         /usr/share/cogl
+       </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libcogl-pango">
+        <term><filename class="libraryfile">libcogl-pango.so</filename></term>
+        <listitem>
+          <para>
+            is the <application>Pango</application> integration library
+            for <application>Cogl</application>.
+          </para>
+          <indexterm zone="cogl libcogl-pango">
+            <primary sortas="c-libcogl-pango">libcogl-pango.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libcogl">
+        <term><filename class="libraryfile">libcogl.so</filename></term>
+        <listitem>
+          <para>
+            is an object oriented GL/GLES Abstraction/Utility Layer library.
+          </para>
+          <indexterm zone="cogl libcogl">
+            <primary sortas="c-libcogl">libcogl.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

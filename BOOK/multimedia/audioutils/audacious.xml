@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY audacious-download-http
+    "http://distfiles.audacious-media-player.org/audacious-&audacious-version;.tar.bz2">
+  <!ENTITY audacious-download-ftp         " ">
+  <!ENTITY audacious-md5sum               "21a72e085d1b26341eab20e1dd7257d8">
+  <!ENTITY audacious-size                 "464 KB">
+  <!ENTITY audacious-buildsize            "11 MB">
+  <!ENTITY audacious-time                 "0.2 SBU">
+  <!ENTITY audacious-plugins-download
+    "http://distfiles.audacious-media-player.org/audacious-plugins-&audacious-plugins-version;.tar.bz2">
+  <!ENTITY audacious-plugins-md5sum       "729eba666e2888f7fce73224bc30bd82">
+  <!ENTITY audacious-plugins-size         "1.6 MB">
+  <!ENTITY audacious-plugins-buildsize    "39 MB">
+  <!ENTITY audacious-plugins-time         "0.7 SBU">
+
+]>
+
+<sect1 id="audacious" xreflabel="Audacious-&audacious-version;">
+  <?dbhtml filename="audacious.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Audacious-&audacious-version;</title>
+
+  <indexterm zone="audacious">
+    <primary sortas="a-Audacious">Audacious</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Audacious</title>
+
+    <para>
+      <application>Audacious</application> is a <application>Gtk+</application>
+      audio player.
+    </para>
+
+    &lfs72_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&audacious-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&audacious-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &audacious-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &audacious-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &audacious-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &audacious-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+    <title>Required</title>
+      <listitem>
+        <para>
+          Plugins: <ulink url="&audacious-plugins-download;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Plugins Md5 sum: &audacious-plugins-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Plugins Size: &audacious-plugins-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated Plugins disk space required: &audacious-plugins-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated Plugins build time: &audacious-plugins-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Audacious Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="gtk2"/> or
+      <xref linkend="gtk3"/>
+      (if both are installed configure defaults to using Gtk+ 3).
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="optional">
+      <xref linkend="dbus"/> and
+      <xref linkend="alsa"/>.
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="pcre"/> or
+      <ulink url="http://www.geocities.jp/kosako3/oniguruma/">Oniguruma</ulink>,
+      <xref linkend='libsamplerate'/>,
+      <ulink url="http://www.atheme.org/project/libguess">libguess</ulink> and
+      <xref linkend="doxygen"/>.
+    </para>
+
+
+    <bridgehead renderas="sect4">Optional (for Plugins)</bridgehead>
+    <para role="optional">
+      <xref linkend="curl"/>,
+      <xref linkend="neon"/> (for online mpg3 and ogg radio),
+      <xref linkend="lame"/>,
+      <xref linkend="flac"/>,
+      <xref linkend="libvorbis"/>,
+      <xref linkend="faad2"/>,
+      <xref linkend="ffmpeg"/>,
+      <xref linkend="sdl"/>,
+      <xref linkend="mpg123"/>,
+      <xref linkend="libnotify"/>,
+      <xref linkend='pulseaudio'/>,
+      <ulink url="http://adplug.sourceforge.net/">AdPlug</ulink>,
+      <ulink url="http://www.gnu.org/software/libcdio/">libcdio</ulink>,
+      <ulink url="http://sourceforge.net/projects/libmms">libmms</ulink>,
+      <xref linkend="libsndfile"/>,
+      <ulink url="http://jackit.sourceforge.net/">JACK</ulink>,
+      <ulink url="http://roaraudio.keep-cool.org/">libroar</ulink>,
+      <ulink url="http://sourceforge.net/apps/trac/fluidsynth/">FluidSynth</ulink>,
+      <ulink url="http://libmtp.sourceforge.net/">libmtp</ulink>,
+      <ulink url="http://sourceforge.net/projects/libcue/">libcue</ulink>,
+      <ulink url="http://sourceforge.net/projects/bs2b/">The Bauer
+      stereophonic-to-binaural DSP (bs2b) library</ulink>,
+      <ulink url="http://sourceforge.net/projects/libbinio/">libbinio</ulink>, and
+      <ulink url="http://www.wavpack.com/">WavPack</ulink>.
+    </para>
+
+    <para condition="html" role="usernotes">
+      User Notes: <ulink url="&blfs-wiki;/audacious"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Audacious</title>
+
+    <para>
+      Install <application>Audacious</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>TPUT=/bin/true ./configure --prefix=/usr LIBS=-lgmodule-2.0 &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Audacious Plugins</title>
+
+    <note><para>If <application>Xorg</application> is not installed in 
+    <filename class='directory'>/usr</filename>, tell the linker 
+    where to find it:</para>
+
+<screen><userinput>export LIBRARY_PATH=$XORG_PREFIX/lib</userinput></screen>
+    </note>
+
+    <para>
+      Install the required plugins package by unpacking the tarball, changing
+      into the newly created directory, and issuing the following
+      commands:
+    </para>
+
+<screen><userinput>TPUT=/bin/true ./configure --prefix=/usr LIBS=-lgmodule-2.0 &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>TPUT=/bin/true</parameter>: the default is for
+      <command>make</command> to output text in color. This is fine if you're
+      building in a terminal, but if you script the build process and pipe the
+      output from <command>make</command> to a log file then the control
+      characters used to color the text can make the logfile unreadable. This
+      option stops it coloring the text.
+    </para>
+
+    <para>
+      <parameter>LIBS=-lgmodule-2.0</parameter>: this parameter is needed to
+      ensure that it links correctly to
+      <filename class="libraryfile">libgmodule-2.0.so</filename>.
+    </para>
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Audacious</title>
+
+    <para>
+      If you prefer the old, smaller, Winamp/XMMS interface click on View&gt;
+      Interface&gt; Winamp Classic Interface
+    </para>
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>audacious and audtool</seg>
+        <seg>
+          libaudacious.so,
+          libaudclient.so,
+          libaudgui.so and
+          numerous Container, Effect, General, Input, Output, Transport and
+          Visualization plugin modules (exactly what gets installed depends on
+          the dependencies you installed first).</seg>
+        <seg>
+          /usr/include/audacious,
+          /usr/include/libaudcore,
+          /usr/include/libaudgui,
+          /usr/lib/audacious and
+          /usr/share/audacious.
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="audacious-prog">
+        <term><command>audacious</command></term>
+        <listitem>
+          <para>
+            is a Gtk2 port of <application>XMMS</application> based on the
+            <application>Beep Media Player</application>.
+          </para>
+          <indexterm zone="audacious audacious-prog">
+            <primary sortas="b-audacious">audacious</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="audtool">
+        <term><command>audtool</command></term>
+        <listitem>
+          <para>
+            is a small tool to modify the behavior of a running
+            <command>audacious</command> instance.
+          </para>
+          <indexterm zone="audacious audtool">
+            <primary sortas="b-audtool">audtool</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libaudacious">
+        <term><filename class='libraryfile'>libaudacious.so</filename></term>
+        <listitem>
+          <para>
+            contains functions that are used by <command>audacious</command> to
+            render its graphical interface.
+          </para>
+          <indexterm zone="audacious libaudacious">
+            <primary sortas="c-libaudacious">libaudacious.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+<!-- Who knows what they do?
+      <varlistentry id="libaudclient">
+        <term><filename class='libraryfile'>libaudclient.so</filename></term>
+        <listitem>
+          <para>
+            contains functions that .....
+          </para>
+          <indexterm zone="audacious libaudclient">
+            <primary sortas="c-libaudclient">libaudclient.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libaudgui">
+        <term><filename class='libraryfile'>libaudgui.so</filename></term>
+        <listitem>
+          <para>
+            contains functions that .....
+          </para>
+          <indexterm zone="audacious libaudgui">
+            <primary sortas="c-libaudgui">libaudgui.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+-->
+    </variablelist>
+  </sect2>
+</sect1>
