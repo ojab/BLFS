@@ -31,19 +31,19 @@
 
 case "$1" in
    start)
-      log_info_msg "Starting Apache daemon..."
+      log_info_msg "Starting Apache HTTP daemon..."
       start_daemon /usr/sbin/apachectl -k start
       evaluate_retval
       ;;
 
    stop)
-      log_info_msg "Stopping Apache daemon..."
+      log_info_msg "Stopping Apache HTTP daemon..."
       start_daemon /usr/sbin/apachectl -k stop
       evaluate_retval
       ;;
 
    restart)
-      log_info_msg "Restarting Apache daemon..."
+      log_info_msg "Restarting Apache HTTP daemon..."
       start_daemon /usr/sbin/apachectl -k restart
       evaluate_retval
       ;;
