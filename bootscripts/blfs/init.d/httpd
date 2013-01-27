@@ -32,6 +32,7 @@
 case "$1" in
    start)
       log_info_msg "Starting Apache HTTP daemon..."
+      mkdir -p /var/run/httpd
       start_daemon /usr/sbin/apachectl -k start
       evaluate_retval
       ;;
