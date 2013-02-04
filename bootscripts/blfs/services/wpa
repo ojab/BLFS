@@ -30,7 +30,7 @@ case "$2" in
 
       mkdir -p /run/wpa_supplicant
 
-      /sbin/wpa_supplicant -q -B -Dnl80211,wext -P/run/wpa_supplicant/$1.pid -C/run/wpa_supplicant -c/etc/sysconfig/wpa_supplicant-$1.conf -i$1
+      /sbin/wpa_supplicant -q -B -Dnl80211,wext -P/run/wpa_supplicant/$1.pid -C/run/wpa_supplicant -c/etc/sysconfig/wpa_supplicant-$1.conf -i$1 ${WPA_ARGS}
 
       if [ "$?" != "0" ]; then
         log_failure_msg2
