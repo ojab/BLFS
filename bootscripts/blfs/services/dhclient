@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Begin services/dhclient
 
 # Origianlly based upon lfs-bootscripts-1.12 $NETWORK_DEVICES/if{down,up}
@@ -31,9 +31,15 @@ is_true()
 
 case "$2" in
    up)
-      log_info_msg "\nStarting dhclient on the $1 interface..."
 
-      exec /sbin/dhclient -lf /var/lib/dhclient/dhclient-$1.leases -pf /var/run/dhclient-$1.pid $DHCP_START $1
+     if [ -e /run/dhclient-$1.pid ]; then
+        log_warning_msg "\n dhclient appears to be running on $1"
+        exit 0
+     fi
+
+      log_info_msg "\n Starting dhclient on the $1 interface..."
+
+      /sbin/dhclient -lf /var/lib/dhclient/dhclient-$1.leases -pf /run/dhclient-$1.pid $DHCP_START $1
 
       if [ "$?" != "0" ]; then
         log_failure_msg2
@@ -77,9 +83,15 @@ case "$2" in
    ;;
 
    down)
-      log_info_msg "Stopping dhclient on the $1 interface..."
+      if [ ! -e /run/dhclient-$1.pid ]; then
+         log_warning_msg "dhclient doesn't appear to be running on $1"
+         exit 0
+      fi
 
-      exec /sbin/dhclient -r -lf /var/lib/dhclient/dhclient-$1.leases -pf /var/run/dhclient-$1.pid $DHCP_STOP $1
+      log_info_msg "\n Stopping dhclient on the $1 interface..."
+
+      /sbin/dhclient -r -lf /var/lib/dhclient/dhclient-$1.leases -pf /run/dhclient-$1.pid $DHCP_STOP $1
+      rm -f /run/dhclient-$1.pid
       evaluate_retval
    ;;
 
