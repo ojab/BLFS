@@ -1,3 +1,7 @@
+2013-02-04 Armin K. <krejzi@email.com>
+   * Added network service for wpa_supplicant
+   * Minor modifications to dhclient network service
+
 2012-08-26 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Restore winbindd script
 

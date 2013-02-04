@@ -37,6 +37,9 @@ install-service-pppoe: create-service-dir
 	install -d -m ${DIRMODE} ${EXTDIR}/ppp/peers
 	install -m ${CONFMODE} blfs/ppp/pppoe ${EXTDIR}/ppp/peers
 
+install-service-wpa: create-service-dir
+	install -m ${MODE} blfs/services/wpa ${LIBDIR}
+
 install-alsa: create-dirs
 	install -m ${MODE} blfs/init.d/alsa       ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/alsa ${EXTDIR}/rc.d/rc0.d/K35alsa
