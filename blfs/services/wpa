@@ -12,12 +12,20 @@
 . /lib/lsb/init-functions
 . $IFCONFIG
 
+PIDFILE=/run/wpa_supplicant/$1.pid
+CONTROL_IFACE=/run/wpa_supplicant/$1
+
 case "$2" in
    up)
 
-      if [ -e /run/wpa_supplicant/$1.pid ]; then
-         log_warning_msg "\n wpa_supplicant already running on $1."
-         exit 0
+      if [ -e ${PIDFILE} ]; then
+         ps $(cat ${PIDFILE}) | grep wpa_supplicant >/dev/null
+         if [ "$?" = "0" ]; then
+            log_warning_msg "\n wpa_supplicant already running on $1."
+            exit 0
+         else
+            rm ${PIDFILE}
+         fi
       fi
 
       if [ ! -e /etc/sysconfig/wpa_supplicant-$1.conf ]; then
@@ -30,7 +38,7 @@ case "$2" in
 
       mkdir -p /run/wpa_supplicant
 
-      /sbin/wpa_supplicant -q -B -Dnl80211,wext -P/run/wpa_supplicant/$1.pid -C/run/wpa_supplicant -c/etc/sysconfig/wpa_supplicant-$1.conf -i$1 ${WPA_ARGS}
+      /sbin/wpa_supplicant -q -B -Dnl80211,wext -P${PIDFILE} -C/run/wpa_supplicant -c/etc/sysconfig/wpa_supplicant-$1.conf -i$1 ${WPA_ARGS}
 
       if [ "$?" != "0" ]; then
         log_failure_msg2
@@ -61,9 +69,9 @@ case "$2" in
 
       log_info_msg "\n Stopping wpa_supplicant on the $1 interface..."
 
-      if [ -e /run/wpa_supplicant/$1.pid ]; then
-         kill -9 $(cat /run/wpa_supplicant/$1.pid)
-         rm -f /run/wpa_supplicant/$1.pid /run/wpa_supplicant/$1
+      if [ -e ${PIDFILE} ]; then
+         kill -9 $(cat ${PIDFILE})
+         rm -f ${PIDFILE} ${CONTROL_IFACE}
          evaluate_retval
       else
          log_warning_msg "\n wpa_supplicant already stopped on $1"
