@@ -3,7 +3,7 @@
 ########################################################################
 # Begin bind
 #
-# Description : Start Network Time Protocol daemon
+# Description : Start Berkeley Internet Name Daemon
 #
 # Author      : DJ Lucas - dj@linuxfromscratch.org
 #               Bruce Dubbs - bdubbs@linuxfromscratch.org
