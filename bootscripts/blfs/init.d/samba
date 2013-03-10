@@ -22,6 +22,8 @@
 
 case "$1" in
    start)
+      mkdir -p /run/samba
+
       log_info_msg "Starting nmbd..."
       start_daemon /usr/sbin/nmbd -D
       evaluate_retval
