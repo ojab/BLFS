@@ -35,8 +35,8 @@ case "$1" in
       log_info_msg "Starting MySQL daemon..."
 
       # Make sure the mysql user can create a socket
-      mkdir -p /run/mysql
-      chown mysql.mysql /run/mysql
+      mkdir -p /run/mysqld
+      chown mysql.mysql /run/mysqld
 
       if [ -f "$PIDFILE" ]; then
          if /bin/ps --pid `cat $PIDFILE` | grep mysqld >/dev/null; then
