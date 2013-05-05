@@ -34,15 +34,15 @@ case "${1}" in
    start)
 
       if [ ! -d /var/run/openldap ]; then
-         install -d -o root -g root -m 755 /var/run/openldap
+         install -d -o ldap -g ldap -m 750 /var/run/openldap
       fi
 
       log_info_msg "Starting OpenLDAP"
 
       if [ -z "$SLAPD_SERVICES" ]; then
-         start_daemon /usr/sbin/slapd $SLAPD_OPTIONS
+         start_daemon /usr/sbin/slapd -u ldap -g ldap $SLAPD_OPTIONS
       else
-         start_daemon /usr/sbin/slapd -h "$SLAPD_SERVICES" $SLAPD_OPTIONS
+         start_daemon /usr/sbin/slapd -u ldap -g ldap -h "$SLAPD_SERVICES" $SLAPD_OPTIONS
       fi
       ;;
 
