@@ -14,8 +14,8 @@
 # Only one option may be used at a time. See the saslauthd man page
 # for more information.
 #
-# Example: MECHANISMS="pam"
-MECHANISMS="pam"
+# Example: MECHANISMS="shadow"
+MECHANISMS="shadow"
 
 # Additional options for this mechanism. (default: none)
 # See the saslauthd man page for information about mech-specific options.
