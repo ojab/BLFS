@@ -8,5 +8,3 @@ PIDFile=/run/samba/smbd.pid
 ExecStart=/usr/sbin/smbd -F $SMBD_OPTS
 ExecReload=/bin/kill -HUP $MAINPID
 StandardInput=socket
-
-# rename to smbd@.service
