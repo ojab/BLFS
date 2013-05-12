@@ -3,6 +3,3 @@ NMBD_OPTS=
 
 # Additional options to pass to smbd command line
 SMBD_OPTS=
-
-# Additional options to pass to winbindd command line
-WINBINDD_OPTS=

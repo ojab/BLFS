@@ -5,5 +5,3 @@ Description=SSH Per-Connection Server
 ExecStart=/usr/sbin/sshd -i
 StandardInput=socket
 StandardError=syslog
-
-# Rename to sshd@.service

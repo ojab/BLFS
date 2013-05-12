@@ -5,5 +5,3 @@ After=local-fs.target
 [Service]
 ExecStart=/usr/sbin/swat
 StandardInput=socket
-
-# Rename to swat@.service
