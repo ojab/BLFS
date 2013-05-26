@@ -33,7 +33,7 @@
     url="http://svnbook.red-bean.com/en/1.2/svn.ref.svn.c.checkout.html">
     <command>svn checkout</command></ulink> or <command>svn co</command>.
     This command is used to pull an SVN tree such as
-    <userinput>svn://linuxfromscratch.org/BLFS/trunk/BOOK</userinput> (the
+    <userinput>svn://svn.linuxfromscratch.org/BLFS/trunk/BOOK</userinput> (the
     BLFS Development book) from the server.  You should only need to do this
     once. If the directory structure is changed (as is sometimes necessary),
     you <emphasis>may</emphasis> occasionally need to delete your local sand

@@ -30,12 +30,12 @@
   <application>Subversion</application> repository where the book itself is stored.
   All of these services are provided by the server
   <emphasis>linuxfromscratch.org</emphasis> also known as
-  <emphasis>quantum.linuxfromscratch.org</emphasis>.  This single server provides
+  <emphasis>higgs.linuxfromscratch.org</emphasis>.  This single server provides
   mailing lists, web hosting, <application>Subversion</application> hosting, ftp
   hosting, the Trac system, and basically everything used to work on the BLFS
   project.</para>
 
-  <para>Anyone can subscribe to any of the mailing lists provided by quantum.
+  <para>Anyone can subscribe to any of the mailing lists provided by higgs.
   You can find a good description of the mailing lists at <ulink
   url="http://www.linuxfromscratch.org/mail.html"/>.</para>
 

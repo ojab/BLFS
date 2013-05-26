@@ -51,7 +51,7 @@
     editors have commit privileges to this repository. To check out the patch
     tree, start in an empty directory and run:</para>
 
-<screen><userinput>svn co svn+ssh://linuxfromscratch.org/patches/trunk/ LFS-Patches</userinput></screen>
+<screen><userinput>svn co svn+ssh://svn.linuxfromscratch.org/patches/trunk LFS-Patches</userinput></screen>
 
     <para>and then use normal svn procedures for updating/adding patches.</para>
 
