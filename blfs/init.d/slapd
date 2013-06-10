@@ -34,7 +34,7 @@ case "${1}" in
    start)
 
       if [ ! -d /var/run/openldap ]; then
-         install -d -o ldap -g ldap -m 750 /var/run/openldap
+         install -d -o ldap -g ldap -m 755 /var/run/openldap
       fi
 
       log_info_msg "Starting OpenLDAP"
