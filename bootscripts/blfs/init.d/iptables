@@ -1,6 +1,6 @@
 #!/bin/sh
 ########################################################################
-# Begin nfs-client
+# Begin iptables
 #
 # Description : Start iptables
 #
@@ -81,3 +81,4 @@ case "$1" in
 esac
 
 # End /etc/init.d/iptables
+
