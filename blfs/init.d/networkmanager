@@ -35,11 +35,13 @@ case "${1}" in
 
       log_info_msg "Starting network connection manager NetworkManager"
       start_daemon /usr/sbin/NetworkManager
+      evaluate_retval
       ;;
 
    stop)
       log_info_msg "Stopping network connection manager NetworkManager"
       killproc /usr/sbin/NetworkManager
+      evaluate_retval
       ;;
 
    restart)

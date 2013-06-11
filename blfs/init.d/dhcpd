@@ -43,6 +43,7 @@ case "$1" in
 
       log_info_msg "Starting ISC DHCP Server dhcpd"
       start_daemon /usr/sbin/dhcpd -q $INTERFACES $OPTIONS
+      evaluate_retval
 
       ;;
 
@@ -50,6 +51,7 @@ case "$1" in
 
       log_info_msg "Stopping ISC DHCP Server dhcpd"
       killproc /usr/sbin/dhcpd
+      evaluate_retval
 
       ;;
 

@@ -44,11 +44,13 @@ case "${1}" in
       else
          start_daemon /usr/sbin/slapd -u ldap -g ldap -h "$SLAPD_SERVICES" $SLAPD_OPTIONS
       fi
+      evaluate_retval
       ;;
 
    stop)
       log_info_msg "Stopping OpenLDAP"
       killproc /usr/sbin/slapd
+      evaluate_retval
       ;;
 
    restart)
