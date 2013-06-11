@@ -55,11 +55,13 @@ case "${1}" in
 
       log_info_msg "Starting SASL Authentication Daemon saslauthd"
       start_daemon /usr/sbin/saslauthd -a $AUTHMECH $OPTIONS
+      evaluate_retval
       ;;
 
    stop)
       log_info_msg "Stopping SASL Authentication Daemon saslauthd"
       killproc /usr/sbin/saslauthd
+      evaluate_retval
       ;;
 
    restart)
