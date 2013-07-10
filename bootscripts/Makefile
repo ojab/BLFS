@@ -40,6 +40,16 @@ install-service-pppoe: create-service-dir
 install-service-wpa: create-service-dir
 	install -m ${MODE} blfs/services/wpa ${LIBDIR}
 
+install-acpid: create-dirs
+	install -m ${MODE} blfs/init.d/acpid       ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/acpid ${EXTDIR}/rc.d/rc0.d/K32acpid
+	ln -sf  ../init.d/acpid ${EXTDIR}/rc.d/rc1.d/K32acpid
+	ln -sf  ../init.d/acpid ${EXTDIR}/rc.d/rc2.d/S18acpid
+	ln -sf  ../init.d/acpid ${EXTDIR}/rc.d/rc3.d/S18acpid
+	ln -sf  ../init.d/acpid ${EXTDIR}/rc.d/rc4.d/S18acpid
+	ln -sf  ../init.d/acpid ${EXTDIR}/rc.d/rc5.d/S18acpid
+	ln -sf  ../init.d/acpid ${EXTDIR}/rc.d/rc6.d/K32acpid
+
 install-alsa: create-dirs
 	install -m ${MODE} blfs/init.d/alsa       ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/alsa ${EXTDIR}/rc.d/rc0.d/K35alsa
@@ -502,6 +512,16 @@ uninstall-atd:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S68atd
 	rm -f ${EXTDIR}/rc.d/rc6.d/K29atd
 
+uninstall-acpid:
+	rm -f ${EXTDIR}/rc.d/init.d/acpid
+	rm -f ${EXTDIR}/rc.d/rc0.d/K32acpid
+	rm -f ${EXTDIR}/rc.d/rc1.d/K32acpid
+	rm -f ${EXTDIR}/rc.d/rc2.d/S18acpid
+	rm -f ${EXTDIR}/rc.d/rc3.d/S18acpid
+	rm -f ${EXTDIR}/rc.d/rc4.d/S18acpid
+	rm -f ${EXTDIR}/rc.d/rc5.d/S18acpid
+	rm -f ${EXTDIR}/rc.d/rc6.d/K32acpid
+
 uninstall-alsa:
 	rm -f ${EXTDIR}/rc.d/init.d/alsa
 	rm -f ${EXTDIR}/rc.d/rc0.d/K35alsa
@@ -882,6 +902,7 @@ uninstall-xinetd:
 	install-service-ipx \
 	install-service-pppoe \
 	install-atd \
+	install-acpid \
 	install-alsa \
 	install-avahi \
 	install-httpd \
@@ -922,6 +943,7 @@ uninstall-xinetd:
 	install-winbindd \
 	install-xinetd \
 	uninstall-atd \
+	uninstall-acpid \
 	uninstall-alsa \
 	uninstall-avahi \
 	uninstall-httpd \
