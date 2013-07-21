@@ -462,6 +462,16 @@ install-sysstat: create-dirs
 	install -m ${MODE} blfs/init.d/sysstat    ${EXTDIR}/rc.d/init.d/
 	ln -sf ../init.d/sysstat ${EXTDIR}/rc.d/rcS.d/S85sysstat
 
+install-unbound: create-dirs
+	install -m ${MODE} blfs/init.d/unbound       ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/unbound ${EXTDIR}/rc.d/rc0.d/K79unbound
+	ln -sf  ../init.d/unbound ${EXTDIR}/rc.d/rc1.d/K79unbound
+	ln -sf  ../init.d/unbound ${EXTDIR}/rc.d/rc2.d/K79unbound
+	ln -sf  ../init.d/unbound ${EXTDIR}/rc.d/rc3.d/S21unbound
+	ln -sf  ../init.d/unbound ${EXTDIR}/rc.d/rc4.d/S21unbound
+	ln -sf  ../init.d/unbound ${EXTDIR}/rc.d/rc5.d/S21unbound
+	ln -sf  ../init.d/unbound ${EXTDIR}/rc.d/rc6.d/K79unbound
+
 install-virtuoso: create-dirs
 	install -m ${MODE} blfs/init.d/virtuoso   ${EXTDIR}/rc.d/init.d/
 	ln -sf ../init.d/virtuoso ${EXTDIR}/rc.d/rc0.d/K40virtuoso
@@ -856,6 +866,16 @@ uninstall-sysstat:
 	rm -f ${EXTDIR}/rc.d/init.d/sysstat
 	rm -f ${EXTDIR}/rc.d/rcS.d/S85sysstat
 
+uninstall-unbound:
+	rm -f ${EXTDIR}/rc.d/init.d/unbound
+	rm -f ${EXTDIR}/rc.d/rc0.d/K79unbound
+	rm -f ${EXTDIR}/rc.d/rc1.d/K79unbound
+	rm -f ${EXTDIR}/rc.d/rc2.d/K79unbound
+	rm -f ${EXTDIR}/rc.d/rc3.d/S21unbound
+	rm -f ${EXTDIR}/rc.d/rc4.d/S21unbound
+	rm -f ${EXTDIR}/rc.d/rc5.d/S21unbound
+	rm -f ${EXTDIR}/rc.d/rc6.d/K79unbound
+
 uninstall-virtuoso:
 	rm -f ${EXTDIR}/rc.d/init.d/virtuoso
 	rm -f ${EXTDIR}/rc.d/rc0.d/K40virtuoso
@@ -939,6 +959,7 @@ uninstall-xinetd:
 	install-svn \
 	install-sysstat \
 	install-vsftpd \
+	install-unbound \
 	install-virtuoso \
 	install-winbindd \
 	install-xinetd \
@@ -979,6 +1000,7 @@ uninstall-xinetd:
 	uninstall-stunnel \
 	uninstall-svn \
 	uninstall-sysstat \
+	uninstall-unbound \
 	uninstall-virtuoso \
 	uninstall-vsftpd   \
 	uninstall-winbindd \
