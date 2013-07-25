@@ -55,6 +55,7 @@ install-alsa: create-dirs
 	ln -sf  ../init.d/alsa ${EXTDIR}/rc.d/rc0.d/K35alsa
 	ln -sf  ../init.d/alsa ${EXTDIR}/rc.d/rc1.d/K35alsa
 	ln -sf  ../init.d/alsa ${EXTDIR}/rc.d/rc6.d/K35alsa
+	ln -sf  ../init.d/alsa ${EXTDIR}/rc.d/rcS.d/S60alsa
 
 install-httpd: create-dirs
 	install -m ${MODE} blfs/init.d/httpd     ${EXTDIR}/rc.d/init.d/
@@ -537,6 +538,7 @@ uninstall-alsa:
 	rm -f ${EXTDIR}/rc.d/rc0.d/K35alsa
 	rm -f ${EXTDIR}/rc.d/rc1.d/K35alsa
 	rm -f ${EXTDIR}/rc.d/rc6.d/K35alsa
+	rm -f ${EXTDIR}/rc.d/rcS.d/S60alsa
 
 uninstall-httpd:
 	rm -f ${EXTDIR}/rc.d/init.d/httpd

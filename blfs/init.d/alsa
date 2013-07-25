@@ -1,12 +1,12 @@
 #!/bin/sh
 ########################################################################
-# Begin sshd
+# Begin alsa
 #
-# Description : Store alsa settings at shutdown
+# Description : Restore and store ALSA settings
 #
 # Author      : Bruce Dubbs - bdubbs@linuxfromscratch.org
 #
-# Version     : LFS 7.0
+# Version     : BLFS SVN
 #
 ########################################################################
 
@@ -16,11 +16,12 @@
 # Should-Start:
 # Required-Stop:       sendsignals
 # Should-Stop:
-# Default-Start:       
+# Default-Start:       S
 # Default-Stop:        0 1 6
-# Short-Description:   Stores alsa mixer settings.
-# Description:         Stores mixer settings in the default location: /etc/asound.state.
-# X-LFS-Provided-By:   LFS
+# Short-Description:   Restore and store ALSA mixer settings.
+# Description:         Restores and stores ALSA mixer settings in the default
+#                      location: /var/lib/alsa/asound.state.
+# X-LFS-Provided-By:   BLFS
 ### END INIT INFO
 
 . /lib/lsb/init-functions
@@ -29,6 +30,12 @@
 #$Date$
 
 case "$1" in
+   start)
+      log_info_msg "Starting ALSA...    Restoring volumes..."
+      /usr/sbin/alsactl restore
+      evaluate_retval
+      ;;
+
    stop)
       log_info_msg "Stopping ALSA...    Saving volumes..."
       /usr/sbin/alsactl store
@@ -36,9 +43,9 @@ case "$1" in
       ;;
 
    *)
-      echo "Usage: $0 stop"
+      echo "Usage: $0 {start|stop}"
       exit 1
       ;;
 esac
 
-# End /etc/init.d/alsa
+# End alsa
