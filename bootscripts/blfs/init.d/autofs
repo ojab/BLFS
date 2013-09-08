@@ -26,7 +26,7 @@
 #
 # Location of the automount daemon and the init directory
 #
-DAEMON=/usr/sbin/automount
+DAEMON=/sbin/automount
 prog=`basename $DAEMON`
 MODULE="autofs4"
 DEVICE="autofs"

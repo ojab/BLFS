@@ -1,3 +1,6 @@
+2013-09-08 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Update location of autostart in autofs script
+
 2013-07-25 Igor Živković <contact@igor-zivkovic.from.hr>
    * Added restore state to alsa bootscript
 
