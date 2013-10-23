@@ -1,3 +1,6 @@
+2013-10-23 Igor Živković <contact@igor-zivkovic.from.hr>
+   * Add dovecot init script
+
 2013-09-08 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Update location of autostart in autofs script
 

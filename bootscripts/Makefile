@@ -151,6 +151,16 @@ install-dbus: create-dirs
 	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc5.d/S29dbus
 	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc6.d/K30dbus
 
+install-dovecot: create-dirs
+	install -m ${MODE} blfs/init.d/dovecot       ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/dovecot ${EXTDIR}/rc.d/rc0.d/K78dovecot
+	ln -sf  ../init.d/dovecot ${EXTDIR}/rc.d/rc1.d/K78dovecot
+	ln -sf  ../init.d/dovecot ${EXTDIR}/rc.d/rc2.d/K78dovecot
+	ln -sf  ../init.d/dovecot ${EXTDIR}/rc.d/rc3.d/S27dovecot
+	ln -sf  ../init.d/dovecot ${EXTDIR}/rc.d/rc4.d/S27dovecot
+	ln -sf  ../init.d/dovecot ${EXTDIR}/rc.d/rc5.d/S27dovecot
+	ln -sf  ../init.d/dovecot ${EXTDIR}/rc.d/rc6.d/K78dovecot
+
 install-wicd: create-dirs
 	install -m ${MODE} blfs/init.d/wicd ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc0.d/K20wicd
@@ -616,6 +626,16 @@ uninstall-dhcpd:
 	rm -f ${EXTDIR}/rc.d/rc4.d/S30dhcpd
 	rm -f ${EXTDIR}/rc.d/rc5.d/S30dhcpd
 	rm -f ${EXTDIR}/rc.d/rc6.d/K30dhcpd
+
+uninstall-dovecot:
+	rm -f ${EXTDIR}/rc.d/init.d/dovecot
+	rm -f ${EXTDIR}/rc.d/rc0.d/K78dovecot
+	rm -f ${EXTDIR}/rc.d/rc1.d/K78dovecot
+	rm -f ${EXTDIR}/rc.d/rc2.d/K78dovecot
+	rm -f ${EXTDIR}/rc.d/rc3.d/S27dovecot
+	rm -f ${EXTDIR}/rc.d/rc4.d/S27dovecot
+	rm -f ${EXTDIR}/rc.d/rc5.d/S27dovecot
+	rm -f ${EXTDIR}/rc.d/rc6.d/K78dovecot
 
 uninstall-exim:
 	rm -f ${EXTDIR}/rc.d/init.d/exim
