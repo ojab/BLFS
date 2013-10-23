@@ -953,6 +953,7 @@ uninstall-xinetd:
 	install-cups \
 	install-saslauthd \
 	install-dhcpd \
+	install-dovecot \
 	install-exim \
 	install-fcron \
 	install-gdm \
@@ -995,6 +996,7 @@ uninstall-xinetd:
 	uninstall-cups \
 	uninstall-saslauthd \
 	uninstall-dhcpd \
+	uninstall-dovecot \
 	uninstall-exim \
 	uninstall-fcron \
 	uninstall-gdm \
