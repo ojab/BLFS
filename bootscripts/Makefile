@@ -17,7 +17,6 @@ create-dirs:
 	install -d -m ${DIRMODE} ${EXTDIR}/sysconfig
 
 create-service-dir:
-	install -d -m ${DIRMODE} ${EXTDIR}/sysconfig/network-devices/services
 	install -d -m ${DIRMODE} ${LIBDIR}
 
 install-service-dhclient: create-service-dir
@@ -30,10 +29,10 @@ install-service-bridge: create-service-dir
 	install -m ${MODE} blfs/services/bridge  ${LIBDIR}
 
 install-service-ipx: create-service-dir
-	install -m ${MODE} blfs/sysconfig/network-devices/services/ipx      ${EXTDIR}/sysconfig/network-devices/services
+	install -m ${MODE} blfs/services/ipx ${LIBDIR}
 
 install-service-pppoe: create-service-dir
-	install -m ${MODE} blfs/sysconfig/network-devices/services/pppoe    ${EXTDIR}/sysconfig/network-devices/services
+	install -m ${MODE} blfs/services/pppoe  ${LIBDIR}
 	install -d -m ${DIRMODE} ${EXTDIR}/ppp/peers
 	install -m ${CONFMODE} blfs/ppp/pppoe ${EXTDIR}/ppp/peers
 
