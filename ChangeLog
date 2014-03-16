@@ -1,3 +1,6 @@
+2014-03-16 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Added haveged bootscript
+
 2013-10-23 Igor Živković <contact@igor-zivkovic.from.hr>
    * Add dovecot init script
 

@@ -221,6 +221,12 @@ install-gpm: create-dirs
 	ln -sf  ../init.d/gpm ${EXTDIR}/rc.d/rc5.d/S70gpm
 	ln -sf  ../init.d/gpm ${EXTDIR}/rc.d/rc6.d/K10gpm
 
+install-haveged: create-dirs
+	install -m ${MODE} blfs/init.d/haveged        ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/haveged ${EXTDIR}/rc.d/rc3.d/S21haveged
+	ln -sf  ../init.d/haveged ${EXTDIR}/rc.d/rc4.d/S21haveged
+	ln -sf  ../init.d/haveged ${EXTDIR}/rc.d/rc5.d/S21haveged
+
 install-heimdal: create-dirs
 	install -m ${MODE} blfs/init.d/heimdal        ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/heimdal ${EXTDIR}/rc.d/rc0.d/K42heimdal
@@ -615,6 +621,16 @@ uninstall-saslauthd:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S24saslauthd
 	rm -f ${EXTDIR}/rc.d/rc6.d/K49saslauthd
 
+uninstall-dbus: 
+	rm -f ${EXTDIR}/rc.d/init.d/dbus
+	rm -f ${EXTDIR}/rc.d/rc0.d/K30dbus
+	rm -f ${EXTDIR}/rc.d/rc1.d/K30dbus
+	rm -f ${EXTDIR}/rc.d/rc2.d/S29dbus
+	rm -f ${EXTDIR}/rc.d/rc3.d/S29dbus
+	rm -f ${EXTDIR}/rc.d/rc4.d/S29dbus
+	rm -f ${EXTDIR}/rc.d/rc5.d/S29dbus
+	rm -f ${EXTDIR}/rc.d/rc6.d/K30dbus
+
 uninstall-dhcpd:
 	rm -f ${EXTDIR}/rc.d/init.d/dhcpd
 	rm -f ${EXTDIR}/sysconfig/dhcpd
@@ -675,6 +691,12 @@ uninstall-gpm:
 	rm -f ${EXTDIR}/rc.d/rc4.d/S70gpm
 	rm -f ${EXTDIR}/rc.d/rc5.d/S70gpm
 	rm -f ${EXTDIR}/rc.d/rc6.d/K10gpm
+
+uninstall-haveged:
+	rm -f ${EXTDIR}/rc.d/init.d/haveged
+	rm -f ${EXTDIR}/rc.d/rc3.d/S21haveged
+	rm -f ${EXTDIR}/rc.d/rc4.d/S21haveged
+	rm -f ${EXTDIR}/rc.d/rc5.d/S21haveged
 
 uninstall-heimdal:
 	rm -f ${EXTDIR}/rc.d/init.d/heimdal
@@ -762,7 +784,7 @@ uninstall-nfs-server:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S24nfs-server
 	rm -f ${EXTDIR}/rc.d/rc6.d/K48nfs-server
 
-uninstall-ntp:
+uninstall-ntpd:
 	rm -f ${EXTDIR}/rc.d/init.d/ntp
 	rm -f ${EXTDIR}/rc.d/rc0.d/K46ntp
 	rm -f ${EXTDIR}/rc.d/rc1.d/K46ntp
