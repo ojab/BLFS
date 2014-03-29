@@ -1,3 +1,6 @@
+2014-03-29 Pierre Labastie <pierre@linuxfromscratch.org>
+   * Added php-fpm bootscript
+
 2014-03-16 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Added haveged bootscript
 

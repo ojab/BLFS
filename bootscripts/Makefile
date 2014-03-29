@@ -66,6 +66,16 @@ install-httpd: create-dirs
 	ln -sf  ../init.d/httpd ${EXTDIR}/rc.d/rc5.d/S32httpd
 	ln -sf  ../init.d/httpd ${EXTDIR}/rc.d/rc6.d/K28httpd
 
+install-php: create-dirs
+	install -m ${MODE} blfs/init.d/php-fpm     ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/php-fpm ${EXTDIR}/rc.d/rc0.d/K28php-fpm
+	ln -sf  ../init.d/php-fpm ${EXTDIR}/rc.d/rc1.d/K28php-fpm
+	ln -sf  ../init.d/php-fpm ${EXTDIR}/rc.d/rc2.d/K28php-fpm
+	ln -sf  ../init.d/php-fpm ${EXTDIR}/rc.d/rc3.d/S32php-fpm
+	ln -sf  ../init.d/php-fpm ${EXTDIR}/rc.d/rc4.d/S32php-fpm
+	ln -sf  ../init.d/php-fpm ${EXTDIR}/rc.d/rc5.d/S32php-fpm
+	ln -sf  ../init.d/php-fpm ${EXTDIR}/rc.d/rc6.d/K28php-fpm
+
 install-autofs: create-dirs
 	install -m $(MODE) blfs/init.d/autofs    $(EXTDIR)/rc.d/init.d/
 	install -m $(CONFMODE) blfs/sysconfig/autofs.conf $(EXTDIR)/sysconfig/
@@ -565,6 +575,16 @@ uninstall-httpd:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S32httpd
 	rm -f ${EXTDIR}/rc.d/rc6.d/K28httpd
 
+uninstall-php:
+	rm -f ${EXTDIR}/rc.d/init.d/php-fpm
+	rm -f ${EXTDIR}/rc.d/rc0.d/K28php-fpm
+	rm -f ${EXTDIR}/rc.d/rc1.d/K28php-fpm
+	rm -f ${EXTDIR}/rc.d/rc2.d/K28php-fpm
+	rm -f ${EXTDIR}/rc.d/rc3.d/S32php-fpm
+	rm -f ${EXTDIR}/rc.d/rc4.d/S32php-fpm
+	rm -f ${EXTDIR}/rc.d/rc5.d/S32php-fpm
+	rm -f ${EXTDIR}/rc.d/rc6.d/K28php-fpm
+
 uninstall-autofs:
 	rm -f $(EXTDIR)/rc.d/init.d/autofs
 	rm -f $(EXTDIR)/rc.d/rcS.d/S52autofs
@@ -969,6 +989,7 @@ uninstall-xinetd:
 	install-alsa \
 	install-avahi \
 	install-httpd \
+	install-php \
 	install-bind \
 	install-bluetooth \
 	install-cups \
@@ -1012,6 +1033,7 @@ uninstall-xinetd:
 	uninstall-alsa \
 	uninstall-avahi \
 	uninstall-httpd \
+	uninstall-php \
 	uninstall-bind \
 	uninstall-bluetooth \
 	uninstall-cups \
