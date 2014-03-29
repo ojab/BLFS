@@ -113,7 +113,6 @@ install-bind: create-dirs
 
 install-bluetooth: create-dirs
 	install -m ${MODE} blfs/init.d/bluetooth ${EXTDIR}/rc.d/init.d/bluetooth
-	install -m ${CONFMODE} blfs/sysconfig/bluetooth ${EXTDIR}/sysconfig/bluetooth
 	ln -sf  ../init.d/bluetooth ${EXTDIR}/rc.d/rc0.d/K27bluetooth
 	ln -sf  ../init.d/bluetooth ${EXTDIR}/rc.d/rc1.d/K27bluetooth
 	ln -sf  ../init.d/bluetooth ${EXTDIR}/rc.d/rc2.d/S35bluetooth
@@ -611,7 +610,6 @@ uninstall-bind:
 
 uninstall-bluetooth:
 	rm -f ${EXTDIR}/rc.d/init.d/bluetooth
-	rm -f ${EXTDIR}/sysconfig/bluetooth
 	rm -f ${EXTDIR}/rc.d/rc0.d/K27bluetooth
 	rm -f ${EXTDIR}/rc.d/rc1.d/K27bluetooth
 	rm -f ${EXTDIR}/rc.d/rc2.d/S35bluetooth
