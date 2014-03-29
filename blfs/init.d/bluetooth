@@ -27,13 +27,13 @@
 case "${1}" in
    start)
       log_info_msg "Starting Bluetooth daemon bluetoothd"
-      start_daemon /usr/lib/bluetooth/bluetoothd
+      start_daemon /usr/libexec/bluetooth/bluetoothd
       evaluate_retval
       ;;
 
    stop)
       log_info_msg "Stopping Bluetooth daemon bluetoothd"
-      killproc /usr/lib/bluetooth/bluetoothd
+      killproc /usr/libexec/bluetooth/bluetoothd
       evaluate_retval
       ;;
 
@@ -44,7 +44,7 @@ case "${1}" in
       ;;
 
    status)
-      statusproc /usr/lib/bluetooth/bluetoothd
+      statusproc /usr/libexec/bluetooth/bluetoothd
       ;;
 
    *)
