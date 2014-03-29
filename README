@@ -2,7 +2,7 @@ blfs-bootscripts:
 
 This package contains the bootscripts that are mentioned in
 the BLFS BOOK. The scripts cannot be installed independently
-but needs to be installed in conjunction with a compatible
+but need to be installed in conjunction with a compatible
 lfs-bootscripts package. See the <lfs-bootscripts.version> file
 for compatibility information.
 
