@@ -4,16 +4,16 @@
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 
-  <!ENTITY kinit-download-http "&kf5-download-http;/kinit-&kf5-version;.tar.xz">
-  <!ENTITY kinit-download-ftp  "&kf5-download-ftp;/kinit-&kf5-version;.tar.xz">
-  <!ENTITY kinit-md5sum        "45fcb76799f85869ed4861957a4750a7">
-  <!ENTITY kinit-size          "2.7 MB">
-  <!ENTITY kinit-buildsize     "30 MB">
-  <!ENTITY kinit-time          "0.2 SBU">
+  <!ENTITY kinit5-download-http "&kf5-download-http;/kinit-&kf5-version;.tar.xz">
+  <!ENTITY kinit5-download-ftp  "&kf5-download-ftp;/kinit-&kf5-version;.tar.xz">
+  <!ENTITY kinit5-md5sum        "45fcb76799f85869ed4861957a4750a7">
+  <!ENTITY kinit5-size          "2.7 MB">
+  <!ENTITY kinit5-buildsize     "30 MB">
+  <!ENTITY kinit5-time          "0.2 SBU">
 ]>
 
-<sect1 id="kinit" xreflabel="KInit-&kf5-version;">
-  <?dbhtml filename="kinit.html"?>
+<sect1 id="kinit5" xreflabel="KInit-&kf5-version;">
+  <?dbhtml filename="kinit5.html"?>
 
   <sect1info>
     <othername>$LastChangedBy$</othername>
@@ -22,7 +22,7 @@
 
   <title>KInit-&kf5-version;</title>
 
-  <indexterm zone="kinit">
+  <indexterm zone="kinit5">
     <primary sortas="a-KInit">KInit</primary>
   </indexterm>
 
@@ -40,32 +40,32 @@
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&kinit-download-http;"/>
+          Download (HTTP): <ulink url="&kinit5-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&kinit-download-ftp;"/>
+          Download (FTP): <ulink url="&kinit5-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &kinit-md5sum;
+          Download MD5 sum: &kinit5-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &kinit-size;
+          Download size: &kinit5-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &kinit-buildsize;
+          Estimated disk space required: &kinit5-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &kinit-time;
+          Estimated build time: &kinit5-time;
         </para>
       </listitem>
     </itemizedlist>
@@ -78,7 +78,7 @@
     </para>
 
     <para condition="html" role="usernotes">
-      User Notes: <ulink url="&blfs-wiki;/kinit"/>
+      User Notes: <ulink url="&blfs-wiki;/kinit5"/>
     </para>
   </sect2>
 
@@ -126,7 +126,7 @@ make</userinput></screen>
       to get libraries to install to <filename
       class="directory">$KF5_PREFIX/lib</filename> instead of <filename
       class="directory">$KF5_PREFIX/lib64</filename> on a 64 bit system.
-    <para>
+    </para>
 
     <para>
       <parameter>-DBUILD_TESTING=OFF</parameter>: This switch is used to prevent

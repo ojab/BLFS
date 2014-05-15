@@ -130,7 +130,7 @@ make</userinput></screen>
 
     <para>
       <parameter>-DSYSCONF_INSTALL_DIR=/etc</parameter>: This switch is used
-      to set correct installation directory for <application>D-Bus<application>
+      to set correct installation directory for <application>D-Bus</application>
       policy files.
     </para>
 
@@ -139,7 +139,7 @@ make</userinput></screen>
       to get libraries to install to <filename
       class="directory">$KF5_PREFIX/lib</filename> instead of <filename
       class="directory">$KF5_PREFIX/lib64</filename> on a 64 bit system.
-    <para>
+    </para>
 
     <para>
       <parameter>-DBUILD_TESTING=OFF</parameter>: This switch is used to prevent

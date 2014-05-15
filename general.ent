@@ -614,11 +614,11 @@ export -f as_root</userinput></screen>
 
 <!-- KDE 5 -->
 <!ENTITY extra-cmake-modules-version  "0.0.13">
-<!ENTITY libdbusmenu-qt5-version      "0.9.3+14.04.20140314"
+<!ENTITY libdbusmenu-qt5-version      "0.9.3+14.04.20140314">
 <!ENTITY polkit-qt5-version           "0.103.0-9-gbac771e">
 <!ENTITY kf5-version                  "4.99.0">
-<!ENTITY kf5-download-http            "http://download.kde.org/unstable/frameworks/&kf-version;">
-<!ENTITY kf5-download-ftp             "ftp://ftp.kde.org/pub/kde/unstable/frameworks/&kf-version;">
+<!ENTITY kf5-download-http            "http://download.kde.org/unstable/frameworks/&kf5-version;">
+<!ENTITY kf5-download-ftp             "ftp://ftp.kde.org/pub/kde/unstable/frameworks/&kf5-version;">
 
 <!-- Part VIII -->
 <!-- Chapter 30 -->
