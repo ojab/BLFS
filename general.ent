@@ -612,6 +612,14 @@ export -f as_root</userinput></screen>
 <!ENTITY polkit-qt-version            "0.103.0">
 <!ENTITY polkit-kde-agent-version     "0.99.0">
 
+<!-- KDE 5 -->
+<!ENTITY extra-cmake-modules-version  "0.0.13">
+<!ENTITY libdbusmenu-qt5-version      "0.9.3+14.04.20140314"
+<!ENTITY polkit-qt5-version           "0.103.0-9-gbac771e">
+<!ENTITY kf5-version                  "4.99.0">
+<!ENTITY kf5-download-http            "http://download.kde.org/unstable/frameworks/&kf-version;">
+<!ENTITY kf5-download-ftp             "ftp://ftp.kde.org/pub/kde/unstable/frameworks/&kf-version;">
+
 <!-- Part VIII -->
 <!-- Chapter 30 -->
 <!-- Platform -->
