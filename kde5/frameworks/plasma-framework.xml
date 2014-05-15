@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY plasma-framework-download-http "&kf5-download-http;/plasma-framework-&kf5-version;.tar.xz">
+  <!ENTITY plasma-framework-download-ftp  "&kf5-download-ftp;/plasma-framework-&kf5-version;.tar.xz">
+  <!ENTITY plasma-framework-md5sum        "bb8077f5858643939bc002428cfcc338">
+  <!ENTITY plasma-framework-size          "4.1 MB">
+  <!ENTITY plasma-framework-buildsize     "31 MB">
+  <!ENTITY plasma-framework-time          "1.6 SBU">
+]>
+
+<sect1 id="plasma-framework" xreflabel="Plasma-Framework-&kf5-version;">
+  <?dbhtml filename="plasma-framework.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Plasma-Framework-&kf5-version;</title>
+
+  <indexterm zone="plasma-framework">
+    <primary sortas="a-Plasma-Framework">Plasma-Framework</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Plasma-Framework</title>
+
+    <para>
+      The <application>plasma-framework</application> package contains a library
+      that provides the foundations that can be used to build a primary user
+      interface.
+    </para>
+
+    &lfs75_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&plasma-framework-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&plasma-framework-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &plasma-framework-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &plasma-framework-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &plasma-framework-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &plasma-framework-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Plasma-Framework Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="kactivities5"/>,
+      <xref linkend="kdeclarative"/> and
+      <xref linkend="kio"/>
+    </para>
+
+    <para condition="html" role="usernotes">
+      User Notes: <ulink url="&blfs-wiki;/plasma-framework"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Plasma-Framework</title>
+
+    <para>
+      Install <application>Plasma-Framework</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>mkdir build &amp;&amp;
+cd    build &amp;&amp;
+
+cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
+      -DCMAKE_BUILD_TYPE=Release         \
+      -DLIB_INSTALL_DIR=lib              \
+      -DBUILD_TESTING=OFF                \
+      -DDBUS_INTERFACES_INSTALL_DIR=/usr/share/dbus-1/interfaces \
+      .. &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>-DCMAKE_BUILD_TYPE=Release</parameter>: This switch is used
+      to apply higher level of the compiler optimizations.
+    </para>
+
+    <para>
+      <parameter>-DLIB_INSTALL_DIR=lib</parameter>: This switch is used
+      to get libraries to install to <filename
+      class="directory">$KF5_PREFIX/lib</filename> instead of <filename
+      class="directory">$KF5_PREFIX/lib64</filename> on a 64 bit system.
+    <para>
+
+    <para>
+      <parameter>-DBUILD_TESTING=OFF</parameter>: This switch is used to prevent
+      building test programs and libraries that are of no use to an end user.
+    </para>
+
+    <para>
+      <parameter>-DDBUS_INTERFACES_INSTALL_DIR=/usr/share/dbus-1/interfaces</parameter>:
+      This switch is used to ensure that <application>D-Bus</application> interfaces
+      files are installed in the correct location.
+    </para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          dpitest and plasmapkg2
+        </seg>
+        <seg>
+          libKF5PlasmaQuick.so and libKF5Plasma.so
+        </seg>
+        <seg>
+          $KF5_PREFIX/include/KF5/{plasma,Plasma},
+          $KF5_PREFIX/lib/cmake/{KF5Plasma,KF5PlasmaQuick},
+          $KF5_PREFIX/lib/platformqml/touch/org/kde/plasma,
+          $KF5_PREFIX/lib/qml/org/kde/plasma and
+          $KF5_PREFIX/share/plasma
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+</sect1>
