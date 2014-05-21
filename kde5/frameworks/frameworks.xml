@@ -80,5 +80,7 @@ $Date$
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kded.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kdewebkit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ktexteditor.xml"/>
+  <!-- -->
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kdesignerplugin.xml"/>
 
 </chapter>
