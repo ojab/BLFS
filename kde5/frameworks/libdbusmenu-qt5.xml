@@ -121,10 +121,8 @@ make</userinput></screen>
   <sect2 role="commands">
     <title>Command Explanations</title>
 
-    <para>
-      <parameter>-DCMAKE_BUILD_TYPE=Release</parameter>: This switch is used
-      to apply higher level of the compiler optimizations.
-    </para>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/cmake-release.xml"/>
 
     <para>
       <parameter>-DCMAKE_INSTALL_LIBDIR=lib</parameter>: This switch is used
