@@ -6,7 +6,6 @@
      $Date$ -->
 
     <para>
-      <parameter>-DECM_MKSPECS_INSTALL_DIR=$KF5_PREFIX/lib/qt5/mkspecs/modules</parameter>:
-      This switch is used to ensure that <application>Qt5</application> mkspecs
-      files are installed in the correct location.
+      <parameter>-DCMAKE_BUILD_TYPE=Release</parameter>: This switch is used
+      to apply higher level of the compiler optimizations.
     </para>
