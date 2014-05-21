@@ -108,7 +108,8 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DSYSCONF_INSTALL_DIR=/etc         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DDBUS_INTERFACES_INSTALL_DIR=/usr/share/dbus-1/interfaces \
+      -DDBUS_INTERFACES_INSTALL_DIR=/usr/share/dbus-1/interfaces    \
+      -DECM_MKSPECS_INSTALL_DIR=$KF5_PREFIX/lib/qt5/mkspecs/modules \
       .. &amp;&amp;
 make</userinput></screen>
 
@@ -154,6 +155,9 @@ make</userinput></screen>
       This switch is used to ensure that <application>D-Bus</application> interfaces
       files are installed in the correct location.
     </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/qt5-mkspecs-dir.xml"/>
 
   </sect2>
 

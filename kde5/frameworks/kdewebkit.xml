@@ -97,6 +97,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
+      -DECM_MKSPECS_INSTALL_DIR=$KF5_PREFIX/lib/qt5/mkspecs/modules \
       .. &amp;&amp;
 make</userinput></screen>
 
@@ -131,6 +132,9 @@ make</userinput></screen>
       <parameter>-DBUILD_TESTING=OFF</parameter>: This switch is used to prevent
       building test programs and libraries that are of no use to an end user.
     </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/qt5-mkspecs-dir.xml"/>
 
   </sect2>
 
