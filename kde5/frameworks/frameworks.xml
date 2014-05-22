@@ -24,12 +24,10 @@ $Date$
   <!-- -->
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="attica5.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="karchive.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kauth.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kcodecs.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kconfig.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kcoreaddons.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kdbusaddons.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kdeclarative.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kdnssd.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kglobalaccel.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kguiaddons.xml"/>
@@ -46,6 +44,7 @@ $Date$
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sonnet.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="threadweaver.xml"/>
   <!-- -->
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kauth.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kcompletion.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kcrash.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kdoctools.xml"/>
@@ -60,26 +59,28 @@ $Date$
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kiconthemes.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kjobwidgets.xml"/>
   <!-- -->
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kbookmarks.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="knotifications.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ktextwidgets.xml"/>
   <!-- -->
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kwallet.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kxmlgui.xml"/>
   <!-- -->
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kbookmarks.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kcmutils.xml"/>
+  <!-- -->
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kio.xml"/>
   <!-- -->
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="frameworkintegration.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kdeclarative.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kinit5.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="knewstuff.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="knotifyconfig.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kparts.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="plasma-framework.xml"/>
   <!-- -->
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kded.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kdewebkit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ktexteditor.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="plasma-framework.xml"/>
   <!-- -->
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kdesignerplugin.xml"/>
 

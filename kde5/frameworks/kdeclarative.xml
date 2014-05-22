@@ -74,8 +74,7 @@
 
     <bridgehead renderas="sect4">Required</bridgehead>
     <para role="required">
-      <xref linkend="extra-cmake-modules"/> and
-      <xref linkend="qt5"/>
+      <xref linkend="kio"/>
     </para>
 
     <para condition="html" role="usernotes">
@@ -98,6 +97,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
+      -DQML_INSTALL_DIR=$KF5_PREFIX/lib/qt5/qml                     \
       -DECM_MKSPECS_INSTALL_DIR=$KF5_PREFIX/lib/qt5/mkspecs/modules \
       .. &amp;&amp;
 make</userinput></screen>
@@ -127,6 +127,9 @@ make</userinput></screen>
       href="../../xincludes/kf5-tests.xml"/>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/qt5-qml-dir.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/qt5-mkspecs-dir.xml"/>
 
   </sect2>
@@ -149,9 +152,9 @@ make</userinput></screen>
         <seg>
           $KF5_PREFIX/include/KF5/KDeclarative,
           $KF5_PREFIX/lib/cmake/KF5Declarative,
-          $KF5_PREFIX/lib/qml/org/kde/{draganddrop,kcoreaddons},
-          $KF5_PREFIX/lib/qml/org/kde/{kquickcontrols,kquickcontrolsaddons} and
-          $KF5_PREFIX/lib/qml/org/kde/private
+          $KF5_PREFIX/lib/qt5/qml/org/kde/{draganddrop,kcoreaddons},
+          $KF5_PREFIX/lib/qt5/qml/org/kde/{kquickcontrols,kquickcontrolsaddons} and
+          $KF5_PREFIX/lib/qt5/qml/org/kde/private
         </seg>
       </seglistitem>
     </segmentedlist>

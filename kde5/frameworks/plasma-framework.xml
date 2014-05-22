@@ -75,9 +75,8 @@
 
     <bridgehead renderas="sect4">Required</bridgehead>
     <para role="required">
-      <xref linkend="kactivities5"/>,
-      <xref linkend="kdeclarative"/> and
-      <xref linkend="kio"/>
+      <xref linkend="kactivities5"/> and
+      <xref linkend="kdeclarative"/>
     </para>
 
     <para condition="html" role="usernotes">
@@ -101,6 +100,8 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
       -DDBUS_INTERFACES_INSTALL_DIR=/usr/share/dbus-1/interfaces \
+      -DQML_INSTALL_DIR=$KF5_PREFIX/lib/qt5/qml                  \
+      -DQT_PLUGIN_INSTALL_DIR=$KF5_PREFIX/lib/qt5/plugins        \
       .. &amp;&amp;
 make</userinput></screen>
 
@@ -134,6 +135,12 @@ make</userinput></screen>
       files are installed in the correct location.
     </para>
 
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/qt5-qml-dir.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/qt5-plugins-dir.xml"/>
+
   </sect2>
 
   <sect2 role="content">
@@ -154,8 +161,8 @@ make</userinput></screen>
         <seg>
           $KF5_PREFIX/include/KF5/{plasma,Plasma},
           $KF5_PREFIX/lib/cmake/{KF5Plasma,KF5PlasmaQuick},
-          $KF5_PREFIX/lib/platformqml/touch/org/kde/plasma,
-          $KF5_PREFIX/lib/qml/org/kde/plasma and
+          $KF5_PREFIX/lib/qt5/platformqml/touch/org/kde/plasma,
+          $KF5_PREFIX/lib/qt5/qml/org/kde/plasma and
           $KF5_PREFIX/share/plasma
         </seg>
       </seglistitem>

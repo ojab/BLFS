@@ -126,6 +126,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
+      -DQT_PLUGIN_INSTALL_DIR=$KF5_PREFIX/lib/qt5/plugins \
       .. &amp;&amp;
 make</userinput></screen>
 
@@ -153,6 +154,9 @@ make</userinput></screen>
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/kf5-tests.xml"/>
 
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/qt5-plugins-dir.xml"/>
+
   </sect2>
 
   <sect2 role="content">
@@ -172,7 +176,7 @@ make</userinput></screen>
         </seg>
         <seg>
           $KF5_PREFIX/lib/cmake/KF5DesignerPlugin,
-          $KF5_PREFIX/lib/plugins/designer and
+          $KF5_PREFIX/lib/qt5/plugins/designer and
           $KF5_PREFIX/share/kf5/widgets
         </seg>
       </seglistitem>

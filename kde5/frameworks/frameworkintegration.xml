@@ -76,6 +76,7 @@
     <bridgehead renderas="sect4">Required</bridgehead>
     <para role="required">
       <xref linkend="kio"/>
+      <!-- oxygen-font -->
     </para>
 
     <para condition="html" role="usernotes">
@@ -98,6 +99,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
+      -DQT_PLUGIN_INSTALL_DIR=$KF5_PREFIX/lib/qt5/plugins \
       .. &amp;&amp;
 make</userinput></screen>
 
@@ -125,6 +127,9 @@ make</userinput></screen>
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/kf5-tests.xml"/>
 
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/qt5-plugins-dir.xml"/>
+
   </sect2>
 
   <sect2 role="content">
@@ -144,7 +149,9 @@ make</userinput></screen>
         </seg>
         <seg>
           $KF5_PREFIX/include/KF5/KStyle,
-          $KF5_PREFIX/lib/cmake/KF5FrameworkIntegration and
+          $KF5_PREFIX/lib/cmake/KF5FrameworkIntegration,
+          $KF5_PREFIX/lib/qt5/plugins/kf5,
+          $KF5_PREFIX/lib/qt5/plugins/platformthemes and
           $KF5_PREFIX/share/kf5/infopage
         </seg>
       </seglistitem>

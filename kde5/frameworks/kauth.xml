@@ -75,8 +75,7 @@
 
     <bridgehead renderas="sect4">Required</bridgehead>
     <para role="required">
-      <xref linkend="extra-cmake-modules"/> and
-      <xref linkend="qt5"/>
+      <xref linkend="kcoreaddons"/>
     </para>
 
     <bridgehead renderas="sect4">Recommended</bridgehead>
@@ -105,6 +104,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DSYSCONF_INSTALL_DIR=/etc         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
+      -DQT_PLUGIN_INSTALL_DIR=$KF5_PREFIX/lib/qt5/plugins           \
       -DECM_MKSPECS_INSTALL_DIR=$KF5_PREFIX/lib/qt5/mkspecs/modules \
       .. &amp;&amp;
 make</userinput></screen>
@@ -140,6 +140,9 @@ make</userinput></screen>
       href="../../xincludes/kf5-tests.xml"/>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/qt5-plugins-dir.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/qt5-mkspecs-dir.xml"/>
 
   </sect2>
@@ -163,7 +166,7 @@ make</userinput></screen>
           $KF5_PREFIX/include/KF5/KAuth,
           $KF5_PREFIX/lib/cmake/KF5Auth,
           $KF5_PREFIX/lib/libexec/kauth,
-          $KF5_PREFIX/lib/plugins/kauth and
+          $KF5_PREFIX/lib/qt5/plugins/kauth and
           $KF5_PREFIX/share/kf5/kauth
         </seg>
       </seglistitem>

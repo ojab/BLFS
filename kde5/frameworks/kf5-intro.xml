@@ -104,6 +104,14 @@ EOF</userinput></screen>
       <primary sortas="e-etc-ld.so.conf">/etc/ld.so.conf</primary>
     </indexterm>
 
+    <para>
+      Symlink <application>D-Bus</application> interfaces directory into
+      $KF5_PREFIX to prevent some packages from failing to build:
+    </para>
+
+<screen role="root"><userinput>install -v -dm755 $KF5_PREFIX/usr/share/dbus-1 &amp;&amp;
+ln -sfv /usr/share/dbus-1/interfaces $KF5_PREFIX/usr/share/dbus-1/interfaces</userinput></screen>
+
     <tip>
       <para>
         Sometimes, the installation paths are hardcoded into installed files.
