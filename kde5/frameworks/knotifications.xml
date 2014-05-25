@@ -133,12 +133,6 @@ make</userinput></screen>
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/kf5-tests.xml"/>
 
-    <para>
-      <parameter>-DDBUS_INTERFACES_INSTALL_DIR=/usr/share/dbus-1/interfaces</parameter>:
-      This switch is used to ensure that <application>D-Bus</application> interfaces
-      files are installed in the correct location.
-    </para>
-
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
       href="../../xincludes/qt5-mkspecs-dir.xml"/>
 
