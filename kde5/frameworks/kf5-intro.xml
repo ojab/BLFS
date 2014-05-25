@@ -22,6 +22,17 @@
     <application>KDE</application>.
   </para>
 
+  <caution>
+    <para>
+      The instructions for <application>KDE Frameworks</application>
+      packages assume that <xref linkend="qt5"/> was built with
+      recommended dependencies installed and that
+      <application>Qt5</application> executables (such as
+      <command>qtpaths</command>) are in user's $PATH before
+      running the commands below.
+    </para>
+  </caution>
+
   <sect2>
     <title>Build Order</title>
 
@@ -42,7 +53,22 @@
       multiple versions of <application>KDE Frameworks</application>.
     </para>
 
-<screen><userinput>export KF5_PREFIX=/usr</userinput></screen>
+<screen><userinput>export KF5_PREFIX=/usr
+export QT5_PREFIX=$(qtpaths --plugin-dir | sed "s:/plugins::")</userinput></screen>
+
+    <para>
+      It is a good idea to add the following variables to your
+      system or personal profile:
+    </para>
+
+<screen role="root"><userinput>cat &gt; /etc/profile.d/kf5.sh &lt;&lt; "EOF"
+<literal># Begin /etc/profile.d/kf5.sh
+
+export KF5_PREFIX=/usr
+export QT5_PREFIX=$(qtpaths --plugin-dir | sed "s:/plugins::")
+
+# End /etc/profile.d/kf5.sh</literal>
+EOF</userinput></screen>
 
     <warning>
       <para>
@@ -64,7 +90,8 @@
       <filename class="directory">/opt</filename> hierarchy:
     </para>
 
-<screen><userinput>export KF5_PREFIX=/opt/kf5</userinput></screen>
+<screen><userinput>export KF5_PREFIX=/opt/kf5
+export QT5_PREFIX=$(qtpaths --plugin-dir | sed "s:/plugins::")</userinput></screen>
 
     <para>
       If you are not installing <application>KDE Frameworks</application>
@@ -73,10 +100,11 @@
       those to your system or personal profile:
     </para>
 
-<screen><userinput>cat &gt; /etc/profile.d/kf5.sh &lt;&lt; "EOF"
+<screen role="root"><userinput>cat &gt; /etc/profile.d/kf5.sh &lt;&lt; "EOF"
 <literal># Begin /etc/profile.d/kf5.sh
 
 export KF5_PREFIX=/opt/kf5
+export QT5_PREFIX=$(qtpaths --plugin-dir | sed "s:/plugins::")
 
 pathappend $KF5_PREFIX               CMAKE_PREFIX_PATH
 pathappend $KF5_PREFIX/bin           PATH
@@ -85,8 +113,7 @@ pathappend $KF5_PREFIX/lib/python&python2-majorver; PYTHONPATH
 pathappend $KF5_PREFIX/share         XDG_DATA_DIRS
 
 # End /etc/profile.d/kf5.sh</literal>
-EOF
-</userinput></screen>
+EOF</userinput></screen>
 
     <para>
       Expand your <filename>/etc/ld.so.conf</filename> file:
@@ -114,7 +141,7 @@ EOF</userinput></screen>
     </para>
 
 <screen role="root"><userinput>install -v -dm755 $KF5_PREFIX/{etc,share} &amp;&amp;
-ln -sfv /etc/dbus-1 $KF5_PREFIX/etc       &amp;&amp;
+ln -sfv /etc/dbus-1       $KF5_PREFIX/etc &amp;&amp;
 ln -sfv /usr/share/dbus-1 $KF5_PREFIX/share</userinput></screen>
 
     <tip>

@@ -6,7 +6,7 @@
      $Date$ -->
 
     <para>
-      <parameter>-DQT_PLUGIN_INSTALL_DIR=$KF5_PREFIX/lib/qt5/plugins</parameter>:
+      <parameter>-DQT_PLUGIN_INSTALL_DIR=$QT5_PREFIX/plugins</parameter>:
       This switch is used to ensure that <application>Qt5</application> plugins
       are installed in the correct location.
     </para>

@@ -6,7 +6,7 @@
      $Date$ -->
 
     <para>
-      <parameter>-DQML_INSTALL_DIR=$KF5_PREFIX/lib/qt5/qml</parameter>:
+      <parameter>-DQML_INSTALL_DIR=$QT5_PREFIX/qml</parameter>:
       This switch is used to ensure that <application>Qt5</application> QML
       modules are installed in the correct location.
     </para>
