@@ -176,8 +176,8 @@ make</userinput></screen>
         </seg>
         <seg>
           $KF5_PREFIX/lib/cmake/KF5DesignerPlugin,
-          $QT5_PREFIX/plugins/designer and
-          $KF5_PREFIX/share/kf5/widgets
+          $KF5_PREFIX/share/kf5/widgets and
+          $QT5_PREFIX/plugins/designer
         </seg>
       </seglistitem>
     </segmentedlist>
