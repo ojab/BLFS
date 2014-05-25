@@ -146,7 +146,7 @@ EOF</userinput></screen>
     </para>
 
 <screen role="root"><userinput>install -v -dm755 $KF5_PREFIX/{etc,share} &amp;&amp;
-ln -sfv /etc/dbus-1       $KF5_PREFIXKF5_SYSCONFDIR &amp;&amp;
+ln -sfv /etc/dbus-1       $KF5_PREFIX/etc &amp;&amp;
 ln -sfv /usr/share/dbus-1 $KF5_PREFIX/share</userinput></screen>
 
     <tip>
