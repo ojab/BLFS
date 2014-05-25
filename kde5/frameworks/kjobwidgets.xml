@@ -99,7 +99,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
       -DDBUS_INTERFACES_INSTALL_DIR=/usr/share/dbus-1/interfaces    \
-      -DECM_MKSPECS_INSTALL_DIR=$KF5_PREFIX/lib/qt5/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
       .. &amp;&amp;
 make</userinput></screen>
 

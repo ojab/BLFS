@@ -110,8 +110,8 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DQT_PLUGIN_INSTALL_DIR=$KF5_PREFIX/lib/qt5/plugins           \
-      -DECM_MKSPECS_INSTALL_DIR=$KF5_PREFIX/lib/qt5/mkspecs/modules \
+      -DQT_PLUGIN_INSTALL_DIR=$QT5_PREFIX/plugins           \
+      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
       .. &amp;&amp;
 make</userinput></screen>
 
@@ -165,7 +165,7 @@ make</userinput></screen>
         <seg>
           $KF5_PREFIX/include/KF5/{SonnetCore,SonnetUi},
           $KF5_PREFIX/lib/cmake/KF5Sonnet,
-          $KF5_PREFIX/lib/qt5/plugins/sonnet_clients and
+          $QT5_PREFIX/plugins/sonnet_clients and
           $KF5_PREFIX/usr/share/kf5/sonnet
         </seg>
       </seglistitem>

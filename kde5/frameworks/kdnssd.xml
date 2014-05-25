@@ -103,7 +103,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$KF5_PREFIX/lib/qt5/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
       .. &amp;&amp;
 make</userinput></screen>
 

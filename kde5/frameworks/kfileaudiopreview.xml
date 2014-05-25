@@ -97,7 +97,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DQT_PLUGIN_INSTALL_DIR=$KF5_PREFIX/lib/qt5/plugins \
+      -DQT_PLUGIN_INSTALL_DIR=$QT5_PREFIX/plugins \
       .. &amp;&amp;
 make</userinput></screen>
 
@@ -143,7 +143,7 @@ make</userinput></screen>
           None
         </seg>
         <seg>
-          kfileaudiopreview.so (in $KF5_PREFIX/lib/qt5/plugins)
+          kfileaudiopreview.so (in $QT5_PREFIX/plugins)
         </seg>
         <seg>
           Nonw

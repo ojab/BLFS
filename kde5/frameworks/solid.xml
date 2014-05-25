@@ -110,8 +110,8 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DQML_INSTALL_DIR=$KF5_PREFIX/lib/qt5/qml                     \
-      -DECM_MKSPECS_INSTALL_DIR=$KF5_PREFIX/lib/qt5/mkspecs/modules \
+      -DQML_INSTALL_DIR=$QT5_PREFIX/qml                     \
+      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
       .. &amp;&amp;
 make</userinput></screen>
 
@@ -165,7 +165,7 @@ make</userinput></screen>
         <seg>
           $KF5_PREFIX/include/KF5/Solid,
           $KF5_PREFIX/lib/cmake/KF5Solid and
-          $KF5_PREFIX/lib/qt5/qml/org/kde/solid
+          $QT5_PREFIX/qml/org/kde/solid
         </seg>
       </seglistitem>
     </segmentedlist>

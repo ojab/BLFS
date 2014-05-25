@@ -99,8 +99,8 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DQML_INSTALL_DIR=$KF5_PREFIX/lib/qt5/qml           \
-      -DQT_PLUGIN_INSTALL_DIR=$KF5_PREFIX/lib/qt5/plugins \
+      -DQML_INSTALL_DIR=$QT5_PREFIX/qml           \
+      -DQT_PLUGIN_INSTALL_DIR=$QT5_PREFIX/plugins \
       .. &amp;&amp;
 make</userinput></screen>
 
@@ -154,8 +154,8 @@ make</userinput></screen>
         <seg>
           $KF5_PREFIX/include/KF5/{plasma,Plasma},
           $KF5_PREFIX/lib/cmake/{KF5Plasma,KF5PlasmaQuick},
-          $KF5_PREFIX/lib/qt5/platformqml/touch/org/kde/plasma,
-          $KF5_PREFIX/lib/qt5/qml/org/kde/plasma and
+          $QT5_PREFIX/platformqml/touch/org/kde/plasma,
+          $QT5_PREFIX/qml/org/kde/plasma and
           $KF5_PREFIX/share/plasma
         </seg>
       </seglistitem>

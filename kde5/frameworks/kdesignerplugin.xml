@@ -126,7 +126,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DQT_PLUGIN_INSTALL_DIR=$KF5_PREFIX/lib/qt5/plugins \
+      -DQT_PLUGIN_INSTALL_DIR=$QT5_PREFIX/plugins \
       .. &amp;&amp;
 make</userinput></screen>
 
@@ -176,7 +176,7 @@ make</userinput></screen>
         </seg>
         <seg>
           $KF5_PREFIX/lib/cmake/KF5DesignerPlugin,
-          $KF5_PREFIX/lib/qt5/plugins/designer and
+          $QT5_PREFIX/plugins/designer and
           $KF5_PREFIX/share/kf5/widgets
         </seg>
       </seglistitem>
