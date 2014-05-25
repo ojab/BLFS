@@ -1,12 +1,12 @@
 <!-- $LastChangedBy$ $Date$ -->
 
-<!ENTITY day          "15">                   <!-- Always 2 digits -->
+<!ENTITY day          "25">                   <!-- Always 2 digits -->
 <!ENTITY month        "05">                   <!-- Always 2 digits -->
 <!ENTITY year         "2014">
 <!ENTITY copyrightdate "2001-&year;">
 <!ENTITY copyholder   "The BLFS Development Team">
 <!ENTITY version      "&year;-&month;-&day;">
-<!ENTITY releasedate  "May 15th, &year;">
+<!ENTITY releasedate  "May 25th, &year;">
 <!ENTITY pubdate      "&year;-&month;-&day;"> <!-- metadata req. by TLDP -->
 <!ENTITY blfs-version "svn">                  <!-- svn|[release #] -->
 <!ENTITY lfs-version  "development">          <!-- x.y|development] -->
@@ -149,7 +149,7 @@ export -f as_root</userinput></screen>
 <!ENTITY cyrus-sasl-version           "2.1.26">
 <!ENTITY gnupg2-version               "2.0.22">
 <!ENTITY gnutls-version               "3.3.2">
-<!ENTITY gpgme-version                "1.4.3">
+<!ENTITY gpgme-version                "1.5.0">
 <!ENTITY haveged-version              "1.9.1">
 <!ENTITY iptables-version             "1.4.21">
 <!ENTITY libcap-version               "2.24">
@@ -180,7 +180,7 @@ export -f as_root</userinput></screen>
 <!ENTITY parted-version               "3.1">
 <!ENTITY reiser-version               "3.6.24">
 <!ENTITY sshfs-fuse-version           "2.5">
-<!ENTITY xfsprogs-version             "3.1.11">
+<!ENTITY xfsprogs-version             "3.2.0">
 
 <!-- Chapter 6 -->
 <!ENTITY bluefish-version             "2.2.6">
@@ -236,13 +236,13 @@ export -f as_root</userinput></screen>
 <!ENTITY libarchive-version           "3.1.2">
 <!ENTITY libassuan-version            "2.1.1">
 <!ENTITY libatasmart-version          "0.19">
-<!ENTITY libatomic_ops-version        "7.4.0">
+<!ENTITY libatomic_ops-version        "7.4.2">
 <!ENTITY libcroco-version             "0.6.8">
 <!ENTITY libdaemon-version            "0.14">
 <!ENTITY libdbusmenu-qt-version       "0.9.2">
 <!ENTITY libdrm-version               "2.4.54">
 <!ENTITY libesmtp-version             "1.0.6">
-<!ENTITY libffi-version               "3.0.13">
+<!ENTITY libffi-version               "3.1">
 <!ENTITY libgcrypt-version            "1.6.1">
 <!ENTITY libgee-version               "0.6.8">
 <!ENTITY libglade-version             "2.6.4">
@@ -273,7 +273,7 @@ export -f as_root</userinput></screen>
 <!ENTITY qca-version                  "2.0.3">
 <!ENTITY qjson-version                "0.8.1">
 <!ENTITY sbc-version                  "1.2">
-<!ENTITY talloc-version               "2.1.0">
+<!ENTITY talloc-version               "2.1.1">
 <!ENTITY wv-version                   "1.2.9">
 <!ENTITY xapian-version               "1.2.17">
 
@@ -285,7 +285,7 @@ export -f as_root</userinput></screen>
 <!ENTITY fontconfig-version           "2.11.1">  <!-- stable lt .90 micro version -->
 <!ENTITY fribidi-version              "0.19.6">
 <!ENTITY gegl-version                 "0.2.0">
-<!ENTITY giflib-version               "5.0.6">
+<!ENTITY giflib-version               "5.1.0">
 <!ENTITY graphite2-version            "1.2.4">
 <!ENTITY harfbuzz-version             "0.9.28">
 <!ENTITY ijs-version                  "0.35">
@@ -338,11 +338,11 @@ export -f as_root</userinput></screen>
 <!ENTITY at-version                   "3.1.14">
 <!ENTITY autofs-version               "5.0.9">
 <!ENTITY bluez-version                "5.18">
-<!ENTITY colord-version               "1.2.0">    <!-- Even minors only -->
+<!ENTITY colord-version               "1.2.1">    <!-- Even minors only -->
 <!ENTITY cpio-version                 "2.11">
 <!ENTITY dbus-version                 "1.8.2">   <!-- Even minors only -->
 <!ENTITY eudev-version                "1.6">
-<!ENTITY fcron-version                "3.1.2">
+<!ENTITY fcron-version                "3.1.3">
 <!ENTITY gpm-version                  "1.20.7">
 <!ENTITY hdparm-version               "9.43">
 <!ENTITY ibus-version                 "1.5.4">    <!-- stable lt .90 micro version -->
@@ -377,18 +377,18 @@ export -f as_root</userinput></screen>
 <!ENTITY cvs-version                  "1.11.23">
 <!ENTITY dejagnu-version              "1.5.1">
 <!ENTITY doxygen-version              "1.8.7">
-<!ENTITY elfutils-version             "0.158">
+<!ENTITY elfutils-version             "0.159">
 <!ENTITY expect-version               "5.45">
 <!ENTITY gcc-version                  "4.9.0">
 <!ENTITY gc-version                   "7.4.0">
 <!ENTITY gdb-version                  "7.7.1">
-<!ENTITY git-version                  "1.9.2">
+<!ENTITY git-version                  "1.9.3">
 <!ENTITY guile-version                "2.0.11">
 <!ENTITY librep-version               "0.92.3">
-<!ENTITY llvm-version                 "3.4">
+<!ENTITY llvm-version                 "3.4.1">
 <!ENTITY lua-version                  "5.2.3">
 <!ENTITY mercurial-version            "3.0">
-<!ENTITY nasm-version                 "2.11.04">
+<!ENTITY nasm-version                 "2.11.05">
 <!ENTITY npapi-sdk-version            "0.27.2">
 <!ENTITY php-version                  "5.5.12">
 <!ENTITY python2-version              "2.7.6">
@@ -397,7 +397,7 @@ export -f as_root</userinput></screen>
 <!ENTITY ruby-patch-version           "0">
 <!ENTITY scons-version                "2.3.1">
 <!ENTITY slang-version                "2.2.4">
-<!ENTITY subversion-version           "1.8.8">
+<!ENTITY subversion-version           "1.8.9">
 <!ENTITY swig-version                 "3.0.0">
 <!ENTITY tcl-version                  "8.6.1">
 <!ENTITY tk-version                   "8.6.1">
@@ -420,7 +420,7 @@ export -f as_root</userinput></screen>
 <!ENTITY Glib-perl-version            "1.280">
 <!ENTITY HTML-Parser-version          "3.71">
 <!ENTITY LWP-version                  "6.05">
-<!ENTITY Net-DNS-version              "0.74">
+<!ENTITY Net-DNS-version              "0.75">
 <!ENTITY SGMLSpm-version              "1.1">
 <!ENTITY URI-version                  "1.60">
 <!ENTITY XML-Parser-version           "2.41">
@@ -457,7 +457,7 @@ export -f as_root</userinput></screen>
 
 <!-- Chapter 16 -->
 <!ENTITY avahi-version                "0.6.31">
-<!ENTITY bind-version                 "9.9.5">
+<!ENTITY bind-version                 "9.10.0">
 <!ENTITY mod_dnssd-version            "0.6">
 <!ENTITY NetworkManager-version       "0.9.8.10">
 <!ENTITY nmap-version                 "6.46">
@@ -498,22 +498,22 @@ export -f as_root</userinput></screen>
 <!-- Part V -->
 <!-- Chapter 20 -->
 <!ENTITY apache-version               "2.4.9">
-<!ENTITY proftpd-version              "1.3.4d">
+<!ENTITY proftpd-version              "1.3.5">
 <!ENTITY vsftpd-version               "3.0.2">
 
 <!-- Chapter 21 -->
 <!ENTITY dovecot-major                "2">
 <!ENTITY dovecot-minor                "2">
-<!ENTITY dovecot-micro                "12">
+<!ENTITY dovecot-micro                "13">
 <!ENTITY dovecot-version              "&dovecot-major;.&dovecot-minor;.&dovecot-micro;">
 
 <!ENTITY exim-version                 "4.82">
-<!ENTITY postfix-version              "2.11.0">
+<!ENTITY postfix-version              "2.11.1">
 <!ENTITY sendmail-version             "8.14.8">
 
 <!-- Chapter 22 -->
 <!ENTITY db-version                   "6.0.30">
-<!ENTITY mariadb-version              "10.0.10">
+<!ENTITY mariadb-version              "10.0.11">
 <!ENTITY postgresql-version           "9.3.4">
 <!ENTITY sqlite-version               "3.8.4.3">
 
@@ -536,7 +536,7 @@ export -f as_root</userinput></screen>
 <!ENTITY xbitmaps-version             "1.1.1">
 <!ENTITY xcursor-themes-version       "1.0.4">
 <!ENTITY xkeyboard-config-version     "2.11">
-<!ENTITY mesalib-version              "10.1.3">
+<!ENTITY mesalib-version              "10.1.4">
 <!ENTITY xcb-util-version             "0.3.9">
 <!ENTITY xcb-util-image-version       "0.3.9">
 <!ENTITY xcb-util-keysyms-version     "0.3.9">
@@ -565,7 +565,7 @@ export -f as_root</userinput></screen>
 <!ENTITY glu-version                  "9.0.0">
 <!ENTITY goffice010-version           "0.10.15">
 <!ENTITY gtk2-version                 "2.24.23">
-<!ENTITY gtk3-version                 "3.12.1">
+<!ENTITY gtk3-version                 "3.12.2">
 <!ENTITY gtk-engines-version          "2.20.2">
 <!ENTITY gtkmm2-version               "2.24.4">
 <!ENTITY gtkmm3-version               "3.12.0">
@@ -579,8 +579,8 @@ export -f as_root</userinput></screen>
 <!ENTITY shared-mime-info-version     "1.3">
 <!ENTITY startup-notification-version "0.12">
 <!ENTITY webkitgtk-version            "1.10.2">   <!-- Even minors only -->
-<!ENTITY webkitgtk2-version           "2.4.1">    <!-- Even minors only -->
-<!ENTITY xulrunner-version            "29.0">
+<!ENTITY webkitgtk2-version           "2.4.2">    <!-- Even minors only -->
+<!ENTITY xulrunner-version            "29.0.1">
 
 <!ENTITY gtk2-libdir                  "2.0/2.10.0">
 <!ENTITY qt4-dir                      "$QT4DIR">
@@ -627,23 +627,23 @@ export -f as_root</userinput></screen>
 <!-- Chapter 30 -->
 <!-- Platform -->
 <!ENTITY polkit-gnome-version         "0.105">
-<!ENTITY gsettings-desktop-schemas-version "3.12.0">
+<!ENTITY gsettings-desktop-schemas-version "3.12.2">
 <!ENTITY yelp-xsl-version             "3.12.0">
 <!ENTITY GConf-version                "3.2.6">
 <!ENTITY libsecret-version            "0.18">
-<!ENTITY gcr-version                  "3.12.0">
-<!ENTITY gnome-keyring-version        "3.12.0">
+<!ENTITY gcr-version                  "3.12.2">
+<!ENTITY gnome-keyring-version        "3.12.2">
 <!ENTITY gvfs-version                 "1.20.2">
 <!ENTITY gjs-version                  "1.40.1">
-<!ENTITY gnome-desktop-version        "3.12.1">
+<!ENTITY gnome-desktop-version        "3.12.2">
 <!ENTITY gnome-video-effects-version  "0.4.1">
-<!ENTITY gtksourceview-version        "3.12.1">
+<!ENTITY gtksourceview-version        "3.12.2">
 <!ENTITY libgtop-version              "2.30.0">
 <!ENTITY libpeas-version              "1.10.0">
 <!ENTITY libwnck-version              "3.4.7">
 <!ENTITY notification-daemon-version  "0.7.6">
 <!ENTITY totem-pl-parser-version      "3.10.2">
-<!ENTITY vte-version                  "0.36.1">
+<!ENTITY vte-version                  "0.36.2">
 
 <!-- Runtime -->
 <!ENTITY dconf-version                     "0.20.0">
@@ -657,21 +657,21 @@ export -f as_root</userinput></screen>
 <!-- Applications -->
 <!ENTITY baobab-version               "3.12.1">
 <!ENTITY brasero-version              "3.10.0">
-<!ENTITY cheese-version               "3.12.1">
-<!ENTITY eog-version                  "3.12.1">
-<!ENTITY epiphany-version             "3.12.0">
+<!ENTITY cheese-version               "3.12.2">
+<!ENTITY eog-version                  "3.12.2">
+<!ENTITY epiphany-version             "3.12.1">
 <!ENTITY evince-version               "3.12.1">
-<!ENTITY file-roller-version          "3.12.1">
+<!ENTITY file-roller-version          "3.12.2">
 <!ENTITY gedit-version                "3.12.1">
 <!ENTITY gnome-calculator-version     "3.12.1">
 <!ENTITY gnome-nettool-version        "3.8.1">
 <!ENTITY gnome-screenshot-version     "3.12.0">
-<!ENTITY gnome-system-monitor-version "3.12.1">
-<!ENTITY gnome-terminal-version       "3.12.1">
-<!ENTITY gucharmap-version            "3.12.0">
-<!ENTITY nautilus-version             "3.12.0">
+<!ENTITY gnome-system-monitor-version "3.12.2">
+<!ENTITY gnome-terminal-version       "3.12.2">
+<!ENTITY gucharmap-version            "3.12.1">
+<!ENTITY nautilus-version             "3.12.2">
 <!ENTITY network-manager-applet-version "0.9.8.10">  <!-- stable lt .90 micro version -->
-<!ENTITY seahorse-version             "3.12.0">
+<!ENTITY seahorse-version             "3.12.2">
 <!ENTITY totem-version                "3.12.1">
 
 <!-- Part IX -->
@@ -758,9 +758,9 @@ export -f as_root</userinput></screen>
 <!ENTITY rox-filer-version            "2.11">
 <!ENTITY rxvt-unicode-version         "9.20">
 <!ENTITY thunderbird-version          "24.5.0">
-<!ENTITY transmission-version         "2.82">
+<!ENTITY transmission-version         "2.83">
 <!ENTITY xchat-version                "2.8.8">
-<!ENTITY xdg-utils-version            "1.1.0-rc1">
+<!ENTITY xdg-utils-version            "1.1.0-rc2">
 
 <!-- Part XI -->
 <!-- Chapter 37 -->
@@ -822,7 +822,7 @@ export -f as_root</userinput></screen>
 <!ENTITY soundtouch-version           "1.8.0">
 <!ENTITY speex-version                "1.2rc1">
 <!ENTITY taglib-version               "1.9.1">
-<!ENTITY x264-version                 "20140316-2245">
+<!ENTITY x264-version                 "20140519-2245">
 <!ENTITY xine-lib-version             "1.2.5">
 <!ENTITY xvid-version                 "1.3.3">
 
@@ -863,7 +863,7 @@ export -f as_root</userinput></screen>
 <!ENTITY cups-version                 "1.7.2">
 <!ENTITY cups-filters-version         "1.0.53">
 <!ENTITY gs-version                   "9.14">
-<!ENTITY gutenprint-version           "5.2.9">
+<!ENTITY gutenprint-version           "5.2.10">
 
 <!-- Chapter 43 -->
 <!ENTITY sane-version                 "1.0.24">
