@@ -54,6 +54,7 @@
     </para>
 
 <screen><userinput>export KF5_PREFIX=/usr
+export KF5_SYSCONFDIR=/etc
 export QT5_PREFIX=$(qtpaths --plugin-dir | sed "s:/plugins::")</userinput></screen>
 
     <para>
@@ -65,6 +66,7 @@ export QT5_PREFIX=$(qtpaths --plugin-dir | sed "s:/plugins::")</userinput></scre
 <literal># Begin /etc/profile.d/kf5.sh
 
 export KF5_PREFIX=/usr
+export KF5_SYSCONFDIR=/etc
 export QT5_PREFIX=$(qtpaths --plugin-dir | sed "s:/plugins::")
 
 # End /etc/profile.d/kf5.sh</literal>
@@ -91,6 +93,7 @@ EOF</userinput></screen>
     </para>
 
 <screen><userinput>export KF5_PREFIX=/opt/kf5
+export KF5_SYSCONFDIR=$KF5_PREFIX/etc
 export QT5_PREFIX=$(qtpaths --plugin-dir | sed "s:/plugins::")</userinput></screen>
 
     <para>
@@ -104,12 +107,14 @@ export QT5_PREFIX=$(qtpaths --plugin-dir | sed "s:/plugins::")</userinput></scre
 <literal># Begin /etc/profile.d/kf5.sh
 
 export KF5_PREFIX=/opt/kf5
+export KF5_SYSCONFDIR=$KF5_PREFIX/etc
 export QT5_PREFIX=$(qtpaths --plugin-dir | sed "s:/plugins::")
 
 pathappend $KF5_PREFIX               CMAKE_PREFIX_PATH
 pathappend $KF5_PREFIX/bin           PATH
 pathappend $KF5_PREFIX/lib/pkgconfig PKG_CONFIG_PATH
 pathappend $KF5_PREFIX/lib/python&python2-majorver; PYTHONPATH
+pathappend $KF5_PREFIX/etc           XDG_CONFIG_DIRS
 pathappend $KF5_PREFIX/share         XDG_DATA_DIRS
 
 # End /etc/profile.d/kf5.sh</literal>
@@ -141,7 +146,7 @@ EOF</userinput></screen>
     </para>
 
 <screen role="root"><userinput>install -v -dm755 $KF5_PREFIX/{etc,share} &amp;&amp;
-ln -sfv /etc/dbus-1       $KF5_PREFIX/etc &amp;&amp;
+ln -sfv /etc/dbus-1       $KF5_PREFIXKF5_SYSCONFDIR &amp;&amp;
 ln -sfv /usr/share/dbus-1 $KF5_PREFIX/share</userinput></screen>
 
     <tip>
