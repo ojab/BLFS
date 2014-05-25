@@ -31,7 +31,7 @@
 
     <para>
       The <application>libdbusmenu-qt</application> package contains a library
-      that provides a Qt implementation of the DBusMenu protocol.
+      that provides a Qt5 implementation of the DBusMenu protocol.
     </para>
 
     &lfs75_checked;

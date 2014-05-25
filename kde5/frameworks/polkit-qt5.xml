@@ -32,7 +32,7 @@
     <para>
       The <application>Polkit-Qt</application> package contains a library
       that lets developers use the PolicyKit API through a nice
-      Qt-styled API.
+      Qt5-styled API.
     </para>
 
     &lfs75_checked;
