@@ -21,6 +21,8 @@ $Date$
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kapidox.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libdbusmenu-qt5.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="phonon5.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="phonon-backend-gstreamer5.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="phonon-backend-vlc5.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="polkit-qt5.xml"/>
   <!-- -->
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="attica5.xml"/>

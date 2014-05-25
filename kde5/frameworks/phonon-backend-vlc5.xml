@@ -4,34 +4,35 @@
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 
-  <!ENTITY phonon5-download-http "http://download.kde.org/stable/phonon/&phonon5-version;/phonon-&phonon5-version;.tar.xz">
-  <!ENTITY phonon5-download-ftp  "ftp://ftp.kde.org/pub/kde/stable/phonon/&phonon5-version;/phonon-&phonon5-version;.tar.xz">
-  <!ENTITY phonon5-md5sum        "0935e1c00440a03e3032860030398665">
-  <!ENTITY phonon5-size          "324 KB">
-  <!ENTITY phonon5-buildsize     "11 MB">
-  <!ENTITY phonon5-time          "0.8 SBU">
+  <!ENTITY phonon-backend-vlc5-download-http "http://download.kde.org/stable/phonon/phonon-backend-vlc/&phonon-backend-vlc5-version;/phonon-backend-vlc-&phonon-backend-vlc5-version;.tar.xz">
+  <!ENTITY phonon-backend-vlc5-download-ftp  "ftp://ftp.kde.org/pub/kde/stable/phonon/phonon-backend-vlc/&phonon-backend-vlc5-version;/phonon-backend-vlc-&phonon-backend-vlc5-version;.tar.xz">
+  <!ENTITY phonon-backend-vlc5-md5sum        "3c41a3d141d40cedd2819676cdca5ea4">
+  <!ENTITY phonon-backend-vlc5-size          "60 KB">
+  <!ENTITY phonon-backend-vlc5-buildsize     "3.0 MB">
+  <!ENTITY phonon-backend-vlc5-time          "0.3 SBU">
 ]>
 
-<sect1 id="phonon5" xreflabel="Phonon-&phonon5-version;">
-  <?dbhtml filename="phonon5.html"?>
+<sect1 id="phonon-backend-vlc5" xreflabel="Phonon-Backend-VLC-&phonon-backend-vlc5-version;">
+  <?dbhtml filename="phonon-backend-vlc5.html"?>
 
   <sect1info>
     <othername>$LastChangedBy$</othername>
     <date>$Date$</date>
   </sect1info>
 
-  <title>Phonon-&phonon5-version;</title>
+  <title>Phonon-Backend-VLC-&phonon-backend-vlc5-version;</title>
 
-  <indexterm zone="phonon5">
-    <primary sortas="a-Phonon">Phonon</primary>
+  <indexterm zone="phonon-backend-vlc5">
+    <primary sortas="a-Phonon-Backend-VLC">Phonon-Backend-VLC</primary>
   </indexterm>
 
   <sect2 role="package">
-    <title>Introduction to Phonon</title>
+    <title>Introduction to Phonon-Backend-VLC</title>
 
     <para>
-      The <application>Phonon</application> package contains a
-      multimedia framework for Qt5.
+      The <application>Phonon-Backend-VLC</application> package contains
+      a backend for <application>Phonon</application> Qt5 multimedia framework
+      that utilizes <application>VLC</application>.
     </para>
 
     &lfs75_checked;
@@ -40,66 +41,54 @@
     <itemizedlist spacing="compact">
       <listitem>
         <para>
-          Download (HTTP): <ulink url="&phonon5-download-http;"/>
+          Download (HTTP): <ulink url="&phonon-backend-vlc5-download-http;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download (FTP): <ulink url="&phonon5-download-ftp;"/>
+          Download (FTP): <ulink url="&phonon-backend-vlc5-download-ftp;"/>
         </para>
       </listitem>
       <listitem>
         <para>
-          Download MD5 sum: &phonon5-md5sum;
+          Download MD5 sum: &phonon-backend-vlc5-md5sum;
         </para>
       </listitem>
       <listitem>
         <para>
-          Download size: &phonon5-size;
+          Download size: &phonon-backend-vlc5-size;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated disk space required: &phonon5-buildsize;
+          Estimated disk space required: &phonon-backend-vlc5-buildsize;
         </para>
       </listitem>
       <listitem>
         <para>
-          Estimated build time: &phonon5-time;
+          Estimated build time: &phonon-backend-vlc5-time;
         </para>
       </listitem>
     </itemizedlist>
 
-    <bridgehead renderas="sect3">Phonon Dependencies</bridgehead>
+    <bridgehead renderas="sect3">Phonon-Backend-VLC Dependencies</bridgehead>
 
     <bridgehead renderas="sect4">Required</bridgehead>
     <para role="required">
-      <xref linkend="extra-cmake-modules"/>,
-      <xref linkend="glib2"/> and
-      <xref linkend="qt5"/>
-    </para>
-
-    <bridgehead renderas="sect4">Optional</bridgehead>
-    <para role="optional">
-      <xref linkend="pulseaudio"/>
-    </para>
-
-    <bridgehead renderas="sect4">Runtime Dependency</bridgehead>
-    <para role="optional">
-      <xref linkend="phonon-backend-gstreamer5"/> or
-      <xref linkend="phonon-backend-vlc5"/> or both
+      <xref linkend="phonon5"/> and
+      <xref linkend="vlc"/>
     </para>
 
     <para condition="html" role="usernotes">
-      User Notes: <ulink url="&blfs-wiki;/phonon5"/>
+      User Notes: <ulink url="&blfs-wiki;/phonon-backend-vlc5"/>
     </para>
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Phonon</title>
+    <title>Installation of Phonon-Backend-VLC</title>
 
     <para>
-      Install <application>Phonon</application> by running the following
+      Install <application>Phonon-Backend-VLC</application> by running the following
       commands:
     </para>
 
@@ -110,7 +99,6 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DCMAKE_INSTALL_LIBDIR=lib         \
       -DPHONON_BUILD_PHONON4QT5=ON       \
-      -DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=TRUE \
       -Wno-dev .. &amp;&amp;
 make</userinput></screen>
 
@@ -141,14 +129,8 @@ make</userinput></screen>
 
     <para>
       <parameter>-DPHONON_BUILD_PHONON4QT5=ON</parameter>: This switch is used
-      to ensure that <application>Qt5</application> version of the library is
+      to ensure that <application>Qt5</application> version of the backend is
       built even if <application>Qt4</application> is present.
-    </para>
-
-    <para>
-      <parameter>-DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=TRUE</parameter>:
-      This switch is used to ensure that the plugins and mkspecs files get
-      installed in the correct location. 
     </para>
 
   </sect2>
@@ -166,12 +148,10 @@ make</userinput></screen>
           None
         </seg>
         <seg>
-          libphonon4qt5experimental.so and libphonon4qt5.so
+          phonon_vlc.so
         </seg>
         <seg>
-          $KF5_PREFIX/include/phonon4qt5,
-          $KF5_PREFIX/lib/cmake/phonon4qt5 and
-          $KF5_PREFIX/share/phonon4qt5
+          $KF5_PREFIX/lib/qt5/plugins/phonon4qt5_backend
         </seg>
       </seglistitem>
     </segmentedlist>
