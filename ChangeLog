@@ -1,5 +1,5 @@
-2014-03-29 Pierre Labastie <pierre@linuxfromscratch.org>
-   * Added php-fpm bootscript
+2014-05-29 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Rewrote bluetooth script for bluez-5
 
 2014-03-16 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Added haveged bootscript
