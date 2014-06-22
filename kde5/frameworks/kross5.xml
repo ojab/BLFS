@@ -6,7 +6,7 @@
 
   <!ENTITY kross5-download-http "&kf5-download-http;/portingAids/kross-&kf5-version;.tar.xz">
   <!ENTITY kross5-download-ftp  "&kf5-download-ftp;/portingAids/kross-&kf5-version;.tar.xz">
-  <!ENTITY kross5-md5sum        "507123a1180905e23b8deb3c9988026b">
+  <!ENTITY kross5-md5sum        "0f203905faa80d8d82fe6de59f2aadd7">
   <!ENTITY kross5-size          "2.7 MB">
   <!ENTITY kross5-buildsize     "35 MB">
   <!ENTITY kross5-time          "0.6 SBU">
@@ -98,8 +98,8 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DQT_PLUGIN_INSTALL_DIR=$QT5_PREFIX/plugins           \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DQT_PLUGIN_INSTALL_DIR=&qt5-plugins-dir;           \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

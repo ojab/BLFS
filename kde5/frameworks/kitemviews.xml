@@ -6,7 +6,7 @@
 
   <!ENTITY kitemviews-download-http "&kf5-download-http;/kitemviews-&kf5-version;.tar.xz">
   <!ENTITY kitemviews-download-ftp  "&kf5-download-ftp;/kitemviews-&kf5-version;.tar.xz">
-  <!ENTITY kitemviews-md5sum        "04e3dcfca8976205e78bde070be638eb">
+  <!ENTITY kitemviews-md5sum        "8bcd882b88fce0c30eaa876c94c8525e">
   <!ENTITY kitemviews-size          "2.7 MB">
   <!ENTITY kitemviews-buildsize     "77 MB">
   <!ENTITY kitemviews-time          "0.2 SBU">
@@ -99,7 +99,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

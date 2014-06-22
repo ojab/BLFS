@@ -6,7 +6,7 @@
 
   <!ENTITY kauth-download-http "&kf5-download-http;/kauth-&kf5-version;.tar.xz">
   <!ENTITY kauth-download-ftp  "&kf5-download-ftp;/kauth-&kf5-version;.tar.xz">
-  <!ENTITY kauth-md5sum        "021779fc1ceab27b8f6f76648bf99654">
+  <!ENTITY kauth-md5sum        "cc205a663cb6cb179fecf17b3658dc03">
   <!ENTITY kauth-size          "2.7 MB">
   <!ENTITY kauth-buildsize     "78 MB">
   <!ENTITY kauth-time          "0.4 SBU">
@@ -104,8 +104,8 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX    \
       -DSYSCONF_INSTALL_DIR=$KF5_SYSCONFDIR \
       -DLIB_INSTALL_DIR=lib                 \
       -DBUILD_TESTING=OFF                   \
-      -DQT_PLUGIN_INSTALL_DIR=$QT5_PREFIX/plugins           \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DQT_PLUGIN_INSTALL_DIR=&qt5-plugins-dir;           \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 
@@ -167,7 +167,7 @@ make</userinput></screen>
           $KF5_PREFIX/lib/cmake/KF5Auth,
           $KF5_PREFIX/lib/libexec/kauth,
           $KF5_PREFIX/share/kf5/kauth and
-          $QT5_PREFIX/plugins/kauth
+          $KF5_PREFIX/&qt5-plugins-dir;/kauth
         </seg>
       </seglistitem>
     </segmentedlist>

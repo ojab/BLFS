@@ -6,7 +6,7 @@
 
   <!ENTITY kdelibs4support-download-http "&kf5-download-http;/portingAids/kdelibs4support-&kf5-version;.tar.xz">
   <!ENTITY kdelibs4support-download-ftp  "&kf5-download-ftp;/portingAids/kdelibs4support-&kf5-version;.tar.xz">
-  <!ENTITY kdelibs4support-md5sum        "9470e1e6a391b702853aad225682b00c">
+  <!ENTITY kdelibs4support-md5sum        "c692a4c5bea5205f194a00315b23c697">
   <!ENTITY kdelibs4support-size          "1.9 MB">
   <!ENTITY kdelibs4support-buildsize     "49 MB">
   <!ENTITY kdelibs4support-time          "3.2 SBU">
@@ -95,12 +95,12 @@
 <screen><userinput>mkdir build &amp;&amp;
 cd    build &amp;&amp;
 
-cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX    \
-      -DCMAKE_BUILD_TYPE=Release            \
-      -DSYSCONF_INSTALL_DIR=$KF5_SYSCONFDIR \
-      -DLIB_INSTALL_DIR=lib                 \
-      -DBUILD_TESTING=OFF                   \
-      -DQT_PLUGIN_INSTALL_DIR=$QT5_PREFIX/plugins \
+cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX      \
+      -DCMAKE_BUILD_TYPE=Release              \
+      -DSYSCONF_INSTALL_DIR=$KF5_SYSCONFDIR   \
+      -DLIB_INSTALL_DIR=lib                   \
+      -DBUILD_TESTING=OFF                     \
+      -DQT_PLUGIN_INSTALL_DIR=&qt5-plugins-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

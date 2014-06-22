@@ -6,7 +6,7 @@
 
   <!ENTITY kglobalaccel-download-http "&kf5-download-http;/kglobalaccel-&kf5-version;.tar.xz">
   <!ENTITY kglobalaccel-download-ftp  "&kf5-download-ftp;/kglobalaccel-&kf5-version;.tar.xz">
-  <!ENTITY kglobalaccel-md5sum        "2.6 MB">
+  <!ENTITY kglobalaccel-md5sum        "f3ac048a83f00ba31765b10d26f6fa9f">
   <!ENTITY kglobalaccel-size          "1a57f76bc5df0cb00105f460ae7f12b3">
   <!ENTITY kglobalaccel-buildsize     "76 MB">
   <!ENTITY kglobalaccel-time          "0.3 SBU">
@@ -99,7 +99,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

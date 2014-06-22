@@ -6,7 +6,7 @@
 
   <!ENTITY kjsembed-download-http "&kf5-download-http;/portingAids/kjsembed-&kf5-version;.tar.xz">
   <!ENTITY kjsembed-download-ftp  "&kf5-download-ftp;/portingAids/kjsembed-&kf5-version;.tar.xz">
-  <!ENTITY kjsembed-md5sum        "95088bb1d9d8958a24e4783d131ebd6e">
+  <!ENTITY kjsembed-md5sum        "77c92fbe8337eb6e9834608cc0e6ba85">
   <!ENTITY kjsembed-size          "2.8 MB">
   <!ENTITY kjsembed-buildsize     "36 MB">
   <!ENTITY kjsembed-time          "0.8 SBU">
@@ -99,7 +99,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

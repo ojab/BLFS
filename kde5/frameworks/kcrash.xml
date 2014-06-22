@@ -6,7 +6,7 @@
 
   <!ENTITY kcrash-download-http "&kf5-download-http;/kcrash-&kf5-version;.tar.xz">
   <!ENTITY kcrash-download-ftp  "&kf5-download-ftp;/kcrash-&kf5-version;.tar.xz">
-  <!ENTITY kcrash-md5sum        "cdeab58f51f906548076ddbd835c2066">
+  <!ENTITY kcrash-md5sum        "9aea0409300e7816786aaec1bd0d2aa5">
   <!ENTITY kcrash-size          "20 KB">
   <!ENTITY kcrash-buildsize     "896 KB">
   <!ENTITY kcrash-time          "less than 0.1 SBU">
@@ -99,7 +99,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

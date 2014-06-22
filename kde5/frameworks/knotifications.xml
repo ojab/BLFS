@@ -6,7 +6,7 @@
 
   <!ENTITY knotifications-download-http "&kf5-download-http;/knotifications-&kf5-version;.tar.xz">
   <!ENTITY knotifications-download-ftp  "&kf5-download-ftp;/knotifications-&kf5-version;.tar.xz">
-  <!ENTITY knotifications-md5sum        "2199596880bdf507c1cce81c9e0c24e3">
+  <!ENTITY knotifications-md5sum        "fef8940c81cfd1906aae29200853ea2e">
   <!ENTITY knotifications-size          "2.7 MB">
   <!ENTITY knotifications-buildsize     "78 MB">
   <!ENTITY knotifications-time          "0.5 SBU">
@@ -104,8 +104,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DDBUS_INTERFACES_INSTALL_DIR=/usr/share/dbus-1/interfaces    \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

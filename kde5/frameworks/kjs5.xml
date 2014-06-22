@@ -6,7 +6,7 @@
 
   <!ENTITY kjs5-download-http "&kf5-download-http;/portingAids/kjs-&kf5-version;.tar.xz">
   <!ENTITY kjs5-download-ftp  "&kf5-download-ftp;/portingAids/kjs-&kf5-version;.tar.xz">
-  <!ENTITY kjs5-md5sum        "d516877ee840ff66a07dbdabc4ef1475">
+  <!ENTITY kjs5-md5sum        "1c88866e82ee742b6b9ad60764415dbe">
   <!ENTITY kjs5-size          "288 KB">
   <!ENTITY kjs5-buildsize     "11 MB">
   <!ENTITY kjs5-time          "0.8 SBU">
@@ -98,7 +98,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

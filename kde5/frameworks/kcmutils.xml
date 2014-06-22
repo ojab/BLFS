@@ -6,7 +6,7 @@
 
   <!ENTITY kcmutils-download-http "&kf5-download-http;/kcmutils-&kf5-version;.tar.xz">
   <!ENTITY kcmutils-download-ftp  "&kf5-download-ftp;/kcmutils-&kf5-version;.tar.xz">
-  <!ENTITY kcmutils-md5sum        "65181f6aecacc907d1fce20977e9e0b8">
+  <!ENTITY kcmutils-md5sum        "f51fc578a8ccf87fb37a0c6df8f406c2">
   <!ENTITY kcmutils-size          "2.8 MB">
   <!ENTITY kcmutils-buildsize     "30 MB">
   <!ENTITY kcmutils-time          "0.2 SBU">
@@ -98,7 +98,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

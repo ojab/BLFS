@@ -92,7 +92,6 @@ $Date$
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kjs5.xml"/>
   <!-- -->
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kdelibs4support.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kfileaudiopreview.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="khtml.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kjsembed.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kmediaplayer.xml"/>

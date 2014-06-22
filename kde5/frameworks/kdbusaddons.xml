@@ -6,7 +6,7 @@
 
   <!ENTITY kdbusaddons-download-http "&kf5-download-http;/kdbusaddons-&kf5-version;.tar.xz">
   <!ENTITY kdbusaddons-download-ftp  "&kf5-download-ftp;/kdbusaddons-&kf5-version;.tar.xz">
-  <!ENTITY kdbusaddons-md5sum        "c7856d1ca018555ae3472ca708595fec">
+  <!ENTITY kdbusaddons-md5sum        "74ee95bc3dcc8638042039ae8e1bc477">
   <!ENTITY kdbusaddons-size          "32 KB">
   <!ENTITY kdbusaddons-buildsize     "3.5 MB">
   <!ENTITY kdbusaddons-time          "0.2 SBU">
@@ -98,7 +98,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

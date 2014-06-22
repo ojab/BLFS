@@ -6,9 +6,9 @@
 
   <!ENTITY extra-cmake-modules-download-http "&kf5-download-http;/extra-cmake-modules-&extra-cmake-modules-version;.tar.xz">
   <!ENTITY extra-cmake-modules-download-ftp  "&kf5-download-ftp;/extra-cmake-modules-&extra-cmake-modules-version;.tar.xz">
-  <!ENTITY extra-cmake-modules-md5sum        "">
-  <!ENTITY extra-cmake-modules-size          "">
-  <!ENTITY extra-cmake-modules-buildsize     "">
+  <!ENTITY extra-cmake-modules-md5sum        "14a6f6c411af4797af6c56099fea4ed0">
+  <!ENTITY extra-cmake-modules-size          "124 KB">
+  <!ENTITY extra-cmake-modules-buildsize     "5.4 MB">
   <!ENTITY extra-cmake-modules-time          "less than 0.1 SBU">
 ]>
 

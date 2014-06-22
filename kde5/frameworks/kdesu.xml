@@ -6,7 +6,7 @@
 
   <!ENTITY kdesu-download-http "&kf5-download-http;/kdesu-&kf5-version;.tar.xz">
   <!ENTITY kdesu-download-ftp  "&kf5-download-ftp;/kdesu-&kf5-version;.tar.xz">
-  <!ENTITY kdesu-md5sum        "6624d209d1dd30d9424c3aecf9cb031a">
+  <!ENTITY kdesu-md5sum        "77c25fb887c037c86f37b7a4caade9b6">
   <!ENTITY kdesu-size          "40 KB">
   <!ENTITY kdesu-buildsize     "2.0 MB">
   <!ENTITY kdesu-time          "0.2 SBU">
@@ -99,7 +99,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

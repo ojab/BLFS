@@ -6,7 +6,7 @@
 
   <!ENTITY sonnet-download-http "&kf5-download-http;/sonnet-&kf5-version;.tar.xz">
   <!ENTITY sonnet-download-ftp  "&kf5-download-ftp;/sonnet-&kf5-version;.tar.xz">
-  <!ENTITY sonnet-md5sum        "82aa19bbb80a4e6375e0066818694d95">
+  <!ENTITY sonnet-md5sum        "bbf2423d309b555e27e079c90caa578d">
   <!ENTITY sonnet-size          "2.7 MB">
   <!ENTITY sonnet-buildsize     "85 MB">
   <!ENTITY sonnet-time          "0.5 SBU">
@@ -110,8 +110,8 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DQT_PLUGIN_INSTALL_DIR=$QT5_PREFIX/plugins           \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DQT_PLUGIN_INSTALL_DIR=&qt5-plugins-dir;           \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 
@@ -166,7 +166,7 @@ make</userinput></screen>
           $KF5_PREFIX/include/KF5/{SonnetCore,SonnetUi},
           $KF5_PREFIX/lib/cmake/KF5Sonnet,
           $KF5_PREFIX/usr/share/kf5/sonnet and
-          $QT5_PREFIX/plugins/sonnet_clients
+          $KF5_PREFIX/&qt5-plugins-dir;/sonnet_clients
         </seg>
       </seglistitem>
     </segmentedlist>

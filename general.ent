@@ -613,13 +613,16 @@ export -f as_root</userinput></screen>
 <!ENTITY polkit-kde-agent-version     "0.99.0">
 
 <!-- KDE 5 -->
-<!ENTITY extra-cmake-modules-version  "0.0.13">
+<!ENTITY extra-cmake-modules-version  "0.0.14">
 <!ENTITY libdbusmenu-qt5-version      "0.9.3+14.04.20140314">
-<!ENTITY phonon5-version              "4.7.1">
-<!ENTITY phonon-backend-gstreamer5-version "4.7.1">
-<!ENTITY phonon-backend-vlc5-version   "0.7.1">
+<!ENTITY phonon5-version              "4.7.2">
+<!ENTITY phonon-backend-gstreamer5-version "4.7.2">
+<!ENTITY phonon-backend-vlc5-version   "0.7.2">
 <!ENTITY polkit-qt5-version           "0.103.0-9-gbac771e">
-<!ENTITY kf5-version                  "4.99.0">
+<!ENTITY qt5-mkspecs-dir              "lib/qt5/mkspecs/modules">
+<!ENTITY qt5-plugins-dir              "lib/qt5/plugins">
+<!ENTITY qt5-qml-dir                  "lib/qt5/qml">
+<!ENTITY kf5-version                  "4.100.0">
 <!ENTITY kf5-download-http            "http://download.kde.org/unstable/frameworks/&kf5-version;">
 <!ENTITY kf5-download-ftp             "ftp://ftp.kde.org/pub/kde/unstable/frameworks/&kf5-version;">
 

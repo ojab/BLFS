@@ -6,7 +6,7 @@
 
   <!ENTITY kactivities5-download-http "&kf5-download-http;/kactivities-&kf5-version;.tar.xz">
   <!ENTITY kactivities5-download-ftp  "&kf5-download-ftp;/kactivities-&kf5-version;.tar.xz">
-  <!ENTITY kactivities5-md5sum        "eaefc07ae210975ff563f065d3335423">
+  <!ENTITY kactivities5-md5sum        "45e20c18096f272ce665a120aa32ac83">
   <!ENTITY kactivities5-size          "120 KB">
   <!ENTITY kactivities5-buildsize     "9.2 MB">
   <!ENTITY kactivities5-time          "1.2 SBU">
@@ -98,9 +98,9 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DQML_INSTALL_DIR=$QT5_PREFIX/qml                     \
-      -DQT_PLUGIN_INSTALL_DIR=$QT5_PREFIX/plugins           \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DQML_INSTALL_DIR=&qt5-qml-dir;      \
+      -DQT_PLUGIN_INSTALL_DIR=&qt5-plugins-dir;           \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 
@@ -157,8 +157,8 @@ make</userinput></screen>
         <seg>
           $KF5_PREFIX/include/KF5/KActivities,
           $KF5_PREFIX/lib/cmake/KF5Activities,
-          $QT5_PREFIX/plugins/kactivitymanagerd and
-          $QT5_PREFIX/qml/org/kde/activities
+          $KF5_PREFIX/&qt5-plugins-dir;/kactivitymanagerd and
+          $KF5_PREFIX/&qt5-qml-dir;/org/kde/activities
         </seg>
       </seglistitem>
     </segmentedlist>

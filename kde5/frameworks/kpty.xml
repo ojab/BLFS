@@ -6,7 +6,7 @@
 
   <!ENTITY kpty-download-http "&kf5-download-http;/kpty-&kf5-version;.tar.xz">
   <!ENTITY kpty-download-ftp  "&kf5-download-ftp;/kpty-&kf5-version;.tar.xz">
-  <!ENTITY kpty-md5sum        "bdcbe32badc7d83ff882db9fad8ed577">
+  <!ENTITY kpty-md5sum        "4a31a53097eaf029df45dd36ab622a57">
   <!ENTITY kpty-size          "2.7 MB">
   <!ENTITY kpty-buildsize     "28 MB">
   <!ENTITY kpty-time          "0.1 SBU">
@@ -98,7 +98,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

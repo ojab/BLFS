@@ -6,7 +6,7 @@
 
   <!ENTITY attica5-download-http "&kf5-download-http;/attica-&kf5-version;.tar.xz">
   <!ENTITY attica5-download-ftp  "&kf5-download-ftp;/attica-&kf5-version;.tar.xz">
-  <!ENTITY attica5-md5sum        "1c6b71778ce0f2aea549e272bb14f5c3">
+  <!ENTITY attica5-md5sum        "360d1fe078da4680bf9bf0c8450e729b">
   <!ENTITY attica5-size          "64 KB">
   <!ENTITY attica5-buildsize     "6.7 MB">
   <!ENTITY attica5-time          "1.1 SBU">
@@ -98,7 +98,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

@@ -6,7 +6,7 @@
 
   <!ENTITY kmediaplayer-download-http "&kf5-download-http;/portingAids/kmediaplayer-&kf5-version;.tar.xz">
   <!ENTITY kmediaplayer-download-ftp  "&kf5-download-ftp;/portingAids/kmediaplayer-&kf5-version;.tar.xz">
-  <!ENTITY kmediaplayer-md5sum        "c97226816eda2bb9294e02ed3816df66">
+  <!ENTITY kmediaplayer-md5sum        "d204dc1a993b07c47de04821286f69fb">
   <!ENTITY kmediaplayer-size          "12 KB">
   <!ENTITY kmediaplayer-buildsize     "1.2 MB">
   <!ENTITY kmediaplayer-time          "0.1 SBU">
