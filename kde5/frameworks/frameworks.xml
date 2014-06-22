@@ -56,7 +56,6 @@ $Date$
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kconfigwidgets.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kservice.xml"/>
   <!-- -->
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kactivities5.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kdesu.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kemoticons.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kiconthemes.xml"/>
@@ -74,6 +73,7 @@ $Date$
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kio.xml"/>
   <!-- -->
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="frameworkintegration.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kactivities5.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kdeclarative.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kinit5.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="knewstuff.xml"/>

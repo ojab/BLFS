@@ -75,7 +75,7 @@
     <bridgehead renderas="sect4">Required</bridgehead>
     <para role="required">
       <xref linkend="boost"/> and
-      <xref linkend="kservice"/>
+      <xref linkend="kio"/>
     </para>
 
     <para condition="html" role="usernotes">
@@ -99,7 +99,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
       -DQML_INSTALL_DIR=&qt5-qml-dir;      \
-      -DQT_PLUGIN_INSTALL_DIR=&qt5-plugins-dir;           \
+      -DQT_PLUGIN_INSTALL_DIR=&qt5-plugins-dir; \
       -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>

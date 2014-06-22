@@ -621,12 +621,18 @@ export -f as_root</userinput></screen>
 <!ENTITY phonon-backend-gstreamer5-version "4.7.2">
 <!ENTITY phonon-backend-vlc5-version   "0.7.2">
 <!ENTITY polkit-qt5-version           "0.103.0-9-gbac771e">
-<!ENTITY qt5-mkspecs-dir              "lib/qt5/mkspecs/modules">
+<!ENTITY qt5-mkspecs-dir              "$KF5_PREFIX/share/qt5/mkspecs/modules">
 <!ENTITY qt5-plugins-dir              "lib/qt5/plugins">
 <!ENTITY qt5-qml-dir                  "lib/qt5/qml">
 <!ENTITY kf5-version                  "4.100.0">
 <!ENTITY kf5-download-http            "http://download.kde.org/unstable/frameworks/&kf5-version;">
 <!ENTITY kf5-download-ftp             "ftp://ftp.kde.org/pub/kde/unstable/frameworks/&kf5-version;">
+
+<!ENTITY libkscreen2-version          "1.97">
+<!ENTITY oxygen-fonts-version         "0.3.97">
+<!ENTITY plasma2-version              "4.97.0">
+<!ENTITY plasma2-download-http        "http://download.kde.org/unstable/frameworks/&plasma2-version;">
+<!ENTITY plasma2-download-ftp         "ftp://ftp.kde.org/pub/kde/unstable/frameworks/&plasma2-version;">
 
 <!-- Part VIII -->
 <!-- Chapter 30 -->

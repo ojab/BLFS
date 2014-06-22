@@ -104,7 +104,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX    \
       -DSYSCONF_INSTALL_DIR=$KF5_SYSCONFDIR \
       -DLIB_INSTALL_DIR=lib                 \
       -DBUILD_TESTING=OFF                   \
-      -DQT_PLUGIN_INSTALL_DIR=&qt5-plugins-dir;           \
+      -DQT_PLUGIN_INSTALL_DIR=&qt5-plugins-dir; \
       -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
