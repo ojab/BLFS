@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY libpcap-download-http "http://www.tcpdump.org/release/libpcap-&libpcap-version;.tar.gz">
+  <!ENTITY libpcap-download-ftp  " ">
+  <!ENTITY libpcap-md5sum        "7e7321fb3aff2f2bb05c8229f3795d4a">
+  <!ENTITY libpcap-size          "628 KB">
+  <!ENTITY libpcap-buildsize     "8.1 MB">
+  <!ENTITY libpcap-time          "0.1 SBU">
+]>
+
+<sect1 id="libpcap" xreflabel="libpcap-&libpcap-version;">
+  <?dbhtml filename="libpcap.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>libpcap-&libpcap-version;</title>
+
+  <indexterm zone="libpcap">
+    <primary sortas="a-libpcap">libpcap</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to libpcap</title>
+
+    <para>
+      <application>libpcap</application> provides functions for user-level
+      packet capture, used in low-level network monitoring.
+    </para>
+
+    &lfs75_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&libpcap-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&libpcap-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &libpcap-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &libpcap-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &libpcap-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &libpcap-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">libpcap Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="bluez"/>,
+      Software distribution for the
+      <ulink url="http://www.endace.com/">DAG</ulink>,
+      <xref linkend="libnl"/>,
+      <xref linkend="libusb"/> and
+      <ulink url="http://www.intel.com/">Septel</ulink> range of passive
+      network monitoring cards.
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+      <ulink url="&blfs-wiki;/libpcap"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of libpcap</title>
+
+    <para>
+      Install <application>libpcap</application> by running the
+      following commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      If you want to disable installing the static library, use this sed:
+    </para>
+
+<screen><userinput>sed -i '/INSTALL_DATA.*libpcap.a\|RANLIB.*libpcap.a/ s/^/#/' Makefile</userinput></screen>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>
+          libpcap-config
+        </seg>
+        <seg>
+          libpcap.{a,so}
+        </seg>
+        <seg>
+          /usr/include/pcap
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+    <varlistentry id="libpcap-config">
+        <term><command>libpcap-config</command></term>
+      <listitem>
+        <para>
+          provides configuration information for
+          <application>libpcap</application>.
+        </para>
+        <indexterm zone="libpcap libpcap-config">
+          <primary sortas="c-libpcap">libpcap-config</primary>
+        </indexterm>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry id="libpcap-lib">
+        <term><filename class="libraryfile">libpcap.{a,so}</filename></term>
+      <listitem>
+        <para>
+          are libraries used for user-level packet capture.
+        </para>
+        <indexterm zone="libpcap libpcap-lib">
+          <primary sortas="c-libpcap">libpcap.{a,so}</primary>
+        </indexterm>
+      </listitem>
+    </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

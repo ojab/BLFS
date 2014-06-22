@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY qca-download-http "http://delta.affinix.com/download/qca/2.0/qca-&qca-version;.tar.bz2">
+  <!ENTITY qca-download-ftp  " ">
+  <!ENTITY qca-md5sum        "fc15bd4da22b8096c51fcfe52d2fa309">
+  <!ENTITY qca-size          "4.3 MB">
+  <!ENTITY qca-buildsize     "110 MB">
+  <!ENTITY qca-time          "2.2 SBU">
+]>
+
+<sect1 id="qca" xreflabel="qca-&qca-version;">
+  <?dbhtml filename="qca.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Qca-&qca-version;</title>
+
+  <indexterm zone="qca">
+    <primary sortas="a-qca">qca</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Qca</title>
+
+    <para><application>Qca</application> aims to provide a straightforward
+    and cross-platform crypto API, using <application>Qt</application> datatypes
+    and conventions. <application>Qca</application> separates the API from
+    the implementation, using plugins known as Providers.</para>
+
+    &lfs75_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&qca-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&qca-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &qca-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &qca-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &qca-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &qca-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Qca Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+    <xref linkend="qt4"/> and
+    <xref linkend="which"/>
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/qca"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Qca</title>
+
+    <para>Install <application>Qca</application> by running the following
+    commands:</para>
+
+<screen><userinput>sed -i '217s@set@this->set@' src/botantools/botan/botan/secmem.h &amp;&amp;
+./configure --prefix=&qt4-dir; \
+            --certstore-path=/etc/ssl/ca-bundle.crt \
+	    --no-separate-debug-info &amp;&amp;
+make</userinput></screen>
+
+    <para>To test the results, issue <command>make test</command>.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><command>sed -i '217s@set@...</command>: This sed fixes compiling with
+    <application>GCC</application> 4.7 and newer. It is safe to omit when compiling
+    with older <application>GCC</application> versions.</para>
+
+    <para><option>--certstore-path=/etc/ssl/ca-bundle.crt</option>: Causes
+    the build to use the system-installed CA Certificates instead of a bundled
+    copy.</para>
+  
+    <para><option>--no-separate-debug-info</option>: Prevents installation
+    of a separate library and program file with debug information.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>qcatool2</seg>
+        <seg>libqca.so</seg>
+        <seg>&qt4-dir;/include/QtCrypto</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="qcatool2">
+        <term><command>qcatool2</command></term>
+        <listitem>
+          <para>is a command line tool for performing various cryptographic
+	  operations with Qca.</para>
+          <indexterm zone="qca qcatool2">
+            <primary sortas="b-qcatool2">qcatool2</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libqca">
+        <term><filename class='libraryfile'>libqca.so</filename></term>
+        <listitem>
+          <para>is the Qt Cryptography Architecture (Qca) library.</para>
+          <indexterm zone="qca libqca">
+            <primary sortas="c-libqca">libqca.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

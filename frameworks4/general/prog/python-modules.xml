@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="python-modules" xreflabel="Python Modules">
+  <?dbhtml filename="python-modules.html" ?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Python Modules</title>
+
+  <indexterm zone="python-modules">
+    <primary sortas="a-Python-Modules">Python Modules</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Python Modules</title>
+
+    <para>
+      The <application>Python</application> module packages add useful objects
+      to the <application>Python</application> language. Modules utilized by
+      packages throughout BLFS are listed here, along with their dependencies.
+      Installation of the modules shown on this page is meant to follow from top
+      to bottom to handle optional dependencies in each module.
+    </para>
+
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          <xref linkend="dbus-python"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="py2cairo"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="pycairo"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="pygobject2"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="pygobject3"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="pygtk"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <xref linkend="pyxdg"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </sect2>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="dbus-python.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="py2cairo.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="pycairo.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="pygobject2.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="pygobject3.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="pygtk.xml"/>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="pyxdg.xml"/>
+
+</sect1>

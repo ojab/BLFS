@@ -1,0 +1,838 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY perl_modules_md5sums_download_http "&sources-anduin-http;/perl-modules/">
+  <!ENTITY perl_modules_md5sums_download_ftp  "&sources-anduin-ftp;/perl-modules/">
+]>
+
+<sect1 id="perl-modules" xreflabel="Perl modules">
+  <?dbhtml filename="perl-modules.html" ?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Perl Modules</title>
+
+  <indexterm zone="perl-modules">
+    <primary sortas="a-Perl-modules">Perl modules</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Perl Modules</title>
+
+    <para>The <application>Perl</application> module packages add useful
+    objects to the <application>Perl</application> language. Modules utilized
+    by packages throughout BLFS are listed here, along with their dependencies.
+    Installation of the modules shown on this page should be accomplished by
+    installing the dependencies in the order listed. The Perl Module standard
+    build and installation instructions are shown at the bottom of this page.
+    </para>
+
+    <!-- <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download MD5 sums (HTTP):
+        <ulink url="&perl_modules_md5sums_download_http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sums (FTP):
+        <ulink url="&perl_modules_md5sums_download_ftp;"/></para>
+      </listitem>
+    </itemizedlist> -->
+
+    <!-- Archive::Zip -->
+    <bridgehead renderas="sect3" id="perl-archive-zip"
+    xreflabel="Archive::Zip-&Archive-Zip-version;">
+    Archive::Zip-&Archive-Zip-version;</bridgehead>
+
+    <indexterm zone="perl-modules perl-archive-zip">
+      <primary sortas="a-Archive-Zip">Archive::Zip</primary>
+    </indexterm>
+
+    <para>The Archive::Zip module allows a <application>Perl</application>
+    program to create, manipulate, read, and write Zip archive files. This
+    module uses the standard <xref linkend="perl-standard-install"/>.</para>
+
+    &lfs75_checked;
+
+    <itemizedlist>
+      <listitem><literallayout><ulink url="http:/cpan.metacpan.org/authors/id/P/PH/PHRED/Archive-Zip-&Archive-Zip-version;.tar.gz">Archive::Zip-&Archive-Zip-version;</ulink> 
+http:/cpan.metacpan.org/authors/id/P/PH/PHRED/Archive-Zip-&Archive-Zip-version;.tar.gz 
+MD5 sum: e804985def2c1f0ed640ab4ca6aa85a1</literallayout>
+      </listitem>
+    </itemizedlist>
+
+<!--    <!- Glib ->
+    <bridgehead renderas="sect3" id="perl-glib"
+    xreflabel="Glib-&Glib-perl-version;">
+    Glib-&Glib-perl-version;</bridgehead>
+
+    <indexterm zone="perl-modules perl-glib">
+      <primary sortas="a-Glib">Glib</primary>
+    </indexterm>
+
+    <para>
+      This module is a <application>Perl</application> wrapper around
+      <application>GLib</application> that attempts to provide a perlish
+      interface while remaining as true as possible to the underlying C API, so
+      that any reference materials you can find on using GLib may still apply to
+      using the libraries from Perl. This module and the dependency modules use
+      the standard <xref linkend="perl-standard-install"/>.
+    </para>
+
+    &lfs7 4_checked;
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <ulink url="http://www.cpan.org/authors/id/T/TS/TSCH/Glib-&Glib-perl-version;.tar.gz">
+          Glib-&Glib-perl-version;</ulink> (MD5 sum: 1d81a8aec5f7f1182a96cfaaf119d866)
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <ulink url="http://search.cpan.org/~xaoc/ExtUtils-PkgConfig/">ExtUtils::PkgConfig</ulink>
+            </para>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <ulink url="http://search.cpan.org/~flora/ExtUtils-Depends/">ExtUtils::Depends</ulink>
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </itemizedlist>
+-->
+    <!-- HTML::Parser -->
+    <bridgehead renderas="sect3" id="perl-html-parser"
+    xreflabel="HTML::Parser-&HTML-Parser-version;">
+    HTML::Parser-&HTML-Parser-version;</bridgehead>
+
+    <indexterm zone="perl-modules perl-html-parser">
+      <primary sortas="a-HTML-Parser">HTML::Parser</primary>
+    </indexterm>
+
+    <para>The HTML::Parser distribution is a collection of modules that parse
+    and extract information from HTML documents. This module and the dependency
+    modules use the standard
+    <xref linkend="perl-standard-install"/>.</para>
+
+    &lfs75_checked;
+
+    <itemizedlist>
+      <listitem><literallayout><ulink url="http://www.cpan.org/authors/id/G/GA/GAAS/HTML-Parser-&HTML-Parser-version;.tar.gz">HTML::Parser-&HTML-Parser-version;</ulink> 
+http://www.cpan.org/authors/id/G/GA/GAAS/HTML-Parser-&HTML-Parser-version;.tar.gz 
+MD5 sum: 9128a45893097dfa3bf03301b19c5efe</literallayout>
+        <itemizedlist>
+          <listitem><literallayout><ulink url="http://search.cpan.org/~petdance/HTML-Tagset/">HTML::Tagset</ulink>
+(http://search.cpan.org/~petdance/HTML-Tagset/)</literallayout>
+          </listitem>
+          <listitem>
+            <para>
+              <xref linkend="perl-lwp"/> (circular; howevever, it can
+              be installed after HTML::Parser as it is only a run-time
+              requirement for the included HTML::HeadParser module)
+            </para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </itemizedlist>
+
+    <!-- HTML::TableExtract
+    <bridgehead renderas="sect3" id="perl-html-tableextract"
+    xreflabel="HTML::TableExtract-&HTML-TableExtract-version;">
+    HTML::TableExtract-&HTML-TableExtract-version;</bridgehead>
+
+    <indexterm zone="perl-modules perl-html-tableextract">
+      <primary sortas="a-HTML-TableExtract">HTML::TableExtract</primary>
+    </indexterm>
+
+    <para>HTML::TableExtract is a module that simplifies the extraction of the
+    content contained in tables within HTML documents, extracted either as
+    text or encoded element trees. Tables of note may be specified using
+    Headers, Depth, Count, Attributes, or some combination of the four. This
+    module and dependency modules use the standard
+    <xref linkend="perl-standard-install"/>.</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <ulink url="http://cpan.org/authors/id/M/MS/MSISK/HTML-TableExtract-&HTML-TableExtract-version;.tar.gz">
+          HTML::TableExtract-&HTML-TableExtract-version;</ulink> (MD5sum: ac1b8fa092d53931a9f3fdbba330f5b0)
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <ulink url="http://search.cpan.org/~msisk/HTML-Element-Extended/">HTML::Element::Extended</ulink>
+            </para>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <ulink url="http://search.cpan.org/~cjm/HTML-Tree/">HTML::Tree</ulink>
+                </para>
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      <xref linkend="perl-html-parser"/>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      <ulink url="http://search.cpan.org/dist/Test-Fatal/">Test::Fatal</ulink>
+                      (optionally used in the test suite)
+                    </para>
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          <ulink url="http://search.cpan.org/~doy/Try-Tiny/">Try::Tiny</ulink>
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </listitem>
+                </itemizedlist>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </itemizedlist> -->
+
+    <!-- LWP -->
+    <bridgehead renderas="sect3" id="perl-lwp"
+    xreflabel="libwww-perl-&LWP-version;">
+    libwww-perl-&LWP-version; (a.k.a. LWP)</bridgehead>
+
+    <indexterm zone="perl-modules perl-lwp">
+      <primary sortas="a-libwww-perl">libwww-perl</primary>
+    </indexterm>
+
+    <para>The libwww-perl (LWP) collection is a set of
+    <application>Perl</application> modules which provide a simple and
+    consistent application programming interface to the World-Wide Web. The
+    main focus of the library is to provide classes and functions that allow
+    you to write WWW clients. The library also contains modules that are of
+    more general use and even classes that help you implement simple HTTP
+    servers. The LWP collection and all its dependency modules use the standard
+    <xref linkend="perl-standard-install"/>. The dependencies should be
+    installed in the order listed below. Ensure you install the dependency
+    chain for each module before installing the modules.</para>
+
+    &lfs75_checked;
+
+    <itemizedlist>
+      <listitem><literallayout><ulink url="http://cpan.org/authors/id/G/GA/GAAS/libwww-perl-&LWP-version;.tar.gz">libwww-perl-&LWP-version;</ulink>
+http://cpan.org/authors/id/G/GA/GAAS/libwww-perl-&LWP-version;.tar.gz 
+MD5 sum: 637d5f1eb61336ca2caa6e026b382f87) </literallayout>
+        <itemizedlist>
+          <listitem> <literallayout><ulink url="http://search.cpan.org/~gaas/Encode-Locale/">Encode::Locale</ulink>
+(http://search.cpan.org/~gaas/Encode-Locale/) </literallayout>
+          </listitem>
+          <listitem> <literallayout><ulink url="http://search.cpan.org/~gaas/HTML-Form/">HTML::Form</ulink>
+(http://search.cpan.org/~gaas/HTML-Form/) 
+
+</literallayout>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <xref linkend="perl-uri"/>
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <xref linkend="perl-html-parser"/>
+                </para>
+              </listitem>
+              <listitem> <literallayout><ulink url="http://search.cpan.org/~gaas/HTTP-Message/">HTTP::Message</ulink>
+(http://search.cpan.org/~gaas/HTTP-Message/) 
+
+</literallayout>
+                <itemizedlist> <listitem><literallayout><ulink url="http://search.cpan.org/~gaas/HTTP-Date/">HTTP::Date</ulink>
+(http://search.cpan.org/~gaas/HTTP-Date/) </literallayout>
+                  </listitem>
+                  <listitem> <literallayout> <ulink url="http://search.cpan.org/~cjm/IO-HTML/">IO::HTML</ulink>
+(http://search.cpan.org/~cjm/IO-HTML/) </literallayout>
+                  </listitem>
+                  <listitem> <literallayout><ulink url="http://search.cpan.org/~gaas/LWP-MediaTypes/">LWP::MediaTypes</ulink>
+(http://search.cpan.org/~gaas/LWP-MediaTypes/") </literallayout>
+                  </listitem>
+                </itemizedlist>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem><literallayout><ulink url="http://search.cpan.org/~gaas/HTTP-Cookies/">HTTP::Cookies</ulink>
+(http://search.cpan.org/~gaas/HTTP-Cookies/)</literallayout>
+          </listitem>
+          <listitem> <literallayout><ulink url="http://search.cpan.org/~gaas/HTTP-Negotiate/">HTTP::Negotiate</ulink>
+(http://search.cpan.org/~gaas/HTTP-Negotiate/) </literallayout>
+          </listitem>
+          <listitem><literallayout><ulink url="http://search.cpan.org/~gaas/Net-HTTP/">Net::HTTP</ulink>
+(http://search.cpan.org/~gaas/Net-HTTP/)</literallayout>
+          </listitem>
+          <listitem><literallayout><ulink url="http://search.cpan.org/~gaas/WWW-RobotRules/">WWW::RobotRules</ulink>
+(http://search.cpan.org/~gaas/WWW-RobotRules/)</literallayout>
+</listitem>
+          <listitem><literallayout><ulink url="http://search.cpan.org/~gaas/HTTP-Daemon/">HTTP::Daemon</ulink>
+(http://search.cpan.org/~gaas/HTTP-Daemon/)</literallayout>
+          </listitem>
+          <listitem><literallayout><ulink url="http://search.cpan.org/~gaas/File-Listing/">File::Listing</ulink>
+(http://search.cpan.org/~gaas/File-Listing/)</literallayout>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </itemizedlist>
+
+    <para>After the LWP installation, if you want HTTPS protocol support,
+    install the following (application and modules):</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <xref linkend="openssl"/>
+        </para>
+      </listitem>
+      <listitem> <literallayout><ulink url="http://search.cpan.org/~gaas/LWP-Protocol-https/">LWP::Protocol::https</ulink>
+(http://search.cpan.org/~gaas/LWP-Protocol-https/) </literallayout>
+        <itemizedlist>
+          <listitem> <literallayout><ulink url="http://search.cpan.org/~behroozi/IO-Socket-SSL/">IO::Socket::SSL</ulink>
+(http://search.cpan.org/~behroozi/IO-Socket-SSL/) 
+
+</literallayout>
+            <itemizedlist>
+              <listitem> <literallayout><ulink url="http://search.cpan.org/dist/Net-SSLeay/">Net::SSLeay</ulink>
+(http://search.cpan.org/dist/Net-SSLeay/)</literallayout>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem> <literallayout><ulink url="http://search.cpan.org/~abh/Mozilla-CA/">Mozilla::CA</ulink>
+(http://search.cpan.org/~abh/Mozilla-CA/) </literallayout>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </itemizedlist>
+
+
+    <!-- Module::Info
+    <bridgehead renderas="sect3" id="perl-module-info"
+    xreflabel="Module::Info-&Module-Info-version;">
+    Module::Info-&Module-Info-version;</bridgehead>
+
+    <indexterm zone="perl-modules perl-module-info">
+      <primary sortas="a-Module-Info">Module::Info</primary>
+    </indexterm>
+
+    <para>The Module::Info module is quite useful for tasks other than just
+    support of other modules. It can be used from the command-line to tell you
+    if a particular module is included in, or has been installed into your
+    <application>Perl</application> installation. Additionally, Module::Info
+    can tell you what version of a module is installed and what dependencies
+    are required for it. You can even use Module::Info to gather dependencies
+    of uninstalled modules. The Module::Info module and dependencies install
+    using the standard <application>Perl</application> module
+    <xref linkend="perl-standard-install"/>.</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <ulink url="http://www.cpan.org/authors/id/M/MB/MBARBON/Module-Info-&Module-Info-version;.tar.gz">
+          Module-Info-&Module-Info-version;</ulink>
+        </para>
+      </listitem>
+    </itemizedlist>
+    -->
+
+    <!-- Module::Signature
+    <bridgehead renderas="sect3" id="perl-module-signature"
+    xreflabel="Module::Signature-&Module-Signature-version;">
+    Module::Signature-&Module-Signature-version;</bridgehead>
+
+    <indexterm zone="perl-modules perl-module-signature">
+      <primary sortas="a-Module-Signature">Module::Signature</primary>
+    </indexterm>
+
+    <para>The Module::Signature module is used to check and create
+    <filename>SIGNATURE</filename> files for CPAN distributions. After
+    installing Module::Signature you can verify the content of a distribution
+    tarball (if it includes a <filename>SIGNATURE</filename> file) by unpacking
+    the tarball, changing into the newly created directory and issuing the
+    command <command>cpansign -v</command>. It will check each file's
+    integrity, as well as the signature's validity. Note that some of the
+    dependencies appear to be circular, however, they are only run-time
+    conflicts and you should be able to fully utilize them as long as
+    everything is installed. Module::Signature and the dependency modules are
+    installed using the standard <application>Perl</application>
+    module <xref linkend="perl-standard-install"/>.</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <ulink url="http://cpan.org/authors/id/A/AU/AUDREYT/Module-Signature-&Module-Signature-version;.tar.gz">
+          Module-Signature-&Module-Signature-version;</ulink>
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <xref linkend="perl-text-diff"/>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <ulink url="http://cpan.org/authors/id/S/SM/SMUELLER/PAR-Dist-&PAR-Dist-version;.tar.gz">
+              PAR-Dist-&PAR-Dist-version;</ulink>
+            </para>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <xref linkend="perl-archive-zip"/>
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <xref linkend="perl-lwp"/>
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <xref linkend="perl-module-signature"/>
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>
+            <xref linkend="gnupg"/>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </itemizedlist>
+    -->
+
+    <!-- Net::DNS -->
+    <bridgehead renderas="sect3" id="perl-net-dns"
+    xreflabel="Net::DNS-&Net-DNS-version;">
+    Net::DNS-&Net-DNS-version;</bridgehead>
+
+    <indexterm zone="perl-modules perl-net-dns">
+      <primary sortas="a-Net-DNS">Net::DNS</primary>
+    </indexterm>
+
+    <para>Net::DNS is a DNS resolver implemented in
+    <application>Perl</application>. It can be used to perform nearly any type
+    of DNS query from a <application>Perl</application> script. The Net::DNS
+    module and all its dependencies are installed using the standard
+    <xref linkend="perl-standard-install"/>.</para>
+
+    &lfs75_checked;
+
+    <itemizedlist>
+      <listitem> <literallayout><ulink url="http://www.cpan.org/authors/id/N/NL/NLNETLABS/Net-DNS-&Net-DNS-version;.tar.gz">Net::DNS-&Net-DNS-version;</ulink> 
+http://www.cpan.org/authors/id/N/NL/NLNETLABS/Net-DNS-&Net-DNS-version;.tar.gz 
+MD5 sum: 219dada09d01b7233f82fd1c32ddad39 
+
+</literallayout>
+        <itemizedlist>
+          <listitem> <literallayout><ulink url="http://search.cpan.org/~gaas/Digest-HMAC/">Digest::HMAC</ulink>
+(http://search.cpan.org/~gaas/Digest-HMAC/) </literallayout>
+          </listitem>
+          <listitem> <literallayout><ulink url="http://search.cpan.org/~shlomif/IO-Socket-INET6-2.72/">IO::Socket::INET6</ulink>
+(http://search.cpan.org/~shlomif/IO-Socket-INET6-2.72/) </literallayout>
+          </listitem>
+          <listitem> <literallayout><ulink url="http://search.cpan.org/~gbarr/IO/lib/IO/Socket/INET.pm">IO::Socket::INET</ulink>
+(http://search.cpan.org/~gbarr/IO/lib/IO/Socket/INET.pm) (required for IPv6 support)
+
+</literallayout>
+            <itemizedlist>
+              <listitem> <literallayout><ulink url="http://search.cpan.org/~umemoto/Socket6/">Socket6</ulink>
+(http://search.cpan.org/~umemoto/Socket6/)</literallayout>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </itemizedlist>
+
+    <!-- SGMLSpm -->
+    <bridgehead renderas="sect3" id="perl-sgmlspm"
+    xreflabel="SGMLSpm-&SGMLSpm-version;">
+    SGMLSpm-&SGMLSpm-version;</bridgehead>
+
+    <indexterm zone="perl-modules perl-sgmlspm">
+      <primary sortas="a-SGMLSpm">SGMLSpm</primary>
+    </indexterm>
+
+    <para>The SGMLSpm module is a <application>Perl</application> library
+      used for parsing the output from James Clark's SGMLS and NSGMLS
+      parsers. This modules uses the standard
+    <xref linkend="perl-standard-install"/>.</para>
+
+    &lfs75_checked;
+
+    <para> Before beginning the build, issue
+      the following command to prevent an error:</para>
+
+<screen><userinput>chmod -v 644 MYMETA.yml</userinput></screen>
+
+    <para>
+      After installed, as the <systemitem class="username">root</systemitem>
+      user:
+    </para>
+
+<screen role="root"><userinput>ln -sv sgmlspl.pl /usr/bin/sgmlspl</userinput></screen>
+
+    <itemizedlist>
+      <listitem> <literallayout><ulink url="http://anduin.&lfs-domainname;/sources/BLFS/conglomeration/perl-modules/SGMLSpm-&SGMLSpm-version;.tar.gz">SGMLSpm-&SGMLSpm-version;</ulink> 
+http://anduin.&lfs-domainname;/sources/BLFS/conglomeration/perl-modules/SGMLSpm-&SGMLSpm-version;.tar.gz 
+MD5 sum: 746c74ae969992cedb1a2879b4168090 </literallayout>
+<!--http://search.cpan.org/CPAN/authors/id/R/RA/RAAB/SGMLSpm-&SGMLSpm-version;.tar.gz -->
+      </listitem>
+    </itemizedlist>
+
+    <!-- Text::Diff
+    <bridgehead renderas="sect3" id="perl-text-diff"
+    xreflabel="Text::Diff-&Text-Diff-version;">
+    Text::Diff-&Text-Diff-version;</bridgehead>
+
+    <indexterm zone="perl-modules perl-text-diff">
+      <primary sortas="a-Text-Diff">Text::Diff</primary>
+    </indexterm>
+
+    <para>Text::Diff is used to perform diffs on files and record sets. It
+    provides a basic set of services akin to the GNU <command>diff</command>
+    utility. It is not anywhere near as feature complete as GNU
+    <command>diff</command>, but it is better integrated with
+    <application>Perl</application> and available on all platforms. Text::Diff
+    is often faster than shelling out to a system's <command>diff</command>
+    executable for small files, and generally slower on larger files. The
+    modules listed below are installed using the standard
+    <application>Perl</application> module
+    <xref linkend="perl-standard-install"/>.</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <ulink url="http://cpan.org/authors/id/R/RB/RBS/Text-Diff-&Text-Diff-version;.tar.gz">
+          Text-Diff-&Text-Diff-version;</ulink></para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <ulink url="http://cpan.org/authors/id/T/TY/TYEMQ/Algorithm-Diff-&Algorithm-Diff-version;.tar.gz">
+              Algorithm-Diff-&Algorithm-Diff-version;</ulink></para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </itemizedlist>
+    -->
+
+    <!-- Tk
+    <bridgehead renderas="sect3" id="tk-perl"
+    xreflabel="Tk-Perl-&Tk-Perl-version;">
+    Tk-&Tk-Perl-version;</bridgehead>
+
+    <indexterm zone="perl-modules tk-perl">
+      <primary sortas="a-Tk">Tk</primary>
+    </indexterm>
+
+    <para>The <application>Tk</application> module is a
+    <application>Perl</application> interface to the
+    <application>Tk</application> package. The goal of this release is Unicode
+    support via <application>Perl</application>'s and
+    core-<application>Tk</application>'s use of UTF-8. Tk-&Tk-Perl-version;
+    builds and loads into a threaded <application>Perl</application> but is NOT
+    yet thread safe. The module is installed using the standard
+    <application>Perl</application> module
+    <xref linkend="perl-standard-install"/>.</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <ulink url="http://www.cpan.org/authors/id/S/SR/SREZIC/Tk-&Tk-Perl-version;.tar.gz">
+          Tk-&Tk-Perl-version;</ulink></para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <xref linkend="tk"/> and <xref linkend="libjpeg"/>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </itemizedlist>
+    -->
+
+    <!-- URI -->
+    <bridgehead renderas="sect3" id="perl-uri"
+    xreflabel="URI-&URI-version;">
+    URI-&URI-version;</bridgehead>
+
+    <indexterm zone="perl-modules perl-uri">
+      <primary sortas="a-URI">URI</primary>
+    </indexterm>
+
+    <para>
+      This module implements the URI class. Objects of this class represent
+      "Uniform Resource Identifier references" as specified in RFC 2396 (and
+      updated by RFC 2732). A Uniform Resource Identifier is a compact string of
+      characters that identifies an abstract or physical resource. A Uniform
+      Resource Identifier can be further classified as either a Uniform Resource
+      Locator (URL) or a Uniform Resource Name (URN). The distinction between
+      URL and URN does not matter to the URI class interface. A "URI-reference"
+      is a URI that may have additional information attached in the form of a
+      fragment identifier. This module uses the standard
+      <xref linkend="perl-standard-install"/>.
+    </para>
+
+    &lfs75_checked;
+
+    <itemizedlist>
+      <listitem> <literallayout><ulink url="http://www.cpan.org/authors/id/G/GA/GAAS/URI-&URI-version;.tar.gz">URI-&URI-version;</ulink>
+http://www.cpan.org/authors/id/G/GA/GAAS/URI-&URI-version;.tar.gz 
+MD5 sum: 70f739be8ce28b8baba7c5920ffee4dc </literallayout>
+      </listitem>
+    </itemizedlist>
+
+    <!-- XML::Parser -->
+<!--    <bridgehead renderas="sect3" id="perl-xml-parser"
+    xreflabel="XML::Parser-&XML-Parser-version;">
+    XML::Parser-&XML-Parser-version;</bridgehead>
+
+    <indexterm zone="perl-modules perl-xml-parser">
+      <primary sortas="a-XML-Parser">XML::Parser</primary>
+    </indexterm>
+
+    <para>The XML::Parser module is a <application>Perl</application> extension
+    interface to James Clark's XML parser,
+    <application>expat</application>. The module uses the standard
+    <xref linkend="perl-standard-install"/>.</para>
+
+    &lfs75_checked;
+
+    <itemizedlist>
+      <listitem> <literallayout><ulink url="http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/XML-Parser-&XML-Parser-version;.tar.gz">XML::Parser-&XML-Parser-version;</ulink>
+http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/XML-Parser-&XML-Parser-version;.tar.gz 
+MD5 sum: c320d2ffa459e6cdc6f9f59c1185855e) </literallayout>
+        <itemizedlist>
+          <!-<listitem>
+            <para>
+              <xref linkend="expat"/>
+            </para>
+          </listitem> ->
+          <listitem>
+            <para>
+              <xref linkend="perl-lwp"/> (optionally used in the test suite)
+            </para>
+          </listitem>
+        </itemizedlist>
+
+      </listitem>
+    </itemizedlist>-->
+
+    <!-- XML::Simple -->
+    <bridgehead renderas="sect3" id="perl-xml-simple"
+    xreflabel="XML::Simple-&XML-Simple-version;">
+    XML::Simple-&XML-Simple-version;</bridgehead>
+
+    <indexterm zone="perl-modules perl-xml-simple">
+      <primary sortas="a-XML-Simple">XML::Simple</primary>
+    </indexterm>
+
+    <para>The XML::Simple module is a <application>Perl</application> extension
+    that provides an easy API to read and write XML (especially config files).
+    This module and all dependency modules use the standard
+    <xref linkend="perl-standard-install"/>.</para>
+
+    &lfs75_checked;
+
+    <itemizedlist>
+      <listitem> <literallayout><ulink url="http://cpan.org/authors/id/G/GR/GRANTM/XML-Simple-&XML-Simple-version;.tar.gz">XML::Simple-&XML-Simple-version;</ulink> 
+http://cpan.org/authors/id/G/GR/GRANTM/XML-Simple-&XML-Simple-version;.tar.gz 
+MD5 sum: 4d10964e123b76eca36678464daa63cd </literallayout>
+        <itemizedlist>
+          <listitem> <literallayout><ulink url="http://search.cpan.org/~grantm/XML-SAX/">XML::SAX</ulink>
+(http://search.cpan.org/~grantm/XML-SAX/)
+(Note: this package does not support parallel build) 
+
+</literallayout>
+            <itemizedlist>
+              <listitem> <literallayout><ulink url="http://search.cpan.org/~perigrin/XML-NamespaceSupport/">XML::NamespaceSupport</ulink>
+(http://search.cpan.org/~perigrin/XML-NamespaceSupport/) </literallayout>
+              </listitem>
+              <listitem> <literallayout><ulink url="http://search.cpan.org/~grantm/XML-SAX-Base/">XML::SAX::Base</ulink>
+(http://search.cpan.org/~grantm/XML-SAX-Base/) </literallayout>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem> <literallayout><ulink url="http://search.cpan.org/~bjoern/XML-SAX-Expat/">XML::SAX::Expat</ulink>
+(http://search.cpan.org/~bjoern/XML-SAX-Expat/)
+(Note: this package does not support parallel build) 
+
+</literallayout>
+<!--            <itemizedlist>
+              <listitem>
+                <para>
+                  <xref linkend="perl-xml-parser"/>
+                </para>
+              </listitem>
+            </itemizedlist>-->
+          </listitem>
+          <listitem> <literallayout id="perl-xml-libxml"><ulink url="http://search.cpan.org/~shlomif/XML-LibXML/">XML::LibXML</ulink>
+(http://search.cpan.org/~shlomif/XML-LibXML/)
+(recommended for faster parsing) </literallayout>
+          </listitem>
+          <listitem> <literallayout><ulink url="http://search.cpan.org/~chorny/Tie-IxHash/">Tie::IxHash</ulink>
+(http://search.cpan.org/~chorny/Tie-IxHash/)
+(optionally used in the test suite) </literallayout>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </itemizedlist>
+
+    <!-- YAML
+    <bridgehead renderas="sect3" id="perl-yaml"
+    xreflabel="YAML-&YAML-version;">
+    YAML-&YAML-version;</bridgehead>
+
+    <indexterm zone="perl-modules perl-yaml">
+      <primary sortas="a-YAML">YAML</primary>
+    </indexterm>
+
+    <para>The <application>YAML</application> modules implement a
+    <application>YAML</application> Loader and Dumper based on the
+    <application>YAML</application> 1.0 specification
+    <ulink url="http://www.yaml.org/spec/"/>.
+    <application>YAML</application> is a generic data serialization language
+    that is optimized for human readability. It can be used to express the data
+    structures of most modern programming languages. The module and
+    dependencies are installed using the standard
+    <application>Perl</application> module
+    <xref linkend="perl-standard-install"/>.</para>
+
+    <note>
+      <para>The <application>YAML</application>,
+      <application>Test::Base</application> and
+      <application>Spiffy</application> modules will install UTF-8
+      encoded manual pages. To modify the manual pages so that non-UTF-8
+      encoded pages are installed, issue the following commands (before
+      any other build commands):</para>
+
+<screen><literal>For <application>Spiffy</application>:     <command>sed -i 's,\xc3\xb6,o,' lib/Spiffy.pm</command>
+
+For <application>Test::Base</application>: <command>sed -i 's,\xc3\xb6,o,' \
+                  lib/Test/Base{,/Filter}.pm \
+                  lib/Module/Install/TestBase.pm</command>
+
+For <application>YAML</application>:       <command>sed -i 's,\xc3\xb6,o,' \
+                  ysh \
+                  lib{,/Test}/YAML.pm \
+                  lib/YAML/{Types,Node,Error,Marshall,Tag,Base}.pm \
+                  lib/YAML/{Loader,Dumper}{,/Base}.pm</command></literal></screen>
+
+    </note>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <ulink url="http://cpan.org/authors/id/I/IN/INGY/YAML-&YAML-version;.tar.gz">
+          YAML-&YAML-version;</ulink></para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <ulink url="http://cpan.org/authors/id/I/IN/INGY/Test-Base-&Test-Base-version;.tar.gz">
+              Test-Base-&Test-Base-version;</ulink>
+              (optionally used during the tests)
+           </para>
+             <itemizedlist>
+               <listitem>
+                <para
+                  <ulink url="http://cpan.org/authors/id/I/IN/INGY/Spiffy-&Spiffy-version;.tar.gz">
+                  Spiffy-&Spiffy-version;</ulink></para>
+               </listitem>
+             </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>
+              <xref linkend="perl-text-diff"/>
+              (optionally used during the tests)
+            </para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </itemizedlist>
+    -->
+
+  </sect2>
+
+  <sect2 role="installation" id="perl-standard-install"
+  xreflabel="build and installation instructions">
+    <title>Standard Installation of Perl Modules</title>
+
+    <para>Install <application>Perl</application> modules by running the
+    following commands:</para>
+
+<screen><userinput>perl Makefile.PL &amp;&amp;
+make &amp;&amp;
+make test</userinput></screen>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <note>
+      <para>When reinstalling a <application>Perl</application> module,
+      sometimes older versions of the module being reinstalled are in other
+      directories specified in <parameter>@INC</parameter>.  To delete all
+      other versions of the module being reinstalled (not simply older ones)
+      set the <varname>UNINST</varname> variable:</para>
+
+<screen><userinput>make install UNINST=1</userinput></screen>
+    </note>
+
+  </sect2>
+
+  <sect2 role="installation" id="perl-auto-install"
+  xreflabel="alternate auto installation instructions">
+    <title>(Alternate) Auto Installation of Perl Modules.</title>
+
+    <para>There is an alternate way of installing the modules using the
+    <command>cpan</command> shell <command>install</command> command. The
+    command automatically downloads the source from the CPAN archive, extracts
+    it, runs the compilation, testing and installation commands mentioned
+    above, and removes the build source tree. You may still need to install
+    dependent library packages before running the automated installation
+    method.</para>
+
+    <para>The first time you run <command>cpan</command>, you'll be prompted
+    to enter some information regarding download locations and methods. This
+    information is retained in files located in
+    <filename class='directory'>~/.cpan</filename>. Start the
+    <command>cpan</command> shell by issuing '<command>cpan</command>' as the
+    <systemitem class="username">root</systemitem> user. Any module may now be
+    installed from the
+    <emphasis role='underlined'><prompt>cpan&gt;&nbsp;</prompt></emphasis>
+    prompt with the command:</para>
+
+<screen role="root"><userinput>install <replaceable>&lt;Module::Name&gt;</replaceable></userinput></screen>
+
+    <para>For additional commands and help, issue '<command>help</command>'
+    from the
+    <emphasis role='underlined'><prompt>cpan&gt;&nbsp;</prompt></emphasis>
+    prompt.</para>
+
+    <para>Alternatively, for scripted or non-interactive installations, use the
+    following syntax as the
+    <systemitem class="username">root</systemitem> user to install one or more
+    modules:</para>
+
+<screen role="root"><userinput>cpan -i <replaceable>&lt;Module1::Name&gt; &lt;Module2::Name&gt;</replaceable></userinput></screen>
+
+    <para>Review the <filename>cpan.1</filename> man page for additional
+    parameters you can pass to <command>cpan</command> on the command
+    line.</para>
+
+  </sect2>
+
+</sect1>

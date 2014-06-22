@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY xvid-download-http "http://downloads.xvid.org/downloads/xvidcore-&xvid-version;.tar.gz">
+  <!ENTITY xvid-download-ftp  " ">
+  <!ENTITY xvid-md5sum        "8ecddfe488cb3a82d792fc7efbf51d62">
+  <!ENTITY xvid-size          "800 KB">
+  <!ENTITY xvid-buildsize     "8.1 MB">
+  <!ENTITY xvid-time          "0.1 SBU">
+]>
+
+<sect1 id="xvid" xreflabel="XviD-&xvid-version;">
+  <?dbhtml filename="xvid.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>XviD-&xvid-version;</title>
+
+  <indexterm zone="xvid">
+    <primary sortas="a-XviD">XviD</primary>
+  </indexterm>
+
+<sect2 role="package">
+  <title>Introduction to XviD</title>
+
+    <para><application>XviD</application> is an MPEG-4
+    compliant video CODEC.</para>
+
+    &lfs75_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&xvid-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&xvid-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &xvid-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &xvid-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &xvid-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &xvid-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">XviD Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional"><xref linkend="yasm"/></para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/xvid"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of XviD</title>
+
+    <note><para>This package tarball expands to <filename
+    class='directory'>xvidcore</filename>, not the expected <filename
+    class='directory'>xvidcore-&xvid-version;</filename>.</para></note>
+
+    <para>Install <application>XviD</application> by running the following
+    commands:</para>
+
+<screen><userinput>cd build/generic &amp;&amp;
+./configure --prefix=/usr &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>sed -i '/libdir.*STATIC_LIB/ s/^/#/' Makefile &amp;&amp;
+make install &amp;&amp;
+
+chmod -v 755 /usr/lib/libxvidcore.so.4.3 &amp;&amp;
+ln -v -sf libxvidcore.so.4.3 /usr/lib/libxvidcore.so.4 &amp;&amp;
+ln -v -sf libxvidcore.so.4   /usr/lib/libxvidcore.so   &amp;&amp;
+
+install -v -m755 -d /usr/share/doc/xvidcore-&xvid-version;/examples &amp;&amp;
+install -v -m644 ../../doc/* /usr/share/doc/xvidcore-&xvid-version; &amp;&amp;
+install -v -m644 ../../examples/* \
+    /usr/share/doc/xvidcore-&xvid-version;/examples</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><command>sed -i '/libdir.*STATIC_LIB/ s/^/#/' Makefile</command>:
+    This command disables installing the static library.</para>
+
+    <para><command>ln -v -sf libxvidcore.so.4 /usr/lib/libxvidcore.so</command>:
+    This command makes applications linked against
+    <filename class="libraryfile">.so</filename> names, link to
+    <filename class="libraryfile">.so.<replaceable>&lt;MAJOR&gt;</replaceable></filename>.
+    This ensures better binary compatibility, as
+    <application>XviD</application> developers take care not changing the
+    <replaceable>&lt;MAJOR&gt;</replaceable> number until there is an incompatible
+    ABI change.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>None</seg>
+        <seg>libxvidcore.so</seg>
+        <seg>/usr/share/doc/xvidcore-&xvid-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+  <variablelist>
+    <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+    <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+    <varlistentry id="libxvidcore">
+      <term><filename class='libraryfile'>libxvidcore.so</filename></term>
+      <listitem>
+        <para>provides functions to encode and decode most
+        MPEG-4 video data.</para>
+        <indexterm zone="xvid libxvidcore">
+          <primary sortas="c-libxvidcore">libxvidcore.so</primary>
+        </indexterm>
+      </listitem>
+    </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

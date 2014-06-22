@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY pidgin-download-http "&sourceforge-repo;/pidgin/pidgin-&pidgin-version;.tar.bz2">
+  <!ENTITY pidgin-download-ftp  " ">
+  <!ENTITY pidgin-md5sum        "10a4a69d077893f6dd3438cd8af94e81">
+  <!ENTITY pidgin-size          "9.7 MB">
+  <!ENTITY pidgin-buildsize     "238 MB (additional 2MB for the tests and
+                                 90 MB for API docs)">
+  <!ENTITY pidgin-time          "1.7 SBU (additional 0.1 SBU for API docs)">
+]>
+
+<sect1 id="pidgin" xreflabel="Pidgin-&pidgin-version;">
+  <?dbhtml filename="pidgin.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Pidgin-&pidgin-version;</title>
+
+  <indexterm zone="pidgin">
+    <primary sortas="a-Pidgin">Pidgin</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Pidgin</title>
+
+    <para>
+      <application>Pidgin</application> is a Gtk+ 2 instant messaging client
+      that can connect with a wide range of networks including AIM, ICQ,
+      GroupWise, MSN, Jabber, IRC, Napster, Gadu-Gadu, SILC, Zephyr and Yahoo!
+    </para>
+
+    &lfs75_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&pidgin-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&pidgin-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &pidgin-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &pidgin-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &pidgin-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &pidgin-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Pidgin Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="gtk2"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="libgcrypt"/> and
+      <xref linkend="gnutls"/> or
+      <xref linkend="nss"/>
+    </para>
+
+    <para>
+      SSL support is required for the MSN Messenger, Yahoo!, Novel Groupwise and
+      Google Talk protocol plugins. <application>GnuTLS</application> is the
+      preferred method (the Mozilla NSS API is more likely to change and this
+      can cause problems).
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="avahi"/> (required for the Bonjour plugin),
+      <xref linkend="check"/> (only used during the test suite),
+      <xref linkend="cyrus-sasl"/>,
+      <xref linkend="dbus"/>,
+      <ulink url="&gnome-download-http;/evolution-data-server/">
+      Evolution Data Server</ulink>,
+      <ulink url="http://www.freedesktop.org/wiki/Software/Farstream">
+      Farstream (Version 0.1)</ulink>
+      (required for video and voice support),
+      <xref linkend="GConf"/>,
+      <xref linkend="gstreamer"/> (required for audio support),
+      <ulink url="http://gtkspell.sourceforge.net/">Gtkspell</ulink>,
+      <xref linkend="libidn"/>,
+      <ulink url="http://libgadu.net/">libgadu</ulink>,
+      <ulink url="http://meanwhile.sourceforge.net/">Meanwhile</ulink>
+      (required for Sametime protocol support),
+      <xref linkend="mitkrb"/> (required for Kerberos support in the Zephyr
+      module),
+      <xref linkend="NetworkManager"/>,
+      <ulink url="http://silcnet.org/software/">SILC Client</ulink>,
+      <ulink url="http://silcnet.org/software/">SILC Toolkit</ulink>,
+      <xref linkend="startup-notification"/>,
+      <xref linkend="sqlite"/> (required for the Contact Availability Prediction
+      plugin),
+      <xref linkend="tcl"/>, and
+      <ulink url="http://packages.debian.org/stable/source/zephyr">Zephyr</ulink>
+    </para>
+
+    <para condition="html" role="usernotes">
+      User Notes: <ulink url="&blfs-wiki;/pidgin"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Pidgin</title>
+
+    <para>
+      Compile <application>Pidgin</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr       \
+            --sysconfdir=/etc   \
+            --disable-avahi     \
+            --disable-gtkspell  \
+            --disable-gstreamer \
+            --disable-meanwhile \
+            --disable-idn       \
+            --disable-nm        \
+            --disable-vv        \
+            --disable-tcl &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      If you have <xref linkend="doxygen"/> installed
+      (<xref linkend="graphviz"/> can be used also) and you wish to create the
+      API documentation, issue: <command>make docs</command>
+    </para>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+mkdir -pv /usr/share/doc/pidgin-&pidgin-version; &amp;&amp;
+cp -v README doc/gtkrc-2.0 /usr/share/doc/pidgin-&pidgin-version;</userinput></screen>
+
+    <para>
+      If you created the API documentation, install it using the following
+      commands as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>mkdir -pv /usr/share/doc/pidgin-&pidgin-version;/api &amp;&amp;
+cp -v doc/html/* /usr/share/doc/pidgin-&pidgin-version;/api</userinput></screen>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/update-icons-and-desktop.xml"/>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <option>--disable-avahi</option>: Remove this switch if you've
+      installed <xref linkend="avahi"/>.
+    </para>
+
+    <para>
+      <option>--disable-gtkspell</option>: Spellchecking. Remove this switch if
+      you've installed
+      <ulink url="http://gtkspell.sourceforge.net/">Gtkspell</ulink>.
+    </para>
+
+    <para>
+      <option>--disable-gstreamer</option>: Sounds. Remove this switch if you've
+      installed <xref linkend="gstreamer"/>.
+    </para>
+
+    <para>
+      <option>--disable-meanwhile</option>: Remove this switch if you've
+      installed <ulink url="http://meanwhile.sourceforge.net/">Meanwhile</ulink>.
+    </para>
+
+    <para>
+      <option>--disable-idn</option>: Remove this switch if you've installed
+      <xref linkend="libidn"/>.
+    </para>
+
+    <para>
+      <option>--disable-nm</option>: Remove this switch if you've installed
+      <xref linkend="NetworkManager"/>.
+    </para>
+
+    <para>
+      <option>--disable-vv</option>: Video and voice. Remove this switch if
+      you've installed
+      <ulink url="http://www.freedesktop.org/wiki/Software/Farstream">
+      Farstream (Version 0.1)</ulink>.
+    </para>
+
+    <para>
+      <option>--disable-tcl</option>: Remove this switch if you've installed
+      <xref linkend="tcl"/>.
+    </para>
+
+    <para>
+      <option>--enable-cyrus-sasl</option>: Use this switch if you've installed
+      <xref linkend="cyrus-sasl"/> and wish to build
+      <application>Pidgin</application> with SASL support.
+    </para>
+
+    <para>
+      <option>--disable-gnutls</option>: Use this switch if you've got both
+      <xref linkend="gnutls"/> and <xref linkend="nss"/> installed, but want
+      to use <xref linkend="nss"/> for the SSL support.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Pidgin</title>
+
+    <sect3 id="pidgin-config">
+      <title>Config Files</title>
+      <para>
+        <filename>~/.purple/*</filename> and
+        <filename>~/.gtkrc-02</filename>
+      </para>
+
+      <indexterm zone="pidgin pidgin-config">
+        <primary sortas="e-AA.purple-*">~/.purple/*</primary>
+      </indexterm>
+
+      <indexterm zone="pidgin pidgin-config">
+        <primary sortas="e-AA.gtkrc-02">~/.gtkrc-02</primary>
+      </indexterm>
+    </sect3>
+
+    <sect3><title>Configuration Information</title>
+
+      <para>
+        Most configuration can be accomplished by using the various preference
+        settings inside the programs. Additionally, you can create a
+        <filename>~/.gtkrc-02</filename> file which can store gtk+-2 theme
+        settings that affect <application>Pidgin</application> and other Gtk+ 2
+        applications. Note that an example <filename>gtkrc-02</filename> file
+        was installed during the package installation and can be used as a
+        starting point or reference.
+      </para>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          finch, pidgin, purple-client-example,
+          purple-remote, purple-send, purple-send-async, and
+          purple-url-handler
+        </seg>
+        <seg>
+          libgnt.so, libpurple.so, libpurple-client.so, and
+          plugins under /usr/lib/{finch,gnt,pidgin,purple-2}
+        </seg>
+        <seg>
+          /usr/include/finch,
+          /usr/include/gnt,
+          /usr/include/libpurple,
+          /usr/include/pidgin,
+          /usr/lib/finch,
+          /usr/lib/gnt,
+          /usr/lib/pidgin,
+          /usr/lib/purple-2,
+          /usr/share/doc/pidgin-&pidgin-version;,
+          /usr/share/pixmaps/pidgin,
+          /usr/share/purple, and
+          /usr/share/sounds/purple
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="pidgin-prog">
+        <term><command>pidgin</command></term>
+        <listitem>
+          <para>
+            is a <application>GTK+</application> 2 instant messaging client.
+          </para>
+          <indexterm zone="pidgin pidgin-prog">
+            <primary sortas="b-pidgin">pidgin</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="finch">
+        <term><command>finch</command></term>
+        <listitem>
+          <para>
+            is a text-based instant messaging client.
+          </para>
+          <indexterm zone="pidgin finch">
+            <primary sortas="b-finch">finch</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
