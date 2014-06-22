@@ -75,8 +75,8 @@
 
     <bridgehead renderas="sect4">Required</bridgehead>
     <para role="required">
-      FontForge,
-      <xref linkend="extra-cmake-modules"/> and
+      <xref linkend="extra-cmake-modules"/>,
+      <xref linkend="fontforge"/> and
       <xref linkend="qt5"/>
     </para>
 
