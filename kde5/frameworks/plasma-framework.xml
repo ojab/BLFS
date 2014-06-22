@@ -6,7 +6,7 @@
 
   <!ENTITY plasma-framework-download-http "&kf5-download-http;/plasma-framework-&kf5-version;.tar.xz">
   <!ENTITY plasma-framework-download-ftp  "&kf5-download-ftp;/plasma-framework-&kf5-version;.tar.xz">
-  <!ENTITY plasma-framework-md5sum        "bb8077f5858643939bc002428cfcc338">
+  <!ENTITY plasma-framework-md5sum        "a49ff1fb805f15115e4365bae6bbb45d">
   <!ENTITY plasma-framework-size          "4.1 MB">
   <!ENTITY plasma-framework-buildsize     "31 MB">
   <!ENTITY plasma-framework-time          "1.6 SBU">
@@ -99,8 +99,8 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DQML_INSTALL_DIR=$QT5_PREFIX/qml           \
-      -DQT_PLUGIN_INSTALL_DIR=$QT5_PREFIX/plugins \
+      -DQML_INSTALL_DIR=&qt5-qml-dir;      \
+      -DQT_PLUGIN_INSTALL_DIR=&qt5-plugins-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 
@@ -154,9 +154,9 @@ make</userinput></screen>
         <seg>
           $KF5_PREFIX/include/KF5/{plasma,Plasma},
           $KF5_PREFIX/lib/cmake/{KF5Plasma,KF5PlasmaQuick},
-          $KF5_PREFIX/share/plasma,
-          $QT5_PREFIX/platformqml/touch/org/kde/plasma and
-          $QT5_PREFIX/qml/org/kde/plasma
+          $KF5_PREFIX/platformqml/touch/org/kde/plasma,
+          $KF5_PREFIX/&qt5-qml-dir;/org/kde/plasma and
+          $KF5_PREFIX/share/plasma
         </seg>
       </seglistitem>
     </segmentedlist>

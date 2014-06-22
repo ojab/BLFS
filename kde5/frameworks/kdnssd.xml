@@ -6,7 +6,7 @@
 
   <!ENTITY kdnssd-download-http "&kf5-download-http;/kdnssd-&kf5-version;.tar.xz">
   <!ENTITY kdnssd-download-ftp  "&kf5-download-ftp;/kdnssd-&kf5-version;.tar.xz">
-  <!ENTITY kdnssd-md5sum        "d9cdea02450c31b15c280e43561f5643">
+  <!ENTITY kdnssd-md5sum        "b0f088b9bb3949369efa26af21e42c8d">
   <!ENTITY kdnssd-size          "2.6 MB">
   <!ENTITY kdnssd-buildsize     "77 MB">
   <!ENTITY kdnssd-time          "0.4 SBU">
@@ -103,7 +103,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

@@ -6,7 +6,7 @@
 
   <!ENTITY phonon5-download-http "http://download.kde.org/stable/phonon/&phonon5-version;/phonon-&phonon5-version;.tar.xz">
   <!ENTITY phonon5-download-ftp  "ftp://ftp.kde.org/pub/kde/stable/phonon/&phonon5-version;/phonon-&phonon5-version;.tar.xz">
-  <!ENTITY phonon5-md5sum        "0935e1c00440a03e3032860030398665">
+  <!ENTITY phonon5-md5sum        "a8b722a11a301fc2cda7ff8228209531">
   <!ENTITY phonon5-size          "324 KB">
   <!ENTITY phonon5-buildsize     "11 MB">
   <!ENTITY phonon5-time          "0.8 SBU">
@@ -110,7 +110,6 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DCMAKE_INSTALL_LIBDIR=lib         \
       -DPHONON_BUILD_PHONON4QT5=ON       \
-      -DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=TRUE \
       -Wno-dev .. &amp;&amp;
 make</userinput></screen>
 
@@ -143,12 +142,6 @@ make</userinput></screen>
       <parameter>-DPHONON_BUILD_PHONON4QT5=ON</parameter>: This switch is used
       to ensure that <application>Qt5</application> version of the library is
       built even if <application>Qt4</application> is present.
-    </para>
-
-    <para>
-      <parameter>-DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=TRUE</parameter>:
-      This switch is used to ensure that the plugins and mkspecs files get
-      installed in the correct location. 
     </para>
 
   </sect2>

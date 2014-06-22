@@ -6,7 +6,7 @@
 
   <!ENTITY kcompletion-download-http "&kf5-download-http;/kcompletion-&kf5-version;.tar.xz">
   <!ENTITY kcompletion-download-ftp  "&kf5-download-ftp;/kcompletion-&kf5-version;.tar.xz">
-  <!ENTITY kcompletion-md5sum        "d3e839ddec60b2afd762d88a8bc12ba8">
+  <!ENTITY kcompletion-md5sum        "88b8d9b8c0d7ab475bdc6afd34e02a88">
   <!ENTITY kcompletion-size          "2.7 MB">
   <!ENTITY kcompletion-buildsize     "78 MB">
   <!ENTITY kcompletion-time          "0.3 SBU">
@@ -99,7 +99,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

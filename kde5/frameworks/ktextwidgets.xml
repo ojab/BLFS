@@ -6,7 +6,7 @@
 
   <!ENTITY ktextwidgets-download-http "&kf5-download-http;/ktextwidgets-&kf5-version;.tar.xz">
   <!ENTITY ktextwidgets-download-ftp  "&kf5-download-ftp;/ktextwidgets-&kf5-version;.tar.xz">
-  <!ENTITY ktextwidgets-md5sum        "a8dcb0d4d24699d1507caaafefa5498e">
+  <!ENTITY ktextwidgets-md5sum        "6897b11fc6f8ceccb32852b42c1a7c23">
   <!ENTITY ktextwidgets-size          "2.8 MB">
   <!ENTITY ktextwidgets-buildsize     "30 MB">
   <!ENTITY ktextwidgets-time          "0.2 SBU">
@@ -100,7 +100,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

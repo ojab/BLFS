@@ -4,12 +4,12 @@
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 
-  <!ENTITY mariadb-download-http "http://tweedo.com/mirror/mariadb/mariadb-&mariadb-version;/kvm-tarbake-jaunty-x86/mariadb-&mariadb-version;.tar.gz">
-  <!ENTITY mariadb-download-ftp  "ftp://mirrors.fe.up.pt/pub/mariadb/mariadb-&mariadb-version;/kvm-tarbake-jaunty-x86/mariadb-&mariadb-version;.tar.gz">
-  <!ENTITY mariadb-md5sum        "14ce22b8197d4eae88d237776d47220f">
-  <!ENTITY mariadb-size          "50 MB">
+  <!ENTITY mariadb-download-http "https://downloads.mariadb.org/interstitial/mariadb-&mariadb-version;/source/mariadb-&mariadb-version;.tar.gz">
+  <!ENTITY mariadb-download-ftp  "ftp://mirrors.fe.up.pt/pub/mariadb/mariadb-&mariadb-version;/source/mariadb-&mariadb-version;.tar.gz">
+  <!ENTITY mariadb-md5sum        "faa2ea3f9c6f7bc5f021d299367a7a8d">
+  <!ENTITY mariadb-size          "49 MB">
   <!ENTITY mariadb-buildsize     "1.2 GB">
-  <!ENTITY mariadb-time          "8.2 SBU (additional 0.4 SBU for the tests)">
+  <!ENTITY mariadb-time          "5.5 SBU (additional 0.4 SBU for the tests)">
 ]>
 
 <sect1 id="mariadb" xreflabel="MariaDB-&mariadb-version;">
@@ -152,6 +152,7 @@ cmake -DCMAKE_BUILD_TYPE=Release \
       -DMYSQL_DATADIR=/srv/mysql \
       -DMYSQL_UNIX_ADDR=/run/mysqld/mysqld.sock \
       -DWITH_EXTRA_CHARSETS=complex \
+      -DWITH_EMBEDDED_SERVER=ON \
       -DTOKUDB_OK=0 \
       .. &amp;&amp;
 make</userinput></screen>
@@ -177,6 +178,12 @@ make</userinput></screen>
     </para>
 
     <para>
+      <parameter>-DWITH_EMBEDDED_SERVER=ON</parameter>: This switch enables
+      compiling the embedded server library needed by certain applications,
+      such as <application>Amarok</application>..
+    </para>
+
+    <para>
       <parameter>-DWITH_EXTRA_CHARSETS=complex</parameter>: This switch enables
       support for the complex character sets.
     </para>
@@ -192,12 +199,6 @@ make</userinput></screen>
       <option>-DWITHOUT_SERVER=ON -DWITH_UNIT_TESTS=OFF</option>: Use these
       switches if you don't want the server and would like to build the client
       only.
-    </para>
-
-    <para>
-      <option>-DWITH_EMBEDDED_SERVER=ON</option>: This switch enables compiling
-      the embedded server library needed by certain applications, such as
-      <application>Amarok</application>.
     </para>
 
     <note><para>
@@ -380,22 +381,23 @@ mysqld_safe --user=mysql 2&gt;&amp;1 &gt;/dev/null &amp;</userinput></screen>
 
       <seglistitem>
         <seg>
-          aria_chk, aria_dump_log, aria_ftdump, aria_pack, aria_read_log, 
-          innochecksum, msql2mysql, myisamchk, myisam_ftdump, myisamlog,
-          myisampack, my_print_defaults, mysql, mysqlaccess,
-          mysqladmin, mysqlbinlog, mysqlbug, mysqlcheck, mysql_client_test,
-          mysql_client_test_embedded, mysql_config,
-          mysql_convert_table_format, mysqld, mysqld_multi, mysqld_safe, mysqldump,
-          mysqldumpslow, mysql_embedded, mysql_find_rows, mysql_fix_extensions,
-          mysqlhotcopy, mysqlimport, mysql_install_db, mysql_plugin,
-          mysql_secure_installation, mysql_setpermission, mysqlshow, mysqlslap,
-          mysqltest, mysqltest_embedded, mysql_tzinfo_to_sql, mysql_upgrade,
-          mysql_waitpid, mysql_zap, mytop, perror, replace, resolveip,
-          resolve_stack_dump, and tokuftdump
+          aria_chk, aria_dump_log, aria_ftdump, aria_pack, aria_read_log,
+          innochecksum, msql2mysql, my_print_defaults, myisam_ftdump,
+          myisamchk, myisamlog, myisampack, mysql, mysql_client_test,
+          mysql_client_test_embedded, mysql_config, mysql_convert_table_format,
+          mysql_embedded, mysql_find_rows, mysql_fix_extensions,
+          mysql_install_db, mysql_plugin, mysql_secure_installation,
+          mysql_setpermission, mysql_tzinfo_to_sql, mysql_upgrade,
+          mysql_waitpid, mysql_zap, mysqlaccess, mysqladmin, mysqlbinlog,
+          mysqlbug, mysqlcheck, mysqld, mysqld_multi, mysqld_safe, mysqldump,
+          mysqldumpslow, mysqlhotcopy, mysqlimport, mysqlshow, mysqlslap,
+          mysqltest, mysqltest_embedded, mytop, perror, replace,
+          resolve_stack_dump, and resolveip
         </seg>
         <seg>
-          libmysqlclient.{so,a}, libmysqlclient_r.{so,a},
-          <!-- libmysqld.{so,a},--> and libmysqlservices.a,
+          libmysqlclient.{so,a},
+          libmysqlclient_r.{so,a} (symbolic links to libmysqlclient.{so,a}),
+          libmysqld.{so,a}, libmysqlservices.a,
           and several under /usr/lib/mysql/plugin/
         </seg>
         <seg>

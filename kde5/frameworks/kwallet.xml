@@ -6,7 +6,7 @@
 
   <!ENTITY kwallet-download-http "&kf5-download-http;/kwallet-&kf5-version;.tar.xz">
   <!ENTITY kwallet-download-ftp  "&kf5-download-ftp;/kwallet-&kf5-version;.tar.xz">
-  <!ENTITY kwallet-md5sum        "e7f255d8c671ed90a1985d40acba59cf">
+  <!ENTITY kwallet-md5sum        "371fdf0a7cd3261c4d9f9f2ecde62283">
   <!ENTITY kwallet-size          "80 KB">
   <!ENTITY kwallet-buildsize     "5.4 MB">
   <!ENTITY kwallet-time          "0.3 SBU">
@@ -98,7 +98,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

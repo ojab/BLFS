@@ -6,7 +6,7 @@
 
   <!ENTITY kwidgetsaddons-download-http "&kf5-download-http;/kwidgetsaddons-&kf5-version;.tar.xz">
   <!ENTITY kwidgetsaddons-download-ftp  "&kf5-download-ftp;/kwidgetsaddons-&kf5-version;.tar.xz">
-  <!ENTITY kwidgetsaddons-md5sum        "aa32781851c9e1eb35355e6db780d76f">
+  <!ENTITY kwidgetsaddons-md5sum        "57ace08f39d821b47d4a227139cb2e58">
   <!ENTITY kwidgetsaddons-size          "4.3 MB">
   <!ENTITY kwidgetsaddons-buildsize     "115 MB">
   <!ENTITY kwidgetsaddons-time          "1.4 SBU">
@@ -99,7 +99,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

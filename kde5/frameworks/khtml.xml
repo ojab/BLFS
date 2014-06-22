@@ -6,7 +6,7 @@
 
   <!ENTITY khtml-download-http "&kf5-download-http;/portingAids/khtml-&kf5-version;.tar.xz">
   <!ENTITY khtml-download-ftp  "&kf5-download-ftp;/portingAids/khtml-&kf5-version;.tar.xz">
-  <!ENTITY khtml-md5sum        "8ab2e9a686e43c4169e9835ca3e4c7df">
+  <!ENTITY khtml-md5sum        "c9b04036e1b1b3ac9f253962386c6b0e">
   <!ENTITY khtml-size          "4.3 MB">
   <!ENTITY khtml-buildsize     "100 MB">
   <!ENTITY khtml-time          "8.2 SBU">
@@ -109,8 +109,8 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX    \
       -DSYSCONF_INSTALL_DIR=$KF5_SYSCONFDIR \
       -DLIB_INSTALL_DIR=lib                 \
       -DBUILD_TESTING=OFF                   \
-      -DQT_PLUGIN_INSTALL_DIR=$QT5_PREFIX/plugins           \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DQT_PLUGIN_INSTALL_DIR=&qt5-plugins-dir;           \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

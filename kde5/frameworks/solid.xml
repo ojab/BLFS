@@ -6,7 +6,7 @@
 
   <!ENTITY solid-download-http "&kf5-download-http;/solid-&kf5-version;.tar.xz">
   <!ENTITY solid-download-ftp  "&kf5-download-ftp;/solid-&kf5-version;.tar.xz">
-  <!ENTITY solid-md5sum        "56c94301ad9675d5aec896041501dfcc">
+  <!ENTITY solid-md5sum        "2d6ceecdc0ab4984c30dba6fbbae8616">
   <!ENTITY solid-size          "312 KB">
   <!ENTITY solid-buildsize     "39 MB">
   <!ENTITY solid-time          "3.2 SBU">
@@ -110,8 +110,8 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DQML_INSTALL_DIR=$QT5_PREFIX/qml                     \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DQML_INSTALL_DIR=&qt5-qml-dir;      \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 
@@ -165,7 +165,7 @@ make</userinput></screen>
         <seg>
           $KF5_PREFIX/include/KF5/Solid,
           $KF5_PREFIX/lib/cmake/KF5Solid and
-          $QT5_PREFIX/qml/org/kde/solid
+          $KF5_PREFIX/&qt5-qml-dir;/org/kde/solid
         </seg>
       </seglistitem>
     </segmentedlist>

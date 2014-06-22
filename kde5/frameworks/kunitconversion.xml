@@ -6,7 +6,7 @@
 
   <!ENTITY kunitconversion-download-http "&kf5-download-http;/kunitconversion-&kf5-version;.tar.xz">
   <!ENTITY kunitconversion-download-ftp  "&kf5-download-ftp;/kunitconversion-&kf5-version;.tar.xz">
-  <!ENTITY kunitconversion-md5sum        "7079e289918ac94c60fb29ea154b970e">
+  <!ENTITY kunitconversion-md5sum        "2d08d6cbb610cae2de4c397bcfa04c75">
   <!ENTITY kunitconversion-size          "624 KB">
   <!ENTITY kunitconversion-buildsize     "18 MB">
   <!ENTITY kunitconversion-time          "0.3 SBU">
@@ -99,7 +99,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

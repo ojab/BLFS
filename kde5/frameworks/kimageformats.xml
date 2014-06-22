@@ -6,7 +6,7 @@
 
   <!ENTITY kimageformats-download-http "&kf5-download-http;/kimageformats-&kf5-version;.tar.xz">
   <!ENTITY kimageformats-download-ftp  "&kf5-download-ftp;/kimageformats-&kf5-version;.tar.xz">
-  <!ENTITY kimageformats-md5sum        "d8ee2764901c7d9575eb71c92dc5f48f">
+  <!ENTITY kimageformats-md5sum        "728508c4c14c67a5260a068b62b3702c">
   <!ENTITY kimageformats-size          "96 KB">
   <!ENTITY kimageformats-buildsize     "4.2 MB">
   <!ENTITY kimageformats-time          "0.3 SBU">
@@ -104,7 +104,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DQT_PLUGIN_INSTALL_DIR=$QT5_PREFIX/plugins \
+      -DQT_PLUGIN_INSTALL_DIR=&qt5-plugins-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 
@@ -153,7 +153,7 @@ make</userinput></screen>
           None
         </seg>
         <seg>
-          $QT5_PREFIX/plugins/imageformats
+          $KF5_PREFIX/&qt5-plugins-dir;/imageformats
         </seg>
       </seglistitem>
     </segmentedlist>

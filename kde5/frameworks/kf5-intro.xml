@@ -22,16 +22,14 @@
     <application>KDE</application>.
   </para>
 
-  <caution>
+  <important>
     <para>
       The instructions for <application>KDE Frameworks</application>
       packages assume that <xref linkend="qt5"/> was built with
       recommended dependencies installed and that
-      <application>Qt5</application> executables (such as
-      <command>qtpaths</command>) are in user's $PATH before
-      running the commands below.
+      <application>Qt5</application> executables are in user's $PATH.
     </para>
-  </caution>
+  </important>
 
   <sect2>
     <title>Build Order</title>
@@ -54,8 +52,7 @@
     </para>
 
 <screen><userinput>export KF5_PREFIX=/usr
-export KF5_SYSCONFDIR=/etc
-export QT5_PREFIX=$(qtpaths --plugin-dir | sed "s:/plugins::")</userinput></screen>
+export KF5_SYSCONFDIR=/etc</userinput></screen>
 
     <para>
       It is a good idea to add the following variables to your
@@ -67,7 +64,15 @@ export QT5_PREFIX=$(qtpaths --plugin-dir | sed "s:/plugins::")</userinput></scre
 
 export KF5_PREFIX=/usr
 export KF5_SYSCONFDIR=/etc
-export QT5_PREFIX=$(qtpaths --plugin-dir | sed "s:/plugins::")
+
+pathappend /usr/lib/qt5/plugins        QT_PLUGIN_PATH
+pathappend /opt/qt5/plugins            QT_PLUGIN_PATH
+
+pathappend /usr/lib/qt5/qml            QML_IMPORT_PATH
+pathappend /opt/qt5/qml                QML_IMPORT_PATH
+
+pathappend /usr/lib/qt5/qml            QML2_IMPORT_PATH
+pathappend /opt/qt5/qml                QML2_IMPORT_PATH
 
 # End /etc/profile.d/kf5.sh</literal>
 EOF</userinput></screen>
@@ -93,8 +98,7 @@ EOF</userinput></screen>
     </para>
 
 <screen><userinput>export KF5_PREFIX=/opt/kf5
-export KF5_SYSCONFDIR=$KF5_PREFIX/etc
-export QT5_PREFIX=$(qtpaths --plugin-dir | sed "s:/plugins::")</userinput></screen>
+export KF5_SYSCONFDIR=$KF5_PREFIX/etc</userinput></screen>
 
     <para>
       If you are not installing <application>KDE Frameworks</application>
@@ -108,14 +112,28 @@ export QT5_PREFIX=$(qtpaths --plugin-dir | sed "s:/plugins::")</userinput></scre
 
 export KF5_PREFIX=/opt/kf5
 export KF5_SYSCONFDIR=$KF5_PREFIX/etc
-export QT5_PREFIX=$(qtpaths --plugin-dir | sed "s:/plugins::")
 
 pathappend $KF5_PREFIX               CMAKE_PREFIX_PATH
 pathappend $KF5_PREFIX/bin           PATH
 pathappend $KF5_PREFIX/lib/pkgconfig PKG_CONFIG_PATH
 pathappend $KF5_PREFIX/lib/python&python2-majorver; PYTHONPATH
-pathappend $KF5_PREFIX/etc           XDG_CONFIG_DIRS
+
+pathappend /etc/xdg                  XDG_CONFIG_DIRS
+pathappend $KF5_PREFIX/etc/xdg       XDG_CONFIG_DIRS
+pathappend /usr/share                XDG_DATA_DIRS
 pathappend $KF5_PREFIX/share         XDG_DATA_DIRS
+
+pathappend /usr/lib/qt5/plugins        QT_PLUGIN_PATH
+pathappend /opt/qt5/plugins            QT_PLUGIN_PATH
+pathappend $KF5_PREFIX/lib/qt5/plugins QT_PLUGIN_PATH
+
+pathappend /usr/lib/qt5/qml            QML_IMPORT_PATH
+pathappend /opt/qt5/qml                QML_IMPORT_PATH
+pathappend $KF5_PREFIX/lib/qt5/qml     QML_IMPORT_PATH
+
+pathappend /usr/lib/qt5/qml            QML2_IMPORT_PATH
+pathappend /opt/qt5/qml                QML2_IMPORT_PATH
+pathappend $KF5_PREFIX/lib/qt5/qml     QML2_IMPORT_PATH
 
 # End /etc/profile.d/kf5.sh</literal>
 EOF</userinput></screen>
@@ -138,16 +156,18 @@ EOF</userinput></screen>
 
     <para>
       Several <application>KDE Frameworks</application> packages install files into
-      <application>D-Bus</application> directories.  When installing
-      <application>KDE Frameworks</application> in a location other than
-      <filename class="directory">/usr</filename>, <application>D-Bus</application> needs
-      to be able to find these files. The easiest way to achieve this is to create
-      the following symlinks (as the <systemitem class="username">root</systemitem> user):
+      <application>D-Bus</application> and <application>Polkit</application> directories.
+      When installing <application>KDE Frameworks</application> in a location other than
+      <filename class="directory">/usr</filename>, <application>D-Bus</application> and
+      <application>Polkit</application> need to be able to find these files. The easiest
+      way to achieve this is to create the following symlinks (as the
+      <systemitem class="username">root</systemitem> user):
     </para>
 
-<screen role="root"><userinput>install -v -dm755 $KF5_PREFIX/{etc,share} &amp;&amp;
-ln -sfv /etc/dbus-1       $KF5_PREFIX/etc &amp;&amp;
-ln -sfv /usr/share/dbus-1 $KF5_PREFIX/share</userinput></screen>
+<screen role="root"><userinput>install -v -dm755 $KF5_PREFIX/{etc,share}     &amp;&amp;
+ln -sfv /etc/dbus-1         $KF5_PREFIX/etc   &amp;&amp;
+ln -sfv /usr/share/dbus-1   $KF5_PREFIX/share &amp;&amp;
+ln -sfv /usr/share/polkit-1 $KF5_PREFIX/share</userinput></screen>
 
     <tip>
       <para>

@@ -6,7 +6,7 @@
 
   <!ENTITY knewstuff-download-http "&kf5-download-http;/knewstuff-&kf5-version;.tar.xz">
   <!ENTITY knewstuff-download-ftp  "&kf5-download-ftp;/knewstuff-&kf5-version;.tar.xz">
-  <!ENTITY knewstuff-md5sum        "6b498621f0b1c4fdf41d5830acf0786a">
+  <!ENTITY knewstuff-md5sum        "2c5547f87af58305b5fed38fdf8f676e">
   <!ENTITY knewstuff-size          "2.9 MB">
   <!ENTITY knewstuff-buildsize     "33 MB">
   <!ENTITY knewstuff-time          "0.7 SBU">
@@ -97,7 +97,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

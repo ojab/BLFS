@@ -45,10 +45,795 @@
 -->
 
     <listitem>
+      <para>June 16th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - gnome-calculator-3.12.3. Fixes
+          <ulink url="&blfs-ticket-root;5179">#5179</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to libva-intel-driver-1.3.2. Fixes
+          <ulink url="&blfs-ticket-root;5180">#5180</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>June 15th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - seamonkey-2.26.1. Fixes
+          <ulink url="&blfs-ticket-root;5178">#5178</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - libpng-1.6.12. Fixes
+          <ulink url="&blfs-ticket-root;5177">#5177</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - gc-7.4.2. Fixes
+          <ulink url="&blfs-ticket-root;5176">#5176</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - traceroute-2.0.20. Fixes
+          <ulink url="&blfs-ticket-root;5175">#5175</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - dhcpcd-6.4.0. Fixes
+          <ulink url="&blfs-ticket-root;5174">#5174</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to libusb-1.0.19. Fixes
+          <ulink url="&blfs-ticket-root;5172">#5172</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to xcb-util-renderutil-0.3.9. Fixes
+          <ulink url="&blfs-ticket-root;5171">#5171</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to sg3_utils-1.39. Fixes
+          <ulink url="&blfs-ticket-root;5168">#5168</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - Fix Net-DNS-0.76 md5sum, thanks Wayne B.</para>
+          <para>Promote '--enable-tee' to parameter in Cairo-1.12.16 and
+          'ac_add_options --enable-system-cairo' in Xulrunner-30.0,
+          Firefox-30.0 and Thunderbird-24.6.0, thanks Armin K.</para>
+          <para>Replace sentence '... do not touch ...' by 'The BLFS editors
+          recommend not changing anything below this line' (Xulrunner, Firefox
+          and Thunderbird), thanks Bruce D.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>June 14th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Add tigervnc-1.3.1. Fixes
+          <ulink url="&blfs-ticket-root;3903">#3903</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>June 13th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - bind-9.10.0-P2/bind-utilities-9.10.0-P2. Fixes
+          <ulink url="&blfs-ticket-root;5166">#5166</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - Net::DNS-0.76. Fixes
+          <ulink url="&blfs-ticket-root;5169">#5169</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - wireshark-1.10.8. Fixes
+          <ulink url="&blfs-ticket-root;5167">#5167</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - unrar-5.1.6. Fixes
+          <ulink url="&blfs-ticket-root;5165">#5165</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - Modify build instructions for firefox-30.0 and
+          thunderbird-24.6.0. Uncoment 'ac_add_options --enable-system-cairo'
+          in xulrunner/firefox-30.0 and thunderbird-24.6.0.
+          Thanks Armin K.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Add fltk-1.3.2 to support tigervnc.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>June 12th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - thunderbird-24.6.0. Fixes
+          <ulink url="&blfs-ticket-root;5160">#5160</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - xulrunner/firefox-30.0. Fixes
+          <ulink url="&blfs-ticket-root;5155">#5155</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to kde-4.13.2. Fixes
+          <ulink url="&blfs-ticket-root;5161">#5161</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>June 11th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - stunnel-5.02. Fixes
+          <ulink url="&blfs-ticket-root;5164">#5164</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - dbus-1.8.4. Fixes
+          <ulink url="&blfs-ticket-root;5163">#5163</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - gparted-0.19.0. Fixes
+          <ulink url="&blfs-ticket-root;5162">#5162</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to mdadm-3.3.1. Fixes
+          <ulink url="&blfs-ticket-root;5143">#5143</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to libevdev-1.2.2. Fixes
+          <ulink url="&blfs-ticket-root;5141">#5141</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - cups-filters-1.0.54. Fixes
+          <ulink url="&blfs-ticket-root;5145">#5145</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>June 10th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - cmake-3.0.0. Fixes
+          <ulink url="&blfs-ticket-root;5159">#5159</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - gnumeric-1.12.17. Fixes
+          <ulink url="&blfs-ticket-root;5157">#5157</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - goffice-0.10.17. Fixes
+          <ulink url="&blfs-ticket-root;5156">#5156</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - Remove all explicit eudev version references from
+          Udev Extras. Fixes
+          <ulink url="&blfs-ticket-root;5154">#5154</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - xscreensaver-5.29. Fixes
+          <ulink url="&blfs-ticket-root;5153">#5153</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to autofs-5.1.0. Fixes
+          <ulink url="&blfs-ticket-root;5138">#5138</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[igor] - Update to serf-1.3.6. Fixes
+          <ulink url="&blfs-ticket-root;5158">#5158</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>June 9th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[igor] - Update to libICE-1.0.9. Fixes
+          <ulink url="&blfs-ticket-root;5147">#5147</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[pierre] - Improve detection and handling of udevd in
+          mkinitramfs.</para>
+        </listitem>
+        <listitem>
+          <para>[pierre] - Eudev-1.7 (Udev-extras). Fixes
+          <ulink url="&blfs-ticket-root;5128">#5128</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>June 8th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - MariaDB-10.0.11: move switch
+          -DWITH_EMBEDDED_SERVER=ON to parameter.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - nspr-4.10.6. Fixes
+          <ulink url="&blfs-ticket-root;5151">#5151</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - qpdf-5.1.2. Fixes
+          <ulink url="&blfs-ticket-root;5150">#5150</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - MesaLib-10.2.1. Fixes
+          <ulink url="&blfs-ticket-root;5148">#5148</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - libpng-1.6.11. Fixes
+          <ulink url="&blfs-ticket-root;5142">#5142</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to kde-4.13.1. Fixes
+          <ulink url="&blfs-ticket-root;5067">#5067</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Archive nepomuk-widgets, nepomuk-core,
+          shared-desktop-ontologies. virtuoso, and soprano.  Fixes
+          <ulink url="&blfs-ticket-root;4780">#4780</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Add libkdcraw-4.13.1.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Add libraw-0.16.0.</para>
+        </listitem>
+        <listitem>
+          <para>[igor] - Update to libXft-2.3.2. Fixes
+          <ulink url="&blfs-ticket-root;5144">#5144</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>June 6th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - samba-4.1.8. Fixes
+          <ulink url="&blfs-ticket-root;5132">#5132</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[igor] - Update to wpa_supplicant-2.2. Fixes
+          <ulink url="&blfs-ticket-root;5137">#5137</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>June 5th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - Fix gst-plugins-good-1.2.4: First Optional
+          dependencies are actually Recommended.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - Add note for order of installation in gst plugins.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - Fix dependencies and build of xdg-utils-1.1.0-rc2.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - Fix /etc/xdg/autostart in polkit-gnome-0.105.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - openssl-1.0.1h. Fixes
+          <ulink url="&blfs-ticket-root;5140">#5140</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - xscreensaver-5.28. Fixes
+          <ulink url="&blfs-ticket-root;5139">#5139</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - Python-2.7.7. Fixes
+          <ulink url="&blfs-ticket-root;5135">#5135</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - xterm-306. Fixes
+          <ulink url="&blfs-ticket-root;5134">#5134</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - gnupg-2.0.23. Fixes
+          <ulink url="&blfs-ticket-root;5133">#5133</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[igor] - Update to sqlite-3.8.5. Fixes
+          <ulink url="&blfs-ticket-root;5136">#5136</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[pierre] - SWIG-3.0.2. Fixes
+          <ulink url="&blfs-ticket-root;5111">#5111</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>June 3rd, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - iso-codes-3.54. Fixes
+          <ulink url="&blfs-ticket-root;5129">#5129</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - mercurial-3.0.1. Fixes
+          <ulink url="&blfs-ticket-root;5127">#5127</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - clutter-gst-2.0.12. Fixes
+          <ulink url="&blfs-ticket-root;5126">#5126</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[pierre] - Update to git-2.0.0. Fixes
+          <ulink url="&blfs-ticket-root;5117">#5117</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[igor] - Update to ffmpeg-2.2.3. Fixes
+          <ulink url="&blfs-ticket-root;5131">#5131</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>June 1st, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - Change http URLs for: babl-0.1.10, gegl-0.2.0 and
+          Gimp-2.8.10. Thanks to Armin K.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - check-0.9.13. Fixes
+          <ulink url="&blfs-ticket-root;5124">#5124</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - xcursorgen-1.0.6. Fixes
+          <ulink url="&blfs-ticket-root;5123">#5123</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[pierre] - Patch CUPS again to avoid dependency on Avahi.
+          Fixes <ulink url="&blfs-ticket-root;5125">#5125</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>May 31st, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - gnutls-3.3.4. Fixes
+          <ulink url="&blfs-ticket-root;5122">#5122</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - json-glib-1.0.2. Fixes
+          <ulink url="&blfs-ticket-root;5121">#5121</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - php-5.5.13. Fixes
+          <ulink url="&blfs-ticket-root;5119">#5119</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[pierre] - Patch icedtea for new giflib API.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>May 30th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - harfbuzz-0.9.29. Fixes
+          <ulink url="&blfs-ticket-root;5120">#5120</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - inputproto-2.3.1. Fixes
+          <ulink url="&blfs-ticket-root;5118">#5118</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - exim-4.82.1. Fixes
+          <ulink url="&blfs-ticket-root;5116">#5116</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - gnome-calculator-3.12.2. Fixes
+          <ulink url="&blfs-ticket-root;5115">#5115</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - gedit-3.12.2. Fixes
+          <ulink url="&blfs-ticket-root;5114">#5114</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - xscreensaver-5.27. Fixes
+          <ulink url="&blfs-ticket-root;5112">#5112</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to bluz-5.19.  Bootscripts updated.
+          Fixes <ulink url="&blfs-ticket-root;5083">#5083</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>May 28th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - Fix transmission-2.83 to build with Qt-4.8.6.
+          Thanks to e5g6s. Final fix to 
+          <ulink url="&blfs-ticket-root;5080">#5080</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - xkeyboard-config-2.12. Fixes
+          <ulink url="&blfs-ticket-root;5110">#5110</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - libogg-1.3.2. Fixes
+          <ulink url="&blfs-ticket-root;5109">#5109</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - mpg123-1.20.0. Fixes
+          <ulink url="&blfs-ticket-root;5108">#5108</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - cups-1.7.3. Fixes
+          <ulink url="&blfs-ticket-root;5107">#5107</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - Python-3.4.1. Fixes
+          <ulink url="&blfs-ticket-root;5113">#5113</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>May 27th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - Fixes to install-tl-unx, Imlib2-1.4.6
+          and gnash-0.8.10.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - pygobject-3.12.2. Fixes
+          <ulink url="&blfs-ticket-root;5106">#5106</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - whois_5.1.3. Fixes
+          <ulink url="&blfs-ticket-root;5105">#5105</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - gdk-pixbuf-2.30.8. Fixes
+          <ulink url="&blfs-ticket-root;5104">#5104</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>May 26th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to sendmail-8.14.9. Fixes
+          Fixes <ulink url="&blfs-ticket-root;5095">#5095</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[ken] - Update fstab details / explanation for nfs clients.
+          Fixes <ulink url="&blfs-ticket-root;5041">#5041</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[ken] - Second attempt at fixes for both versions of
+          gst-plugins-base with gcc-4.9.0 on i686.  Marked as "nodump" in the xml to
+          avoid using it in other situations. 1.2.4 works, 0.10.36 compiles but I am
+          unable to get sound, only video - the problem might be elsewhere in the
+          0.10 gstreamer packages.</para>
+        </listitem>
+        <listitem>
+          <para>[ken] - Second attempt at a fix for lame with gcc-4.9.0 on
+          i686.  Marked as "nodump" in the xml to avoid using it in other
+          situations.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - Fix to Doxygen-1.8.7.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - webkitgtk-2.4.3. Fixes
+          <ulink url="&blfs-ticket-root;5103">#5103</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - ImageMagick-6.8.9-1. Fixes
+          <ulink url="&blfs-ticket-root;5065">#5065</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - libtasn1-3.6. Fixes
+          <ulink url="&blfs-ticket-root;5102">#5102</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>May 25th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - Fixes to Gimp-2.8.10 and Transmission-2.83.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - curl-7.37.0. Fixes
+          <ulink url="&blfs-ticket-root;5094">#5094</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - gnumeric-1.12.16. Fixes
+          <ulink url="&blfs-ticket-root;5101">#5101</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - goffice-0.10.16. Fixes
+          <ulink url="&blfs-ticket-root;5098">#5098</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - poppler-0.26.1. Fixes
+          <ulink url="&blfs-ticket-root;5100">#5100</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - qt-5.3.0. Fixes
+          <ulink url="&blfs-ticket-root;5082">#5082</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[pierre] - Update to Mariadb-10.0.11. Fixes
+          <ulink url="&blfs-ticket-root;5063">#5063</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>May 24th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - Fixes to seahorse-3.12.2 (for desktop file) and,
+          thanks to Wayne B., to WebKitGTK+-2.4.2 (gtk+2 dependency).</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - elfutils-0.159. Fixes
+          <ulink url="&blfs-ticket-root;5088">#5088</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - transmission-2.83. Fixes
+          <ulink url="&blfs-ticket-root;5080">#5080</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - gpgme-1.5.0. Fixes
+          <ulink url="&blfs-ticket-root;5097">#5097</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - colord-1.2.1. Fixes
+          <ulink url="&blfs-ticket-root;5099">#5099</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[ken] - Update to firefox/xulrunner 29.0.1. Fixes
+          <ulink url="&blfs-ticket-root;4886">#4886</ulink> and
+          <ulink url="&blfs-ticket-root;5044">#5044</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[pierre] - Update to talloc-2.1.1. Fixes
+          <ulink url="&blfs-ticket-root;5089">#5089</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>May 23rd, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to xfsprogs-3.2.0. Fixes
+          <ulink url="&blfs-ticket-root;5073">#5073</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[ken] - Update to postfix-2.11.1. Fixes
+          <ulink url="&blfs-ticket-root;5048">#5048</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - gutenprint-5.2.10. Fixes
+          <ulink url="&blfs-ticket-root;5079">#5079</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to bind-9.10.0. Fixes
+          <ulink url="&blfs-ticket-root;5014">#5014</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[pierre] - Update to NASM-2.11.05. Fixes
+          <ulink url="&blfs-ticket-root;5096">#5096</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>May 21st, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to xf86-input-synaptics-1.8.0. Fixes
+          <ulink url="&blfs-ticket-root;5070">#5070</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to xf86-input-evdev-2.9.0 and
+          add libevdev-1.2.1.  Fixes
+          <ulink url="&blfs-ticket-root;5086">#5086</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - SGMLSpm-1.1: Fix URL. Fixes
+           <ulink url="&blfs-ticket-root;5090">#5090</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - webkitgtk-2.4.2. Fixes
+          <ulink url="&blfs-ticket-root;5059">#5059</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - x264-20140519-2245. Fixes
+          <ulink url="&blfs-ticket-root;5084">#5084</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - xdg-utils-1.1.0-rc2. Fixes
+          <ulink url="&blfs-ticket-root;4811">#4811</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - Updates to gnome-desktop-3.12.2,
+          gtksourceview-3.12.2, vte-0.36.2, cheese-3.12.2, eog-3.12.2,
+          epiphany-3.12.1, nautilus-3.12.2, file-roller-3.12.2,
+          gnome-system-monitor-3.12.2, gnome-terminal-3.12.2,
+          gucharmap-3.12.1, and seahorse-3.12.2. Fixes
+           <ulink url="&blfs-ticket-root;5060">#5060</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to MesaLib-10.1.4. Fixes
+          <ulink url="&blfs-ticket-root;5085">#5085</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[pierre] - Vim: remove vim-lang instructions, add multibyte
+          support and GTK+2 as a recommended dependency.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - Archive-Zip: Fix URL. Partially fixes
+           <ulink url="&blfs-ticket-root;5090">#5090</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - lm_sensors-3.3.5: Remove ftp URL and add one patch
+          for fancontrol and for sensors.conf.default. Fixes
+           <ulink url="&blfs-ticket-root;5091">#5091</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - Archive (comment out) XML::Parser. Fixes
+           <ulink url="&blfs-ticket-root;5092">#5092</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - Fcron-3.1.3 (remove not working ftp) gegl-0.2.0
+          and babl-0.1.10 (fix URL's). Fixes
+           <ulink url="&blfs-ticket-root;5093">#5093</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>May 20th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to llvm-3.4.1.  Fixes
+          Fixes <ulink url="&blfs-ticket-root;5045">#5045</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Archive farstream.  Addresses
+          Fixes <ulink url="&blfs-ticket-root;5028">#5028</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Correct alsa-lib doc directory.  Fixes
+          Fixes <ulink url="&blfs-ticket-root;5075">#5075</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>May 19th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[pierre] - Fix building of kdelibs with giflib-5.1.0
+          Fixes <ulink url="&blfs-ticket-root;5078">#5078</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>May 18th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - Fix Polkit-0.112 and Colord-1.2.0 to build
+          without systemd.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - gnome-keyring-3.12.2. Partially fixes
+          <ulink url="&blfs-ticket-root;5060">#5060</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - gcr-3.12.2. Partially fixes
+          <ulink url="&blfs-ticket-root;5060">#5060</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - gsettings-desktop-schemas-3.12.2. Partially fixes
+          <ulink url="&blfs-ticket-root;5060">#5060</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - gtk+-3.12.2. Fixes
+          <ulink url="&blfs-ticket-root;5061">#5061</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[pierre] - Fix imlib2 and libwebp for building with
+          giflib-5.1.0. Fixes
+          <ulink url="&blfs-ticket-root;5076">#5076</ulink> and
+          <ulink url="&blfs-ticket-root;5077">#5077</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>May 17th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[ken] - Reinstate system boost and icu switches in libreoffice,
+          thanks to Christopher Gregory for noticing.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - Revert unnecessary revision 13047 "Help Lua-5.2.3
+          to find Ncurses-5.9 for Readline-6.3".</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - libatomic_ops-7.4.2. Fixes
+          <ulink url="&blfs-ticket-root;5074">#5074</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - libffi-3.1. Fixes
+          <ulink url="&blfs-ticket-root;5058">#5058</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - fcron-3.1.3. Fixes
+          <ulink url="&blfs-ticket-root;5057">#5057</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - libXfont-1.4.8. Fixes
+          <ulink url="&blfs-ticket-root;5069">#5069</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[pierre] - Update to proftpd-1.3.5. Fixes
+          <ulink url="&blfs-ticket-root;5071">#5071</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[pierre] - Update to giflib-5.1.0. Fixes
+          <ulink url="&blfs-ticket-root;5072">#5072</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>May 16th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[bdubbs] - Update to Net::DNS-0.75. Fixes
+          <ulink url="&blfs-ticket-root;5054">#5054</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to subversion-1.8.9. Fixes
+          <ulink url="&blfs-ticket-root;5068">#5068</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[pierre] - Update to git-1.9.3. Fixes
+          <ulink url="&blfs-ticket-root;5047">#5047</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[pierre] - Update to dovecot-2.2.13. Fixes
+          <ulink url="&blfs-ticket-root;5056">#5056</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>May 15th, 2014</para>
       <itemizedlist>
         <listitem>
-          <para>[pierre] - Update to apache-ant-1.9.4 and rearange java pages.
+          <para>[pierre] - Update to apache-ant-1.9.4 and rearrange java pages.
           Fixes <ulink url="&blfs-ticket-root;5032">#5032</ulink>.</para>
         </listitem>
       </itemizedlist>

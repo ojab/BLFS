@@ -6,7 +6,7 @@
 
   <!ENTITY kservice-download-http "&kf5-download-http;/kservice-&kf5-version;.tar.xz">
   <!ENTITY kservice-download-ftp  "&kf5-download-ftp;/kservice-&kf5-version;.tar.xz">
-  <!ENTITY kservice-md5sum        "9679f8020d9ed4500de27c2c76a0d434">
+  <!ENTITY kservice-md5sum        "65098fb202df0531310a2813c6ba0042">
   <!ENTITY kservice-size          "2.8 MB">
   <!ENTITY kservice-buildsize     "33 MB">
   <!ENTITY kservice-time          "0.8 SBU">
@@ -103,7 +103,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX    \
       -DSYSCONF_INSTALL_DIR=$KF5_SYSCONFDIR \
       -DLIB_INSTALL_DIR=lib                 \
       -DBUILD_TESTING=OFF                   \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

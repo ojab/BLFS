@@ -6,7 +6,7 @@
 
   <!ENTITY kemoticons-download-http "&kf5-download-http;/kemoticons-&kf5-version;.tar.xz">
   <!ENTITY kemoticons-download-ftp  "&kf5-download-ftp;/kemoticons-&kf5-version;.tar.xz">
-  <!ENTITY kemoticons-md5sum        "7860bb4b9d89f205fe9ad258b79534b5">
+  <!ENTITY kemoticons-md5sum        "c9aeb603bcbd7910a8347cdef53578b2">
   <!ENTITY kemoticons-size          "72 KB">
   <!ENTITY kemoticons-buildsize     "3.5 MB">
   <!ENTITY kemoticons-time          "0.2 SBU">
@@ -99,8 +99,8 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DQT_PLUGIN_INSTALL_DIR=$QT5_PREFIX/plugins           \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DQT_PLUGIN_INSTALL_DIR=&qt5-plugins-dir;           \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

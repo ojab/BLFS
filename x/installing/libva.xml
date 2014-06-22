@@ -15,10 +15,10 @@
 
   <!ENTITY libva-intel-driver-download-http "&libva-http;/libva-intel-driver/libva-intel-driver-&libva-intel-driver-version;.tar.bz2">
   <!ENTITY libva-intel-driver-download-ftp  " ">
-  <!ENTITY libva-intel-driver-md5sum        "0d6f1ca655130bac8edf3fc8a8dada48">
-  <!ENTITY libva-intel-driver-size          "928 KB">
-  <!ENTITY libva-intel-driver-buildsize     "26 MB">
-  <!ENTITY libva-intel-driver-time          "0.4 SBU">
+  <!ENTITY libva-intel-driver-md5sum        "3f4f08f1d42ee451b2fb9c239ee0b8d7">
+  <!ENTITY libva-intel-driver-size          "936 KB">
+  <!ENTITY libva-intel-driver-buildsize     "29 MB">
+  <!ENTITY libva-intel-driver-time          "0.2 SBU">
 ]>
 
 <sect2 id="libva" xreflabel="libva-&libva-version;">
@@ -147,7 +147,7 @@
     </para>
 
 <screen><userinput>mkdir -p m4              &amp;&amp;
-autoreconfig -f          &amp;&amp;
+autoreconf   -f          &amp;&amp;
 ./configure $XORG_CONFIG &amp;&amp;
 make</userinput></screen>
 
@@ -173,7 +173,7 @@ make</userinput></screen>
     </para>
 
 <screen><userinput>mkdir -p m4              &amp;&amp;
-autoreconfig -f          &amp;&amp;
+autoreconf -f            &amp;&amp;
 ./configure $XORG_CONFIG &amp;&amp;
 make</userinput></screen>
 
@@ -194,11 +194,11 @@ make</userinput></screen>
 
     <para>
       <command>mkdir -p m4</command>: This command prevents an error
-      that may occur when running autoreconfig.
+      that may occur when running autoreconf.
     </para>
 
     <para>
-      <command>autoreconfig -f</command>: This command regenerates
+      <command>autoreconf -f</command>: This command regenerates
       the configure script to prevent a mandatory test for 
       wayland-scanner when configuring.
     </para>

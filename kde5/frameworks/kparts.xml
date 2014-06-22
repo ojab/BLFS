@@ -6,7 +6,7 @@
 
   <!ENTITY kparts-download-http "&kf5-download-http;/kparts-&kf5-version;.tar.xz">
   <!ENTITY kparts-download-ftp  "&kf5-download-ftp;/kparts-&kf5-version;.tar.xz">
-  <!ENTITY kparts-md5sum        "0d758db47b046bbad8db3d7eb1039cdc">
+  <!ENTITY kparts-md5sum        "0b56881371d3bf618d461495a4d162bc">
   <!ENTITY kparts-size          "2.8 MB">
   <!ENTITY kparts-buildsize     "31 MB">
   <!ENTITY kparts-time          "0.5 SBU">
@@ -99,7 +99,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

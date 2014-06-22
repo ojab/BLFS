@@ -6,7 +6,7 @@
 
   <!ENTITY ki18n-download-http "&kf5-download-http;/ki18n-&kf5-version;.tar.xz">
   <!ENTITY ki18n-download-ftp  "&kf5-download-ftp;/ki18n-&kf5-version;.tar.xz">
-  <!ENTITY ki18n-md5sum        "aec50a8bce055c81e361088df61a4a7c">
+  <!ENTITY ki18n-md5sum        "393375fc10359461657757a096f86797">
   <!ENTITY ki18n-size          "2.6 MB">
   <!ENTITY ki18n-buildsize     "29 MB">
   <!ENTITY ki18n-time          "0.2 SBU">
@@ -99,8 +99,8 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DQT_PLUGIN_INSTALL_DIR=$QT5_PREFIX/plugins           \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DQT_PLUGIN_INSTALL_DIR=&qt5-plugins-dir;           \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

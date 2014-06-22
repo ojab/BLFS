@@ -6,7 +6,7 @@
 
   <!ENTITY kio-download-http "&kf5-download-http;/kio-&kf5-version;.tar.xz">
   <!ENTITY kio-download-ftp  "&kf5-download-ftp;/kio-&kf5-version;.tar.xz">
-  <!ENTITY kio-md5sum        "7eafc35cc0bcfb247b7871dce93c8b63">
+  <!ENTITY kio-md5sum        "45e20ee5db03f582c4d4b5f2838e82be">
   <!ENTITY kio-size          "2.3 MB">
   <!ENTITY kio-buildsize     "60 MB">
   <!ENTITY kio-time          "3.2 SBU">
@@ -107,8 +107,8 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX    \
       -DSYSCONF_INSTALL_DIR=$KF5_SYSCONFDIR \
       -DLIB_INSTALL_DIR=lib                 \
       -DBUILD_TESTING=OFF                   \
-      -DQT_PLUGIN_INSTALL_DIR=$QT5_PREFIX/plugins           \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DQT_PLUGIN_INSTALL_DIR=&qt5-plugins-dir;           \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

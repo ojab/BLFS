@@ -6,7 +6,7 @@
 
   <!ENTITY kdewebkit-download-http "&kf5-download-http;/kdewebkit-&kf5-version;.tar.xz">
   <!ENTITY kdewebkit-download-ftp  "&kf5-download-ftp;/kdewebkit-&kf5-version;.tar.xz">
-  <!ENTITY kdewebkit-md5sum        "6412fa48b70c557da3037ef6032bd95b">
+  <!ENTITY kdewebkit-md5sum        "4cfc0999524dc906f6bfe380c225bf33">
   <!ENTITY kdewebkit-size          "32 KB">
   <!ENTITY kdewebkit-buildsize     "1.7 MB">
   <!ENTITY kdewebkit-time          "0.1 SBU">
@@ -97,7 +97,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

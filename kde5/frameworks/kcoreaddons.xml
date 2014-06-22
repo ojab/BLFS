@@ -6,7 +6,7 @@
 
   <!ENTITY kcoreaddons-download-http "&kf5-download-http;/kcoreaddons-&kf5-version;.tar.xz">
   <!ENTITY kcoreaddons-download-ftp  "&kf5-download-ftp;/kcoreaddons-&kf5-version;.tar.xz">
-  <!ENTITY kcoreaddons-md5sum        "8dbd0d10913bb72ae4e44159cc322dc0">
+  <!ENTITY kcoreaddons-md5sum        "eb73ec596a817c1f12733ebb59c46f4e">
   <!ENTITY kcoreaddons-size          "2.8 MB">
   <!ENTITY kcoreaddons-buildsize     "85 MB">
   <!ENTITY kcoreaddons-time          "0.6 SBU">
@@ -100,7 +100,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

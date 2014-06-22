@@ -6,7 +6,7 @@
 
   <!ENTITY kconfigwidgets-download-http "&kf5-download-http;/kconfigwidgets-&kf5-version;.tar.xz">
   <!ENTITY kconfigwidgets-download-ftp  "&kf5-download-ftp;/kconfigwidgets-&kf5-version;.tar.xz">
-  <!ENTITY kconfigwidgets-md5sum        "6465152efd2962e0c8493ff0816aebfd">
+  <!ENTITY kconfigwidgets-md5sum        "dbc46c8b643d69e6b59373424461f340">
   <!ENTITY kconfigwidgets-size          "2.9 MB">
   <!ENTITY kconfigwidgets-buildsize     "31 MB">
   <!ENTITY kconfigwidgets-time          "0.3 SBU">
@@ -104,7 +104,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

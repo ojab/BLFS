@@ -6,7 +6,7 @@
 
   <!ENTITY kcodecs-download-http "&kf5-download-http;/kcodecs-&kf5-version;.tar.xz">
   <!ENTITY kcodecs-download-ftp  "&kf5-download-ftp;/kcodecs-&kf5-version;.tar.xz">
-  <!ENTITY kcodecs-md5sum        "1e0175175d937290fa217ae13be6e642">
+  <!ENTITY kcodecs-md5sum        "73bb13bc3e2867242312aa9a8a960041">
   <!ENTITY kcodecs-size          "2.7 MB">
   <!ENTITY kcodecs-buildsize     "79 MB">
   <!ENTITY kcodecs-time          "0.4 SBU">
@@ -99,7 +99,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

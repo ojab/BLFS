@@ -6,7 +6,7 @@
 
   <!ENTITY karchive-download-http "&kf5-download-http;/karchive-&kf5-version;.tar.xz">
   <!ENTITY karchive-download-ftp  "&kf5-download-ftp;/karchive-&kf5-version;.tar.xz">
-  <!ENTITY karchive-md5sum        "a3796efb4fe17cba0a115f3d50c48573">
+  <!ENTITY karchive-md5sum        "fd7b89e988124d87a1b2662a34a6e6d8">
   <!ENTITY karchive-size          "104 KB">
   <!ENTITY karchive-buildsize     "2.9 MB">
   <!ENTITY karchive-time          "0.2 SBU">
@@ -99,7 +99,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

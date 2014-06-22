@@ -4,13 +4,13 @@
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 
-  <!ENTITY xorg-evdev-driver-version "2.8.4">
+  <!ENTITY xorg-evdev-driver-version "2.9.0">
 
   <!ENTITY xorg-evdev-driver-download-http "&xorg-download-http;/driver/xf86-input-evdev-&xorg-evdev-driver-version;.tar.bz2">
   <!ENTITY xorg-evdev-driver-download-ftp  "&xorg-download-ftp;/driver/xf86-input-evdev-&xorg-evdev-driver-version;.tar.bz2">
-  <!ENTITY xorg-evdev-driver-md5sum        "3789fdc273eaf68572ed21236877dc2a">
+  <!ENTITY xorg-evdev-driver-md5sum        "9076ae2646f7aeb30963056e0bbfccf0">
   <!ENTITY xorg-evdev-driver-size          "364 KB">
-  <!ENTITY xorg-evdev-driver-buildsize     "4.0 MB">
+  <!ENTITY xorg-evdev-driver-buildsize     "3.8 MB">
   <!ENTITY xorg-evdev-driver-time          "less than 0.1 SBU">
 ]>
 
@@ -73,6 +73,7 @@
 
       <bridgehead renderas="sect5">Required</bridgehead>
       <para role="required">
+        <xref linkend="libevdev"/> and
         <xref linkend="xorg-server"/>
       </para>
 
@@ -85,7 +86,7 @@
         User Notes: <ulink url="&blfs-wiki;/xorg-evdev-driver"/>
       </para>
     </sect3>
-
+<!--
     <sect3 role="kernel" id="xorg-evdev-driver-kernel">
       <title>Kernel Configuration</title>
 
@@ -94,15 +95,15 @@
       kernel if necessary:
     </para>
 
-<screen><literal>Device Drivers  ---&gt;
-  Input device support ---&gt;
+<screen><literal>Device Drivers  - - -&gt;
+  Input device support - - -&gt;
     Event interface: Y or M</literal></screen>
 
       <indexterm zone="xorg-evdev-driver xorg-evdev-driver-kernel">
         <primary sortas="d-xorg-evdev-driver">xorg-evdev-driver</primary>
       </indexterm>
     </sect3>
-
+-->
     <sect3 role="installation">
       <title>Installation of Xorg Evdev Driver</title>
 

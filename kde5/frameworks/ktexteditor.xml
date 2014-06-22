@@ -6,7 +6,7 @@
 
   <!ENTITY ktexteditor-download-http "&kf5-download-http;/ktexteditor-&kf5-version;.tar.xz">
   <!ENTITY ktexteditor-download-ftp  "&kf5-download-ftp;/ktexteditor-&kf5-version;.tar.xz">
-  <!ENTITY ktexteditor-md5sum        "a7c18d98826c0d8f90bc26579e9d8f4e">
+  <!ENTITY ktexteditor-md5sum        "ea3f44d4cc3b6929a1987049f4fe9329">
   <!ENTITY ktexteditor-size          "2.8 MB">
   <!ENTITY ktexteditor-buildsize     "79 MB">
   <!ENTITY ktexteditor-time          "3.0 SBU">
@@ -99,8 +99,8 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX    \
       -DSYSCONF_INSTALL_DIR=$KF5_SYSCONFDIR \
       -DLIB_INSTALL_DIR=lib                 \
       -DBUILD_TESTING=OFF                   \
-      -DQT_PLUGIN_INSTALL_DIR=$QT5_PREFIX/plugins           \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DQT_PLUGIN_INSTALL_DIR=&qt5-plugins-dir;           \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 

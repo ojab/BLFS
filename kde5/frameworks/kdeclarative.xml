@@ -6,7 +6,7 @@
 
   <!ENTITY kdeclarative-download-http "&kf5-download-http;/kdeclarative-&kf5-version;.tar.xz">
   <!ENTITY kdeclarative-download-ftp  "&kf5-download-ftp;/kdeclarative-&kf5-version;.tar.xz">
-  <!ENTITY kdeclarative-md5sum        "5fa7e3b7fbf2e9b143f1615e8c28a19e">
+  <!ENTITY kdeclarative-md5sum        "76ec3ecaa12667d687365d5a7d40b130">
   <!ENTITY kdeclarative-size          "2.7 MB">
   <!ENTITY kdeclarative-buildsize     "32 MB">
   <!ENTITY kdeclarative-time          "0.5 SBU">
@@ -97,8 +97,8 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DQML_INSTALL_DIR=$QT5_PREFIX/qml                     \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DQML_INSTALL_DIR=&qt5-qml-dir;      \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 
@@ -152,9 +152,9 @@ make</userinput></screen>
         <seg>
           $KF5_PREFIX/include/KF5/KDeclarative,
           $KF5_PREFIX/lib/cmake/KF5Declarative,
-          $QT5_PREFIX/qml/org/kde/{draganddrop,kcoreaddons},
-          $QT5_PREFIX/qml/org/kde/{kquickcontrols,kquickcontrolsaddons} and
-          $QT5_PREFIX/qml/org/kde/private
+          $KF5_PREFIX/&qt5-qml-dir;/org/kde/{draganddrop,kcoreaddons},
+          $KF5_PREFIX/&qt5-qml-dir;/org/kde/{kquickcontrols,kquickcontrolsaddons} and
+          $KF5_PREFIX/&qt5-qml-dir;/org/kde/private
         </seg>
       </seglistitem>
     </segmentedlist>

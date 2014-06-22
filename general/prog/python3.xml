@@ -7,15 +7,15 @@
   <!ENTITY python3-download-http
            "http://www.python.org/ftp/python/&python3-version;/Python-&python3-version;.tar.xz">
   <!ENTITY python3-download-ftp  " ">
-  <!ENTITY python3-md5sum        "77c22725e14af3d71022cbfdebff4903">
+  <!ENTITY python3-md5sum        "6cafc183b4106476dd73d5738d7f616a">
   <!ENTITY python3-size          "14 MB">
-  <!ENTITY python3-buildsize     "279 MB (241 MB without docs or additional 143 MB for the tests)">
-  <!ENTITY python3-time          "1.1 SBU (or 2.8 SBU for the tests)">
+  <!ENTITY python3-buildsize     "266 MB (additional 38 MB for the docs and 37 MB for the tests)">
+  <!ENTITY python3-time          "1.1 SBU (additional 0.1 SBU for the tests)">
 
   <!ENTITY python3htmldoc-download-http
-           "http://docs.python.org/ftp/python/doc/&python3-version;/python-&python3-version;-docs-html.tar.bz2">
-  <!ENTITY python3htmldoc-md5sum        "cdbef126ee7ef0908352fabc4dc5bee5">
-  <!ENTITY python3htmldoc-size          "4.8 MB">
+           "http://docs.python.org/3/archives/python-&python3-version;-docs-html.tar.bz2">
+  <!ENTITY python3htmldoc-md5sum        "e5662b53413b0dd05d1ee1a075956370">
+  <!ENTITY python3htmldoc-size          "5.2 MB">
 ]>
 
 <sect1 id="python3" xreflabel="Python-&python3-version;">

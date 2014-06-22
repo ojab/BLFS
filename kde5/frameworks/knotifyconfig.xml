@@ -6,7 +6,7 @@
 
   <!ENTITY knotifyconfig-download-http "&kf5-download-http;/knotifyconfig-&kf5-version;.tar.xz">
   <!ENTITY knotifyconfig-download-ftp  "&kf5-download-ftp;/knotifyconfig-&kf5-version;.tar.xz">
-  <!ENTITY knotifyconfig-md5sum        "6292a707e3801d48090fa2149ca9cc02">
+  <!ENTITY knotifyconfig-md5sum        "73c159c75af2d21be147cb714d2ca5f5">
   <!ENTITY knotifyconfig-size          "2.7 MB">
   <!ENTITY knotifyconfig-buildsize     "28 MB">
   <!ENTITY knotifyconfig-time          "0.1 SBU">
@@ -97,7 +97,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
       -DLIB_INSTALL_DIR=lib              \
       -DBUILD_TESTING=OFF                \
-      -DECM_MKSPECS_INSTALL_DIR=$QT5_PREFIX/mkspecs/modules \
+      -DECM_MKSPECS_INSTALL_DIR=&qt5-mkspecs-dir; \
       .. &amp;&amp;
 make</userinput></screen>
 
