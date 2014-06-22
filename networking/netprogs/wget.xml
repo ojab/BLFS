@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY wget-download-http
+           "http://ftp.gnu.org/gnu/wget/wget-&wget-version;.tar.xz">
+  <!ENTITY wget-download-ftp
+           "ftp://ftp.gnu.org/gnu/wget/wget-&wget-version;.tar.xz">
+  <!ENTITY wget-md5sum        "7a279d5ac5594919124d5526e7143e28">
+  <!ENTITY wget-size          "1.7 MB">
+  <!ENTITY wget-buildsize     "22 MB (additional 2 MB for the tests)">
+  <!ENTITY wget-time          "0.4 SBU (additional 0.1 SBU for the tests)">
+]>
+
+<sect1 id="wget" xreflabel="Wget-&wget-version;">
+  <?dbhtml filename="wget.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Wget-&wget-version;</title>
+
+  <indexterm zone="wget">
+    <primary sortas="a-Wget">Wget</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Wget</title>
+
+    <para>
+      The <application>Wget</application> package contains a utility useful for
+      non-interactive downloading of files from the Web.
+    </para>
+
+    &lfs75_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&wget-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&wget-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &wget-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &wget-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &wget-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &wget-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Wget Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="openssl"/> or <xref linkend="gnutls"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="libidn"/>,
+      <xref linkend="pcre"/>,
+      <xref linkend="perl-lwp"/> (required for the majority of the test suite), and
+      <ulink url="http://www.inet.no/dante/">Dante</ulink>
+    </para>
+
+    <para condition="html" role="usernotes">
+      User Notes: <ulink url="&blfs-wiki;/wget"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Wget</title>
+
+    <para>
+      Install <application>Wget</application> by running the following commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr      \
+            --sysconfdir=/etc  \
+            --with-ssl=openssl &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--sysconfdir=/etc</parameter>: This relocates the configuration
+      file from <filename class="directory">/usr/etc</filename> to
+      <filename class="directory">/etc</filename>.
+    </para>
+
+    <para>
+      <parameter>--with-ssl=openssl</parameter>: This allows the program to work
+      with <xref linkend="openssl"/>. It can be omitted if
+      <xref linkend="gnutls"/> is found or the HTTPS protocol is not needed.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Wget</title>
+
+    <sect3 id="wget-config">
+      <title>Config Files</title>
+
+      <para>
+        <filename>/etc/wgetrc</filename> and
+        <filename>~/.wgetrc</filename>
+      </para>
+
+      <indexterm zone="wget wget-config">
+        <primary sortas="e-AA.wgetrc">~/.wgetrc</primary>
+      </indexterm>
+
+      <indexterm zone="wget wget-config">
+        <primary sortas="e-etc-wgetrc">/etc/wgetrc</primary>
+      </indexterm>
+
+      <para>
+        If you have installed the <xref linkend="cacerts"/> and you want
+        <application>Wget</application> to use them, as the
+        <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root"><userinput>echo ca-directory=/etc/ssl/certs >> /etc/wgetrc</userinput></screen>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          wget
+        </seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          None
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="wget-prog">
+        <term><command>wget</command></term>
+        <listitem>
+          <para>
+            retrieves files from the Web using the HTTP, HTTPS and FTP
+            protocols.  It is designed to be non-interactive, for background or
+            unattended operations.
+          </para>
+          <indexterm zone="wget wget-prog">
+            <primary sortas="b-wget">wget</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

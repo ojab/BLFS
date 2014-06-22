@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY balsa-download-http "http://pawsa.fedorapeople.org/balsa/balsa-&balsa-version;.tar.bz2">
+  <!ENTITY balsa-download-ftp  " ">
+  <!ENTITY balsa-md5sum        "afd175b4de2c6cc685ace50dc3ad61ff">
+  <!ENTITY balsa-size          "3.7 MB">
+  <!ENTITY balsa-buildsize     "72 MB">
+  <!ENTITY balsa-time          "0.5 SBU">
+]>
+
+<sect1 id="balsa" xreflabel="Balsa-&balsa-version;">
+  <?dbhtml filename="balsa.html" ?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Balsa-&balsa-version;</title>
+
+  <indexterm zone="balsa">
+    <primary sortas="a-Balsa">Balsa</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Balsa</title>
+
+    <para>The <application>Balsa</application> package contains a
+    <application>GNOME</application>-2 based mail client.</para>
+
+    &lfs75_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&balsa-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&balsa-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &balsa-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &balsa-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &balsa-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &balsa-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Balsa Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="enchant"/>,
+      <xref linkend="gmime"/>,
+      <xref linkend="libesmtp"/>,
+      <xref linkend="rarian"/>, and
+      <xref linkend="aspell"/> or
+      <ulink url="http://gtkspell.sourceforge.net/">GtkSpell</ulink>
+      (<application>GtkSpell</application> provides on-the-fly as you type
+      spell checking)
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="pcre"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <ulink url="&gnome-download-http;/gtkhtml/">GtkHTML</ulink>,
+      <xref linkend="gtksourceview"/>,
+      <xref linkend="openssl"/>,
+      <xref linkend="openldap"/>,
+      <xref linkend="compface"/>,
+      <xref linkend="mitkrb"/>,
+      <xref linkend="libnotify"/>,
+      <xref linkend="sqlite"/>, and 
+      <xref linkend="server-mail"/> (that provides a
+      <command>sendmail</command> command, note that it is only used if you
+      didn't install the recommended <application>libESMTP</application>
+      package)
+    </para>
+
+    <bridgehead renderas="sect4">Optional to Build S/MIME Support</bridgehead>
+    <para role="optional">
+      <xref linkend='gpgme'/>
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/balsa"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Balsa</title>
+
+    <para>Install <application>Balsa</application> by running the following
+    commands:</para>
+
+<screen><userinput>sed -i "/(HAVE_CONFIG_H)/i \
+#include &lt;glib-2.0/glib.h&gt;" src/main-window.c &amp;&amp;
+
+./configure --prefix=/usr            \
+            --sysconfdir=/etc/gnome  \
+            --localstatedir=/var/lib \
+            --with-rubrica           \
+            --without-html-widget    \
+            --without-libnotify      \
+            --without-nm             \
+            --without-gtkspell       &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role='root'><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>--with-rubrica</parameter>: This parameter is used
+    to provide Rubrica2 address book support.</para>
+
+    <para><option>--with-ssl</option>: Use this option to enable SSL support if
+    <application>OpenSSL</application> is installed.</para>
+
+    <para><option>--with-ldap</option>: Use this option to enable LDAP address
+    book support if <application>OpenLDAP</application> is installed.</para>
+
+    <para><option>--with-sqlite</option>: Use this option to enable SQLite
+    address book support if <application>SQLite</application> is
+    installed.</para>
+
+    <para><option>--with-gpgme</option>: Use this option to enable GPG support
+    if <quote><application>GnuPG</application> Made Easy</quote>
+    (<application>GPGME</application>) is installed.</para>
+
+    <para><option>--enable-smime</option>: Use this option to enable S/MIME
+    support if <application>GnuPG-2.x.x</application> is installed.</para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Balsa</title>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>All configuration of <application>Balsa</application> is done
+      through the <application>Balsa</application> menu system, with mailbox
+      configuration done with the Settings&mdash;&gt;Preferences menu.</para>
+
+      <para>If you are unable to connect to your ISP, they probably don't
+      support APOP.  Disable it in Settings/Preferences/POP3/advanced.</para>
+
+      <para>If you enable filters for your incoming POP3 mail, you must have
+      <xref linkend="procmail"/> installed, as the incoming mail will be
+      handed off to <command>procmail</command> for processing.</para>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>balsa and balsa-ab</seg>
+        <seg>None</seg>
+        <seg>/usr/share/balsa and /usr/share/sounds/balsa</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="balsa-prog">
+        <term><command>balsa</command></term>
+        <listitem>
+          <para>is a glib based mail client.</para>
+          <indexterm zone="balsa balsa-prog">
+            <primary sortas="b-balsa">balsa</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

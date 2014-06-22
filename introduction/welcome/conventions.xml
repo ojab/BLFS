@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="conventions">
+  <?dbhtml filename="conventions.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Conventions Used in this Book</title>
+
+  <para>To make things easy to follow, there are a number of conventions used
+  throughout the book.  Following are some examples:</para>
+
+<screen><userinput>./configure --prefix=/usr</userinput></screen>
+
+  <blockquote>
+    <para>This form of text is designed to be typed exactly as seen unless
+    otherwise noted in the surrounding text. It is also used to identify
+    references to specific commands.</para>
+  </blockquote>
+
+<screen><computeroutput>install-info: unknown option
+`--dir-file=/mnt/lfs/usr/info/dir'</computeroutput></screen>
+
+  <blockquote>
+    <para>This form of text (fixed width text) is showing screen
+    output, probably a result from issuing a command. It is also used to
+    show filenames such as <filename>/boot/grub/grub.conf</filename></para>
+  </blockquote>
+
+  <para><emphasis>Emphasis</emphasis></para>
+
+  <blockquote>
+    <para>This form of text is used for several purposes in the
+    book but mainly to emphasize important points or to give examples as to
+    what to type.</para>
+  </blockquote>
+
+  <para><ulink url="http://www.&lfs-domainname;/"/></para>
+
+  <blockquote>
+    <para>This form of text is used for hypertext links external to
+    the book such as HowTos, download locations, websites, etc.</para>
+  </blockquote>
+
+  <para><xref linkend="seamonkey"/></para>
+
+  <blockquote>
+    <para>This form of text is used for links internal to
+    the book such as another section describing a different package.</para>
+  </blockquote>
+
+<screen><userinput>cat &gt; $LFS/etc/group &lt;&lt; "EOF"
+<literal>root:x:0:
+bin:x:1:
+......</literal>
+EOF</userinput></screen>
+
+  <blockquote>
+    <para>This type of section is used mainly when creating configuration
+    files.  The first command (in bold) tells the system to create
+    the file <filename>$LFS/etc/group</filename> from whatever is typed on the
+    following lines until the sequence EOF is encountered.
+    Therefore, this whole section is generally typed as seen.</para>
+  </blockquote>
+
+  <para><replaceable>&lt;REPLACED TEXT&gt;</replaceable></para>
+
+  <blockquote>
+    <para>This form of text is used to encapsulate text that should be
+    modified and is not to be typed as seen, or copy and pasted. Note that
+    the square brackets are not part of the text, but should be substituted
+    for as well.</para>
+  </blockquote>
+
+  <para><systemitem class='username'>root</systemitem></para>
+
+  <blockquote>
+    <para>This form of text is used to show a specific system user or group
+    reference in the instructions.</para>
+  </blockquote>
+
+</sect1>
