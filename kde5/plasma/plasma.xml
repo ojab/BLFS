@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+ <!ENTITY % general-entities SYSTEM "../../general.ent">
+ %general-entities;
+]>
+
+<!--
+$LastChangedBy$
+$Date$
+-->
+
+<chapter id="kde-plasma">
+  <?dbhtml filename="plasma.html"?>
+
+  <title>KDE Plasma Workspaces</title>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kde-cli-tools.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="breeze.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kio-extras.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kwin5.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kwrited.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libkscreen2.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libksysguard.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oxygen-fonts.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oxygen.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kfilemetadata5.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="baloo5.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="milou.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="khelpcenter.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kinfocenter.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ksysguard.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="systemsettings.xml"/>
+  <!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href=""/> -->
+
+</chapter>

@@ -16,5 +16,6 @@ $Date$
   <title>KDE 5</title>
 
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="frameworks/frameworks.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="plasma/plasma.xml"/>
 
 </part>
