@@ -45,6 +45,73 @@
 -->
 
     <listitem>
+      <para>June 21st, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[pierre] - Slightly reword the paragraph about adding a user
+          and a group in D-Bus (as proposed by B. Dubbs).</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>June 20th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - Update to poppler-0.26.2. Fixes
+          <ulink url="&blfs-ticket-root;5189">#5189</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - Update to xterm-308. Fixes
+          <ulink url="&blfs-ticket-root;5188">#5188</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>June 18th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - Update to sysstat-11.0.0. Fixes
+          <ulink url="&blfs-ticket-root;5187">#5187</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - Update to xterm-307. Fixes
+          <ulink url="&blfs-ticket-root;5186">#5186</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - Update to alsa 1.0.28. Fixes
+          <ulink url="&blfs-ticket-root;5184">#5184</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - Update to mpg123-1.20.1. Fixes
+          <ulink url="&blfs-ticket-root;5183">#5183</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[bdubbs] - Update to xf86-input-wacom. Fixes
+          <ulink url="&blfs-ticket-root;5185">#5185</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
+      <para>June 16th, 2014</para>
+      <itemizedlist>
+        <listitem>
+          <para>[fernando] - Tweaks in valgrind-3.9.0 and php-5.5.13.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - llvm-3.4.2. Fixes
+          <ulink url="&blfs-ticket-root;5182">#5182</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>[fernando] - mariadb-10.0.12. Fixes
+          <ulink url="&blfs-ticket-root;5181">#5181</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+
+    <listitem>
       <para>June 16th, 2014</para>
       <itemizedlist>
         <listitem>
