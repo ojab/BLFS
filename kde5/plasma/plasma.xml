@@ -31,6 +31,10 @@ $Date$
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kinfocenter.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ksysguard.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="systemsettings.xml"/>
-  <!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href=""/> -->
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="plasma-workspace.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="khotkeys.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kmenuedit.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="powerdevil.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="plasma-desktop.xml"/>
 
 </chapter>

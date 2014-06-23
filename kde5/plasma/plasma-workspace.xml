@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY plasma-workspace-download-http "&plasma2-download-http;/plasma-workspace-&plasma2-version;.tar.xz">
+  <!ENTITY plasma-workspace-download-ftp  "&plasma2-download-ftp;/plasma-workspace-&plasma2-version;.tar.xz">
+  <!ENTITY plasma-workspace-md5sum        "b6e433d71eb4ac3453d1f6df42c7e275">
+  <!ENTITY plasma-workspace-size          "7.2 MB">
+  <!ENTITY plasma-workspace-buildsize     "170 MB">
+  <!ENTITY plasma-workspace-time          "5.9 SBU">
+]>
+
+<sect1 id="plasma-workspace" xreflabel="Plasma-Workspace-&plasma2-version;">
+  <?dbhtml filename="plasma-workspace.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Plasma-Workspace-&plasma2-version;</title>
+
+  <indexterm zone="plasma-workspace">
+    <primary sortas="a-Plasma-Workspace">Plasma-Workspace</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Plasma-Workspace</title>
+
+    <para>
+      The <application>Plasma-Workspace</application> package contains the
+      KDE Plasma Workspace.
+    </para>
+
+    &lfs75_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&plasma-workspace-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&plasma-workspace-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &plasma-workspace-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &plasma-workspace-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &plasma-workspace-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &plasma-workspace-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Plasma-Workspace Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="kidletime"/>,
+      <xref linkend="kjsembed"/>,
+      <xref linkend="knotifyconfig"/>,
+      <xref linkend="krunner"/>,
+      <xref linkend="kdesu"/>,
+      <xref linkend="kdewebkit"/>,
+      <xref linkend="kwin5"/>,
+      <xref linkend="libkscreen2"/> and
+      <xref linkend="libksysguard"/>
+    </para>
+
+    <bridgehead renderas="sect4">Runtime Dependencies</bridgehead>
+    <para role="required">
+      <xref linkend="baloo5"/>,
+      <xref linkend="breeze"/>,
+      <xref linkend="kde-cli-tools"/>,
+      <xref linkend="kded"/>,
+      <xref linkend="khelpcenter"/>,
+      <xref linkend="kio-extras"/>,
+      <xref linkend="milou"/> and
+      <xref linkend="oxygen"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <ulink url="http://gpsd.berlios.de/">libgps</ulink>,
+      <ulink url="http://qalculate.sourceforge.net">libqalculate</ulink> and
+      <xref linkend="linux-pam"/>
+    </para>
+
+    <para condition="html" role="usernotes">
+      User Notes: <ulink url="&blfs-wiki;/plasma-workspace"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Plasma-Workspace</title>
+
+    <para>
+      Install <application>Plasma-Workspace</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>mkdir build &amp;&amp;
+cd    build &amp;&amp;
+
+cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX      \
+      -DCMAKE_BUILD_TYPE=Release              \
+      -DSYSCONF_INSTALL_DIR=$KF5_SYSCONFDIR   \
+      -DLIB_INSTALL_DIR=lib                   \
+      -DBUILD_TESTING=OFF                     \
+      -DQML_INSTALL_DIR=&qt5-qml-dir;           \
+      -DQT_PLUGIN_INSTALL_DIR=&qt5-plugins-dir; \
+      .. &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/cmake-release.xml"/>
+
+    <para>
+      <parameter>-DSYSCONF_INSTALL_DIR=$KF5_SYSCONFDIR</parameter>: This switch
+      is used to set correct XDG configuration directory.
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/kf5-libdir.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/kf5-tests.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/qt5-qml-dir.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/qt5-plugins-dir.xml"/>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          checkrunning, kcminit, kcminit_startup, kdostartupconfig5,
+          kglobalaccel5, klipper, krunner, ksmserver, ksplashqml,
+          kstartupconfig5, kuiserver5, plasmashell, startkde and
+          systemmonitor
+        </seg>
+        <seg>
+          libkdeinit5_kcminit.so, libkdeinit5_kcminit_startup.so,
+          libkdeinit5_kglobalaccel5.so, libkdeinit5_klipper.so,
+          libkdeinit5_ksmserver.so, libkdeinit5_kuiserver5.so,
+          libkworkspace.so, libplasma-geolocation-interface.so,
+          libtaskmanager.so and libweather_ion.so
+        </seg>
+        <seg>
+          $KF5_PREFIX/include/{KDE,kworkspace,plasma,taskmanager},
+          $KF5_PREFIX/lib/cmake/{KRunnerAppDBusInterface,KSMServerDBusInterface},
+          $KF5_PREFIX/lib/cmake/{LibKWorkspace,LibTaskManager,ScreenSaverDBusInterface},
+          $KF5_PREFIX/&qt5-plugins-dir;/plasma,
+          $KF5_PREFIX/&qt5-qml-dir;/org/kde/{plasma,private},
+          $KF5_PREFIX/share/doc/HTML/*/klipper,
+          $KF5_PREFIX/share/{drkonqi,ksmserver,ksplash},
+          $KF5_PREFIX/share/plasma/{look-and-fee,plasmoids,services},
+          $KF5_PREFIX/share/plasma/{shareprovider,wallpapers} and
+          $KF5_PREFIX/share/solid
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+  </sect2>
+
+</sect1>
