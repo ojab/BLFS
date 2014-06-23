@@ -173,11 +173,11 @@ make</userinput></screen>
           attica_kde.so, libkdeinit5_kaccess.so, libkfontinst.so and libkfontinstui.so
         </seg>
         <seg>
-          $KF5_PREFIX/&qt5-qml-dir;/org/kde/plasma/private/{folder,kicker,kickoff}
-          $KF5_PREFIX/&qt5-qml-dir;/org/kde/plasma/private/{pager,taskmanager,trash}
-          $KF5_PREFIX/share/doc/HTML/*/{kcontrol,kfontview,knetattach,plasma-desktop}
-          $KF5_PREFIX/share/{kcm_componentchooser,kcminput,kcmkeyboard,kcmkeys}
-          $KF5_PREFIX/share/{kcm_phonon,kcontrol,kdisplay,kfontinst,kfontview}
+          $KF5_PREFIX/&qt5-qml-dir;/org/kde/plasma/private/{folder,kicker,kickoff},
+          $KF5_PREFIX/&qt5-qml-dir;/org/kde/plasma/private/{pager,taskmanager,trash},
+          $KF5_PREFIX/share/doc/HTML/*/{kcontrol,kfontview,knetattach,plasma-desktop},
+          $KF5_PREFIX/share/{kcm_componentchooser,kcminput,kcmkeyboard,kcmkeys},
+          $KF5_PREFIX/share/{kcm_phonon,kcontrol,kdisplay,kfontinst,kfontview} and
           $KF5_PREFIX/share/{konqsidebartng,kthememanager}
         </seg>
       </seglistitem>
