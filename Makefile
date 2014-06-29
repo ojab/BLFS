@@ -25,10 +25,20 @@ else
   Q = @
 endif
 
-blfs: html wget-list
+ifdef SYSTEMD
+  XMLEXT=systemd
+else
+  XMLEXT=systemv
+endif
+
+blfs: symlink html wget-list
 #all: blfs nochunks pdf
 all: blfs nochunks
 world: all blfs-patch-list dump-commands test-links
+
+symlink:
+	@echo "Creating symbolic links for $(XMLEXT) specific packages."
+	$(Q)for file in $$(find . -name "*.xml.$(XMLEXT)"); do ln -sfv $$(basename $${file}) $${file%.$(XMLEXT)}; done
 
 html: $(BASEDIR)/index.html
 $(BASEDIR)/index.html: $(RENDERTMP)/blfs-html.xml
@@ -178,13 +188,13 @@ $(DUMPDIR): $(RENDERTMP)/blfs-full.xml
 	   stylesheets/dump-commands.xsl $(RENDERTMP)/blfs-full.xml
 	$(Q)touch $(DUMPDIR)
 
-validate:
+validate: symlink
 	@echo "Validating the book..."
 	$(Q)xmllint --noout --nonet --xinclude --postvalid index.xml
 
 .PHONY: blfs all world html nochunks tmpdir clean validxml \
 	profile-html wget-list test-links dump-commands validate \
-   bootscripts
+	bootscripts symlink
 
 #.PHONY: blfs all world html pdf nochunks tmpdir clean validxml \
 	profile-html wget-list test-links dump-commands validate

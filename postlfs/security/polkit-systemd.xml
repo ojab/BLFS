@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY polkit-download-http
+           "http://www.freedesktop.org/software/polkit/releases/polkit-&polkit-version;.tar.gz">
+  <!ENTITY polkit-download-ftp  " ">
+  <!ENTITY polkit-md5sum        "b0f2fa00a55f47c6a5d88e9b73f80127">
+  <!ENTITY polkit-size          "1.4 MB">
+  <!ENTITY polkit-buildsize     "17 MB">
+  <!ENTITY polkit-time          "0.2 SBU">
+]>
+
+<sect1 id="polkit" xreflabel="Polkit-&polkit-version;">
+  <?dbhtml filename="polkit.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Polkit-&polkit-version;</title>
+
+  <indexterm zone="polkit">
+    <primary sortas="a-Polkit">Polkit</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Polkit</title>
+
+    <para>
+      <application>Polkit</application> is a toolkit for defining and handling
+      authorizations. It is used for allowing unprivileged processes to
+      communicate with privileged processes.
+    </para>
+
+    &lfs75_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&polkit-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&polkit-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &polkit-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &polkit-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &polkit-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &polkit-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Polkit Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="glib2"/>, and
+      <xref linkend="JS"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional (Required if building GNOME)</bridgehead>
+    <para role="optional">
+      <xref linkend="gobject-introspection"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="DocBook"/>,
+      <xref linkend="docbook-xsl"/>,
+      <xref linkend="gtk-doc"/>,
+      <xref linkend="libxslt"/> and
+      <xref linkend="linux-pam"/>
+    </para>
+
+    <note>
+      <para>
+        If <xref linkend="libxslt"/> is installed, then <xref linkend="DocBook"/>
+        and <xref linkend="docbook-xsl"/> are required. If you have installed
+        <xref linkend="libxslt"/>, but you do not want to install any of the
+        DocBook packages mentioned, you will need to use
+        <option>--disable-man-pages</option> in the instructions below.
+      </para>
+    </note>
+
+    <para condition="html" role="usernotes">User Notes:
+      <ulink url="&blfs-wiki;/polkit"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Polkit</title>
+
+    <para>
+      There should be a dedicated user and group to take control
+      of the <command>polkitd</command> daemon after it is
+      started. Issue the following commands as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>groupadd -fg 27 polkitd &amp;&amp;
+useradd -c "PolicyKit Daemon Owner" -d /etc/polkit-1 -u 27 \
+        -g polkitd -s /bin/false polkitd</userinput></screen>
+
+    <para>
+      Install <application>Polkit</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr                \
+            --sysconfdir=/etc            \
+            --localstatedir=/var         \
+            --disable-static             \
+            --enable-libsystemd-login=no \
+            --with-authfw=shadow         &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+      Note that system <application>D-Bus</application> daemon
+      must be running for the testsuite to complete. There is
+      also a warning about <application>ConsoleKit</application>
+      database not present, but that one can be safely ignored.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--enable-libsystemd-login=no</parameter>: This parameter fixes
+      building without <application>systemd</application>, which is not part
+      of LFS/BLFS. If you use <application>systemd</application>,
+      replace "no" by "yes".
+    </para>
+
+    <para>
+      <parameter>--with-authfw=shadow</parameter>: This parameter configures the
+      package to use the <application>Shadow</application> rather than the
+      <application>Linux PAM</application> Authentication framework. Remove it
+      if you would like to use <application>Linux PAM</application>.
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/gtk-doc-rebuild.xml"/>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Polkit</title>
+
+    <sect3>
+      <title>PAM Configuration</title>
+
+      <note>
+        <para>
+          If you did not build <application>Polkit</application> with
+          <application>Linux PAM</application> support, you can skip this section.
+        </para>
+      </note>
+
+      <para>
+        If you have built <application>Polkit</application> with
+        <application>Linux PAM</application> support, you need to modify
+        the default PAM configuration file which was installed by default to get
+        <application>Polkit</application> to work correctly with BLFS. Issue the
+        following commands as the <systemitem class="username">root</systemitem>
+        user to create the configuration file for <application>Linux PAM</application>:
+      </para>
+
+<screen role="root"><userinput>cat &gt; /etc/pam.d/polkit-1 &lt;&lt; "EOF"
+<literal># Begin /etc/pam.d/polkit-1
+
+auth     include        system-auth
+account  include        system-account
+password include        system-password
+session  include        system-session
+
+# End /etc/pam.d/polkit-1</literal>
+EOF</userinput></screen>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          pkaction, pkcheck, pk-example-frobnicate, pkexec,
+          pkttyagent and polkitd
+        </seg>
+        <seg>
+          libpolkit-agent-1.so and
+          libpolkit-gobject-1.so
+        </seg>
+        <seg>
+          /etc/polkit-1,
+          /usr/include/polkit-1,
+          /usr/lib/polkit-1,
+          /usr/share/gtk-doc/html/polkit-1 and
+          /usr/share/polkit-1
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="pkaction">
+        <term><command>pkaction</command></term>
+        <listitem>
+          <para>
+            is used to obtain information about registered PolicyKit actions.
+          </para>
+          <indexterm zone="polkit pkaction">
+            <primary sortas="b-pkaction">pkaction</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pkcheck">
+        <term><command>pkcheck</command></term>
+        <listitem>
+          <para>
+            is used to check whether a process is authorized for action.
+          </para>
+          <indexterm zone="polkit pkcheck">
+            <primary sortas="b-pkcheck">pkcheck</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pkexec">
+        <term><command>pkexec</command></term>
+        <listitem>
+          <para>
+            allows an authorized user to execute a command as another user.
+          </para>
+          <indexterm zone="polkit pkexec">
+            <primary sortas="b-pkexec">pkexec</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pkttyagent">
+        <term><command>pkttyagent</command></term>
+        <listitem>
+          <para>
+            is used to start a textual authentication agent for the subject.
+          </para>
+          <indexterm zone="polkit pkttyagent">
+            <primary sortas="b-pkttyagent">pkttyagent</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="polkitd">
+        <term><command>polkitd</command></term>
+        <listitem>
+          <para>
+            provides the org.freedesktop.PolicyKit1 <application>D-Bus</application>
+            service on the system message bus.
+          </para>
+          <indexterm zone="polkit polkitd">
+            <primary sortas="b-polkitd">polkitd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libpolkit-agent-1">
+        <term><filename class='libraryfile'>libpolkit-agent-1.so</filename></term>
+        <listitem>
+          <para>
+            contains the <application>Polkit</application> authentication
+            agent API functions.
+          </para>
+          <indexterm zone="polkit libpolkit-agent-1">
+            <primary sortas="c-libpolkit-agent-1">libpolkit-agent-1.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libpolkit-gobject-1">
+        <term><filename class='libraryfile'>libpolkit-gobject-1.so</filename></term>
+        <listitem>
+          <para>
+            contains the <application>Polkit</application> authorization API functions.
+          </para>
+          <indexterm zone="polkit libpolkit-gobject-1">
+            <primary sortas="c-libpolkit-gobject-1">libpolkit-gobject-1.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
