@@ -6,7 +6,7 @@
 
   <!ENTITY kparts-download-http "&kf5-download-http;/kparts-&kf5-version;.tar.xz">
   <!ENTITY kparts-download-ftp  "&kf5-download-ftp;/kparts-&kf5-version;.tar.xz">
-  <!ENTITY kparts-md5sum        "0b56881371d3bf618d461495a4d162bc">
+  <!ENTITY kparts-md5sum        "82c89eb04a3e887f08746385f7e5f8da">
   <!ENTITY kparts-size          "2.8 MB">
   <!ENTITY kparts-buildsize     "31 MB">
   <!ENTITY kparts-time          "0.5 SBU">

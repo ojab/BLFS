@@ -6,8 +6,8 @@
 
   <!ENTITY kimageformats-download-http "&kf5-download-http;/kimageformats-&kf5-version;.tar.xz">
   <!ENTITY kimageformats-download-ftp  "&kf5-download-ftp;/kimageformats-&kf5-version;.tar.xz">
-  <!ENTITY kimageformats-md5sum        "728508c4c14c67a5260a068b62b3702c">
-  <!ENTITY kimageformats-size          "96 KB">
+  <!ENTITY kimageformats-md5sum        "333084e7efc1efaa74c4008aec895ada">
+  <!ENTITY kimageformats-size          "92 KB">
   <!ENTITY kimageformats-buildsize     "4.2 MB">
   <!ENTITY kimageformats-time          "0.3 SBU">
 ]>

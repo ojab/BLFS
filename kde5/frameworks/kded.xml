@@ -6,7 +6,7 @@
 
   <!ENTITY kded-download-http "&kf5-download-http;/kded-&kf5-version;.tar.xz">
   <!ENTITY kded-download-ftp  "&kf5-download-ftp;/kded-&kf5-version;.tar.xz">
-  <!ENTITY kded-md5sum        "5bd27a8ec8946424ee129f4fa1702148">
+  <!ENTITY kded-md5sum        "9ed54283155d578d81d9af7348bf426f">
   <!ENTITY kded-size          "24 KB">
   <!ENTITY kded-buildsize     "1.3 MB">
   <!ENTITY kded-time          "0.1 SBU">

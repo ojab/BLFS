@@ -6,8 +6,8 @@
 
   <!ENTITY kcoreaddons-download-http "&kf5-download-http;/kcoreaddons-&kf5-version;.tar.xz">
   <!ENTITY kcoreaddons-download-ftp  "&kf5-download-ftp;/kcoreaddons-&kf5-version;.tar.xz">
-  <!ENTITY kcoreaddons-md5sum        "eb73ec596a817c1f12733ebb59c46f4e">
-  <!ENTITY kcoreaddons-size          "2.8 MB">
+  <!ENTITY kcoreaddons-md5sum        "90dcfc98dbb0c55981370e264fb6f21f">
+  <!ENTITY kcoreaddons-size          "2.7 MB">
   <!ENTITY kcoreaddons-buildsize     "85 MB">
   <!ENTITY kcoreaddons-time          "0.6 SBU">
 ]>

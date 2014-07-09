@@ -6,7 +6,7 @@
 
   <!ENTITY kiconthemes-download-http "&kf5-download-http;/kiconthemes-&kf5-version;.tar.xz">
   <!ENTITY kiconthemes-download-ftp  "&kf5-download-ftp;/kiconthemes-&kf5-version;.tar.xz">
-  <!ENTITY kiconthemes-md5sum        "1cc3ac80441cd0b3fddbe97e31c394a9">
+  <!ENTITY kiconthemes-md5sum        "0e60f0b8f158117858b14290ab909c29">
   <!ENTITY kiconthemes-size          "1.5 MB">
   <!ENTITY kiconthemes-buildsize     "15 MB">
   <!ENTITY kiconthemes-time          "0.2 SBU">

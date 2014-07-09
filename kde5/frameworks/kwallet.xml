@@ -6,8 +6,8 @@
 
   <!ENTITY kwallet-download-http "&kf5-download-http;/kwallet-&kf5-version;.tar.xz">
   <!ENTITY kwallet-download-ftp  "&kf5-download-ftp;/kwallet-&kf5-version;.tar.xz">
-  <!ENTITY kwallet-md5sum        "371fdf0a7cd3261c4d9f9f2ecde62283">
-  <!ENTITY kwallet-size          "80 KB">
+  <!ENTITY kwallet-md5sum        "14fc1c13e13ed451dbe8065fe3bc96ec">
+  <!ENTITY kwallet-size          "76 KB">
   <!ENTITY kwallet-buildsize     "5.4 MB">
   <!ENTITY kwallet-time          "0.3 SBU">
 ]>

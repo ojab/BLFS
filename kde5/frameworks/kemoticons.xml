@@ -6,7 +6,7 @@
 
   <!ENTITY kemoticons-download-http "&kf5-download-http;/kemoticons-&kf5-version;.tar.xz">
   <!ENTITY kemoticons-download-ftp  "&kf5-download-ftp;/kemoticons-&kf5-version;.tar.xz">
-  <!ENTITY kemoticons-md5sum        "c9aeb603bcbd7910a8347cdef53578b2">
+  <!ENTITY kemoticons-md5sum        "27adb273827ff6abc8dd8d3983765bca">
   <!ENTITY kemoticons-size          "72 KB">
   <!ENTITY kemoticons-buildsize     "3.5 MB">
   <!ENTITY kemoticons-time          "0.2 SBU">

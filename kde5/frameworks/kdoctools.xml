@@ -6,8 +6,8 @@
 
   <!ENTITY kdoctools-download-http "&kf5-download-http;/kdoctools-&kf5-version;.tar.xz">
   <!ENTITY kdoctools-download-ftp  "&kf5-download-ftp;/kdoctools-&kf5-version;.tar.xz">
-  <!ENTITY kdoctools-md5sum        "087f26aa3ff15478a7d13eb087b057d1">
-  <!ENTITY kdoctools-size          "364 KB">
+  <!ENTITY kdoctools-md5sum        "7048b70497c07e65c5f36842fd074850">
+  <!ENTITY kdoctools-size          "356 KB">
   <!ENTITY kdoctools-buildsize     "14 MB">
   <!ENTITY kdoctools-time          "0.2 SBU">
 ]>

@@ -6,8 +6,8 @@
 
   <!ENTITY kglobalaccel-download-http "&kf5-download-http;/kglobalaccel-&kf5-version;.tar.xz">
   <!ENTITY kglobalaccel-download-ftp  "&kf5-download-ftp;/kglobalaccel-&kf5-version;.tar.xz">
-  <!ENTITY kglobalaccel-md5sum        "f3ac048a83f00ba31765b10d26f6fa9f">
-  <!ENTITY kglobalaccel-size          "1a57f76bc5df0cb00105f460ae7f12b3">
+  <!ENTITY kglobalaccel-md5sum        "2789a7e598942a9a7004fa867019ec6a">
+  <!ENTITY kglobalaccel-size          "2.6 MB">
   <!ENTITY kglobalaccel-buildsize     "76 MB">
   <!ENTITY kglobalaccel-time          "0.3 SBU">
 ]>

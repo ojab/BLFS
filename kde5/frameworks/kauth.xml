@@ -6,8 +6,8 @@
 
   <!ENTITY kauth-download-http "&kf5-download-http;/kauth-&kf5-version;.tar.xz">
   <!ENTITY kauth-download-ftp  "&kf5-download-ftp;/kauth-&kf5-version;.tar.xz">
-  <!ENTITY kauth-md5sum        "cc205a663cb6cb179fecf17b3658dc03">
-  <!ENTITY kauth-size          "2.7 MB">
+  <!ENTITY kauth-md5sum        "eeb5e576c9d0d098cfb9def812f04089">
+  <!ENTITY kauth-size          "2.6 MB">
   <!ENTITY kauth-buildsize     "78 MB">
   <!ENTITY kauth-time          "0.4 SBU">
 ]>

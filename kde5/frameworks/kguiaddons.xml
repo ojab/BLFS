@@ -6,7 +6,7 @@
 
   <!ENTITY kguiaddons-download-http "&kf5-download-http;/kguiaddons-&kf5-version;.tar.xz">
   <!ENTITY kguiaddons-download-ftp  "&kf5-download-ftp;/kguiaddons-&kf5-version;.tar.xz">
-  <!ENTITY kguiaddons-md5sum        "2ab5b90b5423aa778f74acc40ef42d73">
+  <!ENTITY kguiaddons-md5sum        "e5a7f23a5c71520f5b0b7f3c4cb71a9e">
   <!ENTITY kguiaddons-size          "40 KB">
   <!ENTITY kguiaddons-buildsize     "2.2 MB">
   <!ENTITY kguiaddons-time          "0.2 SBU">

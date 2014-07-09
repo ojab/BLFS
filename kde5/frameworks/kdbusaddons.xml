@@ -6,7 +6,7 @@
 
   <!ENTITY kdbusaddons-download-http "&kf5-download-http;/kdbusaddons-&kf5-version;.tar.xz">
   <!ENTITY kdbusaddons-download-ftp  "&kf5-download-ftp;/kdbusaddons-&kf5-version;.tar.xz">
-  <!ENTITY kdbusaddons-md5sum        "74ee95bc3dcc8638042039ae8e1bc477">
+  <!ENTITY kdbusaddons-md5sum        "da8585a074b204ab2bcd3e7bc8f4ddef">
   <!ENTITY kdbusaddons-size          "32 KB">
   <!ENTITY kdbusaddons-buildsize     "3.5 MB">
   <!ENTITY kdbusaddons-time          "0.2 SBU">

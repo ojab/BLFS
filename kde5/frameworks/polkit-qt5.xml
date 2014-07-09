@@ -4,9 +4,9 @@
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 
-  <!ENTITY polkit-qt5-download-http "http://www.linuxfromscratch.org/~krejzi/polkit-qt-&polkit-qt5-version;.tar.xz">
+  <!ENTITY polkit-qt5-download-http "http://www.linuxfromscratch.org/~krejzi/polkit-qt-1-&polkit-qt5-version;.tar.xz">
   <!ENTITY polkit-qt5-download-ftp  " ">
-  <!ENTITY polkit-qt5-md5sum        "e388f697f25fbbf2f4ed758487811bf3">
+  <!ENTITY polkit-qt5-md5sum        "d27e2ee7e874695f503080099f8b46b5">
   <!ENTITY polkit-qt5-size          "64 KB">
   <!ENTITY polkit-qt5-buildsize     "3.3 MB">
   <!ENTITY polkit-qt5-time          "0.2 SBU">
@@ -97,7 +97,7 @@ cd    build &amp;&amp;
 
 cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
       -DCMAKE_BUILD_TYPE=Release         \
-      -DLIB_INSTALL_DIR=lib              \
+      -DCMAKE_INSTALL_LIBDIR=lib         \
       .. &amp;&amp;
 make</userinput></screen>
 
@@ -120,8 +120,8 @@ make</userinput></screen>
       href="../../xincludes/cmake-release.xml"/>
 
     <para>
-      <parameter>-DLIB_INSTALL_DIR=lib</parameter>: This switch is used
-      to get libraries to install to <filename
+      <parameter>-DCMAKE_INSTALL_LIBDIR=lib</parameter>: This switch is
+      used to get libraries to install to <filename
       class="directory">$KF5_PREFIX/lib</filename> instead of <filename
       class="directory">$KF5_PREFIX/lib64</filename> on a 64 bit system.
     </para>

@@ -6,8 +6,8 @@
 
   <!ENTITY threadweaver-download-http "&kf5-download-http;/threadweaver-&kf5-version;.tar.xz">
   <!ENTITY threadweaver-download-ftp  "&kf5-download-ftp;/threadweaver-&kf5-version;.tar.xz">
-  <!ENTITY threadweaver-md5sum        "8b471cd3283233445cda9e1d2d5e55c6">
-  <!ENTITY threadweaver-size          "72 KB">
+  <!ENTITY threadweaver-md5sum        "23426ad8caacb0e494d870c546a3783c">
+  <!ENTITY threadweaver-size          "68 KB">
   <!ENTITY threadweaver-buildsize     "4.0 MB">
   <!ENTITY threadweaver-time          "0.4 SBU">
 ]>

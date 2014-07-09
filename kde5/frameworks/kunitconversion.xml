@@ -6,8 +6,8 @@
 
   <!ENTITY kunitconversion-download-http "&kf5-download-http;/kunitconversion-&kf5-version;.tar.xz">
   <!ENTITY kunitconversion-download-ftp  "&kf5-download-ftp;/kunitconversion-&kf5-version;.tar.xz">
-  <!ENTITY kunitconversion-md5sum        "2d08d6cbb610cae2de4c397bcfa04c75">
-  <!ENTITY kunitconversion-size          "624 KB">
+  <!ENTITY kunitconversion-md5sum        "6fbeab95501445a7b66a3cf100305c8c">
+  <!ENTITY kunitconversion-size          "616 KB">
   <!ENTITY kunitconversion-buildsize     "18 MB">
   <!ENTITY kunitconversion-time          "0.3 SBU">
 ]>

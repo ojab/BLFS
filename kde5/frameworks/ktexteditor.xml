@@ -6,7 +6,7 @@
 
   <!ENTITY ktexteditor-download-http "&kf5-download-http;/ktexteditor-&kf5-version;.tar.xz">
   <!ENTITY ktexteditor-download-ftp  "&kf5-download-ftp;/ktexteditor-&kf5-version;.tar.xz">
-  <!ENTITY ktexteditor-md5sum        "ea3f44d4cc3b6929a1987049f4fe9329">
+  <!ENTITY ktexteditor-md5sum        "fb438acf5b10c0e9a620916c2bfe5797">
   <!ENTITY ktexteditor-size          "2.8 MB">
   <!ENTITY ktexteditor-buildsize     "79 MB">
   <!ENTITY ktexteditor-time          "3.0 SBU">

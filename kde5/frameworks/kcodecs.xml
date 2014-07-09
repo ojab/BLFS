@@ -6,7 +6,7 @@
 
   <!ENTITY kcodecs-download-http "&kf5-download-http;/kcodecs-&kf5-version;.tar.xz">
   <!ENTITY kcodecs-download-ftp  "&kf5-download-ftp;/kcodecs-&kf5-version;.tar.xz">
-  <!ENTITY kcodecs-md5sum        "73bb13bc3e2867242312aa9a8a960041">
+  <!ENTITY kcodecs-md5sum        "f87384816f5685a380b5a74c44695c7b">
   <!ENTITY kcodecs-size          "2.7 MB">
   <!ENTITY kcodecs-buildsize     "79 MB">
   <!ENTITY kcodecs-time          "0.4 SBU">

@@ -6,7 +6,7 @@
 
   <!ENTITY kwindowsystem-download-http "&kf5-download-http;/kwindowsystem-&kf5-version;.tar.xz">
   <!ENTITY kwindowsystem-download-ftp  "&kf5-download-ftp;/kwindowsystem-&kf5-version;.tar.xz">
-  <!ENTITY kwindowsystem-md5sum        "cc37fbd2ebe9704d64fb4b2e5c40cfe2">
+  <!ENTITY kwindowsystem-md5sum        "9295efd9f89fbbdf324260557ffeb812">
   <!ENTITY kwindowsystem-size          "2.7 MB">
   <!ENTITY kwindowsystem-buildsize     "79 MB">
   <!ENTITY kwindowsystem-time          "0.4 SBU">

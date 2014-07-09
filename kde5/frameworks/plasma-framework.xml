@@ -6,8 +6,8 @@
 
   <!ENTITY plasma-framework-download-http "&kf5-download-http;/plasma-framework-&kf5-version;.tar.xz">
   <!ENTITY plasma-framework-download-ftp  "&kf5-download-ftp;/plasma-framework-&kf5-version;.tar.xz">
-  <!ENTITY plasma-framework-md5sum        "a49ff1fb805f15115e4365bae6bbb45d">
-  <!ENTITY plasma-framework-size          "4.1 MB">
+  <!ENTITY plasma-framework-md5sum        "088643662f7e60b5cafe2f26182882eb">
+  <!ENTITY plasma-framework-size          "3.8 MB">
   <!ENTITY plasma-framework-buildsize     "31 MB">
   <!ENTITY plasma-framework-time          "1.6 SBU">
 ]>

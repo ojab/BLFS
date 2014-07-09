@@ -6,7 +6,7 @@
 
   <!ENTITY kdelibs4support-download-http "&kf5-download-http;/portingAids/kdelibs4support-&kf5-version;.tar.xz">
   <!ENTITY kdelibs4support-download-ftp  "&kf5-download-ftp;/portingAids/kdelibs4support-&kf5-version;.tar.xz">
-  <!ENTITY kdelibs4support-md5sum        "c692a4c5bea5205f194a00315b23c697">
+  <!ENTITY kdelibs4support-md5sum        "1fe3fc10a31a2c123338c3a8ae82455a">
   <!ENTITY kdelibs4support-size          "1.9 MB">
   <!ENTITY kdelibs4support-buildsize     "49 MB">
   <!ENTITY kdelibs4support-time          "3.2 SBU">

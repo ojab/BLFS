@@ -6,7 +6,7 @@
 
   <!ENTITY knotifications-download-http "&kf5-download-http;/knotifications-&kf5-version;.tar.xz">
   <!ENTITY knotifications-download-ftp  "&kf5-download-ftp;/knotifications-&kf5-version;.tar.xz">
-  <!ENTITY knotifications-md5sum        "fef8940c81cfd1906aae29200853ea2e">
+  <!ENTITY knotifications-md5sum        "e3c280948ab47b28bed80660bb33c374">
   <!ENTITY knotifications-size          "2.7 MB">
   <!ENTITY knotifications-buildsize     "78 MB">
   <!ENTITY knotifications-time          "0.5 SBU">
