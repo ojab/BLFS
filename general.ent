@@ -620,7 +620,7 @@ export -f as_root</userinput></screen>
 <!ENTITY phonon5-version              "4.7.2">
 <!ENTITY phonon-backend-gstreamer5-version "4.7.2">
 <!ENTITY phonon-backend-vlc5-version  "0.7.2">
-<!ENTITY polkit-qt5-version           "0.103.0+20140709">
+<!ENTITY polkit-qt5-version           "0.112.0">
 <!ENTITY qt5-mkspecs-dir              "$KF5_PREFIX/share/qt5/mkspecs/modules">
 <!ENTITY qt5-plugins-dir              "lib/qt5/plugins">
 <!ENTITY qt5-qml-dir                  "lib/qt5/qml">

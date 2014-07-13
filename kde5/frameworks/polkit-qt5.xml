@@ -4,10 +4,10 @@
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 
-  <!ENTITY polkit-qt5-download-http "http://www.linuxfromscratch.org/~krejzi/polkit-qt-1-&polkit-qt5-version;.tar.xz">
-  <!ENTITY polkit-qt5-download-ftp  " ">
-  <!ENTITY polkit-qt5-md5sum        "d27e2ee7e874695f503080099f8b46b5">
-  <!ENTITY polkit-qt5-size          "64 KB">
+  <!ENTITY polkit-qt5-download-http "http://download.kde.org/stable/apps/KDE4.x/admin/polkit-qt-1-&polkit-qt5-version;.tar.bz2">
+  <!ENTITY polkit-qt5-download-ftp  "ftp://ftp.kde.org/pub/kde/stable/apps/KDE4.x/admin/polkit-qt-1-&polkit-qt5-version;.tar.bz2">
+  <!ENTITY polkit-qt5-md5sum        "bee71b71c12797e6fc498540a06c829b">
+  <!ENTITY polkit-qt5-size          "68 KB">
   <!ENTITY polkit-qt5-buildsize     "3.3 MB">
   <!ENTITY polkit-qt5-time          "0.2 SBU">
 ]>
