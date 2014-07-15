@@ -32,7 +32,7 @@
     <para>
       The <application>Extra Cmake Modules</application> package contains
       extra <application>CMake</application> modules used by all
-      <application>KDE Frameworks</application> packages.
+      <application>KDE Frameworks 5</application> packages.
     </para>
 
     &lfs75_checked;

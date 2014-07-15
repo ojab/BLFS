@@ -13,7 +13,7 @@
 ]>
 
 <sect1 id="libdbusmenu-qt5" xreflabel="libdbusmenu-qt-&libdbusmenu-qt5-version;">
-  <?dbhtml filename="libdbusmenu-qt5.html"?>
+  <?dbhtml filename="libdbusmenu-qt.html"?>
 
   <sect1info>
     <othername>$LastChangedBy$</othername>

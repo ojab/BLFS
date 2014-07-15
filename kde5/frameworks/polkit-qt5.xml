@@ -13,7 +13,7 @@
 ]>
 
 <sect1 id="polkit-qt5" xreflabel="Polkit-Qt-&polkit-qt5-version;">
-  <?dbhtml filename="polkit-qt5.html"?>
+  <?dbhtml filename="polkit-qt.html"?>
 
   <sect1info>
     <othername>$LastChangedBy$</othername>

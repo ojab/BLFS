@@ -631,6 +631,7 @@ export -f as_root</userinput></screen>
 <!ENTITY libkscreen-version           "5.0.91">
 <!ENTITY libnm-qt-version             "5.0.91">
 <!ENTITY oxygen-fonts-version         "0.4.0">
+<!ENTITY oxygen-icons-version         "4.13.3">
 <!ENTITY plasma-nm-version            "5.0.0-1">
 <!ENTITY plasma-version               "5.0.0">
 <!ENTITY plasma-download-http         "http://download.kde.org/stable/plasma/&plasma-version;">

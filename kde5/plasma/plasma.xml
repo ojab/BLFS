@@ -13,9 +13,9 @@ $Date$
 <chapter id="kde-plasma">
   <?dbhtml filename="plasma.html"?>
 
-  <title>KDE Plasma Workspaces</title>
+  <title>KDE Plasma 5</title>
 
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="plasma-intro.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="intro.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kde-cli-tools.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="breeze.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kio-extras.xml"/>
@@ -25,6 +25,7 @@ $Date$
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libksysguard.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libnm-qt.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oxygen-fonts.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oxygen-icons5.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oxygen.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="plasma-workspace-wallpapers.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kfilemetadata5.xml"/>

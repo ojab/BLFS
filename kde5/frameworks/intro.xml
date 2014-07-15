@@ -5,18 +5,18 @@
   %general-entities;
 ]>
 
-<sect1 id="kf5-intro">
-  <?dbhtml filename="kf5intro.html"?>
+<sect1 id="frameworks-intro">
+  <?dbhtml filename="intro.html"?>
 
   <sect1info>
     <othername>$LastChangedBy$</othername>
     <date>$Date$</date>
   </sect1info>
 
-  <title>Introduction to KDE Frameworks</title>
+  <title>Introduction to KDE Frameworks 5</title>
 
   <para>
-    <application>KDE Frameworks</application> is a collection of
+    <application>KDE Frameworks 5</application> is a collection of
     libraries based on top of <application>Qt5</application> and
     QML that can be used independently of
     <application>KDE</application>.
@@ -24,7 +24,7 @@
 
   <important>
     <para>
-      The instructions for <application>KDE Frameworks</application>
+      The instructions for <application>KDE Frameworks 5</application>
       packages assume that <xref linkend="qt5"/> was built with
       recommended dependencies installed and that
       <application>Qt5</application> executables are in user's $PATH.
@@ -35,7 +35,7 @@
     <title>Build Order</title>
 
   <para>
-    <application>KDE Frameworks</application> packages are listed
+    <application>KDE Frameworks 5</application> packages are listed
     in the recommended and tested build order based on dependencies.
   </para>
 
@@ -45,7 +45,7 @@
     <title>Installing in /usr</title>
 
     <para>
-      One option is to install <application>KDE Frameworks</application>
+      One option is to install <application>KDE Frameworks 5</application>
       into the <filename class="directory">/usr</filename> hierarchy.
       This creates a simpler setup but makes it more difficult to try
       multiple versions of <application>KDE Frameworks</application>.
@@ -93,7 +93,7 @@ EOF</userinput></screen>
 
     <para>
       A method of building multiple versions installs
-      <application>KDE Frameworks</application> in the
+      <application>KDE Frameworks 5</application> in the
       <filename class="directory">/opt</filename> hierarchy:
     </para>
 
@@ -101,7 +101,7 @@ EOF</userinput></screen>
 export KF5_SYSCONFDIR=$KF5_PREFIX/etc</userinput></screen>
 
     <para>
-      If you are not installing <application>KDE Frameworks</application>
+      If you are not installing <application>KDE Frameworks 5</application>
       in <filename class="directory">/usr</filename>, you will need to
       make some additional configuration changes. Best practice is to add
       those to your system or personal profile:
@@ -150,14 +150,14 @@ EOF</userinput></screen>
 # End KF5 addition</literal>
 EOF</userinput></screen>
 
-    <indexterm zone="kf5-intro">
+    <indexterm zone="frameworks-intro">
       <primary sortas="e-etc-ld.so.conf">/etc/ld.so.conf</primary>
     </indexterm>
 
     <para>
-      Several <application>KDE Frameworks</application> packages install files into
+      Several <application>KDE Frameworks 5</application> packages install files into
       <application>D-Bus</application> and <application>Polkit</application> directories.
-      When installing <application>KDE Frameworks</application> in a location other than
+      When installing <application>KDE Frameworks 5</application> in a location other than
       <filename class="directory">/usr</filename>, <application>D-Bus</application> and
       <application>Polkit</application> need to be able to find these files. The easiest
       way to achieve this is to create the following symlinks (as the
@@ -196,10 +196,10 @@ ln -sfv kf5-&kf5-version; /opt/kf5</userinput></screen>
 
       <para>
         Later on, you may want to install other versions of
-        <application>KDE Frameworks</application>. To do that, just remove
+        <application>KDE Frameworks 5</application>. To do that, just remove
         the symlink and use <filename class="directory">/opt/kf5</filename>
         as the prefix again. Which version of
-        <application>KDE Frameworks</application> you use depends only on
+        <application>KDE Frameworks 5</application> you use depends only on
         where the symlink points to. No other reconfiguration will be needed.
       </para>
     </tip>

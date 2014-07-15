@@ -31,7 +31,8 @@
 
     <para>
       The <application>KDELibs4Support</application> package contains libraries
-      and utilities to ease the transition from kdelibs 4 to KDE Frameworks 5.
+      and utilities to ease the transition from kdelibs 4 to
+      <application>KDE Frameworks 5</application>.
     </para>
 
     &lfs75_checked;

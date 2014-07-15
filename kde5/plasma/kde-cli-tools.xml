@@ -31,8 +31,8 @@
 
     <para>
       The <application>KDE-Cli-Tools</application> package contains
-      tools based on KDE Frameworks 5 to better interact with the
-      system.
+      tools based on <application>KDE Frameworks 5</application> to
+      better interact with the system.
     </para>
 
     &lfs75_checked;

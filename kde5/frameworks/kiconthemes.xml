@@ -32,7 +32,7 @@
     <para>
       The <application>KIconThemes</application> package contains a library
       that provides classes to improve the handling of icons in applications
-      using the KDE Frameworks.
+      using the <application>KDE Frameworks 5</application>.
     </para>
 
     &lfs75_checked;

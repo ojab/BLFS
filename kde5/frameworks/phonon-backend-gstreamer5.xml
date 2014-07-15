@@ -13,7 +13,7 @@
 ]>
 
 <sect1 id="phonon-backend-gstreamer5" xreflabel="Phonon-Backend-GStreamer-&phonon-backend-gstreamer5-version;">
-  <?dbhtml filename="phonon-backend-gstreamer5.html"?>
+  <?dbhtml filename="phonon-backend-gstreamer.html"?>
 
   <sect1info>
     <othername>$LastChangedBy$</othername>

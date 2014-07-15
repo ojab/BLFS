@@ -13,9 +13,9 @@ $Date$
 <chapter id="kde-frameworks">
   <?dbhtml filename="frameworks.html"?>
 
-  <title>KDE Frameworks</title>
+  <title>KDE Frameworks 5</title>
 
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kf5-intro.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="intro.xml"/>
   <!-- -->
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="extra-cmake-modules.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kapidox.xml"/>
