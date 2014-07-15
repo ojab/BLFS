@@ -74,8 +74,6 @@
 
     <bridgehead renderas="sect4">Required</bridgehead>
     <para role="required">
-      <xref linkend="kemoticons"/>,
-      <xref linkend="kitemmodels"/> and
       <xref linkend="plasma-workspace"/>
     </para>
 

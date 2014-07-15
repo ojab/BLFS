@@ -85,7 +85,10 @@
 
     <bridgehead renderas="sect4">Required</bridgehead>
     <para role="required">
+      <xref linkend="kemoticons"/>,
       <xref linkend="kdesignerplugin"/>,
+      <xref linkend="kinit5"/>,
+      <xref linkend="kitemmodels"/>,
       <xref linkend="kparts"/> and
       <xref linkend="kunitconversion"/>
     </para>

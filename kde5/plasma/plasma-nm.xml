@@ -75,7 +75,6 @@
     <bridgehead renderas="sect4">Required</bridgehead>
     <para role="required">
       <xref linkend="kdelibs4support"/>,
-      <xref linkend="kinit5"/>,
       <xref linkend="libnm-qt"/> and
       <xref linkend="plasma-framework"/>
     </para>

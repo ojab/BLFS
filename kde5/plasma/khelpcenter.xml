@@ -75,9 +75,8 @@
     <bridgehead renderas="sect4">Required</bridgehead>
     <para role="required">
       <xref linkend="kcmutils"/>,
-      <xref linkend="kdelibs4support"/>,
-      <xref linkend="khtml"/> and
-      <xref linkend="kinit5"/>
+      <xref linkend="kdelibs4support"/> and
+      <xref linkend="khtml"/>
     </para>
 
     <para condition="html" role="usernotes">
