@@ -22,6 +22,7 @@ $Date$
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kwrited.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libkscreen.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libksysguard.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libnm-qt.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oxygen-fonts.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oxygen.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="plasma-workspace-wallpapers.xml"/>
@@ -35,6 +36,7 @@ $Date$
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="plasma-workspace.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="khotkeys.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kmenuedit.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="plasma-nm.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="powerdevil.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="plasma-desktop.xml"/>
 
