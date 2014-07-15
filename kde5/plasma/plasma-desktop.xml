@@ -6,9 +6,9 @@
 
   <!ENTITY plasma-desktop-download-http "&plasma2-download-http;/plasma-desktop-&plasma2-version;.tar.xz">
   <!ENTITY plasma-desktop-download-ftp  "&plasma2-download-ftp;/plasma-desktop-&plasma2-version;.tar.xz">
-  <!ENTITY plasma-desktop-md5sum        "5ba08a5c4d07fd7ac260006140d7b4d5">
-  <!ENTITY plasma-desktop-size          "6.0 MB">
-  <!ENTITY plasma-desktop-buildsize     "167 MB">
+  <!ENTITY plasma-desktop-md5sum        "83a010a0f784dbd863299e3191d6169c">
+  <!ENTITY plasma-desktop-size          "5.8 MB">
+  <!ENTITY plasma-desktop-buildsize     "163 MB">
   <!ENTITY plasma-desktop-time          "5.6 SBU">
 ]>
 
@@ -167,18 +167,20 @@ make</userinput></screen>
 
       <seglistitem>
         <seg>
-          kaccess, kapplymousetheme, kfontinst, kfontview and krdb
+          kaccess, kapplymousetheme, kfontinst, kfontview, knetattach and krdb
         </seg>
         <seg>
-          attica_kde.so, libkdeinit5_kaccess.so, libkfontinst.so and libkfontinstui.so
+          libkdeinit5_kaccess.so, libkfontinst.so and libkfontinstui.so
         </seg>
         <seg>
           $KF5_PREFIX/&qt5-qml-dir;/org/kde/plasma/private/{folder,kicker,kickoff},
           $KF5_PREFIX/&qt5-qml-dir;/org/kde/plasma/private/{pager,taskmanager,trash},
+          $KF5_PREFIX/share/color-schemes,
           $KF5_PREFIX/share/doc/HTML/*/{kcontrol,kfontview,knetattach,plasma-desktop},
           $KF5_PREFIX/share/{kcm_componentchooser,kcminput,kcmkeyboard,kcmkeys},
-          $KF5_PREFIX/share/{kcm_phonon,kcontrol,kdisplay,kfontinst,kfontview} and
-          $KF5_PREFIX/share/{konqsidebartng,kthememanager}
+          $KF5_PREFIX/share/{kcm_phonon,kcontrol,kdisplay,kdm,kfontinst,kfontview}
+          $KF5_PREFIX/share/{konqsidebartng,kthememanager} and
+          $KF5_PREFIX/share/plasma/{packages,shells}
         </seg>
       </seglistitem>
     </segmentedlist>

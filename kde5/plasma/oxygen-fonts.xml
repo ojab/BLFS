@@ -6,9 +6,9 @@
 
   <!ENTITY oxygen-fonts-download-http "&plasma2-download-http;/oxygen-fonts-&oxygen-fonts-version;.tar.xz">
   <!ENTITY oxygen-fonts-download-ftp  "&plasma2-download-ftp;/oxygen-fonts-&oxygen-fonts-version;.tar.xz">
-  <!ENTITY oxygen-fonts-md5sum        "1ecdc2af7be15425f76fa9b3308b85b5">
-  <!ENTITY oxygen-fonts-size          "2.4 MB">
-  <!ENTITY oxygen-fonts-buildsize     "49 MB">
+  <!ENTITY oxygen-fonts-md5sum        "98ee96c3922fb07d5a847a4588deb30a">
+  <!ENTITY oxygen-fonts-size          "532 KB">
+  <!ENTITY oxygen-fonts-buildsize     "15 MB">
   <!ENTITY oxygen-fonts-time          "0.1 SBU">
 ]>
 

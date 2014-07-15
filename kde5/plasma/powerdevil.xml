@@ -6,9 +6,9 @@
 
   <!ENTITY powerdevil-download-http "&plasma2-download-http;/powerdevil-&plasma2-version;.tar.xz">
   <!ENTITY powerdevil-download-ftp  "&plasma2-download-ftp;/powerdevil-&plasma2-version;.tar.xz">
-  <!ENTITY powerdevil-md5sum        "8e7fbdf7fcf02b5c4c10d433cfaf8199">
-  <!ENTITY powerdevil-size          "132 KB">
-  <!ENTITY powerdevil-buildsize     "14 MB">
+  <!ENTITY powerdevil-md5sum        "3cfc87d5eac361111f97a2dfb8a5b10a">
+  <!ENTITY powerdevil-size          "408 KB">
+  <!ENTITY powerdevil-buildsize     "22 MB">
   <!ENTITY powerdevil-time          "0.8 SBU">
 ]>
 

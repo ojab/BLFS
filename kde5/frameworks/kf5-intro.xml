@@ -169,6 +169,18 @@ ln -sfv /etc/dbus-1         $KF5_PREFIX/etc   &amp;&amp;
 ln -sfv /usr/share/dbus-1   $KF5_PREFIX/share &amp;&amp;
 ln -sfv /usr/share/polkit-1 $KF5_PREFIX/share</userinput></screen>
 
+    <para>
+      Some packages may also install icons from the "hicolor" icon set. Since that
+      icon set is used by many packages, it is a good idea to create a
+      symlink to the one in <filename class="directory">/usr/share</filename>
+      to avoid having multiple installations of <xref linkend="hicolor-icon-theme"/>.
+      Run the following commands as the <systemitem class="username">root</systemitem>
+      user:
+    </para>
+
+<screen role="root"><userinput>install -v -dm755 $KF5_PREFIX/share/icons &amp;&amp;
+ln -sfv /usr/share/icons/hicolor $KF5_PREFIX/share/icons</userinput></screen>
+
     <tip>
       <para>
         Sometimes, the installation paths are hardcoded into installed files.

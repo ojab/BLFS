@@ -6,9 +6,9 @@
 
   <!ENTITY plasma-workspace-download-http "&plasma2-download-http;/plasma-workspace-&plasma2-version;.tar.xz">
   <!ENTITY plasma-workspace-download-ftp  "&plasma2-download-ftp;/plasma-workspace-&plasma2-version;.tar.xz">
-  <!ENTITY plasma-workspace-md5sum        "b6e433d71eb4ac3453d1f6df42c7e275">
-  <!ENTITY plasma-workspace-size          "7.2 MB">
-  <!ENTITY plasma-workspace-buildsize     "170 MB">
+  <!ENTITY plasma-workspace-md5sum        "e33d99c667cfb7b203d61ec235148f3a">
+  <!ENTITY plasma-workspace-size          "5.9 MB">
+  <!ENTITY plasma-workspace-buildsize     "171 MB">
   <!ENTITY plasma-workspace-time          "5.9 SBU">
 ]>
 
@@ -74,27 +74,33 @@
 
     <bridgehead renderas="sect4">Required</bridgehead>
     <para role="required">
+      <xref linkend="baloo5"/>,
+      <xref linkend="kdesu"/>,
+      <xref linkend="kdewebkit"/>,
       <xref linkend="kidletime"/>,
       <xref linkend="kjsembed"/>,
       <xref linkend="knotifyconfig"/>,
       <xref linkend="krunner"/>,
-      <xref linkend="kdesu"/>,
-      <xref linkend="kdewebkit"/>,
       <xref linkend="kwin5"/>,
-      <xref linkend="libkscreen2"/> and
+      <xref linkend="libkscreen"/> and
       <xref linkend="libksysguard"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="ktexteditor"/>
     </para>
 
     <bridgehead renderas="sect4">Runtime Dependencies</bridgehead>
     <para role="required">
-      <xref linkend="baloo5"/>,
       <xref linkend="breeze"/>,
       <xref linkend="kde-cli-tools"/>,
       <xref linkend="kded"/>,
       <xref linkend="khelpcenter"/>,
       <xref linkend="kio-extras"/>,
-      <xref linkend="milou"/> and
-      <xref linkend="oxygen"/>
+      <xref linkend="milou"/>,
+      <xref linkend="oxygen"/> and
+      <xref linkend="plasma-workspace-wallpapers"/>
     </para>
 
     <bridgehead renderas="sect4">Optional</bridgehead>
@@ -102,6 +108,7 @@
       <ulink url="http://gpsd.berlios.de/">libgps</ulink>,
       <ulink url="http://qalculate.sourceforge.net">libqalculate</ulink> and
       <xref linkend="linux-pam"/>
+      <!-- Prison, kdepimlibs5 -->
     </para>
 
     <para condition="html" role="usernotes">
@@ -177,7 +184,7 @@ make</userinput></screen>
 
       <seglistitem>
         <seg>
-          checkrunning, kcminit, kcminit_startup, kdostartupconfig5,
+          kcheckrunning, kcminit, kcminit_startup, kdostartupconfig5,
           kglobalaccel5, klipper, krunner, ksmserver, ksplashqml,
           kstartupconfig5, kuiserver5, plasmashell, startkde and
           systemmonitor
@@ -186,8 +193,9 @@ make</userinput></screen>
           libkdeinit5_kcminit.so, libkdeinit5_kcminit_startup.so,
           libkdeinit5_kglobalaccel5.so, libkdeinit5_klipper.so,
           libkdeinit5_ksmserver.so, libkdeinit5_kuiserver5.so,
-          libkworkspace.so, libplasma-geolocation-interface.so,
-          libtaskmanager.so and libweather_ion.so
+          libKF5XmlRpcClientPrivate.so, libkworkspace.so,
+          libplasma-geolocation-interface.so, libtaskmanager.so and
+          libweather_ion.so
         </seg>
         <seg>
           $KF5_PREFIX/include/{KDE,kworkspace,plasma,taskmanager},
@@ -198,8 +206,10 @@ make</userinput></screen>
           $KF5_PREFIX/share/doc/HTML/*/klipper,
           $KF5_PREFIX/share/{drkonqi,ksmserver,ksplash},
           $KF5_PREFIX/share/plasma/{look-and-fee,plasmoids,services},
-          $KF5_PREFIX/share/plasma/{shareprovider,wallpapers} and
-          $KF5_PREFIX/share/solid
+          $KF5_PREFIX/share/plasma/{shareprovider,wallpapers},
+          $KF5_PREFIX/share/sddm,
+          $KF5_PREFIX/share/solid and
+          $KF5_PREFIX/share/xsessions
         </seg>
       </seglistitem>
     </segmentedlist>

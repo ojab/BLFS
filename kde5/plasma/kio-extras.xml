@@ -6,9 +6,9 @@
 
   <!ENTITY kio-extras-download-http "&plasma2-download-http;/kio-extras-&plasma2-version;.tar.xz">
   <!ENTITY kio-extras-download-ftp  "&plasma2-download-ftp;/kio-extras-&plasma2-version;.tar.xz">
-  <!ENTITY kio-extras-md5sum        "c92208d766f00ce2d33464e8633000d5">
-  <!ENTITY kio-extras-size          "632 KB">
-  <!ENTITY kio-extras-buildsize     "43 MB">
+  <!ENTITY kio-extras-md5sum        "b90d36bc645a50077c1be5a0580d46bb">
+  <!ENTITY kio-extras-size          "564 KB">
+  <!ENTITY kio-extras-buildsize     "39 MB">
   <!ENTITY kio-extras-time          "1.8 SBU">
 ]>
 

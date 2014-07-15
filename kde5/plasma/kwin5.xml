@@ -6,9 +6,9 @@
 
   <!ENTITY kwin5-download-http "&plasma2-download-http;/kwin-&plasma2-version;.tar.xz">
   <!ENTITY kwin5-download-ftp  "&plasma2-download-ftp;/kwin-&plasma2-version;.tar.xz">
-  <!ENTITY kwin5-md5sum        "3b608c33d9ff4231e8287069e5cb4e88">
+  <!ENTITY kwin5-md5sum        "b72cc502630bd9631ceb6d44200af924">
   <!ENTITY kwin5-size          "3.7 MB">
-  <!ENTITY kwin5-buildsize     "102 MB">
+  <!ENTITY kwin5-buildsize     "123 MB">
   <!ENTITY kwin5-time          "6.6 SBU">
 ]>
 
@@ -157,7 +157,7 @@ make</userinput></screen>
 
       <seglistitem>
         <seg>
-          kwin
+          kwin_x11
         </seg>
         <seg>
           libkdecorations.so, libkdeinit5_kwin_rules_dialog.so, libkdeinit5_kwin.so,

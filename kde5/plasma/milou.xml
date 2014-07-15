@@ -6,9 +6,9 @@
 
   <!ENTITY milou-download-http "&plasma2-download-http;/milou-&plasma2-version;.tar.xz">
   <!ENTITY milou-download-ftp  "&plasma2-download-ftp;/milou-&plasma2-version;.tar.xz">
-  <!ENTITY milou-md5sum        "173f4ece0cf4d5832a4c7f74472baae8">
-  <!ENTITY milou-size          "28 KB">
-  <!ENTITY milou-buildsize     "2.0 MB">
+  <!ENTITY milou-md5sum        "ba14efbb53a25918d95335e4fef44749">
+  <!ENTITY milou-size          "36 KB">
+  <!ENTITY milou-buildsize     "3.2 MB">
   <!ENTITY milou-time          "0.2 SBU">
 ]>
 
@@ -74,7 +74,7 @@
 
     <bridgehead renderas="sect4">Required</bridgehead>
     <para role="required">
-      <xref linkend="baloo5"/>
+      <xref linkend="krunner"/>
     </para>
 
     <para condition="html" role="usernotes">

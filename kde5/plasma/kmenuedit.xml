@@ -6,7 +6,7 @@
 
   <!ENTITY kmenuedit-download-http "&plasma2-download-http;/kmenuedit-&plasma2-version;.tar.xz">
   <!ENTITY kmenuedit-download-ftp  "&plasma2-download-ftp;/kmenuedit-&plasma2-version;.tar.xz">
-  <!ENTITY kmenuedit-md5sum        "0efe5c1e95b4111742942278bce7c44b">
+  <!ENTITY kmenuedit-md5sum        "14db9fa25a609840794316f0f8049262">
   <!ENTITY kmenuedit-size          "336 KB">
   <!ENTITY kmenuedit-buildsize     "12 MB">
   <!ENTITY kmenuedit-time          "0.2 SBU">

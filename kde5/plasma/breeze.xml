@@ -6,9 +6,9 @@
 
   <!ENTITY breeze-download-http "&plasma2-download-http;/breeze-&plasma2-version;.tar.xz">
   <!ENTITY breeze-download-ftp  "&plasma2-download-ftp;/breeze-&plasma2-version;.tar.xz">
-  <!ENTITY breeze-md5sum        "3f57c992ffbacd6f413542f6cf61c701">
-  <!ENTITY breeze-size          "280 KB">
-  <!ENTITY breeze-buildsize     "8.1 MB">
+  <!ENTITY breeze-md5sum        "408507b65978980148b50d8368e4d49b">
+  <!ENTITY breeze-size          "16 MB">
+  <!ENTITY breeze-buildsize     "41 MB">
   <!ENTITY breeze-time          "0.1 SBU">
 ]>
 
@@ -147,8 +147,11 @@ make</userinput></screen>
           None
         </seg>
         <seg>
-          $KF5_PREFIX/&qt5-qml-dir;/QtQuick/Controls/Styles/Breeze and
-          $KF5_PREFIX/share/icons/breeze
+          $KF5_PREFIX/&qt5-qml-dir;/QtQuick/Controls/Styles/Breeze,
+          $KF5_PREFIX/share/icons/breeze,
+          $KF5_PREFIX/share/icons/breeze_cursors,
+          $KF5_PREFIX/share/kwin/decorations/kwin4_decoration_qml_breeze and
+          $KF5_PREFIX/share/wallpapers/Next
         </seg>
       </seglistitem>
     </segmentedlist>

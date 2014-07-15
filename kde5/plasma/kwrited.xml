@@ -6,7 +6,7 @@
 
   <!ENTITY kwrited-download-http "&plasma2-download-http;/kwrited-&plasma2-version;.tar.xz">
   <!ENTITY kwrited-download-ftp  "&plasma2-download-ftp;/kwrited-&plasma2-version;.tar.xz">
-  <!ENTITY kwrited-md5sum        "608ab6a0251e4a5c07af499d98dc2b23">
+  <!ENTITY kwrited-md5sum        "3609edc31dcfb0bb5074f509157d6ea4">
   <!ENTITY kwrited-size          "20 KB">
   <!ENTITY kwrited-buildsize     "608 KB">
   <!ENTITY kwrited-time          "0.1 SBU">

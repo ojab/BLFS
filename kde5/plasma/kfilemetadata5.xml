@@ -4,11 +4,11 @@
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 
-  <!ENTITY kfilemetadata5-download-http "&plasma2-download-http;/kfilemetadata5-&plasma2-version;.tar.xz">
-  <!ENTITY kfilemetadata5-download-ftp  "&plasma2-download-ftp;/kfilemetadata5-&plasma2-version;.tar.xz">
-  <!ENTITY kfilemetadata5-md5sum        "d78982f3b14f807744aa0cea41878e55">
-  <!ENTITY kfilemetadata5-size          "40 KB">
-  <!ENTITY kfilemetadata5-buildsize     "4.2 MB">
+  <!ENTITY kfilemetadata5-download-http "&plasma2-download-http;/kfilemetadata-&plasma2-version;.tar.xz">
+  <!ENTITY kfilemetadata5-download-ftp  "&plasma2-download-ftp;/kfilemetadata-&plasma2-version;.tar.xz">
+  <!ENTITY kfilemetadata5-md5sum        "ce69e768ec2324051ad0ca1d2b248a75">
+  <!ENTITY kfilemetadata5-size          "84 KB">
+  <!ENTITY kfilemetadata5-buildsize     "4.0 MB">
   <!ENTITY kfilemetadata5-time          "0.4 SBU">
 ]>
 
@@ -152,11 +152,11 @@ make</userinput></screen>
           None
         </seg>
         <seg>
-          libkfilemetadata.so
+          libKF5FileMetaData.so
         </seg>
         <seg>
-          $KF5_PREFIX/include/kfilemetadata and
-          $KF5_PREFIX/lib/cmake/KFileMetaData
+          $KF5_PREFIX/include/KF5/KFileMetaData and
+          $KF5_PREFIX/lib/cmake/KF5FileMetaData
         </seg>
       </seglistitem>
     </segmentedlist>

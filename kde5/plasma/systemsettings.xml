@@ -6,8 +6,8 @@
 
   <!ENTITY systemsettings-download-http "&plasma2-download-http;/systemsettings-&plasma2-version;.tar.xz">
   <!ENTITY systemsettings-download-ftp  "&plasma2-download-ftp;/systemsettings-&plasma2-version;.tar.xz">
-  <!ENTITY systemsettings-md5sum        "7e1e593a850068e8605b1058a926d447">
-  <!ENTITY systemsettings-size          "132 KB">
+  <!ENTITY systemsettings-md5sum        "cda179b2c3343945d6ab5ef3ea7353a9">
+  <!ENTITY systemsettings-size          "136 KB">
   <!ENTITY systemsettings-buildsize     "12 MB">
   <!ENTITY systemsettings-time          "0.6 SBU">
 ]>

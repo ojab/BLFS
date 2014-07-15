@@ -6,9 +6,9 @@
 
   <!ENTITY kinfocenter-download-http "&plasma2-download-http;/kinfocenter-&plasma2-version;.tar.xz">
   <!ENTITY kinfocenter-download-ftp  "&plasma2-download-ftp;/kinfocenter-&plasma2-version;.tar.xz">
-  <!ENTITY kinfocenter-md5sum        "b0b9a4b643b27131a322f6179616f862">
+  <!ENTITY kinfocenter-md5sum        "829944f90c2c1b746f3e7faea852b803">
   <!ENTITY kinfocenter-size          "1.1 MB">
-  <!ENTITY kinfocenter-buildsize     "40 MB">
+  <!ENTITY kinfocenter-buildsize     "30 MB">
   <!ENTITY kinfocenter-time          "1.1 SBU">
 ]>
 

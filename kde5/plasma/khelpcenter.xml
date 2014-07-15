@@ -6,7 +6,7 @@
 
   <!ENTITY khelpcenter-download-http "&plasma2-download-http;/khelpcenter-&plasma2-version;.tar.xz">
   <!ENTITY khelpcenter-download-ftp  "&plasma2-download-ftp;/khelpcenter-&plasma2-version;.tar.xz">
-  <!ENTITY khelpcenter-md5sum        "33f5c9be02aa8d72ea40964ca1015927">
+  <!ENTITY khelpcenter-md5sum        "626a5fa6697894baa55105913a93ce50">
   <!ENTITY khelpcenter-size          "2.0 MB">
   <!ENTITY khelpcenter-buildsize     "24 MB">
   <!ENTITY khelpcenter-time          "0.8 SBU">

@@ -6,8 +6,8 @@
 
   <!ENTITY ksysguard-download-http "&plasma2-download-http;/ksysguard-&plasma2-version;.tar.xz">
   <!ENTITY ksysguard-download-ftp  "&plasma2-download-ftp;/ksysguard-&plasma2-version;.tar.xz">
-  <!ENTITY ksysguard-md5sum        "d8a46202690e25714a4b303e7e47bc14">
-  <!ENTITY ksysguard-size          "432 KB">
+  <!ENTITY ksysguard-md5sum        "29f58093dbeff56ce9a64868ecd60c75">
+  <!ENTITY ksysguard-size          "436 KB">
   <!ENTITY ksysguard-buildsize     "21 MB">
   <!ENTITY ksysguard-time          "0.8 SBU">
 ]>
@@ -74,7 +74,6 @@
 
     <bridgehead renderas="sect4">Required</bridgehead>
     <para role="required">
-      <xref linkend="kinit5"/>,
       <xref linkend="knewstuff"/> and
       <xref linkend="libksysguard"/>
     </para>
