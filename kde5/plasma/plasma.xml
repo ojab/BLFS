@@ -15,6 +15,7 @@ $Date$
 
   <title>KDE Plasma Workspaces</title>
 
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="plasma-intro.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kde-cli-tools.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="breeze.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kio-extras.xml"/>

@@ -174,6 +174,46 @@ make</userinput></screen>
 
   </sect2>
 
+  <sect2 role="configuration">
+    <title>Configuring Plasma-Workspace</title>
+
+    <note>
+      <para>
+        This section can be skipped if <application>KDE Plasma 5</application>
+        was installed in <filename class="directory">/usr</filename>
+      </para>
+    </note>
+
+    <para>
+      Create a wrapper script that will be used to start the
+      <application>KDE Plasma 5</application> by running
+      the following command as the <systemitem
+      class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>cat &gt; $KF5_PREFIX/bin/startkde-wrapper &lt;&lt; "EOF"
+<literal>#!/bin/sh -e
+
+. /etc/profile.d/qt5.sh
+. /etc/profile.d/kf5.sh
+
+exec $KF5_PREFIX/bin/startkde "$@"</literal>
+EOF
+chmod -v 755 $KF5_PREFIX/bin/startkde-wrapper</userinput></screen>
+
+    <para>
+      If you are using a display manager to log into your desktop,
+      let it know about <application>KDE</application> Plasma
+      Desktop by running the following command as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>install -v -dm755 /usr/share/xsessions
+sed -i "s:startkde:&amp;-wrapper:g" $KF5_PREFIX/share/xsessions/plasma.desktop
+ln -sfv $KF5_PREFIX/share/xsessions/plasma.desktop /usr/share/xsessions/kf5-plasma.desktop</userinput></screen>
+
+  </sect2>
+
   <sect2 role="content">
     <title>Contents</title>
 

@@ -31,8 +31,8 @@
 
     <para>
       The <application>Breeze</application> package contains artwork,
-      styles and assets for the Breeze visual style for the Plasma
-      Desktop.
+      styles and assets for the Breeze visual style for the
+      <application>KDE Plasma 5</application>.
     </para>
 
     &lfs75_checked;
@@ -114,6 +114,7 @@ make</userinput></screen>
 <screen role="root"><userinput>make install</userinput></screen>
 
   </sect2>
+
   <sect2 role="commands">
     <title>Command Explanations</title>
 
