@@ -4,8 +4,8 @@
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 
-  <!ENTITY oxygen-fonts-download-http "&plasma2-download-http;/oxygen-fonts-&oxygen-fonts-version;.tar.xz">
-  <!ENTITY oxygen-fonts-download-ftp  "&plasma2-download-ftp;/oxygen-fonts-&oxygen-fonts-version;.tar.xz">
+  <!ENTITY oxygen-fonts-download-http "&plasma-download-http;/oxygen-fonts-&oxygen-fonts-version;.tar.xz">
+  <!ENTITY oxygen-fonts-download-ftp  "&plasma-download-ftp;/oxygen-fonts-&oxygen-fonts-version;.tar.xz">
   <!ENTITY oxygen-fonts-md5sum        "98ee96c3922fb07d5a847a4588deb30a">
   <!ENTITY oxygen-fonts-size          "532 KB">
   <!ENTITY oxygen-fonts-buildsize     "15 MB">

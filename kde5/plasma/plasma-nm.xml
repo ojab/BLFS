@@ -4,8 +4,8 @@
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 
-  <!ENTITY plasma-nm-download-http "&plasma2-download-http;/plasma-nm-&plasma-nm-version;.tar.xz">
-  <!ENTITY plasma-nm-download-ftp  "&plasma2-download-ftp;/plasma-nm-&plasma-nm-version;.tar.xz">
+  <!ENTITY plasma-nm-download-http "&plasma-download-http;/plasma-nm-&plasma-nm-version;.tar.xz">
+  <!ENTITY plasma-nm-download-ftp  "&plasma-download-ftp;/plasma-nm-&plasma-nm-version;.tar.xz">
   <!ENTITY plasma-nm-md5sum        "0b35b5e8b2592de8b3187b63b2436481">
   <!ENTITY plasma-nm-size          "436 KB">
   <!ENTITY plasma-nm-buildsize     "35 MB">
@@ -81,7 +81,7 @@
 
     <bridgehead renderas="sect4">Optional</bridgehead>
     <para role="optional">
-      <ulink url="&plasma2-download-http;">libmm-qt</ulink>,
+      <ulink url="&plasma-download-http;">libmm-qt</ulink>,
       <ulink url="&gnome-download-http;/mobile-broadband-provider-info">
       mobile-broadband-provider-info</ulink> and
       <ulink url="http://www.infradead.org/openconnect">OpenConnect</ulink>

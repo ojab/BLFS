@@ -4,15 +4,15 @@
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 
-  <!ENTITY kio-extras-download-http "&plasma2-download-http;/kio-extras-&plasma2-version;.tar.xz">
-  <!ENTITY kio-extras-download-ftp  "&plasma2-download-ftp;/kio-extras-&plasma2-version;.tar.xz">
+  <!ENTITY kio-extras-download-http "&plasma-download-http;/kio-extras-&plasma-version;.tar.xz">
+  <!ENTITY kio-extras-download-ftp  "&plasma-download-ftp;/kio-extras-&plasma-version;.tar.xz">
   <!ENTITY kio-extras-md5sum        "b90d36bc645a50077c1be5a0580d46bb">
   <!ENTITY kio-extras-size          "564 KB">
   <!ENTITY kio-extras-buildsize     "39 MB">
   <!ENTITY kio-extras-time          "1.8 SBU">
 ]>
 
-<sect1 id="kio-extras" xreflabel="KIO-Extras-&plasma2-version;">
+<sect1 id="kio-extras" xreflabel="KIO-Extras-&plasma-version;">
   <?dbhtml filename="kio-extras.html"?>
 
   <sect1info>
@@ -20,7 +20,7 @@
     <date>$Date$</date>
   </sect1info>
 
-  <title>KIO-Extras-&plasma2-version;</title>
+  <title>KIO-Extras-&plasma-version;</title>
 
   <indexterm zone="kio-extras">
     <primary sortas="a-KIO-Extras">KIO-Extras</primary>

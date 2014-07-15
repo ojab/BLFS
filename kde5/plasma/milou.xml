@@ -4,15 +4,15 @@
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 
-  <!ENTITY milou-download-http "&plasma2-download-http;/milou-&plasma2-version;.tar.xz">
-  <!ENTITY milou-download-ftp  "&plasma2-download-ftp;/milou-&plasma2-version;.tar.xz">
+  <!ENTITY milou-download-http "&plasma-download-http;/milou-&plasma-version;.tar.xz">
+  <!ENTITY milou-download-ftp  "&plasma-download-ftp;/milou-&plasma-version;.tar.xz">
   <!ENTITY milou-md5sum        "ba14efbb53a25918d95335e4fef44749">
   <!ENTITY milou-size          "36 KB">
   <!ENTITY milou-buildsize     "3.2 MB">
   <!ENTITY milou-time          "0.2 SBU">
 ]>
 
-<sect1 id="milou" xreflabel="Milou-&plasma2-version;">
+<sect1 id="milou" xreflabel="Milou-&plasma-version;">
   <?dbhtml filename="milou.html"?>
 
   <sect1info>
@@ -20,7 +20,7 @@
     <date>$Date$</date>
   </sect1info>
 
-  <title>Milou-&plasma2-version;</title>
+  <title>Milou-&plasma-version;</title>
 
   <indexterm zone="milou">
     <primary sortas="a-Milou">Milou</primary>

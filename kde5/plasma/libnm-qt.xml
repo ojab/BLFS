@@ -4,8 +4,8 @@
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 
-  <!ENTITY libnm-qt-download-http "&plasma2-download-http;/libnm-qt-&libnm-qt-version;.tar.xz">
-  <!ENTITY libnm-qt-download-ftp  "&plasma2-download-ftp;/libnm-qt-&libnm-qt-version;.tar.xz">
+  <!ENTITY libnm-qt-download-http "&plasma-download-http;/libnm-qt-&libnm-qt-version;.tar.xz">
+  <!ENTITY libnm-qt-download-ftp  "&plasma-download-ftp;/libnm-qt-&libnm-qt-version;.tar.xz">
   <!ENTITY libnm-qt-md5sum        "20d4be2c911adfbf62970c64758d03ca">
   <!ENTITY libnm-qt-size          "149 KB">
   <!ENTITY libnm-qt-buildsize     "15 MB">

@@ -4,15 +4,15 @@
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 
-  <!ENTITY kmenuedit-download-http "&plasma2-download-http;/kmenuedit-&plasma2-version;.tar.xz">
-  <!ENTITY kmenuedit-download-ftp  "&plasma2-download-ftp;/kmenuedit-&plasma2-version;.tar.xz">
+  <!ENTITY kmenuedit-download-http "&plasma-download-http;/kmenuedit-&plasma-version;.tar.xz">
+  <!ENTITY kmenuedit-download-ftp  "&plasma-download-ftp;/kmenuedit-&plasma-version;.tar.xz">
   <!ENTITY kmenuedit-md5sum        "14db9fa25a609840794316f0f8049262">
   <!ENTITY kmenuedit-size          "336 KB">
   <!ENTITY kmenuedit-buildsize     "12 MB">
   <!ENTITY kmenuedit-time          "0.2 SBU">
 ]>
 
-<sect1 id="kmenuedit" xreflabel="KMenuEdit-&plasma2-version;">
+<sect1 id="kmenuedit" xreflabel="KMenuEdit-&plasma-version;">
   <?dbhtml filename="kmenuedit.html"?>
 
   <sect1info>
@@ -20,7 +20,7 @@
     <date>$Date$</date>
   </sect1info>
 
-  <title>KMenuEdit-&plasma2-version;</title>
+  <title>KMenuEdit-&plasma-version;</title>
 
   <indexterm zone="kmenuedit">
     <primary sortas="a-KMenuEdit">KMenuEdit</primary>

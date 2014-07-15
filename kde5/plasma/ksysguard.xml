@@ -4,15 +4,15 @@
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 
-  <!ENTITY ksysguard-download-http "&plasma2-download-http;/ksysguard-&plasma2-version;.tar.xz">
-  <!ENTITY ksysguard-download-ftp  "&plasma2-download-ftp;/ksysguard-&plasma2-version;.tar.xz">
+  <!ENTITY ksysguard-download-http "&plasma-download-http;/ksysguard-&plasma-version;.tar.xz">
+  <!ENTITY ksysguard-download-ftp  "&plasma-download-ftp;/ksysguard-&plasma-version;.tar.xz">
   <!ENTITY ksysguard-md5sum        "29f58093dbeff56ce9a64868ecd60c75">
   <!ENTITY ksysguard-size          "436 KB">
   <!ENTITY ksysguard-buildsize     "21 MB">
   <!ENTITY ksysguard-time          "0.8 SBU">
 ]>
 
-<sect1 id="ksysguard" xreflabel="KSysGuard-&plasma2-version;">
+<sect1 id="ksysguard" xreflabel="KSysGuard-&plasma-version;">
   <?dbhtml filename="ksysguard.html"?>
 
   <sect1info>
@@ -20,7 +20,7 @@
     <date>$Date$</date>
   </sect1info>
 
-  <title>KSysGuard-&plasma2-version;</title>
+  <title>KSysGuard-&plasma-version;</title>
 
   <indexterm zone="ksysguard">
     <primary sortas="a-KSysGuard">KSysGuard</primary>

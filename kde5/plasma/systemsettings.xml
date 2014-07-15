@@ -4,15 +4,15 @@
   <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 
-  <!ENTITY systemsettings-download-http "&plasma2-download-http;/systemsettings-&plasma2-version;.tar.xz">
-  <!ENTITY systemsettings-download-ftp  "&plasma2-download-ftp;/systemsettings-&plasma2-version;.tar.xz">
+  <!ENTITY systemsettings-download-http "&plasma-download-http;/systemsettings-&plasma-version;.tar.xz">
+  <!ENTITY systemsettings-download-ftp  "&plasma-download-ftp;/systemsettings-&plasma-version;.tar.xz">
   <!ENTITY systemsettings-md5sum        "cda179b2c3343945d6ab5ef3ea7353a9">
   <!ENTITY systemsettings-size          "136 KB">
   <!ENTITY systemsettings-buildsize     "12 MB">
   <!ENTITY systemsettings-time          "0.6 SBU">
 ]>
 
-<sect1 id="systemsettings" xreflabel="SystemSettings-&plasma2-version;">
+<sect1 id="systemsettings" xreflabel="SystemSettings-&plasma-version;">
   <?dbhtml filename="systemsettings.html"?>
 
   <sect1info>
@@ -20,7 +20,7 @@
     <date>$Date$</date>
   </sect1info>
 
-  <title>SystemSettings-&plasma2-version;</title>
+  <title>SystemSettings-&plasma-version;</title>
 
   <indexterm zone="systemsettings">
     <primary sortas="a-SystemSettings">SystemSettings</primary>
