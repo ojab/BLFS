@@ -19,17 +19,17 @@ $Date$
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kde-cli-tools.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="breeze.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kio-extras.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kwin5.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kwin.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kwrited.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libkscreen.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libksysguard.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="libnm-qt.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oxygen-fonts.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oxygen-icons5.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oxygen-icons.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="oxygen.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="plasma-workspace-wallpapers.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kfilemetadata5.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="baloo5.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kfilemetadata.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="baloo.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="milou.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="khelpcenter.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="kinfocenter.xml"/>
