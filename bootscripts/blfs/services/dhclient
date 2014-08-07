@@ -38,14 +38,14 @@ case "$2" in
      if [ -e ${PIDFILE} ]; then
         ps $(cat ${PIDFILE}) | grep dhclient >/dev/null
         if [ "$?" = "0" ]; then
-           log_warning_msg "\n dhclient appears to be running on $1"
+           log_warning_msg "\n      dhclient appears to be running on $1"
            exit 0
         else
            rm ${PIDFILE}
         fi
      fi
 
-      log_info_msg "\n Starting dhclient on the $1 interface..."
+      log_info_msg "\n      Starting dhclient on the $1 interface..."
 
       /sbin/dhclient -lf ${LFILE} -pf ${PIDFILE} $DHCP_START $1
 
@@ -92,11 +92,11 @@ case "$2" in
 
    down)
       if [ ! -e ${PIDFILE} ]; then
-         log_warning_msg "\n dhclient doesn't appear to be running on $1"
+         log_warning_msg "\n       dhclient doesn't appear to be running on $1"
          exit 0
       fi
 
-      log_info_msg "\n Stopping dhclient on the $1 interface..."
+      log_info_msg "\n      Stopping dhclient on the $1 interface..."
 
       /sbin/dhclient -r -lf ${LFILE} -pf ${PIDFILE} $DHCP_STOP $1
 
