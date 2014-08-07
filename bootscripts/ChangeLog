@@ -1,3 +1,7 @@
+2014-08-07 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Remove systemd references
+   * Remove obsolete ipx and pppoe services
+
 2014-05-29 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Rewrote bluetooth script for bluez-5
 
