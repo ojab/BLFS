@@ -1,3 +1,6 @@
+2014-08-08 Ken Moffat <ken@linuxfromscratch.org>
+   * Fix spacing in dhclient messages
+
 2014-08-07 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Remove systemd references
    * Remove obsolete ipx and pppoe services
