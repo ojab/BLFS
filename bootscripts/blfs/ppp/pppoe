@@ -1,9 +1,0 @@
-plugin rp-pppoe.so
-noauth
-hide-password
-debug
-defaultroute
-noipdefault
-usepeerdns
-persist
-updetach
