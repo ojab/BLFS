@@ -1,3 +1,6 @@
+2014-08-27 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Don't try to delete non-existant PID file in dhclient
+
 2014-08-08 Ken Moffat <ken@linuxfromscratch.org>
    * Fix spacing in dhclient messages
 
