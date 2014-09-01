@@ -1,5 +1,5 @@
 2014-09-01 Fernando de Oliveira <famobr@yahoo.com.br>
-   * Don't try to delete non-existant PID file in dhclient
+   * Add lxdm bootscript
 
 2014-08-27 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Don't try to delete non-existant PID file in dhclient
