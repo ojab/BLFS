@@ -1,4 +1,7 @@
 2014-09-01 Fernando de Oliveira <famobr@yahoo.com.br>
+   * Fix starting runlevel of lxdm bootscript
+
+2014-09-01 Fernando de Oliveira <famobr@yahoo.com.br>
    * Add lxdm bootscript
 
 2014-08-27 Bruce Dubbs <bdubbs@linuxfromscratch.org>
