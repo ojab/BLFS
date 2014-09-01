@@ -272,6 +272,16 @@ install-lprng: create-dirs
 	ln -sf  ../init.d/lprng ${EXTDIR}/rc.d/rc5.d/S99lprng
 	ln -sf  ../init.d/lprng ${EXTDIR}/rc.d/rc6.d/K00lprng
 
+install-lxdm: create-dirs
+	install -m ${MODE} blfs/init.d/lxdm        ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc0.d/K05lxdm
+	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc1.d/K05lxdm
+	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc2.d/K05lxdm
+	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc3.d/K05lxdm
+	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc4.d/K05lxdm
+	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc5.d/S95lxdm
+	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc6.d/K05lxdm
+
 install-mysql: create-dirs
 	install -m ${MODE} blfs/init.d/mysql      ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/mysql ${EXTDIR}/rc.d/rc0.d/K26mysql
@@ -751,6 +761,16 @@ uninstall-lprng:
 	rm -f ${EXTDIR}/rc.d/rc4.d/S99lprng
 	rm -f ${EXTDIR}/rc.d/rc5.d/S99lprng
 	rm -f ${EXTDIR}/rc.d/rc6.d/K00lprng
+
+uninstall-lxdm:
+	rm -f ${EXTDIR}/rc.d/init.d/lxdm
+	rm -f ${EXTDIR}/rc.d/rc0.d/K05lxdm
+	rm -f ${EXTDIR}/rc.d/rc1.d/K05lxdm
+	rm -f ${EXTDIR}/rc.d/rc2.d/K05lxdm
+	rm -f ${EXTDIR}/rc.d/rc3.d/K05lxdm
+	rm -f ${EXTDIR}/rc.d/rc4.d/K05lxdm
+	rm -f ${EXTDIR}/rc.d/rc5.d/S95lxdm
+	rm -f ${EXTDIR}/rc.d/rc6.d/K05lxdm
 
 uninstall-mysql:
 	rm -f ${EXTDIR}/rc.d/init.d/mysql
