@@ -1,3 +1,6 @@
+2014-09-11 Ken Moffat <ken@linuxfromscratch.org>
+   * Spelling fix when lxdm stops
+
 2014-09-02 Fernando de Oliveira <famobr@yahoo.com.br>
    * Fix starting runlevel of lxdm bootscript (revert to the first version committed)
 

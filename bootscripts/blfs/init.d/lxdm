@@ -29,7 +29,7 @@ case $1 in
 	;;
 
    stop)
-	log_info_msg "Sopping LXDM..."
+	log_info_msg "Stopping LXDM..."
  	killproc $BIN_FILE
 	evaluate_retval
 	;;
