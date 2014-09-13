@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY seamonkey-download-http
+  "http://ftp.mozilla.org/pub/mozilla.org/seamonkey/releases/&seamonkey-version;/source/seamonkey-&seamonkey-version;.source.tar.bz2">
+  <!ENTITY seamonkey-download-ftp
+  "ftp://ftp.mozilla.org/pub/mozilla.org/seamonkey/releases/&seamonkey-version;/source/seamonkey-&seamonkey-version;.source.tar.bz2">
+  <!ENTITY seamonkey-md5sum        "4bfa46b370b4d211eef56b90277a9517">
+  <!ENTITY seamonkey-size          "158 MB">
+  <!ENTITY seamonkey-buildsize     "1.7 GB (67 MB installed)">
+  <!ENTITY seamonkey-time          "37 SBU">
+]>
+
+<sect1 id="seamonkey" xreflabel="SeaMonkey-&seamonkey-version;">
+  <?dbhtml filename="seamonkey.html" ?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>SeaMonkey-&seamonkey-version;</title>
+
+  <indexterm zone="seamonkey">
+    <primary sortas="a-SeaMonkey">SeaMonkey</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to SeaMonkey</title>
+
+    <para>
+      <application>SeaMonkey</application> is a browser suite, the Open Source
+      sibling of <application>Netscape</application>. It includes the browser,
+      composer, mail and news clients, and an IRC client. It is the follow-on
+      to the Mozilla browser suite.
+    </para>
+
+    <para>
+      The Mozilla project also hosts two subprojects that aim to satisfy the
+      needs of users who don't need the complete browser suite or prefer to have
+      separate applications for browsing and e-mail. These subprojects are
+      <xref linkend="firefox"/> and <xref linkend="thunderbird"/>. Both are
+      based on the <application>Mozilla</application> source code.
+    </para>
+
+    &lfs76_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&seamonkey-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&seamonkey-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &seamonkey-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &seamonkey-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &seamonkey-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &seamonkey-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">SeaMonkey Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="alsa-lib"/>,
+      <xref linkend="gtk2"/>,
+      <xref linkend="zip"/>, and
+      <xref linkend="unzip"/>.
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="yasm"/> or <xref linkend="libvpx"/>
+      (to allow <application>SeaMonkey</application> to play webm videos).
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="dbus-glib"/>,
+      <xref linkend="startup-notification"/>,
+      <xref linkend="sqlite"/>,
+      <ulink url="http://hunspell.sourceforge.net/">Hunspell</ulink>,
+      <xref linkend="libevent"/>,
+      <xref linkend="doxygen"/>,
+      <xref linkend="gst-plugins-base"/> (with
+      <xref linkend="gst-plugins-good"/> and
+      <xref linkend="gst-ffmpeg"/> at runtime),
+      <xref linkend="libnotify"/>,
+      <xref linkend="nspr"/>,
+      <xref linkend="nss"/>,
+      <xref linkend="openjdk"/>,
+      <xref linkend="pulseaudio"/>,
+      <xref linkend="wireless_tools"/>,
+      <xref linkend="valgrind"/> (only for testing the jemalloc code), and
+      <xref linkend="wget"/>
+    </para>
+
+    <para condition="html" role="usernotes">
+      User Notes: <ulink url="&blfs-wiki;/seamonkey"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of SeaMonkey</title>
+<!--
+    <para>
+      If you have not installed <xref linkend="wireless_tools"/>, apply the
+      patch or the installer will fail:
+    </para>
+
+<screen><userinput>patch -p1 &lt; ../seamonkey-&seamonkey-version;-necko-wifi-1.patch</userinput></screen>
+-->
+    <para>
+      The configuration of <application>SeaMonkey</application> is accomplished
+      by creating a <filename>mozconfig</filename> file containing the desired
+      configuration options. A default <filename>mozconfig</filename> file is
+      created below. To see the entire list of available configuration options
+      (and an abbreviated description of each one), issue
+      <command>./configure --help</command>. You may also wish to review the
+      entire file and uncomment any other desired options. Create the file by
+      issuing the following command:
+    </para>
+
+<screen><?dbfo keep-together="auto"?><userinput>cat &gt; mozconfig &lt;&lt; EOF
+<literal># If you have a multicore machine you can speed up the build by running
+# several jobs at once, but if you have a single core, delete this line:
+mk_add_options MOZ_MAKE_FLAGS="-j$(getconf _NPROCESSORS_ONLN)"
+
+# If you have installed Yasm delete this option:
+ac_add_options --disable-webm
+
+# If you have installed DBus-Glib delete this option:
+ac_add_options --disable-dbus
+
+# If you have installed wireless-tools delete this option:
+ac_add_options --disable-necko-wifi
+
+# If you have installed libnotify delete this option:
+ac_add_options --disable-libnotify
+
+# Comment out following option if you have PulseAudio installed
+ac_add_options --disable-pulseaudio
+
+# GStreamer is necessary for H.264 video playback in HTML5 Video Player;
+# to be enabled, also remember to set "media.gstreamer.enabled" to "true"
+# in about:config. If you have GStreamer 0.x.y, uncomment this line:
+#ac_add_options --enable-gstreamer
+
+# Uncomment these if you have installed them:
+# ac_add_options --enable-startup-notification
+# ac_add_options --enable-system-hunspell
+# ac_add_options --enable-system-sqlite
+# ac_add_options --with-system-libevent
+# ac_add_options --with-system-libvpx
+# ac_add_options --with-system-nspr
+# ac_add_options --with-system-nss
+
+mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/moz-build-dir
+ac_add_options --disable-crashreporter
+ac_add_options --disable-debug
+ac_add_options --disable-debug-symbols
+ac_add_options --disable-installer
+ac_add_options --disable-static
+ac_add_options --disable-tests
+ac_add_options --disable-updater
+ac_add_options --enable-application=suite
+ac_add_options --enable-shared
+ac_add_options --enable-system-cairo
+ac_add_options --enable-system-ffi
+ac_add_options --prefix=/usr
+ac_add_options --with-pthreads
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-png
+ac_add_options --with-system-zlib</literal>
+EOF</userinput></screen>
+
+    <para>
+      First, two bugs need to be fixed. The two following commands are in the
+      same order as the problems appear at build time, but this order is not
+      essential. Notice that moz-build-dir needs to match the value used in
+      mozconfig (above) for the object directory (MOZ_OBJDIR):
+    </para>
+
+<screen><userinput>mkdir -vp mozilla/moz-build-dir &amp;&amp;
+sed -e 's/$(MOZ_ZLIB_CFLAGS)/$(MOZ_ZLIB_CFLAGS) $(MOZ_PIXMAN_CFLAGS)/' \
+    -i config/config.mk</userinput></screen>
+
+    <para>
+      Compile <application>SeaMonkey</application> by running the following
+      command:
+    </para>
+
+<screen><userinput>make -f client.mk</userinput></screen>
+
+    <para>
+      This package does not come with a test suite. However, if
+      <application>X</application> is running it can be launched
+      from the build directory before installing with the command line:
+      <userinput>moz-build-dir/mozilla/dist/seamonkey/seamonkey</userinput>
+    </para>
+
+    <para>
+      Install <application>SeaMonkey</application> by issuing the following
+      commands as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make -f client.mk install INSTALL_SDK= &amp;&amp;
+
+cp -v moz-build-dir/mozilla/dist/man/man1/seamonkey.1 /usr/share/man/man1</userinput></screen>
+
+    <bridgehead renderas="sect3" id="devel-seamonkey" xreflabel="SeaMonkey">
+      All the Development Libraries and Headers
+    </bridgehead>
+
+    <para>
+      If you want to install the full <application>SeaMonkey</application>
+      development environment, as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make -C moz-build-dir install</userinput></screen>
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <command>mkdir -vp mozilla/moz-build-dir</command>: fixes a build failure
+      of Makefile at the beginning of build, where a file cannot be found.
+    </para>
+
+    <para>
+      <command>sed -e 's/$(MOZ_ZLIB_CFLAGS) ... $(MOZ_PIXMAN_CFLAGS
+      ...</command>: fixes a build failure of not finding pixman headers,
+      closer to then of build.
+    </para>
+
+    <para>
+      <command>make -f client.mk</command>: Mozilla products are packaged to
+      allow the use of a configuration file which can be used to pass the
+      configuration settings to the <command>configure</command> command.
+      <command>make</command> uses the <filename>client.mk</filename> file to
+      get initial configuration and setup parameters.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring SeaMonkey</title>
+
+    <para>
+      If you deleted the <option>--disable-webm</option> option from your
+      <filename>mozconfig</filename>, your <application>SeaMonkey</application>
+      can play most youtube videos without the need for the flash plugin. To
+      enable this, go to <ulink url="http://www.youtube.com/html5"/> and click
+      on 'Join the HTML5 Trial' (needs cookies enabled).
+    </para>
+
+    <para>
+      For installing various <application>SeaMonkey</application> plugins, refer
+      to <ulink url="http://plugindoc.mozdev.org/linux.html">Mozdev's PluginDoc
+      Project</ulink>.
+    </para>
+
+    <para>
+      Along with using the <quote>Preferences</quote> menu to configure
+      <application>SeaMonkey</application>'s options and preferences to suit
+      individual tastes, finer grain control of many options is only available
+      using a tool not available from the general menu system. To access this
+      tool, you'll need to open a browser window and enter
+      <systemitem role="url">about:config</systemitem> in the address bar. This
+      will display a list of the configuration preferences and information
+      related to each one. You can use the <quote>Filter:</quote> bar to enter
+      search criteria and narrow down the listed items. Changing a preference
+      can be done using two methods. One, if the preference has a boolean value
+      (True/False), simply double-click on the preference to toggle the value
+      and two, for other preferences simply right-click on the desired line,
+      choose <quote>Modify</quote> from the menu and change the value. Creating
+      new preference items is accomplished in the same way, except choose
+      <quote>New</quote> from the menu and provide the desired data into the
+      fields when prompted.
+    </para>
+
+    <tip>
+      <para>
+        There is a multitude of configuration parameters you can tweak to
+        customize <application>SeaMonkey</application>. A very extensive list of
+        these parameters can be found at
+        <ulink url="http://preferential.mozdev.org/preferences.html"/>.
+      </para>
+    </tip>
+
+    <para>
+      If you use a desktop environment like <application>Gnome</application> or
+      <application>KDE</application> you may wish to create a
+      <filename>seamonkey.desktop</filename> file so that
+      <application>SeaMonkey</application> appears in the panel's menus. If you
+      didn't enable <application>Startup-Notification</application> in your
+      mozconfig change the StartupNotify line to false. As the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>mkdir -pv /usr/share/{applications,pixmaps}              &amp;&amp;
+
+cat &gt; /usr/share/applications/seamonkey.desktop &lt;&lt; "EOF" &amp;&amp;
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=SeaMonkey
+Comment=The Mozilla Suite
+Icon=seamonkey
+Exec=seamonkey
+Categories=Network;GTK;Application;Email;Browser;WebBrowser;News;
+StartupNotify=true
+Terminal=false
+EOF
+
+ln -sfv /usr/lib/seamonkey-&seamonkey-version;/chrome/icons/default/seamonkey.png \
+        /usr/share/pixmaps</userinput></screen>
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>seamonkey</seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          /usr/lib/seamonkey-&seamonkey-version;.
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="seamonkey-prog">
+        <term><command>seamonkey</command></term>
+        <listitem>
+          <para>
+            is the Mozilla browser/email/newsgroup/chat client suite.
+          </para>
+          <indexterm zone="seamonkey seamonkey-prog">
+            <primary sortas="b-seamonkey">seamonkey</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+</sect1>

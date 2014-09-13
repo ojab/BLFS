@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="kde-core-config" xreflabel="Starting KDE">
+  <?dbhtml filename="config.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Starting KDE</title>
+
+  <bridgehead renderas="sect3">KDE Startup Dependencies</bridgehead>
+
+  <bridgehead renderas="sect4">Optional</bridgehead>
+  <para role="optional">
+    <xref linkend="dbus"/> (runtime)
+  </para>
+
+  <para>After <application>Kde-workspace</application> has been installed, the
+  first important milestone has been reached. Now you need to configure your
+  system to start KDE.</para>
+
+  <sect2 role="content">
+  <title>Starting KDE from the command prompt</title>
+
+ <para>To start <application>KDE</application> from the command prompt, you
+ first need to modify your <filename>.xinitrc</filename> file:</para>
+
+<screen><userinput>cat &gt; ~/.xinitrc &lt;&lt; EOF
+<literal># Begin .xinitrc
+
+exec dbus-launch --exit-with-session startkde
+
+# End .xinitrc</literal>
+EOF</userinput></screen>
+
+    <para>You can now start KDE using the <command>startx</command> command.</para>
+
+    </sect2>
+
+    <sect2 role="content">
+    <title>Starting KDE at boot</title>
+
+    <para>KDE comes with a graphical login interface called KDM (the KDE Display
+    Manager), which provides a customizable graphical login at boot. To use KDM,
+    you need to create and enable a systemd unit by running the following commands
+    as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>cat &gt; /lib/systemd/system/kdm.service &lt;&lt; EOF &amp;&amp;
+<literal>[Unit]
+Description=K Display Manager
+After=systemd-user-sessions.service
+
+[Service]
+ExecStart=&kde-dir;/bin/kdm -nodaemon
+
+[Install]
+Alias=display-manager.service</literal>
+EOF
+systemctl enable kdm</userinput></screen>
+
+    <para>You can now restart your system and see the KDE login
+    screen.</para>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Installing further KDE packages</title>
+    <para>Every subsequent package can be built while having <application>KDE</application> up and
+    running, but remember to keep <envar>&kde-dir;</envar> set.</para>
+  </sect2>
+
+</sect1>

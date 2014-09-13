@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY atk-download-http "&gnome-download-http;/atk/2.12/atk-&atk-version;.tar.xz">
+  <!ENTITY atk-download-ftp  "&gnome-download-ftp;/atk/2.12/atk-&atk-version;.tar.xz">
+  <!ENTITY atk-md5sum        "930238dec55fdbf8eda9975b44f07b76">
+  <!ENTITY atk-size          "676 KB">
+  <!ENTITY atk-buildsize     "15 MB">
+  <!ENTITY atk-time          "0.1 SBU">
+]>
+
+<sect1 id="atk" xreflabel="ATK-&atk-version;">
+  <?dbhtml filename="atk.html" ?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>ATK-&atk-version;</title>
+
+  <indexterm zone="atk">
+    <primary sortas="a-ATK">ATK</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to ATK</title>
+
+    <para>
+      <application>ATK</application> provides the set of accessibility
+      interfaces that are implemented by other toolkits and applications.
+      Using the <application>ATK</application> interfaces, accessibility
+      tools have full access to view and control running applications.
+    </para>
+
+    &lfs76_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&atk-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&atk-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &atk-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &atk-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &atk-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &atk-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">ATK Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="glib2"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional (Required if building GNOME)</bridgehead>
+    <para role="optional">
+      <xref linkend="gobject-introspection"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="gtk-doc"/>
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+      <ulink url="&blfs-wiki;/atk"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of ATK</title>
+
+    <para>
+      Install <application>ATK</application> by running
+      the following commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a testsuite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/gtk-doc-rebuild.xml"/>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+	<seg>
+	  None
+	</seg>
+        <seg>
+          libatk-1.0.so
+        </seg>
+        <seg>
+          /usr/include/atk-1.0 and
+          /usr/share/gtk-doc/html/atk
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="libatk">
+        <term><filename class="libraryfile">libatk-1.0.so</filename></term>
+        <listitem>
+          <para>
+            contains functions that are used by assistive technologies
+            to interact with the desktop applications.
+          </para>
+          <indexterm zone="atk libatk">
+            <primary sortas="c-libatk">libatk-1.0.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

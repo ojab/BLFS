@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY exiv2-download-http "http://www.exiv2.org/exiv2-&exiv2-version;.tar.gz">
+  <!ENTITY exiv2-download-ftp  " ">
+  <!ENTITY exiv2-md5sum        "b8a23dc56a98ede85c00718a97a8d6fc">
+  <!ENTITY exiv2-size          "4.5 MB">
+  <!ENTITY exiv2-buildsize     "36 MB">
+  <!ENTITY exiv2-time          "0.9 SBU">
+]>
+
+<sect1 id="exiv2" xreflabel="Exiv2-&exiv2-version;">
+  <?dbhtml filename="exiv2.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Exiv2-&exiv2-version;</title>
+
+  <indexterm zone="exiv2">
+    <primary sortas="a-Exiv2">Exiv2</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Exiv2</title>
+
+    <para>
+      <application>Exiv2</application> is a C++ library and a command
+      line utility for managing image metadata.
+    </para>
+
+    &lfs76_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&exiv2-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&exiv2-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &exiv2-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &exiv2-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &exiv2-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &exiv2-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <para condition="html" role="usernotes">User Notes:
+      <ulink url="&blfs-wiki;/exiv2"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Exiv2</title>
+
+    <para>
+      Install <application>Exiv2</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr --disable-static &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+chmod -v 755 /usr/lib/libexiv2.so</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directory</segtitle>
+
+      <seglistitem>
+        <seg>
+          exiv2
+        </seg>
+        <seg>
+          libexiv2.so
+        </seg>
+        <seg>
+          /usr/include/exiv2
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="exiv2-prog">
+        <term><command>exiv2</command></term>
+        <listitem>
+          <para>
+            is an utility used to dump Exif data.
+          </para>
+          <indexterm zone="exiv2 exiv2-prog">
+            <primary sortas="b-exiv2">exiv2</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

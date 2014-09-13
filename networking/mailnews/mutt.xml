@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+<!--  <!ENTITY mutt-download-http "&sourceforge-repo;/mutt/mutt-&mutt-version;.tar.gz">-->
+  <!ENTITY mutt-download-http " ">
+  <!ENTITY mutt-download-ftp  "ftp://ftp.mutt.org/mutt/mutt-&mutt-version;.tar.gz">
+  <!ENTITY mutt-md5sum        "11f5b6a3eeba1afa1257fe93c9f26bff">
+  <!ENTITY mutt-size          "3.7 MB">
+  <!ENTITY mutt-buildsize     "36 MB (plus a further 8MB for the PDF manual)">
+  <!ENTITY mutt-time          "0.7 SBU (plus a further 0.2SBU to regenerate the html if the required dependencies are present, and 0.2 SBU to build the PDF manual)">
+]>
+
+<sect1 id="mutt" xreflabel="Mutt-&mutt-version;">
+  <?dbhtml filename="mutt.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Mutt-&mutt-version;</title>
+
+  <indexterm zone="mutt">
+    <primary sortas="a-mutt">mutt</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Mutt</title>
+
+    <para>The <application>Mutt</application> package contains a Mail User
+    Agent. This is useful for reading, writing, replying to, saving, and
+    deleting your email.</para>
+
+    &lfs75_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing='compact'>
+      <listitem>
+        <para>Download (HTTP): <ulink url="&mutt-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&mutt-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &mutt-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &mutt-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &mutt-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &mutt-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Mutt Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="aspell"/>,
+      <xref linkend="cyrus-sasl"/>,
+      <xref linkend="gdb"/>,
+      <xref linkend="gnupg2"/>,
+      <xref linkend="gpgme"/>,
+      <ulink url="http://www.citi.umich.edu/projects/nfsv4/linux/">libgssapi</ulink>,
+      <xref linkend="libidn"/>,
+      <xref linkend="mitkrb"/>,
+      <ulink url="http://mixmaster.sourceforge.net/">Mixmaster</ulink>,
+      an <xref linkend="server-mail"/> (that provides a <command>sendmail</command> command),
+      <xref linkend="slang"/>,
+      <xref linkend="openssl"/> or 
+      <xref linkend="gnutls"/>,
+      <xref linkend="db"/> or
+      <ulink url="http://fallabs.com/qdbm/">QDBM</ulink> or
+      <ulink url="http://fallabs.com/tokyocabinet/">Tokyo Cabinet</ulink>
+    </para>
+
+    <bridgehead renderas="sect4">Optional (To Regenerate HTML
+    Documentation)</bridgehead>
+    <para role="optional">
+      <xref linkend="libxslt"/> and either
+      <xref linkend="lynx"/>,
+      <xref linkend="w3m"/> or
+      <ulink url="http://elinks.or.cz/">ELinks</ulink>
+    </para>
+
+    <bridgehead renderas="sect4">Optional (To Generate PDF Manual)</bridgehead>
+    <para role="optional">
+      <xref linkend="docbook-dsssl"/>,
+      <xref linkend="openjade"/> and
+      <xref linkend="texlive"/>
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/mutt"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Mutt</title>
+
+    <note>
+      <para>This version of <application>Mutt</application> is a development
+      release.  The BLFS staff has determined that it provides a stable
+      program and fixes two issues in the current stable version of
+      <application>Mutt</application>: a segmentation fault that occurs under
+      certain conditions and a compilation problem when building with recent
+      versions of <application>GCC</application>.  To find the current
+      stable release, please refer to the
+      <ulink url="http://www.mutt.org/">Mutt home page</ulink>.</para>
+    </note>
+
+    <para><application>Mutt</application> requires a group named
+    <systemitem class="groupname">mail</systemitem>.  You can
+    add this group, if it does not exist, with this command:</para>
+
+<screen role="root"><userinput>groupadd -g 34 mail</userinput></screen>
+
+    <para>If you did not install an <xref linkend="server-mail"/>, you need to
+    modify the ownership of <filename class="directory">/var/mail</filename>
+    with this command:</para>
+
+<screen role="root"><userinput>chgrp -v mail /var/mail</userinput></screen>
+
+    <para>Install <application>Mutt</application> by running the following
+    commands:</para>
+
+<screen><userinput>./configure --prefix=/usr --sysconfdir=/etc \
+            --with-docdir=/usr/share/doc/mutt-&mutt-version; \
+            --enable-pop --enable-imap \
+            --enable-hcache --without-qdbm \
+            --without-tokyocabinet \
+            --with-gdbm --without-bdb &amp;&amp;
+make</userinput></screen>
+
+    <!-- for the moment, the html is regenerated automatically if the deps are
+    present, there is no way to stop it except by removing a dependency
+    <para>If you have the necessary dependencies installed and would like
+    to rebuild the HTML documentation, issue the following commands:</para>
+
+<screen><userinput>make -C doc clean &amp;&amp;
+make -C doc</userinput></screen> -->
+
+    <para>To generate the PDF manual with <xref linkend="texlive"/>, run
+    the following command:</para>
+
+<screen><userinput>make -C doc manual.pdf</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role='root'><userinput>make install</userinput></screen>
+
+    <para>If you generated the PDF manual, install it and the source TeX
+    file by issuing the following command as the
+    <systemitem class="username">root</systemitem> user:</para>
+
+<screen role='root'><userinput>install -v -m644 doc/manual.{pdf,tex} \
+    /usr/share/doc/mutt-&mutt-version;</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para><parameter>--enable-pop</parameter>: This switch enables
+    POP3 support.</para>
+
+    <para><parameter>--enable-imap</parameter>: This switch enables
+    IMAP support.</para>
+
+    <para><parameter>--enable-hcache</parameter>: This switch enables
+    header caching.</para>
+
+    <para><parameter>--without-qdbm</parameter>: This switch disables
+    <application>QDBM</application> as the header cache backend.</para>
+
+    <para><parameter>--without-tokyocabinet</parameter>: This switch disables
+    <application>Tokyo Cabinet</application> as the header cache backend.</para>
+
+    <para><parameter>--with-gdbm</parameter>: This switch enables
+    <application>GDBM</application> as the header cache backend.</para>
+
+    <para><parameter>--without-bdb</parameter>: This switch disables
+     <application>Berkeley DB</application> as the header cache backend.</para>
+
+    <para><option>--enable-smtp</option>: This switch enables
+    SMTP relay support.</para>
+
+    <para><option>--with-ssl</option>: This parameter adds SSL/TLS
+    support from <xref linkend="openssl"/> in POP3/IMAP/SMTP if they are
+    enabled.</para>
+
+    <para><option>--with-sasl</option>: This parameter adds
+    authentication support from <xref linkend="cyrus-sasl"/> in POP3/IMAP/SMTP
+    if they are enabled. Depending on the server configuration, this may not
+    be needed for POP3 or IMAP. However, it is needed for SMTP
+    authentication.</para>
+
+    <para><option>--with-slang</option>: Use <application>S-Lang
+    </application> instead of <application>Ncurses</application>.</para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Mutt</title>
+
+    <sect3 id="mutt-config">
+      <title>Config Files</title>
+
+      <para><filename>/etc/Muttrc</filename>, <filename>~/.muttrc</filename>,
+      <filename>/etc/mime.types</filename>, <filename>~/.mime.types</filename></para>
+
+      <indexterm zone="mutt mutt-config">
+        <primary sortas="e-etc-Muttrc">/etc/Muttrc</primary>
+      </indexterm>
+
+      <indexterm zone="mutt mutt-config">
+        <primary sortas="e-AA.muttrc">~/.muttrc</primary>
+      </indexterm>
+
+      <indexterm zone="mutt mutt-config">
+        <primary sortas="e-etc-mime.types">/etc/mime.types</primary>
+      </indexterm>
+
+      <indexterm zone="mutt mutt-config">
+        <primary sortas="e-AA.mime.types">~/.mime.types</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>No changes in these files are necessary to begin using
+      <application>Mutt</application>.  When you are ready to make changes, the
+      man page for <filename>muttrc</filename> is a good starting place.</para>
+
+      <para>In order to utilize <application>GnuPG</application>, use the following
+      command:</para>
+
+<screen><userinput>cat /usr/share/doc/mutt-&mutt-version;/samples/gpg.rc &gt;&gt; ~/.muttrc</userinput></screen>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>flea, mutt, mutt_dotlock, muttbug, pgpewrap, pgpring, and
+        smime_keys</seg>
+        <seg>None</seg>
+        <seg>/usr/share/doc/mutt-&mutt-version;</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="flea">
+        <term><command>flea</command></term>
+        <listitem>
+          <para>is a bug submitter for <application>Mutt</application>.</para>
+          <indexterm zone="mutt flea">
+            <primary sortas="b-flea">flea</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mutt-prog">
+        <term><command>mutt</command></term>
+        <listitem>
+          <para>is a Mail User Agent (MUA) which enables you to read, write
+          and delete your email.</para>
+          <indexterm zone="mutt mutt-prog">
+            <primary sortas="b-mutt">mutt</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mutt_dotlock">
+        <term><command>mutt_dotlock</command></term>
+        <listitem>
+          <para>implements the mail spool file lock.</para>
+          <indexterm zone="mutt mutt_dotlock">
+            <primary sortas="b-mutt_dotlock">mutt_dotlock</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="muttbug">
+        <term><command>muttbug</command></term>
+        <listitem>
+          <para>is a script that executes <command>flea</command>.</para>
+          <indexterm zone="mutt muttbug">
+            <primary sortas="b-muttbug">muttbug</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pgpewrap">
+        <term><command>pgpewrap</command></term>
+        <listitem>
+          <para>prepares a command line for the <xref linkend="gnupg2"/>
+          utilities.</para>
+          <indexterm zone="mutt pgpewrap">
+            <primary sortas="b-pgpewrap">pgpewrap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pgpring">
+        <term><command>pgpring</command></term>
+        <listitem>
+          <para>is a key ring dumper for <ulink
+          url="http://www.pgp.com/">PGP</ulink>. It is not needed for
+          <xref linkend="gnupg2"/>.</para>
+          <indexterm zone="mutt pgpring">
+            <primary sortas="b-pgpring">pgpring</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="smime_keys">
+        <term><command>smime_keys</command></term>
+        <listitem>
+          <para>manages a keystore for S/MIME certificates.</para>
+          <indexterm zone="mutt smime_keys">
+            <primary sortas="b-smime_keys">smime_keys</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
