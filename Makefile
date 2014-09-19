@@ -232,9 +232,13 @@ install-gpm: create-dirs
 
 install-haveged: create-dirs
 	install -m ${MODE} blfs/init.d/haveged        ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/haveged ${EXTDIR}/rc.d/rc0.d/K90haveged
+	ln -sf  ../init.d/haveged ${EXTDIR}/rc.d/rc1.d/K90haveged
+	ln -sf  ../init.d/haveged ${EXTDIR}/rc.d/rc2.d/K90haveged
 	ln -sf  ../init.d/haveged ${EXTDIR}/rc.d/rc3.d/S21haveged
 	ln -sf  ../init.d/haveged ${EXTDIR}/rc.d/rc4.d/S21haveged
 	ln -sf  ../init.d/haveged ${EXTDIR}/rc.d/rc5.d/S21haveged
+	ln -sf  ../init.d/haveged ${EXTDIR}/rc.d/rc6.d/K90haveged
 
 install-heimdal: create-dirs
 	install -m ${MODE} blfs/init.d/heimdal        ${EXTDIR}/rc.d/init.d/
@@ -722,9 +726,13 @@ uninstall-gpm:
 
 uninstall-haveged:
 	rm -f ${EXTDIR}/rc.d/init.d/haveged
+	rm -f ${EXTDIR}/rc.d/rc0.d/K90haveged
+	rm -f ${EXTDIR}/rc.d/rc1.d/K90haveged
+	rm -f ${EXTDIR}/rc.d/rc2.d/K90haveged
 	rm -f ${EXTDIR}/rc.d/rc3.d/S21haveged
 	rm -f ${EXTDIR}/rc.d/rc4.d/S21haveged
 	rm -f ${EXTDIR}/rc.d/rc5.d/S21haveged
+	rm -f ${EXTDIR}/rc.d/rc6.d/K90haveged
 
 uninstall-heimdal:
 	rm -f ${EXTDIR}/rc.d/init.d/heimdal
