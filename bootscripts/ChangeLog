@@ -1,3 +1,6 @@
+2014-09-19 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Add stop option to haveged script
+
 2014-09-11 Ken Moffat <ken@linuxfromscratch.org>
    * Spelling fix when lxdm stops
 

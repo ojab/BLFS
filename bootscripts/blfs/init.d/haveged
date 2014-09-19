@@ -35,12 +35,18 @@ case "$1" in
       evaluate_retval
       ;;
 
+   stop)
+      log_info_msg "Stopping haveged..."
+      killproc /usr/sbin/haveged
+      evaluate_retval
+      ;;
+ 
    status)
       statusproc /usr/sbin/haveged
       ;;
 
    *)
-      echo "Usage: $0 {start|status}"
+      echo "Usage: $0 {start|stop|status}"
       exit 1
       ;;
 esac
