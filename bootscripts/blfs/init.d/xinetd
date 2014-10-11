@@ -31,37 +31,37 @@
 #$Date: 2011-12-05 01:38:40 -0600 (Mon, 05 Dec 2011) $
 
 case "$1" in
-	start)
-		log_info_msg "Starting xinetd..."
-		start_daemon /usr/sbin/xinetd
+   start)
+      log_info_msg "Starting xinetd..."
+      start_daemon /usr/sbin/xinetd
       evaluate_retval
-		;;
+      ;;
 
-	stop)
-		log_info_msg "Stopping xinetd..."
-		killproc /usr/sbin/xinetd
+   stop)
+      log_info_msg "Stopping xinetd..."
+      killproc /usr/sbin/xinetd
       evaluate_retval
-		;;
+      ;;
 
-	reload)
-		log_info_msg "Reloading xinetd..."
-		killproc /usr/sbin/xinetd -HUP
-		;;
+   reload)
+      log_info_msg "Reloading xinetd..."
+      killproc /usr/sbin/xinetd -HUP
+      ;;
 
-	restart)
-		$0 stop
-		sleep 1
-		$0 start
-		;;
+   restart)
+      $0 stop
+      sleep 1
+      $0 start
+      ;;
 
-	status)
-		statusproc /usr/sbin/xinetd
-		;;
+   status)
+      statusproc /usr/sbin/xinetd
+      ;;
 
-	*)
-		echo "Usage: $0 {start|stop|reload|restart|status}"
-		exit 1
-		;;
+   *)
+      echo "Usage: $0 {start|stop|reload|restart|status}"
+      exit 1
+      ;;
 esac
 
 # End /etc/init.d/xinetd

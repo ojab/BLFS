@@ -1,3 +1,6 @@
+2014-10-08 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Fix typo in Makefile
+
 2014-09-19 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Add stop option to haveged script
 
