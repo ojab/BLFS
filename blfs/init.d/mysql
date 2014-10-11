@@ -39,7 +39,7 @@ case "$1" in
       chown mysql.mysql /run/mysqld
 
       if [ -f "$PIDFILE" ]; then
-         if /bin/ps --pid `cat $PIDFILE` | grep mysqld >/dev/null; then
+         if /bin/ps | grep `cat $PIDFILE` | grep -q mysqld ; then
             log_warning_msg "\n   mysqld already running!" 
             exit 0
          else
