@@ -831,14 +831,14 @@ uninstall-nfs-server:
 	rm -f ${EXTDIR}/rc.d/rc6.d/K48nfs-server
 
 uninstall-ntpd:
-	rm -f ${EXTDIR}/rc.d/init.d/ntp
-	rm -f ${EXTDIR}/rc.d/rc0.d/K46ntp
-	rm -f ${EXTDIR}/rc.d/rc1.d/K46ntp
-	rm -f ${EXTDIR}/rc.d/rc2.d/K46ntp
-	rm -f ${EXTDIR}/rc.d/rc3.d/S26ntp
-	rm -f ${EXTDIR}/rc.d/rc4.d/S26ntp
-	rm -f ${EXTDIR}/rc.d/rc5.d/S26ntp
-	rm -f ${EXTDIR}/rc.d/rc6.d/K46ntp
+	rm -f ${EXTDIR}/rc.d/init.d/ntpd
+	rm -f ${EXTDIR}/rc.d/rc0.d/K46ntpd
+	rm -f ${EXTDIR}/rc.d/rc1.d/K46ntpd
+	rm -f ${EXTDIR}/rc.d/rc2.d/K46ntpd
+	rm -f ${EXTDIR}/rc.d/rc3.d/S26ntpd
+	rm -f ${EXTDIR}/rc.d/rc4.d/S26ntpd
+	rm -f ${EXTDIR}/rc.d/rc5.d/S26ntpd
+	rm -f ${EXTDIR}/rc.d/rc6.d/K46ntpd
 
 uninstall-slapd:
 	rm -f ${EXTDIR}/rc.d/init.d/slapd
@@ -1035,7 +1035,7 @@ uninstall-xinetd:
 	install-networkmanager \
 	install-nfs-client \
 	install-nfs-server \
-	install-ntp \
+	install-ntpd \
 	install-slapd \
 	install-postfix \
 	install-postgresql \
@@ -1079,7 +1079,7 @@ uninstall-xinetd:
 	uninstall-networkmanager \
 	uninstall-nfs-client \
 	uninstall-nfs-server \
-	uninstall-ntp \
+	uninstall-ntpd \
 	uninstall-slapd \
 	uninstall-postfix \
 	uninstall-postgresql \
