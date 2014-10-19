@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bookinfo PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<bookinfo>
+
+  <othername>$LastChangedBy$</othername>
+  <date>$Date$</date>
+
+  <title>Beyond Linux<superscript>&reg;</superscript> From Scratch (systemd edition)</title>
+  <subtitle>Version &version;</subtitle>
+
+  <authorgroup>
+    <corpauthor>
+      &copyholder;
+    </corpauthor>
+  </authorgroup>
+
+  <pubdate>&pubdate;</pubdate>
+
+  <copyright id="copyright">
+    <year>2001-&year;</year>
+    <holder>&copyholder;</holder>
+  </copyright>
+
+  <legalnotice>
+    <para>Copyright &copy; &copyrightdate;, &copyholder;</para>
+
+    <para>All rights reserved.</para>
+
+    <para>This book is licensed under a <xref linkend="CC"/>.</para>
+
+    <para>Computer instructions may be extracted from the book under the
+    <xref linkend="MIT"/>.</para>
+
+    <para><trademark class='registered'>Linux</trademark> is a registered trademark of
+    Linus Torvalds.</para>
+  </legalnotice>
+
+  <revhistory>
+    <revision>
+      <revnumber>&version;</revnumber>
+      <date>&pubdate;</date>
+      <revremark>Ongoing Release</revremark>
+    </revision>
+
+    <revision>
+      <revnumber>7.6</revnumber>
+      <date>2014-09-23</date>
+      <revremark>First release</revremark>
+    </revision>
+  </revhistory>
+
+  <abstract>
+    <para>This book follows on from the Linux From Scratch systemd book. It introduces
+    and guides the reader through additions to the system including networking,
+    graphical interfaces, sound support, and printer and scanner
+    support.</para>
+  </abstract>
+
+</bookinfo>

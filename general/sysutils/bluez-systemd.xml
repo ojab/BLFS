@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY bluez-download-http "http://www.kernel.org/pub/linux/bluetooth/bluez-&bluez-version;.tar.xz">
+  <!ENTITY bluez-download-ftp  "ftp://ftp.kernel.org/pub/linux/bluetooth/bluez-&bluez-version;.tar.xz">
+  <!ENTITY bluez-md5sum        "37b785185fb98269b45e51b254bd8d3d">
+  <!ENTITY bluez-size          "1.4 MB">
+  <!ENTITY bluez-buildsize     "72 MB (additional 17 MB for the tests)">
+  <!ENTITY bluez-time          "0.5 SBU (additional 0.2 SBU for the tests)"> 
+]>
+
+<sect1 id="bluez" xreflabel="BlueZ-&bluez-version;">
+  <?dbhtml filename="bluez.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>BlueZ-&bluez-version;</title>
+
+  <indexterm zone="bluez">
+    <primary sortas="a-BlueZ">BlueZ</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to BlueZ</title>
+
+    <para>
+      The <application>BlueZ</application> package contains the
+      Bluetooth protocol stack for Linux.
+    </para>
+
+    &lfs76_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&bluez-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&bluez-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &bluez-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &bluez-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &bluez-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &bluez-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+      <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+             Required patch:
+            <ulink url="&patch-root;/bluez-&bluez-version;-obexd_without_systemd-1.patch"/>
+          </para>
+        </listitem>
+      </itemizedlist>
+
+    <bridgehead renderas="sect3">BlueZ Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="dbus"/>,
+      <xref linkend="glib2"/>, and
+      <xref linkend="libical"/>
+    </para>
+
+    <para condition="html" role="usernotes">
+      User Notes: <ulink url="&blfs-wiki;/bluez"/>
+    </para>
+  </sect2>
+
+
+  <sect2 role="kernel" id="bluez-kernel">
+    <title>Kernel Configuration</title>
+
+    <para>
+      Enable the following options in the kernel configuration and recompile the
+      kernel if necessary:
+    </para>
+
+<screen><literal>[*] Networking support ---&gt;                   [CONFIG_NET]
+  &lt;*&gt; or &lt;M&gt; Bluetooth subsystem support ---&gt; [CONFIG_BT]
+    &lt;*&gt; or &lt;M&gt; RFCOMM protocol support        [CONFIG_BT_RFCOMM]
+    [*] RFCOMM TTY support                    [CONFIG_BT_RFCOMM_TTY]
+    &lt;*&gt; or &lt;M&gt; BNEP protocol support          [CONFIG_BT_BNEP]
+    [*] Multicast filter support              [CONFIG_BT_BNEP_MC_FILTER]
+    [*] Protocol filter support               [CONFIG_BT_BNEP_PROTO_FILTER]
+    &lt;*&gt; or &lt;M&gt; HIDP protocol support          [CONFIG_BT_HIDP]
+
+    Bluetooth device drivers ---&gt;
+  &lt;*&gt; or &lt;M&gt; RF switch subsystem support</literal></screen> 
+
+    <para>
+      Select the appropriate drivers for your Bluetooth hardware.
+    </para>
+
+    <indexterm zone="bluez bluez-kernel">
+      <primary sortas="d-bluez">bluez</primary>
+    </indexterm>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of BlueZ</title>
+
+    <para>
+      Install <application>BlueZ</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>patch -Np1 -i ../bluez-&bluez-version;-obexd_without_systemd-1.patch &amp;&amp;
+./configure --prefix=/usr         \
+            --sysconfdir=/etc     \
+            --localstatedir=/var  \
+            --enable-library &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <userinput>make check</userinput>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+    <para>
+      Install the main configuration file as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>install -v -dm755 /etc/bluetooth &amp;&amp;
+install -v -m644 src/main.conf /etc/bluetooth/main.conf</userinput></screen>
+
+    <para>
+      If desired, install the API documentation as the
+      <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>install -v -dm755 /usr/share/doc/bluez-&bluez-version; &amp;&amp;
+install -v -m644 doc/*.txt /usr/share/doc/bluez-&bluez-version;</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--enable-library</parameter>: This switch enables building of the
+      <application>BlueZ</application> 4 compatibility library which is required by
+      some applications.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring BlueZ</title>
+
+    <sect3 id="bluez-config">
+      <title>Configuration Files</title>
+      <para>
+        <filename>/etc/bluetooth/main.conf</filename> is installed
+        automatically during the install. Additionally, there are
+        two supplementary configuration files that you can install
+        by running the following commands as the 
+        <systemitem class="username">root</systemitem> user:
+      </para>
+        
+<screen role="root"><userinput>cat > /etc/bluetooth/rfcomm.conf &lt;&lt; "EOF"</userinput>
+<literal># rfcomm.conf
+# Set up the RFCOMM configuration of the Bluetooth subsystem in the Linux kernel.
+# Use one line per command
+# See the rfcomm man page for options
+
+# End of rfcomm.conf</literal>
+EOF</screen>
+
+<screen role="root"><userinput>cat > /etc/bluetooth/uart.conf &lt;&lt; "EOF"</userinput>
+<literal>#uart.conf
+# Attach serial devices via UART HCI to BlueZ stack
+# Use one line per device
+# See the hciattach man page for options
+
+# End of uart.conf</literal>
+EOF</screen>
+
+      <indexterm zone="bluez bluez-config">
+        <primary
+        sortas="e-etc-bluetooth-main.conf">/etc/bluetooth/main.conf</primary>
+      </indexterm>
+
+      <indexterm zone="bluez bluez-config">
+        <primary
+        sortas="e-etc-bluetooth-rfcomm.conf">/etc/bluetooth/rfcomm.conf</primary>
+      </indexterm>
+
+      <indexterm zone="bluez bluez-config">
+        <primary
+        sortas="e-etc-bluetooth-uart.conf">/etc/bluetooth/uart.conf</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3  id="bluez-init">
+      <title>Systemd Units</title>
+
+      <para>
+        To start the <command>bluetoothd</command> daemon at boot,
+        enable the previously installed systemd unit by
+        running the following command as the
+        <systemitem class="username">root</systemitem> user:
+      </para>
+
+      <indexterm zone="bluez bluez-init">
+        <primary sortas="f-bluetooth">bluetooth</primary>
+      </indexterm>
+
+<screen role="root"><userinput>systemctl enable bluetooth</userinput></screen>
+
+      <note>
+        <para>
+          <application>Systemd</application> will start the Bluetooth daemon
+          only when a bluetooth device is detected on the system.
+        </para>
+      </note>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          bccmd, bluemoon, bluetoothctl, bluetoothd, btmon, ciptool,
+          hciattach, hciconfig, hcidump, hcitool, hid2hci, l2ping,
+          l2test, mpris-proxy, obexd, rctest, rfcomm, and sdptool
+        </seg>
+        <seg>
+          libbluetooth.so
+        </seg>
+        <seg>
+          /etc/bluetooth,
+          /usr/include/bluetooth,
+          /usr/libexec/bluetooth, and
+          /usr/share/doc/bluez-&bluez-version;
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="bccmd">
+        <term><command>bccmd</command></term>
+        <listitem>
+          <para>
+            is used to issue BlueCore commands to Cambridge Silicon
+            Radio devices.
+          </para>
+          <indexterm zone="bluez bccmd">
+            <primary sortas="b-bccmd">bccmd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="bluetoothd">
+        <term><command>bluetoothd</command></term>
+        <listitem>
+          <para>
+            is the Bluetooth daemon.
+          </para>
+          <indexterm zone="bluez bluetoothd">
+            <primary sortas="b-bluetoothd">bluetoothd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ciptool">
+        <term><command>ciptool</command></term>
+        <listitem>
+          <para>
+            is used to set up, maintain, and inspect the CIP configuration
+            of the Bluetooth subsystem in the Linux kernel.
+          </para>
+          <indexterm zone="bluez ciptool">
+            <primary sortas="b-ciptool">ciptool</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="hciattach">
+        <term><command>hciattach</command></term>
+        <listitem>
+          <para>
+            is used to attach a serial UART to the Bluetooth stack
+            as HCI transport interface.
+          </para>
+          <indexterm zone="bluez hciattach">
+            <primary sortas="b-hciattach">hciattach</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="hciconfig">
+        <term><command>hciconfig</command></term>
+        <listitem>
+          <para>
+            is used to configure Bluetooth devices.
+          </para>
+          <indexterm zone="bluez hciconfig">
+            <primary sortas="b-hciconfig">hciconfig</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="hcitool">
+        <term><command>hcitool</command></term>
+        <listitem>
+          <para>
+            is used to configure Bluetooth connections and send some
+            special command to Bluetooth devices.
+          </para>
+          <indexterm zone="bluez hcitool">
+            <primary sortas="b-hcitool">hcitool</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="hid2hci">
+        <term><command>hid2hci</command></term>
+        <listitem>
+          <para>
+            is used to set up switch supported Bluetooth devices into
+            the HCI mode and back.
+          </para>
+          <indexterm zone="bluez hid2hci">
+            <primary sortas="b-hid2hci">hid2hci</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="l2ping">
+        <term><command>l2ping</command></term>
+        <listitem>
+          <para>
+            is used to send a L2CAP echo request to the Bluetooth MAC
+            address given in dotted hex notation.
+          </para>
+          <indexterm zone="bluez l2ping">
+            <primary sortas="b-l2ping">l2ping</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rctest">
+        <term><command>rctest</command></term>
+        <listitem>
+          <para>
+            is used to test RFCOMM communications on the
+            Bluetooth stack.
+          </para>
+          <indexterm zone="bluez rctest">
+            <primary sortas="b-rctest">rctest</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rfcomm">
+        <term><command>rfcomm</command></term>
+        <listitem>
+          <para>
+            is used to set up, maintain, and inspect the RFCOMM
+            configuration of the Bluetooth subsystem in the
+            Linux kernel.
+          </para>
+          <indexterm zone="bluez rfcomm">
+            <primary sortas="b-rfcomm">rfcomm</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="sdptool">
+        <term><command>sdptool</command></term>
+        <listitem>
+          <para>
+            is used to perform SDP queries on Bluetooth devices.
+          </para>
+          <indexterm zone="bluez sdptool">
+            <primary sortas="b-sdptool">sdptool</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libbluetooth">
+        <term><filename class="libraryfile">libbluetooth.so</filename></term>
+        <listitem>
+          <para>
+            contains the <application>BlueZ</application> 4 API functions.
+          </para>
+          <indexterm zone="bluez libbluetooth">
+            <primary sortas="c-libbluetooth">libbluetooth.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </sect2>
+
+</sect1>

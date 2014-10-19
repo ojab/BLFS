@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY gnome-tetravex-download-http "&gnome-download-http;/gnome-tetravex/&gnome-minor14;/gnome-tetravex-&gnome-tetravex-version;.tar.xz">
+  <!ENTITY gnome-tetravex-download-ftp  "&gnome-download-ftp;/gnome-tetravex/&gnome-minor14;/gnome-tetravex-&gnome-tetravex-version;.tar.xz">
+  <!ENTITY gnome-tetravex-md5sum        "3b41d3af227a3eff3963fa2154d91a0d">
+  <!ENTITY gnome-tetravex-size          "2.1 MB">
+  <!ENTITY gnome-tetravex-buildsize     "35.7 MB">
+  <!ENTITY gnome-tetravex-time          "0.1 SBU">
+]>
+
+<sect2 id="gnome-tetravex" xreflabel="gnome-tetravex-&gnome-tetravex-version;">
+  <?dbhtml filename="tetravex.html"?>
+
+  <sect2info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect2info>
+
+  <title>gnome-tetravex-&gnome-tetravex-version;</title>
+
+  <indexterm zone="gnome-tetravex">
+    <primary sortas="a-gnome-tetravex">gnome-tetravex</primary>
+  </indexterm>
+
+  <sect3 role="package">
+    <title>Introduction to Gnome Tetravex</title>
+
+    <para>
+      <application>gnome-tetravex</application> is a
+      simple puzzle where pieces must be positioned so 
+      that the same numbers are touching each other.
+    </para>
+
+    &lfs76_checked;
+
+    <bridgehead renderas="sect4">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&gnome-tetravex-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&gnome-tetravex-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &gnome-tetravex-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &gnome-tetravex-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &gnome-tetravex-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &gnome-tetravex-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect4">Gnome Tetravex Dependencies</bridgehead>
+
+    <bridgehead renderas="sect5">Required</bridgehead>
+    <para role="required">
+      <xref linkend="gtk3"/>,
+      <xref linkend="itstool"/>, and
+      <xref linkend="vala"/>
+    </para>
+
+    <bridgehead renderas="sect5">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="gobject-introspection"/> and
+      <xref linkend="hicolor-icon-theme"/>
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+      <ulink url="&blfs-wiki;/gnome-tetravex"/>
+    </para>
+  </sect3>
+
+  <sect3 role="installation">
+    <title>Installation of Gnome Tetravex</title>
+
+    <para>
+      Install <application>gnome-tetravex</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      This package does not come with a test suite.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect3>
+
+  <sect3 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Program</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          gnome-tetravex
+        </seg>
+        <seg>
+          None
+        </seg>
+        <seg>
+          /usr/share/help/*/gnome-tetravex
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect4">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="gnome-tetravex-prog">
+        <term><command>gnome-tetravex</command></term>
+        <listitem>
+          <para>
+            is the executable.
+          </para>
+          <indexterm zone="gnome-tetravex gnome-tetravex-prog">
+            <primary sortas="b-gnome-tetravex">gnome-tetravex</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect3>
+
+</sect2>

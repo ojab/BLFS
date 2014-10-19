@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY kmix-download-http "&kde-download-http;&kde-version;/src/kmix-&kde-version;.tar.xz">
+  <!ENTITY kmix-download-ftp  " ">
+  <!ENTITY kmix-md5sum        "1e527f1d5c5e61084760e6d8a91ab10f">
+  <!ENTITY kmix-size          "363 KB">
+  <!ENTITY kmix-buildsize     "11.1 MB">
+  <!ENTITY kmix-time          "1.2 SBU">
+]>
+
+<sect1 id="kmix" xreflabel="KMix-&kde-version;">
+  <?dbhtml filename="kmix.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>KMix-&kde-version;</title>
+
+  <indexterm zone="kmix">
+    <primary sortas="a-KMix">KMix</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to KMix</title>
+
+    <para>This packages provides an audio mixer application for KDE.</para>
+
+    &lfs76_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&kmix-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&kmix-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &kmix-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &kmix-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &kmix-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &kmix-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">KMix Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="kdelibs"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="libcanberra"/> and
+      <xref linkend="pulseaudio"/>
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/kmix"/>
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of KMix</title>
+
+    <para>Install <application>KMix</application> by running
+    the following commands:</para>
+
+<screen><userinput>mkdir build &amp;&amp;
+cd    build &amp;&amp;
+
+cmake -DCMAKE_INSTALL_PREFIX=&kde-dir; \
+      -DCMAKE_BUILD_TYPE=Release         \
+      -Wno-dev .. &amp;&amp;
+make</userinput></screen>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>kmix and kmixctrl</seg>
+        <seg>libkdeinit4_kmix.so, libkdeinit4_kmixctrl.so, kded_kmixd.so
+        and plasma_engine_mixer.so</seg>
+        <seg>several in &kde-dir;/share</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="kmix-prog">
+        <term><command>kmix</command></term>
+        <listitem>
+          <para>is the KDE Volume Control.</para>
+          <indexterm zone="kmix kmix-prog">
+            <primary sortas="b-kmix">kmix</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

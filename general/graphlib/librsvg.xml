@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY librsvg-download-http "&gnome-download-http;/librsvg/2.40/librsvg-&librsvg-version;.tar.xz">
+  <!ENTITY librsvg-download-ftp  "&gnome-download-ftp;/librsvg/2.40/librsvg-&librsvg-version;.tar.xz">
+  <!ENTITY librsvg-md5sum        "c2b044fccf415902a052d0e978e0ea60">
+  <!ENTITY librsvg-size          "488 KB">
+  <!ENTITY librsvg-buildsize     "10.6 MB">
+  <!ENTITY librsvg-time          "0.2 SBU">
+]>
+
+<sect1 id="librsvg" xreflabel="librsvg-&librsvg-version;">
+  <?dbhtml filename="librsvg.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>librsvg-&librsvg-version;</title>
+
+  <indexterm zone="librsvg">
+    <primary sortas="a-librsvg">librsvg</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to librsvg</title>
+
+    <para>
+      The <application>librsvg</application> package contains
+      a library and tools used to manipulate, convert and view
+      Scalable Vector Graphic (SVG) images.
+    </para>
+
+    &lfs76_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Download (HTTP): <ulink url="&librsvg-download-http;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download (FTP): <ulink url="&librsvg-download-ftp;"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download MD5 sum: &librsvg-md5sum;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Download size: &librsvg-size;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated disk space required: &librsvg-buildsize;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Estimated build time: &librsvg-time;
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">librsvg Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="gdk-pixbuf"/>,
+      <xref linkend="libcroco"/> and
+      <xref linkend="pango"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="gtk3"/> (For the <command>rsvg-view-3</command>)
+    </para>
+
+    <bridgehead renderas="sect4">Optional (Required if building GNOME)</bridgehead>
+    <para role="optional">
+      <xref linkend="gobject-introspection"/> and
+      <xref linkend="vala"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="gtk-doc"/>
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+      <ulink url="&blfs-wiki;/librsvg"/>
+    </para>
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of librsvg</title>
+
+    <para>
+      Install <application>librsvg</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr \
+            --enable-vala \
+            --disable-static &amp;&amp;
+make</userinput></screen>
+
+    <para>
+      To test the results, issue: <command>make check</command>.
+    </para>
+
+    <para>
+      Now, as the <systemitem class="username">root</systemitem> user:
+    </para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <option>--enable-vala</option>: This switch enables
+      building of the Vala bindings. Remove if you don't have
+      <xref linkend="vala"/> installed.
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/static-libraries.xml"/>
+
+    <para>
+      <option>--disable-introspection</option>: Use this switch if you have
+      not installed <application>Gobject Introspection</application>.
+    </para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="../../xincludes/gtk-doc-rebuild.xml"/>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Library</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          rsvg-convert and rsvg-view-3
+        </seg>
+        <seg>
+          librsvg-2.so and libpixbufloader-svg.so
+        </seg>
+        <seg>
+          /usr/include/librsvg-2.0 and
+          /usr/share/gtk-doc/html/rsvg-2.0
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="rsvg-convert">
+        <term><command>rsvg-convert</command></term>
+        <listitem>
+          <para>
+            is used to convert images into PNG, PDF, PS, SVG and other formats.
+          </para>
+          <indexterm zone="librsvg rsvg-convert">
+            <primary sortas="b-rsvg-convert">rsvg-convert</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rsvg-view-3">
+        <term><command>rsvg-view-3</command></term>
+        <listitem>
+          <para>
+            is a simple GTK+ 3 application that can be used to view an SVG file.
+          </para>
+          <indexterm zone="librsvg rsvg-view-3">
+            <primary sortas="b-rsvg-view-3">rsvg-view-3</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="librsvg-2">
+        <term><filename class="libraryfile">librsvg-2.so</filename></term>
+        <listitem>
+          <para>
+            provides the functions to render Scalable Vector Graphics.
+          </para>
+          <indexterm zone="librsvg librsvg-2">
+            <primary sortas="c-librsvg-2">librsvg-2.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libpixbufloader-svg">
+        <term><filename class="libraryfile">libpixbufloader-svg.so</filename></term>
+        <listitem>
+          <para>
+            is the <application>Gdk Pixbuf</application> plugin that allows
+            <application>GTK+</application> applications to render Scalable
+            Vector Graphics images.
+          </para>
+          <indexterm zone="librsvg libpixbufloader-svg">
+            <primary sortas="c-libpixbufloader-svg">libpixbufloader-svg.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

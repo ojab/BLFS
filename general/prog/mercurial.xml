@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY mercurial-download-http "http://mercurial.selenic.com/release/mercurial-&mercurial-version;.tar.gz">
+  <!ENTITY mercurial-download-ftp  " ">
+  <!ENTITY mercurial-md5sum        "72a79798de828d6d6fb055273f91201a">
+  <!ENTITY mercurial-size          "3.9 MB">
+  <!ENTITY mercurial-buildsize     "44 MB (additional 250 MB for the tests and 2 MB for docs generation)">
+  <!ENTITY mercurial-time          "0.1 SBU (additional 9 SBU for tests)">
+]>
+
+<sect1 id="mercurial" xreflabel="Mercurial-&mercurial-version;">
+  <?dbhtml filename="mercurial.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Mercurial-&mercurial-version;</title>
+
+  <indexterm zone="mercurial">
+    <primary sortas="a-mercurial">mercurial</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Mercurial</title>
+
+    <para><application>Mercurial</application> is a distributed source control
+    management tool similar to <application>Git</application> and
+    <application>Bazaar</application>. <application>Mercurial</application> is
+    written in <application>Python</application> and is used by projects such as
+    Mozilla and Vim.</para>
+
+    &lfs76_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&mercurial-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&mercurial-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &mercurial-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &mercurial-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &mercurial-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &mercurial-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Mercurial Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="python2"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+    <xref linkend="bazaar"/>,
+    <xref linkend="cvs"/>,
+    <xref linkend="git"/>,
+    <xref linkend="gnupg2"/> (<command>gpg2</command> with Python bindings),
+    <xref linkend="subversion"/> (with Python bindings),
+    <ulink url="http://docutils.sourceforge.net/">Docutils</ulink> (required to build the documentation),
+    <ulink url="http://pypi.python.org/pypi/pyflakes">pyflakes</ulink>,
+    <ulink url="http://pygments.org/">pygments</ulink>, and
+    <ulink url="https://launchpad.net/pyopenssl">pyOpenSSL</ulink>
+
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/mercurial"/></para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Mercurial</title>
+
+    <para>Build <application>Mercurial</application> by issuing the following
+    command:</para>
+
+<screen><userinput>make build</userinput></screen>
+
+    <para>To build the documentation (requires
+    <application>Docutils</application>), issue:</para>
+
+<screen><userinput>make doc</userinput></screen>
+
+    <para>Running the test suite is optional. Failure of test-patchbomb is
+    expected with <application>Python-2.7.x</application> (x &gt; 7). To test
+    the results in the subdiretory
+    <filename class="directory">tests/tmp</filename>,
+    skipping the failing test, issue:</para>
+
+<screen><userinput>cat &gt; tests/blacklists/test-failed &lt;&lt; "EOF"
+<literal># Failure with Python-2.7.8
+  test-patchbomb.t</literal>
+EOF
+rm -rf tests/tmp &amp;&amp;
+TESTFLAGS="--tmpdir tmp --blacklist blacklists/test-failed" \
+make check</userinput></screen>
+
+    <para>More failing tests might be added to that file, if necessary. Tests
+    may be run in parallel, just add <quote>-j$(getconf
+    _NPROCESSORS_ONLN)</quote> to TESTFLAGS. In order to investigate a
+    particular apparently failing test, e.g <quote>test-parse-date.t</quote>,
+    issue the following commands (notice that omitting <option>--debug</option>
+    sometimes modifies the result):</para>
+
+<screen><userinput>pushd tests &amp;&amp;
+rm -rf tmp  &amp;&amp;
+./run-tests.py --debug --tmpdir tmp test-parse-date.t &amp;&amp;
+popd</userinput></screen>
+
+    <para>Install <application>Mercurial</application> by running
+    the following command (as <systemitem class="username">root</systemitem>):</para>
+
+<screen role="root"><userinput>make PREFIX=/usr install-bin</userinput></screen>
+
+    <para>If you built the documentation, install it by running
+    the following command (as <systemitem class="username">root</systemitem>):</para>
+
+<screen role="root"><userinput>make PREFIX=/usr install-doc</userinput></screen>
+
+    <para>After installed, two very quick and simple tests should run correctly.
+    First one needs some configuration:</para>
+
+<screen><userinput>cat &gt;&gt; ~/.hgrc &lt;&lt; "EOF"
+<literal>[ui]
+username = &lt;user_name&gt; &lt;your@mail&gt;</literal>
+EOF</userinput></screen>
+
+    <para>where you must replace &lt;user_name&gt; and &lt;your@mail&gt; (mail
+    is optional and can be omitted). With the user identity defined, run
+    <command>hg debuginstall</command> and several lines will be displayed, 
+    the last one reading "no problems detected". Another quick and simple test
+    is just <command>hg</command>, which should output basic commands that can
+    be used with <command>hg</command>.</para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Mercurial</title>
+
+    <sect3 id="mercurial-config">
+      <title>Config Files</title>
+
+      <para>
+        <filename>/etc/mercurial/hgrc</filename>
+      </para>
+
+      <indexterm zone="mercurial mercurial-config">
+        <primary sortas="e-etc-mercurial-hgrc">/etc/mercurial/hgrc</primary>
+      </indexterm>
+
+      <para>
+        If you have installed the <xref linkend="cacerts"/> and you want
+        <application>Mercurial</application> to use them, as the
+        <systemitem class="username">root</systemitem> user:
+      </para>
+
+<screen role="root"><userinput>install -v -d -m755 /etc/mercurial &amp;&amp;
+cat &gt; /etc/mercurial/hgrc &lt;&lt; "EOF"
+<literal>[web]
+cacerts = /etc/ssl/ca-bundle.crt</literal>
+EOF</userinput></screen>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>hg</seg>
+        <seg>several under /usr/lib/python&python2-majorver;/site-packages/mercurial</seg>
+        <seg>/etc/mercurial, /usr/lib/python&python2-majorver;/site-packages/hgext and
+             /usr/lib/python&python2-majorver;/site-packages/mercurial</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="hg">
+        <term><command>hg</command></term>
+        <listitem>
+          <para>is the program file for mercurial.</para>
+          <indexterm zone="mercurial hg">
+            <primary sortas="b-hg">hg</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

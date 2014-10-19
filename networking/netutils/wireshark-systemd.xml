@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY wireshark-download-http "http://www.wireshark.org/download/src/all-versions/wireshark-&wireshark-version;.tar.bz2">
+  <!ENTITY wireshark-download-ftp  " ">
+  <!ENTITY wireshark-md5sum        "14b3e3d8979d1eb27ff085bb5f400e67">
+  <!ENTITY wireshark-size          "28 MB">
+  <!ENTITY wireshark-buildsize     "875 MB (up to 1.5 GB)">
+  <!ENTITY wireshark-time          "6.22 SBU">
+]>
+
+<sect1 id="wireshark" xreflabel="Wireshark-&wireshark-version;">
+  <?dbhtml filename="wireshark.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>Wireshark-&wireshark-version;</title>
+
+  <indexterm zone="wireshark">
+    <primary sortas="a-Wireshark">Wireshark</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to Wireshark</title>
+
+    <para>The <application>Wireshark</application> package contains a network
+    protocol analyzer, also known as a <quote>sniffer</quote>. This is useful
+    for analyzing data captured <quote>off the wire</quote> from a live network
+    connection, or data read from a capture file.
+    <application>Wireshark</application> provides both a graphical and a TTY-mode
+    front-end for examining captured network packets from over 500 protocols,
+    as well as the capability to read capture files from many other popular
+    network analyzers.</para>
+
+    &lfs76_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&wireshark-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&wireshark-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &wireshark-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &wireshark-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &wireshark-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &wireshark-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">Additional Downloads</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Additional Documentation:
+           <ulink url="http://www.wireshark.org/download/docs/"/>
+         </para>
+      </listitem>
+    </itemizedlist>
+
+    <para>From this page you can download many different docs in a variety
+    of formats.</para>
+
+    <bridgehead renderas="sect3">Wireshark dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="glib2"/> (to build the TTY-mode front-end only)
+    </para>
+
+    <para>Note that you need <application>GTK+</application> or
+    <application>Qt</application> installed, otherwise, pass
+    <option>--disable-wireshark</option> to the
+    <command>configure</command> command.</para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="gtk3"/> (to build the <application>GTK+3</application>
+      GUI) and
+      <xref linkend="libpcap"/> (required to capture data)
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="gnutls"/>,
+      <xref linkend="libgcrypt"/>,
+      <xref linkend="lua"/>,
+      <xref linkend="mitkrb"/>,
+      <xref linkend="openssl"/>,
+      <ulink url="http://www.gnu.org/software/adns/adns.html">adns</ulink>,
+      <ulink url="http://www.maxmind.com/app/c">GeoIP</ulink>, and
+      <ulink url="http://www.portaudio.com/download.html">PortAudio</ulink>
+    </para>
+
+    <bridgehead renderas="sect4">Optional (to build different GUI front-ends)</bridgehead>
+    <para role="optional">
+      <xref linkend="gtk2"/> and
+      <xref linkend="qt4"/> or
+      <xref linkend="qt5"/>
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/wireshark"/></para>
+
+  </sect2>
+
+  <sect2 role="kernel" id="wireshark-kernel">
+    <title>Kernel Configuration</title>
+
+      <para>The kernel must have the Packet protocol enabled for
+      <application>Wireshark</application> to capture live packets from the
+      network.</para>
+      
+<screen><literal>Networking support: Y
+  Networking options:
+    Packet: sockets monitoring interface: M or Y</literal></screen>
+
+      <para>If built as a module, the name is
+      <filename>af_packet.ko</filename>.</para>
+
+      <indexterm zone="wireshark wireshark-kernel">
+        <primary sortas="d-Capturing-network-packets">Capturing network
+        packets</primary>
+      </indexterm>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Wireshark</title>
+
+    <para>Optionally, fix the description of the program in the title.
+    The first change overwrites the default "SVN Unknown" in the title
+    and the second overwrites a utility script that resets the version
+    to "unknown".</para>
+
+<screen><userinput>cat > svnversion.h &lt;&lt; "EOF"
+#define SVNVERSION "BLFS"
+#define SVNPATH "source"
+EOF
+
+cat > make-version.pl &lt;&lt; "EOF"
+#!/usr/bin/perl
+EOF</userinput></screen>
+
+    <para><application>Wireshark</application> is a very large and complex
+    application.  These instructions provide additional security measures to
+    ensure that only trusted users are allowed to view network traffic.  First,
+    set up a system group for wireshark.  As the <systemitem
+    class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>groupadd -g 62 wireshark</userinput></screen>
+
+    <para>If you want an unpriviledged user to execute
+    <application>wireshark</application>, run the following command as the
+    <systemitem class="username">root</systemitem> user:</para>
+
+<screen><userinput>usermod -a -G wireshark <replaceable>&lt;username&gt;</replaceable></userinput></screen>
+
+    <para>
+      If you have both <application>GTK+2</application> and
+      <application>GTK+3</application>, and both <application>Qt4</application>
+      and <application>Qt5</application> installed, the
+      <application>GTK+</application> GUI will be linked against
+      <application>GTK+3</application> and <application>Qt</application> GUI
+      will be linked against <application>Qt5</application>. The instructions
+      below only cover building of the <application>GTK+3</application> GUI.
+      Additional modifications must be made to the commands below if building
+      a GUI front-end against different supported toolkits. Examine "Command
+      Explanations" section for information on necessary modifications to the
+      <command>configure</command> command.
+    </para>
+
+    <para>
+      If you want to build the <application>Qt5</application> GUI and have both
+      <application>Qt4</application> and <application>Qt5</application>
+      installed, issue:
+    </para>
+
+<screen><userinput>export QT_SELECT=qt5</userinput></screen>
+
+    <para>
+      If you want to build the <application>Qt4</application> GUI and have both
+      <application>Qt4</application> and <application>Qt5</application>
+      installed, issue:
+    </para>
+
+<screen><userinput>sed -i "s:Qt5 Qt:Qt:g" configure</userinput></screen>
+
+    <para>
+      Install <application>Wireshark</application> by running the following
+      commands:
+    </para>
+
+<screen><userinput>./configure --prefix=/usr     \
+            --sysconfdir=/etc \
+            --with-gtk3       \
+            --without-qt      &amp;&amp;
+make</userinput></screen>
+
+    <para>This package does not come with a test suite.</para>
+
+    <para>Now, as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>make install &amp;&amp;
+
+install -v -dm755 /usr/share/doc/wireshark-&wireshark-version; &amp;&amp;
+install -v -m644  README{,.linux} doc/README.* doc/*.{pod,txt} \
+                  /usr/share/doc/wireshark-&wireshark-version; &amp;&amp;
+
+pushd /usr/share/doc/wireshark-&wireshark-version; &amp;&amp;
+   for FILENAME in ../../wireshark/*.html; do
+      ln -sfv $FILENAME
+   done &amp;&amp;
+popd &amp;&amp;
+
+if [ -e /usr/bin/wireshark ]; then
+   install -v -Dm644 wireshark.desktop /usr/share/applications/wireshark.desktop
+fi &amp;&amp;
+
+if [ -e /usr/bin/wireshark-qt ]; then
+   install -v -Dm644 wireshark.desktop /usr/share/applications/wireshark-qt.desktop &amp;&amp;
+   sed -i "/Exec/s:wireshark:&amp;-qt:g" /usr/share/applications/wireshark-qt.desktop
+fi &amp;&amp;
+
+for size in 16 24 32 48 64 128 256 ; do
+    install -v -Dm644 image/wsicon${size}.png \
+                      /usr/share/icons/hicolor/${size}x${size}/apps/wireshark.png &amp;&amp;
+    install -v -Dm644 image/WiresharkDoc-${size}.png \
+                      /usr/share/icons/hicolor/${size}x${size}/mimetypes/application-vnd.tcpdump.pcap.png
+done &amp;&amp;
+
+unset size &amp;&amp;
+unset QT_SELECT</userinput></screen>
+
+    <para>If you downloaded any of the documentation files from the page
+    listed in the 'Additional Downloads', install them by issuing the following
+    commands as the <systemitem class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>install -v -m644 <replaceable>&lt;Downloaded_Files&gt;</replaceable> /usr/share/doc/wireshark-&wireshark-version;</userinput></screen>
+
+  <para>Now, set ownership and permissions of sensitive applications to
+  only allow authorized users.  As the <systemitem
+  class="username">root</systemitem> user:</para>
+
+<screen role="root"><userinput>chown -v root:wireshark /usr/bin/{tshark,dumpcap} &amp;&amp;
+chmod -v 6550 /usr/bin/{tshark,dumpcap}</userinput></screen>
+
+  <para>Finally, add any users to the wireshark group (as root user):</para>
+
+<screen role="root"><userinput>usermod -a -G wireshark &lt;username&gt;</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="commands">
+    <title>Command Explanations</title>
+
+    <para>
+      <parameter>--with-gtk3</parameter>: This switch enables building
+      of the <application>GTK+3</application> GUI front-end. Replace it
+      with <parameter>--with-gtk2</parameter> if you have both
+      <application>GTK+2</application> and <application>GTK+3</application>
+      installed but wish to use <application>GTK+2</application> to build
+      the GUI front-end.
+    </para>
+
+    <para>
+      <parameter>--without-qt</parameter>: This switch disables building
+      of the <application>Qt</application> GUI front-end. Replace it with
+      <parameter>--with-qt</parameter> if you have installed either
+      <application>Qt4</application> or <application>Qt5</application>
+      and wish to build the <application>Qt</application> GUI front-end.
+    </para>
+
+    <para>
+      <option>--disable-wireshark</option>: Use this switch if you don't
+      want to build the GUI front-end.
+    </para>
+
+  </sect2>
+
+  <sect2 role="configuration">
+    <title>Configuring Wireshark</title>
+
+    <sect3 id="wireshark-config">
+      <title>Config Files</title>
+
+      <para><filename>/etc/wireshark.conf</filename> and
+      <filename>~/.wireshark/*</filename></para>
+
+      <indexterm zone="wireshark wireshark-config">
+        <primary sortas="e-AA.wireshark-star">~/.wireshark/*</primary>
+      </indexterm>
+
+      <indexterm zone="wireshark wireshark-config">
+        <primary sortas="e-etc-wireshark.conf">/etc/wireshark.conf</primary>
+      </indexterm>
+
+    </sect3>
+
+    <sect3>
+      <title>Configuration Information</title>
+
+      <para>Though the default configuration parameters are very sane,
+      reference the configuration section of the
+      <ulink url="http://www.wireshark.org/docs/wsug_html/">Wireshark User's
+      Guide</ulink> for configuration information. Most of
+      <application>Wireshark</application>'s configuration can be accomplished
+      using the menu options of the <command>wireshark</command>
+      graphical interfaces.</para>
+
+      <note>
+        <para>If you want to look at packets, make sure you don't filter
+        them out with <xref linkend="iptables"/>. If you want to exclude
+        certain classes of packets, it is more efficient to do it with
+        <application>iptables</application> than it is with
+        <application>Wireshark</application>.</para>
+      </note>
+
+    </sect3>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>
+          capinfos, captype, dftest, dumpcap, editcap, mergecap,
+          randpkt, rawshark, reordercap, text2pcap, tshark,
+          wireshark and wireshark-qt
+        </seg>
+        <seg>
+          libfiletap.so, libwireshark.so, libwiretap.so and libwsutil.so
+        </seg>
+        <seg>
+          /usr/lib/wireshark,
+          /usr/share/doc/wireshark-&wireshark-version; and
+          /usr/share/wireshark
+        </seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="capinfos">
+        <term><command>capinfos</command></term>
+        <listitem>
+          <para>reads a saved capture file and returns any or all of several
+          statistics about that file. It is able to detect and read any capture
+          supported by the <application>Wireshark</application> package.</para>
+          <indexterm zone="wireshark capinfos">
+            <primary sortas="b-capinfos">capinfos</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="captype">
+        <term><command>captype</command></term>
+        <listitem>
+          <para>prints the file types of capture files.</para>
+          <indexterm zone="wireshark captype">
+            <primary sortas="b-captype">captype</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="dftest">
+        <term><command>dftest</command></term>
+        <listitem>
+          <para>is a display-filter-compiler test program.</para>
+          <indexterm zone="wireshark dftest">
+            <primary sortas="b-dftest">dftest</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="dumpcap">
+        <term><command>dumpcap</command></term>
+        <listitem>
+          <para>is a network traffic dump tool. It lets you capture packet data
+          from a live network and write the packets to a file.</para>
+          <indexterm zone="wireshark dumpcap">
+            <primary sortas="b-dumpcap">dumpcap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="editcap">
+        <term><command>editcap</command></term>
+        <listitem>
+          <para>edits and/or translates the format of capture files. It knows
+          how to read <application>libpcap</application> capture files,
+          including those of <command>tcpdump</command>,
+          <application>Wireshark</application> and other tools that write
+          captures in that format.</para>
+          <indexterm zone="wireshark editcap">
+            <primary sortas="b-editcap">editcap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mergecap">
+        <term><command>mergecap</command></term>
+        <listitem>
+          <para>combines multiple saved capture files into a single output
+          file.</para>
+          <indexterm zone="wireshark mergecap">
+            <primary sortas="b-mergecap">mergecap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="randpkt">
+        <term><command>randpkt</command></term>
+        <listitem>
+          <para>creates random-packet capture files.</para>
+          <indexterm zone="wireshark randpkt">
+            <primary sortas="b-randpkt">randpkt</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rawshark">
+        <term><command>rawshark</command></term>
+        <listitem>
+          <para>dump and analyze raw libpcap data.</para>
+          <indexterm zone="wireshark rawshark">
+            <primary sortas="b-rawshark">rawshark</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="reordercap">
+        <term><command>reordercap</command></term>
+        <listitem>
+          <para>reorder timestamps of input file frames into output file.</para>
+          <indexterm zone="wireshark reordercap">
+            <primary sortas="b-reordercap">reordercap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="text2pcap">
+        <term><command>text2pcap</command></term>
+        <listitem>
+          <para>reads in an ASCII hex dump and writes the
+          data described into a <application>libpcap</application>-style
+          capture file.</para>
+          <indexterm zone="wireshark text2pcap">
+            <primary sortas="b-text2pcap">text2pcap</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="tshark">
+        <term><command>tshark</command></term>
+        <listitem>
+          <para>is a TTY-mode network protocol analyzer. It lets you capture
+          packet data from a live network or read packets from a
+          previously saved capture file.</para>
+          <indexterm zone="wireshark tshark">
+            <primary sortas="b-tshark">tshark</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="wireshark-prog">
+        <term><command>wireshark</command></term>
+        <listitem>
+          <para>is the GTK+ GUI network protocol analyzer. It lets you
+          interactively browse packet data from a live network or from a
+          previously saved capture file.</para>
+          <indexterm zone="wireshark wireshark-prog">
+            <primary sortas="b-wireshark">wireshark</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="wireshark-qt-prog">
+        <term><command>wireshark-qt</command></term>
+        <listitem>
+          <para>is the Qt GUI network protocol analyzer. It lets you
+          interactively browse packet data from a live network or from a
+          previously saved capture file.</para>
+          <indexterm zone="wireshark wireshark-qt-prog">
+            <primary sortas="b-wireshark-qt">wireshark-qt</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libwireshark">
+        <term><filename class="libraryfile">libwireshark.so</filename></term>
+        <listitem>
+          <para>contains functions used by the
+          <application>Wireshark</application> programs to perform filtering and
+          packet capturing.</para>
+          <indexterm zone="wireshark libwireshark">
+            <primary sortas="c-libwireshark">libwireshark.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="libwiretap">
+        <term><filename class="libraryfile">libwiretap.so</filename></term>
+        <listitem>
+          <para>is a library being developed as a future replacement for
+          <filename class="libraryfile">libpcap</filename>, the current
+          standard Unix library for packet capturing. For more information,
+          see the <filename>README</filename> file in the source
+          <filename class="directory">wiretap</filename> directory.</para>
+          <indexterm zone="wireshark libwiretap">
+            <primary sortas="c-libwiretap">libwiretap.so</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>

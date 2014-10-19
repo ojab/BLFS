@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+
+  <!ENTITY kde-baseapps-download-http "&kde-download-http;&kde-version;/src/kde-baseapps-&kde-version;.tar.xz">
+  <!ENTITY kde-baseapps-download-ftp  " ">
+  <!ENTITY kde-baseapps-md5sum        "5a80e976040e8a5fb019d28c259fef71">
+  <!ENTITY kde-baseapps-size          "2.4 MB">
+  <!ENTITY kde-baseapps-buildsize     "85.4 MB">
+  <!ENTITY kde-baseapps-time          "5.4 SBU">
+]>
+
+<sect1 id="kde-baseapps" xreflabel="KDE-Baseapps-&kde-version;">
+  <?dbhtml filename="kde-baseapps.html"?>
+
+  <sect1info>
+    <othername>$LastChangedBy$</othername>
+    <date>$Date$</date>
+  </sect1info>
+
+  <title>KDE-Baseapps-&kde-version;</title>
+
+  <indexterm zone="kde-baseapps">
+    <primary sortas="a-KDE-Baseapps">KDE-Baseapps</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title>Introduction to KDE-Baseapps</title>
+
+    <para>This package provides various applications, such as Dolphin
+    (file manager) and Konqueror (web browser). Infrastructure files and
+    libraries are also provided.</para>
+
+    &lfs76_checked;
+
+    <bridgehead renderas="sect3">Package Information</bridgehead>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>Download (HTTP): <ulink url="&kde-baseapps-download-http;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download (FTP): <ulink url="&kde-baseapps-download-ftp;"/></para>
+      </listitem>
+      <listitem>
+        <para>Download MD5 sum: &kde-baseapps-md5sum;</para>
+      </listitem>
+      <listitem>
+        <para>Download size: &kde-baseapps-size;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated disk space required: &kde-baseapps-buildsize;</para>
+      </listitem>
+      <listitem>
+        <para>Estimated build time: &kde-baseapps-time;</para>
+      </listitem>
+    </itemizedlist>
+
+    <bridgehead renderas="sect3">KDE-Baseapps Dependencies</bridgehead>
+
+    <bridgehead renderas="sect4">Required</bridgehead>
+    <para role="required">
+      <xref linkend="kdelibs"/>
+    </para>
+
+    <bridgehead renderas="sect4">Recommended</bridgehead>
+    <para role="recommended">
+      <xref linkend="baloo"/>,
+      <xref linkend="baloo-widgets"/>,
+      <xref linkend="kactivities"/>, and
+      <xref linkend="kfilemetadata"/>
+    </para>
+
+    <bridgehead renderas="sect4">Optional</bridgehead>
+    <para role="optional">
+      <xref linkend="glib2"/> and
+      <xref linkend="html-tidy"/>
+    </para>
+
+    <para condition="html" role="usernotes">User Notes:
+    <ulink url="&blfs-wiki;/kde-baseapps"/>
+    </para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of KDE-Baseapps</title>
+
+    <para>Install <application>KDE-Baseapps</application> by running the following
+    commands:</para>
+
+<screen><userinput>mkdir build &amp;&amp;
+cd    build &amp;&amp;
+
+cmake -DCMAKE_INSTALL_PREFIX=&kde-dir; \
+      -DCMAKE_BUILD_TYPE=Release         \
+      -Wno-dev .. &amp;&amp;
+make</userinput></screen>
+
+    <para>To test the results, issue <command>make test</command>.</para>
+
+    <para> Now as the <systemitem class="username">root</systemitem>
+    user:</para>
+
+<screen role="root"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title>Contents</title>
+
+    <segmentedlist>
+      <segtitle>Installed Programs</segtitle>
+      <segtitle>Installed Libraries</segtitle>
+      <segtitle>Installed Directories</segtitle>
+
+      <seglistitem>
+        <seg>dolphin, fsview, kbookmarkmerger, kdepasswd, kdialog, keditbookmarks, kfind,
+        kfmclient, konqueror, nspluginscan, nspluginviewer, servicemenudeinstallation and
+        servicemenuinstallation</seg>
+        <seg>libdolphinprivate.so, libkbookmarkmodel_private.so,
+        libkdeinit4_dolphin.so, libkdeinit4_keditbookmarks.so,
+        libkdeinit4_kfmclient.so, libkdeinit4_konqueror.so, libkonq.so,
+        libkonqsidebarplugin.so, libkonquerorprivate.so and several in
+        &kde-dir;/lib/kde4</seg>
+        <seg>several in &kde-dir;/share</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="kbookmarkmerger">
+        <term><command>kbookmarkmerger</command></term>
+        <listitem>
+          <para>
+            is a program for merging a given set of bookmarks into the
+            user's set of bookmarks.
+          </para>
+          <indexterm zone="kde-baseapps kbookmarkmerger">
+            <primary sortas="b-kbookmarkmerger">kbookmarkmerger</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="kfind">
+        <term><command>kfind</command></term>
+        <listitem>
+          <para>
+            is the file find utility for KDE.
+          </para>
+          <indexterm zone="kde-baseapps kfind">
+            <primary sortas="b-kfind">kfind</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
