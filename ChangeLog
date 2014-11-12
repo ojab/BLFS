@@ -1,3 +1,6 @@
+2014-11-12 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Ensure blfs/sysconfig/bluetooth is installed
+
 2014-10-11 Igor Živković <contact@igor-zivkovic.from.hr>
    * Improve mysql script portability
 
