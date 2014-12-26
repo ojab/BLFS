@@ -178,7 +178,7 @@ install-wicd: create-dirs
 	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc4.d/S30wicd
 	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc5.d/S30wicd
 	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc6.d/K20wicd
-		
+
 install-dhcpd: create-dirs
 	install -m ${MODE} blfs/init.d/dhcpd       ${EXTDIR}/rc.d/init.d/dhcpd
 	install -m ${CONFMODE} blfs/sysconfig/dhcpd ${EXTDIR}/sysconfig/dhcpd
@@ -663,6 +663,16 @@ uninstall-dbus:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S29dbus
 	rm -f ${EXTDIR}/rc.d/rc6.d/K30dbus
 
+uninstall-wicd:
+	rm -f ${EXTDIR}/rc.d/init.d/wicd
+	rm -f ${EXTDIR}/rc.d/rc0.d/K20wicd
+	rm -f ${EXTDIR}/rc.d/rc1.d/K20wicd
+	rm -f ${EXTDIR}/rc.d/rc2.d/S30wicd
+	rm -f ${EXTDIR}/rc.d/rc3.d/S30wicd
+	rm -f ${EXTDIR}/rc.d/rc4.d/S30wicd
+	rm -f ${EXTDIR}/rc.d/rc5.d/S30wicd
+	rm -f ${EXTDIR}/rc.d/rc6.d/K20wicd
+
 uninstall-dhcpd:
 	rm -f ${EXTDIR}/rc.d/init.d/dhcpd
 	rm -f ${EXTDIR}/sysconfig/dhcpd
@@ -1020,6 +1030,7 @@ uninstall-xinetd:
 	install-bluetooth \
 	install-cups \
 	install-saslauthd \
+	install-wicd \
 	install-dhcpd \
 	install-dovecot \
 	install-exim \
@@ -1064,6 +1075,7 @@ uninstall-xinetd:
 	uninstall-bluetooth \
 	uninstall-cups \
 	uninstall-saslauthd \
+	uninstall-wicd \
 	uninstall-dhcpd \
 	uninstall-dovecot \
 	uninstall-exim \
