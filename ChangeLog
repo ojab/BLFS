@@ -1,3 +1,6 @@
+2014-09-01 Fernando de Oliveira <famobr@yahoo.com.br>
+   * Include uninstall option to wicd
+
 2014-11-12 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Ensure blfs/sysconfig/bluetooth is installed
 
