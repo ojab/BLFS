@@ -1,3 +1,6 @@
+2015-01-04 Ken Moffat <ken@linuxfromscratch.org>
+   * Remove lingering umount /proc/fs/nfsd from nfs-server.
+
 2014-09-01 Fernando de Oliveira <famobr@yahoo.com.br>
    * Include uninstall option to wicd
 
