@@ -62,10 +62,6 @@
       /usr/sbin/exportfs -au 2>&1 > /dev/null
       evaluate_retval
 
-      log_info_msg "Unmounting NFS Virtual Filesystem..."
-      /bin/umount /proc/fs/nfsd 2>&1 > /dev/null
-      evaluate_retval
-
       if [ "$QUOTAS" = "yes" ]; then
          log_info_msg "Stopping NFS rquotad..."
          killproc /usr/sbin/rpc.rquotad
