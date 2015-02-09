@@ -32,7 +32,7 @@
 case "$1" in
    start)
       log_info_msg "Starting NFS statd..."
-      start_daemon /usr/sbin/rpc.statd
+      start_daemon /usr/sbin/rpc.statd --no-notify
       evaluate_retval
       ;;
 

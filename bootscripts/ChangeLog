@@ -1,3 +1,6 @@
+2015-02-09 Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Fix nfs-client and nfs-server for recent nfs-utils
+
 2015-01-04 Ken Moffat <ken@linuxfromscratch.org>
    * Remove lingering umount /proc/fs/nfsd from nfs-server.
 
