@@ -39,7 +39,8 @@ case "$2" in
 
       mkdir -p /run/wpa_supplicant
 
-      /sbin/wpa_supplicant -q -B -Dnl80211,wext -P${PIDFILE} -C/run/wpa_supplicant -c${CFGFILE} -i$1 ${WPA_ARGS}
+      /sbin/wpa_supplicant -q -B -Dnl80211,wext -P${PIDFILE} \
+          -C/run/wpa_supplicant -c${CFGFILE} -i$1 ${WPA_ARGS}
 
       if [ "$?" != "0" ]; then
         log_failure_msg2
@@ -49,7 +50,8 @@ case "$2" in
       log_success_msg2
 
       if [ -n "${WPA_SERVICE}" ]; then
-         if [ ! -e /lib/services/${WPA_SERVICE} -a ! -x /lib/services/${WPA_SERVICE} ]; then
+         if [ ! -e /lib/services/${WPA_SERVICE} -a \
+              ! -x /lib/services/${WPA_SERVICE} ]; then
             log_info_msg "\n Cannot start ${WPA_SERVICE} on $1"
             log_failure_msg2
             exit 1
