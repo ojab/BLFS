@@ -902,6 +902,16 @@ uninstall-random:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S25random
 	rm -f ${EXTDIR}/rc.d/rc6.d/K45random
 
+uninstall-rpcbind: 
+	rm -f ${EXTDIR}/rc.d/init.d/rpcbind
+	rm -f ${EXTDIR}/rc.d/rc0.d/K49rpcbind
+	rm -f ${EXTDIR}/rc.d/rc1.d/K49rpcbind
+	rm -f ${EXTDIR}/rc.d/rc2.d/K49rpcbind
+	rm -f ${EXTDIR}/rc.d/rc3.d/S22rpcbind
+	rm -f ${EXTDIR}/rc.d/rc4.d/S22rpcbind
+	rm -f ${EXTDIR}/rc.d/rc5.d/S22rpcbind
+	rm -f ${EXTDIR}/rc.d/rc6.d/K49rpcbind
+
 uninstall-rsyncd:
 	rm -f ${EXTDIR}/rc.d/init.d/rsyncd
 	rm -f ${EXTDIR}/rc.d/rc0.d/K30rsyncd
