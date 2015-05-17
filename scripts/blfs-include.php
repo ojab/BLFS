@@ -44,8 +44,7 @@ function find_max( $lines, $regex_match, $regex_replace )
 
      // Isolate the version and put in an array
      $slice = preg_replace( $regex_replace, "$1", $line );
-
-     if ( $slice == $line ) continue; 
+     if ( "x$slice" == "x$line" ) continue; 
 
      array_push( $a, $slice );     
   }
@@ -66,7 +65,7 @@ function find_even_max( $lines, $regex_match, $regex_replace )
      // Isolate the version and put in an array
      $slice = preg_replace( $regex_replace, "$1", $line );
 
-     if ( $slice == $line ) continue; 
+     if ( "x$slice" == "x$line" ) continue; 
 
      // Skip odd numbered minor versions
      list( $major, $minor ) = explode( ".", $slice . ".0", 2 );

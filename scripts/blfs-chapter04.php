@@ -14,11 +14,7 @@ $renames[ 'shadow_'    ] = 'shadow';
 $ignores = array();
 $ignores[ 'openssh1' ] = "";
 
-//$current="haveged";   // For debugging
-
-// Special cases
-$exceptions = array();
-$exceptions[ 'gnutls' ] = "UPDIR=/.*(v\d[\d\.-]*\d).*$/:DOWNDIR=";
+//$current="p11-kit";   // For debugging
 
 $regex = array();
 $regex[ 'krb5'     ] = "/^.*Kerberos V5 Release ([\d\.]+).*$/";
@@ -26,8 +22,14 @@ $regex[ 'tripwire' ] = "/^.*Download tripwire-([\d\.]+)-src.*$/";
 $regex[ 'haveged'  ] = "/^.*haveged-([\d\.]+)\.tar.*$/";
 
 $url_fix = array(
-   array( 'match'   => 'ftp.gnu(pg|tls).org', 
-          'replace' => 'ftp.heanet.ie/mirrors/ftp.gnupg.org' ),
+
+   array( 'pkg'     => 'gnupg',
+          'match'   => '^.*$', 
+          'replace' => 'ftp://ftp.gnupg.org/gcrypt/gnupg/' ),
+
+   array( 'pkg'     => 'gnutls',
+          'match'   => '^.*$', 
+          'replace' => 'ftp://ftp.gnupg.org/gcrypt/gnutls/' ),
 
    array( 'pkg'     => 'haveged',
           'match'   => '^.*$', 
@@ -92,62 +94,15 @@ function get_packages( $package, $dirpath )
   // Check for ftp
   if ( preg_match( "/^ftp/", $dirpath ) ) 
   { 
-    $dirpath  = substr( $dirpath, 6 );           // Remove ftp://
-    $dirpath  = rtrim ( $dirpath, "/" );         // Trim any trailing slash
-    $position = strpos( $dirpath, "/" );         // Divide at first slash
-    $server   = substr( $dirpath, 0, $position );
-    $path     = substr( $dirpath, $position );
+     if ( $package == 'gnutls' )
+     {
+       $lines1 = http_get_file( $dirpath );
+       $dir = find_max( $lines1, "/v\d\.\d/", "/.*(v\d[\d\.-]*\d).*$/" );
+       $dirpath .= "$dir/";
+     }
 
-    $conn = ftp_connect( $server );
-    if ( ! isset( $conn ) )
-    {
-       //echo "No connection\n";
-       return -7;
-    }
-
-    if ( ! ftp_login( $conn, "anonymous", "a@b" ) )
-    {
-        //echo "anonymous ftp login failed\n";
-        return -8;
-    }
-
-    // See if we need special handling
-    if ( isset( $exceptions[ $package ] ) )
-    {
-       $specials = explode( ":", $exceptions[ $package ] );
-
-       foreach ( $specials as $i )
-       {
-          list( $op, $regexp ) = explode( "=", $i );
-
-          switch ($op)
-          {
-            case "UPDIR":
-              // Remove last dir from $path
-              $position = strrpos( $path, "/" );
-              $path = substr( $path, 0, $position );
-
-              // Get dir listing
-              $lines = ftp_rawlist ($conn, $path);              
-              $max   = find_max( $lines, $regexp, $regexp );
-              break;
-
-            case "DOWNDIR":
-              // Append found directory
-              $path .= "/$max";
-              break;
-
-            default:
-              echo "Error in specials array for $package\n";
-              return 0;
-              break;
-          }
-       }
-    }
-
-    $lines = ftp_rawlist ($conn, $path);
-//print_r($lines);
-    ftp_close( $conn );
+     $lines = http_get_file( "$dirpath/" );
+     if ( ! is_array( $lines ) ) return $lines;
   }
   else // http
   {
@@ -213,7 +168,7 @@ function get_packages( $package, $dirpath )
      return find_max( $lines, "/$package/", "/^.*$package-([\d\.p]*\d.?).tar.*$/" );
 
   if ( $book_index == "p11-kit" )
-     return find_even_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d).tar.*$/" );
+     return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d).tar.*$/" );
 
   if ( $book_index == "shadow_" )
      return find_max( $lines, "/$package/", "/^.*$package([\d\.]*\d).orig.tar.*$/" );
@@ -222,10 +177,10 @@ function get_packages( $package, $dirpath )
      return find_max( $lines, "/\d\.\d+\.\d+/", "/^.*(\d\.\d+\.\d+).*$/" );
 
   if ( $book_index == "nettle" )
-     return find_max( $lines, "/nettle-2/", "/^.*nettle-(2\.\d+\.\d+).tar.*$/" );
+     return find_max( $lines, "/nettle/", "/^.*nettle-([\.\d]+\d).tar.*$/" );
 
   if ( $book_index == "gnupg" )
-     return find_max( $lines, "/gnupg-2.0/", "/^.*gnupg-(2\.0\.\d+).tar.*$/" );
+     return find_max( $lines, "/gnupg-2/", "/^.*gnupg-([\.\d]+).tar.*$/" );
 
   if ( $book_index == "nss" )
   {
