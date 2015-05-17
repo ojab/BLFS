@@ -41,11 +41,9 @@ function find_max( $lines, $regex_match, $regex_replace )
   foreach ( $lines as $line )
   {
      if ( ! preg_match( $regex_match, $line ) ) continue; 
-
      // Isolate the version and put in an array
      $slice = preg_replace( $regex_replace, "$1", $line );
      if ( "x$slice" == "x$line" ) continue; 
-
      array_push( $a, $slice );     
   }
 

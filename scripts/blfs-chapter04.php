@@ -59,7 +59,6 @@ $url_fix = array(
 
 function get_packages( $package, $dirpath )
 {
-  global $exceptions;
   global $regex;
   global $book_index;
   global $url_fix;
