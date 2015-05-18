@@ -1,20 +1,22 @@
 #! /usr/bin/php
 <?php
 
-$CHAPTER=12;
-$START_PACKAGE='acpid';
-$STOP_PACKAGE='zip';
+include 'blfs-include.php';
 
-$book = array();
-$book_index = 0;
+$CHAPTER       = '12';
+$START_PACKAGE = 'acpid';
+$STOP_PACKAGE  = 'zip';
 
-$vers = array();
+$renames = array();
+$renames[ 'at_'      ] = 'at';
+$renames[ 'udisks1'  ] = 'udisks2';
+$renames[ 'sg'       ] = 'sg3_utils';
+$renames[ 'unrarsrc' ] = 'unrar';
+$renames[ 'p7zip_'   ] = 'p7zip';
 
-date_default_timezone_set( "GMT" );
-$date = date( "Y-m-d (D) H:i:s" );
+$ignores = array();
 
-// Special cases
-$exceptions = array();
+//$current="obex-data-server";
 
 $regex = array();
 $regex[ 'acpid'   ] = "/^.*Download acpid-(\d[\d\.]+\d).tar.*$/";
@@ -25,21 +27,17 @@ $regex[ 'strigi'  ] = "/^(\d[\d\.]+\d) .*$/";
 $regex[ 'sysstat' ] = "/^.*sysstat-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'p7zip_'  ] = "/^.*Download p7zip_(\d[\d\.]+\d)_src.*$/";
 
-// p7zip_ is screwed up on SF.  wget fetch is different from lins or other browser
-
 $sf = 'sourceforge.net';
-
-#$$current="p7zip_";
 
 $url_fix = array (
 
    array( 'pkg'     => 'hdparm',
           'match'   => '^.*$', 
-          'replace' => "http://$sf/projects/hdparm/files" ),
+          'replace' => "http://sourceforge.net/projects/hdparm/files" ),
    
    array( 'pkg'     => 'heirloom',
           'match'   => '^.*$', 
-          'replace' => "http://$sf/projects/heirloom/files/heirloom" ),
+          'replace' => "http://sourceforge.net/projects/heirloom/files/heirloom" ),
    
    array( 'pkg'     => 'ibus',
           'match'   => '^.*$', 
@@ -63,102 +61,20 @@ $url_fix = array (
    
    array( 'pkg'     => 'acpid',
           'match'   => '^.*$', 
-          'replace' => "http://$sf/projects/acpid2/files" ),
+          'replace' => "http://sourceforge.net/projects/acpid2/files" ),
    
    array( 'pkg'     => 'p7zip_',
           'match'   => '^.*$', 
-          'replace' => "http://$sf/projects/p7zip/files" ),
+          'replace' => "http://sourceforge.net/projects/p7zip/files" ),
 
    array( 'pkg'     => 'fcron',
           'match'   => '^.*$', 
           'replace' => "http://fcron.free.fr" ),
 
-   array( 'pkg'     => 'gpm',
-          'match'   => '^.*$', 
-          'replace' => "http://www.ar.linux.it/pub/gpm" ),
 );
-
-function find_max( $lines, $regex_match, $regex_replace )
-{
-  global $book_index;
-  $a = array();
-  foreach ( $lines as $line )
-  {
-     // Ensure we skip verbosity of NcFTP
-     if ( ! preg_match( $regex_match,   $line ) ) continue; 
-
-     // Isolate the version and put in an array
-     $slice = preg_replace( $regex_replace, "$1", $line );
-
-     // Numbers and whitespace
-     if ( "x$slice" == "x$line" && 
-          ! preg_match( "/^\d[\d\.]*/", $slice ) ) continue; 
-
-     // Skip minor versions in the 90s
-     list( $major, $minor, $rest ) = explode( ".", $slice . ".0.0" );
-     if ( $minor >= 90  &&  $book_index != "dbus-glib" ) continue;
-     if ( $minor >= 90  &&  $book_index != "gpm" ) continue;
-
-     array_push( $a, $slice );     
-  }
-
-  // SORT_NATURAL requires php-5.4.0 or later
-  rsort( $a, SORT_NATURAL );  // Max version is at the top
-  return ( isset( $a[0] ) ) ? $a[0] : 0;
-}
-
-function find_even_max( $lines, $regex_match, $regex_replace )
-{
-  $a = array();
-  foreach ( $lines as $line )
-  {
-     if ( ! preg_match( $regex_match, $line ) ) continue; 
-     
-     // Isolate the version and put in an array
-     $slice = preg_replace( $regex_replace, "$1", $line );
-
-     if ( "x$slice" == "x$line" && ! preg_match( "/^[\d\.]+/", $slice ) ) continue; 
-     
-     // Skip odd numbered minor versions
-     list( $major, $minor, $rest ) = explode( ".", $slice . ".0" );
-     if ( $minor % 2 == 1 ) continue;
-
-     array_push( $a, $slice );     
-  }
-
-  // SORT_NATURAL requires php-5.4.0 or later
-  rsort( $a, SORT_NATURAL );  // Max version is at the top
-
-  return ( isset( $a[0] ) ) ? $a[0] : 0;
-}
-
-function http_get_file( $url )
-{
-  exec( "curl -L -s -m30 $url", $dir );
-  $s   = implode( "\n", $dir );
-  $dir = strip_tags( $s );
-  return explode( "\n", $dir );
-}
-
-function max_parent( $dirpath, $prefix )
-{
-  // First, remove a directory
-  $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-  $position = strrpos( $dirpath, "/" );
-  $dirpath  = substr ( $dirpath, 0, $position );
-
-  $lines = http_get_file( $dirpath );
-
-  $regex_match   = "#${prefix}[\d\.]+/#";
-  $regex_replace = "#^(${prefix}[\d\.]+)/.*$#";
-  $max           = find_max( $lines, $regex_match, $regex_replace );
-
-  return "$dirpath/$max"; 
-}
 
 function get_packages( $package, $dirpath )
 {
-  global $exceptions;
   global $regex;
   global $book_index;
   global $url_fix;
@@ -166,7 +82,7 @@ function get_packages( $package, $dirpath )
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
 
-// p7zip_ is screwed up on SF.  wget fetch is different from lins or other browser
+  // p7zip_ is screwed up on SF.  wget fetch is different from browser
   if ( $book_index == "p7zip_" ) return "check manually";
 
   // Fix up directory path
@@ -203,8 +119,7 @@ function get_packages( $package, $dirpath )
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
       $position = strrpos( $dirpath, "/" );
       $dirpath  = substr ( $dirpath, 0, $position );
-      //exec( "echo 'ls -1;bye' | ncftp $dirpath", $lines );
-      $lines = http_get_file( "$dirpath/" );
+      $lines    = http_get_file( "$dirpath/" );
       $dir      = find_even_max( $lines, '/^[\d\.]+$/', '/^([\d\.]+)$/' );
       $dirpath .= "/$dir";
     }
@@ -216,14 +131,12 @@ function get_packages( $package, $dirpath )
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
       $position = strrpos( $dirpath, "/" );
       $dirpath  = substr ( $dirpath, 0, $position );
-      //exec( "echo 'ls -1;bye' | ncftp $dirpath", $lines );
-      $lines = http_get_file( "$dirpath/" );
-      $dir = find_max( $lines, "/\d[\d\.]+/", "/(\d[\d\.]+)/" );
+      $lines    = http_get_file( "$dirpath/" );
+      $dir      = find_max( $lines, "/\d[\d\.]+/", "/(\d[\d\.]+)/" );
       $dirpath .= "/$dir";
     }
 
     // Get listing
-    //exec( "echo 'ls -1;bye' | ncftp $dirpath", $lines );
     $lines = http_get_file( "$dirpath/" );
   }
   else // http
@@ -279,7 +192,7 @@ function get_packages( $package, $dirpath )
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
-  $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );
+  $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/", TRUE );
   return $max;
 }
 
@@ -309,125 +222,21 @@ Function get_pattern( $line )
    return "/\D*(\d.*\d)\D*$/";
 }
 
-function get_current()
-{
-   global $vers;
-   global $book;
-
-   $wget_file = "/home/bdubbs/public_html/blfs-book-xsl/wget-list";
-
-   $contents = file_get_contents( $wget_file );
-   $wget  = explode( "\n", $contents );
-
-   foreach ( $wget as $line )
-   {
-      if ( $line == "" ) continue;
-
-      $file = basename( $line );
-      $url  = dirname ( $line );
-      $file = preg_replace( "/\.tar\..z.*$/", "", $file ); // Remove .tar.?z*$
-      $file = preg_replace( "/\.tar$/",       "", $file ); // Remove .tar$
-      $file = preg_replace( "/\.gz$/",        "", $file ); // Remove .gz$
-      $file = preg_replace( "/\.orig$/",      "", $file ); // Remove .orig$
-      $file = preg_replace( "/\.src$/",       "", $file ); // Remove .src$
-      $file = preg_replace( "/\.tgz$/",       "", $file ); // Remove .tgz$
-
-      if ( preg_match( "/patch$/", $file ) ) continue;     // Skip patches
-
-      $pattern = get_pattern( $line );
-
-      $version = preg_replace( $pattern, "$1", $file );   // Isolate version
-      $version = preg_replace( "/^-/", "", $version );    // Remove leading #-
-      $basename = strstr( $file, $version, true );
-      $basename = rtrim( $basename, "-" );
-
-      $basename = ( $basename == "hd" ) ? "hd2u" : $basename;
-
-      $index = $basename;
-      while ( isset( $book[ $index ] ) ) $index .= "1";
-      
-      $book[ $index ] = array( 'basename' => $basename,
-                               'url'      => $url, 
-                               'version'  => $version );
-   }
-}
-
-function html()
-{
-   global $CHAPTER;
-   global $book;
-   global $date;
-   global $vers;
-
-   $leftnav = file_get_contents( 'leftnav.html' );
-
-   $f = "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
-                      'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
-<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
-<head>
-<title>BLFS Chapter $CHAPTER Package Currency Check - $date</title>
-<link rel='stylesheet' href='currency.css' type='text/css' />
-</head>
-<body>\n";
-
-$f .= $leftnav;
-
-$f .= "<h1>BLFS Chapter $CHAPTER Package Currency Check</h1>
-<h2>As of $date GMT</h2>
-
-<table>
-<tr><th>BLFS Package</th> <th>BLFS Version</th> <th>Latest</th> <th>Flag</th></tr>\n";
-
-   // Get the latest version of each package
-   foreach ( $vers as $pkg => $v )
-   {
-      $v    = $book[ $pkg ][ 'version' ];
-      $flag = ( $vers[ $pkg ] != $v ) ? "*" : "";
-  
-      $name = $pkg;
-      if ( $pkg == "at_"      ) $name = 'at';
-      if ( $pkg == "udisks1"  ) $name = 'udisks2';
-      if ( $pkg == "sg"       ) $name = 'sg3_utils';
-      if ( $pkg == "unrarsrc" ) $name = 'unrar';
-      if ( $pkg == "p7zip_"   ) $name = 'p7zip';
-
-
-      $f .= "<tr><td>$name</td>";
-      $f .= "<td>$v</td>";
-      $f .= "<td>${vers[ $pkg ]}</td>";
-      $f .= "<td class='center'>$flag</td></tr>\n";
-   }
-
-   $f .= "</table>
-</body>
-</html>\n";
-
-   file_put_contents( "/home/bdubbs/public_html/chapter$CHAPTER.html", $f );
-}
-
 get_current();  // Get what is in the book
-
-$start = false;
 
 // Get latest version for each package 
 foreach ( $book as $pkg => $data )
 {
    $book_index = $pkg; 
 
-   if ( $book_index == $START_PACKAGE ) $start = true;
-   if ( ! $start ) continue;
-
    $base = $data[ 'basename' ];
    $url  = $data[ 'url' ];
    $bver = $data[ 'version' ];
 
-   echo "book index: $book_index  bver=$bver url=$url \n";
+   echo "book index: $book_index $bver $url\n";
 
    $v = get_packages( $book_index, $url );
    $vers[ $book_index ] = $v;
-
-   // Stop at the end of the chapter 
-   if ( $book_index == $STOP_PACKAGE ) break; 
 }
 
 html();  // Write html output

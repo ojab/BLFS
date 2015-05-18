@@ -1,28 +1,24 @@
 #! /usr/bin/php
 <?php
 
-$CHAPTER=11;
-$START_PACKAGE='compface';
-$STOP_PACKAGE='unixODBC';
+include 'blfs-include.php';
 
-$book = array();
-$book_index = 0;
+$CHAPTER       = '11';
+$START_PACKAGE = 'compface';
+$STOP_PACKAGE  = 'unixODBC';
 
-$vers = array();
+$renames = array();
+$renames[ 'lsof_'     ] = 'lsof';
+$renames[ 'rep-gtk_'  ] = 'rep-gtk';
+$renames[ 'tidy-cvs_' ] = 'tidy-cvs';
 
-date_default_timezone_set( "GMT" );
-$date = date( "Y-m-d (D) H:i:s" );
-
-// Special cases
-$exceptions = array();
+$ignores = array();
 
 $regex = array();
 $regex[ 'intltool'      ] = "/^.*Latest version is (\d[\d\.]+\d).*$/";
 $regex[ 'xscreensaver'  ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
 
-$sf = 'sourceforge.net';
-
-//$current="rep-gtk";
+//$current="ImageMagick";  // For debugging
 
 $url_fix = array (
    array( //'pkg'     => 'gnome',
@@ -42,82 +38,8 @@ $url_fix = array (
           'replace' => "http://www.jwz.org/xscreensaver/download.html" ),
 );
 
-function find_max( $lines, $regex_match, $regex_replace )
-{
-  $a = array();
-  foreach ( $lines as $line )
-  {
-     // Ensure we skip verbosity of NcFTP
-     if ( ! preg_match( $regex_match,   $line ) ) continue; 
-     if (   preg_match( "/NcFTP/",      $line ) ) continue;
-     if (   preg_match( "/Connecting/", $line ) ) continue;
-     if (   preg_match( "/Current/",    $line ) ) continue;
-     
-     // Isolate the version and put in an array
-     $slice = preg_replace( $regex_replace, "$1", $line );
-
-     // Numbers and whitespace
-     if ( "x$slice" == "x$line" && ! preg_match( "/^\d[\d\.]*/", $slice ) ) continue; 
-
-     array_push( $a, $slice );     
-  }
-
-  // SORT_NATURAL requires php-5.4.0 or later
-  rsort( $a, SORT_NATURAL );  // Max version is at the top
-  return ( isset( $a[0] ) ) ? $a[0] : 0;
-}
-
-function find_even_max( $lines, $regex_match, $regex_replace )
-{
-  $a = array();
-  foreach ( $lines as $line )
-  {
-     if ( ! preg_match( $regex_match, $line ) ) continue; 
-     
-     // Isolate the version and put in an array
-     $slice = preg_replace( $regex_replace, "$1", $line );
-
-     if ( "x$slice" == "x$line" && ! preg_match( "/[\d\.]+/", $slice ) ) continue; 
-     
-     // Skip odd numbered minor versions
-     list( $major, $minor, $rest ) = explode( ".", $slice . ".0" );
-     if ( $minor % 2 == 1 ) continue;
-     
-     array_push( $a, $slice );     
-  }
-
-  // SORT_NATURAL requires php-5.4.0 or later
-  rsort( $a, SORT_NATURAL );  // Max version is at the top
-  return ( isset( $a[0] ) ) ? $a[0] : 0;
-}
-
-function http_get_file( $url )
-{
-  exec( "curl -L -s -m30 -A Firefox/22.0 $url", $dir );
-  $s   = implode( "\n", $dir );
-  $dir = strip_tags( $s );
-  return explode( "\n", $dir );
-}
-
-function max_parent( $dirpath, $prefix )
-{
-  // First, remove a directory
-  $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-  $position = strrpos( $dirpath, "/" );
-  $dirpath  = substr ( $dirpath, 0, $position );
-
-  $lines = http_get_file( $dirpath );
-
-  $regex_match   = "#${prefix}[\d\.]+/#";
-  $regex_replace = "#^(${prefix}[\d\.]+)/.*$#";
-  $max           = find_max( $lines, $regex_match, $regex_replace );
-
-  return "$dirpath/$max"; 
-}
-
 function get_packages( $package, $dirpath )
 {
-  global $exceptions;
   global $regex;
   global $book_index;
   global $url_fix;
@@ -177,8 +99,7 @@ function get_packages( $package, $dirpath )
     }
 
     // Get listing
-    exec( "echo 'ls -1;bye' | ncftp $dirpath", $lines );
-//print_r($lines);
+    $lines = http_get_file( "$dirpath/" );
   }
   else // http
   {
@@ -254,123 +175,21 @@ Function get_pattern( $line )
    return "/\D*(\d.*\d)\D*$/";
 }
 
-function get_current()
-{
-   global $vers;
-   global $book;
-
-   $wget_file = "/home/bdubbs/public_html/blfs-book-xsl/wget-list";
-
-   $contents = file_get_contents( $wget_file );
-   $wget  = explode( "\n", $contents );
-
-   foreach ( $wget as $line )
-   {
-      if ( $line == "" ) continue;
-
-      $file = basename( $line );
-      $url  = dirname ( $line );
-      $file = preg_replace( "/\.tar\..z.*$/", "", $file ); // Remove .tar.?z*$
-      $file = preg_replace( "/\.tar$/",       "", $file ); // Remove .tar$
-      $file = preg_replace( "/\.gz$/",        "", $file ); // Remove .gz$
-      $file = preg_replace( "/\.orig$/",      "", $file ); // Remove .orig$
-      $file = preg_replace( "/\.src$/",       "", $file ); // Remove .src$
-      $file = preg_replace( "/\.tgz$/",       "", $file ); // Remove .tgz$
-
-      if ( preg_match( "/patch$/", $file ) ) continue;     // Skip patches
-
-      $pattern = get_pattern( $line );
-      
-      $version = preg_replace( $pattern, "$1", $file );   // Isolate version
-      $version = preg_replace( "/^-/", "", $version );    // Remove leading #-
-
-      $basename = strstr( $file, $version, true );
-      $basename = rtrim( $basename, "-" );
-
-      $basename = ( $basename == "hd" ) ? "hd2u" : $basename;
-
-      $index = $basename;
-      while ( isset( $book[ $index ] ) ) $index .= "1";
-      
-      $book[ $index ] = array( 'basename' => $basename,
-                               'url'      => $url, 
-                               'version'  => $version );
-
-      //if ( preg_match( "/^xscreensaver/", $line ) ) break;
-   }
-}
-
-function html()
-{
-   global $CHAPTER;
-   global $book;
-   global $date;
-   global $vers;
-
-   $leftnav = file_get_contents( 'leftnav.html' );
-
-   $f = "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
-                      'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
-<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
-<head>
-<title>BLFS Chapter $CHAPTER Package Currency Check - $date</title>
-<link rel='stylesheet' href='currency.css' type='text/css' />
-</head>
-<body>
-$leftnav
-<h1>BLFS Chapter $CHAPTER Package Currency Check</h1>
-<h2>As of $date GMT</h2>
-
-<table>
-<tr><th>BLFS Package</th> <th>BLFS Version</th> <th>Latest</th> <th>Flag</th></tr>\n";
-
-   // Get the latest version of each package
-   foreach ( $vers as $pkg => $v )
-   {
-      $v    = $book[ $pkg ][ 'version' ];
-      $flag = ( $vers[ $pkg ] != $v ) ? "*" : "";
-  
-      $name = $pkg;
-      if ( $pkg == "js"        ) $name = 'spidermonkey';
-      if ( $pkg == "tidy-cvs_" ) $name = 'tidy';
-      if ( $pkg == "lsof_"     ) $name = 'lsof';
-
-      $f .= "<tr><td>$name</td>";
-      $f .= "<td>$v</td>";
-      $f .= "<td>${vers[ $pkg ]}</td>";
-      $f .= "<td class='center'>$flag</td></tr>\n";
-   }
-
-   $f .= "</table>
-</body>
-</html>\n";
-
-   file_put_contents( "/home/bdubbs/public_html/chapter$CHAPTER.html", $f );
-}
-
 get_current();  // Get what is in the book
-
-$start = false;
 
 // Get latest version for each package 
 foreach ( $book as $pkg => $data )
 {
    $book_index = $pkg; 
 
-   if ( $book_index == $START_PACKAGE ) $start = true;
-   if ( ! $start ) continue;
-
    $base = $data[ 'basename' ];
    $url  = $data[ 'url' ];
    $bver = $data[ 'version' ];
 
-   echo "book index: $book_index  bver=$bver url=$url \n";
+   echo "book index: $book_index $bver $url\n";
 
    $v = get_packages( $book_index, $url );
    $vers[ $book_index ] = $v;
-
-   // Stop at the end of the chapter 
-   if ( $book_index == $STOP_PACKAGE ) break; 
 }
 
 html();  // Write html output

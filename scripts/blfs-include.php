@@ -35,15 +35,27 @@ $WGET_DIR = ($d) ? $d : '.';
 
 $start = false;
 
-function find_max( $lines, $regex_match, $regex_replace )
+function find_max( $lines, $regex_match, $regex_replace, $skip_high = FALSE )
 {
   $a = array();
   foreach ( $lines as $line )
   {
      if ( ! preg_match( $regex_match, $line ) ) continue; 
+     
      // Isolate the version and put in an array
      $slice = preg_replace( $regex_replace, "$1", $line );
-     if ( "x$slice" == "x$line" ) continue; 
+
+     if ( "x$slice" == "x$line" && 
+          ! preg_match( "/^\d[\d\.]*$/", $slice ) ) continue; 
+
+     // Skip minor versions in the 90s if requested
+     if ( $skip_high )
+     {
+       list( $major, $minor, $micro, $rest ) = explode( ".", $slice . ".0.0.0.0" );
+       if ( $micro >= 80 ) continue;
+       if ( $minor >= 80 ) continue;
+     }
+
      array_push( $a, $slice );     
   }
 
@@ -65,9 +77,11 @@ function find_even_max( $lines, $regex_match, $regex_replace )
 
      if ( "x$slice" == "x$line" ) continue; 
 
-     // Skip odd numbered minor versions
+     // Skip odd numbered minor versions and minors > 80
      list( $major, $minor ) = explode( ".", $slice . ".0", 2 );
-     if ( $minor % 2 == 1 ) continue;
+     if ( $minor % 2 == 1  ) continue;
+     if ( $minor     >  80 ) continue;
+
 
      array_push( $a, $slice );     
   }
@@ -80,7 +94,7 @@ function find_even_max( $lines, $regex_match, $regex_replace )
 
 function http_get_file( $url )
 {
-  exec( "curl -L -s -m30 -A Firefox/22.0 $url", $dir );
+  exec( "curl -L -s -m40 -A Firefox/22.0 $url", $dir );
   $s   = implode( "\n", $dir );
   $dir = strip_tags( $s );
   return explode( "\n", $dir );
@@ -119,7 +133,7 @@ function get_current()
    foreach ( $wget as $line )
    {
       if ( $line == "" ) continue;
-      if ( preg_match( "/patch$/", $line ) ) continue;     // Skip patches
+      if ( preg_match( "/patch/", $line ) ) continue;     // Skip patches
 
       $file =  basename( $line );
       $url  =  dirname ( $line );
@@ -148,6 +162,9 @@ function get_current()
                                'url'      => $url, 
                                'version'  => $version );
 
+      // Custom for chapter 12 -- there is both p7zip, unzip, and zip there
+      if ( preg_match( "/p7zip|unzip/", $line ) ) continue;
+      
       if ( preg_match( "/$STOP_PACKAGE/", $line ) ) break;
    }
 }

@@ -272,6 +272,8 @@ function get_packages( $package, $dirpath )
     $xml_parser = xml_parser_create();
     xml_parse_into_struct( $xml_parser, $data[1], $values );
 
+    $lines = array();
+
     foreach ( $values as $v )
       if ( $v[ 'tag' ] == "KEY" ) array_push( $lines, $v[ 'value' ] );
     

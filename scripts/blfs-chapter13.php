@@ -1,39 +1,52 @@
 #! /usr/bin/php
 <?php
 
-$CHAPTER=13;
-$START_PACKAGE='check';
-$STOP_PACKAGE='OpenJDK';
+include 'blfs-include.php';
 
-$book = array();
-$book_index = 0;
-$previous   = 0;
+$CHAPTER       = '13';
+$START_PACKAGE = 'check';
+$STOP_PACKAGE  = 'junit';
 
-$vers = array();
+$renames = array();
+$renames[ 'librep_'    ] = 'librep';
+$renames[ 'py'         ] = 'pycairo';
+$renames[ 'Python'     ] = 'python2';
+$renames[ 'python'     ] = 'python2 docs';
+$renames[ 'Python1'    ] = 'python3';
+$renames[ 'python1'    ] = 'python3 docs';
+$renames[ 'pygobject'  ] = 'pygobject2';
+$renames[ 'pygobject1' ] = 'pygobject3';
+$renames[ 'junit4_'    ] = 'junit';
 
-date_default_timezone_set( "GMT" );
-$date = date( "Y-m-d (D) H:i:s" );
+$ignores = array();
+$ignores[ 'cfe'         ] = '';
+$ignores[ 'clang'       ] = '';
+$ignores[ 'compiler-rt' ] = '';
+$ignores[ 'nasm1'       ] = '';
+$ignores[ 'tcl1'        ] = '';
+$ignores[ 'gcc1'        ] = '';
+$ignores[ 'gcc11'       ] = '';
+$ignores[ 'OpenJDK1'    ] = '';
+$ignores[ 'hamcrest'    ] = '';
+$ignores[ 'apache-ant1' ] = '';
 
-// Special cases
-$exceptions = array();
+//$current="junit4_";
 
 $regex = array();
-//$regex[ 'bzr'     ] = "/^.*Latest version is (\d[\d\.]+\d).*$/";
 $regex[ 'check'   ] = "/^.*Download check-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'expect'  ] = "/^.*Download expect(\d[\d\.]+\d).tar.*$/";
-$regex[ 'junit4'  ] = "/^\h*(\d[\d\.]+)\h*$/";
+$regex[ 'junit4_' ] = "/^\h*(\d[\d\.]+)\h*$/";
 $regex[ 'llvm'    ] = "/^.*Download LLVM (\d[\d\.]+\d).*$/";
 $regex[ 'scons'   ] = "/^.*Download scons-(\d[\d\.]+\d).*$/";
 $regex[ 'tcl'     ] = "/^.*Download tcl(\d[\d\.]+\d).*$/";
 $regex[ 'swig'    ] = "/^.*Download swig-(\d[\d\.]+\d).*$/";
 $regex[ 'Python1' ] = "/^.*Download Python (3[\d\.]+\d).*$/";
 $regex[ 'Mako'    ] = "/^.*version is (\d[\d\.]+\d).*$/";
-//$regex[ 'python1' ] = "/^.*Download Python (3[\d\.]+\d).*$/";
 $regex[ 'php'     ] = "/^.*php-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'ruby'    ] = "/^.*stable version is (\d[\d\.]+\d).*$/";
 $regex[ 'valgrind'] = "/^.*valgrind (\d[\d\.]+\d) \(tar.*$/";
 $regex[ 'jtreg'   ] = "/^.*jtreg(\d[b\d\.\-]+\d)\.tar.*$/";
-$regex[ 'OpenJDK' ] = "/^.*jtreg(\d[b\d\.\-]+\d)\.tar.*$/";
+$regex[ 'OpenJDK' ] = "/^.*OpenJDK-(\d[\d\.]+\d)\-.*$/";
 
 // Perl Modules
 $regex[ 'Archive-Zip'       ] = "/^.*Archive-Zip-(\d[\d\.]+\d).*$/";
@@ -65,33 +78,25 @@ $regex[ 'XML-LibXSLT'       ] = "/^.*XML-LibXSLT-(\d[\d\.]+\d).*$/";
 $regex[ 'XML-Simple'        ] = "/^.*XML-Simple-(\d[\d\.]+\d).*$/";
 $regex[ 'XML-Writer'        ] = "/^.*XML-Writer-(\d[\d\.]+\d).*$/";
 
-$sf = 'sourceforge.net';
-
-//$current="dbus-python";
-
 $url_fix = array (
 
    array( //'pkg'     => 'gnome',
           'match'   => '^ftp:\/\/ftp.gnome', 
           'replace' => "http://ftp.gnome" ),
 
-   //array( 'pkg'     => 'bzr',
-   //       'match'   => '^.*$', 
-   //       'replace' => "https://launchpad.net/bzr" ),
-
    array( 'pkg'     => 'check',
           'match'   => '^.*$', 
-          'replace' => "http://$sf/projects/check/files" ),
+          'replace' => "http://sourceforge.net/projects/check/files" ),
 
    array( 'pkg'     => 'expect',
           'match'   => '^.*$', 
-          'replace' => "http://$sf/projects/expect/files" ),
+          'replace' => "http://sourceforge.net/projects/expect/files" ),
 
    array( 'pkg'     => 'icedtea',
           'match'   => '^.*$', 
           'replace' => "http://icedtea.classpath.org/download/source" ),
 
-   array( 'pkg'     => 'junit4',
+   array( 'pkg'     => 'junit4_',
           'match'   => '^.*$', 
           'replace' => "https://github.com/junit-team/junit/wiki" ),
 
@@ -109,19 +114,19 @@ $url_fix = array (
 
    array( 'pkg'     => 'scons',
           'match'   => '^.*$', 
-          'replace' => "http://$sf/projects/scons/files" ),
+          'replace' => "http://sourceforge.net/projects/scons/files" ),
 
    array( 'pkg'     => 'tcl',
           'match'   => '^.*$', 
-          'replace' => "http://$sf/projects/tcl/files" ),
+          'replace' => "http://sourceforge.net/projects/tcl/files" ),
 
    array( 'pkg'     => 'tk',
           'match'   => '^.*$', 
-          'replace' => "http://$sf/projects/tcl/files/Tcl" ),
+          'replace' => "http://sourceforge.net/projects/tcl/files/Tcl" ),
 
    array( 'pkg'     => 'swig',
           'match'   => '^.*$', 
-          'replace' => "http://$sf/projects/swig/files/swig" ),
+          'replace' => "http://sourceforge.net/projects/swig/files/swig" ),
 
    array( 'pkg'     => 'elfutils',
           'match'   => '^.*$', 
@@ -277,24 +282,7 @@ $url_fix = array (
 
 );
 
-function find_max( $lines, $regex_match, $regex_replace )
-{
-  global $book_index;
-  global $previous;
-  $a = array();
-  foreach ( $lines as $line )
-  {
-     // Ensure we skip verbosity of NcFTP
-     if ( ! preg_match( $regex_match,   $line ) ) continue; 
-     if (   preg_match( "/NcFTP/",      $line ) ) continue;
-     if (   preg_match( "/Connecting/", $line ) ) continue;
-     if (   preg_match( "/Current/",    $line ) ) continue;
-
-     // Isolate the version and put in an array
-     $slice = preg_replace( $regex_replace, "$1", $line );
-     // Numbers and whitespace
-     if ( "x$slice" == "x$line" && ! preg_match( "/^\d[\d\.]*$/", $slice ) ) continue; 
-
+/*
      // Skip minor versions in the 90s (most of the time)
      list( $major, $minor, $rest ) = explode( ".", $slice . ".0.0" );
      if ( $minor >= 90                       &&
@@ -304,76 +292,10 @@ function find_max( $lines, $regex_match, $regex_replace )
           $book_index != "XML-LibXML-Simple" &&
           $book_index != "XML-LibXSLT"       &&
           $book_index != "elfutils"          ) continue;
-
-     array_push( $a, $slice );     
-  }
-
-  // SORT_NATURAL requires php-5.4.0 or later
-  rsort( $a, SORT_NATURAL );  // Max version is at the top
-//print_r($a);
-
-  $previous = ( isset( $a[1] ) ) ? $a[1] : 0;;
-//echo "previous=$previous\n";
-  return ( isset( $a[0] ) ) ? $a[0] : 0;
-}
-
-function find_even_max( $lines, $regex_match, $regex_replace )
-{
-  $a = array();
-  foreach ( $lines as $line )
-  {
-     if ( ! preg_match( $regex_match, $line ) ) continue; 
-     
-     // Isolate the version and put in an array
-     $slice = preg_replace( $regex_replace, "$1", $line );
-
-     if ( "x$slice" == "x$line" && ! preg_match( "/^[\d\.]+/", $slice ) ) continue; 
-     
-     // Skip odd numbered minor versions
-     list( $major, $minor, $rest ) = explode( ".", $slice . ".0" );
-     if ( $minor % 2 == 1  ) continue;
-     if ( $minor     >= 90 ) continue;
-
-     array_push( $a, $slice );     
-  }
-
-  // SORT_NATURAL requires php-5.4.0 or later
-  rsort( $a, SORT_NATURAL );  // Max version is at the top
-  return ( isset( $a[0] ) ) ? $a[0] : 0;
-}
-
-function http_get_file( $url, $strip = "yes" )
-{
-  exec( "curl -L -s -m30 $url", $dir );
-//echo "url=$url\n";
-//print_r($dir);
-  $s   = implode( "\n", $dir );
-  if ( "$strip" != "no" )  
-      $dir = strip_tags( $s );
-  else
-      $dir = $s;
-  return explode( "\n", $dir );
-}
-
-function max_parent( $dirpath, $prefix )
-{
-  // First, remove a directory
-  $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-  $position = strrpos( $dirpath, "/" );
-  $dirpath  = substr ( $dirpath, 0, $position );
-
-  $lines = http_get_file( $dirpath );
-
-  $regex_match   = "#${prefix}[\d\.]+/#";
-  $regex_replace = "#^(${prefix}[\d\.]+)/.*$#";
-  $max           = find_max( $lines, $regex_match, $regex_replace );
-
-  return "$dirpath/$max"; 
-}
+*/
 
 function get_packages( $package, $dirpath )
 {
-  global $exceptions;
   global $regex;
   global $book_index;
   global $url_fix;
@@ -419,7 +341,8 @@ function get_packages( $package, $dirpath )
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
       $position = strrpos( $dirpath, "/" );
       $dirpath  = substr ( $dirpath, 0, $position );
-      exec( "echo 'ls -1;bye' | ncftp $dirpath", $lines );
+      $lines = http_get_file( "$dirpath/" );
+
       if ( $book_index == "pygobject" )
          $dir      = find_even_max( $lines, '/^2[\d\.]+$/', '/^(2[\d\.]+)$/' );
       else
@@ -435,9 +358,8 @@ function get_packages( $package, $dirpath )
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
       $position = strrpos( $dirpath, "/" );
       $dirpath  = substr ( $dirpath, 0, $position );
-      exec( "echo 'ls -1;bye' | ncftp $dirpath", $lines );
-      $dir = find_max( $lines, "/$book_index-\d[\d\.]+/", "/$book_index-(\d[\d\.]+)/" );
-      $dirpath .= "/$book_index-$dir/";
+      $lines    = http_get_file( "$dirpath/" );
+      return find_max( $lines, "/gcc-\d/", "/^.*gcc-(\d[\d\.]+).*$/" );
     }
 
     // slang
@@ -446,10 +368,7 @@ function get_packages( $package, $dirpath )
        // Get the max directory and adjust the directory path
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
       $position = strrpos( $dirpath, "/" );
-      $dirpath  = substr ( $dirpath, 0, $position );
-      exec( "echo 'ls -1;bye' | ncftp $dirpath", $lines );
-      $dir = find_max( $lines, "/v\d[\d\.]+/", "/^v(\d[\d\.]+).*/" );
-      $dirpath .= "/v$dir/";
+      $dirpath  = substr ( $dirpath, 0, $position ) . "/latest";
     }
 
     if ( $book_index == "vala" )
@@ -458,8 +377,8 @@ function get_packages( $package, $dirpath )
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
       $position = strrpos( $dirpath, "/" );
       $dirpath  = substr ( $dirpath, 0, $position );
-      exec( "echo 'ls -1;bye' | ncftp $dirpath", $lines );
-      $dir = find_even_max( $lines, "/\d[\d\.]+/", "/^(\d[\d\.]+).*/" );
+      $lines    = http_get_file( "$dirpath/" );
+      $dir      = find_even_max( $lines, "/\d[\d\.]+/", "/^(\d[\d\.]+).*/" );
       $dirpath .= "/$dir/";
     }
 
@@ -474,7 +393,7 @@ function get_packages( $package, $dirpath )
     }
 
     // Get listing
-    exec( "echo 'ls -1;bye' | ncftp $dirpath", $lines );
+    $lines = http_get_file( "$dirpath/" );
   }
   else // http
   {
@@ -497,37 +416,7 @@ function get_packages( $package, $dirpath )
 
       $dirpath .= "/$dir/";
     }
-/*
-    if ( $book_index == "ruby" )
-    {
-      // Parent listing
-      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-      $position = strrpos( $dirpath, "/" );
-      $dirpath  = substr ( $dirpath, 0, $position );
-echo "dirpath 1=$dirpath\n";
-      $lines1   = http_get_file( "$dirpath/" );
-print_r($lines1);
-exit;
-      $dir      = find_max( $lines1, '/^\d\./', '/^\s*([\d\.]+).*$/' );
-echo "dir=$dir\n";
-echo "previous=$previous\n";
-      $prev     = $previous;
-      $save     = $dirpath;
-      $dirpath .= "/$dir/";
-echo "dirpath 2 =$dirpath\n";
-      $lines   = http_get_file( $dirpath );
-print_r($lines);
-exit;
-      $max     =  find_max( $lines, '/ruby-\d/', '/^ruby-(\d[\d\.-]+\d.*).tar.*$/' );
-echo "max=$max\n";
 
-      if ( $max != 0 ) return $max;
-
-      $dirpath = "$save/$prev/";
-echo "dirpath=$dirpath\n";
-exit;
-    }
-*/
     // Customize http directories as needed
     if ( $book_index == "cmake" )
     {
@@ -542,7 +431,6 @@ exit;
 
        $position = strrpos( $dirpath, "/" );
        $dirpath  = substr ( $dirpath, 0, $position ) . "/$prev";
-//echo "dirpath=$dirpath\n"; 
     }
      
     $strip = "yes";
@@ -572,8 +460,6 @@ exit;
 
   if ( $book_index == "llvm" )
   {
-     //$dir = max_parent( $dirpath, "" );
-     //$lines = http_get_file( "$dir" );
      return find_max( $lines, "/^.*$book_index-.*.src.*$/", 
                               "/^.*$book_index-([\d\.]+)\.src.*$/" );
   }
@@ -585,15 +471,14 @@ exit;
   }
 
   if ( $book_index == "nasm" )
-    return find_max( $lines, '/\d[\d\.]+\d/', '/^(\d[\d\.]+\d)\/.*$/' );
+    return find_max( $lines, '/^\d/', '/^(\d[\d\.]+\d)\/.*$/' );
 
   if ( $book_index == "Python" )
   {
-    $dir = max_parent( $dirpath, "2" );
+    $dir   = max_parent( $dirpath, "2" );
     $lines = http_get_file( "$dir" );
-
-    return find_max( $lines, "/^Python-\d[\d\.]*\d/", 
-                             "/^Python-(\d[\d\.]*\d).tar.*$/" );
+    $ver   = find_max( $lines, "/^Python/", "/^Python-(\d[\d\.]*\d).tar.*$/" );
+    return ( $ver == "0" ) ? "pending" : $ver;
   }
 
   if ( $book_index == "python" )  // python2
@@ -606,8 +491,6 @@ exit;
 
   if ( $book_index == "python1" )  // python3 docs
   {
-    //$dir = max_parent( $dirpath, "3" );
-    //$lines = http_get_file( "$dir" );
     return find_max( $lines, "/python-\d/", 
                              "/^python-(\d[\d\.]*\d)-docs.*$/" );
   }
@@ -626,10 +509,7 @@ exit;
        $book_index == "pygobject "  )
     $package = "pygobject";
 
-  //if ( $book_index == "ruby" )
-  //  return find_max( $lines, '/ruby-\d/', '/^ruby-(\d[\d\.-]+\d.*).tar.*$/' );
-     
-  if ( $book_index == "librep" )  
+  if ( $book_index == "librep_" )  
     return find_max( $lines, "/librep/", "/^.*[_-](\d[\d\.]*\d)\.tar.*$/" );
 
   if ( $book_index == "apache-ant" )
@@ -644,7 +524,7 @@ exit;
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
-//if (  $book_index == "subversion" ) print_r( $lines );
+
   $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]+\d).tar.*$/" );
   return $max;
 }
@@ -658,9 +538,6 @@ Function get_pattern( $line )
      array( 'pkg'   => 'py2cairo', 
             'regex' => "/py2cairo-([\d\.]+)/" ),
 
-     //array( 'pkg'   => 'icedtea', 
-     //       'regex' => "/icedtea-([\d\.]+)\-.*$/" ),
-
      array( 'pkg'   => 'Encode-JIS2K', 
             'regex' => "/\D*Encode-JIS2K-([\d\.]+)\D*$/" ),
 
@@ -672,6 +549,13 @@ Function get_pattern( $line )
 
      array( 'pkg'   => 'Jinja2', 
             'regex' => "/\D*Jinja2-([\d\.]+)\D*$/" ),
+
+     // Order matters here.  jtreg must be before OpenJDK
+     array( 'pkg'   => 'jtreg', 
+            'regex' => "/jtreg(\d[\d\.b-]+)$/" ),
+
+     array( 'pkg'   => 'OpenJDK', 
+            'regex' => "/OpenJDK-([\d\.]+)-.*$/" ),
 
      array( 'pkg'   => 'junit4', 
             'regex' => "/junit4_([\d\.]+).*$/" ),
@@ -687,162 +571,21 @@ Function get_pattern( $line )
    return "/\D*(\d.*\d)\D*$/";
 }
 
-function get_current()
-{
-   global $vers;
-   global $book;
-   global $STOP_PACKAGE; // not used here
-
-   $wget_file = "/home/bdubbs/public_html/blfs-book-xsl/wget-list";
-
-   $contents = file_get_contents( $wget_file );
-   $wget  = explode( "\n", $contents );
-
-   foreach ( $wget as $line )
-   {
-      if ( $line == "" ) continue;
-
-      $file = basename( $line );
-      $url  = dirname ( $line );
-      $file = preg_replace( "/\.tar\..z.*$/", "", $file ); // Remove .tar.?z*$
-      $file = preg_replace( "/\.tar$/",       "", $file ); // Remove .tar$
-      $file = preg_replace( "/\.gz$/",        "", $file ); // Remove .gz$
-      $file = preg_replace( "/\.orig$/",      "", $file ); // Remove .orig$
-      $file = preg_replace( "/\.src$/",       "", $file ); // Remove .src$
-      $file = preg_replace( "/\.tgz$/",       "", $file ); // Remove .tgz$
-
-      // Use iced tea from patch instead of OpenJDK
-      //if ( preg_match( "/icedtea.*add_cacerts/", $file ) )
-      //  $file = preg_replace( "/\.patch$/", "", $file ); 
-
-      if ( preg_match( "/patch$/"  , $file ) ) continue;     // Skip patches
-      if ( preg_match( "/hamcrest/", $file ) ) continue;     // Skip hamcrest
-      if ( preg_match( "/OpenJDK/" , $file ) ) continue;     // Skip OpenJDK for now
-
-      $pattern = get_pattern( $line );
-      
-      $version = preg_replace( $pattern, "$1", $file );   // Isolate version
-      $version = preg_replace( "/^-/", "", $version );    // Remove leading #-
-
-      $basename = strstr( $file, $version, true );
-      $basename = rtrim( $basename, "-" );
-      $basename = rtrim( $basename, "_" );
-
-      $basename = ( $basename == "hd" ) ? "hd2u" : $basename;
-
-      $index = $basename;
-      while ( isset( $book[ $index ] ) ) $index .= "1";
-
-      $book[ $index ] = array( 'basename' => $basename,
-                               'url'      => $url, 
-                               'version'  => $version );
-
-      if ( preg_match( "/apache-ant/", $line ) ) break;
-   }
-
-   // Add Java
-
-   $lines   = preg_grep( "/jtreg/" , $wget );
-   $line    = array_shift( $lines );
-   $url     = dirname ( $line );
-   $version = preg_replace( '/^.*jtreg(\d[b\d\.\-]+)\.tar.*$/', "$1", $line );
-
-   $book[ 'OpenJDK' ] = 
-     array( 'basename' => 'OpenJDK',
-            'url'      => $url, 
-            'version'  => $version );
-}
-
-function html()
-{
-   global $CHAPTER;
-   global $book;
-   global $date;
-   global $vers;
-
-   $leftnav = file_get_contents( 'leftnav.html' );
-
-   $f = "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
-                      'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
-<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
-<head>
-<title>BLFS Chapter $CHAPTER Package Currency Check - $date</title>
-<link rel='stylesheet' href='currency.css' type='text/css' />
-</head>
-<body>
-$leftnav
-<div id='top'>
-<h1>BLFS Chapter $CHAPTER Package Currency Check</h1>
-<h2>As of $date GMT</h2>
-</div>
-
-<table id='table'>
-<tr><th>BLFS Package</th> <th>BLFS Version</th> <th>Latest</th> <th>Flag</th></tr>\n";
-
-   // Get the latest version of each package
-   foreach ( $vers as $pkg => $v )
-   {
-      $v    = $book[ $pkg ][ 'version' ];
-      $flag = ( $vers[ $pkg ] != $v ) ? "*" : "";
-  
-      $name = $pkg;
-      //if ( $pkg == "OpenJDK"    ) $name = 'icedtea';
-      if ( $pkg == "nasm1"      ) $name = 'nasm docs';
-      if ( $pkg == "py"         ) $name = 'pycairo';
-      if ( $pkg == "Python"     ) $name = 'python2';
-      if ( $pkg == "python"     ) $name = 'python2 docs';
-      if ( $pkg == "Python1"    ) $name = 'python3';
-      if ( $pkg == "python1"    ) $name = 'python3 docs';
-      if ( $pkg == "pygobject"  ) $name = 'pygobject2';
-      if ( $pkg == "pygobject1" ) $name = 'pygobject3';
-      if ( $pkg == "tcl1"       ) $name = 'tcl docs';
-
-      $f .= "<tr><td>$name</td>";
-      $f .= "<td>$v</td>";
-      $f .= "<td>${vers[ $pkg ]}</td>";
-      $f .= "<td class='center'>$flag</td></tr>\n";
-   }
-
-   $f .= "</table>
-</body>
-</html>\n";
-
-   file_put_contents( "/home/bdubbs/public_html/chapter$CHAPTER.html", $f );
-}
-
 get_current();  // Get what is in the book
-
-$start = false;
 
 // Get latest version for each package 
 foreach ( $book as $pkg => $data )
 {
    $book_index = $pkg; 
 
-   if ( $book_index == $START_PACKAGE ) $start = true;
-   if ( ! $start ) continue;
-
-   // Skip things we don't want
-   //if ( preg_match( "/OpenJDK/",    $pkg ) ) continue;
-   if ( preg_match( "/cfe/",        $pkg ) ) continue;
-   if ( preg_match( "/clang/"      ,$pkg ) ) continue;
-   if ( preg_match( "/compiler-rt/",$pkg ) ) continue;
-   if ( preg_match( "/nasm1/",      $pkg ) ) continue;
-   if ( preg_match( "/tcl1/",       $pkg ) ) continue;
-   if ( preg_match( "/gcc1.*/",       $pkg ) ) continue;
-
    $base = $data[ 'basename' ];
    $url  = $data[ 'url' ];
    $bver = $data[ 'version' ];
 
-   echo "book index: $book_index  bver=$bver url=$url \n";
+   echo "book index: $book_index $bver $url\n";
 
    $v = get_packages( $book_index, $url );
-
    $vers[ $book_index ] = $v;
-
-   // Stop at the end of the chapter 
-   if ( $book_index == $STOP_PACKAGE ) break; 
 }
 
 html();  // Write html output
