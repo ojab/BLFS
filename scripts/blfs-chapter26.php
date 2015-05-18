@@ -70,12 +70,12 @@ function get_packages( $package, $dirpath )
   if ( preg_match( "/^ftp/", $dirpath ) ) 
   { 
     // Get listing
-    exec( "echo 'ls -1;bye' | ncftp $dirpath", $lines );
+    $lines = http_get_file( "$dirpath/" );
   }
   else // http
   {
-     $lines = http_get_file( $dirpath );
-     if ( ! is_array( $lines ) ) return $lines;
+    $lines = http_get_file( $dirpath );
+    if ( ! is_array( $lines ) ) return $lines;
   } // End fetch
 
   if ( isset( $regex[ $package ] ) )

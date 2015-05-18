@@ -81,7 +81,7 @@ function get_packages( $package, $dirpath )
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
       $position = strrpos( $dirpath, "/" );
       $dirpath  = substr ( $dirpath, 0, $position );
-      exec( "echo 'ls -1;bye' | ncftp $dirpath", $lines );
+      $lines    = http_get_file( "$dirpath/" );
       $dir      = find_max( $lines, '/^[\d\.]+$/', '/^([\d\.]+)$/' );
       $dirpath .= "/$dir/";
     }
@@ -93,7 +93,7 @@ function get_packages( $package, $dirpath )
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
       $position = strrpos( $dirpath, "/" );
       $dirpath  = substr ( $dirpath, 0, $position );
-      exec( "echo 'ls -1;bye' | ncftp $dirpath", $lines );
+      $lines    = http_get_file( "$dirpath/" );
       $dir = find_max( $lines, "/\d[\d\.]+/", "/(\d[\d\.]+)/" );
       $dirpath .= "/$dir/";
     }
