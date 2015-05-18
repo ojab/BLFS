@@ -12,10 +12,14 @@ but in a few cases, the names must be modified by custom procedures.
 
 The wget-list location and the directory for output html files 
 (e.g. chapter4.html) will be in the current directory unless specified by 
-environment variables.  For example:
+environment variables.  For Chapter 24 (xorg), the location of the BLFS
+xml sources is also needed.
+
+For example:
 
 WGET_DIR=/home/bdubbs/public_html/blfs-book-xsl/
 HTML_DIR=/home/bdubbs/public_html/
+BLFS_DIR=/home/bdubbs/BLFS/trunk/BOOK/
 
 The scripts are numbered according to the BLFS chapter where they start. 
 They cover one or more BLFS chapters according to the number of
