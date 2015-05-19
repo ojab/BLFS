@@ -37,7 +37,12 @@ foreach ( $a as $line )
 }
 
 # Get package info
-exec( "grep '\*' /home/bdubbs/public_html/chapter*.html", $diff );
+
+// HTML_DIR       environment variable -- where to put html output
+$d = getenv( 'HTML_DIR' );
+$HTML_DIR = ($d) ? $d : '.';
+
+exec( "grep '\*' $HTML_DIR/chapter*.html", $diff );
 $d = implode( "\n", $diff );
 
 $file = preg_replace( "/<\/td><td>/"   , " "        ,   $d    );

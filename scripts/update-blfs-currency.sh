@@ -1,8 +1,8 @@
 #! /bin/sh
-cd /home/bdubbs/BLFS/BOOK
+cd "$BLFS_DIR"
 svn up
 make wget-list
-cd /home/bdubbs
+cd ../scripts
 for c in blfs-chapter*.php; do
   echo -e "\nChapter $c\n"
   php $c | tee /tmp/currency.log

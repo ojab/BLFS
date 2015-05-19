@@ -17,9 +17,16 @@ xml sources is also needed.
 
 For example:
 
-WGET_DIR=/home/bdubbs/public_html/blfs-book-xsl/
+cat > /etc/profile.d/blfs-currency.sh << "EOF"
+# Begin /etc/profile.d/blfs-currency.sh
+
 HTML_DIR=/home/bdubbs/public_html/
+WGET_DIR=$HTML_DIR/blfs-book-xsl/
 BLFS_DIR=/home/bdubbs/BLFS/trunk/BOOK/
+export HTML_DIR WGET_DIR BLFS_DIR
+
+# End /etc/profile.d/blfs-currency.sh
+EOF
 
 The scripts are numbered according to the BLFS chapter where they start. 
 They cover one or more BLFS chapters according to the number of
