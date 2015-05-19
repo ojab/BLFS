@@ -4,6 +4,7 @@
 include 'blfs-include.php';
 
 $CHAPTER       = '27';
+$CHAPTERS      = 'Chapters 27-28';
 $START_PACKAGE = 'automoc4';
 $STOP_PACKAGE  = 'kde-workspace';
 

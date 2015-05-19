@@ -4,6 +4,7 @@
 include 'blfs-include.php';
 
 $CHAPTER       = '24';
+$CHAPTERS      = 'Chapter 24';
 $START_PACKAGE = 'util-macros';
 $STOP_PACKAGE  = 'xinit';
 

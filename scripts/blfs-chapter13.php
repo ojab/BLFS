@@ -4,6 +4,7 @@
 include 'blfs-include.php';
 
 $CHAPTER       = '13';
+$CHAPTERS      = 'Chapter 13';
 $START_PACKAGE = 'check';
 $STOP_PACKAGE  = 'junit';
 

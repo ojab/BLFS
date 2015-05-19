@@ -4,6 +4,7 @@
 include 'blfs-include.php';
 
 $CHAPTER       = '32';
+$CHAPTERS      = 'Chapters 32-33';
 $START_PACKAGE = 'libxfce4util';
 $STOP_PACKAGE  = 'xfce4-notifyd';
 

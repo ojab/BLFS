@@ -4,8 +4,9 @@
 include 'blfs-include.php';
 
 $CHAPTER       = '29';
-$START_PACKAGE ='konsole';
-$STOP_PACKAGE  ='gwenview';
+$CHAPTERS      = 'Chapter 29';
+$START_PACKAGE = 'konsole';
+$STOP_PACKAGE  = 'gwenview';
 
 $renames = array();
 $ignores = array();

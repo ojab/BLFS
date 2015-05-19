@@ -4,6 +4,7 @@
 include 'blfs-include.php';
 
 $CHAPTER       = '31';
+$CHAPTERS      = 'Chapter 31';
 $START_PACKAGE ='baobab';
 $STOP_PACKAGE  ='seahorse';
 

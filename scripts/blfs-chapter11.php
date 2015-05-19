@@ -4,6 +4,7 @@
 include 'blfs-include.php';
 
 $CHAPTER       = '11';
+$CHAPTERS      = 'Chapter 11';
 $START_PACKAGE = 'compface';
 $STOP_PACKAGE  = 'unixODBC';
 

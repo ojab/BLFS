@@ -4,8 +4,9 @@
 include 'blfs-include.php';
 
 $CHAPTER       = '26';
-$START_PACKAGE ='fluxbox';
-$STOP_PACKAGE  ='sawfish';
+$CHAPTERS      = 'Chapter 26';
+$START_PACKAGE = 'fluxbox';
+$STOP_PACKAGE  = 'sawfish';
 
 $renames = array();
 $renames[ 'sawfish_' ] = 'sawfish';

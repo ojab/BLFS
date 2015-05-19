@@ -4,6 +4,7 @@
 include 'blfs-include.php';
 
 $CHAPTER       = '10';
+$CHAPTERS      = 'Chapter 10';
 $START_PACKAGE = 'aalib';
 $STOP_PACKAGE  = 'qpdf';
 

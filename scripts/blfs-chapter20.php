@@ -4,6 +4,7 @@
 include 'blfs-include.php';
 
 $CHAPTER       = '20';
+$CHAPTERS      = 'Chapters 20-23';
 $START_PACKAGE = 'httpd';
 $STOP_PACKAGE  = 'xinetd';
 

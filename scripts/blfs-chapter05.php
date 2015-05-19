@@ -4,6 +4,7 @@
 include 'blfs-include.php';
 
 $CHAPTER       = '5';
+$CHAPTERS      = 'Chapter 5';
 $START_PACKAGE = 'fuse';
 $STOP_PACKAGE  = 'xfsprogs';
 

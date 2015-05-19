@@ -4,6 +4,7 @@
 include 'blfs-include.php';
 
 $CHAPTER       = '12';
+$CHAPTERS      = 'Chapter 12';
 $START_PACKAGE = 'acpid';
 $STOP_PACKAGE  = 'zip';
 

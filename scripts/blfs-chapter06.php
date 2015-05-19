@@ -3,9 +3,10 @@
 
 include 'blfs-include.php';
 
-$CHAPTER=6;
-$START_PACKAGE='bluefish';
-$STOP_PACKAGE='qemu';
+$CHAPTER       = '6';
+$CHAPTERS      = 'Chapters 6-8';
+$START_PACKAGE = 'bluefish';
+$STOP_PACKAGE  = 'qemu';
 
 $renames = array();
 $renames[ 'zsh1' ] = 'zsh-doc';

@@ -4,6 +4,7 @@
 include 'blfs-include.php';
 
 $CHAPTER       = '14';
+$CHAPTERS      = 'Chapters 14-16';
 $START_PACKAGE = 'dhcpcd';
 $STOP_PACKAGE  = 'wireshark';
 

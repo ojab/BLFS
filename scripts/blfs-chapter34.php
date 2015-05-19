@@ -4,6 +4,7 @@
 include 'blfs-include.php';
 
 $CHAPTER       = '34';
+$CHAPTERS      = 'Chapters 34-35';
 $START_PACKAGE = 'lxmenu-data';
 $STOP_PACKAGE  = 'lxterminal';
 

@@ -4,6 +4,7 @@
 include 'blfs-include.php';
 
 $CHAPTER       = '25';
+$CHAPTERS      = 'Chapter 25';
 $START_PACKAGE = 'atk';
 $STOP_PACKAGE  = 'webkitgtk-2.8';
 

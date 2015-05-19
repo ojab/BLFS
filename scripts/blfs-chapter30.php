@@ -4,6 +4,7 @@
 include 'blfs-include.php';
 
 $CHAPTER       = '30';
+$CHAPTERS      = 'Chapter 30';
 $START_PACKAGE = 'gsettings-desktop-schemas';
 $STOP_PACKAGE  = 'yelp';
 

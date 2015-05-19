@@ -156,6 +156,13 @@ function get_current()
       if ( $basename == $START_PACKAGE ) $start = true;
       if ( ! $start ) continue;
 
+      // Custom for Chapter 48
+      if ( $version == "install-tl-unx" ) 
+      {
+        $version = "Unversioned";
+        $basename = "install-tl-unx";
+      }
+
       $index = $basename;
       while ( isset( $book[ $index ] ) ) $index .= "1";
 
@@ -179,6 +186,7 @@ function html()
    global $date;
    global $vers;
    global $CHAPTER;
+   global $CHAPTERS;
    global $HTML_DIR;
    global $renames;
    global $ignores;
@@ -194,7 +202,7 @@ function html()
 </head>
 <body>
 $leftnav
-<h1>BLFS Chapter $CHAPTER Package Currency Check</h1>
+<h1>BLFS $CHAPTERS Package Currency Check</h1>
 <h2>As of $date GMT</h2>
 
 <table>

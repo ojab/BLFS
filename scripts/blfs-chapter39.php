@@ -1,26 +1,29 @@
 #! /usr/bin/php
 <?php
 
-$CHAPTER       = 39;
-$START_PACKAGE ='alsa-lib';
-$STOP_PACKAGE  ='xvidcore';
-$start         = false;
+include 'blfs-include.php';
 
-$sf            = 'sourceforge.net';
+$CHAPTER       = '39';
+$CHAPTERS      = 'Chapter 39';
+$START_PACKAGE = 'alsa-lib';
+$STOP_PACKAGE  = 'xvidcore';
 
-$vers = array();
-$book = array();
-$book_index = 0;
+$renames = array();
+$renames[ 'libmusicbrainz'  ] = 'libmusicbrainz2';
+$renames[ 'libmusicbrainz1' ] = 'libmusicbrainz5';
+$renames[ 'libvpx-v'        ] = 'libvpx';
+$renames[ 'v'               ] = 'fdk-aac';
+$renames[ 'x'               ] = 'x264';
 
-date_default_timezone_set( "GMT" );
-$date = date( "Y-m-d (D) H:i:s" );
+$ignores = array();
+
+//$current="libvpx";
 
 $regex = array();
 $regex[ 'faac'             ] = "/^.*Download faac-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'fdk-aac'          ] = "/^.*Download fdk-aac-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'a52dec'           ] = "/^.*a52dec-(\d[\d\.]+\d) is.*$/";
 $regex[ 'libass'           ] = "/^.*Release (\d[\d\.]+\d).*$/";
-//$regex[ 'libcdio-paranoia' ] = "/^.*The current release.*(\d[\d\.]+\d).*$/";
 $regex[ 'libdv'            ] = "/^.*Download libdv-(\d[\d\.]+\d).*$/";
 $regex[ 'libmpeg2'         ] = "/^.*libmpeg2-(\d[\d\.]+\d).*$/";
 $regex[ 'libmusicbrainz1'  ] = "/^.*libmusicbrainz-(5[\d\.]+\d).*$/";
@@ -30,25 +33,24 @@ $regex[ 'soundtouch'       ] = "/^.*Download Source Codes release ([\d\.]+\d).*$
 $regex[ 'xine-lib'         ] = "/^.*Download xine-lib-([\d\.]+\d).tar.*$/";
 $regex[ 'v'                ] = "/^.*fdk-aac ([\d\.]+) *$/";
 
-//$current="libvpx";
 
 $url_fix = array (
 
    array( 'pkg'     => 'faac',
           'match'   => '^.*$', 
-          'replace' => "http://$sf/projects/faac/files" ),
+          'replace' => "http://sourceforge.net/projects/faac/files" ),
 
    array( 'pkg'     => 'faad2',
           'match'   => '^.*$', 
-          'replace' => "http://$sf/projects/faac/files/faad2-src" ),
+          'replace' => "http://sourceforge.net/projects/faac/files/faad2-src" ),
 
    array( 'pkg'     => 'fdk-aac',
           'match'   => '^.*$', 
-          'replace' => "http://$sf/projects/opencore-amr/files" ),
+          'replace' => "http://sourceforge.net/projects/opencore-amr/files" ),
 
    array( 'pkg'     => 'a52dec',
           'match'   => '^.*$', 
-          'replace' => "http://liba52.$sf/" ),
+          'replace' => "http://liba52.sourceforge.net/" ),
 
    array( 'pkg'     => 'libao',
           'match'   => '^.*$', 
@@ -60,11 +62,11 @@ $url_fix = array (
 
    array( 'pkg'     => 'libdv',
           'match'   => '^.*$', 
-          'replace' => "http://$sf/projects/libdv/files" ),
+          'replace' => "http://sourceforge.net/projects/libdv/files" ),
 
    array( 'pkg'     => 'libmpeg2',
           'match'   => '^.*$', 
-          'replace' => "http://libmpeg2.$sf/downloads.html" ),
+          'replace' => "http://libmpeg2.sourceforge.net/downloads.html" ),
 
    array( 'pkg'     => 'libmpeg3',
           'match'   => '^.*$', 
@@ -80,7 +82,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'libquicktime',
           'match'   => '^.*$', 
-          'replace' => "http://$sf/projects/libquicktime/files" ),
+          'replace' => "http://sourceforge.net/projects/libquicktime/files" ),
 
    array( 'pkg'     => 'libsamplerate',
           'match'   => '^.*$', 
@@ -100,7 +102,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'xine-lib',
           'match'   => '^.*$', 
-          'replace' => "http://$sf/projects/xine/files" ),
+          'replace' => "http://sourceforge.net/projects/xine/files" ),
 
    array( 'pkg'     => 'xvidcore',
           'match'   => '^.*$', 
@@ -115,90 +117,7 @@ $url_fix = array (
           'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/libcanberra" ),
 
 );
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-function find_max( $lines, $regex_match, $regex_replace )
-{
-  global $book_index;
-  $a = array();
 
-  foreach ( $lines as $line )
-  {
-     // Ensure we skip verbosity of NcFTP
-     if ( ! preg_match( $regex_match,   $line ) ) continue; 
-     if (   preg_match( "/NcFTP/",      $line ) ) continue;
-     if (   preg_match( "/Connecting/", $line ) ) continue;
-     if (   preg_match( "/Current/",    $line ) ) continue;
-
-     // Isolate the version and put in an array
-     $slice = preg_replace( $regex_replace, "$1", $line );
-//echo "=====line=$line\n";
-//echo "=====slice=$slice\n";
-     // Numbers and whitespace
-     if ( "x$slice" == "x$line" && ! preg_match( "/^\d[\d\.P-]*$/", $slice ) ) continue; 
-
-     // Skip minor versions in the 90s (most of the time)
-     list( $major, $minor, $micro, $rest ) = explode( ".", $slice . ".0.0.0.0" );
-     if ( $micro >= 80  &&  
-          $book_index != "automoc4" && 
-          $book_index != "libcdio-paranoia" ) continue;
-
-     array_push( $a, $slice );     
-  }
-
-  // SORT_NATURAL requires php-5.4.0 or later
-  rsort( $a, SORT_NATURAL );  // Max version is at the top
-  return ( isset( $a[0] ) ) ? $a[0] : 0;
-}
-//----------------------------------------------------------
-function find_even_max( $lines, $regex_match, $regex_replace )
-{
-  $a = array();
-  foreach ( $lines as $line )
-  {
-     if ( ! preg_match( $regex_match, $line ) ) continue; 
-     
-     // Isolate the version and put in an array
-     $slice = preg_replace( $regex_replace, "$1", $line );
-
-     if ( "x$slice" == "x$line" && ! preg_match( "/^[\d\.]+/", $slice ) ) continue; 
-     
-     // Skip odd numbered minor versions
-     list( $major, $minor, $rest ) = explode( ".", $slice . ".0" );
-     if ( $minor % 2 == 1  ) continue;
-     if ( $minor     >= 90 ) continue;
-
-     array_push( $a, $slice );     
-  }
-
-  // SORT_NATURAL requires php-5.4.0 or later
-  rsort( $a, SORT_NATURAL );  // Max version is at the top
-  return ( isset( $a[0] ) ) ? $a[0] : 0;
-}
-//===========================================
-function http_get_file( $url )
-{
-  exec( "curl -L -s -m30 $url", $dir );
-  $s   = implode( "\n", $dir );
-  $dir = strip_tags( $s );
-  return explode( "\n", $dir );
-}
-//=====================================================
-function max_parent( $dirpath, $prefix )
-{
-  // First, remove a directory
-  $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-  $position = strrpos( $dirpath, "/" );
-  $dirpath  = substr ( $dirpath, 0, $position );
-
-  $lines = http_get_file( $dirpath );
-
-  $regex_match   = "#${prefix}[\d\.]+/#";
-  $regex_replace = "#^(${prefix}[\d\.]+)/.*$#";
-  $max           = find_max( $lines, $regex_match, $regex_replace );
-
-  return "$dirpath/$max"; 
-}
-/////////////////////////////////////////////////////////////////
 function get_packages( $package, $dirpath )
 {
   global $regex;
@@ -207,7 +126,7 @@ function get_packages( $package, $dirpath )
   global $current;
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
-  if ( $package == "x" ) return 0; // Daily snapshot for x264
+  if ( $package == "x" ) return 'daily'; // Daily snapshot for x264
 
   // Fix up directory path
   foreach ( $url_fix as $u )
@@ -262,13 +181,13 @@ function get_packages( $package, $dirpath )
         $position = strrpos( $dirpath, "/" );
         $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
         $lines    = http_get_file( $dirpath . "/" );
-        return find_max( $lines, "/^\d\./", ":^(\d[\d\.]+)/.*$:" );
+        return find_max( $lines, "/^\d\./", ":^(\d[\d\.]+)/.*$:", TRUE );
      }
 
      // Directories are in the form of mmddyy :(
      if ( $package == "libmpeg3" )
      {
-        $a = array();
+        $a     = array();
         $dirs  = http_get_file( $dirpath );
         foreach ( $dirs as $d )
         {
@@ -360,14 +279,9 @@ function get_packages( $package, $dirpath )
   $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );
   return $max;
 }
-//********************************************************
+
 Function get_pattern( $line )
 {
-   global $start;
-
-   // Set up specific patter matches for extracting book versions
-   $match = array();
-
    $match = array(
      array( 'pkg'   => 'a52dec', 
             'regex' => "/^.*a52dec-(\d[\d\.]+).*$/" ),
@@ -380,9 +294,6 @@ Function get_pattern( $line )
      
      array( 'pkg'   => 'libmpeg3', 
             'regex' => "/^.*libmpeg3-(\d[\d\.]+).*$/" ),
-     
-     //array( 'pkg'   => 'libvpx', 
-     //       'regex' => "/^.*libvpx-v(\d[\d\.]+).*$/" ),
      
      array( 'pkg'   => 'libmad', 
             'regex' => "/^.*libmad-(\d[\d\.]+[a-m]{0,1}).*$/" ),
@@ -402,116 +313,6 @@ Function get_pattern( $line )
    return "/\D*(\d.*\d)\D*$/";
 }
 
-function get_current()
-{
-   global $vers;
-   global $book;
-   global $START_PACKAGE;
-   global $STOP_PACKAGE;
-   global $start;
-
-   $wget_file = "/home/bdubbs/public_html/blfs-book-xsl/wget-list";
-
-   $contents = file_get_contents( $wget_file );
-   $wget  = explode( "\n", $contents );
-
-   foreach ( $wget as $line )
-   {
-      if ( $line == "" ) continue;
-
-      $file = basename( $line );
-      $url  = dirname ( $line );
-      $file = preg_replace( "/\.tar\..z.*$/", "", $file ); // Remove .tar.?z*$
-      $file = preg_replace( "/\.tar$/",       "", $file ); // Remove .tar$
-      $file = preg_replace( "/\..z$/",        "", $file ); // Remove .gz$/xz$
-      $file = preg_replace( "/\.orig$/",      "", $file ); // Remove .orig$
-      $file = preg_replace( "/\.src$/",       "", $file ); // Remove .src$
-      $file = preg_replace( "/\.tgz$/",       "", $file ); // Remove .tgz$
-
-      if ( preg_match( "/patch$/", $file         ) ) continue; // Skip patches
-
-      $pattern = get_pattern( $line );
-//echo "line=$line; pattern=$pattern\n";      
-      $version = preg_replace( $pattern, "$1", $file );   // Isolate version
-      $version = preg_replace( "/^-/", "", $version );    // Remove leading #-
-//echo "version=$version\n";
-      $basename = strstr( $file, $version, true );
-      $basename = rtrim( $basename, "-" );
-
-      if ( $basename == $START_PACKAGE ) $start = true;
-      if ( ! $start ) continue;
-
-      $index = $basename;
-
-      while ( isset( $book[ $index ] ) ) $index .= "1";
-      
-      $book[ $index ] = array( 'basename' => $basename,
-                               'url'      => $url, 
-                               'version'  => $version );
-
-      if ( preg_match( "/$STOP_PACKAGE$/", $line ) ) break;
-   }
-}
-
-function html()
-{
-   global $CHAPTER;
-   global $book;
-   global $date;
-   global $vers;
-
-   $leftnav = file_get_contents( 'leftnav.html' );
-
-   $f = "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
-                      'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
-<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
-<head>
-<title>BLFS Chapter $CHAPTER Package Currency Check - $date</title>
-<link rel='stylesheet' href='currency.css' type='text/css' />
-</head>
-<body>
-$leftnav
-<div id='top'>
-<h1>BLFS Chapter $CHAPTER Package Currency Check</h1>
-<h2>As of $date GMT</h2>
-</div>
-
-<table id='table'>>
-<tr><th>BLFS Package</th> <th>BLFS Version</th> <th>Latest</th> <th>Flag</th></tr>\n";
-
-   // Get the latest version of each package
-   foreach ( $vers as $pkg => $v )
-   {
-      $v    = $book[ $pkg ][ 'version' ];  // book version
-      $cv   = $vers[ $pkg ];               // web version
-      $flag = ( "x$cv" != "x$v" ) ? "*" : "";
-
-      if ( $v == "" ) $vers[ $pkg ] = "";
-  
-      $name = $pkg;
-      if ( $pkg == "libmusicbrainz"    ) $name = 'libmusicbrainz2';
-      if ( $pkg == "libmusicbrainz1"   ) $name = 'libmusicbrainz5';
-      if ( $pkg == "libvpx-v"          ) $name = 'libvpx';
-      if ( $pkg == "v"                 ) $name = 'fdk-aac';
-      if ( $pkg == "x"                 ) $name = 'x264';
-      if ( $pkg == "x"                 ) $vers[ $pkg ] = 'daily';
-      if ( $pkg == "x"                 ) $v = substr( $v, 4);
-
-      $classtype = isset( $book[ $pkg ][ 'indent' ] ) ? "indent" : "";
-
-      $f .= "<tr><td class='$classtype'>$name</td>";
-      $f .= "<td>$v</td>";
-      $f .= "<td>${vers[ $pkg ]}</td>";
-      $f .= "<td class='center'>$flag</td></tr>\n";
-   }
-
-   $f .= "</table>
-</body>
-</html>\n";
-
-   file_put_contents( "/home/bdubbs/public_html/chapter$CHAPTER.html", $f );
-}
-
 get_current();  // Get what is in the book
 
 
@@ -520,24 +321,14 @@ foreach ( $book as $pkg => $data )
 {
    $book_index = $pkg; 
 
-   if ( $book_index == $START_PACKAGE ) $start = true;
-   if ( ! $start ) continue;
-
-   // Skip things we don't want
-   //if ( preg_match( "/rpcnis-headers/", $pkg ) ) continue;
-
    $base = $data[ 'basename' ];
    $url  = $data[ 'url' ];
    $bver = $data[ 'version' ];
 
-   echo "book index: $book_index url=$url bver=$bver latest=";
+   echo "book index: $book_index $url $bver\n";
 
    $v = get_packages( $book_index, $url );
-   echo "$v\n";
    $vers[ $book_index ] = $v;
-
-   // Stop at the end of the chapter 
-   if ( $book_index == $STOP_PACKAGE ) break; 
 }
 
 html();  // Write html output
