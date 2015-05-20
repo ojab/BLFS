@@ -9,7 +9,7 @@ $START_PACKAGE = 'fuse';
 $STOP_PACKAGE  = 'xfsprogs';
 
 $renames = array();
-$renames[ 'LVM.' ] = 'LVM';
+$renames[ 'LVM2.' ] = 'LVM2';
 $ignores = array();
 
 //$current="jfsutils";   // For debugging
