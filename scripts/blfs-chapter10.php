@@ -17,7 +17,6 @@ $regex = array();
 $regex[ 'aalib'         ] = "/^.*Download aalib-([\d\.]+rc\d).tar.*$/";
 $regex[ 'freetype'      ] = "/^.*Download freetype-(\d[\d\.]*\d).tar.*/";
 $regex[ 'jasper'        ] = "/^.*JasPer version (\d[\d\.]+\d) source.*current.*$/";
-$regex[ 'lcms2'         ] = "/^.*Download lcms2-([\d\.]+\d).tar.*$/";
 $regex[ 'libexif'       ] = "/^.*Download libexif-(\d[\d\.]+\d).*$/";
 $regex[ 'graphite2'     ] = "/^.*Download graphite2-(\d[\d\.]+\d).tgz.*$/";
 $regex[ 'libmng'        ] = "/^.*Download libmng-(\d[\d\.]+\d).tar.*$/";
@@ -234,6 +233,12 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "lcms" )
   {
     return find_max( $lines, '/1\.[\d\.]+/', '/^\s*(1[\d\.]+)\s*$/' );
+  }
+
+  // lcms2
+  if ( $book_index == "lcms2" )
+  {
+    return find_max( $lines, '/2\.[\d\.]+/', '/^\s*(2[\d\.]+)\s*$/' );
   }
 
   // Most packages are in the form $package-n.n.n
