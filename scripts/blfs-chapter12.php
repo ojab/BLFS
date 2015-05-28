@@ -26,7 +26,6 @@ $regex[ 'hdparm'  ] = "/^.*Download hdparm-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'ibus'    ] = "/^.*ibus-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'strigi'  ] = "/^(\d[\d\.]+\d) .*$/";
 $regex[ 'sysstat' ] = "/^.*sysstat-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'p7zip_'  ] = "/^.*Download p7zip_(\d[\d\.]+\d)_src.*$/";
 
 $sf = 'sourceforge.net';
 
@@ -66,7 +65,7 @@ $url_fix = array (
    
    array( 'pkg'     => 'p7zip_',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/p7zip/files" ),
+          'replace' => "http://sourceforge.net/projects/p7zip/files/p7zip/" ),
 
    array( 'pkg'     => 'fcron',
           'match'   => '^.*$', 
@@ -82,9 +81,6 @@ function get_packages( $package, $dirpath )
   global $current;
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
-
-  // p7zip_ is screwed up on SF.  wget fetch is different from browser
-  if ( $book_index == "p7zip_" ) return "check manually";
 
   // Fix up directory path
   foreach ( $url_fix as $u )
@@ -186,6 +182,11 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "udisks1" )
     return find_max( $lines, '/udisks/', '/^.*udisks-(\d[\d\.]*\d).tar.*$/' );
+
+  if ( $book_index == "p7zip_" )
+  {
+    return find_max( $lines, '/\d\./', '/^\s*([\d\.]+)\s*$/' );
+  }
 
   if ( $book_index == "unzip" ||
        $book_index == "zip"  )
