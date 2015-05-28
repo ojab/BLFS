@@ -118,7 +118,7 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "http://www.nasm.us/pub/nasm/releasebuilds" ),
 
-   array( 'pkg'     => 'python2',
+   array( 'pkg'     => 'python',
           'match'   => '^.*$', 
           'replace' => "https://docs.python.org/2/archives" ),
 
