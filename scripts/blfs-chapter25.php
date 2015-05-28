@@ -9,7 +9,6 @@ $START_PACKAGE = 'atk';
 $STOP_PACKAGE  = 'webkitgtk-2.8';
 
 $renames = array();
-$renames[ 'goffice'                        ] = 'goffice (gtk+2)';
 $renames[ 'gtk+'                           ] = 'gtk+2';
 $renames[ 'gtk+1'                          ] = 'gtk+3';
 $renames[ 'gtkmm'                          ] = 'gtkmm2';
@@ -140,6 +139,18 @@ function get_packages( $package, $dirpath )
   }
   else // http
   {
+    if ( $book_index == "qt-everywhere-opensource-src" )
+    {
+      // Customize http directories as needed
+      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
+      $position = strrpos( $dirpath, "/" );
+      $dirpath  = substr ( $dirpath, 0, $position ); // Up 1
+      $position = strrpos( $dirpath, "/" );
+      $dirlines = http_get_file( $dirpath );
+      $dir      = find_max( $dirlines, '/^[\d\.]+.*$/', '/^([\d\.]+).*$/' );
+      $dirpath .= "/$dir";
+    }
+
     if ( $book_index == "qt-everywhere-opensource-src1" )
     {
       // Customize http directories as needed
