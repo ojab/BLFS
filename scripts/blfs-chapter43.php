@@ -135,7 +135,8 @@ function get_packages( $package, $dirpath )
          $dirs     = http_get_file( "$dirpath/" );
          $dir      = find_max( $dirs, "/20\d\d/", "/^.*(20\d\d).*$/" );
          $lines    = http_get_file( "$dirpath/$dir/" );
-         return find_max( $lines, "/texlive-/", "/^.*texlive-(\d+).*$/" );
+         $ver      = find_max( $lines, "/texlive-/", "/^.*texlive-(\d+).*$/" );
+         return ( $ver == "0" ) ? "pending" : $ver;
      }
 
     // Get listing
