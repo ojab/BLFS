@@ -10,7 +10,8 @@ $STOP_PACKAGE  = 'xindy';
 
 $renames = array();
 $ignores = array();
-$ignores[ 'texlive1' ] = '';
+$ignores[ 'install-tl-unx' ] = '';
+$ignores[ 'texlive1'       ] = '';
 
 //$current="biblatex-biber";  // For debugging
 
@@ -20,6 +21,7 @@ $regex[ 'OpenSP'          ] = "/^.*Download OpenSP-(\d[\d\.]+\d).*$/";
 $regex[ 'docbook-xsl-doc' ] = "/^.*Download docbook-xsl-(\d[\d\.]+\d).*$/";
 $regex[ 'paps'            ] = "/^.*Download paps-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'biblatex'        ] = "/^.*Download biblatex-(\d[\d\.]+\d).*$/";
+$regex[ 'biblatex-biber'  ] = "/^.*v(\d[\d\.]+\d).*$/";
 $regex[ 'ghostscript-fonts-std' ] = 
     "/^.*Download ghostscript-fonts-std-(\d[\d\.]+\d).tar.*$/";
 
@@ -76,6 +78,10 @@ $url_fix = array (
    array( 'pkg'     => 'paps',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/paps/files" ),
+
+   array( 'pkg'     => 'biblatex-biber',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/plk/biber/releases" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -93,8 +99,6 @@ function get_packages( $package, $dirpath )
   if ( $package == "openjade"          ) return "1.3.2";
   if ( $package == "docbook-dsssl"     ) return "1.79";
   if ( $package == "docbook-dsssl-doc" ) return "1.79";
-  
-  if ( $package == "install-tl-unx"    ) return "Unversioned";
 
   // Fix up directory path
   foreach ( $url_fix as $u )
