@@ -527,7 +527,7 @@ function get_packages( $package, $dirpath )
     if ( $max == 0 )
       $max = find_max( $lines, "/$package/", 
                                "/^.*$package-(\d[\d\.]*\d-rc\d).*$/" );
-    return $max;
+    return ( $max != 0 ) ? $max : "pending";
   }
 
   if ( $book_index == "pygobject1" ||

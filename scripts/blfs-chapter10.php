@@ -11,11 +11,11 @@ $STOP_PACKAGE  = 'qpdf';
 $renames = array();
 $ignores = array();
 
-//$current="aalib";   // For debugging
+//$current="freetype";   // For debugging
 
 $regex = array();
 $regex[ 'aalib'         ] = "/^.*Download aalib-([\d\.]+rc\d).tar.*$/";
-$regex[ 'freetype'      ] = "/^.*Download freetype-(\d[\d\.]*\d).tar.*/";
+//$regex[ 'freetype'      ] = "/^.*Download freetype-(\d[\d\.]*\d).tar.*/";
 $regex[ 'jasper'        ] = "/^.*JasPer version (\d[\d\.]+\d) source.*current.*$/";
 $regex[ 'libexif'       ] = "/^.*Download libexif-(\d[\d\.]+\d).*$/";
 $regex[ 'graphite2'     ] = "/^.*Download graphite2-(\d[\d\.]+\d).tgz.*$/";
@@ -41,7 +41,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'freetype',
         'match'   => '^.*$', 
-        'replace' => "http://$sf/projects/freetype/files/freetype2" ),
+        'replace' => "http://sourceforge.net/projects/freetype/files/freetype2" ),
 
  array( 'pkg'     => 'freetype-doc',
         'match'   => '^.*$', 
@@ -205,7 +205,8 @@ function get_packages( $package, $dirpath )
      return 0;  // This is an error
   }
 
-  if ( $book_index == "freetype-doc" )
+  if ( $book_index == "freetype"     ||
+       $book_index == "freetype-doc" )
   {
     $dir   = find_max( $lines, '/\d\./', '/^\s*([\d\.]+)\s*$/' );
     $lines = http_get_file( "$dirpath/$dir" );

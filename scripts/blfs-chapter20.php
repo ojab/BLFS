@@ -112,7 +112,7 @@ function get_packages( $package, $dirpath )
   if ( preg_match( "/^ftp/", $dirpath ) ) 
   { 
     // bind
-    if ( $book_index == "bind1" )
+    if ( $book_index == "bind" )
     {
       // Get the max directory and adjust the directory path
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
