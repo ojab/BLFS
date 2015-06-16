@@ -288,9 +288,6 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "libsigc++" )
     return find_max( $lines, '/^.*libsigc.*[\d\.]+.*$/', '/^.*libsigc\+\+-([\d\.]+).tar.*$/' );
 
-  if ( $book_index == "libtasn" )
-    return find_max( $lines, '/^.*libtasn[\d\.-]+.*$/', '/^.*libtasn([\d\.-]+).tar.*$/' );
-
   if ( $book_index == "libusb" )
     return find_max( $lines, '/^.*libusb-[\d\.]+.*$/', '/^.*libusb-([\d\.]+)$/' );
 
@@ -342,6 +339,9 @@ Function get_pattern( $line )
 
       array( 'pkg'   => 'icu4c', 
              'regex' => "/^.*icu4c-([\d_]+)-src.*$/" ),
+
+      array( 'pkg'   => 'libtasn1', 
+             'regex' => "/libtasn1-([\d\.]+).*$/" ),
 
       array( 'pkg'   => 'libxml2', 
              'regex' => "/libxml2-([\d\.]+).*$/" ),
