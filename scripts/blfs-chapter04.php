@@ -5,7 +5,7 @@ include 'blfs-include.php';
 
 $CHAPTER       = "4";
 $CHAPTERS      = "Chapters 2-4";
-$START_PACKAGE = "blfs-bootscripts";
+$START_PACKAGE = "lsb-release";
 $STOP_PACKAGE  = "tripwire";
 
 $renames = array();
