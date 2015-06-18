@@ -75,6 +75,12 @@ function get_packages( $package, $dirpath )
   // Check for ftp
   if ( preg_match( "/^ftp/", $dirpath ) ) 
   { 
+
+    // Get listing
+    $lines = http_get_file( "$dirpath/" );
+  }
+  else // http
+  {
     // glib type packages
     if ( $book_index == "gtk-doc" )
     {
@@ -82,8 +88,8 @@ function get_packages( $package, $dirpath )
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
       $position = strrpos( $dirpath, "/" );
       $dirpath  = substr ( $dirpath, 0, $position );
-      $lines    = http_get_file( "$dirpath/" );
-      $dir      = find_max( $lines, '/^[\d\.]+$/', '/^([\d\.]+)$/' );
+      $lines    = http_get_file( $dirpath );
+      $dir      = find_max( $lines, '/^\s+[\d\.]+\//', '/^\s+([\d\.]+)\/.*$/' );
       $dirpath .= "/$dir/";
     }
 
@@ -94,16 +100,11 @@ function get_packages( $package, $dirpath )
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
       $position = strrpos( $dirpath, "/" );
       $dirpath  = substr ( $dirpath, 0, $position );
-      $lines    = http_get_file( "$dirpath/" );
-      $dir = find_max( $lines, "/\d[\d\.]+/", "/(\d[\d\.]+)/" );
+      $lines    = http_get_file( $dirpath );
+      $dir      = find_max( $lines, '/^\s+[\d\.]+\//', '/^\s+([\d\.]+)\/.*$/' );
       $dirpath .= "/$dir/";
     }
 
-    // Get listing
-    $lines = http_get_file( "$dirpath/" );
-  }
-  else // http
-  {
     // Customize http directories as needed
      $lines = http_get_file( $dirpath );
      if ( ! is_array( $lines ) ) return $lines;
