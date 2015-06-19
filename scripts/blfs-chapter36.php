@@ -10,6 +10,7 @@ $STOP_PACKAGE  = 'xscreensaver';
 
 $renames = array();
 $ignores = array();
+$ignores[ 'xorg-server' ] = '';
 
 $libreoffice = array();
 
