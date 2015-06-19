@@ -32,6 +32,7 @@ $ignores[ 'gcc11'        ] = '';
 $ignores[ 'OpenJDK1'     ] = '';
 $ignores[ 'hamcrest'     ] = '';
 $ignores[ 'apache-ant1'  ] = '';
+$ignores[ 'icedtea-web'  ] = '';
 
 //$current="junit4_";
 
