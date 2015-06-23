@@ -24,6 +24,7 @@ $ignores = array();
 
 $regex = array();
 $regex[ 'freeglut' ] = "/^.*Download freeglut-(\d[\d\.]+\d).tar.*$/";
+$regex[ 'libepoxy' ] = "/^.*v(\d[\d\.]+\d).*$/";
 
 $url_fix = array (
 
@@ -38,6 +39,10 @@ $url_fix = array (
    array( 'pkg'     => 'imlib2',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/enlightenment/files/imlib2-src" ),
+
+   array( 'pkg'     => 'libepoxy',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/anholt/libepoxy/releases" ),
 );
 
 function get_packages( $package, $dirpath )
