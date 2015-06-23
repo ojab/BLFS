@@ -21,7 +21,6 @@ $regex[ 'inkscape'     ] = "/^.*Latest.*(\d[\d\.]+\d).*$/";
 $regex[ 'gnucash'      ] = "/^.*Download gnucash-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'pidgen'       ] = "/^.*Download pidgin-(\d[\d\.]+\d).*$/";
 $regex[ 'fontforge'    ] = "/^.*fontforge-(20\d+).tar.*$/";
-$regex[ 'asymptote'    ] = "/^.*Download asymptote-(\d[\d\.]+\d).*$/";
 $regex[ 'xscreensaver' ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'tigervnc'     ] = "/^.*TigerVNC (\d[\d\.]+\d).*$/";
 $regex[ 'transmission' ] = "/^.*release version.*(\d[\d\.]+\d).*$/";
@@ -35,10 +34,6 @@ $url_fix = array (
    array( 'pkg'     => 'gnucash-docs',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/gnucash/files/gnucash-docs" ),
-
-   array( 'pkg'     => 'asymptote',
-          'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/asymptote/files" ),
 
    array( 'pkg'     => 'libreoffice',
           'match'   => '^.*$', 

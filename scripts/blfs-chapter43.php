@@ -20,6 +20,7 @@ $regex[ 'gutenprint'      ] = "/^.*Download gutenprint-(\d[\d\.]+\d).*$/";
 $regex[ 'OpenSP'          ] = "/^.*Download OpenSP-(\d[\d\.]+\d).*$/";
 $regex[ 'docbook-xsl-doc' ] = "/^.*Download docbook-xsl-(\d[\d\.]+\d).*$/";
 $regex[ 'paps'            ] = "/^.*Download paps-(\d[\d\.]+\d).tar.*$/";
+$regex[ 'asymptote'       ] = "/^.*Download asymptote-(\d[\d\.]+\d).*$/";
 $regex[ 'biblatex'        ] = "/^.*Download biblatex-(\d[\d\.]+\d).*$/";
 $regex[ 'biblatex-biber'  ] = "/^.*v(\d[\d\.]+\d).*$/";
 $regex[ 'ghostscript-fonts-std' ] = 
@@ -78,6 +79,10 @@ $url_fix = array (
    array( 'pkg'     => 'paps',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/paps/files" ),
+
+   array( 'pkg'     => 'asymptote',
+          'match'   => '^.*$', 
+          'replace' => "http://sourceforge.net/projects/asymptote/files" ),
 
    array( 'pkg'     => 'biblatex-biber',
           'match'   => '^.*$', 
