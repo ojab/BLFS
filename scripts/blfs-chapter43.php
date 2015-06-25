@@ -13,7 +13,7 @@ $ignores = array();
 $ignores[ 'install-tl-unx' ] = '';
 $ignores[ 'texlive1'       ] = '';
 
-//$current="biblatex-biber";  // For debugging
+//$current="texlive";  // For debugging
 
 $regex = array();
 $regex[ 'gutenprint'      ] = "/^.*Download gutenprint-(\d[\d\.]+\d).*$/";
@@ -140,7 +140,7 @@ function get_packages( $package, $dirpath )
          $dirs     = http_get_file( "$dirpath/" );
          $dir      = find_max( $dirs, "/20\d\d/", "/^.*(20\d\d).*$/" );
          $lines    = http_get_file( "$dirpath/$dir/" );
-         $ver      = find_max( $lines, "/texlive-/", "/^.*texlive-(\d+).*$/" );
+         $ver      = find_max( $lines, "/texlive-/", "/^.*texlive-(\d+)-source.*$/" );
          return ( $ver == "0" ) ? "pending" : $ver;
      }
 
