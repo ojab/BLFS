@@ -107,9 +107,9 @@ function get_packages( $package, $dirpath )
        $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
        $dirs     = http_get_file( "$dirpath/" );
 
-       if ( $book_index == "libpeas" )
-         $dir = find_max(      $dirs, "/\d$/", "/^.* ([\d\.]+)$/" );
-       else
+       //if ( $book_index == "libpeas" )
+       //  $dir = find_max(      $dirs, "/\d$/", "/^.* ([\d\.]+)$/" );
+       //else
          $dir = find_even_max( $dirs, "/\d$/", "/^.* ([\d\.]+)$/" );
        
        $dirpath .= "/$dir/";
