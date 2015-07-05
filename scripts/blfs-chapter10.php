@@ -22,6 +22,7 @@ $regex[ 'graphite2'     ] = "/^.*Download graphite2-(\d[\d\.]+\d).tgz.*$/";
 $regex[ 'libmng'        ] = "/^.*Download libmng-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'libpng'        ] = "/^.*Download libpng-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'LibRaw'        ] = "/^.*LibRaw-(\d[\d\.]+\d).tar.*$/";
+$regex[ 'opencv'        ] = "/^.*Download opencv-(\d[\d\.]+\d).zip*$/";
 $regex[ 'openjpeg1'     ] = "/^.*Download openjpeg-([\d\.]+\d).*$/";
 $regex[ 'poppler'       ] = "/^.*poppler-([\d\.]+\d).tar.*$/";
 $regex[ 'popplerdata'   ] = "/^.*poppler-data([\d\.]+\d).tar.*$/";
@@ -102,6 +103,10 @@ $url_fix = array (
  array( 'pkg'     => 'exiv2',
         'match'   => '^.*$', 
         'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/exiv2" ),
+
+ array( 'pkg'     => 'opencv',
+        'match'   => '^.*$', 
+        'replace' => "http://sourceforge.net/projects/opencvlibrary/files" ),
 
  array( 'pkg'     => 'openjpeg',
         'match'   => '^.*$', 
