@@ -17,7 +17,7 @@ $renames[ 'x'               ] = 'x264';
 
 $ignores = array();
 
-//$current="libvpx";
+//$current="frei0r-snapshot";
 
 $regex = array();
 $regex[ 'faac'             ] = "/^.*Download faac-(\d[\d\.]+\d).tar.*$/";
@@ -47,6 +47,10 @@ $url_fix = array (
    array( 'pkg'     => 'fdk-aac',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/opencore-amr/files" ),
+
+   array( 'pkg'     => 'frei',
+          'match'   => '^.*$', 
+          'replace' => "https://files.dyne.org/frei0r/snapshots" ),
 
    array( 'pkg'     => 'a52dec',
           'match'   => '^.*$', 
@@ -227,20 +231,23 @@ function get_packages( $package, $dirpath )
   if ( $package == "faad2" )
       return find_max( $lines, "/faad2-\d/", "/^.*faad2-([\d\.]+).*$/" );
 
+  if ( $package == "frei0r-snapshot" )
+      return find_max( $lines, "/frei0r/", "/^.*snapshot-([\d\-]+).tar.*$/" );
+
+  if ( $package == "gstreamer" )
+      return find_even_max( $lines, "/gstreamer/", "/^.*gstreamer-(1\.[\d\.]+).tar.*$/" );
+
+  if ( $package == "gst-plugins-base" )
+      return find_even_max( $lines, "/base-/", "/^.*base-(1\.[\d\.]+).tar.*$/" );
+
+  if ( $package == "gst-plugins-good" )
+      return find_even_max( $lines, "/good-/", "/^.*good-(1\.[\d\.]+).tar.*$/" );
+
   if ( $package == "gst-plugins-bad" )
-      return find_max( $lines, "/^.*bad-/", "/^.*bad-(0.10[\d\.]+).tar.*$/" );
+      return find_even_max( $lines, "/bad-/", "/^.*bad-(1\.[\d\.]+).tar.*$/" );
 
   if ( $package == "gst-plugins-ugly" )
-      return find_max( $lines, "/^.*ugly-/", "/^.*ugly-(0.10[\d\.]+).tar.*$/" );
-
-  if ( $package == "gst-ffmpeg" )
-      return find_even_max( $lines, "/^.*ffmpeg/", "/^.*ffmpeg-([\d\.]+).tar.*$/" );
-
-  if ( preg_match(  "/gst.*1/", $package ) )
-  {
-      $package = preg_replace( "/(.*)1/", "$1", $package );
-      return find_even_max( $lines, "/$package/", "/^.*$package-([\d\.]+).tar.*$/" );
-  }
+      return find_even_max( $lines, "/ugly-/", "/^.*ugly-(1\.[\d\.]+).tar.*$/" );
 
   if ( $package == "gst-libav" )
       return find_even_max( $lines, "/$package/", "/^.*$package-([\d\.]+).tar.*$/" );
@@ -288,6 +295,9 @@ Function get_pattern( $line )
      
      array( 'pkg'   => 'faad2', 
             'regex' => "/^.*faad2-(\d[\d\.]+).*$/" ),
+     
+     array( 'pkg'   => 'frei0r', 
+            'regex' => "/^.*frei0r-snapshot-(\d[\d\-]+).*$/" ),
      
      array( 'pkg'   => 'libmpeg2', 
             'regex' => "/^.*libmpeg2-(\d[\d\.]+).*$/" ),

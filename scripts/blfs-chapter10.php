@@ -11,7 +11,7 @@ $STOP_PACKAGE  = 'qpdf';
 $renames = array();
 $ignores = array();
 
-//$current="freetype";   // For debugging
+//$current="opencv";   // For debugging
 
 $regex = array();
 $regex[ 'aalib'         ] = "/^.*Download aalib-([\d\.]+rc\d).tar.*$/";
@@ -22,7 +22,6 @@ $regex[ 'graphite2'     ] = "/^.*Download graphite2-(\d[\d\.]+\d).tgz.*$/";
 $regex[ 'libmng'        ] = "/^.*Download libmng-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'libpng'        ] = "/^.*Download libpng-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'LibRaw'        ] = "/^.*LibRaw-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'opencv'        ] = "/^.*Download opencv-(\d[\d\.]+\d).zip*$/";
 $regex[ 'openjpeg1'     ] = "/^.*Download openjpeg-([\d\.]+\d).*$/";
 $regex[ 'poppler'       ] = "/^.*poppler-([\d\.]+\d).tar.*$/";
 $regex[ 'popplerdata'   ] = "/^.*poppler-data([\d\.]+\d).tar.*$/";
@@ -106,7 +105,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'opencv',
         'match'   => '^.*$', 
-        'replace' => "http://sourceforge.net/projects/opencvlibrary/files" ),
+        'replace' => "http://sourceforge.net/projects/opencvlibrary/files/opencv-unix" ),
 
  array( 'pkg'     => 'openjpeg',
         'match'   => '^.*$', 
@@ -239,6 +238,11 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "lcms" )
   {
     return find_max( $lines, '/1\.[\d\.]+/', '/^\s*(1[\d\.]+)\s*$/' );
+  }
+
+  if ( $book_index == "opencv" )
+  {
+    return find_max( $lines, '/\d\.[\d\.]+/', '/^\s*(\d\.[\d\.]+)\s*$/' );
   }
 
   // lcms2

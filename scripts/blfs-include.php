@@ -144,7 +144,6 @@ function get_current()
       $file = preg_replace( "/\.src$/",       "", $file ); // Remove .src$
       $file = preg_replace( "/\.tgz$/",       "", $file ); // Remove .tgz$
 
-      //$pattern = get_pattern( $line );
       $pattern = get_pattern( $file );
       
       $version = preg_replace( $pattern, "$1", $file );   // Isolate version
