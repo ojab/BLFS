@@ -15,7 +15,7 @@ $renames[ 'shadow_'    ] = 'shadow';
 $ignores = array();
 $ignores[ 'openssh1' ] = "";
 
-//$current="p11-kit";   // For debugging
+//$current="stunnel";   // For debugging
 
 $regex = array();
 $regex[ 'krb5'     ] = "/^.*Kerberos V5 Release ([\d\.]+).*$/";
@@ -46,7 +46,7 @@ $url_fix = array(
 
    array( 'pkg'     => 'stunnel',
           'match'   => '^.*$', 
-          'replace' => 'http://mirrors.zerg.biz/stunnel' ),
+          'replace' => 'https://www.stunnel.org/downloads.html' ),
 
    array( 'pkg'     => 'sudo',
           'match'   => '^.*$', 
