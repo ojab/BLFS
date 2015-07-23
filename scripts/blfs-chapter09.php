@@ -216,9 +216,9 @@ function get_packages( $package, $dirpath )
       $dirpath  = substr ( $dirpath, 0, $position );
       $lines1 = http_get_file( $dirpath );
 
-      if ( $book_index == "libsigc++" ) 
-         $dir = find_max(      $lines1, '/^\s+[\d\.]+\/.*$/', '/^\s+([\d\.]+)\/.*$/' );
-      else
+      //if ( $book_index == "libsigc++" ) 
+      //   $dir = find_max(      $lines1, '/^\s+[\d\.]+\/.*$/', '/^\s+([\d\.]+)\/.*$/' );
+      //else
          $dir = find_even_max( $lines1, '/^\s+[\d\.]+\/.*$/', '/^\s+([\d\.]+)\/.*$/' );
 
       $dirpath .= "/$dir";
