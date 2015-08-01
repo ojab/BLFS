@@ -1,3 +1,7 @@
+2015-08-01 Fernando de Oliveira <famobr at yahoo.com.br>
+   * Add sddm bootscript
+   * Reorder part of the Makefile.
+
 2015-03-04 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Add uninstall for rpcbind
 
@@ -92,7 +96,7 @@
 
 2012-05-09 Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Add atd script.
-   * Make service scripts compatible with older versions of 
+   * Make service scripts compatible with older versions of
      init-functions.
 
 2012-05-06 Bruce Dubbs <bdubbs@linuxfromscratch.org>
@@ -278,11 +282,11 @@
    * Reordered bootscripts for samba/cups interaction.
 
 2005-07-08 DJ Lucas <dj@linuxfromscratch.org>
-   * Moved all scripts to use new functions provided by 
+   * Moved all scripts to use new functions provided by
      lfs-bootscripts-3.2.1.
 
 2005-06-26 DJ Lucas <dj@linuxfromscratch.org>
-   * Added uninstall targets to Makefile.  Patch provided by 
+   * Added uninstall targets to Makefile.  Patch provided by
      Matthias Berndt.
 
 2005-06-13 Igor Zivkovic <igor@linuxfromscratch.org>
@@ -358,20 +362,20 @@
    * Added openldap (slapd and slurpd startup) scripts
 
 2004-08-05 Randy McMurchy <randy@linuxfromscratch.org>
-   * Added cyrus-sasl (Cyrus SASL authdaemon) script 
+   * Added cyrus-sasl (Cyrus SASL authdaemon) script
 
 2004-08-03 DJ Lucas <dj@linuxfromscratch.org>
-   * Added MODE and DIRMODE variables to set 
-     permissions of installed scripts and 
+   * Added MODE and DIRMODE variables to set
+     permissions of installed scripts and
      directories
    * Corrected script to remove svn directories
      when creating release tarball
 
 2004-07-31 Randy McMurchy <randy@linuxfromscratch.org>
-   * Added nas (Network Audio Server) script 
+   * Added nas (Network Audio Server) script
 
 2004-07-28 DJ Lucas <dj@linuxfromscratch.org>
-   * Made minor fixups to dhcpcd, dhclient, and ipx 
+   * Made minor fixups to dhcpcd, dhclient, and ipx
      service scripts
    * Added a shell script to create tarball
 
