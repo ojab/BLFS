@@ -388,6 +388,16 @@ install-proftpd: create-dirs
 	ln -sf  ../init.d/proftpd ${EXTDIR}/rc.d/rc5.d/S32proftpd
 	ln -sf  ../init.d/proftpd ${EXTDIR}/rc.d/rc6.d/K28proftpd
 
+install-qpopper: create-dirs
+	install -m ${MODE} blfs/init.d/qpopper   ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc0.d/K23qpopper
+	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc1.d/K23qpopper
+	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc2.d/K23qpopper
+	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc3.d/S37qpopper
+	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc4.d/S37qpopper
+	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc5.d/S37qpopper
+	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc6.d/K23qpopper
+
 install-random: create-dirs
 	install -m ${MODE} blfs/init.d/random     ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/random ${EXTDIR}/rc.d/rc0.d/K45random
@@ -418,15 +428,25 @@ install-rsyncd: create-dirs
 	ln -sf  ../init.d/rsyncd ${EXTDIR}/rc.d/rc5.d/S30rsyncd
 	ln -sf  ../init.d/rsyncd ${EXTDIR}/rc.d/rc6.d/K30rsyncd
 
-install-swat: create-dirs
-	install -m ${MODE} blfs/init.d/swat      ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc0.d/K47swat
-	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc1.d/K47swat
-	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc2.d/K47swat
-	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc3.d/S46swat
-	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc4.d/S46swat
-	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc5.d/S46swat
-	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc6.d/K47swat
+install-samba: create-dirs
+	install -m ${MODE} blfs/init.d/samba      ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc0.d/K48samba
+	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc1.d/K48samba
+	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc2.d/K48samba
+	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc3.d/S45samba
+	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc4.d/S45samba
+	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc5.d/S45samba
+	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc6.d/K48samba
+
+install-sddm: create-dirs
+	install -m ${MODE} blfs/init.d/sddm        ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/sddm ${EXTDIR}/rc.d/rc0.d/K05sddm
+	ln -sf  ../init.d/sddm ${EXTDIR}/rc.d/rc1.d/K05sddm
+	ln -sf  ../init.d/sddm ${EXTDIR}/rc.d/rc2.d/K05sddm
+	ln -sf  ../init.d/sddm ${EXTDIR}/rc.d/rc3.d/K05sddm
+	ln -sf  ../init.d/sddm ${EXTDIR}/rc.d/rc4.d/K05sddm
+	ln -sf  ../init.d/sddm ${EXTDIR}/rc.d/rc5.d/S95sddm
+	ln -sf  ../init.d/sddm ${EXTDIR}/rc.d/rc6.d/K05sddm
 
 install-sendmail: create-dirs
 	install -m ${MODE} blfs/init.d/sendmail   ${EXTDIR}/rc.d/init.d/
@@ -448,25 +468,15 @@ install-soprano: create-dirs
 	ln -sf  ../init.d/soprano ${EXTDIR}/rc.d/rc5.d/S48soprano
 	ln -sf  ../init.d/soprano ${EXTDIR}/rc.d/rc6.d/K35soprano
 
-install-qpopper: create-dirs
-	install -m ${MODE} blfs/init.d/qpopper   ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc0.d/K23qpopper
-	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc1.d/K23qpopper
-	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc2.d/K23qpopper
-	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc3.d/S37qpopper
-	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc4.d/S37qpopper
-	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc5.d/S37qpopper
-	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc6.d/K23qpopper
-
-install-samba: create-dirs
-	install -m ${MODE} blfs/init.d/samba      ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc0.d/K48samba
-	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc1.d/K48samba
-	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc2.d/K48samba
-	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc3.d/S45samba
-	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc4.d/S45samba
-	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc5.d/S45samba
-	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc6.d/K48samba
+install-swat: create-dirs
+	install -m ${MODE} blfs/init.d/swat      ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc0.d/K47swat
+	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc1.d/K47swat
+	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc2.d/K47swat
+	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc3.d/S46swat
+	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc4.d/S46swat
+	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc5.d/S46swat
+	ln -sf  ../init.d/swat ${EXTDIR}/rc.d/rc6.d/K47swat
 
 install-sshd: create-dirs
 	install -m ${MODE} blfs/init.d/sshd       ${EXTDIR}/rc.d/init.d/
@@ -932,6 +942,16 @@ uninstall-samba:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S45samba
 	rm -f ${EXTDIR}/rc.d/rc6.d/K48samba
 
+uninstall-sddm:
+	rm -f ${EXTDIR}/rc.d/init.d/sddm
+	rm -f ${EXTDIR}/rc.d/rc0.d/K05sddm
+	rm -f ${EXTDIR}/rc.d/rc1.d/K05sddm
+	rm -f ${EXTDIR}/rc.d/rc2.d/K05sddm
+	rm -f ${EXTDIR}/rc.d/rc3.d/K05sddm
+	rm -f ${EXTDIR}/rc.d/rc4.d/K05sddm
+	rm -f ${EXTDIR}/rc.d/rc5.d/S95sddm
+	rm -f ${EXTDIR}/rc.d/rc6.d/K05sddm
+
 uninstall-sendmail:
 	rm -f ${EXTDIR}/rc.d/init.d/sendmail
 	rm -f ${EXTDIR}/rc.d/rc0.d/K25sendmail
@@ -1065,6 +1085,7 @@ uninstall-xinetd:
 	install-random \
 	install-rsync \
 	install-samba \
+	install-sddm \
 	install-sendmail \
 	install-soprano \
 	install-sshd \
@@ -1110,6 +1131,7 @@ uninstall-xinetd:
 	uninstall-random \
 	uninstall-rsync \
 	uninstall-samba \
+	uninstall-sddm \
 	uninstall-sendmail \
 	uninstall-soprano \
 	uninstall-sshd \
