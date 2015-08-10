@@ -28,95 +28,91 @@ $sf = 'sourceforge.net';
 
 $url_fix = array (
  array( //'pkg'     => 'gnome',
-        'match'   => '^ftp:\/\/ftp.gnome', 
+        'match'   => '^ftp:\/\/ftp.gnome',
         'replace' => "http://ftp.gnome" ),
 
  array( 'pkg'     => 'boost_',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "http://$sf/projects/boost/files/boost" ),
 
  array( 'pkg'     => 'clucene-core',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "http://$sf/projects/clucene/files" ),
 
  array( 'pkg'     => 'enchant',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "http://www.abisource.com/downloads/enchant" ),
 
  array( 'pkg'     => 'expat',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "http://$sf/projects/expat/files/expat" ),
 
  array( 'pkg'     => 'libiodbc',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "http://$sf/projects/iodbc/files" ),
 
  array( 'pkg'     => 'gamin',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "https://people.gnome.org/~veillard/gamin/sources" ),
 
  array( 'pkg'     => 'libatomic_ops',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "http://www.ivmaisoft.com/_bin/atomic_ops" ),
 
  array( 'pkg'     => 'libdbusmenu-qt',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "https://launchpad.net/libdbusmenu-qt/trunk" ),
 
  array( 'pkg'     => 'libesmtp',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "http://www.stafford.uklinux.net/libesmtp/download.html" ),
 
  array( 'pkg'     => 'libusb',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "http://$sf/projects/libusb/files/libusb-1.0" ),
 
  array( 'pkg'     => 'libusb-compat',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "http://$sf/projects/libusb/files/libusb-compat-0.1" ),
 
- array( 'pkg'     => 'nspr',
-        'match'   => '^.*$', 
-        'replace' => "ftp://ftp.mozilla.org/pub/mozilla.org/nspr/releases" ),
-
  array( 'pkg'     => 'openobex',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "http://$sf/projects/openobex/files/openobex" ),
 
  array( 'pkg'     => 'qjson',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "http://$sf/projects/qjson/files/qjson" ),
 
  array( 'pkg'     => 'libzeitgeist',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "https://launchpad.net/libzeitgeist" ),
 
  array( 'pkg'     => 'libdaemon',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/libdaemon" ),
 
  array( 'pkg'     => 'wv',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "http://www.abisource.com/downloads/wv" ),
 
  array( 'pkg'     => 'libical',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "https://github.com/libical/libical/releases" ),
 
  array( 'pkg'     => 'xapian-core',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "http://xapian.org" ),
 
  array( 'pkg'     => 'talloc',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "https://www.samba.org/ftp/talloc" ),
 
  array( 'pkg'     => 'icu4c',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "http://download.icu-project.org/files/icu4c" ),
 
  array( 'pkg'     => 'json-c',
-        'match'   => '^.*$', 
+        'match'   => '^.*$',
         'replace' => "https://s3.amazonaws.com/json-c_releases" ),
 );
 
@@ -154,8 +150,8 @@ function get_packages( $package, $dirpath )
   }
 
   // Check for ftp
-  if ( preg_match( "/^ftp/", $dirpath ) ) 
-  { 
+  if ( preg_match( "/^ftp/", $dirpath ) )
+  {
     // glib type packages
     if ( $book_index == "glib"      ||
          $book_index == "glibmm"    ||
@@ -176,7 +172,7 @@ function get_packages( $package, $dirpath )
 
       $lines = http_get_file( "$dirpath/" );
 
-      //if ( $book_index == "libsigc++" ) 
+      //if ( $book_index == "libsigc++" )
       //  $dir = find_max(      $lines, '/^[\d\.]+$/', '/^([\d\.]+)$/' );
       //else
         $dir = find_even_max( $lines, '/^[\d\.]+$/', '/^([\d\.]+)$/' );
@@ -216,7 +212,7 @@ function get_packages( $package, $dirpath )
       $dirpath  = substr ( $dirpath, 0, $position );
       $lines1 = http_get_file( $dirpath );
 
-      //if ( $book_index == "libsigc++" ) 
+      //if ( $book_index == "libsigc++" )
       //   $dir = find_max(      $lines1, '/^\s+[\d\.]+\/.*$/', '/^\s+([\d\.]+)\/.*$/' );
       //else
          $dir = find_even_max( $lines1, '/^\s+[\d\.]+\/.*$/', '/^\s+([\d\.]+)\/.*$/' );
@@ -240,7 +236,7 @@ function get_packages( $package, $dirpath )
         if ( preg_match( '/^\h*$/', $l ) ) continue;
         $ver = preg_replace( $regex[ $package ], "$1", $l );
         if ( $ver == $l ) continue;
-       
+
         return $ver;  // Return first match of regex
      }
 
@@ -277,12 +273,12 @@ function get_packages( $package, $dirpath )
 
     foreach ( $values as $v )
       if ( $v[ 'tag' ] == "KEY" ) array_push( $lines, $v[ 'value' ] );
-    
+
     return find_max( $lines, '/^.*json-c.*.tar.*$/', '/^.*json-c-([\d\.]+).tar.*$/' );
   }
 
   if ( $book_index == "libdbusmenu-qt" )
-    return find_max( $lines, '/^.*libdbusmenu-qt [\d\.]+.*$/', 
+    return find_max( $lines, '/^.*libdbusmenu-qt [\d\.]+.*$/',
                              '/^.*libdbusmenu-qt ([\d\.]+).*$/' );
 
   if ( $book_index == "libsigc++" )
@@ -298,7 +294,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/libxml2/', '/^.*libxml2-([\d\.-]+).tar.*$/' );
 
   if ( $book_index == "xmlts" )
-    return find_max( $lines, '/^.*Conformance Test Suite [\d]+.*$/', 
+    return find_max( $lines, '/^.*Conformance Test Suite [\d]+.*$/',
                              '/^.*Conformance Test Suite ([\d]+).*$/' );
 
   if ( $book_index == "libpaper_" )
@@ -333,24 +329,24 @@ Function get_pattern( $line )
 {
    // Set up specific pattern matches for extracting book versions
    $match = array(
-   
-      array( 'pkg'   => 'libatomic_ops', 
+
+      array( 'pkg'   => 'libatomic_ops',
              'regex' => "/\D*(\d.*\d[a-z]{0,1})\D*$/" ),
 
-      array( 'pkg'   => 'icu4c', 
+      array( 'pkg'   => 'icu4c',
              'regex' => "/^.*icu4c-([\d_]+)-src.*$/" ),
 
-      array( 'pkg'   => 'libtasn1', 
+      array( 'pkg'   => 'libtasn1',
              'regex' => "/libtasn1-([\d\.]+).*$/" ),
 
-      array( 'pkg'   => 'libxml2', 
+      array( 'pkg'   => 'libxml2',
              'regex' => "/libxml2-([\d\.]+).*$/" ),
    );
 
    foreach( $match as $m )
    {
       $pkg = $m[ 'pkg' ];
-      if ( preg_match( "/$pkg/", $line ) ) 
+      if ( preg_match( "/$pkg/", $line ) )
          return $m[ 'regex' ];
    }
 
@@ -359,10 +355,10 @@ Function get_pattern( $line )
 
 get_current();  // Get what is in the book
 
-// Get latest version for each package 
+// Get latest version for each package
 foreach ( $book as $pkg => $data )
 {
-   $book_index = $pkg; 
+   $book_index = $pkg;
 
    $base = $data[ 'basename' ];
    $url  = $data[ 'url' ];
