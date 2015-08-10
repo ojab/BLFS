@@ -14,7 +14,7 @@ $ignores[ 'xorg-server' ] = '';
 
 $libreoffice = array();
 
-//$current="fontforge";
+//$current="thunderbird";
 
 $regex = array();
 $regex[ 'inkscape'     ] = "/^.*Latest.*(\d[\d\.]+\d).*$/";
@@ -138,6 +138,11 @@ function get_packages( $package, $dirpath )
   // Check for ftp
   if ( preg_match( "/^ftp/", $dirpath ) ) 
   { 
+    // Get listing
+    $lines = http_get_file( "$dirpath/" );
+  }
+  else // http
+  {
      if ( $package == "seamonkey"   ||
           $package == "firefox"     ||
           $package == "thunderbird" )
@@ -152,16 +157,11 @@ function get_packages( $package, $dirpath )
          $dirs = http_get_file( $dirpath );
 
          if ( $package == "seamonkey" )
-            return find_max( $dirs, "/\d\./", "/^.* (\d\.[\.\d]+)$/" );
+            return find_max( $dirs, "/^\d\./", "/^(\d\.[\.\d]+)\/.*$/" );
          else 
-            return find_max( $dirs, "/\d\./", "/^.*(\d{2}[\.\d]+)$/" );
+            return find_max( $dirs, "/^\d/", "/^(\d{2}[\.\d]+)\/.*/" );
      }
 
-    // Get listing
-    $lines = http_get_file( "$dirpath/" );
-  }
-  else // http
-  {
      if ( preg_match( "/abiword/", $dirpath ) )
      {
         $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
