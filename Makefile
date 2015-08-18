@@ -796,9 +796,9 @@ uninstall-lxdm:
 	rm -f ${EXTDIR}/rc.d/rc0.d/K05lxdm
 	rm -f ${EXTDIR}/rc.d/rc1.d/K05lxdm
 	rm -f ${EXTDIR}/rc.d/rc2.d/K05lxdm
-	rm -f ${EXTDIR}/rc.d/rc3.d/S95lxdm
+	rm -f ${EXTDIR}/rc.d/rc3.d/K05lxdm
 	rm -f ${EXTDIR}/rc.d/rc4.d/K05lxdm
-	rm -f ${EXTDIR}/rc.d/rc5.d/K05lxdm
+	rm -f ${EXTDIR}/rc.d/rc5.d/S95lxdm
 	rm -f ${EXTDIR}/rc.d/rc6.d/K05lxdm
 
 uninstall-mysql:

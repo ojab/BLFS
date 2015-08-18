@@ -1,3 +1,7 @@
+2015-08-15 Fernando de Oliveira <famobr at yahoo.com.br>
+   * Add upowerd to sddm bootscript, for buttons to work (halt, reboot, etc.).
+   * Fix lxdm uninstall target.
+
 2015-08-01 Fernando de Oliveira <famobr at yahoo.com.br>
    * Add sddm bootscript
    * Reorder part of the Makefile.
