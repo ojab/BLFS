@@ -23,31 +23,40 @@ BIN_FILE="/usr/bin/sddm"
 
 case $1 in
    start)
-	log_info_msg "Starting SDDM..."
-	start_daemon $BIN_FILE &
-	evaluate_retval
-	;;
+        log_info_msg "Starting upowerd..."
+        start_daemon /usr/libexec/upowerd &
+        evaluate_retval
+
+        log_info_msg "Starting SDDM..."
+        start_daemon $BIN_FILE &
+        evaluate_retval
+        ;;
 
    stop)
-	log_info_msg "Stopping SDDM..."
- 	killproc $BIN_FILE
-	evaluate_retval
-	;;
+        log_info_msg "Stopping SDDM..."
+        killproc $BIN_FILE
+        evaluate_retval
+
+        log_info_msg "Stopping upowerd..."
+        killproc upowerd
+        evaluate_retval
+        ;;
 
    restart)
-	$0 stop
-	sleep 2
-	$0 start
-	;;
+        $0 stop
+        sleep 2
+        $0 start
+        ;;
 
    status)
         statusproc ${BIN_FILE}
+        statusproc /usr/libexec/upowerd
         ;;
 
    *)
-	echo "usage: $0 [start|stop|restart|status]"
+        echo "usage: $0 [start|stop|restart|status]"
         exit 1
-	;;
+        ;;
 esac
 
 # End /etc/rc.d/init.d/sddm
