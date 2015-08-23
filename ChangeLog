@@ -1,3 +1,6 @@
+2015-08-23 Fernando de Oliveira <famobr at yahoo.com.br>
+   * Fix sddm for upowerd stop.
+
 2015-08-15 Fernando de Oliveira <famobr at yahoo.com.br>
    * Add upowerd to sddm bootscript, for buttons to work (halt, reboot, etc.).
    * Fix lxdm uninstall target.

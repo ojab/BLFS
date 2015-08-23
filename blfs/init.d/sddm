@@ -38,7 +38,7 @@ case $1 in
         evaluate_retval
 
         log_info_msg "Stopping upowerd..."
-        killproc upowerd
+        killproc /usr/libexec/upowerd
         evaluate_retval
         ;;
 
