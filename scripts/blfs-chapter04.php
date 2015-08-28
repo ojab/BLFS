@@ -15,14 +15,24 @@ $renames[ 'shadow_'    ] = 'shadow';
 $ignores = array();
 $ignores[ 'openssh1' ] = "";
 
-//$current="stunnel";   // For debugging
+//$current="cracklib-words";   // For debugging
 
 $regex = array();
-$regex[ 'krb5'     ] = "/^.*Kerberos V5 Release ([\d\.]+).*$/";
-$regex[ 'tripwire' ] = "/^.*Download tripwire-([\d\.]+)-src.*$/";
-$regex[ 'haveged'  ] = "/^.*haveged-([\d\.]+)\.tar.*$/";
+$regex[ 'krb5'           ] = "/^.*Kerberos V5 Release ([\d\.]+).*$/";
+$regex[ 'tripwire'       ] = "/^.*Download tripwire-([\d\.]+)-src.*$/";
+$regex[ 'haveged'        ] = "/^.*haveged-([\d\.]+)\.tar.*$/";
+$regex[ 'cracklib'       ] = "/^.*cracklib-([\d\.]+)\.tar.*$/";
+$regex[ 'cracklib-words' ] = "/^.*cracklib-words-([\d\.]+)\.bz2.*$/";
 
 $url_fix = array(
+
+   array( 'pkg'     => 'cracklib',
+          'match'   => '^.*$', 
+          'replace' => 'https://github.com/cracklib/cracklib/releases' ),
+
+   array( 'pkg'     => 'cracklib-words',
+          'match'   => '^.*$', 
+          'replace' => 'https://github.com/cracklib/cracklib/releases' ),
 
    array( 'pkg'     => 'gnupg',
           'match'   => '^.*$', 
@@ -107,23 +117,6 @@ function get_packages( $package, $dirpath )
   else // http
   {
      // Customize http directories as needed
-     if ( $package == 'cracklib' )
-        $dirpath = "http://sourceforge.net/projects/cracklib/files/$package";
-
-     // Need to get max directory from here
-     if ( $package == 'cracklib-words' )
-     {
-        $dirpath = "http://sourceforge.net/projects/cracklib/files/$package";
-        $lines   = http_get_file( $dirpath );
-        $max     = find_max( $lines, "/\d{4}-\d{2}-\d{2}/", "/^.*(\d{4}-\d{2}-\d{2}).*$/" );
-
-        if ( $max == 0 ) return -6;
-        
-        $dirpath .= "/$max";
-        $lines = http_get_file( $dirpath );
-        return find_max( $lines, "/$package/", "/^.*$package-([\d\.-]*\d)\.gz.*$/" );
-     }
-
      if ( $book_index == "krb5" )
      {
         // Remove last two dirs from $path

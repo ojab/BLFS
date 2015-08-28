@@ -58,14 +58,26 @@ sort($a);
 
 $msg = "            BLFS Package        BLFS Version             Latest      Ticket\n";
 
-//echo $msg;
-
-
 foreach ( $a as $l )
 {
   $c = preg_split( "/ /", $l );
   if ( $c[0] == "" ) continue;
   $pkg  = $c[1];
+
+  if ( preg_match( "/libreoffice-/", $pkg ) ) continue;
+
+  if ( $pkg == "baloo"            ||
+       $pkg == "baloo-widgets"    ||
+       $pkg == "kactivities"      ||
+       $pkg == "kfilemetadata"    ||
+       $pkg == "kdeplasma-addons" ||
+       $pkg == "konsole"          ||
+       $pkg == "kate"             ||
+       $pkg == "gwenview"         ||
+       $pkg == "oxygen-icons"     ||
+       $pkg == "kde-base-artwork" ||
+       $pkg == "kde-baseapps"     ||
+       $pkg == "kdepimlibs" ) continue;
 
   if ( $pkg == "goffice" ) 
   {
@@ -96,7 +108,7 @@ foreach ( $a as $l )
   $msg .= $x;
 }
 
-//echo $x;
+//echo $msg;  // For debugging
 //exit;
 
 $from    = "bdubbs@linuxfromscratch.org";

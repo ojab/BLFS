@@ -11,7 +11,7 @@ $STOP_PACKAGE  = 'xapian-core';
 $renames = array();
 $ignores = array();
 
-//$current="json-c";
+//$current="nspr"; // For debugging
 
 $regex = array();
 $regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
@@ -180,14 +180,6 @@ function get_packages( $package, $dirpath )
       $dirpath .= "/$dir/";
     }
 
-    if ( $book_index == "nspr" )
-    {
-      // Get the max directory and adjust the directory path
-      $lines = http_get_file( "$dirpath/" );
-      $dir = find_max( $lines, "/v[\d\.]+.*/", "/^.*v([\d\.]+).*/" );
-      $dirpath .= "/v$dir/src";
-    }
-
     // Get listing
     $lines = http_get_file( "$dirpath/" );
   }
@@ -225,6 +217,21 @@ function get_packages( $package, $dirpath )
     {
       $lines = http_get_file( $dirpath );
       if ( ! is_array( $lines ) ) return $lines;
+    }
+
+    if ( $book_index == "nspr" )
+    {
+      // Up two directory components
+      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
+      $position = strrpos( $dirpath, "/" );
+      $dirpath  = substr ( $dirpath, 0, $position );
+      $position = strrpos( $dirpath, "/" );
+      $dirpath  = substr ( $dirpath, 0, $position );
+
+      // Get the max directory and return numerical value
+      $lines = http_get_file( "$dirpath" );
+      $dir = find_max( $lines, "/v\d/", "/^.*v([\d\.]+).*/" );
+      return $dir;
     }
   } // End fetch
 
