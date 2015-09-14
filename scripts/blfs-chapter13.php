@@ -34,7 +34,7 @@ $ignores[ 'hamcrest'     ] = '';
 $ignores[ 'apache-ant1'  ] = '';
 $ignores[ 'icedtea-web'  ] = '';
 
-//$current="junit4_";
+//$current="jtreg";
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Download check-(\d[\d\.]+\d).tar.*$/";
@@ -50,7 +50,7 @@ $regex[ 'Mako'    ] = "/^.*version is (\d[\d\.]+\d).*$/";
 $regex[ 'php'     ] = "/^.*php-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'ruby'    ] = "/^.*stable version is (\d[\d\.]+\d).*$/";
 $regex[ 'valgrind'] = "/^.*valgrind (\d[\d\.]+\d) \(tar.*$/";
-$regex[ 'jtreg'   ] = "/^.*jtreg(\d[b\d\.\-]+\d)\.tar.*$/";
+$regex[ 'jtreg'   ] = "/^.*jtreg-(\d[b\d\.\-]+\d)\.tar.*$/";
 $regex[ 'OpenJDK' ] = "/^.*OpenJDK-(\d[\d\.]+\d)\-.*$/";
 
 // Perl Modules
@@ -578,7 +578,7 @@ Function get_pattern( $line )
 
      // Order matters here.  jtreg must be before OpenJDK
      array( 'pkg'   => 'jtreg', 
-            'regex' => "/jtreg(\d[\d\.b-]+)$/" ),
+            'regex' => "/jtreg-(\d[\d\.b-]+)$/" ),
 
      array( 'pkg'   => 'OpenJDK', 
             'regex' => "/OpenJDK-([\d\.]+)-.*$/" ),
