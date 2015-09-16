@@ -24,6 +24,7 @@ $regex[ 'fontforge'    ] = "/^.*fontforge-(20\d+).tar.*$/";
 $regex[ 'xscreensaver' ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'tigervnc'     ] = "/^.*TigerVNC (\d[\d\.]+\d).*$/";
 $regex[ 'transmission' ] = "/^.*release version.*(\d[\d\.]+\d).*$/";
+$regex[ 'xarchiver'    ] = "/^.*Download xarchiver-(\d[\d\.]+\d).tar.*$/";
 
 $url_fix = array (
 
@@ -98,6 +99,10 @@ $url_fix = array (
    array( 'pkg'     => 'transmission',
           'match'   => '^.*$',
           'replace' => "https://www.transmissionbt.com/download" ),
+
+   array( 'pkg'     => 'xarchiver',
+          'match'   => '^.*$',
+          'replace' => "http://sourceforge.net/projects/xarchiver/files" ),
 
 );
 

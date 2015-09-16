@@ -162,6 +162,9 @@ function get_pattern( $line )
      
      array( 'pkg'   => 'k3b', 
             'regex' => "/^.*k3b-(\d[\d\.]+).*$/" ),
+
+     array( 'pkg'   => 'mplayer', 
+            'regex' => "/^.*mplayer-(SVN-r\d+).*$/" ),
    );
 
    foreach( $match as $m )

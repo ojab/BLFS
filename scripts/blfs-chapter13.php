@@ -12,9 +12,9 @@ $renames = array();
 $renames[ 'librep_'    ] = 'librep';
 $renames[ 'py'         ] = 'pycairo';
 $renames[ 'Python'     ] = 'python2';
-$renames[ 'python'     ] = 'python2 docs';
+#$renames[ 'python'     ] = 'python2 docs';
 $renames[ 'Python1'    ] = 'python3';
-$renames[ 'python1'    ] = 'python3 docs';
+#$renames[ 'python1'    ] = 'python3 docs';
 $renames[ 'pygobject'  ] = 'pygobject2';
 $renames[ 'pygobject1' ] = 'pygobject3';
 $renames[ 'junit4_'    ] = 'junit';
@@ -33,6 +33,8 @@ $ignores[ 'OpenJDK1'     ] = '';
 $ignores[ 'hamcrest'     ] = '';
 $ignores[ 'apache-ant1'  ] = '';
 $ignores[ 'icedtea-web'  ] = '';
+$ignores[ 'python'       ] = '';
+$ignores[ 'python1'      ] = '';
 
 //$current="jtreg";
 
@@ -119,13 +121,13 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "http://www.nasm.us/pub/nasm/releasebuilds" ),
 
-   array( 'pkg'     => 'python',
-          'match'   => '^.*$', 
-          'replace' => "https://docs.python.org/2/archives" ),
+#   array( 'pkg'     => 'python',
+#          'match'   => '^.*$', 
+#          'replace' => "https://docs.python.org/2/archives" ),
 
-   array( 'pkg'     => 'python1',
-          'match'   => '^.*$', 
-          'replace' => "https://docs.python.org/3/archives" ),
+#   #array( 'pkg'     => 'python1',
+#          'match'   => '^.*$', 
+#          'replace' => "https://docs.python.org/3/archives" ),
 
    array( 'pkg'     => 'scons',
           'match'   => '^.*$', 
@@ -515,11 +517,11 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "nasm" )
     return find_max( $lines, '/^\d/', '/^(\d[\d\.]+\d)\/.*$/' );
 
-  if ( $book_index == "python" || $book_index == "python1" )  // python docs
-  {
-    return find_max( $lines, "/python-\d/", 
-                             "/^python-(\d[\d\.]*\d)-docs.*$/" );
-  }
+#  if ( $book_index == "python" || $book_index == "python1" )  // python docs
+#  {
+#    return find_max( $lines, "/python-\d/", 
+#                             "/^python-(\d[\d\.]*\d)-docs.*$/" );
+#  }
 
   if ( $book_index == "cmake" )
   {
