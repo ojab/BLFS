@@ -23,20 +23,12 @@ BIN_FILE="/usr/bin/sddm"
 
 case $1 in
    start)
-        log_info_msg "Starting upowerd..."
-        start_daemon /usr/libexec/upowerd &
-        evaluate_retval
-
         log_info_msg "Starting SDDM..."
         start_daemon $BIN_FILE &
         evaluate_retval
         ;;
 
    stop)
-        log_info_msg "Stopping SDDM..."
-        killproc $BIN_FILE
-        evaluate_retval
-
         log_info_msg "Stopping upowerd..."
         killproc /usr/libexec/upowerd
         evaluate_retval
@@ -50,7 +42,6 @@ case $1 in
 
    status)
         statusproc ${BIN_FILE}
-        statusproc /usr/libexec/upowerd
         ;;
 
    *)
