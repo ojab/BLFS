@@ -15,7 +15,7 @@ $renames[ 'shadow_'    ] = 'shadow';
 $ignores = array();
 $ignores[ 'openssh1' ] = "";
 
-//$current="cracklib-words";   // For debugging
+//$current="nss";   // For debugging
 
 $regex = array();
 $regex[ 'krb5'           ] = "/^.*Kerberos V5 Release ([\d\.]+).*$/";
@@ -23,8 +23,13 @@ $regex[ 'tripwire'       ] = "/^.*Download tripwire-([\d\.]+)-src.*$/";
 $regex[ 'haveged'        ] = "/^.*haveged-([\d\.]+)\.tar.*$/";
 $regex[ 'cracklib'       ] = "/^.*cracklib-([\d\.]+)\.tar.*$/";
 $regex[ 'cracklib-words' ] = "/^.*cracklib-words-([\d\.]+)\.bz2.*$/";
+$regex[ 'ConsoleKit'     ] = "/^.*ConsoleKit(2-[\d\.]+)\.tar.*$/";
 
 $url_fix = array(
+
+   array( 'pkg'     => 'ConsoleKit',
+          'match'   => '^.*$', 
+          'replace' => 'https://github.com/ConsoleKit2/ConsoleKit2/releases' ),
 
    array( 'pkg'     => 'cracklib',
           'match'   => '^.*$', 
@@ -64,7 +69,7 @@ $url_fix = array(
 
    array( 'pkg'     => 'nss',
           'match'   => '^.*$', 
-          'replace' => 'http://ftp.mozilla.org/pub/mozilla.org/security/nss/releases' ),
+          'replace' => 'https://ftp.mozilla.org/pub/security/nss/releases/' ),
 
 );
 

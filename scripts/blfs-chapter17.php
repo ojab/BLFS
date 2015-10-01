@@ -12,7 +12,7 @@ $renames = array();
 $ignores = array();
 $ignores[ 'rpcnis-headers' ] = '';
 
-//$current="libndp";
+//$current="lynx";
 
 $regex = array();
 $regex[ 're-alpine' ] = "/^.*Download re-alpine-(\d[\d\.]+\d).tar.*$/";
@@ -70,7 +70,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'lynx',
           'match'   => '^.*$', 
-          'replace' => "ftp://lynx.isc.org" ),
+          'replace' => "ftp://lynx.isc.org/lynx/tarballs/" ),
 
 );
 
@@ -127,9 +127,6 @@ function get_packages( $package, $dirpath )
     if ( $book_index == "lynx" )
     {
       $lines = http_get_file( $dirpath );
-      $dir   = find_max( $lines, "/lynx/", "/^.*(lynx\d[\d\.]+).*$/" );
-      $dirpath .= "/$dir/";
-      $lines = http_get_file( "$dirpath" );
       $max = find_max( $lines, "/rel/", "/^.*lynx(\d[\d\.]+rel\.\d).tar.*$/" );
       return $max;
     }

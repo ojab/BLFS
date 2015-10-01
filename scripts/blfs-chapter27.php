@@ -11,7 +11,7 @@ $STOP_PACKAGE  = 'kde-workspace';
 $renames = array();
 $ignores = array();
 
-//$current="akonadi";
+//$current="kde-workspace";
 
 $kde_ver   = "";
 $kde_lines = "";
@@ -20,10 +20,9 @@ $regex = array();
 //$regex[ 'agg'      ] = "/^.*agg-(\d[\d\.]+\d).tar.*$/";
 
 $url_fix = array (
-   array( 'pkg'     => 'kde-workspace',
-          'match'   => '^.*$', 
-          'replace' => "http://http://download.kde.org/stable/4.14.2/src" ),
-          // Sinece this is http, will strip off last two
+//   array( 'pkg'     => 'kde-workspace',
+//          'match'   => '^.*$', 
+//          'replace' => "http://download.kde.org/stable/4.14.2/src" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -96,6 +95,7 @@ function get_packages( $package, $dirpath )
   else // http
   {
      if ( $book_index == "kfilemetadata"      ) return "check manually";
+     if ( $book_index == "kde-workspace"      ) return "check manually";
      if ( preg_match( '/baloo/', $book_index) ) return "check manually";
 
      # Copy from ftp above for now

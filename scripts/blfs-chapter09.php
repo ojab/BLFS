@@ -16,7 +16,7 @@ $ignores = array();
 $regex = array();
 $regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
 $regex[ 'expat'         ] = "/^.*Download expat-([\d\.]+).tar.*$/";
-$regex[ 'libesmtp'      ] = "/^.*libesmtp-([\d\.]+).tar.*$/";
+//$regex[ 'libesmtp'      ] = "/^.*libesmtp-([\d\.]+).tar.*$/";
 $regex[ 'libzeitgeist'  ] = "/^.*Latest version is ([\d\.]+)\s*$/";
 $regex[ 'mozjs'         ] = "/^.*mozjs(\d[\d\.]+\d).tar.*$/";
 $regex[ 'mozjs1'        ] = "/^.*mozjs-(\d[\d\.]+\d).tar.*$/";
@@ -65,7 +65,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'libesmtp',
         'match'   => '^.*$',
-        'replace' => "http://www.stafford.uklinux.net/libesmtp/download.html" ),
+        'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/libesmtp/" ),
 
  array( 'pkg'     => 'libusb',
         'match'   => '^.*$',
@@ -98,6 +98,10 @@ $url_fix = array (
  array( 'pkg'     => 'libical',
         'match'   => '^.*$',
         'replace' => "https://github.com/libical/libical/releases" ),
+
+ array( 'pkg'     => 'nspr',
+        'match'   => '^.*$',
+        'replace' => "https://ftp.mozilla.org/pub/nspr/releases/" ),
 
  array( 'pkg'     => 'xapian-core',
         'match'   => '^.*$',
@@ -221,15 +225,8 @@ function get_packages( $package, $dirpath )
 
     if ( $book_index == "nspr" )
     {
-      // Up two directory components
-      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-      $position = strrpos( $dirpath, "/" );
-      $dirpath  = substr ( $dirpath, 0, $position );
-      $position = strrpos( $dirpath, "/" );
-      $dirpath  = substr ( $dirpath, 0, $position );
-
       // Get the max directory and return numerical value
-      $lines = http_get_file( "$dirpath" );
+      $lines = http_get_file( $dirpath );
       $dir = find_max( $lines, "/v\d/", "/^.*v([\d\.]+).*/" );
       return $dir;
     }
