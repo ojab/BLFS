@@ -9,18 +9,18 @@ $START_PACKAGE = 'libxfce4util';
 $STOP_PACKAGE  = 'xfce4-notifyd';
 
 $renames = array();
-$renames[ 'midori_' ] = 'midori_';
+//$renames[ 'midori_' ] = 'midori_';
 
 $ignores = array();
 
 $regex = array();
-$regex[ 'midori_' ] = "/^.*midori_(\d[\d\.]*\d)_all.*$/";
+$regex[ 'midori' ] = "/^.*midori_(\d[\d\.]*\d)_all.*$/";
 
-//$current="midori_";
+//$current="midori";
 
 $url_fix = array (
 
-   array( 'pkg'     => 'midori_',
+   array( 'pkg'     => 'midori',
           'match'   => '^.*$', 
           'replace' => "http://www.midori-browser.org/download/source" ),
 
@@ -90,7 +90,7 @@ function get_packages( $package, $dirpath )
     // Get listing
     $lines = http_get_file( "$dirpath/" );
   }
-  else if ( $book_index != "midori_"  &&
+  else if ( $book_index != "midori"  &&
             $book_index != "xfce4-xkb-plugin" ) // http
   {
      // Most http enties for this chapter
@@ -98,7 +98,6 @@ function get_packages( $package, $dirpath )
      $position = strrpos( $dirpath, "/" );
      $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
      $dirs     = http_get_file( "$dirpath/" );
-
      if ( preg_match( "/xf/", $package )  &&
           $book_index != "xfburn" )
        $dir = find_even_max( $dirs, "/^\d/", "/^([\d\.]+)\/.*$/" );
@@ -114,7 +113,7 @@ function get_packages( $package, $dirpath )
   // Others
   else 
   {
-     if ( $book_index == "midori_" )
+     if ( $book_index == "midori" )
      {
        exec( "curl -L -s -m30 $dirpath", $lines );
      }

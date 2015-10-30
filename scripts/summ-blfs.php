@@ -56,7 +56,7 @@ $f = strip_tags( $file );
 $a = explode( "\n", $f );
 sort($a);
 
-$msg = "            BLFS Package        BLFS Version             Latest      Ticket\n";
+$msg = "            BLFS Package        BLFS Version              Latest      Ticket\n";
 
 foreach ( $a as $l )
 {
@@ -89,7 +89,7 @@ foreach ( $a as $l )
   if ( $c[3] == "0" ) $c[3] .= " ";
   $x    = substr("chapter $c[0]: $c[1]                         ", 0, 32);
   $x   .= substr("$c[2]                          ",  0, 25);
-  $x   .= substr("$c[3]          ", 0, 12);
+  $x   .= substr("$c[3]           ", 0, 13);
 
   $tick = "";
 

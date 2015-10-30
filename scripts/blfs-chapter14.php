@@ -9,14 +9,14 @@ $START_PACKAGE = 'dhcpcd';
 $STOP_PACKAGE  = 'wireshark';
 
 $renames = array();
-$renames[ 'net-tools-CVS_'  ] = 'net-tools';
+//$renames[ 'net-tools-CVS_'  ] = 'net-tools';
 $renames[ 'wireless_tools.' ] = 'wireless_tools';
 $renames[ 'whois_'          ] = 'whois';
 $renames[ 'bind'            ] = 'bind9';
 
 $ignores = array();
 
-//$current="bind";
+//$current="samba";
 
 $regex[ 'bridge-utils'    ] = "/^.*Download bridge-utils-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'nfs-utils'       ] = "/^.*Download nfs-utils-(\d[\d\.]+\d).tar.*$/";
@@ -183,7 +183,7 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "ncftp" )
     return find_max( $lines, '/ncftp/', '/^.*ncftp-([\d\.]+)-src.tar.*$/' );
 
-  if ( $book_index == "net-tools-CVS_" )
+  if ( $book_index == "net-tools-CVS" )
     return find_max( $lines, '/net-tools/', '/^.*_(\d+).tar.*$/' );
 
   if ( $book_index == "ntp" )
@@ -193,7 +193,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/ntp-.*tar/', '/^ntp-([\d\.p]+).tar.*$/' );
   }
 
-  if ( $book_index == "whois_" )
+  if ( $book_index == "whois" )
     return find_max( $lines, '/whois_/', '/^.*whois_([\d\.]+).tar.*$/' );
 
   if ( $book_index == "wireshark" )

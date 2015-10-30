@@ -16,15 +16,17 @@ $renames[ 'gtkmm1'                         ] = 'gtkmm3';
 $renames[ 'qt-everywhere-opensource-src'   ] = 'qt4';
 $renames[ 'qt-everywhere-opensource-src1'  ] = 'qt5';
 $renames[ 'webkitgtk'                      ] = 'webkitgtk+-2.4';
-$renames[ 'webkitgtk1'                     ] = 'webkitgtk+-2.8';
+$renames[ 'webkitgtk1'                     ] = 'webkitgtk+-2.10';
 
 $ignores = array();
 
-//$current="libxklavier"; // For debugging
+#$current="sddm"; // For debugging
 
 $regex = array();
 $regex[ 'freeglut' ] = "/^.*Download freeglut-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'libepoxy' ] = "/^.*v(\d[\d\.]+\d).*$/";
+$regex[ 'lxdm'     ] = "/^.*Download lxdm-(\d[\d\.]+\d).tar.*$/";
+$regex[ 'sddm'     ] = "/^.*Version (\d[\d\.]+\d).*$/";
 
 $url_fix = array (
 
@@ -43,6 +45,14 @@ $url_fix = array (
    array( 'pkg'     => 'libepoxy',
           'match'   => '^.*$', 
           'replace' => "https://github.com/anholt/libepoxy/releases" ),
+   
+   array( 'pkg'     => 'lxdm',
+          'match'   => '^.*$', 
+          'replace' => "http://sourceforge.net/projects/lxdm/files" ),
+
+   array( 'pkg'     => 'sddm',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/sddm/sddm/releases" ),
 );
 
 function get_packages( $package, $dirpath )

@@ -151,6 +151,7 @@ function get_current()
 
       $basename = strstr( $file, $version, true );
       $basename = rtrim( $basename, "-" );
+      $basename = rtrim( $basename, "_" );
 
       if ( $basename == $START_PACKAGE ) $start = true;
       if ( ! $start ) continue;

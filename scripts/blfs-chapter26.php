@@ -9,7 +9,7 @@ $START_PACKAGE = 'fluxbox';
 $STOP_PACKAGE  = 'sawfish';
 
 $renames = array();
-$renames[ 'sawfish_' ] = 'sawfish';
+//$renames[ 'sawfish_' ] = 'sawfish';
 
 $ignores = array();
 
@@ -17,7 +17,7 @@ $regex = array();
 $regex[ 'fluxbox' ] = "/^.*current version of Fluxbox is (\d[\d\.]+\d).*$/";
 $regex[ 'icewm'   ] = "/^.*Download icewm-(\d[\d\.]+\d).*$/";
 
-//$current="sawfish_";
+//$current="sawfish";
 
 $url_fix = array (
 
@@ -93,6 +93,9 @@ function get_packages( $package, $dirpath )
 
      return 0;  // This is an error
   }
+
+  if ( $package == 'sawfish' )
+    return find_max( $lines, "/sawfish/", "/^.*sawfish_([\d\.]*\d)\.tar.*$/" );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)

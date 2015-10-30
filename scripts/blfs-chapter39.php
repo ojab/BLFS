@@ -14,10 +14,11 @@ $renames[ 'libmusicbrainz1' ] = 'libmusicbrainz5';
 $renames[ 'libvpx-v'        ] = 'libvpx';
 $renames[ 'v'               ] = 'fdk-aac';
 $renames[ 'x'               ] = 'x264';
+$renames[ 'x1'              ] = 'x265';
 
 $ignores = array();
 
-//$current="frei0r-snapshot";
+//$current="x265";
 
 $regex = array();
 $regex[ 'faac'             ] = "/^.*Download faac-(\d[\d\.]+\d).tar.*$/";
@@ -207,6 +208,14 @@ function get_packages( $package, $dirpath )
         return find_max( $lines, "/libmpeg3/", "/^.*libmpeg3-(\d[\d\.]+)-src.*$/" );
      }
 
+     if ( $package == "x265" )
+     {
+        # We have to process the stupid javascript to get this to work
+        exec( "lynx -dump  $dirpath", $output );
+        $max = find_max( $output, "/x265_/", "/^.*x265_([\d\.]*\d)\.tar.*$/" );
+        return $max;
+     }
+
      $lines = http_get_file( $dirpath );
 
      if ( ! is_array( $lines ) ) return $lines;
@@ -310,6 +319,9 @@ Function get_pattern( $line )
 
      array( 'pkg'   => 'v4l-utils', 
             'regex' => "/^.*v4l-utils-(\d[\d\.]+\d).*$/" ),
+
+     array( 'pkg'   => 'x265', 
+            'regex' => "/^.*x265_(\d[\d\.]+\d).*$/" ),
    );
 
    foreach( $match as $m )

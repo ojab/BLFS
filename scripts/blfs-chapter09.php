@@ -31,7 +31,7 @@ $url_fix = array (
         'match'   => '^ftp:\/\/ftp.gnome',
         'replace' => "http://ftp.gnome" ),
 
- array( 'pkg'     => 'boost_',
+ array( 'pkg'     => 'boost',
         'match'   => '^.*$',
         'replace' => "http://$sf/projects/boost/files/boost" ),
 
@@ -247,7 +247,7 @@ function get_packages( $package, $dirpath )
      return 0;  // This is an error
   }
 
-  if ( $book_index == "boost_" )
+  if ( $book_index == "boost" )
   {
     $dir   = find_max( $lines, '/\d\.\d\d/', '/^\s*([\d\.]+)\s*$/' );
     $lines = http_get_file( "$dirpath/$dir" );
@@ -301,7 +301,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/^.*Conformance Test Suite [\d]+.*$/',
                              '/^.*Conformance Test Suite ([\d]+).*$/' );
 
-  if ( $book_index == "libpaper_" )
+  if ( $book_index == "libpaper" )
     return find_max( $lines, '/libpaper/', '/.*libpaper_([\d\.]+\+nmu\d).tar.*$/' );
 
   if ( $book_index == "libatomic_ops" )

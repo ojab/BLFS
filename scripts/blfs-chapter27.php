@@ -94,6 +94,8 @@ function get_packages( $package, $dirpath )
   }
   else // http
   {
+     if ( $book_index == "kdepimlibs"         ) return "check manually";
+     if ( $book_index == "oxygen-icons"       ) return "check manually";
      if ( $book_index == "kfilemetadata"      ) return "check manually";
      if ( $book_index == "kde-workspace"      ) return "check manually";
      if ( preg_match( '/baloo/', $book_index) ) return "check manually";

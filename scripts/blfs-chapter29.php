@@ -17,7 +17,7 @@ $kde_lines = "";
 $regex = array();
 //$regex[ 'agg'      ] = "/^.*agg-(\d[\d\.]+\d).tar.*$/";
 
-//$current="polkit-qt-1";
+//$current="libkcddb";
 
 $url_fix = array (
 
@@ -73,13 +73,17 @@ function get_packages( $package, $dirpath )
      if ( $package == "konsole"          ||
           $package == "kdeplasma-addons" ||
           $package == "kate"             ||
+          $package == "ark"              ||
+          $package == "kmix"             ||
+          $package == "kdepim"           ||
+          $package == "kdepim-runtime"   ||
           $package == "gwenview" ) return "check manually";
 
      if ( ! is_array($kde_lines) )
      {
        $dirpath   = "http://download.kde.org/stable/applications/";
        $lines     = http_get_file( $dirpath );
-       $kde_ver   = find_max( $lines, "/4\./", "/^.*;(1[\d\.]+\d)\/.*$/" );
+       $kde_ver   = find_max( $lines, "/1\d/", "/^.*;(1[\d\.]+\d)\/.*$/" );
        $kde_lines = http_get_file( "$dirpath/$kde_ver/src" );
      }
 
@@ -95,7 +99,7 @@ function get_packages( $package, $dirpath )
 
 function get_pattern( $line )
 {
-   // Set up specific patter matches for extracting book versions
+   // Set up specific pattern matches for extracting book versions
 
    $match = array(
      array( 'pkg'   => 'libkexiv', 

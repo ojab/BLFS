@@ -9,15 +9,15 @@ $START_PACKAGE = 'acpid';
 $STOP_PACKAGE  = 'zip';
 
 $renames = array();
-$renames[ 'at_'      ] = 'at';
+//$renames[ 'at_'      ] = 'at';
 $renames[ 'udisks1'  ] = 'udisks2';
 $renames[ 'sg'       ] = 'sg3_utils';
 $renames[ 'unrarsrc' ] = 'unrar';
-$renames[ 'p7zip_'   ] = 'p7zip';
+//$renames[ 'p7zip_'   ] = 'p7zip';
 
 $ignores = array();
 
-//$current="obex-data-server";
+//$current="at";
 
 $regex = array();
 $regex[ 'acpid'   ] = "/^.*Download acpid-(\d[\d\.]+\d).tar.*$/";
@@ -63,7 +63,7 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/acpid2/files" ),
    
-   array( 'pkg'     => 'p7zip_',
+   array( 'pkg'     => 'p7zip',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/p7zip/files/p7zip/" ),
 
@@ -162,8 +162,8 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "apache-ant" )
     return find_max( $lines, '/apache-ant/', '/^.*apache-ant-([\d\.]+)-src.tar.*$/' );
 
-  if ( $book_index == "at_" )
-    return find_max( $lines, '/at_/', '/^.*at_([\d\.]+).orig.tar.*$/' );
+  if ( $book_index == "at" )
+    return find_max( $lines, '/orig/', '/^.*at_([\d\.]+).orig.tar.*$/' );
 
   if ( $book_index == "dbus" )
     return find_even_max( $lines, '/dbus/', '/^.*dbus-(\d[\d\.]*\d).tar.*$/' );
@@ -183,7 +183,7 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "udisks1" )
     return find_max( $lines, '/udisks/', '/^.*udisks-(\d[\d\.]*\d).tar.*$/' );
 
-  if ( $book_index == "p7zip_" )
+  if ( $book_index == "p7zip" )
   {
     return find_max( $lines, '/\d\./', '/^\s*([\d\.]+)\s*$/' );
   }

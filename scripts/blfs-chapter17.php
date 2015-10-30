@@ -173,7 +173,7 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "libndp" )
     return find_max( $lines, '/v\d/', '/^.*v([\d\.]+)$/' );
 
-  if ( $book_index == "heirloom-mailx_" )
+  if ( $book_index == "heirloom-mailx" )
     return find_max( $lines, '/orig/', '/^.*_([\d\.]+)\.orig.*$/' );
 
   if ( $book_index == "libpcap" )

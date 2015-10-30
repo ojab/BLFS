@@ -13,12 +13,12 @@ $ignores = array();
 $ignores[ 'install-tl-unx' ] = '';
 $ignores[ 'texlive1'       ] = '';
 
-//$current="texlive";  // For debugging
+//$current="docbook-xsl-doc";  // For debugging
 
 $regex = array();
 $regex[ 'gutenprint'      ] = "/^.*Download gutenprint-(\d[\d\.]+\d).*$/";
 $regex[ 'OpenSP'          ] = "/^.*Download OpenSP-(\d[\d\.]+\d).*$/";
-$regex[ 'docbook-xsl-doc' ] = "/^.*Download docbook-xsl-(\d[\d\.]+\d).*$/";
+$regex[ 'docbook-xsl-doc' ] = "/^.*Download docbook-xsl-doc-(\d[\d\.]+\d).*$/";
 $regex[ 'paps'            ] = "/^.*Download paps-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'asymptote'       ] = "/^.*Download asymptote-(\d[\d\.]+\d).*$/";
 $regex[ 'biblatex'        ] = "/^.*Download biblatex-(\d[\d\.]+\d).*$/";

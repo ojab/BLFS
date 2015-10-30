@@ -9,7 +9,7 @@ $START_PACKAGE = 'check';
 $STOP_PACKAGE  = 'junit';
 
 $renames = array();
-$renames[ 'librep_'    ] = 'librep';
+//$renames[ 'librep_'    ] = 'librep';
 $renames[ 'py'         ] = 'pycairo';
 $renames[ 'Python'     ] = 'python2';
 #$renames[ 'python'     ] = 'python2 docs';
@@ -17,7 +17,7 @@ $renames[ 'Python1'    ] = 'python3';
 #$renames[ 'python1'    ] = 'python3 docs';
 $renames[ 'pygobject'  ] = 'pygobject2';
 $renames[ 'pygobject1' ] = 'pygobject3';
-$renames[ 'junit4_'    ] = 'junit';
+//$renames[ 'junit4_'    ] = 'junit';
 
 $ignores = array();
 $ignores[ 'cfe'          ] = '';
@@ -36,12 +36,12 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="jtreg";
+//$current="php";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Download check-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'expect'  ] = "/^.*Download expect(\d[\d\.]+\d).tar.*$/";
-$regex[ 'junit4_' ] = "/^\h*(\d[\d\.]+)\h*$/";
+$regex[ 'junit4'  ] = "/^\h*(\d[\d\.]+)\h*$/";
 $regex[ 'llvm'    ] = "/^.*Download LLVM (\d[\d\.]+\d).*$/";
 $regex[ 'scons'   ] = "/^.*Download scons-(\d[\d\.]+\d).*$/";
 $regex[ 'tcl'     ] = "/^.*Download tcl(\d[\d\.]+\d).*$/";
@@ -109,7 +109,7 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "http://icedtea.classpath.org/download/source" ),
 
-   array( 'pkg'     => 'junit4_',
+   array( 'pkg'     => 'junit4',
           'match'   => '^.*$', 
           'replace' => "https://github.com/junit-team/junit/wiki" ),
 
@@ -476,9 +476,16 @@ function get_packages( $package, $dirpath )
        $position = strrpos( $dirpath, "/" );
        $dirpath  = substr ( $dirpath, 0, $position ) . "/$prev";
     }
-     
+    
+    if ( $package == "npapi-sdk" )
+    {
+      # We have to process the stupid javascript to get this to work
+      exec( "lynx -dump  $dirpath", $output );
+      $max = find_max( $output, "/npapi-sdk/", "/^.*npapi-sdk-([\d\.]*\d)\.tar.*$/" );
+      return $max;
+    }
+
     $strip = "yes";
-    if ( $package == "npapi-sdk" ) $strip = "no";
     $lines = http_get_file( $dirpath, $strip );
     if ( ! is_array( $lines ) ) return $lines;
   } // End fetch
@@ -537,7 +544,7 @@ function get_packages( $package, $dirpath )
        $book_index == "pygobject "  )
     $package = "pygobject";
 
-  if ( $book_index == "librep_" )  
+  if ( $book_index == "librep" )  
     return find_max( $lines, "/librep/", "/^.*[_-](\d[\d\.]*\d)\.tar.*$/" );
 
   if ( $book_index == "apache-ant" )
