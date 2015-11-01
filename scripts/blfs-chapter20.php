@@ -14,11 +14,12 @@ $renames[ 'virtuoso-opensource' ] = 'virtuoso';
 
 $ignores = array();
 
-//$current="postfix";
+//$current="LMDB";
 
 $regex = array();
 $regex[ 'vsftpd'          ] = "/^.*vsftpd-(\d[\d\.]+\d) released.*$/";
 $regex[ 'db'              ] = "/^.*Berkeley DB (\d[\d\.]+\d).tar.*$/";
+$regex[ 'LMDB'            ] = "/^.*LMDB_(\d[\d\.]+\d).*$/";
 $regex[ 'mysql'           ] = "/^.*Current Generally Available Release: (\d[\d\.]+\d).*$/";
 $regex[ 'sqlite-doc'      ] = "/^.*sqlite-doc-(\d+).zip.*$/";
 $regex[ 'soprano'         ] = "/^.*Download soprano-(\d[\d\.]*).tar.*$/";
@@ -72,6 +73,10 @@ $url_fix = array (
    array( 'pkg'     => 'postfix',
           'match'   => '^.*$', 
           'replace' => "ftp://ftp.reverse.net/pub/postfix/official" ),
+
+   array( 'pkg'     => 'LMDB',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/LMDB/lmdb/releases" ),
 
 );
 
