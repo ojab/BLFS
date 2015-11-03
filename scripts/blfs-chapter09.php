@@ -11,12 +11,11 @@ $STOP_PACKAGE  = 'xapian-core';
 $renames = array();
 $ignores = array();
 
-//$current="nspr"; // For debugging
+//$current="libxkbcommon"; // For debugging
 
 $regex = array();
 $regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
 $regex[ 'expat'         ] = "/^.*Download expat-([\d\.]+).tar.*$/";
-//$regex[ 'libesmtp'      ] = "/^.*libesmtp-([\d\.]+).tar.*$/";
 $regex[ 'libzeitgeist'  ] = "/^.*Latest version is ([\d\.]+)\s*$/";
 $regex[ 'mozjs'         ] = "/^.*mozjs(\d[\d\.]+\d).tar.*$/";
 $regex[ 'mozjs1'        ] = "/^.*mozjs-(\d[\d\.]+\d).tar.*$/";
@@ -74,6 +73,10 @@ $url_fix = array (
  array( 'pkg'     => 'libusb-compat',
         'match'   => '^.*$',
         'replace' => "http://$sf/projects/libusb/files/libusb-compat-0.1" ),
+
+ array( 'pkg'     => 'libxkbcommon',
+        'match'   => '^.*$',
+        'replace' => "http://xkbcommon.org" ),
 
  array( 'pkg'     => 'openobex',
         'match'   => '^.*$',
@@ -293,6 +296,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "libusb-compat" )
     return find_max( $lines, '/^.*compat-[\d\.]+$/', '/^.*compat-([\d\.]+)$/' );
+
+  if ( $book_index == "libxkbcommon" )
+    return find_max( $lines, '/\d\./', '/^.*(0\.[\d\.]+)\..*$/' );
 
   if ( $book_index == "libxml2" )
     return find_max( $lines, '/libxml2/', '/^.*libxml2-([\d\.-]+).tar.*$/' );
