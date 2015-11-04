@@ -20,7 +20,7 @@ $renames[ 'webkitgtk1'                     ] = 'webkitgtk+-2.10';
 
 $ignores = array();
 
-#$current="sddm"; // For debugging
+//$current="webkitgtk1"; // For debugging
 
 $regex = array();
 $regex[ 'freeglut' ] = "/^.*Download freeglut-(\d[\d\.]+\d).tar.*$/";
@@ -53,6 +53,14 @@ $url_fix = array (
    array( 'pkg'     => 'sddm',
           'match'   => '^.*$', 
           'replace' => "https://github.com/sddm/sddm/releases" ),
+
+   array( 'pkg'     => 'webkitgtk1',
+          'match'   => '^.*$', 
+          'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/webkitgtk4" ),
+
+   array( 'pkg'     => 'webkitgtk',
+          'match'   => '^.*$', 
+          'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/webkitgtk" ),
 );
 
 function get_packages( $package, $dirpath )
