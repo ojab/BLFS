@@ -14,7 +14,7 @@ $ignores[ 'xorg-server' ] = '';
 
 $libreoffice = array();
 
-//$current="firefox";
+//$current="xdg-utils";
 
 $regex = array();
 $regex[ 'inkscape'     ] = "/^.*Latest.*(\d[\d\.]+\d).*$/";
@@ -249,7 +249,7 @@ function get_packages( $package, $dirpath )
       return find_max( $lines, "/^\s*\d\./", "/^\s*(\d\.[\d\.]+).*$/" );
 
   if ( $package == "xdg-utils" )
-      return find_max( $lines, "/$package/", "/^$package-(\d\.[\d\.rc-]+).tar.*$/" );
+      return find_max( $lines, "/$package/", "/^$package-(\d\.[\d\.]+).tar.*$/" );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)

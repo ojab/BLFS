@@ -36,7 +36,7 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="php";  // For debugging
+//$current="Unicode-LineBreak";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Download check-(\d[\d\.]+\d).tar.*$/";
@@ -84,7 +84,7 @@ $regex[ 'Test-Pod-Coverage' ] = "/^.*Test-Pod-Coverage-(\d[\d\.]+\d).*$/";
 $regex[ 'Text-BibTeX'       ] = "/^.*Text-BibTeX-(\d[\d\.]+\d).*$/";
 $regex[ 'Text-Roman'        ] = "/^.*Text-Roman-(\d[\d\.]+\d).*$/";
 $regex[ 'Unicode-Collate'   ] = "/^.*Unicode-Collate-(\d[\d\.]+\d).*$/";
-$regex[ 'Unicode-LineBreak' ] = "/^.*Unicode-LineBreak-(\d[\d\.]+\d).*$/";
+$regex[ 'Unicode-LineBreak' ] = "/^.*Unicode-LineBreak-(\d[\d\.]+\d)$/";
 $regex[ 'URI'               ] = "/^.*URI-(\d[\d\.]+\d).*$/";
 $regex[ 'XML-LibXML-Simple' ] = "/^.*XML-LibXML-Simple-(\d[\d\.]+\d).*$/";
 $regex[ 'XML-LibXSLT'       ] = "/^.*XML-LibXSLT-(\d[\d\.]+\d).*$/";
@@ -260,6 +260,7 @@ $url_fix = array (
    array( 'pkg'     => 'Text-Roman',
           'match'   => '^.*$', 
           'replace' => "http://search.cpan.org/dist/Text-Roman/" ),
+
    array( 'pkg'     => 'Unicode-Collate',
           'match'   => '^.*$', 
           'replace' => "http://search.cpan.org/dist/Unicode-Collate/" ),
