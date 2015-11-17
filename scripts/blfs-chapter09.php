@@ -11,7 +11,7 @@ $STOP_PACKAGE  = 'xapian-core';
 $renames = array();
 $ignores = array();
 
-//$current="libxkbcommon"; // For debugging
+//$current="mozjs"; // For debugging
 
 $regex = array();
 $regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
@@ -222,7 +222,7 @@ function get_packages( $package, $dirpath )
     // Customize http directories as needed
     if ( $book_index != "json-c")
     {
-      $lines = http_get_file( $dirpath );
+      $lines = http_get_file( "$dirpath/" );
       if ( ! is_array( $lines ) ) return $lines;
     }
 
