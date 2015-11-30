@@ -162,7 +162,7 @@ function get_packages( $package, $dirpath )
          $dirs = http_get_file( $dirpath );
 
          if ( $package == "seamonkey" )
-            return find_max( $dirs, "/\d\./", "/^(\d\.[\.\d]+)\/.*$/" );
+            return find_max( $dirs, "/\d\./", "/^.*\t(\d\.\d+)\/.*$/" );
          else 
             return find_max( $dirs, "/\d/", "/^.*(\d{2}[\.\d]+)\/.*/" );
      }
