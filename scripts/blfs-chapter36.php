@@ -14,7 +14,7 @@ $ignores[ 'xorg-server' ] = '';
 
 $libreoffice = array();
 
-//$current="xdg-utils";
+//$current="rxvt-unicode";
 
 $regex = array();
 $regex[ 'inkscape'     ] = "/^.*Latest.*(\d[\d\.]+\d).*$/";
@@ -29,67 +29,67 @@ $regex[ 'xarchiver'    ] = "/^.*Download xarchiver-(\d[\d\.]+\d).tar.*$/";
 $url_fix = array (
 
    array( 'pkg'     => 'gnucash',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/gnucash/files" ),
 
    array( 'pkg'     => 'gnucash-docs',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/gnucash/files/gnucash-docs" ),
 
    array( 'pkg'     => 'libreoffice',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://download.documentfoundation.org/libreoffice/stable" ),
 
    array( 'pkg'     => 'libreoffice-help',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://download.documentfoundation.org/libreoffice/stable" ),
 
    array( 'pkg'     => 'libreoffice-dictionaries',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://download.documentfoundation.org/libreoffice/stable" ),
 
    array( 'pkg'     => 'libreoffice-translations',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://download.documentfoundation.org/libreoffice/stable" ),
 
    array( 'pkg'     => 'gimp',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://download.gimp.org/pub/gimp" ),
 
    array( 'pkg'     => 'gimp-help',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://download.gimp.org/pub/gimp/help" ),
 
    array( 'pkg'     => 'balsa',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "https://pawsa.fedorapeople.org/balsa/" ),
 
    array( 'pkg'     => 'gparted',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/gparted/files/gparted" ),
 
    array( 'pkg'     => 'inkscape',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "https://launchpad.net/inkscape" ),
 
    array( 'pkg'     => 'pidgin',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/pidgin/files" ),
 
    array( 'pkg'     => 'rox-filer',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/rox/files/rox" ),
 
    array( 'pkg'     => 'tigervnc',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "https://github.com/TigerVNC/tigervnc/releases" ),
 
    array( 'pkg'     => 'xchat',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://xchat.org/files/source" ),
 
    array( 'pkg'     => 'fontforge',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "https://github.com/fontforge/fontforge/releases" ),
 
    array( 'pkg'     => 'xscreensaver',
@@ -103,6 +103,10 @@ $url_fix = array (
    array( 'pkg'     => 'xarchiver',
           'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/xarchiver/files" ),
+
+   array( 'pkg'     => 'rxvt-unicode',
+          'match'   => '^.*$',
+          'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/rxvt-unicode" ),
 
 );
 
@@ -141,8 +145,8 @@ function get_packages( $package, $dirpath )
   }
 
   // Check for ftp
-  if ( preg_match( "/^ftp/", $dirpath ) ) 
-  { 
+  if ( preg_match( "/^ftp/", $dirpath ) )
+  {
     // Get listing
     $lines = http_get_file( "$dirpath/" );
   }
@@ -163,7 +167,7 @@ function get_packages( $package, $dirpath )
 
          if ( $package == "seamonkey" )
             return find_max( $dirs, "/\d\./", "/^.*\t(\d\.\d+)\/.*$/" );
-         else 
+         else
             return find_max( $dirs, "/\d/", "/^.*(\d{2}[\.\d]+)\/.*/" );
      }
 
@@ -199,7 +203,7 @@ function get_packages( $package, $dirpath )
            $dirpath     = "http://download.documentfoundation.org/libreoffice/src/$dir";
            $libreoffice = http_get_file( $dirpath );
         }
-  
+
         return find_max( $libreoffice, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );
      }
 
@@ -260,7 +264,7 @@ function get_packages( $package, $dirpath )
 function get_pattern( $line )
 {
    $match = array(
-     //array( 'pkg'   => 'gimp-help', 
+     //array( 'pkg'   => 'gimp-help',
      //       'regex' => "/^.*gimp-help-(\d[\d\.]+).*$/" ),
    );
 
@@ -268,7 +272,7 @@ function get_pattern( $line )
    {
       $pkg = $m[ 'pkg' ];
 
-      if ( preg_match( "/$pkg/", $line ) ) 
+      if ( preg_match( "/$pkg/", $line ) )
          return $m[ 'regex' ];
    }
 
@@ -277,10 +281,10 @@ function get_pattern( $line )
 
 get_current();  // Get what is in the book
 
-// Get latest version for each package 
+// Get latest version for each package
 foreach ( $book as $pkg => $data )
 {
-   $book_index = $pkg; 
+   $book_index = $pkg;
 
    $base = $data[ 'basename' ];
    $url  = $data[ 'url' ];
