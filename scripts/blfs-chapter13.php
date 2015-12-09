@@ -25,6 +25,7 @@ $ignores[ 'clang'        ] = '';
 $ignores[ 'compiler-rt'  ] = '';
 $ignores[ 'git-htmldocs' ] = '';
 $ignores[ 'git-manpages' ] = '';
+$ignores[ 'lua1'         ] = '';
 $ignores[ 'nasm1'        ] = '';
 $ignores[ 'tcl1'         ] = '';
 $ignores[ 'gcc1'         ] = '';
