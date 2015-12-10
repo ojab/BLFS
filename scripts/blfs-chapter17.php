@@ -184,7 +184,7 @@ function get_packages( $package, $dirpath )
 
   // libtirpc  (sourceforge is inconsistent here)
   if ( $book_index == "libtirpc" )
-    return find_max( $lines, '/^\s*0\.[\d\.]+\s*$/', '/^\s*(0\.[\d\.]+)\s*$/' );
+    return find_max( $lines, '/^\s*1\.[\d\.]+\s*$/', '/^\s*(1\.[\d\.]+)\s*$/' );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
