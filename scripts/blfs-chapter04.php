@@ -28,47 +28,47 @@ $regex[ 'ConsoleKit'     ] = "/^.*ConsoleKit(2-[\d\.]+)\.tar.*$/";
 $url_fix = array(
 
    array( 'pkg'     => 'ConsoleKit',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => 'https://github.com/ConsoleKit2/ConsoleKit2/releases' ),
 
    array( 'pkg'     => 'cracklib',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => 'https://github.com/cracklib/cracklib/releases' ),
 
    array( 'pkg'     => 'cracklib-words',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => 'https://github.com/cracklib/cracklib/releases' ),
 
    array( 'pkg'     => 'gnupg',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => 'ftp://ftp.gnupg.org/gcrypt/gnupg/' ),
 
    array( 'pkg'     => 'gnutls',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => 'ftp://ftp.gnupg.org/gcrypt/gnutls/' ),
 
    array( 'pkg'     => 'haveged',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => 'http://sourceforge.net/projects/haveged/files' ),
 
    array( 'pkg'     => 'openssh',
-          'match'   => '^ftp', 
+          'match'   => '^ftp',
           'replace' => 'http' ),
 
    array( 'pkg'     => 'tripwire',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => 'http://sourceforge.net/projects/tripwire/files' ),
 
-   array( 'pkg'     => 'stunnel',
-          'match'   => '^.*$', 
-          'replace' => 'https://www.stunnel.org/downloads.html' ),
+//   array( 'pkg'     => 'stunnel',
+//          'match'   => '^.*$',
+//          'replace' => 'https://www.stunnel.org/downloads.html' ),
 
    array( 'pkg'     => 'sudo',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => 'http://www.sudo.ws/sudo/dist' ),
 
    array( 'pkg'     => 'nss',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => 'https://ftp.mozilla.org/pub/security/nss/releases/' ),
 
 );
@@ -107,8 +107,8 @@ function get_packages( $package, $dirpath )
   }
 
   // Check for ftp
-  if ( preg_match( "/^ftp/", $dirpath ) ) 
-  { 
+  if ( preg_match( "/^ftp/", $dirpath ) )
+  {
      if ( $package == 'gnutls' )
      {
        $lines1 = http_get_file( $dirpath );
@@ -142,7 +142,7 @@ function get_packages( $package, $dirpath )
      {
         $ver = preg_replace( $regex[ $package ], "$1", $l );
         if ( $ver == $l ) continue;
-        
+
         //if ( $package == 'krb' ) $ver = "5-$ver";
         return $ver;  // Return first match of regex
      }
@@ -150,7 +150,7 @@ function get_packages( $package, $dirpath )
      return 0;  // This is an error
   }
 
-  if ( $package == "acl" || $package == "attr" ) 
+  if ( $package == "acl" || $package == "attr" )
      return find_max( $lines, "/$package/", "/^.*$package-([\d\.-]*\d)\.src.tar.*$/" );
 
   if ( $package == "libcap2_" )
@@ -199,23 +199,23 @@ Function get_pattern( $line )
 {
    // Set up specific pattern matches for extracting book versions
    $match = array (
-      array( 'pkg' => 'p11-kit', 
+      array( 'pkg' => 'p11-kit',
              'regex' => "/p11-kit.(\d.*\d)\D*$/" ),
 
-      array( 'pkg' => 'openssl', 
+      array( 'pkg' => 'openssl',
              'regex' => "/\D*(\d.*\d.*)$/" ),
 
-      array( 'pkg' => 'krb',     
+      array( 'pkg' => 'krb',
              'regex' => "/krb5-([\d.]+)-signed$/" ),
 
-      array( 'pkg' => 'krb',     
+      array( 'pkg' => 'krb',
              'regex' => "/krb5-([\d.]+)-signed$/" ),
    );
 
    foreach( $match as $m )
    {
       $pkg = $m[ 'pkg' ];
-      if ( preg_match( "/$pkg/", $line ) ) 
+      if ( preg_match( "/$pkg/", $line ) )
          return $m[ 'regex' ];
    }
 
@@ -224,10 +224,10 @@ Function get_pattern( $line )
 
 get_current();  // Get what is in the book (in include file)
 
-// Get latest version for each package 
+// Get latest version for each package
 foreach ( $book as $pkg => $data )
 {
-   $book_index = $pkg; 
+   $book_index = $pkg;
 
    $base = $data[ 'basename' ];
    $url  = $data[ 'url' ];
