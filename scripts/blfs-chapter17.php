@@ -12,7 +12,7 @@ $renames = array();
 $ignores = array();
 $ignores[ 'rpcnis-headers' ] = '';
 
-//$current="lynx";
+//$current="libnl-doc";
 
 $regex = array();
 $regex[ 're-alpine' ] = "/^.*Download re-alpine-(\d[\d\.]+\d).tar.*$/";
@@ -25,52 +25,60 @@ $regex[ 'libevent'  ] = "/^.*release-(\d[\d\.]*)-stable.*$/";
 $url_fix = array (
 
    array( //'pkg'     => 'gnome',
-          'match'   => '^ftp:\/\/ftp.gnome', 
+          'match'   => '^ftp:\/\/ftp.gnome',
           'replace' => "http://ftp.gnome" ),
 
    array( 'pkg'     => 're-alpine',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/re-alpine/files" ),
 
    array( 'pkg'     => 'w3m',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/w3m/files" ),
 
    array( 'pkg'     => 'links',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://links.twibright.com/download" ),
 
    array( 'pkg'     => 'serf',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "https://code.google.com/p/serf" ),
 
    array( 'pkg'     => 'libtirpc',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/libtirpc/files/libtirpc" ),
 
    array( 'pkg'     => 'libevent',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "https://github.com/nmathewson/Libevent/releases" ),
 
    array( 'pkg'     => 'geoclue',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "https://launchpad.net/geoclue/trunk" ),
 
    array( 'pkg'     => 'libpcap',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://www.tcpdump.org/#latest-release" ),
 
    array( 'pkg'     => 'mutt',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://www.mutt.org/download.html" ),
 
    array( 'pkg'     => 'libndp',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "https://github.com/jpirko/libndp/releases" ),
 
    array( 'pkg'     => 'lynx',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "ftp://lynx.isc.org/lynx/tarballs/" ),
+
+   array( 'pkg'     => 'libnl',
+          'match'   => '^.*$',
+          'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/libnl3/" ),
+
+   array( 'pkg'     => 'libnl-doc',
+          'match'   => '^.*$',
+          'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/libnl3/" ),
 
 );
 
@@ -108,8 +116,8 @@ function get_packages( $package, $dirpath )
   }
 
   // Check for ftp
-  if ( preg_match( "/^ftp/", $dirpath ) ) 
-  { 
+  if ( preg_match( "/^ftp/", $dirpath ) )
+  {
     // glib type packages
     if ( $book_index == "glib-networking" ||
          $book_index == "libsoup"          )
@@ -163,7 +171,7 @@ function get_packages( $package, $dirpath )
         if ( $ver == $l ) continue;
 
         //if ( $book_index == "exiv" ) $ver = "2-$ver";
-        
+
         return $ver;  // Return first match of regex
      }
 
@@ -198,14 +206,14 @@ Function get_pattern( $line )
    $match = array();
 
    $match = array(
-     array( 'pkg'   => 'w3m', 
+     array( 'pkg'   => 'w3m',
             'regex' => "/w3m-(\d[\d\.]+)/" ),
    );
 
    foreach( $match as $m )
    {
       $pkg = $m[ 'pkg' ];
-      if ( preg_match( "/$pkg/", $line ) ) 
+      if ( preg_match( "/$pkg/", $line ) )
          return $m[ 'regex' ];
    }
 
@@ -214,10 +222,10 @@ Function get_pattern( $line )
 
 get_current();  // Get what is in the book
 
-// Get latest version for each package 
+// Get latest version for each package
 foreach ( $book as $pkg => $data )
 {
-   $book_index = $pkg; 
+   $book_index = $pkg;
 
    $base = $data[ 'basename' ];
    $url  = $data[ 'url' ];

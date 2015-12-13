@@ -13,7 +13,7 @@ $ignores = array();
 $ignores[ 'install-tl-unx' ] = '';
 $ignores[ 'texlive1'       ] = '';
 
-//$current="docbook-xsl-doc";  // For debugging
+//$current="docbook";  // For debugging
 
 $regex = array();
 $regex[ 'gutenprint'      ] = "/^.*Download gutenprint-(\d[\d\.]+\d).*$/";
@@ -23,69 +23,69 @@ $regex[ 'paps'            ] = "/^.*Download paps-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'asymptote'       ] = "/^.*Download asymptote-(\d[\d\.]+\d).*$/";
 $regex[ 'biblatex'        ] = "/^.*Download biblatex-(\d[\d\.]+\d).*$/";
 $regex[ 'biblatex-biber'  ] = "/^.*v(\d[\d\.]+\d).*$/";
-$regex[ 'ghostscript-fonts-std' ] = 
+$regex[ 'ghostscript-fonts-std' ] =
     "/^.*Download ghostscript-fonts-std-(\d[\d\.]+\d).tar.*$/";
 
 $url_fix = array (
 
    array( 'pkg'     => 'cups',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://www.cups.org/software.php" ),
 
    array( 'pkg'     => 'cups-filters',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "https://www.openprinting.org/download/cups-filters/" ),
 
    array( 'pkg'     => 'ghostscript-fonts-std',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/gs-fonts/files/gs-fonts" ),
 
    array( 'pkg'     => 'gnu-gs-fonts-other',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/gs-fonts/files/gs-fonts" ),
 
    array( 'pkg'     => 'gutenprint',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/gimp-print/files" ),
 
    array( 'pkg'     => 'OpenSP',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/openjade/files" ),
 
    array( 'pkg'     => 'openjade',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/openjade/files/openjade" ),
 
    array( 'pkg'     => 'docbook-xml',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://www.docbook.org/schemas/4x.html" ),
 
    array( 'pkg'     => 'docbook-xsl',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/docbook/files/docbook-xsl" ),
 
    array( 'pkg'     => 'docbook-xsl-doc',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/docbook/files/docbook-xsl-doc" ),
 
    array( 'pkg'     => 'enscript',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://ftp.gnu.org/gnu/enscript" ),
 
    array( 'pkg'     => 'epdfview',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://anduin.linuxfromscratch.org/sources/BLFS/conglomeration/epdfview" ),
 
    array( 'pkg'     => 'paps',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/paps/files" ),
 
    array( 'pkg'     => 'asymptote',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/asymptote/files" ),
 
    array( 'pkg'     => 'biblatex-biber',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "https://github.com/plk/biber/releases" ),
 );
 
@@ -130,8 +130,8 @@ function get_packages( $package, $dirpath )
   }
 
   // Check for ftp
-  if ( preg_match( "/^ftp/", $dirpath ) ) 
-  { 
+  if ( preg_match( "/^ftp/", $dirpath ) )
+  {
      if ( $package == "texlive" )
      {
          $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
@@ -214,13 +214,13 @@ function get_packages( $package, $dirpath )
 function get_pattern( $line )
 {
    $match = array(
-     array( 'pkg'   => 'a2ps', 
+     array( 'pkg'   => 'a2ps',
             'regex' => "/^.*a2ps-(\d[\d\.]+).*$/" ),
-     
-     array( 'pkg'   => 'i18n-fonts', 
+
+     array( 'pkg'   => 'i18n-fonts',
             'regex' => "/^.*i18n-fonts-(\d[\d\.]+).*$/" ),
-     
-     array( 'pkg'   => 'psutils', 
+
+     array( 'pkg'   => 'psutils',
             'regex' => "/^.*psutils-(p\d[\d\.]+).*$/" ),
    );
 
@@ -228,7 +228,7 @@ function get_pattern( $line )
    {
       $pkg = $m[ 'pkg' ];
 
-      if ( preg_match( "/$pkg/", $line ) ) 
+      if ( preg_match( "/$pkg/", $line ) )
          return $m[ 'regex' ];
    }
 
@@ -237,10 +237,10 @@ function get_pattern( $line )
 
 get_current();  // Get what is in the book
 
-// Get latest version for each package 
+// Get latest version for each package
 foreach ( $book as $pkg => $data )
 {
-   $book_index = $pkg; 
+   $book_index = $pkg;
 
    $base = $data[ 'basename' ];
    $url  = $data[ 'url' ];
