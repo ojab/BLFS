@@ -147,7 +147,7 @@ function get_packages( $package, $dirpath )
                                "/^.*cdparanoia-III-([\d\.]+).src.tgz.*$/" );
 
   if ( $package == "amarok" )
-      return find_max( $lines, "/\d\./", "/^.*;([\d\.]+)\/.*$/" );
+      return find_max( $lines, "/\d\./", "/^.*;([\d\.]+)\/.*$/", TRUE );
 
   if ( $package == "xine-ui" )
       return find_max( $lines, "/\d\./", "/^\s*([\d\.]+)$/" );

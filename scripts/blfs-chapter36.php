@@ -22,7 +22,7 @@ $regex[ 'gnucash'      ] = "/^.*Download gnucash-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'pidgen'       ] = "/^.*Download pidgin-(\d[\d\.]+\d).*$/";
 $regex[ 'fontforge'    ] = "/^.*fontforge-(20\d+).tar.*$/";
 $regex[ 'xscreensaver' ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'tigervnc'     ] = "/^.*TigerVNC (\d[\d\.]+\d).*$/";
+$regex[ 'tigervnc'     ] = "/^.*TigerVNC (\d[\d\.]+\d)$/";
 $regex[ 'transmission' ] = "/^.*release version.*(\d[\d\.]+\d).*$/";
 $regex[ 'xarchiver'    ] = "/^.*Download xarchiver-(\d[\d\.]+\d).tar.*$/";
 
@@ -211,7 +211,7 @@ function get_packages( $package, $dirpath )
      {
          $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
          $dirs     = http_get_file( "$dirpath/" );
-         $dir      = find_max( $dirs, "/v\d\./", "/^.*(v\d\.[\d\.]+).*$/" );
+         $dir      = find_even_max( $dirs, "/v\d\./", "/^.*(v\d\.[\d\.]+).*$/" );
          $dirpath .= "/$dir/";
      }
 

@@ -122,11 +122,7 @@ function get_packages( $package, $dirpath )
       $dirpath  = substr ( $dirpath, 0, $position );
       $dirlines = http_get_file( "$dirpath/" );
 
-      if ( $book_index == "gdk-pixbuf" )
-        $dir      = find_max( $dirlines, '/\d$/', '/^.* ([\d\.]+)$/' );
-      else
-        $dir      = find_even_max( $dirlines, '/\d$/', '/^.* ([\d\.]+)$/' );
-
+      $dir      = find_even_max( $dirlines, '/\d$/', '/^.* ([\d\.]+)$/' );
       $dirpath .= "/$dir/";
     }
  
