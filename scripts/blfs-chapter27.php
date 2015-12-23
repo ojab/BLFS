@@ -10,6 +10,7 @@ $STOP_PACKAGE  = 'kde-workspace';
 
 $renames = array();
 $ignores = array();
+$ignores[ 'kde-workspace' ] = '';
 
 //$current="kde-workspace";
 
