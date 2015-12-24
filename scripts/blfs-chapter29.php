@@ -10,12 +10,12 @@ $STOP_PACKAGE  = 'gwenview';
 
 $renames = array();
 $ignores = array();
-$ignores[ 'ark'             ] = '';
-$ignores[ 'kdepim'          ] = '';
-$ignores[ 'kdepim=-runtime' ] = '';
-$ignores[ 'kmix'            ] = '';
-$ignores[ 'libkdcraw'       ] = '';
-$ignores[ 'libkexiv2'       ] = '';
+$ignores[ 'ark'            ] = '';
+$ignores[ 'kdepim'         ] = '';
+$ignores[ 'kdepim-runtime' ] = '';
+$ignores[ 'kmix'           ] = '';
+$ignores[ 'libkdcraw'      ] = '';
+$ignores[ 'libkexiv2'      ] = '';
 
 $kde_ver   = "";
 $kde_lines = "";
