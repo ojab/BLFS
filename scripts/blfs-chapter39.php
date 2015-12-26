@@ -13,7 +13,7 @@ $renames[ 'libmusicbrainz'  ] = 'libmusicbrainz2';
 $renames[ 'libmusicbrainz1' ] = 'libmusicbrainz5';
 $renames[ 'libvpx-v'        ] = 'libvpx';
 $renames[ 'v'               ] = 'fdk-aac';
-$renames[ 'x'               ] = 'x264';
+$renames[ 'x264-snapshot'   ] = 'x264';
 $renames[ 'x1'              ] = 'x265';
 
 $ignores = array();
@@ -131,7 +131,7 @@ function get_packages( $package, $dirpath )
   global $current;
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
-  if ( $package == "x" ) return 'daily'; // Daily snapshot for x264
+  if ( $package == "x264-snapshot" ) return 'daily'; // Daily snapshot for x264
 
   // Fix up directory path
   foreach ( $url_fix as $u )
@@ -319,6 +319,9 @@ Function get_pattern( $line )
 
      array( 'pkg'   => 'v4l-utils', 
             'regex' => "/^.*v4l-utils-(\d[\d\.]+\d).*$/" ),
+
+     array( 'pkg'   => 'x264', 
+            'regex' => "/^.*x264-snapshot-(\d+)-.*$/" ),
 
      array( 'pkg'   => 'x265', 
             'regex' => "/^.*x265_(\d[\d\.]+\d).*$/" ),
