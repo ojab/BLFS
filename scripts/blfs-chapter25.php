@@ -114,7 +114,7 @@ function get_packages( $package, $dirpath )
          $book_index == "pango"        ||
          $book_index == "pangomm"      ||
          $book_index == "gtkmm1"       ||
-         $book_index == "goffice1"      )
+         $book_index == "goffice"       )
     {
       // Parent listing
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
@@ -126,8 +126,7 @@ function get_packages( $package, $dirpath )
       $dirpath .= "/$dir/";
     }
  
-    if ( $book_index == "goffice" ||
-         $book_index == "gtk+"    || 
+    if ( $book_index == "gtk+"    || 
          $book_index == "gtkmm"    )
       $dirpath .= "/";
 
@@ -214,9 +213,6 @@ function get_packages( $package, $dirpath )
 
      return 0;  // This is an error
   }
-
-  if ( $book_index == "goffice1" )
-    $package = "goffice";
 
   if ( $book_index == "gtk+"  ||
        $book_index == "gtk+1" )
