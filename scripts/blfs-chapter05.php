@@ -15,7 +15,6 @@ $ignores = array();
 //$current="jfsutils";   // For debugging
 
 $regex = array();
-$regex[ 'fuse'     ] = "/^.*Download fuse-([\d\.]+).tar.*$/";
 $regex[ 'jfsutils' ] = "/^.*jfsutils release ([\d\.]+) is available.*$/";
 $regex[ 'ntfs-3g_ntfsprogs' ] = "/^.*Stable Source Release ([\d\.]+).*$/";
 
@@ -25,7 +24,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'fuse',
         'match'   => '^.*$', 
-        'replace' => "http://$sf/projects/fuse/files" ),
+        'replace' => "https://github.com/libfuse/libfuse/releases" ),
 
  array( 'pkg'     => 'jfsutils',
         'match'   => '^.*$', 
@@ -41,7 +40,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'sshfs-fuse',
         'match'   => '^.*$', 
-        'replace' => "http://$sf/projects/fuse/files/sshfs-fuse/" ),
+        'replace' => "https://github.com/libfuse/sshfs/releases" ),
 
  array( 'pkg'     => 'reiserfsprogs',
         'match'   => '^.*$', 
@@ -120,12 +119,6 @@ function get_packages( $package, $dirpath )
   {
     $max = find_max( $lines, '/^v[\d\.]+.*$/', '/^v([\d\.]+).*$/' );
     return $max;
-  }
-
-  if ( $book_index == "sshfs-fuse" )
-  {
-    $dir = find_max( $lines, '/\d\./', '/^\s*([\d\.]+)\s*$/' );
-    $lines = http_get_file( "$dirpath/$dir" );
   }
 
   // Most packages are in the form $package-n.n.n
