@@ -37,7 +37,7 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="Unicode-LineBreak";  // For debugging
+//$current="XML-Writer";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Download check-(\d[\d\.]+\d).tar.*$/";
@@ -51,7 +51,6 @@ $regex[ 'Python'  ] = "/^.*Latest Python 2.*Python (2[\d\.]+\d).*$/";
 $regex[ 'Python1' ] = "/^.*Latest Python 3.*Python (3[\d\.]+\d).*$/";
 $regex[ 'Mako'    ] = "/^.*version is (\d[\d\.]+\d).*$/";
 $regex[ 'php'     ] = "/^.*php-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'ruby'    ] = "/^.*stable version is (\d[\d\.]+\d).*$/";
 $regex[ 'valgrind'] = "/^.*valgrind (\d[\d\.]+\d) \(tar.*$/";
 $regex[ 'jtreg'   ] = "/^.*jtreg-(\d[b\d\.\-]+\d)\.tar.*$/";
 $regex[ 'OpenJDK' ] = "/^.*OpenJDK-(\d[\d\.]+\d)\-.*$/";
@@ -86,245 +85,231 @@ $regex[ 'Text-BibTeX'       ] = "/^.*Text-BibTeX-(\d[\d\.]+\d).*$/";
 $regex[ 'Text-Roman'        ] = "/^.*Text-Roman-(\d[\d\.]+\d).*$/";
 $regex[ 'Unicode-Collate'   ] = "/^.*Unicode-Collate-(\d[\d\.]+\d).*$/";
 $regex[ 'Unicode-LineBreak' ] = "/^.*Unicode-LineBreak-(\d[\d\.]+\d)$/";
-$regex[ 'URI'               ] = "/^.*URI-(\d[\d\.]+\d).*$/";
 $regex[ 'XML-LibXML-Simple' ] = "/^.*XML-LibXML-Simple-(\d[\d\.]+\d).*$/";
 $regex[ 'XML-LibXSLT'       ] = "/^.*XML-LibXSLT-(\d[\d\.]+\d).*$/";
 $regex[ 'XML-Simple'        ] = "/^.*XML-Simple-(\d[\d\.]+\d).*$/";
-$regex[ 'XML-Writer'        ] = "/^.*XML-Writer-(\d[\d\.]+\d).*$/";
 
 $url_fix = array (
 
    array( //'pkg'     => 'gnome',
-          'match'   => '^ftp:\/\/ftp.gnome', 
+          'match'   => '^ftp:\/\/ftp.gnome',
           'replace' => "http://ftp.gnome" ),
 
    array( 'pkg'     => 'check',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/check/files" ),
 
    array( 'pkg'     => 'expect',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/expect/files" ),
 
    array( 'pkg'     => 'icedtea',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://icedtea.classpath.org/download/source" ),
 
    array( 'pkg'     => 'junit4',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "https://github.com/junit-team/junit/wiki" ),
 
    array( 'pkg'     => 'llvm',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://llvm.org/releases/download.html" ),
 
    array( 'pkg'     => 'nasm',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://www.nasm.us/pub/nasm/releasebuilds" ),
 
 #   array( 'pkg'     => 'python',
-#          'match'   => '^.*$', 
+#          'match'   => '^.*$',
 #          'replace' => "https://docs.python.org/2/archives" ),
 
 #   #array( 'pkg'     => 'python1',
-#          'match'   => '^.*$', 
+#          'match'   => '^.*$',
 #          'replace' => "https://docs.python.org/3/archives" ),
 
    array( 'pkg'     => 'scons',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/scons/files" ),
 
    array( 'pkg'     => 'tcl',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/tcl/files" ),
 
    array( 'pkg'     => 'tk',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/tcl/files/Tcl" ),
 
    array( 'pkg'     => 'swig',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/swig/files/swig" ),
 
    array( 'pkg'     => 'elfutils',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "https://fedorahosted.org/releases/e/l/elfutils" ),
 
    array( 'pkg'     => 'Archive-Zip',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Archive-Zip/" ),
 
    array( 'pkg'     => 'autovivification',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/autovivification/" ),
 
    array( 'pkg'     => 'Business-ISBN',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Business-ISBN/" ),
 
    array( 'pkg'     => 'Business-ISMN',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Business-ISMN/" ),
 
    array( 'pkg'     => 'Business-ISSN',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Business-ISSN/" ),
 
    array( 'pkg'     => 'Data-Compare',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Data-Compare/" ),
 
    array( 'pkg'     => 'Data-Dump',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Data-Dump/" ),
 
    array( 'pkg'     => 'Date-Simple',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Date-Simple/" ),
 
    array( 'pkg'     => 'Encode-EUCJPASCII',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Encode-EUCJPASCII/" ),
 
    array( 'pkg'     => 'Encode-HanExtra',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Encode-HanExtra/" ),
 
    array( 'pkg'     => 'Encode-JIS2K',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Encode-JIS2K/" ),
 
    array( 'pkg'     => 'File-Slurp',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/File-Slurp/" ),
 
    array( 'pkg'     => 'File-Which',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/File-Which/" ),
 
    array( 'pkg'     => 'HTML-Parser',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/HTML-Parser/" ),
 
    array( 'pkg'     => 'IPC-Run3',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/IPC-Run3/" ),
 
    array( 'pkg'     => 'IPC-Run3',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/IPC-Run3/" ),
 
    array( 'pkg'     => 'libwww-perl',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/libwww-perl/" ),
 
    array( 'pkg'     => 'List-AllUtils',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/List-AllUtils/" ),
 
    array( 'pkg'     => 'Log-Log4perl',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Log-Log4perl/" ),
 
    array( 'pkg'     => 'Net-DNS',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Net-DNS/" ),
 
    array( 'pkg'     => 'Readonly-XS',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Readonly-XS/" ),
 
    array( 'pkg'     => 'Regexp-Common',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Regexp-Common/" ),
 
    array( 'pkg'     => 'Test-Command',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Test-Command/" ),
 
    array( 'pkg'     => 'Test-Differences',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Test-Differences/" ),
 
    array( 'pkg'     => 'Test-Pod',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Test-Pod/" ),
 
    array( 'pkg'     => 'Test-Pod-Coverage',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Test-Pod-Coverage/" ),
 
    array( 'pkg'     => 'Text-BibTeX',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Text-BibTeX/" ),
 
    array( 'pkg'     => 'Text-Roman',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Text-Roman/" ),
 
    array( 'pkg'     => 'Unicode-Collate',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Unicode-Collate/" ),
 
    array( 'pkg'     => 'Unicode-LineBreak',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Unicode-LineBreak/" ),
 
-   array( 'pkg'     => 'URI',
-          'match'   => '^.*$', 
-          'replace' => "http://search.cpan.org/dist/URI/" ),
-
    array( 'pkg'     => 'XML-LibXML-Simple',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/XML-LibXML-Simple/" ),
 
    array( 'pkg'     => 'XML-LibXSLT',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/XML-LibXSLT/" ),
 
    array( 'pkg'     => 'XML-Simple',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/XML-Simple/" ),
 
-   array( 'pkg'     => 'XML-Writer',
-          'match'   => '^.*$', 
-          'replace' => "http://search.cpan.org/dist/XML-Writer/" ),
-
    array( 'pkg'     => 'Python',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "https://www.python.org/downloads/source/" ),
 
    array( 'pkg'     => 'Python1',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "https://www.python.org/downloads/source/" ),
 
    array( 'pkg'     => 'setuptools',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "https://pypi.python.org/pypi/setuptools/" ),
 
    array( 'pkg'     => 'Beaker',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "https://pypi.python.org/pypi/Beaker/" ),
 
    array( 'pkg'     => 'MarkupSafe',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "https://pypi.python.org/pypi/MarkupSafe/" ),
 
    array( 'pkg'     => 'Jinja2',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "https://pypi.python.org/pypi/Jinja2/" ),
 
    array( 'pkg'     => 'Mako',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://www.makotemplates.org/download.html" ),
 
    array( 'pkg'     => 'php',
-          'match'   => '^.*$', 
+          'match'   => '^.*$',
           'replace' => "http://us2.php.net/distributions" ),
-
-   array( 'pkg'     => 'ruby',
-          'match'   => '^.*$', 
-          'replace' => "https://www.ruby-lang.org/en/downloads" ),
 
 );
 
@@ -375,8 +360,8 @@ function get_packages( $package, $dirpath )
   }
 
   // Check for ftp
-  if ( preg_match( "/^ftp/", $dirpath ) ) 
-  { 
+  if ( preg_match( "/^ftp/", $dirpath ) )
+  {
     // glib type packages
     if ( $book_index == "pygobject1" ||
          $book_index == "pygobject"  ||
@@ -430,7 +415,7 @@ function get_packages( $package, $dirpath )
 
     if ( $book_index == "cvs" )
     {
-       // Get the max directory 
+       // Get the max directory
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
       $position = strrpos( $dirpath, "/" );
       $dirpath  = substr ( $dirpath, 0, $position );
@@ -471,14 +456,14 @@ function get_packages( $package, $dirpath )
 
        // Special if there is no current version in $dirpath
        $lines   = http_get_file( $dirpath );
-       $max     = find_max( $lines, "/$package/", 
+       $max     = find_max( $lines, "/$package/",
                                     "/^.*$package-([\d\.]*\d)\.tar.*$/" );
        if ( $max != 0 ) return $max;
 
        $position = strrpos( $dirpath, "/" );
        $dirpath  = substr ( $dirpath, 0, $position ) . "/$prev";
     }
-    
+
     if ( $package == "npapi-sdk" )
     {
       # We have to process the stupid javascript to get this to work
@@ -501,7 +486,7 @@ function get_packages( $package, $dirpath )
         $ver = preg_replace( $regex[ $package ], "$1", $l );
         if ( $ver == $l  &&  ! preg_match( '/^\d\.[\d\.]+$/', $ver ) ) continue;
         if ( $book_index == "exiv" ) $ver = "2-$ver";
-        
+
         return $ver;  // Return first match of regex
      }
 
@@ -513,13 +498,13 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "llvm" )
   {
-     return find_max( $lines, "/^.*$book_index-.*.src.*$/", 
+     return find_max( $lines, "/^.*$book_index-.*.src.*$/",
                               "/^.*$book_index-([\d\.]+)\.src.*$/" );
   }
 
   if ( $book_index == "elfutils" )
   {
-     return find_max( $lines, "/^\s*\d[\d\.]+\/.*$/", 
+     return find_max( $lines, "/^\s*\d[\d\.]+\/.*$/",
                               "/^\s*(\d[\d\.]+)\/.*$/" );
   }
 
@@ -528,16 +513,16 @@ function get_packages( $package, $dirpath )
 
 #  if ( $book_index == "python" || $book_index == "python1" )  // python docs
 #  {
-#    return find_max( $lines, "/python-\d/", 
+#    return find_max( $lines, "/python-\d/",
 #                             "/^python-(\d[\d\.]*\d)-docs.*$/" );
 #  }
 
   if ( $book_index == "cmake" )
   {
-    $max =   find_max( $lines, "/$package/", 
+    $max =   find_max( $lines, "/$package/",
                                "/^.*$package-([\d\.]*\d)\.tar.*$/" );
     if ( $max == 0 )
-      $max = find_max( $lines, "/$package/", 
+      $max = find_max( $lines, "/$package/",
                                "/^.*$package-(\d[\d\.]*\d-rc\d).*$/" );
     return ( $max != 0 ) ? $max : "pending";
   }
@@ -546,7 +531,7 @@ function get_packages( $package, $dirpath )
        $book_index == "pygobject "  )
     $package = "pygobject";
 
-  if ( $book_index == "librep" )  
+  if ( $book_index == "librep" )
     return find_max( $lines, "/librep/", "/^.*[_-](\d[\d\.]*\d)\.tar.*$/" );
 
   if ( $book_index == "apache-ant" )
@@ -572,36 +557,36 @@ Function get_pattern( $line )
    $match = array();
 
    $match = array(
-     array( 'pkg'   => 'py2cairo', 
+     array( 'pkg'   => 'py2cairo',
             'regex' => "/py2cairo-([\d\.]+)/" ),
 
-     array( 'pkg'   => 'Encode-JIS2K', 
+     array( 'pkg'   => 'Encode-JIS2K',
             'regex' => "/\D*Encode-JIS2K-([\d\.]+)\D*$/" ),
 
-     array( 'pkg'   => 'IPC-Run3', 
+     array( 'pkg'   => 'IPC-Run3',
             'regex' => "/\D*IPC-Run3-([\d\.]+)\D*$/" ),
 
-     array( 'pkg'   => 'Log-Log4perl', 
+     array( 'pkg'   => 'Log-Log4perl',
             'regex' => "/\D*Log-Log4perl-([\d\.]+)\D*$/" ),
 
-     array( 'pkg'   => 'Jinja2', 
+     array( 'pkg'   => 'Jinja2',
             'regex' => "/\D*Jinja2-([\d\.]+)\D*$/" ),
 
      // Order matters here.  jtreg must be before OpenJDK
-     array( 'pkg'   => 'jtreg', 
+     array( 'pkg'   => 'jtreg',
             'regex' => "/jtreg-(\d[\d\.b-]+)$/" ),
 
-     array( 'pkg'   => 'OpenJDK', 
+     array( 'pkg'   => 'OpenJDK',
             'regex' => "/OpenJDK-([\d\.]+)-.*$/" ),
 
-     array( 'pkg'   => 'junit4', 
+     array( 'pkg'   => 'junit4',
             'regex' => "/junit4_([\d\.]+).*$/" ),
    );
 
    foreach( $match as $m )
    {
       $pkg = $m[ 'pkg' ];
-      if ( preg_match( "/$pkg/", $line ) ) 
+      if ( preg_match( "/$pkg/", $line ) )
          return $m[ 'regex' ];
    }
 
@@ -610,10 +595,10 @@ Function get_pattern( $line )
 
 get_current();  // Get what is in the book
 
-// Get latest version for each package 
+// Get latest version for each package
 foreach ( $book as $pkg => $data )
 {
-   $book_index = $pkg; 
+   $book_index = $pkg;
 
    $base = $data[ 'basename' ];
    $url  = $data[ 'url' ];
