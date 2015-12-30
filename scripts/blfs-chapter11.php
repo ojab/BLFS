@@ -5,7 +5,7 @@ include 'blfs-include.php';
 
 $CHAPTER       = '11';
 $CHAPTERS      = 'Chapter 11';
-$START_PACKAGE = 'appstream-glib';
+$START_PACKAGE = 'chrpath';
 $STOP_PACKAGE  = 'unixODBC';
 
 $renames = array();
