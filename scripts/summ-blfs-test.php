@@ -56,16 +56,28 @@ $f = strip_tags( $file );
 $a = explode( "\n", $f );
 sort($a);
 
-$msg = "            BLFS Package        BLFS Version             Latest      Ticket\n";
-
-//echo $msg;
-
+$msg = "            BLFS Package        BLFS Version              Latest      Ticket\n";
 
 foreach ( $a as $l )
 {
   $c = preg_split( "/ /", $l );
   if ( $c[0] == "" ) continue;
   $pkg  = $c[1];
+
+  if ( preg_match( "/libreoffice-/", $pkg ) ) continue;
+
+  if ( $pkg == "baloo"            ||
+       $pkg == "baloo-widgets"    ||
+       $pkg == "kactivities"      ||
+       $pkg == "kfilemetadata"    ||
+       $pkg == "kdeplasma-addons" ||
+       $pkg == "konsole"          ||
+       $pkg == "kate"             ||
+       $pkg == "gwenview"         ||
+       $pkg == "oxygen-icons"     ||
+       $pkg == "kde-base-artwork" ||
+       $pkg == "kde-baseapps"     ||
+       $pkg == "kdepimlibs" ) continue;
 
   if ( $pkg == "goffice" ) 
   {
@@ -77,15 +89,13 @@ foreach ( $a as $l )
   if ( $c[3] == "0" ) $c[3] .= " ";
   $x    = substr("chapter $c[0]: $c[1]                         ", 0, 32);
   $x   .= substr("$c[2]                          ",  0, 25);
-  $x   .= substr("$c[3]          ", 0, 12);
+  $x   .= substr("$c[3]           ", 0, 13);
 
   $tick = "";
-//print_r($desc);
+
   for ( $i=0; $i<count($ticket); $i++ )
   {
-//echo "pkg=$pkg\n";
-     $pkg = preg_replace( "/\+/", ".", $pkg ); 
-
+     $pkg = preg_replace( "/\+/", ".", $pkg );
      if ( preg_match( "/$pkg/i", $desc[$i] ) )
      {
         $tick = $ticket[$i];
@@ -98,7 +108,7 @@ foreach ( $a as $l )
   $msg .= $x;
 }
 
-echo $msg;
+echo $msg;  // For debugging
 exit;
 
 $from    = "bdubbs@linuxfromscratch.org";
