@@ -79,13 +79,6 @@ foreach ( $a as $l )
        $pkg == "kde-baseapps"     ||
        $pkg == "kdepimlibs" ) continue;
 
-  if ( $pkg == "goffice" ) 
-  {
-    $c[1] .= $c[2];
-    $c[2]  = $c[3];
-    $c[3]  = $c[4];
-  }
-
   if ( $c[3] == "0" ) $c[3] .= " ";
   $x    = substr("chapter $c[0]: $c[1]                         ", 0, 32);
   $x   .= substr("$c[2]                          ",  0, 25);

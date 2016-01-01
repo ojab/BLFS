@@ -19,9 +19,13 @@ $regex = array();
 $regex[ 'intltool'      ] = "/^.*Latest version is (\d[\d\.]+\d).*$/";
 $regex[ 'xscreensaver'  ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
 
-//$current="ImageMagick";  // For debugging
+//$current="rep-gtk";  // For debugging
 
 $url_fix = array (
+   array( 'pkg'     => 'chrpath',
+          'match'   => '^.*$',
+          'replace' => "https://alioth.debian.org/projects/chrpath" ),
+
    array( //'pkg'     => 'gnome',
           'match'   => '^ftp:\/\/ftp.gnome',
           'replace' => "http://ftp.gnome" ),
@@ -78,6 +82,7 @@ function get_packages( $package, $dirpath )
 
     // Get listing
     $lines = http_get_file( "$dirpath/" );
+
   }
   else // http
   {
@@ -104,7 +109,6 @@ function get_packages( $package, $dirpath )
       $dir      = find_max( $lines, '/^\s+[\d\.]+\//', '/^\s+([\d\.]+)\/.*$/' );
       $dirpath .= "/$dir/";
     }
-
     // Customize http directories as needed
      $lines = http_get_file( $dirpath );
      if ( ! is_array( $lines ) ) return $lines;
@@ -127,6 +131,9 @@ function get_packages( $package, $dirpath )
      return 0;  // This is an error
   }
 
+  if ( $book_index == "chrpath" )
+    return find_max( $lines, '/0\./', '/^\s*([\d\.]+).*$/' );
+
   if ( $book_index == "hd2u" )
     return find_max( $lines, '/hd2u/', '/^.*hd2u-([\d\.]+).tgz.*$/' );
 
@@ -136,17 +143,17 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "js" )
     return find_max( $lines, '/js/', '/^.*js(\d[\d\.-]+\d).tar.*$/' );
 
-  if ( $book_index == "lsof_" )
+  if ( $book_index == "lsof" )
     return find_max( $lines, '/lsof_/', '/^.*lsof_([\d\.]+).tar.*$/' );
 
   if ( $book_index == "tree" )
     return find_max( $lines, '/tree/', '/^.*tree-([\d\.]+).tgz.*$/' );
 
-  if ( $book_index == "tidy-cvs_" )
+  if ( $book_index == "tidy-cvs" )
     return find_max( $lines, '/tidy-cvs/', '/^.*_(\d+).tar.*$/' );
 
-  if ( $book_index == "rep-gtk_" )
-    return find_max( $lines, '/rep-gtk/', '/^.*[_-]([\d\.]+).tar.*$/' );
+  if ( $book_index == "rep-gtk" )
+    return find_max( $lines, '/rep-gtk/', '/^.*rep-gtk[_-]([\d\.]+).tar.*$/' );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
