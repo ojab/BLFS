@@ -3,8 +3,8 @@
 
 include 'blfs-include.php';
 
-$CHAPTER       = '39';
-$CHAPTERS      = 'Chapter 39';
+$CHAPTER       = '46';
+$CHAPTERS      = 'Chapter 46';
 $START_PACKAGE = 'alsa-lib';
 $STOP_PACKAGE  = 'xvidcore';
 

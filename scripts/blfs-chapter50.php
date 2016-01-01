@@ -3,8 +3,8 @@
 
 include 'blfs-include.php';
 
-$CHAPTER       = '43';
-$CHAPTERS      = 'Chapters 43-48';
+$CHAPTER       = '50';
+$CHAPTERS      = 'Chapters 50-55';
 $START_PACKAGE = 'cups';
 $STOP_PACKAGE  = 'xindy';
 

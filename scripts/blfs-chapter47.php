@@ -3,10 +3,10 @@
 
 include 'blfs-include.php';
 
-$CHAPTER       = '40';
-$CHAPTERS      = 'Chapters 40-42';
+$CHAPTER       = '47';
+$CHAPTERS      = 'Chapters 47-49';
 $START_PACKAGE = 'mpg123';
-$STOP_PACKAGE  = 'libisofs';
+$STOP_PACKAGE  = 'simpleburn';
 
 //$current="transcode";  // For debugging
 
