@@ -77,7 +77,11 @@ foreach ( $a as $l )
        $pkg == "oxygen-icons"     ||
        $pkg == "kde-base-artwork" ||
        $pkg == "kde-baseapps"     ||
-       $pkg == "kdepimlibs" ) continue;
+       $pkg == "kdepimlibs"       ||
+       $pkg == "libdbusmenu-qt"   ||
+       $pkg == "juffed"           ||
+       $pkg == "qupzilla"
+     ) continue;
 
   if ( $c[3] == "0" ) $c[3] .= " ";
   $x    = substr("chapter $c[0]: $c[1]                         ", 0, 32);

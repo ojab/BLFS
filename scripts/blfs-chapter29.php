@@ -12,7 +12,7 @@ $renames = array();
 $ignores = array();
 $ignores[ 'kde-workspace' ] = '';
 
-//$current="kde-workspace";
+//$current="extra-cmake-modules";
 
 $kde_ver   = "";
 $kde_lines = "";
@@ -21,9 +21,9 @@ $regex = array();
 //$regex[ 'agg'      ] = "/^.*agg-(\d[\d\.]+\d).tar.*$/";
 
 $url_fix = array (
-//   array( 'pkg'     => 'kde-workspace',
-//          'match'   => '^.*$', 
-//          'replace' => "http://download.kde.org/stable/4.14.2/src" ),
+  array( 'pkg'     => 'extra-cmake-modules',
+         'match'   => '^.*$', 
+         'replace' => "http://download.kde.org/stable/frameworks" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -136,6 +136,12 @@ function get_packages( $package, $dirpath )
       return find_max( $lines, "/\d\./", "/^.*;([\d\.]+)\/.*$/" );
     }
 
+     if ( $book_index == "extra-cmake-modules" )
+     {
+        $lines = http_get_file( "$dirpath" );
+        $max = find_max( $lines, "/5/", "/^.*(5[\d\.]+)\/.*$/" );
+        return $max . ".0";
+     }
 
      if ( ! is_array($kde_lines) )
      {
