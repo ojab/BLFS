@@ -4,18 +4,15 @@
 include 'blfs-include.php';
 
 $CHAPTER       = '29';
-$CHAPTERS      = 'Chapter 29';
-$START_PACKAGE = 'konsole';
-$STOP_PACKAGE  = 'gwenview';
+$CHAPTERS      = 'Chapters 29-30';
+$START_PACKAGE = 'phonon';
+$STOP_PACKAGE  = 'kde-workspace';
 
 $renames = array();
 $ignores = array();
-$ignores[ 'ark'            ] = '';
-$ignores[ 'kdepim'         ] = '';
-$ignores[ 'kdepim-runtime' ] = '';
-$ignores[ 'kmix'           ] = '';
-$ignores[ 'libkdcraw'      ] = '';
-$ignores[ 'libkexiv2'      ] = '';
+$ignores[ 'kde-workspace' ] = '';
+
+//$current="kde-workspace";
 
 $kde_ver   = "";
 $kde_lines = "";
@@ -23,13 +20,10 @@ $kde_lines = "";
 $regex = array();
 //$regex[ 'agg'      ] = "/^.*agg-(\d[\d\.]+\d).tar.*$/";
 
-//$current="libkcddb";
-
 $url_fix = array (
-
-//   array( 'pkg'     => 'shared-desktop-ontologies',
+//   array( 'pkg'     => 'kde-workspace',
 //          'match'   => '^.*$', 
-//          'replace' => "http://$sf/projects/oscaf/files" ),
+//          'replace' => "http://download.kde.org/stable/4.14.2/src" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -42,6 +36,11 @@ function get_packages( $package, $dirpath )
   global $kde_lines;
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
+
+  # ftp.kde.org seems to be down
+  if ( preg_match( "/ftp:..ftp.kde.org/", $dirpath ) )
+    $dirpath = preg_replace( "/ftp:..ftp.kde.org.pub.kde/",  
+                             "http://download.kde.org", $dirpath );
 
   // Fix up directory path
   foreach ( $url_fix as $u )
@@ -70,32 +69,101 @@ function get_packages( $package, $dirpath )
   // Check for ftp
   if ( preg_match( "/^ftp/", $dirpath ) ) 
   { 
-    // No ftp for kde apps
+    if ( $book_index == "automoc4" )
+    {
+      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
+      $position = strrpos( $dirpath, "/" );
+      $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
+    }
+
+    if ( $book_index == "kactivities" ) return "check manually";
+    
+    if ( $book_index == "phonon-backend-vlc" || 
+         $book_index == "phonon"             ||
+         $book_index == "phonon-backend-gstreamer" )
+    {
+      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
+      $position = strrpos( $dirpath, "/" );
+      $dirpath  = substr ( $dirpath, 0, $position ); // Up 1
+      $position = strrpos( $dirpath, "/" );
+      $dirpath  = substr ( $dirpath, 0, $position ); // Up 2
+      //$dirpath .= "/$book_index";
+    }
+
     // Get listing
     $lines = http_get_file( "$dirpath/" );
   }
   else // http
   {
-     if ( $package == "konsole"          ||
-          $package == "kdeplasma-addons" ||
-          $package == "kate"             ||
-          $package == "ark"              ||
-          $package == "kmix"             ||
-          $package == "kdepim"           ||
-          $package == "kdepim-runtime"   ||
-          $package == "gwenview" ) return "check manually";
+     if ( $book_index == "kdepimlibs"         ) return "check manually";
+     if ( $book_index == "oxygen-icons"       ) return "check manually";
+     if ( $book_index == "kfilemetadata"      ) return "check manually";
+     if ( $book_index == "kde-workspace"      ) return "check manually";
+     if ( preg_match( '/baloo/', $book_index) ) return "check manually";
+
+     # Copy from ftp above for now
+    if ( $book_index == "automoc4" )
+    {
+      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
+      $position = strrpos( $dirpath, "/" );
+      $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
+      $lines = http_get_file( "$dirpath" );
+      return find_max( $lines, "/\d\./", "/^.*;([\d\.]+)\/.*$/" );
+    }
+
+    if ( $book_index == "akonadi" ||
+         $book_index == "qimageblitz" ||
+         $book_index == "polkit-qt-1" ||
+         $book_index == "polkit-kde-agent-1" ||
+         $book_index == "attica" )
+    {
+      $lines = http_get_file( "$dirpath" );
+      return find_max( $lines, "/$book_index/", "/^.*$book_index-([\d\.]+).tar.*$/" );
+    }
+
+    if ( $book_index == "kactivities" ) return "check manually";
+    
+    if ( $book_index == "phonon-backend-vlc" || 
+         $book_index == "phonon"             ||
+         $book_index == "phonon-backend-gstreamer" )
+    {
+      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
+      $position = strrpos( $dirpath, "/" );
+      $dirpath  = substr ( $dirpath, 0, $position ); // Up 1
+      $position = strrpos( $dirpath, "/" );
+      $dirpath  = substr ( $dirpath, 0, $position ); // Up 2
+      $lines = http_get_file( "$dirpath" );
+      return find_max( $lines, "/\d\./", "/^.*;([\d\.]+)\/.*$/" );
+    }
+
 
      if ( ! is_array($kde_lines) )
      {
-       $dirpath   = "http://download.kde.org/stable/applications/";
-       $lines     = http_get_file( $dirpath );
-       $kde_ver   = find_max( $lines, "/1\d/", "/^.*;(1[\d\.]+\d)\/.*$/" );
-       $kde_lines = http_get_file( "$dirpath/$kde_ver/src" );
+       // All http for kde
+       /*
+       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
+       $position = strrpos( $dirpath, "/" );
+       $dirpath  = substr ( $dirpath, 0, $position ); // Up 1
+       $position = strrpos( $dirpath, "/" );
+       $dirpath  = substr ( $dirpath, 0, $position ); // Up 2
+       */
+       $dirpath="http://download.kde.org/stable/applications/";
+
+       $lines = http_get_file( $dirpath );
+       $kde_ver = find_max( $lines, "/1\d\./", "/^.*;(1[\d\.]+\d)\/.*$/" );
+       $kde_lines = http_get_file( "$dirpath$kde_ver/src/" );
      }
 
-     if ( ! is_array( $kde_lines ) ) return $lines;
      return find_max( $kde_lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );
+     //if ( ! is_array( $lines ) ) return $lines;
   } // End fetch
+
+  // automoc4 and similar
+  if ( $book_index == "automoc4" || 
+       $book_index == "phonon"   ||
+       $book_index == "phonon-backend-gstreamer"  ||
+       $book_index == "phonon-backend-vlc"  )
+    return find_max( $lines, "/\d\./", "/^.* (\d\.[\d\.]+).*$/" );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
@@ -105,11 +173,20 @@ function get_packages( $package, $dirpath )
 
 function get_pattern( $line )
 {
-   // Set up specific pattern matches for extracting book versions
+   global $start;
+
+   // Set up specific patter matches for extracting book versions
+   $match = array();
 
    $match = array(
-     array( 'pkg'   => 'libkexiv', 
-            'regex' => "/^.*libkexiv2-(\d[\d\.]+).*$/" ),
+     array( 'pkg'   => 'automoc', 
+            'regex' => "/^.*automoc4-(\d[\d\.]+).*$/" ),
+
+     array( 'pkg'   => 'polkit-qt', 
+            'regex' => "/^.*polkit-qt-1-(\d[\d\.]+).*$/" ),
+
+     array( 'pkg'   => 'polkit-kde-agent', 
+            'regex' => "/^.*polkit-kde-agent-1-(\d[\d\.]+).*$/" ),
    );
 
    foreach( $match as $m )

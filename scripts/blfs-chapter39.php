@@ -3,10 +3,10 @@
 
 include 'blfs-include.php';
 
-$CHAPTER       = '34';
-$CHAPTERS      = 'Chapters 34-35';
+$CHAPTER       = '39';
+$CHAPTERS      = 'Chapters 39-43';
 $START_PACKAGE = 'lxmenu-data';
-$STOP_PACKAGE  = 'lxterminal';
+$STOP_PACKAGE  = 'qupzilla';
 
 $renames = array();
 $renames[ 'libfm'  ] = 'libfm-extra';
@@ -14,7 +14,7 @@ $renames[ 'libfm1' ] = 'libfm';
 
 $ignores = array();
 
-//$current="lxpanel";
+//$current="QScintilla-gpl";  // Debug
 
 $regex = array();
 $regex[ 'libfm'   ] = "/^.*Download libfm-(\d[\d\.]+\d).tar.*$/";
@@ -91,6 +91,17 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/pcmanfm/files/PCManFM%20%2B%20Libfm%20%28tarball%20release%29/PCManFM" ),
 
+   array( 'pkg'     => 'qtermwidget',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/lxde/qtermwidget/releases" ),
+
+   array( 'pkg'     => 'qterminal',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/lxde/qterminal/releases" ),
+
+   array( 'pkg'     => 'QScintilla-gpl',
+          'match'   => '^.*$', 
+          'replace' => "http://sourceforge.net/projects/pyqt/files/QScintilla2" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -101,6 +112,11 @@ function get_packages( $package, $dirpath )
   global $current;
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
+
+  if ( $book_index == 'obconf-qt' ||
+       $book_index == 'juffed'    ||
+       $book_index == 'qupzilla' ) 
+    return 'check manually';
 
   // Fix up directory path
   foreach ( $url_fix as $u )
@@ -149,7 +165,11 @@ function get_packages( $package, $dirpath )
             $book_index != "lxtask"       &&
             $book_index != "lxterminal"   &&
             $book_index != "lxappearance-obconf"  &&
-            $book_index != "lxde-icon-theme" ) // http
+            $book_index != "lxde-icon-theme" &&
+            $book_index != "qtermwidget"     &&
+            $book_index != "qterminal"       &&
+            $book_index != "QScintilla-gpl" 
+            ) // http
   {
      // Most http enties for this chapter
      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
@@ -276,8 +296,12 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "lxde-icon-theme" )
     return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d).*$/" );
 
+  if ( $book_index == "QScintilla-gpl" )
+    return find_max( $lines, "/QScintilla-/", "/^.*QScintilla-([\d\.]*\d).*$/" );
+
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
+
   return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );
 }
 

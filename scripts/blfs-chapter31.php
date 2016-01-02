@@ -5,21 +5,31 @@ include 'blfs-include.php';
 
 $CHAPTER       = '31';
 $CHAPTERS      = 'Chapter 31';
-$START_PACKAGE ='baobab';
-$STOP_PACKAGE  ='seahorse';
+$START_PACKAGE = 'konsole';
+$STOP_PACKAGE  = 'gwenview';
 
 $renames = array();
 $ignores = array();
+$ignores[ 'ark'            ] = '';
+$ignores[ 'kdepim'         ] = '';
+$ignores[ 'kdepim-runtime' ] = '';
+$ignores[ 'kmix'           ] = '';
+$ignores[ 'libkdcraw'      ] = '';
+$ignores[ 'libkexiv2'      ] = '';
+
+$kde_ver   = "";
+$kde_lines = "";
 
 $regex = array();
-//$regex[ 'libzeitgeist' ] = "/^.*Latest version is (\d[\d\.]+\d).*$/";
+//$regex[ 'agg'      ] = "/^.*agg-(\d[\d\.]+\d).tar.*$/";
 
-//$current="ixxgcr";
+//$current="libkcddb";
 
 $url_fix = array (
-//   array( 'pkg'     => 'freeglut',
+
+//   array( 'pkg'     => 'shared-desktop-ontologies',
 //          'match'   => '^.*$', 
-//          'replace' => "http://$sf/projects/freeglut/files" ),
+//          'replace' => "http://$sf/projects/oscaf/files" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -28,6 +38,8 @@ function get_packages( $package, $dirpath )
   global $book_index;
   global $url_fix;
   global $current;
+  global $kde_ver;
+  global $kde_lines;
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
 
@@ -58,50 +70,32 @@ function get_packages( $package, $dirpath )
   // Check for ftp
   if ( preg_match( "/^ftp/", $dirpath ) ) 
   { 
-    if ( $package == 'network-manager-applet' )
-    {
-        $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-        $position = strrpos( $dirpath, "/" );
-        $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
-        $dirs     = http_get_file( "$dirpath/" );
-        $dir      = find_max( $dirs, "/\d$/", "/^.* ([\d\.]+)$/" ); // Not even
-        $dirpath .= "/$dir/";
-    }
-
-    else
-    {
-        // All other ftp enties for this chapter
-        $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-        $position = strrpos( $dirpath, "/" );
-        $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
-        $dirs     = http_get_file( "$dirpath/" );
-        $dir      = find_even_max( $dirs, "/\d$/", "/^.* ([\d\.]+)$/" );
-        $dirpath .= "/$dir/";
-    }
-
+    // No ftp for kde apps
     // Get listing
     $lines = http_get_file( "$dirpath/" );
   }
   else // http
   {
-     $lines = http_get_file( $dirpath );
-     if ( ! is_array( $lines ) ) return $lines;
-  } // End fetch
+     if ( $package == "konsole"          ||
+          $package == "kdeplasma-addons" ||
+          $package == "kate"             ||
+          $package == "ark"              ||
+          $package == "kmix"             ||
+          $package == "kdepim"           ||
+          $package == "kdepim-runtime"   ||
+          $package == "gwenview" ) return "check manually";
 
-  if ( isset( $regex[ $package ] ) )
-  {
-     // Custom search for latest package name
-     foreach ( $lines as $l )
+     if ( ! is_array($kde_lines) )
      {
-        if ( preg_match( '/^\h*$/', $l ) ) continue;
-        $ver = preg_replace( $regex[ $package ], "$1", $l );
-        if ( $ver == $l ) continue;
-
-        return $ver;  // Return first match of regex
+       $dirpath   = "http://download.kde.org/stable/applications/";
+       $lines     = http_get_file( $dirpath );
+       $kde_ver   = find_max( $lines, "/1\d/", "/^.*;(1[\d\.]+\d)\/.*$/" );
+       $kde_lines = http_get_file( "$dirpath/$kde_ver/src" );
      }
 
-     return 0;  // This is an error
-  }
+     if ( ! is_array( $kde_lines ) ) return $lines;
+     return find_max( $kde_lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );
+  } // End fetch
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
@@ -111,10 +105,11 @@ function get_packages( $package, $dirpath )
 
 function get_pattern( $line )
 {
-   // Set up specific patter matches for extracting book versions
+   // Set up specific pattern matches for extracting book versions
+
    $match = array(
-     //array( 'pkg'   => 'ORBit', 
-     //       'regex' => "/^.*ORBit2-(\d[\d\.]+).*$/" ),
+     array( 'pkg'   => 'libkexiv', 
+            'regex' => "/^.*libkexiv2-(\d[\d\.]+).*$/" ),
    );
 
    foreach( $match as $m )
@@ -130,7 +125,6 @@ function get_pattern( $line )
 
 get_current();  // Get what is in the book
 
-
 // Get latest version for each package 
 foreach ( $book as $pkg => $data )
 {
@@ -143,6 +137,7 @@ foreach ( $book as $pkg => $data )
    echo "book index: $book_index $bver $url\n";
 
    $v = get_packages( $book_index, $url );
+
    $vers[ $book_index ] = $v;
 }
 

@@ -4,110 +4,22 @@
 include 'blfs-include.php';
 
 $CHAPTER       = '36';
-$CHAPTERS      = 'Chapters 36-38';
-$START_PACKAGE = 'abiword';
-$STOP_PACKAGE  = 'xscreensaver';
+$CHAPTERS      = 'Chapter 36';
+$START_PACKAGE ='baobab';
+$STOP_PACKAGE  ='seahorse';
 
 $renames = array();
 $ignores = array();
-$ignores[ 'xorg-server' ] = '';
-
-$libreoffice = array();
-
-//$current="rxvt-unicode";
 
 $regex = array();
-$regex[ 'inkscape'     ] = "/^.*Latest.*(\d[\d\.]+\d).*$/";
-$regex[ 'gnucash'      ] = "/^.*Download gnucash-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'pidgen'       ] = "/^.*Download pidgin-(\d[\d\.]+\d).*$/";
-$regex[ 'fontforge'    ] = "/^.*fontforge-(20\d+).tar.*$/";
-$regex[ 'xscreensaver' ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'tigervnc'     ] = "/^.*TigerVNC (\d[\d\.]+\d)$/";
-$regex[ 'transmission' ] = "/^.*release version.*(\d[\d\.]+\d).*$/";
-$regex[ 'xarchiver'    ] = "/^.*Download xarchiver-(\d[\d\.]+\d).tar.*$/";
+//$regex[ 'libzeitgeist' ] = "/^.*Latest version is (\d[\d\.]+\d).*$/";
+
+//$current="ixxgcr";
 
 $url_fix = array (
-
-   array( 'pkg'     => 'gnucash',
-          'match'   => '^.*$',
-          'replace' => "http://sourceforge.net/projects/gnucash/files" ),
-
-   array( 'pkg'     => 'gnucash-docs',
-          'match'   => '^.*$',
-          'replace' => "http://sourceforge.net/projects/gnucash/files/gnucash-docs" ),
-
-   array( 'pkg'     => 'libreoffice',
-          'match'   => '^.*$',
-          'replace' => "http://download.documentfoundation.org/libreoffice/stable" ),
-
-   array( 'pkg'     => 'libreoffice-help',
-          'match'   => '^.*$',
-          'replace' => "http://download.documentfoundation.org/libreoffice/stable" ),
-
-   array( 'pkg'     => 'libreoffice-dictionaries',
-          'match'   => '^.*$',
-          'replace' => "http://download.documentfoundation.org/libreoffice/stable" ),
-
-   array( 'pkg'     => 'libreoffice-translations',
-          'match'   => '^.*$',
-          'replace' => "http://download.documentfoundation.org/libreoffice/stable" ),
-
-   array( 'pkg'     => 'gimp',
-          'match'   => '^.*$',
-          'replace' => "http://download.gimp.org/pub/gimp" ),
-
-   array( 'pkg'     => 'gimp-help',
-          'match'   => '^.*$',
-          'replace' => "http://download.gimp.org/pub/gimp/help" ),
-
-   array( 'pkg'     => 'balsa',
-          'match'   => '^.*$',
-          'replace' => "https://pawsa.fedorapeople.org/balsa/" ),
-
-   array( 'pkg'     => 'gparted',
-          'match'   => '^.*$',
-          'replace' => "http://sourceforge.net/projects/gparted/files/gparted" ),
-
-   array( 'pkg'     => 'inkscape',
-          'match'   => '^.*$',
-          'replace' => "https://launchpad.net/inkscape" ),
-
-   array( 'pkg'     => 'pidgin',
-          'match'   => '^.*$',
-          'replace' => "http://sourceforge.net/projects/pidgin/files" ),
-
-   array( 'pkg'     => 'rox-filer',
-          'match'   => '^.*$',
-          'replace' => "http://sourceforge.net/projects/rox/files/rox" ),
-
-   array( 'pkg'     => 'tigervnc',
-          'match'   => '^.*$',
-          'replace' => "https://github.com/TigerVNC/tigervnc/releases" ),
-
-   array( 'pkg'     => 'xchat',
-          'match'   => '^.*$',
-          'replace' => "http://xchat.org/files/source" ),
-
-   array( 'pkg'     => 'fontforge',
-          'match'   => '^.*$',
-          'replace' => "https://github.com/fontforge/fontforge/releases" ),
-
-   array( 'pkg'     => 'xscreensaver',
-          'match'   => '^.*$',
-          'replace' => "http://www.jwz.org/xscreensaver/download.html" ),
-
-   array( 'pkg'     => 'transmission',
-          'match'   => '^.*$',
-          'replace' => "https://www.transmissionbt.com/download" ),
-
-   array( 'pkg'     => 'xarchiver',
-          'match'   => '^.*$',
-          'replace' => "http://sourceforge.net/projects/xarchiver/files" ),
-
-   array( 'pkg'     => 'rxvt-unicode',
-          'match'   => '^.*$',
-          'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/rxvt-unicode" ),
-
+//   array( 'pkg'     => 'freeglut',
+//          'match'   => '^.*$', 
+//          'replace' => "http://$sf/projects/freeglut/files" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -116,7 +28,6 @@ function get_packages( $package, $dirpath )
   global $book_index;
   global $url_fix;
   global $current;
-  global $libreoffice;
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
 
@@ -145,76 +56,34 @@ function get_packages( $package, $dirpath )
   }
 
   // Check for ftp
-  if ( preg_match( "/^ftp/", $dirpath ) )
-  {
+  if ( preg_match( "/^ftp/", $dirpath ) ) 
+  { 
+    if ( $package == 'network-manager-applet' )
+    {
+        $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
+        $position = strrpos( $dirpath, "/" );
+        $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
+        $dirs     = http_get_file( "$dirpath/" );
+        $dir      = find_max( $dirs, "/\d$/", "/^.* ([\d\.]+)$/" ); // Not even
+        $dirpath .= "/$dir/";
+    }
+
+    else
+    {
+        // All other ftp enties for this chapter
+        $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
+        $position = strrpos( $dirpath, "/" );
+        $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
+        $dirs     = http_get_file( "$dirpath/" );
+        $dir      = find_even_max( $dirs, "/\d$/", "/^.* ([\d\.]+)$/" );
+        $dirpath .= "/$dir/";
+    }
+
     // Get listing
     $lines = http_get_file( "$dirpath/" );
   }
   else // http
   {
-     if ( $package == "seamonkey"   ||
-          $package == "firefox"     ||
-          $package == "thunderbird" )
-     {
-         $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-         $position = strrpos( $dirpath, "/" );
-         $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
-         $position = strrpos( $dirpath, "/" );
-         $dirpath  = substr ( $dirpath, 0, $position );  // Up 2
-         $dirpath .= "/";
-
-         $dirs = http_get_file( $dirpath );
-
-         if ( $package == "seamonkey" )
-            return find_max( $dirs, "/\d\./", "/^.*\t(\d\.\d+)\/.*$/" );
-         else
-            return find_max( $dirs, "/\d/", "/^.*(\d{2}[\.\d]+)\/.*/" );
-     }
-
-     if ( preg_match( "/abiword/", $dirpath ) )
-     {
-        $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-        $position = strrpos( $dirpath, "/" );
-        $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
-        $position = strrpos( $dirpath, "/" );
-        $dirpath  = substr ( $dirpath, 0, $position );  // Up 2
-     }
-
-     if ( $book_index == "gnucash-docs" )
-     {
-        $dirs     = http_get_file( $dirpath );
-        $dir      = find_max( $dirs, "/^\s+\d\./", "/^\s+(\d\.[\d\.]+)$/" );
-        $dirpath .= "/$dir/";
-     }
-
-     if ( $book_index == "xchat" )
-     {
-        $dirs     = http_get_file( $dirpath );
-        $dir      = find_max( $dirs, "/^\s*\d\./", ":^\s*(\d\.[\d\.]+)/.*$:" );
-        $dirpath .= "/$dir/";
-     }
-
-     if ( preg_match( "/^libre/", "$package" ) )
-     {
-        if ( count( $libreoffice ) == 0 )
-        {
-           $dirs        = http_get_file( $dirpath );
-           $dir         = find_max( $dirs, "/\d\./", "/^.*;([\d\.]+)\/.*$/" );
-           $dirpath     = "http://download.documentfoundation.org/libreoffice/src/$dir";
-           $libreoffice = http_get_file( $dirpath );
-        }
-
-        return find_max( $libreoffice, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );
-     }
-
-     if ( $package == "gimp" )
-     {
-         $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-         $dirs     = http_get_file( "$dirpath/" );
-         $dir      = find_even_max( $dirs, "/v\d\./", "/^.*(v\d\.[\d\.]+).*$/" );
-         $dirpath .= "/$dir/";
-     }
-
      $lines = http_get_file( $dirpath );
      if ( ! is_array( $lines ) ) return $lines;
   } // End fetch
@@ -234,45 +103,25 @@ function get_packages( $package, $dirpath )
      return 0;  // This is an error
   }
 
-  if ( preg_match( "/inkscape/", "$dirpath" ) )
-      return find_max( $lines, "/\d\./", "/^.* (\d[\d\.]+\d)$/" );
-
-  if ( preg_match( "/abiword/", "$dirpath" ) )
-      return find_max( $lines, "/^\d/", "/^([\d\.]+).*$/" );
-
-  if ( $package == "balsa" )
-      return find_max( $lines, "/^.*balsa-/", "/^.*balsa-([\d\.]+).*$/" );
-
-  if ( $package == "gparted" )
-      return find_max( $lines, "/$package/", "/^.*$package-([\d\.]+).*$/" );
-
-  if ( $package == "rox-filer" )
-      return find_max( $lines, "/^\s*\d/", "/^\s*(\d\.[\d\.]+).*$/" );
-
-  if ( $package == "tigervnc" )
-      return find_max( $lines, "/^\s*\d\./", "/^\s*(\d\.[\d\.]+).*$/" );
-
-  if ( $package == "xdg-utils" )
-      return find_max( $lines, "/$package/", "/^$package-(\d\.[\d\.]+).tar.*$/" );
-
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
-  $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.ta.*$/" );
+  $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );
   return $max;
 }
 
 function get_pattern( $line )
 {
+   // Set up specific patter matches for extracting book versions
    $match = array(
-     //array( 'pkg'   => 'gimp-help',
-     //       'regex' => "/^.*gimp-help-(\d[\d\.]+).*$/" ),
+     //array( 'pkg'   => 'ORBit', 
+     //       'regex' => "/^.*ORBit2-(\d[\d\.]+).*$/" ),
    );
 
    foreach( $match as $m )
    {
       $pkg = $m[ 'pkg' ];
 
-      if ( preg_match( "/$pkg/", $line ) )
+      if ( preg_match( "/$pkg/", $line ) ) 
          return $m[ 'regex' ];
    }
 
@@ -281,10 +130,11 @@ function get_pattern( $line )
 
 get_current();  // Get what is in the book
 
-// Get latest version for each package
+
+// Get latest version for each package 
 foreach ( $book as $pkg => $data )
 {
-   $book_index = $pkg;
+   $book_index = $pkg; 
 
    $base = $data[ 'basename' ];
    $url  = $data[ 'url' ];

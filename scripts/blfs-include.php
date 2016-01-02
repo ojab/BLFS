@@ -94,7 +94,7 @@ function find_even_max( $lines, $regex_match, $regex_replace )
 
 function http_get_file( $url )
 {
-  exec( "curl -L -s -m40 -A Firefox/22.0 $url", $dir );
+  exec( "curl -L -s -m40 -A Firefox/41.0 $url", $dir );
   $s   = implode( "\n", $dir );
   $dir = strip_tags( $s );
   return explode( "\n", $dir );
@@ -156,11 +156,17 @@ function get_current()
       if ( $basename == $START_PACKAGE ) $start = true;
       if ( ! $start ) continue;
 
-      // Custom for Chapter 48
+      // Custom for Chapter 55
       if ( $version == "install-tl-unx" ) 
       {
         $version = "Unversioned";
         $basename = "install-tl-unx";
+      }
+
+      else if ( $version == "biblatex-biber" ) 
+      {
+        $version = basename( $url ); 
+        $basename = "biblatex-biber";
       }
 
       $index = $basename;

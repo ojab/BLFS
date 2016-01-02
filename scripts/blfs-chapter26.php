@@ -4,20 +4,21 @@
 include 'blfs-include.php';
 
 $CHAPTER       = '26';
-$CHAPTERS      = 'Chapter 26';
-$START_PACKAGE = 'fluxbox';
-$STOP_PACKAGE  = 'sawfish';
+$CHAPTERS      = 'Chapters 26-28';
+$START_PACKAGE = 'lxdm';
+$STOP_PACKAGE  = 'oxygen-icons5';
 
 $renames = array();
-//$renames[ 'sawfish_' ] = 'sawfish';
+$renames[ 'oxygen-icons1' ] = 'oxygen-icons5';
 
 $ignores = array();
 
 $regex = array();
 $regex[ 'fluxbox' ] = "/^.*current version of Fluxbox is (\d[\d\.]+\d).*$/";
 $regex[ 'icewm'   ] = "/^.*Download icewm-(\d[\d\.]+\d).*$/";
+$regex[ 'lxdm'    ] = "/^.*Download lxdm-(\d[\d\.]+\d).*$/";
 
-//$current="sawfish";
+//$current="lxde-icon-theme";  # For debugging
 
 $url_fix = array (
 
@@ -29,9 +30,25 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/icewm/files" ),
 
+   array( 'pkg'     => 'lxdm',
+          'match'   => '^.*$', 
+          'replace' => "http://sourceforge.net/projects/lxdm/files" ),
+
+   array( 'pkg'     => 'lxde-icon-theme',
+          'match'   => '^.*$', 
+          'replace' => "http://sourceforge.net/projects/lxde/files/LXDE%20Icon%20Theme" ),
+
    array( 'pkg'     => 'openbox',
           'match'   => '^.*$', 
           'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/openbox" ),
+
+   array( 'pkg'     => 'sddm',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/sddm/sddm/releases" ),
+
+   array( 'pkg'     => 'oxygen-icons5',
+          'match'   => '^.*$', 
+          'replace' => "http://download.kde.org/stable/frameworks" ),
 
 );
 function get_packages( $package, $dirpath )
@@ -77,6 +94,13 @@ function get_packages( $package, $dirpath )
   {
     $lines = http_get_file( $dirpath );
     if ( ! is_array( $lines ) ) return $lines;
+
+    if ( $package == 'oxygen-icons5' )  # Same as KF5 version
+    {
+      $max = find_max( $lines, "/5/", "/^.*(5[\d\.]+)\/.*$/" );
+      return $max . ".0" ;
+    }
+
   } // End fetch
 
   if ( isset( $regex[ $package ] ) )
@@ -97,9 +121,15 @@ function get_packages( $package, $dirpath )
   if ( $package == 'sawfish' )
     return find_max( $lines, "/sawfish/", "/^.*sawfish_([\d\.]*\d)\.tar.*$/" );
 
+  if ( $package == 'sddm' )
+    return find_max( $lines, "/v\d/", "/^.*v([\d\.]*\d)*$/" );
+
+  if ( $package == 'lxde-icon-theme' )
+    return find_max( $lines, "/theme/", "/^.*theme-([\d\.]+)*$/" );
+
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
-
+print_r($lines);
   $max = find_max( $lines, "/$package/", "/^.*${package}-?([\d\.]*\d)\.tar.*$/" );
   return $max;
 }
@@ -108,12 +138,12 @@ Function get_pattern( $line )
 {
    global $start;
 
-   // Set up specific patter matches for extracting book versions
+   // Set up specific pattern matches for extracting book versions
    $match = array();
 
    $match = array(
-     //array( 'pkg'   => 'at-spi', 
-     //       'regex' => "/^.*at-spi2-.{3,4}-(\d[\d\.]+).*$/" ),
+     array( 'pkg'   => 'oxygen-icons5', 
+            'regex' => "/^.*-(\d[\d\.]+).*$/" ),
    );
 
    foreach( $match as $m )
