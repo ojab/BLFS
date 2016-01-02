@@ -78,6 +78,7 @@ foreach ( $a as $l )
        $pkg == "kde-base-artwork" ||
        $pkg == "kde-baseapps"     ||
        $pkg == "kdepimlibs"       ||
+       $pkg == "obconf-qt"        ||
        $pkg == "libdbusmenu-qt"   ||
        $pkg == "juffed"           ||
        $pkg == "qupzilla"
