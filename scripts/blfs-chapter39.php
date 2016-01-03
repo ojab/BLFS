@@ -14,7 +14,7 @@ $renames[ 'libfm1' ] = 'libfm';
 
 $ignores = array();
 
-//$current="QScintilla-gpl";  // Debug
+//$current="qupzilla";  // Debug
 
 $regex = array();
 $regex[ 'libfm'   ] = "/^.*Download libfm-(\d[\d\.]+\d).tar.*$/";
@@ -102,6 +102,10 @@ $url_fix = array (
    array( 'pkg'     => 'QScintilla-gpl',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/pyqt/files/QScintilla2" ),
+
+   array( 'pkg'     => 'qupzilla',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/QupZilla/qupzilla/tags" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -114,8 +118,7 @@ function get_packages( $package, $dirpath )
   if ( isset( $current ) && $book_index != "$current" ) return 0;
 
   if ( $book_index == 'obconf-qt' ||
-       $book_index == 'juffed'    ||
-       $book_index == 'qupzilla' ) 
+       $book_index == 'juffed' )
     return 'check manually';
 
   // Fix up directory path
@@ -168,6 +171,7 @@ function get_packages( $package, $dirpath )
             $book_index != "lxde-icon-theme" &&
             $book_index != "qtermwidget"     &&
             $book_index != "qterminal"       &&
+            $book_index != "qupzilla"        &&
             $book_index != "QScintilla-gpl" 
             ) // http
   {
@@ -298,6 +302,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "QScintilla-gpl" )
     return find_max( $lines, "/QScintilla-/", "/^.*QScintilla-([\d\.]*\d).*$/" );
+
+  if ( $book_index == "qupzilla" )
+    return find_max( $lines, "/v\d/", "/^.*v([\d\.]*\d).*$/" );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)

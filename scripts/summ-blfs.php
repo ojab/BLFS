@@ -80,8 +80,7 @@ foreach ( $a as $l )
        $pkg == "kdepimlibs"       ||
        $pkg == "obconf-qt"        ||
        $pkg == "libdbusmenu-qt"   ||
-       $pkg == "juffed"           ||
-       $pkg == "qupzilla"
+       $pkg == "juffed"     
      ) continue;
 
   if ( $c[3] == "0" ) $c[3] .= " ";
