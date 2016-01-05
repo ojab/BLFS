@@ -6,6 +6,9 @@ include 'blfs-include.php';
 $CHAPTER       = '32';
 $CHAPTERS      = 'Chapters 32-34';
 
+$renames = array();
+$ignores = array();
+
 //$current="libkcddb";
 
 function get_packages( $package, $dirpath )
@@ -19,25 +22,26 @@ function get_packages( $package, $dirpath )
   return find_max( $lines, "/\d\./", "/^.*;(\d[\d\.]*)\/.*$/" );
 }
 
-$file        = "$WGET_DIR/kde/krameworks5.html";
-$line        = exec( "grep 'frameworks.*http' $file" );
-$kf5_version = preg_replace( '/^.*(\d\.\d+).*$/', "$1", $line );
+$d = getenv( 'BLFS_DIR' );
+$BLFS_DIR = ($d) ? $d : '.';
+
+$file        = "$BLFS_DIR/general.ent";
+$line        = exec( "grep 'kf5-short-version' $file" );
+$kf5_version = preg_replace( '/^.*"(\d[\.\d]+)".*$/', "$1", $line );
 
 $book[ 'kf5'      ] = array( 'basename' => 'kf5',
                              'url'      => 'http://download.kde.org/stable/frameworks',
                              'version'  => $kf5_version );
 
-$file             = "$WGET_DIR/kde/kf5-apps.html";
-$line             = exec( "grep 'konsole' $file" );
-$kf5_apps_version = preg_replace( '/^.*-(\d[\.\d]+).*$/', "$1", $line );
+$line             = exec( "grep 'kf5apps-version ' $file" );
+$kf5_apps_version = preg_replace( '/^.*"(\d[\.\d]+)".*$/', "$1", $line );
 
 $book[ 'kf5-apps' ] = array( 'basename' => 'kf5-apps',
                              'url'      => 'http://download.kde.org/stable/applications',
                              'version'  => $kf5_apps_version );
 
-$file           = "$WGET_DIR/kde/plasma-all.html";
-$line           = exec( "grep 'plasma.*http' $file" );
-$plasma_version = preg_replace( '/^.*\/(\d[\.\d]+)".*$/', "$1", $line );
+$line           = exec( "grep 'plasma5-version' $file" );
+$plasma_version = preg_replace( '/^.*"(\d[\.\d]+)".*$/', "$1", $line );
 
 $book[ 'plasma5'  ] = array( 'basename' => 'plasma5',
                              'url'      => 'http://download.kde.org/stable/plasma',
