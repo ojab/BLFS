@@ -213,8 +213,8 @@ function get_packages( $package, $dirpath )
 function get_pattern( $line )
 {
    $match = array(
-     array( 'pkg'   => 'biblatex-biber',
-            'regex' => "/^.*v(\d[\d\.]+).*$/" ),
+//     array( 'pkg'   => 'biblatex-biber',
+//            'regex' => "/^.*v(\d[\d\.]+).*$/" ),
 
      array( 'pkg'   => 'a2ps',
             'regex' => "/^.*a2ps-(\d[\d\.]+).*$/" ),
