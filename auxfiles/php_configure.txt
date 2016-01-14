@@ -3,11 +3,11 @@
 # $Date$
 # 
 # Almost all the dependencies are in the book, except:
-#   - GD: there is a bundled version. If you have built it, you should
+#   - GD: there is a bundled version. If you have built your own, you should
 #         change the switch to --with-gd=/usr
 #   - Net-SNMP: remove the switch --with-snmp if not built
 #   - Berkeley-DB: only versions 1 to 5 are supported. The build is possible
-#                  if using the following sed, but have not been much tested.
+#                  if using the following sed, but has not been much tested.
 #############################
 sed -e 's/DB_VERSION_MAJOR == 5/DB_VERSION_MAJOR >= 5/' -i configure
 ./configure --prefix=/usr                     \
