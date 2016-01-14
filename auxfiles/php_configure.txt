@@ -1,56 +1,64 @@
+#############################
 # $LastChangedBy$
 # $Date$
-
-./configure --prefix=/usr                    \
-            --sysconfdir=/etc                \
-            --localstatedir=/var             \
-            --datadir=/usr/share/php         \
-            --mandir=/usr/share/man          \
-            --enable-fpm                     \
-            --with-fpm-user=apache           \
-            --with-fpm-group=apache          \
-            --enable-discard-path            \
-            --with-config-file-path=/etc     \
-            --with-openssl                   \
-            --with-kerberos                  \
-            --with-pcre-regex=/usr           \
-            --with-zlib                      \
-            --enable-bcmath                  \
-            --with-bz2                       \
-            --enable-calendar                \
-            --with-curl                      \
-            --enable-dba=shared              \
-            --with-gdbm                      \
-            --with-db4                       \
-            --enable-inifile                 \
-            --enable-flatfile                \
-            --enable-exif                    \
-            --enable-ftp                     \
-            --with-openssl-dir=/usr          \
-            --with-gd=/usr                   \
-            --with-jpeg-dir=/usr             \
-            --with-png-dir=/usr              \
-            --with-zlib-dir=/usr             \
-            --with-xpm-dir=/usr              \
-            --with-freetype-dir=/usr         \
-            --with-gettext                   \
-            --with-gmp                       \
-            --with-ldap                      \
-            --with-ldap-sasl                 \
-            --enable-mbstring                \
-            --with-mysqli=mysqlnd            \
-            --with-mysql-sock=/var/run/mysql \
-            --with-unixODBC=/usr             \
-            --with-pdo-mysql                 \
-            --with-pdo-odbc=unixODBC,/usr    \
-            --with-pdo-pgsql                 \
-            --without-pdo-sqlite             \
-            --with-pgsql                     \
-            --with-pspell                    \
-            --with-readline                  \
-            --with-snmp                      \
-            --enable-sockets                 \
-            --with-tidy                      \
-            --with-xsl                       \
+# 
+# Almost all the dependencies are in the book, except:
+#   - GD: there is a bundled version. If you have built it, you should
+#         change the switch to --with-gd=/usr
+#   - Net-SNMP: remove the switch --with-snmp if not built
+#   - Berkeley-DB: only versions 1 to 5 are supported. The build is possible
+#                  if using the following sed, but have not been much tested.
+#############################
+sed -e 's/DB_VERSION_MAJOR == 5/DB_VERSION_MAJOR >= 5/' -i configure
+./configure --prefix=/usr                     \
+            --sysconfdir=/etc                 \
+            --localstatedir=/var              \
+            --datadir=/usr/share/php          \
+            --mandir=/usr/share/man           \
+            --enable-fpm                      \
+            --with-fpm-user=apache            \
+            --with-fpm-group=apache           \
+            --with-config-file-path=/etc      \
+            --with-openssl                    \
+            --with-kerberos                   \
+            --with-pcre-regex=/usr            \
+            --with-zlib                       \
+            --enable-bcmath                   \
+            --with-bz2                        \
+            --enable-calendar                 \
+            --with-curl                       \
+            --enable-dba=shared               \
+            --with-gdbm                       \
+            --with-db4                        \
+            --enable-inifile                  \
+            --enable-flatfile                 \
+            --enable-exif                     \
+            --enable-ftp                      \
+            --with-openssl-dir=/usr           \
+            --with-gd                         \
+            --with-jpeg-dir=/usr              \
+            --with-png-dir=/usr               \
+            --with-zlib-dir=/usr              \
+            --with-xpm-dir=/usr               \
+            --with-freetype-dir=/usr          \
+            --with-gettext                    \
+            --with-gmp                        \
+            --with-ldap                       \
+            --with-ldap-sasl                  \
+            --enable-mbstring                 \
+            --with-mysqli=mysqlnd             \
+            --with-mysql-sock=/var/run/mysqld \
+            --with-unixODBC=/usr              \
+            --with-pdo-mysql                  \
+            --with-pdo-odbc=unixODBC,/usr     \
+            --with-pdo-pgsql                  \
+            --without-pdo-sqlite              \
+            --with-pgsql                      \
+            --with-pspell                     \
+            --with-readline                   \
+            --with-snmp                       \
+            --enable-sockets                  \
+            --with-tidy                       \
+            --with-xsl                        \
             --with-iconv
 
