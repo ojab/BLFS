@@ -49,6 +49,7 @@ sed -e 's/DB_VERSION_MAJOR == 5/DB_VERSION_MAJOR >= 5/' -i configure
             --with-mysqli=mysqlnd             \
             --with-mysql-sock=/var/run/mysqld \
             --with-unixODBC=/usr              \
+            --enable-pcntl                    \
             --with-pdo-mysql                  \
             --with-pdo-odbc=unixODBC,/usr     \
             --with-pdo-pgsql                  \
