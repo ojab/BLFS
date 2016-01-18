@@ -6,10 +6,14 @@
 #   - GD: there is a bundled version. If you have built your own, you should
 #         change the switch to --with-gd=/usr
 #   - Net-SNMP: remove the switch --with-snmp if not built
-#   - Berkeley-DB: only versions 1 to 5 are supported. The build is possible
-#                  if using the following sed, but has not been much tested.
+#   - Berkeley-DB: only versions 1 to 5.3 are supported. The build with
+#     version 6.x is possible if using the following sed. However you should
+#     make sure that the licence for that version is compatible with your
+#     intended usage.
 #############################
-sed -e 's/DB_VERSION_MAJOR == 5/DB_VERSION_MAJOR >= 5/' -i configure
+grep -rl "DB_VERSION_MAJOR == 5" |
+        xargs sed -i 's/DB_VERSION_MAJOR == 5/DB_VERSION_MAJOR >= 5/' &&
+sed -i 's/(4|5)/(4|5|6)/' ext/dba/tests/dba_db4_handlers.phpt
 ./configure --prefix=/usr                     \
             --sysconfdir=/etc                 \
             --localstatedir=/var              \
@@ -47,7 +51,7 @@ sed -e 's/DB_VERSION_MAJOR == 5/DB_VERSION_MAJOR >= 5/' -i configure
             --with-ldap-sasl                  \
             --enable-mbstring                 \
             --with-mysqli=mysqlnd             \
-            --with-mysql-sock=/var/run/mysqld \
+            --with-mysql-sock=/var/run/mysqld/mysqld.sock \
             --with-unixODBC=/usr              \
             --enable-pcntl                    \
             --with-pdo-mysql                  \
@@ -62,4 +66,11 @@ sed -e 's/DB_VERSION_MAJOR == 5/DB_VERSION_MAJOR >= 5/' -i configure
             --with-tidy                       \
             --with-xsl                        \
             --with-iconv
-
+# Notes about tests:
+#   - To test mysqli and pdo_mysql, the MySQL server should be local, and
+#     there should be a database named `test', accessible and
+#     modifiable by user `root' without password.
+#   - To test pgsql and pdo_sql, it is assumed that the PostgreSQL server
+#     is installed locally, that there is a PostgreSQL account for the
+#     user running the test, and there is database named `test'.
+#   - TODO: document test requirements for LDAP, odbc, etc.
