@@ -64,7 +64,7 @@ function get_packages( $package, $dirpath )
         $position = strrpos( $dirpath, "/" );
         $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
         $dirs     = http_get_file( "$dirpath/" );
-        $dir      = find_max( $dirs, "/\d$/", "/^.* ([\d\.]+)$/" ); // Not even
+        $dir      = find_even_max( $dirs, "/\d$/", "/^.* ([\d\.]+)$/" ); // Not even
         $dirpath .= "/$dir/";
     }
 

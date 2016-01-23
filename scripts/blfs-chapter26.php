@@ -119,7 +119,7 @@ function get_packages( $package, $dirpath )
   }
 
   if ( $package == 'sawfish' )
-    return find_max( $lines, "/sawfish/", "/^.*sawfish_([\d\.]*\d)\.tar.*$/" );
+    return find_max( $lines, "/sawfish/", "/^.*sawfish_([\d\.]*\d)\.tar.*$/", TRUE );
 
   if ( $package == 'sddm' )
     return find_max( $lines, "/v\d/", "/^.*v([\d\.]*\d)*$/" );
@@ -129,7 +129,7 @@ function get_packages( $package, $dirpath )
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
-print_r($lines);
+  // print_r($lines);
   $max = find_max( $lines, "/$package/", "/^.*${package}-?([\d\.]*\d)\.tar.*$/" );
   return $max;
 }

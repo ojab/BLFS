@@ -151,7 +151,7 @@ function get_packages( $package, $dirpath )
       // Get the max directory and adjust the directory path
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
       $lines1   = http_get_file( $dirpath );
-      $dir      = find_max( $lines1, "/\d[\d\.]+/", "/^\s*(\d[\d\.]+).*$/" );
+      $dir      = find_even_max( $lines1, "/\d[\d\.]+/", "/^\s*(\d[\d\.]+).*$/" );
       $dirpath .= "/$dir/";
     }
 
