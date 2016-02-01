@@ -156,6 +156,13 @@ function get_current()
       if ( $basename == $START_PACKAGE ) $start = true;
       if ( ! $start ) continue;
 
+      // Custom for tidy in Chapter 11 (github is not friendly)
+      if ( preg_match( "/tidy-html/", $line ) )
+      {
+         $version  = $file;
+         $basename = 'tidy';
+      }
+
       // Custom for Chapter 55
       if ( $version == "install-tl-unx" ) 
       {

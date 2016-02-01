@@ -11,7 +11,7 @@ $STOP_PACKAGE  = 'unixODBC';
 $renames = array();
 $renames[ 'lsof_'     ] = 'lsof';
 $renames[ 'rep-gtk_'  ] = 'rep-gtk';
-$renames[ 'tidy-cvs_' ] = 'tidy-cvs';
+//$renames[ 'tidy-cvs_' ] = 'tidy';
 
 $ignores = array();
 
@@ -19,7 +19,7 @@ $regex = array();
 $regex[ 'intltool'      ] = "/^.*Latest version is (\d[\d\.]+\d).*$/";
 $regex[ 'xscreensaver'  ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
 
-//$current="rep-gtk";  // For debugging
+//$current="tidy";  // For debugging
 
 $url_fix = array (
    array( 'pkg'     => 'chrpath',
@@ -33,6 +33,10 @@ $url_fix = array (
    array( 'pkg'     => 'intltool',
           'match'   => '^.*$', 
           'replace' => "https://launchpad.net/intltool/trunk" ),
+
+   array( 'pkg'     => 'tidy',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/htacg/tidy-html5/releases" ),
 
    array( 'pkg'     => 'unixODBC',
           'match'   => '^.*$', 
@@ -111,6 +115,7 @@ function get_packages( $package, $dirpath )
     }
     // Customize http directories as needed
      $lines = http_get_file( $dirpath );
+
      if ( ! is_array( $lines ) ) return $lines;
   } // End fetch
 
@@ -149,8 +154,8 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "tree" )
     return find_max( $lines, '/tree/', '/^.*tree-([\d\.]+).tgz.*$/' );
 
-  if ( $book_index == "tidy-cvs" )
-    return find_max( $lines, '/tidy-cvs/', '/^.*_(\d+).tar.*$/' );
+  if ( $book_index == "tidy" )
+    return find_max( $lines, '/v\d/', '/^.*v([\d\.]+)$/' );
 
   if ( $book_index == "rep-gtk" )
     return find_max( $lines, '/rep-gtk/', '/^.*rep-gtk[_-]([\d\.]+).tar.*$/' );
