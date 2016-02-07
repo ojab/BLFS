@@ -12,12 +12,12 @@ $renames = array();
 $ignores = array();
 $ignores[ 'rpcnis-headers' ] = '';
 
-//$current="libnl-doc";
+//$current="serf";
 
 $regex = array();
 $regex[ 're-alpine' ] = "/^.*Download re-alpine-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'w3m'       ] = "/^.*Download w3m-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'serf'      ] = "/^.*serf-([\d\.]*).tar.*$/";
+$regex[ 'serf'      ] = "/^.*Serf is ([\d\.]+\d).*$/";
 $regex[ 'neon'      ] = "/^.*Source code: neon-(\d[\d\.]*).tar.*$/";
 $regex[ 'geoclue'   ] = "/^.*geoclue-(\d[\d\.]+).tar.*$/";
 $regex[ 'libevent'  ] = "/^.*release-(\d[\d\.]*)-stable.*$/";
@@ -42,7 +42,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'serf',
           'match'   => '^.*$',
-          'replace' => "https://code.google.com/p/serf" ),
+          'replace' => "http://serf.apache.org/download" ),
 
    array( 'pkg'     => 'libtirpc',
           'match'   => '^.*$',

@@ -9,9 +9,10 @@ $START_PACKAGE = 'apr';
 $STOP_PACKAGE  = 'xapian-core';
 
 $renames = array();
+$renames[ 'v' ] = 'liblinear';
 $ignores = array();
 
-//$current="mozjs"; // For debugging
+//$current="v"; // For debugging
 
 $regex = array();
 $regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
@@ -93,6 +94,10 @@ $url_fix = array (
  array( 'pkg'     => 'libdaemon',
         'match'   => '^.*$',
         'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/libdaemon" ),
+
+ array( 'pkg'     => 'v',  //liblinear
+        'match'   => '^.*$',
+        'replace' => "https://github.com/cjlin1/liblinear/releases" ),
 
  array( 'pkg'     => 'wv',
         'match'   => '^.*$',
@@ -293,6 +298,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "libusb" )
     return find_max( $lines, '/^.*libusb-[\d\.]+.*$/', '/^.*libusb-([\d\.]+)$/' );
+
+  if ( $book_index == "v" ) // liblinear
+    return find_max( $lines, '/v\d/', '/^.*v(\d+)$/' );
 
   if ( $book_index == "libusb-compat" )
     return find_max( $lines, '/^.*compat-[\d\.]+$/', '/^.*compat-([\d\.]+)$/' );

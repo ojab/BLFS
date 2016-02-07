@@ -13,10 +13,11 @@ $renames[ 'zsh1' ] = 'zsh-doc';
 
 $ignores = array();
 
-//$current="bluefish";   // For debugging
+//$current="tcsh";   // For debugging
 
 $regex = array();
-$regex[ 'joe' ] = "/^.*Download joe-(\d[\d\.]+).tar.*$/";
+$regex[ 'joe'  ] = "/^.*Download joe-(\d[\d\.]+).tar.*$/";
+$regex[ 'tcsh' ] = "/^.*release is (\d[\d\.]+)\..*$/";
 
 $sf = 'sourceforge.net';
 
@@ -32,7 +33,7 @@ $url_fix = array (
 
   array( 'pkg'     => 'tcsh',
          'match'   => '^.*$', 
-         'replace' => "http://www.sfr-fresh.com/unix/misc" ),
+         'replace' => "http://www.tcsh.org/MostRecentRelease" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -41,6 +42,7 @@ function get_packages( $package, $dirpath )
   global $regex;
   global $book_index;
   global $url_fix;
+  global $current;
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
 
