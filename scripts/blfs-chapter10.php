@@ -11,12 +11,10 @@ $STOP_PACKAGE  = 'qpdf';
 $renames = array();
 $ignores = array();
 
-//$current="opencv";   // For debugging
+//$current="jasper";   // For debugging
 
 $regex = array();
 $regex[ 'aalib'         ] = "/^.*Download aalib-([\d\.]+rc\d).tar.*$/";
-//$regex[ 'freetype'      ] = "/^.*Download freetype-(\d[\d\.]*\d).tar.*/";
-$regex[ 'jasper'        ] = "/^.*JasPer version (\d[\d\.]+\d) source.*current.*$/";
 $regex[ 'libexif'       ] = "/^.*Download libexif-(\d[\d\.]+\d).*$/";
 $regex[ 'graphite2'     ] = "/^.*Download graphite2-(\d[\d\.]+\d).tgz.*$/";
 $regex[ 'libmng'        ] = "/^.*Download libmng-(\d[\d\.]+\d).tar.*$/";
@@ -57,7 +55,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'jasper',
         'match'   => '^.*$', 
-        'replace' => "http://www.ece.uvic.ca/~frodo/jasper/#download" ),
+        'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/jasper" ),
 
  array( 'pkg'     => 'lcms',
         'match'   => '^.*$', 
@@ -219,6 +217,11 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "libjpeg-turbo" )
   {
     return find_max( $lines, '/\d\./', '/^\s*([\d\.]+)\s*$/' );
+  }
+
+  if ( $book_index == "jasper" )
+  {
+    return find_max( $lines, '/jasper-/', '/^.*jasper-(\d\.[\d\.]+)\.zip.*$/' );
   }
 
   if ( $book_index == "openjpeg" )
