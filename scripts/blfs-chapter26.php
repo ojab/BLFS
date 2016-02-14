@@ -15,7 +15,6 @@ $ignores = array();
 
 $regex = array();
 $regex[ 'fluxbox' ] = "/^.*current version of Fluxbox is (\d[\d\.]+\d).*$/";
-$regex[ 'icewm'   ] = "/^.*Download icewm-(\d[\d\.]+\d).*$/";
 $regex[ 'lxdm'    ] = "/^.*Download lxdm-(\d[\d\.]+\d).*$/";
 
 //$current="lxde-icon-theme";  # For debugging
@@ -28,7 +27,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'icewm',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/icewm/files" ),
+          'replace' => "https://github.com/bbidulock/icewm/releases/" ),
 
    array( 'pkg'     => 'lxdm',
           'match'   => '^.*$', 
