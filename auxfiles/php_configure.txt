@@ -73,4 +73,28 @@ sed -i 's/(4|5)/(4|5|6)/' ext/dba/tests/dba_db4_handlers.phpt
 #   - To test pgsql and pdo_sql, it is assumed that the PostgreSQL server
 #     is installed locally, that there is a PostgreSQL account for the
 #     user running the test, and there is database named `test'.
-#   - TODO: document test requirements for LDAP, odbc, etc.
+#   - For ldap, most tests rely on the availability of an LDAP server
+#     configured with TLS (as recommended in the BLFS book). Furthermore, an
+#     empty LDAP structure is needed.
+#     The (/etc/openldap/)slapd.conf file should contain the following in
+#     addition to the default configuration set up on the openldap page:
+#     ----------
+#     TLSCACertificateFile /etc/openldap/ssl/server.pem
+#     TLSCertificateFile /etc/openldap/ssl/server.pem
+#     TLSCertificateKeyFile /etc/openldap/ssl/server.pem
+#     TLSVerifyClient never
+#     authz-regexp
+#             uid=Manager,cn=digest-md5,cn=auth
+#             cn=Manager,dc=my-domain,dc=com
+#     ---------
+#     A self signed certificate is needed, and can be generated (as root) using:
+#     # mkdir -p /etc/openldap/ssl && cd /etc/openldap/ssl
+#     # openssl req -newkey rsa:1024 -x509 -nodes -out server.pem \
+#                   -keyout server.pem -days 3650
+#
+#     The (/etc/openldap/)ldap.conf file should contain:
+#     ---------
+#     TLS_REQCERT never
+#     ---------
+#     The LDAP user is cn=Manager,dc=my-domain,dc=com, with password "secret".
+#   - TODO: document test requirements for odbc, etc.
