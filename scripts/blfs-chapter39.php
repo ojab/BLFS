@@ -14,7 +14,7 @@ $renames[ 'libfm1' ] = 'libfm';
 
 $ignores = array();
 
-//$current="qupzilla";  // Debug
+//$current="gpicview";  // Debug
 
 $regex = array();
 $regex[ 'libfm'   ] = "/^.*Download libfm-(\d[\d\.]+\d).tar.*$/";
@@ -68,13 +68,15 @@ $url_fix = array (
    array( 'pkg'     => 'lxinput',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/lxde/files/LXInput%20%28Kbd%20and%20amp_%20mouse%20config%29/" ),
+
    array( 'pkg'     => 'gpicview',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/lxde/files/GPicView%20%28image%20Viewer%29" ),
+          'replace' => "http://sourceforge.net/projects/lxde/files/GPicView%20%28image%20Viewer%29/0.2.x" ),
 
    array( 'pkg'     => 'lxrandr',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/lxde/files/LXRandR%20%28monitor%20config%20tool%29" ),
+
    array( 'pkg'     => 'lxshortcut',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/lxde/files/LXShortcut%20%28edit%20app%20shortcut%29" ),
@@ -225,14 +227,6 @@ function get_packages( $package, $dirpath )
        $dirpath .= "/$d";
      }
 
-     if ( $book_index == "gpicview" )
-     {
-       $lines1   = http_get_file( "$dirpath" );
-       $dir      = find_max( $lines1, "/GpicView \d/i", "/^.*(Gpic.* [\d\.]+).*$/i" );
-       $d        = preg_replace( "/ /", "%20", $dir ); // Fix embedded blank
-       $dirpath .= "/$d";
-     }
-
      if ( $book_index == "lxrandr" )
      {
        $lines1   = http_get_file( "$dirpath" );
@@ -289,12 +283,6 @@ function get_packages( $package, $dirpath )
      }
 
      return 0;  // This is an error
-  }
-
-  if ( $book_index == "lxmenu-data" )
-  {
-    $ver = find_max( $lines, "/$package/", "/^.*$package ([\d\.]*\d).*$/" );
-    return $ver;
   }
 
   if ( $book_index == "lxde-icon-theme" )
