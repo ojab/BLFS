@@ -11,12 +11,12 @@ $STOP_PACKAGE  = 'qpdf';
 $renames = array();
 $ignores = array();
 
-//$current="jasper";   // For debugging
+//$current="graphite2";   // For debugging
 
 $regex = array();
 $regex[ 'aalib'         ] = "/^.*Download aalib-([\d\.]+rc\d).tar.*$/";
 $regex[ 'libexif'       ] = "/^.*Download libexif-(\d[\d\.]+\d).*$/";
-$regex[ 'graphite2'     ] = "/^.*Download graphite2-(\d[\d\.]+\d).tgz.*$/";
+$regex[ 'graphite2'     ] = "/^.*Download graphite-(\d[\d\.]+\d).tgz.*$/";
 $regex[ 'libmng'        ] = "/^.*Download libmng-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'libpng'        ] = "/^.*Download libpng-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'LibRaw'        ] = "/^.*LibRaw-(\d[\d\.]+\d).tar.*$/";
@@ -253,6 +253,8 @@ function get_packages( $package, $dirpath )
   {
     return find_max( $lines, '/2\.[\d\.]+/', '/^\s*(2[\d\.]+)\s*$/' );
   }
+
+  if ( $package == "graphite2" ) $package = "graphite";
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)

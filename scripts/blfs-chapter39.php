@@ -14,7 +14,7 @@ $renames[ 'libfm1' ] = 'libfm';
 
 $ignores = array();
 
-//$current="gpicview";  // Debug
+//$current="kguiaddons";  // Debug
 
 $regex = array();
 $regex[ 'libfm'   ] = "/^.*Download libfm-(\d[\d\.]+\d).tar.*$/";
@@ -174,6 +174,10 @@ function get_packages( $package, $dirpath )
             $book_index != "qtermwidget"     &&
             $book_index != "qterminal"       &&
             $book_index != "qupzilla"        &&
+            $book_index != "kguiaddons"      &&
+            $book_index != "solid"           &&
+            $book_index != "kwindowsystem"   &&
+            $book_index != "libkscreen"      &&
             $book_index != "QScintilla-gpl" 
             ) // http
   {
@@ -267,6 +271,16 @@ function get_packages( $package, $dirpath )
        $dirpath .= "/$d";
      }
 
+     if ( $book_index == "kguiaddons"    ||
+          $book_index == "kwindowsystem" ||
+          $book_index == "solid"         ||
+          $book_index == "libkscreen"    ) 
+     {
+       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
+       $position = strrpos( $dirpath, "/" );
+       $dirpath = substr ( $dirpath, 0, $position );  // Up 1
+     }
+
      $lines = http_get_file( "$dirpath" );
   }
 
@@ -283,6 +297,17 @@ function get_packages( $package, $dirpath )
      }
 
      return 0;  // This is an error
+  }
+
+  if ( $book_index == "kguiaddons"    ||
+       $book_index == "kwindowsystem" ||
+       $book_index == "solid"         ||
+       $book_index == "libkscreen"    ) 
+  {
+    $max = find_max( $lines, "/\d.\d/", "/^.*;([\d\.]*\d)\/.*$/" );
+
+    if ( $book_index == "libkscreen" ) return $max;
+    return $max . ".0";  // Add .0 to version
   }
 
   if ( $book_index == "lxde-icon-theme" )
