@@ -29,7 +29,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'cups',
           'match'   => '^.*$',
-          'replace' => "http://www.cups.org/software.php" ),
+          'replace' => "https://github.com/apple/cups/releases" ),
 
    array( 'pkg'     => 'cups-filters',
           'match'   => '^.*$',
