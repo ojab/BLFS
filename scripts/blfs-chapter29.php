@@ -6,11 +6,10 @@ include 'blfs-include.php';
 $CHAPTER       = '29';
 $CHAPTERS      = 'Chapters 29-30';
 $START_PACKAGE = 'phonon';
-$STOP_PACKAGE  = 'kde-workspace';
+$STOP_PACKAGE  = 'extra-cmake-modules';
 
 $renames = array();
 $ignores = array();
-$ignores[ 'kde-workspace' ] = '';
 
 //$current="extra-cmake-modules";
 
@@ -67,18 +66,10 @@ function get_packages( $package, $dirpath )
   }
 
   // Check for ftp
-  if ( preg_match( "/^ftp/", $dirpath ) ) 
-  { 
-    if ( $book_index == "automoc4" )
-    {
-      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-      $position = strrpos( $dirpath, "/" );
-      $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
-    }
+  if ( preg_match( "/^ftp/", $dirpath ) )
+  {
 
-    if ( $book_index == "kactivities" ) return "check manually";
-    
-    if ( $book_index == "phonon-backend-vlc" || 
+    if ( $book_index == "phonon-backend-vlc" ||
          $book_index == "phonon"             ||
          $book_index == "phonon-backend-gstreamer" )
     {
@@ -95,35 +86,13 @@ function get_packages( $package, $dirpath )
   }
   else // http
   {
-     if ( $book_index == "kdepimlibs"         ) return "check manually";
-     if ( $book_index == "oxygen-icons"       ) return "check manually";
-     if ( $book_index == "kfilemetadata"      ) return "check manually";
-     if ( $book_index == "kde-workspace"      ) return "check manually";
-     if ( preg_match( '/baloo/', $book_index) ) return "check manually";
-
-     # Copy from ftp above for now
-    if ( $book_index == "automoc4" )
-    {
-      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-      $position = strrpos( $dirpath, "/" );
-      $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
-      $lines = http_get_file( "$dirpath" );
-      return find_max( $lines, "/\d\./", "/^.*;([\d\.]+)\/.*$/" );
-    }
-
-    if ( $book_index == "akonadi" ||
-         $book_index == "qimageblitz" ||
-         $book_index == "polkit-qt-1" ||
-         $book_index == "polkit-kde-agent-1" ||
-         $book_index == "attica" )
+    if ( $book_index == "polkit-qt-1" )
     {
       $lines = http_get_file( "$dirpath" );
       return find_max( $lines, "/$book_index/", "/^.*$book_index-([\d\.]+).tar.*$/" );
     }
 
-    if ( $book_index == "kactivities" ) return "check manually";
-    
-    if ( $book_index == "phonon-backend-vlc" || 
+    if ( $book_index == "phonon-backend-vlc" ||
          $book_index == "phonon"             ||
          $book_index == "phonon-backend-gstreamer" )
     {
@@ -165,8 +134,7 @@ function get_packages( $package, $dirpath )
   } // End fetch
 
   // automoc4 and similar
-  if ( $book_index == "automoc4" || 
-       $book_index == "phonon"   ||
+  if ( $book_index == "phonon"   ||
        $book_index == "phonon-backend-gstreamer"  ||
        $book_index == "phonon-backend-vlc"  )
     return find_max( $lines, "/\d\./", "/^.* (\d\.[\d\.]+).*$/" );
@@ -185,14 +153,10 @@ function get_pattern( $line )
    $match = array();
 
    $match = array(
-     array( 'pkg'   => 'automoc', 
-            'regex' => "/^.*automoc4-(\d[\d\.]+).*$/" ),
 
-     array( 'pkg'   => 'polkit-qt', 
+     array( 'pkg'   => 'polkit-qt',
             'regex' => "/^.*polkit-qt-1-(\d[\d\.]+).*$/" ),
 
-     array( 'pkg'   => 'polkit-kde-agent', 
-            'regex' => "/^.*polkit-kde-agent-1-(\d[\d\.]+).*$/" ),
    );
 
    foreach( $match as $m )

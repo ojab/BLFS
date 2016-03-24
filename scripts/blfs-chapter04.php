@@ -23,11 +23,11 @@ $regex[ 'tripwire'       ] = "/^.*Download tripwire-([\d\.]+)-src.*$/";
 $regex[ 'haveged'        ] = "/^.*haveged-([\d\.]+)\.tar.*$/";
 $regex[ 'cracklib'       ] = "/^.*cracklib-([\d\.]+)\.tar.*$/";
 $regex[ 'cracklib-words' ] = "/^.*cracklib-words-([\d\.]+)\.bz2.*$/";
-$regex[ 'ConsoleKit'     ] = "/^.*ConsoleKit(2-[\d\.]+)\.tar.*$/";
+$regex[ 'ConsoleKit2'    ] = "/^.*ConsoleKit2-([\d\.]+)\.tar.*$/";
 
 $url_fix = array(
 
-   array( 'pkg'     => 'ConsoleKit',
+   array( 'pkg'     => 'ConsoleKit2',
           'match'   => '^.*$',
           'replace' => 'https://github.com/ConsoleKit2/ConsoleKit2/releases' ),
 
@@ -50,6 +50,10 @@ $url_fix = array(
    array( 'pkg'     => 'haveged',
           'match'   => '^.*$',
           'replace' => 'http://sourceforge.net/projects/haveged/files' ),
+
+   array( 'pkg'     => 'krb5',
+          'match'   => '^.*$',
+          'replace' => 'http://web.mit.edu/kerberos/www/dist/' ),
 
    array( 'pkg'     => 'openssh',
           'match'   => '^ftp',
@@ -122,14 +126,14 @@ function get_packages( $package, $dirpath )
   else // http
   {
      // Customize http directories as needed
-     if ( $book_index == "krb5" )
-     {
-        // Remove last two dirs from $path
-        $position = strrpos( $dirpath, "/" );
-        $dirpath = substr( $dirpath, 0, $position );
-        $position = strrpos( $dirpath, "/" );
-        $dirpath = substr( $dirpath, 0, $position );
-     }
+     //if ( $book_index == "krb5" )
+     //{
+     //   // Remove last two dirs from $path
+     //   $position = strrpos( $dirpath, "/" );
+     //   $dirpath = substr( $dirpath, 0, $position );
+     //   $position = strrpos( $dirpath, "/" );
+     //   $dirpath = substr( $dirpath, 0, $position );
+     //}
 
      $lines = http_get_file( $dirpath );
      if ( ! is_array( $lines ) ) return $lines;
@@ -199,6 +203,9 @@ Function get_pattern( $line )
 {
    // Set up specific pattern matches for extracting book versions
    $match = array (
+      array( 'pkg' => 'ConsoleKit',
+             'regex' => "/ConsoleKit2-([\d.]+)$/"),
+
       array( 'pkg' => 'p11-kit',
              'regex' => "/p11-kit.(\d.*\d)\D*$/" ),
 
@@ -206,10 +213,7 @@ Function get_pattern( $line )
              'regex' => "/\D*(\d.*\d.*)$/" ),
 
       array( 'pkg' => 'krb',
-             'regex' => "/krb5-([\d.]+)-signed$/" ),
-
-      array( 'pkg' => 'krb',
-             'regex' => "/krb5-([\d.]+)-signed$/" ),
+             'regex' => "/krb5-([\d.]+)$/" ),
    );
 
    foreach( $match as $m )

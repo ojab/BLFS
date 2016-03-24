@@ -16,7 +16,7 @@ $ignores = array();
 $regex = array();
 $regex[ 'aalib'         ] = "/^.*Download aalib-([\d\.]+rc\d).tar.*$/";
 $regex[ 'libexif'       ] = "/^.*Download libexif-(\d[\d\.]+\d).*$/";
-$regex[ 'graphite2'     ] = "/^.*Download graphite-(\d[\d\.]+\d).tgz.*$/";
+//$regex[ 'graphite2'     ] = "/^.*Download graphite-(\d[\d\.]+\d).tgz.*$/";
 $regex[ 'libmng'        ] = "/^.*Download libmng-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'libpng'        ] = "/^.*Download libpng-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'LibRaw'        ] = "/^.*LibRaw-(\d[\d\.]+\d).tar.*$/";
@@ -75,7 +75,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'graphite2',
         'match'   => '^.*$', 
-        'replace' => "http://$sf/projects/silgraphite/files" ),
+        'replace' => "https://sourceforge.net/projects/silgraphite/files/graphite2/" ),
 
  array( 'pkg'     => 'libmng',
         'match'   => '^.*$', 
@@ -212,6 +212,11 @@ function get_packages( $package, $dirpath )
   {
     $dir   = find_max( $lines, '/\d\./', '/^\s*([\d\.]+)\s*$/' );
     $lines = http_get_file( "$dirpath/$dir" );
+  }
+
+  if ( $book_index == "graphite2" )
+  {
+    return find_max( $lines, '/graphite2-/', '/^.*graphite2-(\d\.[\d\.]+)\.tgz.*$/' );
   }
 
   if ( $book_index == "libjpeg-turbo" )
