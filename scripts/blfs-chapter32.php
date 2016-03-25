@@ -25,7 +25,7 @@ function get_packages( $package, $dirpath )
 $d = getenv( 'BLFS_DIR' );
 $BLFS_DIR = ($d) ? $d : '.';
 
-$file        = "$BLFS_DIR/general.ent";
+$file        = "$BLFS_DIR/packages.ent";
 $line        = exec( "grep 'kf5-short-version' $file" );
 $kf5_version = preg_replace( '/^.*"(\d[\.\d]+)".*$/', "$1", $line );
 
@@ -33,7 +33,7 @@ $book[ 'kf5'      ] = array( 'basename' => 'kf5',
                              'url'      => 'http://download.kde.org/stable/frameworks',
                              'version'  => $kf5_version );
 
-$line             = exec( "grep 'kf5apps-version ' $file" );
+$line             = exec( "grep ' kf5apps-version ' $file" );
 $kf5_apps_version = preg_replace( '/^.*"(\d[\.\d]+)".*$/', "$1", $line );
 
 $book[ 'kf5-apps' ] = array( 'basename' => 'kf5-apps',
