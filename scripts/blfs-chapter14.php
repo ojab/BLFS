@@ -16,7 +16,7 @@ $renames[ 'bind'            ] = 'bind9';
 
 $ignores = array();
 
-//$current="samba";
+//$current="avahi";
 
 $regex[ 'bridge-utils'    ] = "/^.*Download bridge-utils-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'nfs-utils'       ] = "/^.*Download nfs-utils-(\d[\d\.]+\d).tar.*$/";
@@ -62,6 +62,10 @@ $url_fix = array (
    array( 'pkg'     => 'wireless_tools.',
           'match'   => '^.*$', 
           'replace' => "http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html" ),
+
+   array( 'pkg'     => 'avahi',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/lathiat/avahi/releases" ),
 
    array( 'pkg'     => 'nmap',
           'match'   => '^.*$', 
