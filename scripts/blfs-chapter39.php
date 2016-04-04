@@ -6,7 +6,7 @@ include 'blfs-include.php';
 $CHAPTER       = '39';
 $CHAPTERS      = 'Chapters 39-43';
 $START_PACKAGE = 'lxmenu-data';
-$STOP_PACKAGE  = 'qupzilla';
+$STOP_PACKAGE  = 'QupZilla';
 
 $renames = array();
 $renames[ 'libfm'  ] = 'libfm-extra';
@@ -14,7 +14,7 @@ $renames[ 'libfm1' ] = 'libfm';
 
 $ignores = array();
 
-//$current="kguiaddons";  // Debug
+//$current="kwayland";  // Debug
 
 $regex = array();
 $regex[ 'libfm'   ] = "/^.*Download libfm-(\d[\d\.]+\d).tar.*$/";
@@ -105,7 +105,7 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/pyqt/files/QScintilla2" ),
 
-   array( 'pkg'     => 'qupzilla',
+   array( 'pkg'     => 'QupZilla',
           'match'   => '^.*$', 
           'replace' => "https://github.com/QupZilla/qupzilla/tags" ),
 );
@@ -173,8 +173,9 @@ function get_packages( $package, $dirpath )
             $book_index != "lxde-icon-theme" &&
             $book_index != "qtermwidget"     &&
             $book_index != "qterminal"       &&
-            $book_index != "qupzilla"        &&
+            $book_index != "QupZilla"        &&
             $book_index != "kguiaddons"      &&
+            $book_index != "kwayland"        &&
             $book_index != "solid"           &&
             $book_index != "kwindowsystem"   &&
             $book_index != "libkscreen"      &&
@@ -316,7 +317,7 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "QScintilla-gpl" )
     return find_max( $lines, "/QScintilla-/", "/^.*QScintilla-([\d\.]*\d).*$/" );
 
-  if ( $book_index == "qupzilla" )
+  if ( $book_index == "QupZilla" )
     return find_max( $lines, "/v\d/", "/^.*v([\d\.]*\d).*$/" );
 
   // Most packages are in the form $package-n.n.n
