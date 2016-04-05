@@ -11,7 +11,7 @@ $STOP_PACKAGE  = 'qpdf';
 $renames = array();
 $ignores = array();
 
-//$current="graphite2";   // For debugging
+//$current="gegl";   // For debugging
 
 $regex = array();
 $regex[ 'aalib'         ] = "/^.*Download aalib-([\d\.]+rc\d).tar.*$/";
@@ -155,10 +155,7 @@ function get_packages( $package, $dirpath )
   // Check for ftp
   if ( preg_match( "/^ftp/", $dirpath ) ) 
   { 
-    // babl and similar
-    if ( $book_index == "babl"  ||
-         $book_index == "gegl"  ||
-         $book_index == "libart_lgpl" )
+    if ( $book_index == "libart_lgpl" )
     {
        // Get the max directory and adjust the directory path
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
@@ -184,6 +181,19 @@ function get_packages( $package, $dirpath )
       $dirpath  = substr ( $dirpath, 0, $position ); // Up one
       $lines = http_get_file( $dirpath );
       $dir      = find_even_max( $lines, '/^\s+[\d\.]+\//', '/^\s+([\d\.]+)\/.*$/' );
+      $dirpath .= "/$dir/";
+    }
+
+    // babl and similar
+    if ( $book_index == "babl"  ||
+         $book_index == "gegl"  )
+    {
+       // Get the max directory and adjust the directory path
+      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
+      $position = strrpos( $dirpath, "/" );
+      $dirpath  = substr ( $dirpath, 0, $position );
+      $lines = http_get_file( $dirpath );
+      $dir = find_max( $lines, "/\d[\d\.]+\//", "/^.*(\d[\d\.]+)\/.*$/" );
       $dirpath .= "/$dir/";
     }
 
