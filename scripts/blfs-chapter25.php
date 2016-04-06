@@ -15,12 +15,10 @@ $renames[ 'gtkmm'                          ] = 'gtkmm2';
 $renames[ 'gtkmm1'                         ] = 'gtkmm3';
 $renames[ 'qt-everywhere-opensource-src'   ] = 'qt4';
 $renames[ 'qt-everywhere-opensource-src1'  ] = 'qt5';
-$renames[ 'webkitgtk'                      ] = 'webkitgtk+-2.4';
-$renames[ 'webkitgtk1'                     ] = 'webkitgtk+-2.10';
 
 $ignores = array();
 
-//$current="webkitgtk1"; // For debugging
+//$current="webkitgtk"; // For debugging
 
 $regex = array();
 $regex[ 'freeglut' ] = "/^.*Download freeglut-(\d[\d\.]+\d).tar.*$/";
@@ -54,13 +52,9 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "https://github.com/sddm/sddm/releases" ),
 
-   array( 'pkg'     => 'webkitgtk1',
-          'match'   => '^.*$', 
-          'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/webkitgtk4" ),
-
    array( 'pkg'     => 'webkitgtk',
           'match'   => '^.*$', 
-          'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/webkitgtk" ),
+          'replace' => "http://webkitgtk.org/releases" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -225,9 +219,6 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/\d\.[\d\.]+\d/', '/^.* (\d\.[\d\.]+\d).*$/' );
 
   if ( $book_index == "webkitgtk" )
-    return find_even_max( $lines, '/webkitgtk-2.4/', '/^.*-(\d[\d\.]+\d).tar.*$/' );
-
-  if ( $book_index == "webkitgtk1" )
     return find_even_max( $lines, '/webkitgtk/', '/^.*webkitgtk-(\d[\d\.]+\d).tar.*$/' );
 
   if ( $book_index == "cairo"    || 
