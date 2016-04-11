@@ -14,7 +14,7 @@ $renames[ 'virtuoso-opensource' ] = 'virtuoso';
 
 $ignores = array();
 
-//$current="LMDB";
+//$current="httpd";
 
 $regex = array();
 $regex[ 'vsftpd'          ] = "/^.*vsftpd-(\d[\d\.]+\d) released.*$/";
@@ -193,7 +193,7 @@ function get_packages( $package, $dirpath )
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
-  $max = find_max( $lines, "/$package/", "/^.* $package-([\d\.]*\d)\.tar.*$/" );
+  $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );
   return $max;
 }
 
