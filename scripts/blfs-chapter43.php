@@ -14,13 +14,13 @@ $ignores[ 'xorg-server' ] = '';
 
 $libreoffice = array();
 
-//$current="rxvt-unicode";
+//$current="icedtea-web";
 
 $regex = array();
 $regex[ 'inkscape'     ] = "/^.*Latest.*(\d[\d\.]+\d).*$/";
 $regex[ 'gnucash'      ] = "/^.*Download gnucash-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'pidgen'       ] = "/^.*Download pidgin-(\d[\d\.]+\d).*$/";
-$regex[ 'fontforge'    ] = "/^.*fontforge-(20\d+).tar.*$/";
+$regex[ 'fontforge-dist'] = "/^.*fontforge-dist-(20\d+).tar.*$/";
 $regex[ 'xscreensaver' ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'tigervnc'     ] = "/^.*TigerVNC (\d[\d\.]+\d)$/";
 $regex[ 'transmission' ] = "/^.*release version.*(\d[\d\.]+\d).*$/";
@@ -88,7 +88,7 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://xchat.org/files/source" ),
 
-   array( 'pkg'     => 'fontforge',
+   array( 'pkg'     => 'fontforge-dist',
           'match'   => '^.*$',
           'replace' => "https://github.com/fontforge/fontforge/releases" ),
 
