@@ -18,7 +18,7 @@ $renames[ 'x1'              ] = 'x265';
 
 $ignores = array();
 
-//$current="x265";
+//$current="frei0r-plugins";
 
 $regex = array();
 $regex[ 'faac'             ] = "/^.*Download faac-(\d[\d\.]+\d).tar.*$/";
@@ -49,9 +49,9 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/opencore-amr/files" ),
 
-   array( 'pkg'     => 'frei',
+   array( 'pkg'     => 'frei0r-plugins',
           'match'   => '^.*$', 
-          'replace' => "https://files.dyne.org/frei0r/snapshots" ),
+          'replace' => "https://files.dyne.org/frei0r/releases" ),
 
    array( 'pkg'     => 'a52dec',
           'match'   => '^.*$', 
@@ -216,6 +216,13 @@ function get_packages( $package, $dirpath )
         return $max;
      }
 
+     if ( $package == "frei0r-plugins" )
+     {
+        exec( "wget  -q --no-check-certificate -O- $dirpath", $output );
+        $max = find_max( $output, "/frei0r/", "/^.*plugins-([\d\.]*\d)\.tar.*$/" );
+        return $max;
+     }
+
      $lines = http_get_file( $dirpath );
 
      if ( ! is_array( $lines ) ) return $lines;
@@ -239,9 +246,6 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "faad2" )
       return find_max( $lines, "/faad2-\d/", "/^.*faad2-([\d\.]+).*$/" );
-
-  if ( $package == "frei0r-snapshot" )
-      return find_max( $lines, "/frei0r/", "/^.*snapshot-([\d\-]+).tar.*$/" );
 
   if ( $package == "gstreamer" )
       return find_even_max( $lines, "/gstreamer/", "/^.*gstreamer-(1\.[\d\.]+).tar.*$/" );
@@ -305,8 +309,8 @@ Function get_pattern( $line )
      array( 'pkg'   => 'faad2', 
             'regex' => "/^.*faad2-(\d[\d\.]+).*$/" ),
      
-     array( 'pkg'   => 'frei0r', 
-            'regex' => "/^.*frei0r-snapshot-(\d[\d\-]+).*$/" ),
+     array( 'pkg'   => 'frei', 
+            'regex' => "/^.*frei0r-plugins-(\d[\d\.]+).*$/" ),
      
      array( 'pkg'   => 'libmpeg2', 
             'regex' => "/^.*libmpeg2-(\d[\d\.]+).*$/" ),
