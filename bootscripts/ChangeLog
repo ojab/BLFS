@@ -1,3 +1,6 @@
+2016-04-15  Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Add smartd bootscript
+
 2015-09-24 Fernando de Oliveira <famobr at yahoo.com.br>
    * Fix again sddm bootscript.
 

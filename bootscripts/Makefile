@@ -458,6 +458,16 @@ install-sendmail: create-dirs
 	ln -sf  ../init.d/sendmail ${EXTDIR}/rc.d/rc5.d/S35sendmail
 	ln -sf  ../init.d/sendmail ${EXTDIR}/rc.d/rc6.d/K25sendmail
 
+install-smartd: create-dirs
+	install -m ${MODE} blfs/init.d/smartd    ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/smartd ${EXTDIR}/rc.d/rc0.d/K70smartd
+	ln -sf  ../init.d/smartd ${EXTDIR}/rc.d/rc1.d/K70smartd
+	ln -sf  ../init.d/smartd ${EXTDIR}/rc.d/rc2.d/K70smartd
+	ln -sf  ../init.d/smartd ${EXTDIR}/rc.d/rc3.d/S21smartd
+	ln -sf  ../init.d/smartd ${EXTDIR}/rc.d/rc4.d/S21smartd
+	ln -sf  ../init.d/smartd ${EXTDIR}/rc.d/rc5.d/S21smartd
+	ln -sf  ../init.d/smartd ${EXTDIR}/rc.d/rc6.d/K70smartd
+
 install-soprano: create-dirs
 	install -m ${MODE} blfs/init.d/soprano    ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/soprano ${EXTDIR}/rc.d/rc0.d/K35soprano
@@ -871,6 +881,16 @@ uninstall-slapd:
 	rm -f ${EXTDIR}/rc.d/rc4.d/S25slapd
 	rm -f ${EXTDIR}/rc.d/rc5.d/S25slapd
 	rm -f ${EXTDIR}/rc.d/rc6.d/K46slapd
+
+uinstall-smartd: c
+	rm -f ${EXTDIR}/rc.d/init.d/smartd
+	rm -f ${EXTDIR}/rc.d/rc0.d/K70smartd
+	rm -f ${EXTDIR}/rc.d/rc1.d/K70smartd
+	rm -f ${EXTDIR}/rc.d/rc2.d/K70smartd
+	rm -f ${EXTDIR}/rc.d/rc3.d/S21smartd
+	rm -f ${EXTDIR}/rc.d/rc4.d/S21smartd
+	rm -f ${EXTDIR}/rc.d/rc5.d/S21smartd
+	rm -f ${EXTDIR}/rc.d/rc6.d/K70smartd
 
 uninstall-postfix:
 	rm -f ${EXTDIR}/rc.d/init.d/postfix
