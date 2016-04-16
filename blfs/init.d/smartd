@@ -25,7 +25,7 @@ config=/etc/smartd.conf
 
 case "$1" in
    start)
-      log_info_msg "Starting smartd... "
+      log_info_msg "Starting smartd...  "
 
       if [ ! -f $config ]; then
          log_info_msg2 "configuration file $config missing"
