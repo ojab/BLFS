@@ -17,7 +17,7 @@ $renames[ 'unrarsrc' ] = 'unrar';
 
 $ignores = array();
 
-//$current="p7zip";
+//$current="autofs";
 
 $regex = array();
 $regex[ 'acpid'   ] = "/^.*Download acpid-(\d[\d\.]+\d).tar.*$/";
@@ -185,8 +185,10 @@ function get_packages( $package, $dirpath )
 
   # Needs a space in [\d\. ]+ becasue of an upstream typo
   if ( $book_index == "p7zip" )
+  {
     $max = find_max( $lines, '/\d\./', '/^\s*([\d\. ]+)\s*$/' );
     return str_replace( " ", "", $max );
+  }
 
   if ( $book_index == "unzip" ||
        $book_index == "zip"  )
