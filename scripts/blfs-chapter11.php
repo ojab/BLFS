@@ -5,7 +5,7 @@ include 'blfs-include.php';
 
 $CHAPTER       = '11';
 $CHAPTERS      = 'Chapter 11';
-$START_PACKAGE = 'chrpath';
+$START_PACKAGE = 'asciidoc';
 $STOP_PACKAGE  = 'unixODBC';
 
 $renames = array();
@@ -19,9 +19,13 @@ $regex = array();
 $regex[ 'intltool'      ] = "/^.*Latest version is (\d[\d\.]+\d).*$/";
 $regex[ 'xscreensaver'  ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
 
-//$current="tidy";  // For debugging
+//$current="asciidoc";  // For debugging
 
 $url_fix = array (
+   array( 'pkg'     => 'asciidoc',
+          'match'   => '^.*$',
+          'replace' => "http://www.methods.co.nz/asciidoc/INSTALL.html" ),
+
    array( 'pkg'     => 'chrpath',
           'match'   => '^.*$',
           'replace' => "https://alioth.debian.org/projects/chrpath" ),
