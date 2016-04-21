@@ -11,7 +11,7 @@ $STOP_PACKAGE  = 'extra-cmake-modules';
 $renames = array();
 $ignores = array();
 
-//$current="extra-cmake-modules";
+//$current="libdbusmenu-qt";
 
 $kde_ver   = "";
 $kde_lines = "";
@@ -23,6 +23,10 @@ $url_fix = array (
   array( 'pkg'     => 'extra-cmake-modules',
          'match'   => '^.*$', 
          'replace' => "http://download.kde.org/stable/frameworks" ),
+
+  array( 'pkg'     => 'libdbusmenu-qt',
+         'match'   => '^.*$', 
+       'replace' => "http://archive.ubuntu.com/ubuntu/pool/main/libd/libdbusmenu-qt/" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -69,18 +73,6 @@ function get_packages( $package, $dirpath )
   if ( preg_match( "/^ftp/", $dirpath ) )
   {
 
-    if ( $book_index == "phonon-backend-vlc" ||
-         $book_index == "phonon"             ||
-         $book_index == "phonon-backend-gstreamer" )
-    {
-      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-      $position = strrpos( $dirpath, "/" );
-      $dirpath  = substr ( $dirpath, 0, $position ); // Up 1
-      $position = strrpos( $dirpath, "/" );
-      $dirpath  = substr ( $dirpath, 0, $position ); // Up 2
-      //$dirpath .= "/$book_index";
-    }
-
     // Get listing
     $lines = http_get_file( "$dirpath/" );
   }
@@ -99,8 +91,6 @@ function get_packages( $package, $dirpath )
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
       $position = strrpos( $dirpath, "/" );
       $dirpath  = substr ( $dirpath, 0, $position ); // Up 1
-      $position = strrpos( $dirpath, "/" );
-      $dirpath  = substr ( $dirpath, 0, $position ); // Up 2
       $lines = http_get_file( "$dirpath" );
       return find_max( $lines, "/\d\./", "/^.*;([\d\.]+)\/.*$/" );
     }
@@ -110,6 +100,14 @@ function get_packages( $package, $dirpath )
         $lines = http_get_file( "$dirpath" );
         $max = find_max( $lines, "/5/", "/^.*(5[\d\.]+)\/.*$/" );
         return $max . ".0";
+     }
+
+     if ( $book_index == "libdbusmenu-qt" )
+     {
+        $lines = http_get_file( "$dirpath" );
+        $max = find_max( $lines, "/libdbusmenu-qt/", 
+                                 "/^.*libdbusmenu-qt_([\d\.]+.*)\.orig.*$/" );
+        return $max;
      }
 
      if ( ! is_array($kde_lines) )
@@ -132,12 +130,6 @@ function get_packages( $package, $dirpath )
      return find_max( $kde_lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );
      //if ( ! is_array( $lines ) ) return $lines;
   } // End fetch
-
-  // automoc4 and similar
-  if ( $book_index == "phonon"   ||
-       $book_index == "phonon-backend-gstreamer"  ||
-       $book_index == "phonon-backend-vlc"  )
-    return find_max( $lines, "/\d\./", "/^.* (\d\.[\d\.]+).*$/" );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
