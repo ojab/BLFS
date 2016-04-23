@@ -13,12 +13,13 @@ $ignores = array();
 $ignores[ 'install-tl-unx' ] = '';
 $ignores[ 'texlive1'       ] = '';
 
-//$current="biblatex-biber";  // For debugging
+//$current="ghostscript";  // For debugging
 
 $regex = array();
 $regex[ 'gutenprint'      ] = "/^.*Download gutenprint-(\d[\d\.]+\d).*$/";
 $regex[ 'OpenSP'          ] = "/^.*Download OpenSP-(\d[\d\.]+\d).*$/";
 $regex[ 'docbook-xsl-doc' ] = "/^.*Download docbook-xsl-doc-(\d[\d\.]+\d).*$/";
+$regex[ 'ghostscript'     ] = "/^.*latest.*Ghostscript (\d[\d\.]+) .*$/";
 $regex[ 'paps'            ] = "/^.*Download paps-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'asymptote'       ] = "/^.*Download asymptote-(\d[\d\.]+\d).*$/";
 $regex[ 'biblatex'        ] = "/^.*Download biblatex-(\d[\d\.]+\d).*$/";
@@ -34,6 +35,10 @@ $url_fix = array (
    array( 'pkg'     => 'cups-filters',
           'match'   => '^.*$',
           'replace' => "https://www.openprinting.org/download/cups-filters/" ),
+
+   array( 'pkg'     => 'ghostscript',
+          'match'   => '^.*$',
+          'replace' => "http://www.ghostscript.com/Releases.html" ),
 
    array( 'pkg'     => 'ghostscript-fonts-std',
           'match'   => '^.*$',
