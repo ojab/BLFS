@@ -14,7 +14,7 @@ $renames[ 'libfm1' ] = 'libfm';
 
 $ignores = array();
 
-//$current="kwayland";  // Debug
+//$current="QScintilla_gpl";  // Debug
 
 $regex = array();
 $regex[ 'libfm'   ] = "/^.*Download libfm-(\d[\d\.]+\d).tar.*$/";
@@ -101,7 +101,7 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "https://github.com/lxde/qterminal/releases" ),
 
-   array( 'pkg'     => 'QScintilla-gpl',
+   array( 'pkg'     => 'QScintilla_gpl',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/pyqt/files/QScintilla2" ),
 
@@ -179,7 +179,7 @@ function get_packages( $package, $dirpath )
             $book_index != "solid"           &&
             $book_index != "kwindowsystem"   &&
             $book_index != "libkscreen"      &&
-            $book_index != "QScintilla-gpl" 
+            $book_index != "QScintilla_gpl" 
             ) // http
   {
      // Most http enties for this chapter
@@ -314,7 +314,7 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "lxde-icon-theme" )
     return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d).*$/" );
 
-  if ( $book_index == "QScintilla-gpl" )
+  if ( $book_index == "QScintilla_gpl" )
     return find_max( $lines, "/QScintilla-/", "/^.*QScintilla-([\d\.]*\d).*$/" );
 
   if ( $book_index == "QupZilla" )
