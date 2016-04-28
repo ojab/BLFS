@@ -1,18 +1,19 @@
-#! /usr/bin/php
+[B#! /usr/bin/php
 <?php
 
 include 'blfs-include.php';
 
 $CHAPTER       = '5';
 $CHAPTERS      = 'Chapter 5';
-$START_PACKAGE = 'fuse';
+$START_PACKAGE = 'btrfs-progs-v';
 $STOP_PACKAGE  = 'xfsprogs';
 
 $renames = array();
-$renames[ 'LVM2.' ] = 'LVM2';
+$renames[ 'btrfs-progs-v' ] = 'btrfs-progs';
+$renames[ 'LVM2.'         ] = 'LVM2';
 $ignores = array();
 
-//$current="jfsutils";   // For debugging
+//$current="btrfs-progs-v";   // For debugging
 
 $regex = array();
 $regex[ 'jfsutils' ] = "/^.*jfsutils release ([\d\.]+) is available.*$/";
@@ -99,6 +100,9 @@ function get_packages( $package, $dirpath )
 
      return 0;  // This is an error
   }
+
+  if ( $book_index == "btrfs-progs-v" )
+    return find_max( $lines, "/$package/", "/^.*$package([\d\.]*\d).tar.*$/" );
 
   if ( $book_index == "LVM2." )
     return find_max( $lines, "/$package/", "/^.*$package([\d\.]*\d).tgz.*$/" );
