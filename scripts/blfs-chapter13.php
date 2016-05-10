@@ -37,7 +37,7 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="ruby";  // For debugging
+//$current="vala";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Download check-(\d[\d\.]+\d).tar.*$/";
@@ -402,17 +402,6 @@ function get_packages( $package, $dirpath )
       $dirpath  = substr ( $dirpath, 0, $position ) . "/latest";
     }
 
-    if ( $book_index == "vala" )
-    {
-       // Get the max directory and adjust the directory path
-      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-      $position = strrpos( $dirpath, "/" );
-      $dirpath  = substr ( $dirpath, 0, $position );
-      $lines    = http_get_file( "$dirpath/" );
-      $dir      = find_even_max( $lines, "/\d[\d\.]+/", "/^(\d[\d\.]+).*/" );
-      $dirpath .= "/$dir/";
-    }
-
     if ( $book_index == "cvs" )
     {
        // Get the max directory
@@ -470,6 +459,17 @@ function get_packages( $package, $dirpath )
       exec( "lynx -dump  $dirpath", $output );
       $max = find_max( $output, "/npapi-sdk/", "/^.*npapi-sdk-([\d\.]*\d)\.tar.*$/" );
       return $max;
+    }
+
+    if ( $book_index == "vala" )
+    {
+       // Get the max directory and adjust the directory path
+      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
+      $position = strrpos( $dirpath, "/" );
+      $dirpath  = substr ( $dirpath, 0, $position );
+      $lines    = http_get_file( "$dirpath/" );
+      $dir      = find_even_max( $lines, "/\d[\d\.]+/", "/^\s*(\d[\d\.]+).*/" );
+      $dirpath .= "/$dir/";
     }
 
     $strip = "yes";
