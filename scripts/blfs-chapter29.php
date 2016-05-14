@@ -5,8 +5,8 @@ include 'blfs-include.php';
 
 $CHAPTER       = '29';
 $CHAPTERS      = 'Chapters 29-30';
-$START_PACKAGE = 'phonon';
-$STOP_PACKAGE  = 'extra-cmake-modules';
+$START_PACKAGE = 'extra-cmake-modules';
+$STOP_PACKAGE  = 'libdbusmenu-qt';
 
 $renames = array();
 $ignores = array();
