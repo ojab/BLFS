@@ -29,7 +29,7 @@ $url_fix = array (
 
   array( 'pkg'     => 'vim',
          'match'   => '^.*$', 
-         'replace' => "http://mirrors-usa.go-parts.com/pub/vim/unix" ),
+         'replace' => "http://ftp.vim.org/vim/unix" ),
 
   array( 'pkg'     => 'tcsh',
          'match'   => '^.*$', 

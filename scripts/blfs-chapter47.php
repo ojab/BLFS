@@ -8,7 +8,7 @@ $CHAPTERS      = 'Chapters 47-49';
 $START_PACKAGE = 'mpg123';
 $STOP_PACKAGE  = 'simpleburn';
 
-//$current="transcode";  // For debugging
+//$current="simpleburn";  // For debugging
 
 $renames = array();
 
@@ -17,12 +17,13 @@ $ignores[ 'freetts1' ] = '';
 $ignores[ 'Clearlooks' ] = '';
 
 $regex = array();
-$regex[ 'mpg123'    ] = "/^.*Download mpg123-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'lame'      ] = "/^.*Download (\d[\d\.]+\d) sources.*$/";
-$regex[ 'freetts'   ] = "/^.*Download freetts-(\d[\d\.]+\d)-bin.*$/";
-$regex[ 'gvolwheel' ] = "/^.*Download gvolwheel-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'cdrdao'    ] = "/^.*Download cdrdao-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'pnmixer'   ] = "/^.*pnmixer-(\d[\d\.]+\d).tar.*$/";
+$regex[ 'mpg123'     ] = "/^.*Download mpg123-(\d[\d\.]+\d).tar.*$/";
+$regex[ 'lame'       ] = "/^.*Download (\d[\d\.]+\d) sources.*$/";
+$regex[ 'freetts'    ] = "/^.*Download freetts-(\d[\d\.]+\d)-bin.*$/";
+$regex[ 'gvolwheel'  ] = "/^.*Download gvolwheel-(\d[\d\.]+\d).tar.*$/";
+$regex[ 'cdrdao'     ] = "/^.*Download cdrdao-(\d[\d\.]+\d).tar.*$/";
+$regex[ 'pnmixer'    ] = "/^.*pnmixer-(\d[\d\.]+\d).tar.*$/";
+$regex[ 'simpleburn' ] = "/^.*SimpleBurn-(\d[\d\.]+\d).*$/";
 
 $url_fix = array (
 
@@ -70,6 +71,9 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "http://download.kde.org/stable/k3b" ),
 
+   array( 'pkg'     => 'simpleburn',
+          'match'   => '^.*$', 
+          'replace' => "http://simpleburn.tuxfamily.org/-Download-" ),
 );
 
 function get_packages( $package, $dirpath )
