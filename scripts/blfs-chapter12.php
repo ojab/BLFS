@@ -82,6 +82,10 @@ function get_packages( $package, $dirpath )
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
 
+  if ( $book_index == 'zip' ||
+       $book_index == 'unzip' )
+     return 'manual check';
+
   // Fix up directory path
   foreach ( $url_fix as $u )
   {
