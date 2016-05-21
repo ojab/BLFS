@@ -17,7 +17,7 @@ $renames[ 'unrarsrc' ] = 'unrar';
 
 $ignores = array();
 
-//$current="autofs";
+//$current="upower";
 
 $regex = array();
 $regex[ 'acpid'   ] = "/^.*Download acpid-(\d[\d\.]+\d).tar.*$/";
@@ -197,6 +197,9 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "unzip" ||
        $book_index == "zip"  )
     return find_max( $lines, "/$book_index/", "/^.* $book_index(\d\d).tgz.*$/" );
+
+  if ( $book_index == "upower" )
+    return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/");
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
