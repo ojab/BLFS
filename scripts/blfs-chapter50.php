@@ -13,7 +13,7 @@ $ignores = array();
 $ignores[ 'install-tl-unx' ] = '';
 $ignores[ 'texlive1'       ] = '';
 
-//$current="ghostscript";  // For debugging
+//$current="biblatex";  // For debugging
 
 $regex = array();
 $regex[ 'gutenprint'      ] = "/^.*Download gutenprint-(\d[\d\.]+\d).*$/";
@@ -22,7 +22,6 @@ $regex[ 'docbook-xsl-doc' ] = "/^.*Download docbook-xsl-doc-(\d[\d\.]+\d).*$/";
 $regex[ 'ghostscript'     ] = "/^.*latest.*Ghostscript (\d[\d\.]+) .*$/";
 $regex[ 'paps'            ] = "/^.*Download paps-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'asymptote'       ] = "/^.*Download asymptote-(\d[\d\.]+\d).*$/";
-$regex[ 'biblatex'        ] = "/^.*Download biblatex-(\d[\d\.]+\d).*$/";
 $regex[ 'ghostscript-fonts-std' ] =
     "/^.*Download ghostscript-fonts-std-(\d[\d\.]+\d).tar.*$/";
 
@@ -206,8 +205,11 @@ function get_packages( $package, $dirpath )
   if ( $package == "mupdf" )
       return find_max( $lines, "/mupdf/", "/^.*$package-([\d\.]+)-source.tar.*$/" );
 
+  if ( $package == "biblatex" )
+      return find_max( $lines, "/biblatex-/", "/^.*$package-([\d\.]+)$/" );
+
   if ( $package == "biblatex-biber" )
-      return find_max( $lines, "/v\d/", "/^.*v([\d\.]+).*$/" );
+      return "manual";
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
