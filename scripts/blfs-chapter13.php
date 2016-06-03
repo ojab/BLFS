@@ -37,7 +37,7 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="vala";  // For debugging
+//$current="swig";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Download check-(\d[\d\.]+\d).tar.*$/";
@@ -46,7 +46,7 @@ $regex[ 'junit4'  ] = "/^\h*(\d[\d\.]+)\h*$/";
 $regex[ 'llvm'    ] = "/^.*Download LLVM (\d[\d\.]+\d).*$/";
 $regex[ 'scons'   ] = "/^.*Download scons-(\d[\d\.]+\d).*$/";
 $regex[ 'tcl'     ] = "/^.*Download tcl(\d[\d\.]+\d).*$/";
-$regex[ 'swig'    ] = "/^.*Download swig-(\d[\d\.]+\d).*$/";
+//$regex[ 'swig'    ] = "/^.*Download swig-(\d[\d\.]+\d).*$/";
 $regex[ 'Python'  ] = "/^.*Latest Python 2.*Python (2[\d\.]+\d).*$/";
 $regex[ 'Python1' ] = "/^.*Latest Python 3.*Python (3[\d\.]+\d).*$/";
 $regex[ 'Mako'    ] = "/^.*version is (\d[\d\.]+\d).*$/";
@@ -507,6 +507,9 @@ function get_packages( $package, $dirpath )
      return find_max( $lines, "/^\s*\d[\d\.]+\/.*$/",
                               "/^\s*(\d[\d\.]+)\/.*$/" );
   }
+
+  if ( $book_index == "swig" )
+     return find_max( $lines, "/swig-/", "/.*swig-(\d[\d\.]+).*/" );
 
   if ( $book_index == "nasm" )
     return find_max( $lines, '/^\d/', '/^(\d[\d\.]+\d)\/.*$/' );
