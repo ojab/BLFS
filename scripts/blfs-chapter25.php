@@ -13,8 +13,7 @@ $renames[ 'gtk+'                           ] = 'gtk+2';
 $renames[ 'gtk+1'                          ] = 'gtk+3';
 $renames[ 'gtkmm'                          ] = 'gtkmm2';
 $renames[ 'gtkmm1'                         ] = 'gtkmm3';
-$renames[ 'qt-everywhere-opensource-src'   ] = 'qt4';
-$renames[ 'qt-everywhere-opensource-src1'  ] = 'qt5';
+$renames[ 'qt-everywhere-opensource-src'   ] = 'qt5';
 
 $ignores = array();
 
@@ -151,6 +150,7 @@ function get_packages( $package, $dirpath )
   }
   else // http
   {
+    /*
     if ( $book_index == "qt-everywhere-opensource-src" )
     {
       // Customize http directories as needed
@@ -162,8 +162,8 @@ function get_packages( $package, $dirpath )
       $dir      = find_max( $dirlines, '/^[\d\.]+.*$/', '/^([\d\.]+).*$/' );
       $dirpath .= "/$dir";
     }
-
-    if ( $book_index == "qt-everywhere-opensource-src1" )
+    */
+    if ( $book_index == "qt-everywhere-opensource-src" )
     {
       // Customize http directories as needed
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash

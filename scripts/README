@@ -21,7 +21,7 @@ cat > /etc/profile.d/blfs-currency.sh << "EOF"
 # Begin /etc/profile.d/blfs-currency.sh
 
 HTML_DIR=/home/bdubbs/public_html/
-WGET_DIR=$HTML_DIR/blfs-book-xsl/
+WGET_DIR=$HTML_DIR/blfs-book/
 BLFS_DIR=/home/bdubbs/BLFS/trunk/BOOK/
 export HTML_DIR WGET_DIR BLFS_DIR
 
