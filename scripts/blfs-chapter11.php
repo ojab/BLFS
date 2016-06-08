@@ -38,6 +38,10 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "https://launchpad.net/intltool/trunk" ),
 
+   array( 'pkg'     => 'lsof',
+          'match'   => '^.*$', 
+          'replace' => "https://www.mirrorservice.org/sites/lsof.itap.purdue.edu/pub/tools/unix/lsof/" ),
+
    array( 'pkg'     => 'tidy',
           'match'   => '^.*$', 
           'replace' => "https://github.com/htacg/tidy-html5/releases" ),
