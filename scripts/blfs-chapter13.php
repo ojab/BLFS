@@ -509,7 +509,7 @@ function get_packages( $package, $dirpath )
   }
 
   if ( $book_index == "swig" )
-     return find_max( $lines, "/swig-/", "/.*swig-(\d[\d\.]+).*/" );
+     return find_max( $lines, "/swig-/", "/.*swig-(\d[\d\.]+\d).*/" );
 
   if ( $book_index == "nasm" )
     return find_max( $lines, '/^\d/', '/^(\d[\d\.]+\d)\/.*$/' );
