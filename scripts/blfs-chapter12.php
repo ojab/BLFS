@@ -17,7 +17,7 @@ $renames[ 'unrarsrc' ] = 'unrar';
 
 $ignores = array();
 
-//$current="upower";
+//$current="heirloom";
 
 $regex = array();
 $regex[ 'acpid'   ] = "/^.*Download acpid-(\d[\d\.]+\d).tar.*$/";
@@ -182,7 +182,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/raptor/', '/^.*raptor2-([\d\.]*\d).tar.*$/' );
 
   if ( $book_index == "heirloom" )
-    return find_max( $lines, '/\d{6}/', '/^.*(\d{6})\h*$/' );
+    return find_max( $lines, '/\d{6}/', '/^.* (\d{6})\h*$/' );
 
   if ( $book_index == "udisks1" )
     return find_max( $lines, '/udisks/', '/^.*udisks-(\d[\d\.]*\d).tar.*$/' );
