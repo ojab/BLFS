@@ -9,6 +9,7 @@ $START_PACKAGE = 'util-macros';
 $STOP_PACKAGE  = 'xinit';
 
 $renames = array();
+$renames[ 'v' ] = 'libvdpau-va-gl';
 $ignores = array();
 
 $d = getenv( 'BLFS_DIR' );
