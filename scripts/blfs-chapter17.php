@@ -9,10 +9,12 @@ $START_PACKAGE = 'curl';
 $STOP_PACKAGE  = 're-alpine';
 
 $renames = array();
+$renames[ 'geoclue1' ] = 'geoclue2';
+
 $ignores = array();
 $ignores[ 'rpcnis-headers' ] = '';
 
-//$current="serf";
+//$current="geoclue1";
 
 $regex = array();
 $regex[ 're-alpine' ] = "/^.*Download re-alpine-(\d[\d\.]+\d).tar.*$/";
@@ -189,6 +191,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "mutt" )
     return find_max( $lines, '/mutt-/', '/^.*mutt-([\d\.]+).tar.*$/' );
+
+  if ( $book_index == "geoclue1" )
+    return find_max( $lines, '/geoclue/', '/^.*geoclue-([\d\.]+).tar.*$/' );
 
   // libtirpc  (sourceforge is inconsistent here)
   if ( $book_index == "libtirpc" )

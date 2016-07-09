@@ -18,7 +18,7 @@ $renames[ 'x1'              ] = 'x265';
 
 $ignores = array();
 
-//$current="frei0r-plugins";
+//$current="audiofile";
 
 $regex = array();
 $regex[ 'faac'             ] = "/^.*Download faac-(\d[\d\.]+\d).tar.*$/";
@@ -168,13 +168,13 @@ function get_packages( $package, $dirpath )
          $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
          $position = strrpos( $dirpath, "/" );
          $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
-         exec( "echo 'ls -1;bye' | ncftp $dirpath/", $dirs );
-         $dir = find_max( $dirs, "/^\d/", "/^([\d\.]+).*$/" );
+         exec( "curl -L -s -m30 '$dirpath/'", $dirs );
+         $dir = find_max( $dirs, "/\d\./", "/^.* ([\d\.]+)$/" );
          $dirpath .= "/$dir/";
      }
 
     // Get listing
-    exec( "echo 'ls -1;bye' | ncftp $dirpath/", $lines );
+    exec( "curl -L -s -m30 '$dirpath/'", $lines );
   }
   else // http
   {
@@ -263,6 +263,9 @@ function get_packages( $package, $dirpath )
       return find_even_max( $lines, "/ugly-/", "/^.*ugly-(1\.[\d\.]+).tar.*$/" );
 
   if ( $package == "gst-libav" )
+      return find_even_max( $lines, "/$package/", "/^.*$package-([\d\.]+).tar.*$/" );
+
+  if ( $package == "gstreamer-vaapi" )
       return find_even_max( $lines, "/$package/", "/^.*$package-([\d\.]+).tar.*$/" );
 
   if ( $package == "libmad" )
