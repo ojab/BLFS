@@ -24,9 +24,10 @@ $libs     = array();
 $fonts    = array();
 
 $regex = array();
-$regex[ 'libvdpau-va-gl'  ] = "/^.*version (\d[\d\.]+\d).*$/";
+//$regex[ 'libvdpau-va-gl'  ] = "/^.*version (\d[\d\.]+\d).*$/";
+$regex[ 'v'  ] = "/^.*version (\d[\d\.]+\d).*$/";
 
-//$current="xf86-input-vmmouse";   // For debugging
+//$current="v";   // For debugging
 
 $url_fix = array (
 
@@ -34,7 +35,8 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/linuxwacom/files/xf86-input-wacom" ),
 
-   array( 'pkg'     => 'libvdpau-va-gl',
+   //array( 'pkg'     => 'libvdpau-va-gl',
+   array( 'pkg'     => 'v',
           'match'   => '^.*$', 
           'replace' => "https://github.com/i-rinat/libvdpau-va-gl/releases" ),
 

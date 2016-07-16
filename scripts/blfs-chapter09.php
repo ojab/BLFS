@@ -12,7 +12,7 @@ $renames = array();
 $renames[ 'v' ] = 'liblinear';
 $ignores = array();
 
-//$current="v"; // For debugging
+//$current="grantlee"; // For debugging
 
 $regex = array();
 $regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
@@ -334,7 +334,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/.*/', '/^([\d\.]+).*$/' );
 
   if ( $book_index == "grantlee" )
-    return find_max( $lines, "/$package/", "/^.*$package-(0[\d\.]*\d)\.tar.*$/" );
+    return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)

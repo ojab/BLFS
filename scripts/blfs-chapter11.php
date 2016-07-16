@@ -19,7 +19,7 @@ $regex = array();
 $regex[ 'intltool'      ] = "/^.*Latest version is (\d[\d\.]+\d).*$/";
 $regex[ 'xscreensaver'  ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
 
-//$current="asciidoc";  // For debugging
+//$current="hd2u";  // For debugging
 
 $url_fix = array (
    array( 'pkg'     => 'asciidoc',
@@ -29,6 +29,10 @@ $url_fix = array (
    array( 'pkg'     => 'chrpath',
           'match'   => '^.*$',
           'replace' => "https://alioth.debian.org/projects/chrpath" ),
+
+   array( 'pkg'     => 'compface',
+          'match'   => '^.*$',
+          'replace' => "http://freecode.com/projects/compface" ),
 
    array( //'pkg'     => 'gnome',
           'match'   => '^ftp:\/\/ftp.gnome',
@@ -146,6 +150,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "chrpath" )
     return find_max( $lines, '/0\./', '/^\s*([\d\.]+).*$/' );
+
+  if ( $book_index == "compface" )
+    return find_max( $lines, '/\d\./', '/^\s*([\d\.]+).*$/' );
 
   if ( $book_index == "hd2u" )
     return find_max( $lines, '/hd2u/', '/^.*hd2u-([\d\.]+).tgz.*$/' );
