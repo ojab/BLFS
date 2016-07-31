@@ -5,8 +5,8 @@ include 'blfs-include.php';
 
 $CHAPTER       = '35';
 $CHAPTERS      = 'Chapter 35';
-$START_PACKAGE = 'gsettings-desktop-schemas';
-$STOP_PACKAGE  = 'yelp';
+$START_PACKAGE = 'accountsservice';
+$STOP_PACKAGE  = 'polkit-gnome';
 
 $renames = array();
 $ignores = array();

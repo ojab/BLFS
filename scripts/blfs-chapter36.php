@@ -6,7 +6,7 @@ include 'blfs-include.php';
 $CHAPTER       = '36';
 $CHAPTERS      = 'Chapter 36';
 $START_PACKAGE ='baobab';
-$STOP_PACKAGE  ='seahorse';
+$STOP_PACKAGE  ='vino';
 
 $renames = array();
 $ignores = array();

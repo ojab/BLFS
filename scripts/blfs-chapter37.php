@@ -6,7 +6,7 @@ include 'blfs-include.php';
 $CHAPTER       = '37';
 $CHAPTERS      = 'Chapters 37-38';
 $START_PACKAGE = 'libxfce4util';
-$STOP_PACKAGE  = 'xfce4-notifyd';
+$STOP_PACKAGE  = 'qupzilla';
 
 $renames = array();
 //$renames[ 'midori_' ] = 'midori_';
