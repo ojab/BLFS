@@ -12,7 +12,7 @@ $renames = array();
 $renames[ 'v' ] = 'liblinear';
 $ignores = array();
 
-//$current="grantlee"; // For debugging
+//$current="libwacom"; // For debugging
 
 $regex = array();
 $regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
@@ -50,6 +50,10 @@ $url_fix = array (
  array( 'pkg'     => 'libiodbc',
         'match'   => '^.*$',
         'replace' => "http://$sf/projects/iodbc/files" ),
+
+ array( 'pkg'     => 'libwacom',
+        'match'   => '^.*$',
+        'replace' => "https://sourceforge.net/projects/linuxwacom/files/libwacom" ),
 
  array( 'pkg'     => 'gamin',
         'match'   => '^.*$',

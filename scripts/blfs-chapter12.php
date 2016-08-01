@@ -9,7 +9,8 @@ $START_PACKAGE = 'acpid';
 $STOP_PACKAGE  = 'zip';
 
 $renames = array();
-//$renames[ 'at_'      ] = 'at';
+$renames[ 'colord'   ] = 'colord-1.2';
+$renames[ 'colord1'  ] = 'colord-1.3';
 $renames[ 'udisks1'  ] = 'udisks2';
 $renames[ 'sg'       ] = 'sg3_utils';
 $renames[ 'unrarsrc' ] = 'unrar';
@@ -17,7 +18,7 @@ $renames[ 'unrarsrc' ] = 'unrar';
 
 $ignores = array();
 
-//$current="heirloom";
+//$current="colord1";
 
 $regex = array();
 $regex[ 'acpid'   ] = "/^.*Download acpid-(\d[\d\.]+\d).tar.*$/";
@@ -174,6 +175,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "colord" )
     return find_even_max( $lines, '/colord/', '/^.*colord-(\d[\d\.]*\d).tar.*$/' );
+
+  if ( $book_index == "colord1" )
+    return find_max( $lines, '/colord/', '/^.*colord-(\d[\d\.]*\d).tar.*$/' );
 
   if ( $book_index == "fcron" )
     return find_max( $lines, '/fcron/', '/^.*fcron-(\d[\d\.]*\d).src.tar.*$/' );

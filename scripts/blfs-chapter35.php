@@ -13,7 +13,7 @@ $ignores = array();
 
 $kde_ver  = "";
 
-//$current="polkit-gnome";  // Foir debugging
+//$current="telepathy-glib";  // For debugging
 
 $regex = array();
 //$regex[ 'libzeitgeist' ] = "/^.*Latest version is (\d[\d\.]+\d).*$/";
@@ -144,7 +144,7 @@ function get_packages( $package, $dirpath )
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
-  $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );
+  $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/", TRUE );
   return $max;
 }
 

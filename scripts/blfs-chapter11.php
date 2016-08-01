@@ -11,17 +11,21 @@ $STOP_PACKAGE  = 'unixODBC';
 $renames = array();
 $renames[ 'lsof_'     ] = 'lsof';
 $renames[ 'rep-gtk_'  ] = 'rep-gtk';
-//$renames[ 'tidy-cvs_' ] = 'tidy';
 
 $ignores = array();
 
 $regex = array();
+$regex[ 'bogofilter'    ] = "/^.*Download bogofilter-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'intltool'      ] = "/^.*Latest version is (\d[\d\.]+\d).*$/";
 $regex[ 'xscreensaver'  ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
 
-//$current="hd2u";  // For debugging
+//$current="ibus";  // For debugging
 
 $url_fix = array (
+   array( 'pkg'     => 'bogofilter',
+          'match'   => '^.*$',
+          'replace' => "https://sourceforge.net/projects/bogofilter/files" ),
+
    array( 'pkg'     => 'asciidoc',
           'match'   => '^.*$',
           'replace' => "http://www.methods.co.nz/asciidoc/INSTALL.html" ),
@@ -45,6 +49,14 @@ $url_fix = array (
    array( 'pkg'     => 'lsof',
           'match'   => '^.*$', 
           'replace' => "https://www.mirrorservice.org/sites/lsof.itap.purdue.edu/pub/tools/unix/lsof/" ),
+
+   array( 'pkg'     => 'highlight',
+          'match'   => '^.*$', 
+          'replace' => "http://www.andre-simon.de/zip/download.php" ),
+
+   array( 'pkg'     => 'ibus',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/ibus/ibus/releases" ),
 
    array( 'pkg'     => 'tidy',
           'match'   => '^.*$', 
