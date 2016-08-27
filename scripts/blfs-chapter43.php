@@ -14,7 +14,7 @@ $ignores[ 'xorg-server' ] = '';
 
 $libreoffice = array();
 
-//$current="icedtea-web";
+//$current="rox-filer";
 
 $regex = array();
 $regex[ 'inkscape'     ] = "/^.*Latest.*(\d[\d\.]+\d).*$/";
@@ -247,7 +247,7 @@ function get_packages( $package, $dirpath )
       return find_max( $lines, "/$package/", "/^.*$package-([\d\.]+).*$/" );
 
   if ( $package == "rox-filer" )
-      return find_max( $lines, "/^\s*\d/", "/^\s*(\d\.[\d\.]+).*$/" );
+      return find_max( $lines, "/rox\/files/", "/^.*rox\/(\d\.[\d\.]+)\/.*$/" );
 
   if ( $package == "tigervnc" )
       return find_max( $lines, "/^\s*\d\./", "/^\s*(\d\.[\d\.]+).*$/" );

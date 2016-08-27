@@ -13,7 +13,7 @@ $ignores = array();
 $ignores[ 'install-tl-unx' ] = '';
 $ignores[ 'texlive1'       ] = '';
 
-//$current="biblatex";  // For debugging
+//$current="docbook-xsl";  // For debugging
 
 $regex = array();
 $regex[ 'gutenprint'      ] = "/^.*Download gutenprint-(\d[\d\.]+\d).*$/";
@@ -23,7 +23,7 @@ $regex[ 'ghostscript'     ] = "/^.*latest.*Ghostscript (\d[\d\.]+) .*$/";
 $regex[ 'paps'            ] = "/^.*Download paps-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'asymptote'       ] = "/^.*Download asymptote-(\d[\d\.]+\d).*$/";
 $regex[ 'ghostscript-fonts-std' ] =
-    "/^.*Download ghostscript-fonts-std-(\d[\d\.]+\d).tar.*$/";
+    "/^.*ghostscript-fonts-std-(\d[\d\.]+\d).tar.*$/";
 
 $url_fix = array (
 
@@ -155,14 +155,15 @@ function get_packages( $package, $dirpath )
      if ( $book_index == "gnu-gs-fonts-other" )
      {
         $dirs = http_get_file( $dirpath );
-        $dir  = find_max( $dirs, "/misc.*GPL/", "/^\s*([\d\.]+.*)$/" );
-        $dir  = preg_replace( "/ /",  '%20', $dir );
-        $dir  = preg_replace( "/\(/", '%28', $dir );
-        $dir  = preg_replace( "/\)/", '%29', $dir );
+        $dir  = find_max( $dirs, "/misc.*GPL/", "/^.*files\/gs-fonts\/([\d\.]+.*)\/$/" );
+        //$dir  = preg_replace( "/ /",  '%20', $dir );
+        //$dir  = preg_replace( "/\(/", '%28', $dir );
+        //$dir  = preg_replace( "/\)/", '%29', $dir );
         $dirpath .= "/$dir";
      }
 
      $lines = http_get_file( $dirpath );
+
      if ( ! is_array( $lines ) ) return $lines;
   } // End fetch
 
@@ -191,7 +192,7 @@ function get_packages( $package, $dirpath )
       return find_max( $lines, "/4\.\d/", "/^.*(4\.\d),.*$/" );
 
   if ( $package == "docbook-xsl" )
-      return find_max( $lines, "/\.\d+/", "/^\s*([\d\.]+)$/" );
+      return find_max( $lines, "/xsl\//", "/^.*xsl\/([\d\.]+)\/$/" );
 
   if ( $package == "psutils" )
       return find_max( $lines, "/$package/", "/^.*$package-(p[\d\.]+).tar.*$/" );

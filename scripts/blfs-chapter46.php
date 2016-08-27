@@ -18,7 +18,7 @@ $renames[ 'x1'              ] = 'x265';
 
 $ignores = array();
 
-//$current="audiofile";
+//$current="libmpeg2";
 
 $regex = array();
 $regex[ 'faac'             ] = "/^.*Download faac-(\d[\d\.]+\d).tar.*$/";
@@ -224,7 +224,7 @@ function get_packages( $package, $dirpath )
      }
 
      $lines = http_get_file( $dirpath );
-
+print_r($lines);
      if ( ! is_array( $lines ) ) return $lines;
   } // End fetch
 

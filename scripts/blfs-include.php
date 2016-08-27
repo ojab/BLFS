@@ -94,10 +94,24 @@ function find_even_max( $lines, $regex_match, $regex_replace )
 
 function http_get_file( $url )
 {
-  exec( "curl -L -s -m40 -A Firefox/41.0 $url", $dir );
-  $s   = implode( "\n", $dir );
-  $dir = strip_tags( $s );
-  return explode( "\n", $dir );
+  if ( ! preg_match( "/sourceforge/", $url ) ||
+         preg_match( "/jfs/", $url         ) ||
+         preg_match( "/liba52/", $url      ) ||
+         preg_match( "/libmpeg2/", $url    ) )
+  {
+//echo "url=$url\n";
+     exec( "curl -L -s -m40 -A Firefox/41.0 $url", $dir );
+     $s   = implode( "\n", $dir );
+     $dir = strip_tags( $s );
+     return explode( "\n", $dir );
+  }
+  else
+  {
+//echo "url=$url\n";
+     exec( "elinks -dump $url", $lines );
+//print_r($lines);
+     return $lines;
+  }
 }
 
 function max_parent( $dirpath, $prefix )
@@ -145,7 +159,7 @@ function get_current()
       $file = preg_replace( "/\.tgz$/",       "", $file ); // Remove .tgz$
 
       $pattern = get_pattern( $file );
-      
+
       $version = preg_replace( $pattern, "$1", $file );   // Isolate version
       $version = preg_replace( "/^-/", "", $version );    // Remove leading #-
 

@@ -1,4 +1,4 @@
-[B#! /usr/bin/php
+#! /usr/bin/php
 <?php
 
 include 'blfs-include.php';
@@ -13,10 +13,9 @@ $renames[ 'btrfs-progs-v' ] = 'btrfs-progs';
 $renames[ 'LVM2.'         ] = 'LVM2';
 $ignores = array();
 
-//$current="btrfs-progs-v";   // For debugging
+//$current="jfsutils";   // For debugging
 
 $regex = array();
-$regex[ 'jfsutils' ] = "/^.*jfsutils release ([\d\.]+) is available.*$/";
 $regex[ 'ntfs-3g_ntfsprogs' ] = "/^.*Stable Source Release ([\d\.]+).*$/";
 
 $sf = 'sourceforge.net';
@@ -29,7 +28,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'jfsutils',
         'match'   => '^.*$', 
-        'replace' => "http://jfs.$sf/jfs_lr.html" ),
+        'replace' => "http://jfs.sourceforge.net/jfs_lr.html" ),
 
  array( 'pkg'     => 'ntfs-3g_ntfsprogs',
         'match'   => '^.*$', 
@@ -109,13 +108,20 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "gptfdisk" )
   {
-    $dir = find_max( $lines, '/\d\./', '/^\s*([\d\.]+)\s*$/' );
+    $dir = find_max( $lines, '/\d\./', '/^.*gptfdisk\/([\d\.]+)\/.*$/' );
     $lines = http_get_file( "$dirpath/$dir" );
   }
 
   if ( $book_index == "mdadm" )
   {
     $max = find_max( $lines, '/mdadm-[\d\.]+/', '/^.*mdadm-([\d\.]+).tar.*$/' );
+    return $max;
+  }
+
+  if ( $book_index == "jfsutils" )
+  {
+//print_r($lines);
+    $max = find_max( $lines, '/release/', '/^.*release ([\d\.]+).*$/' );
     return $max;
   }
 

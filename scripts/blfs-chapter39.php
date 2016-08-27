@@ -5,7 +5,7 @@ include 'blfs-include.php';
 
 $CHAPTER       = '39';
 $CHAPTERS      = 'Chapters 39-43';
-$START_PACKAGE = 'lxmenu-data';
+$START_PACKAGE = 'libsysstat';
 $STOP_PACKAGE  = 'QupZilla';
 
 $renames = array();

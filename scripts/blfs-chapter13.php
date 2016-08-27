@@ -9,15 +9,11 @@ $START_PACKAGE = 'check';
 $STOP_PACKAGE  = 'junit';
 
 $renames = array();
-//$renames[ 'librep_'    ] = 'librep';
 $renames[ 'py'         ] = 'pycairo';
 $renames[ 'Python'     ] = 'python2';
-#$renames[ 'python'     ] = 'python2 docs';
 $renames[ 'Python1'    ] = 'python3';
-#$renames[ 'python1'    ] = 'python3 docs';
 $renames[ 'pygobject'  ] = 'pygobject2';
 $renames[ 'pygobject1' ] = 'pygobject3';
-//$renames[ 'junit4_'    ] = 'junit';
 
 $ignores = array();
 $ignores[ 'cfe'          ] = '';
@@ -37,7 +33,7 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="swig";  // For debugging
+//$current="tk";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Download check-(\d[\d\.]+\d).tar.*$/";
@@ -46,7 +42,6 @@ $regex[ 'junit4'  ] = "/^\h*(\d[\d\.]+)\h*$/";
 $regex[ 'llvm'    ] = "/^.*Download LLVM (\d[\d\.]+\d).*$/";
 $regex[ 'scons'   ] = "/^.*Download scons-(\d[\d\.]+\d).*$/";
 $regex[ 'tcl'     ] = "/^.*Download tcl(\d[\d\.]+\d).*$/";
-//$regex[ 'swig'    ] = "/^.*Download swig-(\d[\d\.]+\d).*$/";
 $regex[ 'Python'  ] = "/^.*Latest Python 2.*Python (2[\d\.]+\d).*$/";
 $regex[ 'Python1' ] = "/^.*Latest Python 3.*Python (3[\d\.]+\d).*$/";
 $regex[ 'Mako'    ] = "/^.*version is (\d[\d\.]+\d).*$/";
@@ -118,14 +113,6 @@ $url_fix = array (
    array( 'pkg'     => 'nasm',
           'match'   => '^.*$',
           'replace' => "http://www.nasm.us/pub/nasm/releasebuilds" ),
-
-#   array( 'pkg'     => 'python',
-#          'match'   => '^.*$',
-#          'replace' => "https://docs.python.org/2/archives" ),
-
-#   #array( 'pkg'     => 'python1',
-#          'match'   => '^.*$',
-#          'replace' => "https://docs.python.org/3/archives" ),
 
    array( 'pkg'     => 'scons',
           'match'   => '^.*$',
@@ -476,7 +463,7 @@ function get_packages( $package, $dirpath )
     $lines = http_get_file( $dirpath, $strip );
     if ( ! is_array( $lines ) ) return $lines;
   } // End fetch
-
+//print_r($lines);
   if ( isset( $regex[ $package ] ) )
   {
      // Custom search for latest package name
@@ -542,7 +529,7 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "tk" )
   {
-    $dir = find_max( $lines, '/\d\.[\d\.]+\d/', '/^\s+(\d\.[\d\.]+\d).*$/' );
+    $dir = find_max( $lines, '/tcl/', '/^.*Tcl\/(\d\.[\d\.]+\d)\/.*$/' );
     $lines = http_get_file( "$dirpath/$dir" );
     return find_max( $lines, "/$package/", "/^.*$package([\d\.]*\d)-src.tar.*$/" );
   }

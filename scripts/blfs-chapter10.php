@@ -11,7 +11,7 @@ $STOP_PACKAGE  = 'qpdf';
 $renames = array();
 $ignores = array();
 
-//$current="gegl";   // For debugging
+//$current="libjpeg-turbo";   // For debugging
 
 $regex = array();
 $regex[ 'aalib'         ] = "/^.*Download aalib-([\d\.]+rc\d).tar.*$/";
@@ -20,7 +20,7 @@ $regex[ 'libexif'       ] = "/^.*Download libexif-(\d[\d\.]+\d).*$/";
 $regex[ 'libmng'        ] = "/^.*Download libmng-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'libpng'        ] = "/^.*Download libpng-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'LibRaw'        ] = "/^.*LibRaw-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'openjpeg1'     ] = "/^.*Download openjpeg-([\d\.]+\d).*$/";
+//$regex[ 'openjpeg1'     ] = "/^.*Download openjpeg-([\d\.]+\d).*$/";
 $regex[ 'poppler'       ] = "/^.*poppler-([\d\.]+\d).tar.*$/";
 $regex[ 'popplerdata'   ] = "/^.*poppler-data([\d\.]+\d).tar.*$/";
 $regex[ 'qpdf'          ] = "/^.*Download qpdf-([\d\.]+\d).tar.*$/";
@@ -217,32 +217,33 @@ function get_packages( $package, $dirpath )
      return 0;  // This is an error
   }
 
-  if ( $book_index == "freetype"     ||
-       $book_index == "freetype-doc" )
+//echo "url=$dirpath\n";
+//print_r($lines);
+
+  if ( $book_index == "freetype" )
   {
     $dir   = find_max( $lines, '/\d\./', '/^\s*([\d\.]+)\s*$/' );
     $lines = http_get_file( "$dirpath/$dir" );
   }
 
+  if ( $book_index == "freetype-doc" )
+    return find_max( $lines, '/docs\//', '/^.*docs\/([\d\.]+)\/.*$/' );
+
+
   if ( $book_index == "graphite2" )
-  {
     return find_max( $lines, '/graphite2-/', '/^.*graphite2-(\d\.[\d\.]+)\.tgz.*$/' );
-  }
 
   if ( $book_index == "libjpeg-turbo" )
-  {
-    return find_max( $lines, '/\d\./', '/^\s*([\d\.]+)\s*$/' );
-  }
+    return find_max( $lines, '/files\//', '/^.*files\/([\d\.]+)\/.*$/' );
 
   if ( $book_index == "jasper" )
-  {
     return find_max( $lines, '/jasper-/', '/^.*jasper-(\d\.[\d\.]+)\.zip.*$/' );
-  }
 
   if ( $book_index == "openjpeg" )
-  {
-    return find_max( $lines, '/^\s*1[\d\.]/', '/^.*(1\.[\d\.]+).*$/' );
-  }
+    return find_max( $lines, '/files/', '/^.*files\/(1\.[\d\.]+)\/.*$/' );
+
+  if ( $book_index == "openjpeg1" )
+    return find_max( $lines, '/files/', '/^.*files\/(2\.[\d\.]+)\/.*$/' );
 
   // imlib
   if ( $book_index == "imlib2" )
@@ -254,20 +255,14 @@ function get_packages( $package, $dirpath )
 
   // lcms (actually lcms 1.xx)
   if ( $book_index == "lcms" )
-  {
-    return find_max( $lines, '/1\.[\d\.]+/', '/^\s*(1[\d\.]+)\s*$/' );
-  }
+    return find_max( $lines, '/lcms\/1/', '/^.*\/(1[\d\.]+)\/.*$/' );
 
   if ( $book_index == "opencv" )
-  {
-    return find_max( $lines, '/\d\.[\d\.]+/', '/^\s*(\d\.[\d\.]+)\s*$/' );
-  }
+    return find_max( $lines, '/unix/', '/^.*unix\/(\d\.[\d\.]+)\/.*$/' );
 
   // lcms2
   if ( $book_index == "lcms2" )
-  {
-    return find_max( $lines, '/2\.[\d\.]+/', '/^\s*(2[\d\.]+)\s*$/' );
-  }
+    return find_max( $lines, '/lcms/', '/^.*\/([\d\.]+)\/.*$/' );
 
   if ( $package == "graphite2" ) $package = "graphite";
 

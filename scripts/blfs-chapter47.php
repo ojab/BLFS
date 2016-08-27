@@ -8,7 +8,7 @@ $CHAPTERS      = 'Chapters 47-49';
 $START_PACKAGE = 'mpg123';
 $STOP_PACKAGE  = 'simpleburn';
 
-//$current="simpleburn";  // For debugging
+//$current="xine-ui";  // For debugging
 
 $renames = array();
 
@@ -154,7 +154,7 @@ function get_packages( $package, $dirpath )
       return find_max( $lines, "/\d\./", "/^.*;([\d\.]+)\/.*$/", TRUE );
 
   if ( $package == "xine-ui" )
-      return find_max( $lines, "/\d\./", "/^\s*([\d\.]+)$/" );
+      return find_max( $lines, "/xine-ui\//", "/^.*xine-ui\/([\d\.]+)\/.*$/" );
 
   if ( $package == "dvd+rw-tools" )
       return find_max( $lines, "/dvd\+/", "/^.*dvd\+rw-tools-([\d\.]+).tar.*$/" );

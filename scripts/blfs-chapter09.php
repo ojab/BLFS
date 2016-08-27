@@ -12,7 +12,7 @@ $renames = array();
 $renames[ 'v' ] = 'liblinear';
 $ignores = array();
 
-//$current="libwacom"; // For debugging
+//$current="openobex"; // For debugging
 
 $regex = array();
 $regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
@@ -326,7 +326,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/tar/', '/.*ops-([\d\.]+).tar.*$/' );
 
   if ( $book_index == "openobex" )
-    return find_max( $lines, '/\d\./', '/^\s*([\d\.]+)\s*$/' );
+    return find_max( $lines, '/openobex/', '/^.*openobex\/([\d\.]+)\/.*$/' );
 
   if ( $book_index == "qjson" )
     return find_max( $lines, '/\d\./', '/^\s*([\d\.]+)\s*$/' );

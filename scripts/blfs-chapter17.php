@@ -14,7 +14,7 @@ $renames[ 'geoclue1' ] = 'geoclue2';
 $ignores = array();
 $ignores[ 'rpcnis-headers' ] = '';
 
-//$current="geoclue1";
+//$current="libtirpc";
 
 $regex = array();
 $regex[ 're-alpine' ] = "/^.*Download re-alpine-(\d[\d\.]+\d).tar.*$/";
@@ -162,7 +162,7 @@ function get_packages( $package, $dirpath )
     $lines = http_get_file( $dirpath );
     if ( ! is_array( $lines ) ) return $lines;
   } // End fetch
-
+//print_r($lines);
   if ( isset( $regex[ $package ] ) )
   {
      // Custom search for latest package name
@@ -197,7 +197,7 @@ function get_packages( $package, $dirpath )
 
   // libtirpc  (sourceforge is inconsistent here)
   if ( $book_index == "libtirpc" )
-    return find_max( $lines, '/^\s*1\.[\d\.]+\s*$/', '/^\s*(1\.[\d\.]+)\s*$/' );
+    return find_max( $lines, '/libtirpc\//', '/^.*libtirpc\/([\d\.]+)\/.*$/' );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
