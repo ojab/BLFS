@@ -224,7 +224,7 @@ function get_packages( $package, $dirpath )
      }
 
      $lines = http_get_file( $dirpath );
-print_r($lines);
+
      if ( ! is_array( $lines ) ) return $lines;
   } // End fetch
 
