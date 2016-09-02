@@ -151,6 +151,7 @@ function get_current()
 
       $file =  basename( $line );
       $url  =  dirname ( $line );
+
       $file = preg_replace( "/\.tar\..z.*$/", "", $file ); // Remove .tar.?z*$
       $file = preg_replace( "/\.tar$/",       "", $file ); // Remove .tar$
       $file = preg_replace( "/\.gz$/",        "", $file ); // Remove .gz$
@@ -176,6 +177,10 @@ function get_current()
          $version  = $file;
          $basename = 'tidy';
       }
+
+      // Custom for tripwire/github
+      if ( preg_match( "/tripwire/", $line ) )
+         $basename = 'tripwire';
 
       // Custom for Chapter 55
       if ( $version == "install-tl-unx" ) 

@@ -19,7 +19,6 @@ $ignores[ 'openssh1' ] = "";
 
 $regex = array();
 $regex[ 'krb5'           ] = "/^.*Kerberos V5 Release ([\d\.]+).*$/";
-$regex[ 'tripwire'       ] = "/^.*Download tripwire-([\d\.]+)-src.*$/";
 $regex[ 'haveged'        ] = "/^.*haveged-([\d\.]+)\.tar.*$/";
 $regex[ 'cracklib'       ] = "/^.*cracklib-([\d\.]+)\.tar.*$/";
 $regex[ 'cracklib-words' ] = "/^.*cracklib-words-([\d\.]+)\.bz2.*$/";
@@ -61,7 +60,7 @@ $url_fix = array(
 
    array( 'pkg'     => 'tripwire',
           'match'   => '^.*$',
-          'replace' => 'http://sourceforge.net/projects/tripwire/files' ),
+          'replace' => 'https://github.com/Tripwire/tripwire-open-source/releases' ),
 
 //   array( 'pkg'     => 'stunnel',
 //          'match'   => '^.*$',
@@ -189,6 +188,9 @@ function get_packages( $package, $dirpath )
      $ver = find_max( $lines, "/NSS_/", "/^.*NSS_(\d[_\d]+)_RTM.*$/" );
      return preg_replace( "/_/", ".", $ver ); // Change underscors to dots
   }
+
+   if ( $book_index == "tripwire" )
+     return find_max( $lines, "/Open Source/", "/^.*Tripwire ([\.\d]+).*$/" );
 
   if ( $book_index == "sudo" )
      return find_max( $lines, "/sudo-\d[\.\d]+/", "/^.*sudo-(\d\.[\d\.]+p?\d?).tar.*$/" );
