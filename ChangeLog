@@ -1,3 +1,10 @@
+2016-09-02  Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Fix slapd script to better support initd-tools.
+
+2016-08-08  Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Fix wpa script to not override a ctrl_interface setting
+     in the configuration file.
+
 2016-04-15  Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Add smartd bootscript
 

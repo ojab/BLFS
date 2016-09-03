@@ -35,12 +35,17 @@ case "$2" in
         exit 1
       fi
 
+      # Only specify -C on command line if it is not in CFGFILE
+      if ! grep -q ctrl_interface ${CFGFILE}; then 
+         WPA_ARGS="-C/run/wpa_supplicant ${WPA_ARGS}"
+      fi
+
       log_info_msg "\n Starting wpa_supplicant on the $1 interface..."
 
       mkdir -p /run/wpa_supplicant
 
       /sbin/wpa_supplicant -q -B -Dnl80211,wext -P${PIDFILE} \
-          -C/run/wpa_supplicant -c${CFGFILE} -i$1 ${WPA_ARGS}
+          -c${CFGFILE} -i$1 ${WPA_ARGS}
 
       if [ "$?" != "0" ]; then
         log_failure_msg2
