@@ -6,7 +6,7 @@ include 'blfs-include.php';
 $CHAPTER       = '47';
 $CHAPTERS      = 'Chapters 47-49';
 $START_PACKAGE = 'mpg123';
-$STOP_PACKAGE  = 'simpleburn';
+$STOP_PACKAGE  = 'libisofs';
 
 //$current="xine-ui";  // For debugging
 
