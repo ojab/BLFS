@@ -6,7 +6,7 @@ include 'blfs-include.php';
 $CHAPTER       = '25';
 $CHAPTERS      = 'Chapter 25';
 $START_PACKAGE = 'atk';
-$STOP_PACKAGE  = 'sddm';
+$STOP_PACKAGE  = 'lxdm';
 
 $renames = array();
 $renames[ 'gtk+'                           ] = 'gtk+2';
