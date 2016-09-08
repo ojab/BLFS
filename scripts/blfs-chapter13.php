@@ -26,14 +26,14 @@ $ignores[ 'nasm1'        ] = '';
 $ignores[ 'tcl1'         ] = '';
 $ignores[ 'gcc1'         ] = '';
 $ignores[ 'gcc11'        ] = '';
-$ignores[ 'OpenJDK1'     ] = '';
+$ignores[ 'OpenJDK'      ] = '';
 $ignores[ 'hamcrest'     ] = '';
 $ignores[ 'apache-ant1'  ] = '';
 $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="tk";  // For debugging
+//$current="OpenJDK1";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Download check-(\d[\d\.]+\d).tar.*$/";
@@ -48,7 +48,7 @@ $regex[ 'Mako'    ] = "/^.*version is (\d[\d\.]+\d).*$/";
 $regex[ 'php'     ] = "/^.*php-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'valgrind'] = "/^.*valgrind (\d[\d\.]+\d) \(tar.*$/";
 $regex[ 'jtreg'   ] = "/^.*jtreg-(\d[b\d\.\-]+\d)\.tar.*$/";
-$regex[ 'OpenJDK' ] = "/^.*OpenJDK-(\d[\d\.]+\d)\-.*$/";
+$regex[ 'OpenJDK1'] = "/^.*OpenJDK-(\d[\d\.]+\d)\-.*$/";
 
 // Perl Modules
 $regex[ 'Archive-Zip'       ] = "/^.*Archive-Zip-(\d[\d\.]+\d).*$/";

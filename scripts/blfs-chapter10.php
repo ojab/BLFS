@@ -9,9 +9,11 @@ $START_PACKAGE = 'aalib';
 $STOP_PACKAGE  = 'qpdf';
 
 $renames = array();
+$renames[ 'v' ] = 'openjpeg2';
+
 $ignores = array();
 
-//$current="libjpeg-turbo";   // For debugging
+//$current="v";   // For debugging
 
 $regex = array();
 $regex[ 'aalib'         ] = "/^.*Download aalib-([\d\.]+rc\d).tar.*$/";
@@ -20,7 +22,6 @@ $regex[ 'libexif'       ] = "/^.*Download libexif-(\d[\d\.]+\d).*$/";
 $regex[ 'libmng'        ] = "/^.*Download libmng-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'libpng'        ] = "/^.*Download libpng-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'LibRaw'        ] = "/^.*LibRaw-(\d[\d\.]+\d).tar.*$/";
-//$regex[ 'openjpeg1'     ] = "/^.*Download openjpeg-([\d\.]+\d).*$/";
 $regex[ 'poppler'       ] = "/^.*poppler-([\d\.]+\d).tar.*$/";
 $regex[ 'popplerdata'   ] = "/^.*poppler-data([\d\.]+\d).tar.*$/";
 $regex[ 'qpdf'          ] = "/^.*Download qpdf-([\d\.]+\d).tar.*$/";
@@ -116,6 +117,10 @@ $url_fix = array (
  array( 'pkg'     => 'ijs',
         'match'   => '^.*$', 
         'replace' => "https://www.openprinting.org/download/ijs/download/" ),
+
+ array( 'pkg'     => 'v',   // OpenJPEG2
+        'match'   => '^.*$', 
+        'replace' => "https://github.com/uclouvain/openjpeg/releases" ),
 
 );
 
@@ -260,7 +265,10 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "opencv" )
     return find_max( $lines, '/unix/', '/^.*unix\/(\d\.[\d\.]+)\/.*$/' );
 
-  // lcms2
+  // OpenJPEG2
+  if ( $book_index == "v" ) 
+    return find_max( $lines, '/openjpeg/', '/^.*openjpeg-v(\d\.[\d\.]+)-.*$/' );
+
   if ( $book_index == "lcms2" )
     return find_max( $lines, '/lcms/', '/^.*\/([\d\.]+)\/.*$/' );
 

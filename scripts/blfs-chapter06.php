@@ -13,7 +13,7 @@ $renames[ 'zsh1' ] = 'zsh-doc';
 
 $ignores = array();
 
-//$current="tcsh";   // For debugging
+//$current="emacs";   // For debugging
 
 $regex = array();
 $regex[ 'joe'  ] = "/^.*Download joe-(\d[\d\.]+).tar.*$/";
@@ -26,6 +26,10 @@ $url_fix = array (
   array( 'pkg'     => 'joe',
          'match'   => '^.*$', 
          'replace' => "http://$sf/projects/joe-editor/files" ),
+
+  array( 'pkg'     => 'emacs',
+         'match'   => '^.*$', 
+         'replace' => "http://git.savannah.gnu.org/cgit/emacs.git/" ),
 
   array( 'pkg'     => 'vim',
          'match'   => '^.*$', 
@@ -106,6 +110,10 @@ function get_packages( $package, $dirpath )
   // zsh docs 
   if ( $book_index == "zsh1" )
     return find_max( $lines, '/doc/', '/^.*zsh-([\d\.]+)-doc.tar.*$/' );
+
+  // emacs
+  if ( $book_index == "emacs" )
+    return find_max( $lines, '/emacs/', '/^.*emacs-([\d\.]+).tar.*$/' );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
