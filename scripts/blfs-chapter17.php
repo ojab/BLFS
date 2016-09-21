@@ -14,7 +14,7 @@ $renames[ 'geoclue1' ] = 'geoclue2';
 $ignores = array();
 $ignores[ 'rpcnis-headers' ] = '';
 
-//$current="libtirpc";
+//$current="nghttp2";
 
 $regex = array();
 $regex[ 're-alpine' ] = "/^.*Download re-alpine-(\d[\d\.]+\d).tar.*$/";
@@ -65,6 +65,10 @@ $url_fix = array (
    array( 'pkg'     => 'mutt',
           'match'   => '^.*$',
           'replace' => "http://www.mutt.org/download.html" ),
+
+   array( 'pkg'     => 'nghttp2',
+          'match'   => '^.*$',
+          'replace' => "https://github.com/nghttp2/nghttp2/releases/" ),
 
    array( 'pkg'     => 'libndp',
           'match'   => '^.*$',
@@ -192,6 +196,9 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "mutt" )
     return find_max( $lines, '/mutt-/', '/^.*mutt-([\d\.]+).tar.*$/' );
 
+  if ( $book_index == "nghttp2" )
+    return find_max( $lines, '/nghttp2/', '/^.*nghttp2 v([\d\.]+).*$/' );
+
   if ( $book_index == "geoclue1" )
     return find_max( $lines, '/geoclue/', '/^.*geoclue-([\d\.]+).tar.*$/' );
 
@@ -213,6 +220,9 @@ Function get_pattern( $line )
    $match = array(
      array( 'pkg'   => 'w3m',
             'regex' => "/w3m-(\d[\d\.]+)/" ),
+
+     array( 'pkg'   => 'nghttp',
+            'regex' => "/nghttp2-(\d[\d\.]+)/" ),
    );
 
    foreach( $match as $m )

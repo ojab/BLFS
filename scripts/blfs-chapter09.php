@@ -12,7 +12,7 @@ $renames = array();
 $renames[ 'v' ] = 'liblinear';
 $ignores = array();
 
-//$current="openobex"; // For debugging
+//$current="pcre2"; // For debugging
 
 $regex = array();
 $regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
@@ -360,6 +360,9 @@ Function get_pattern( $line )
 
       array( 'pkg'   => 'libtasn1',
              'regex' => "/libtasn1-([\d\.]+).*$/" ),
+
+      array( 'pkg'   => 'pcre2',
+             'regex' => "/pcre2-([\d\.]+).*$/" ),
 
       array( 'pkg'   => 'libxml2',
              'regex' => "/libxml2-([\d\.]+).*$/" ),
