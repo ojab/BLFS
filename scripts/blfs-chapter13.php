@@ -14,6 +14,7 @@ $renames[ 'Python'     ] = 'python2';
 $renames[ 'Python1'    ] = 'python3';
 $renames[ 'pygobject'  ] = 'pygobject2';
 $renames[ 'pygobject1' ] = 'pygobject3';
+$renames[ 'v'          ] = 'ninja';
 
 $ignores = array();
 $ignores[ 'cfe'          ] = '';
@@ -33,7 +34,7 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="OpenJDK1";  // For debugging
+//$current="v";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Download check-(\d[\d\.]+\d).tar.*$/";
@@ -106,6 +107,10 @@ $url_fix = array (
    array( 'pkg'     => 'junit4',
           'match'   => '^.*$',
           'replace' => "https://github.com/junit-team/junit/wiki" ),
+
+   array( 'pkg'     => 'v',
+          'match'   => '^.*$',
+          'replace' => "https://github.com/ninja-build/ninja/releases" ),
 
    array( 'pkg'     => 'llvm',
           'match'   => '^.*$',
@@ -499,6 +504,12 @@ function get_packages( $package, $dirpath )
      return find_max( $lines, "/^\s*\d[\d\.]+\/.*$/",
                               "/^\s*(\d[\d\.]+)\/.*$/" );
   }
+
+    if ( $package == "v" )  // ninja
+    {
+      $max = find_max( $lines, "/v/", "/^.*v(\d[\d\.]*\d).*$/" );
+      return $max;
+    }
 
   if ( $book_index == "swig" )
      return find_max( $lines, "/swig-/", "/.*swig-(\d[\d\.]+\d).*/" );
