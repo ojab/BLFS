@@ -70,6 +70,7 @@ $regex[ 'libwww-perl'       ] = "/^.*libwww-perl-(\d[\d\.]+\d).*$/";
 $regex[ 'List-AllUtils'     ] = "/^.*List-AllUtils-(\d[\d\.]+\d).*$/";
 $regex[ 'Log-Log4perl'      ] = "/^.*Log-Log4perl-(\d[\d\.]+\d).*$/";
 $regex[ 'Net-DNS'           ] = "/^.*Net-DNS-(\d[\d\.]+\d).*$/";
+$regex[ 'Parse-Yapp'        ] = "/^.*Parse-Yapp-(\d[\d\.]+\d).*$/";
 $regex[ 'Readonly-XS'       ] = "/^.*Readonly-XS-(\d[\d\.]+\d).*$/";
 $regex[ 'Regexp-Common'     ] = "/^.*Regexp-Common-(\d[\d\.]+\d).*$/";
 $regex[ 'Test-Command'      ] = "/^.*Test-Command-(\d[\d\.]+\d).*$/";
@@ -213,6 +214,10 @@ $url_fix = array (
    array( 'pkg'     => 'Net-DNS',
           'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Net-DNS/" ),
+
+   array( 'pkg'     => 'Parse-Yapp',
+          'match'   => '^.*$',
+          'replace' => "http://search.cpan.org/dist/Parse-Yapp/" ),
 
    array( 'pkg'     => 'Readonly-XS',
           'match'   => '^.*$',
