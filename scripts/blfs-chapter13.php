@@ -63,6 +63,7 @@ $regex[ 'Date-Simple'       ] = "/^.*Date-Simple-(\d[\d\.]+\d).*$/";
 $regex[ 'Encode-EUCJPASCII' ] = "/^.*Encode-EUCJPASCII-(\d[\d\.]+\d).*$/";
 $regex[ 'Encode-HanExtra'   ] = "/^.*Encode-HanExtra-(\d[\d\.]+\d).*$/";
 $regex[ 'Encode-JIS2K'      ] = "/^.*Encode-JIS2K-(\d[\d\.]+\d).*$/";
+$regex[ 'File-BaseDir'      ] = "/^.*File-BaseDir-(\d[\d\.]+\d).*$/";
 $regex[ 'File-Slurp'        ] = "/^.*File-Slurp-(\d[\d\.]+\d).*$/";
 $regex[ 'File-Which'        ] = "/^.*File-Which-(\d[\d\.]+\d).*$/";
 $regex[ 'HTML-Parser'       ] = "/^.*HTML-Parser-(\d[\d\.]+\d).*$/";
@@ -183,6 +184,10 @@ $url_fix = array (
    array( 'pkg'     => 'Encode-JIS2K',
           'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Encode-JIS2K/" ),
+
+   array( 'pkg'     => 'File-BaseDir',
+          'match'   => '^.*$',
+          'replace' => "http://search.cpan.org/dist/File-BaseDir/" ),
 
    array( 'pkg'     => 'File-Slurp',
           'match'   => '^.*$',
