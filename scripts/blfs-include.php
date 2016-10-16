@@ -182,6 +182,10 @@ function get_current()
       if ( preg_match( "/tripwire/", $line ) )
          $basename = 'tripwire';
 
+      // Custom for Chapter 43
+      if ( preg_match( "/chromium-launcher/", $line ) )
+        $basename = 'chromium-launcher';
+
       // Custom for Chapter 55
       if ( $version == "install-tl-unx" ) 
       {

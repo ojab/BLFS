@@ -10,14 +10,16 @@ $STOP_PACKAGE  = 'xscreensaver';
 
 $renames = array();
 $ignores = array();
-$ignores[ 'xorg-server' ] = '';
+$ignores[ 'xorg-server'       ] = '';
+$ignores[ 'chromium-launcher' ] = '';
 
 $libreoffice = array();
 
-//$current="rox-filer";
+//$current="chromium";
 
 $regex = array();
 $regex[ 'inkscape'     ] = "/^.*Latest.*(\d[\d\.]+\d).*$/";
+$regex[ 'chromium'     ] = "/^.*updated to (\d[\d\.]+\d).*$/";
 $regex[ 'gnucash'      ] = "/^.*Download gnucash-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'pidgen'       ] = "/^.*Download pidgin-(\d[\d\.]+\d).*$/";
 $regex[ 'fontforge-dist'] = "/^.*fontforge-dist-(20\d+).tar.*$/";
@@ -27,6 +29,10 @@ $regex[ 'transmission' ] = "/^.*release version.*(\d[\d\.]+\d).*$/";
 $regex[ 'xarchiver'    ] = "/^.*Download xarchiver-(\d[\d\.]+\d).tar.*$/";
 
 $url_fix = array (
+
+   array( 'pkg'     => 'chromium',
+          'match'   => '^.*$',
+          'replace' => "https://googlechromereleases.blogspot.com/" ),
 
    array( 'pkg'     => 'gnucash',
           'match'   => '^.*$',
@@ -265,7 +271,7 @@ function get_pattern( $line )
 {
    $match = array(
      //array( 'pkg'   => 'gimp-help',
-     //       'regex' => "/^.*gimp-help-(\d[\d\.]+).*$/" ),
+     //       'regex' => "/^.*gimp-help-(\d[\d\.]+).*$/" ), 
    );
 
    foreach( $match as $m )
