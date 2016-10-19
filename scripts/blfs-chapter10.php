@@ -13,12 +13,12 @@ $renames[ 'v' ] = 'openjpeg2';
 
 $ignores = array();
 
-//$current="v";   // For debugging
+//$current="jasper";   // For debugging
 
 $regex = array();
 $regex[ 'aalib'         ] = "/^.*Download aalib-([\d\.]+rc\d).tar.*$/";
 $regex[ 'libexif'       ] = "/^.*Download libexif-(\d[\d\.]+\d).*$/";
-//$regex[ 'graphite2'     ] = "/^.*Download graphite-(\d[\d\.]+\d).tgz.*$/";
+$regex[ 'jasper'        ] = "/^.*version (\d[\d\.]+\d) source.*$/";
 $regex[ 'libmng'        ] = "/^.*Download libmng-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'libpng'        ] = "/^.*Download libpng-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'LibRaw'        ] = "/^.*LibRaw-(\d[\d\.]+\d).tar.*$/";
@@ -56,7 +56,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'jasper',
         'match'   => '^.*$', 
-        'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/jasper" ),
+        'replace' => "http://www.ece.uvic.ca/~frodo/jasper/#download" ),
 
  array( 'pkg'     => 'lcms',
         'match'   => '^.*$', 
