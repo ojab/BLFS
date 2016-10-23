@@ -15,7 +15,7 @@ $ignores[ 'chromium-launcher' ] = '';
 
 $libreoffice = array();
 
-//$current="chromium";
+//$current="transmission";
 
 $regex = array();
 $regex[ 'inkscape'     ] = "/^.*Latest.*(\d[\d\.]+\d).*$/";
@@ -25,7 +25,7 @@ $regex[ 'pidgen'       ] = "/^.*Download pidgin-(\d[\d\.]+\d).*$/";
 $regex[ 'fontforge-dist'] = "/^.*fontforge-dist-(20\d+).tar.*$/";
 $regex[ 'xscreensaver' ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'tigervnc'     ] = "/^.*TigerVNC (\d[\d\.]+\d)$/";
-$regex[ 'transmission' ] = "/^.*release version.*(\d[\d\.]+\d).*$/";
+$regex[ 'transmission' ] = "/^.*Transmission (\d[\d\.]+\d).*$/";
 $regex[ 'xarchiver'    ] = "/^.*Download xarchiver-(\d[\d\.]+\d).tar.*$/";
 
 $url_fix = array (
@@ -104,7 +104,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'transmission',
           'match'   => '^.*$',
-          'replace' => "https://www.transmissionbt.com/download" ),
+          'replace' => "https://github.com/transmission/transmission/releases" ),
 
    array( 'pkg'     => 'xarchiver',
           'match'   => '^.*$',
