@@ -14,7 +14,7 @@ $renames[ 'libfm1' ] = 'libfm';
 
 $ignores = array();
 
-//$current="QScintilla_gpl";  // Debug
+//$current="lxqt-l10n";  // Debug
 
 $regex = array();
 $regex[ 'libfm'   ] = "/^.*Download libfm-(\d[\d\.]+\d).tar.*$/";
@@ -329,8 +329,8 @@ function get_packages( $package, $dirpath )
 function get_pattern( $line )
 {
    $match = array(
-     //array( 'pkg'   => '.*xfce', 
-     //       'regex' => "/^.*xfce.*-(\d[\d\.]+).*$/" ),
+     array( 'pkg'   => 'lxqt-l10n', 
+            'regex' => "/^.*lxqt-l10n-(\d[\d\.]+).*$/" ),
    );
 
    foreach( $match as $m )

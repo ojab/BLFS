@@ -13,7 +13,7 @@ $ignores = array();
 $ignores[ 'install-tl-unx' ] = '';
 $ignores[ 'texlive1'       ] = '';
 
-//$current="docbook-xsl";  // For debugging
+$current="gutenprint";  // For debugging
 
 $regex = array();
 $regex[ 'gutenprint'      ] = "/^.*Download gutenprint-(\d[\d\.]+\d).*$/";
@@ -22,6 +22,7 @@ $regex[ 'docbook-xsl-doc' ] = "/^.*Download docbook-xsl-doc-(\d[\d\.]+\d).*$/";
 $regex[ 'ghostscript'     ] = "/^.*latest.*Ghostscript (\d[\d\.]+) .*$/";
 $regex[ 'paps'            ] = "/^.*Download paps-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'asymptote'       ] = "/^.*Download asymptote-(\d[\d\.]+\d).*$/";
+$regex[ 'sane-frontends'  ] = "/^.*sane-frontends-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'ghostscript-fonts-std' ] =
     "/^.*ghostscript-fonts-std-(\d[\d\.]+\d).tar.*$/";
 
@@ -90,6 +91,10 @@ $url_fix = array (
    array( 'pkg'     => 'biblatex-biber',
           'match'   => '^.*$',
           'replace' => "https://github.com/plk/biber/releases" ),
+
+   array( 'pkg'     => 'sane-frontends',
+          'match'   => '^.*$',
+          'replace' => "https://alioth.debian.org/frs/?group_id=30186" ),
 );
 
 function get_packages( $package, $dirpath )
