@@ -260,7 +260,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'Text-CSV',
           'match'   => '^.*$',
-          'replace' => "http://search.cpan.org/dist/Text- CSV/" ),
+          'replace' => "http://search.cpan.org/dist/Text-CSV/" ),
 
    array( 'pkg'     => 'Text-Roman',
           'match'   => '^.*$',
