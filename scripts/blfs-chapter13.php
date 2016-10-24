@@ -170,9 +170,13 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Data-Dump/" ),
 
-   array( 'pkg'     => 'Date-Simple',
+   array( 'pkg'     => 'DateTime-Calendar-Julian',
           'match'   => '^.*$',
-          'replace' => "http://search.cpan.org/dist/Date-Simple/" ),
+          'replace' => "http://search.cpan.org/dist/DateTime-Calendar-Julian/" ),
+
+   array( 'pkg'     => 'DateTime-Format-Builder',
+          'match'   => '^.*$',
+          'replace' => "http://search.cpan.org/dist/DateTime-Format-Builder/" ),
 
    array( 'pkg'     => 'Encode-EUCJPASCII',
           'match'   => '^.*$',
@@ -238,6 +242,10 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Regexp-Common/" ),
 
+   array( 'pkg'     => 'Sort-Key',
+          'match'   => '^.*$',
+          'replace' => "http://search.cpan.org/dist/Sort-Key/" ),
+
    array( 'pkg'     => 'Test-Command',
           'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Test-Command/" ),
@@ -246,17 +254,13 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Test-Differences/" ),
 
-   array( 'pkg'     => 'Test-Pod',
-          'match'   => '^.*$',
-          'replace' => "http://search.cpan.org/dist/Test-Pod/" ),
-
-   array( 'pkg'     => 'Test-Pod-Coverage',
-          'match'   => '^.*$',
-          'replace' => "http://search.cpan.org/dist/Test-Pod-Coverage/" ),
-
    array( 'pkg'     => 'Text-BibTeX',
           'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Text-BibTeX/" ),
+
+   array( 'pkg'     => 'Text-CSV',
+          'match'   => '^.*$',
+          'replace' => "http://search.cpan.org/dist/Text- CSV/" ),
 
    array( 'pkg'     => 'Text-Roman',
           'match'   => '^.*$',
