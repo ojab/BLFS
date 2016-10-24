@@ -13,7 +13,7 @@ $ignores = array();
 $ignores[ 'install-tl-unx' ] = '';
 $ignores[ 'texlive1'       ] = '';
 
-$current="gutenprint";  // For debugging
+//$current="gutenprint";  // For debugging
 
 $regex = array();
 $regex[ 'gutenprint'      ] = "/^.*Download gutenprint-(\d[\d\.]+\d).*$/";
