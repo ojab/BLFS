@@ -14,7 +14,7 @@ $renames[ 'libfm1' ] = 'libfm';
 
 $ignores = array();
 
-//$current="lxqt-l10n";  // Debug
+//$current="kidletime";  // Debug
 
 $regex = array();
 $regex[ 'libfm'   ] = "/^.*Download libfm-(\d[\d\.]+\d).tar.*$/";
@@ -161,6 +161,7 @@ function get_packages( $package, $dirpath )
             $book_index != "lxpanel"      &&
             $book_index != "lxappearance" &&
             $book_index != "lxpolkit"     &&
+            $book_index != "kidletime"    &&
             $book_index != "lxsession"    &&
             $book_index != "lxde-common"  &&
             $book_index != "gpicview"     &&
@@ -274,6 +275,7 @@ function get_packages( $package, $dirpath )
 
      if ( $book_index == "kguiaddons"    ||
           $book_index == "kwindowsystem" ||
+          $book_index == "kidletime"     ||
           $book_index == "solid"         ||
           $book_index == "libkscreen"    ) 
      {
@@ -302,6 +304,7 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "kguiaddons"    ||
        $book_index == "kwindowsystem" ||
+       $book_index == "kidletime"     ||
        $book_index == "solid"         ||
        $book_index == "libkscreen"    ) 
   {

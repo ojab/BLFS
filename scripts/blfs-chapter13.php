@@ -34,7 +34,7 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="v";  // For debugging
+//$current="valgrind";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Download check-(\d[\d\.]+\d).tar.*$/";
@@ -47,7 +47,7 @@ $regex[ 'Python'  ] = "/^.*Latest Python 2.*Python (2[\d\.]+\d).*$/";
 $regex[ 'Python1' ] = "/^.*Latest Python 3.*Python (3[\d\.]+\d).*$/";
 $regex[ 'Mako'    ] = "/^.*version is (\d[\d\.]+\d).*$/";
 $regex[ 'php'     ] = "/^.*php-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'valgrind'] = "/^.*valgrind (\d[\d\.]+\d) \(tar.*$/";
+$regex[ 'valgrind'] = "/^.*Valgrind (\d[\d\.]+\d).*$/";
 $regex[ 'jtreg'   ] = "/^.*jtreg-(\d[b\d\.\-]+\d)\.tar.*$/";
 $regex[ 'OpenJDK1'] = "/^.*OpenJDK-(\d[\d\.]+\d)\-.*$/";
 
