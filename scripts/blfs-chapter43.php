@@ -15,11 +15,11 @@ $ignores[ 'chromium-launcher' ] = '';
 
 $libreoffice = array();
 
-//$current="transmission";
+$current="chromium";
 
 $regex = array();
 $regex[ 'inkscape'     ] = "/^.*Latest.*(\d[\d\.]+\d).*$/";
-$regex[ 'chromium'     ] = "/^.*updated to (\d[\d\.]+\d).*$/";
+$regex[ 'chromium'     ] = "/^.*stable.*updated to (\d[\d\.]+\d) for Windows.*$/";
 $regex[ 'gnucash'      ] = "/^.*Download gnucash-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'pidgen'       ] = "/^.*Download pidgin-(\d[\d\.]+\d).*$/";
 $regex[ 'fontforge-dist'] = "/^.*fontforge-dist-(20\d+).tar.*$/";
