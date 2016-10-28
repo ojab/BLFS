@@ -15,7 +15,7 @@ $ignores[ 'chromium-launcher' ] = '';
 
 $libreoffice = array();
 
-$current="chromium";
+//$current="chromium";
 
 $regex = array();
 $regex[ 'inkscape'     ] = "/^.*Latest.*(\d[\d\.]+\d).*$/";
