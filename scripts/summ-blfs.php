@@ -95,6 +95,11 @@ foreach ( $a as $l )
      $pkg = preg_replace( "/\+/", ".", $pkg );
      if ( preg_match( "/$pkg/i", $desc[$i] ) )
      {
+        // Make sure cmake != cmake-extra-modules
+        if ( $pkg == "cmake" &&
+             preg_match( "/extra/", $desc[$i] ) 
+           ) continue;
+
         $tick = $ticket[$i];
         break;
      }

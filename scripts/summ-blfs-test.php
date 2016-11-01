@@ -100,10 +100,9 @@ foreach ( $a as $l )
      $pkg = preg_replace( "/\+/", ".", $pkg );
      if ( preg_match( "/$pkg/i", $desc[$i] ) )
      {
-        // Need to add here that cmake != cmake-extra-modules
-        // if $pkg == cmake and $desc[$i] matches cmake-extra-modules then continue
+        // Make sure cmake != cmake-extra-modules
         if ( $pkg == "cmake" &&
-             preg_match( "/cmake-extra/", $desc[$i] ) 
+             preg_match( "/extra/", $desc[$i] ) 
            ) continue;
 
         $tick = $ticket[$i];
