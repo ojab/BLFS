@@ -14,7 +14,7 @@ system( "wget $report -q -O $file" );
 $contents = file_get_contents( $file );
 $c = strip_tags( $contents );
 
-$a = explode( "\n", $c );
+$a = explode( "\n", $c ); // Lines from trac report w/o html
 
 $l = 0;
 
@@ -23,7 +23,6 @@ $desc   = array();
 
 foreach ( $a as $line )
 {
-
    if ( preg_match( "/#/", $line ) )
    {
       $t       = preg_replace( "/^.*(#\d+).*$/",  "$1", $line );
@@ -53,17 +52,18 @@ $file = preg_replace( "/:/"            , " "        ,   $file );
 $file = preg_replace( "/\/home.*chapter/"      , "" ,   $file );
 
 $f = strip_tags( $file );
-$a = explode( "\n", $f );
+$a = explode( "\n", $f );  // Now $a is lines from currency script output
 sort($a);
 
 $msg = "            BLFS Package        BLFS Version              Latest      Ticket\n";
 
 foreach ( $a as $l )
 {
-  $c = preg_split( "/ /", $l );
+  $c = preg_split( "/ /", $l );  // $c is array from a line of currency script
   if ( $c[0] == "" ) continue;
   $pkg  = $c[1];
 
+  // Things to skio completely
   if ( preg_match( "/libreoffice-/", $pkg ) ) continue;
 
   if ( $pkg == "baloo"            ||
@@ -83,6 +83,11 @@ foreach ( $a as $l )
        $pkg == "juffed"     
      ) continue;
 
+  // c[0] is chapter
+  // c[1] is pkg name
+  // c[2] is book version
+  // c[3] is current version
+
   if ( $c[3] == "0" ) $c[3] .= " ";
   $x    = substr("chapter $c[0]: $c[1]                         ", 0, 32);
   $x   .= substr("$c[2]                          ",  0, 25);
@@ -95,6 +100,12 @@ foreach ( $a as $l )
      $pkg = preg_replace( "/\+/", ".", $pkg );
      if ( preg_match( "/$pkg/i", $desc[$i] ) )
      {
+        // Need to add here that cmake != cmake-extra-modules
+        // if $pkg == cmake and $desc[$i] matches cmake-extra-modules then continue
+        if ( $pkg == "cmake" &&
+             preg_match( "/cmake-extra/", $desc[$i] ) 
+           ) continue;
+
         $tick = $ticket[$i];
         break;
      }
