@@ -12,6 +12,9 @@ $renames = array();
 $ignores = array();
 $ignores[ 'xorg-server'       ] = '';
 $ignores[ 'chromium-launcher' ] = '';
+$ignores[ 'flash_player_ppapi_linux.x' ] = '';
+$ignores[ 'flash_player_ppapi_linux.i' ] = '';
+$ignores[ 'chromium-launcher' ] = '';
 
 $libreoffice = array();
 
