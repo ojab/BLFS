@@ -18,7 +18,6 @@ $ignores = array();
 $regex = array();
 $regex[ 'aalib'         ] = "/^.*Download aalib-([\d\.]+rc\d).tar.*$/";
 $regex[ 'libexif'       ] = "/^.*Download libexif-(\d[\d\.]+\d).*$/";
-$regex[ 'jasper'        ] = "/^.*version (\d[\d\.]+\d) source.*$/";
 $regex[ 'libmng'        ] = "/^.*Download libmng-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'libpng'        ] = "/^.*Download libpng-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'LibRaw'        ] = "/^.*LibRaw-(\d[\d\.]+\d).tar.*$/";
@@ -242,7 +241,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/files\//', '/^.*files\/([\d\.]+)\/.*$/' );
 
   if ( $book_index == "jasper" )
-    return find_max( $lines, '/jasper-/', '/^.*jasper-(\d\.[\d\.]+)\.zip.*$/' );
+    return find_max( $lines, '/JasPer/', '/^.*JasPer (\d\.[\d\.]+).*$/' );
 
   if ( $book_index == "openjpeg" )
     return find_max( $lines, '/files/', '/^.*files\/(1\.[\d\.]+)\/.*$/' );
