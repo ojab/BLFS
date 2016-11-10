@@ -16,9 +16,8 @@ $renames[ 'bind'            ] = 'bind9';
 
 $ignores = array();
 
-//$current="avahi";
+//$current="bridge-utils";
 
-$regex[ 'bridge-utils'    ] = "/^.*Download bridge-utils-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'nfs-utils'       ] = "/^.*Download nfs-utils-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'rpcbind'         ] = "/^.*Download rpcbind-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'wireless_tools.' ] = "/^.*latest stable.*version (\d\d).*$/";
