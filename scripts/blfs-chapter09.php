@@ -12,7 +12,7 @@ $renames = array();
 $renames[ 'v' ] = 'liblinear';
 $ignores = array();
 
-//$current="pcre2"; // For debugging
+//$current="libusb"; // For debugging
 
 $regex = array();
 $regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
@@ -73,7 +73,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'libusb',
         'match'   => '^.*$',
-        'replace' => "http://$sf/projects/libusb/files/libusb-1.0" ),
+        'replace' => "https://github.com//libusb/libusb/releases" ),
 
  array( 'pkg'     => 'libusb-compat',
         'match'   => '^.*$',
@@ -301,7 +301,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/^.*libsigc.*[\d\.]+.*$/', '/^.*libsigc\+\+-([\d\.]+).tar.*$/' );
 
   if ( $book_index == "libusb" )
-    return find_max( $lines, '/^.*libusb-[\d\.]+.*$/', '/^.*libusb-([\d\.]+)$/' );
+    return find_max( $lines, '/libusb v/', '/^.*libusb v([\d\.]+).*$/' );
 
   if ( $book_index == "v" ) // liblinear
     return find_max( $lines, '/v\d/', '/^.*v(\d+)$/' );
