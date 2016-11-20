@@ -18,7 +18,7 @@ $renames[ 'x1'              ] = 'x265';
 
 $ignores = array();
 
-//$current="libmpeg2";
+//$current="SDL2";
 
 $regex = array();
 $regex[ 'faac'             ] = "/^.*Download faac-(\d[\d\.]+\d).tar.*$/";
@@ -324,6 +324,9 @@ Function get_pattern( $line )
      array( 'pkg'   => 'libmad', 
             'regex' => "/^.*libmad-(\d[\d\.]+[a-m]{0,1}).*$/" ),
 
+     array( 'pkg'   => 'SDL2', 
+            'regex' => "/^.*SDL2-(\d[\d\.]+\d).*$/" ),
+
      array( 'pkg'   => 'v4l-utils', 
             'regex' => "/^.*v4l-utils-(\d[\d\.]+\d).*$/" ),
 
@@ -354,8 +357,8 @@ foreach ( $book as $pkg => $data )
    $book_index = $pkg; 
 
    $base = $data[ 'basename' ];
-   $url  = $data[ 'url' ];
-   $bver = $data[ 'version' ];
+   $url  = $data[ 'url'      ];
+   $bver = $data[ 'version'  ];
 
    echo "book index: $book_index $url $bver\n";
 
