@@ -14,7 +14,6 @@ $ignores[ 'xorg-server'       ] = '';
 $ignores[ 'chromium-launcher' ] = '';
 $ignores[ 'flash_player_ppapi_linux.x' ] = '';
 $ignores[ 'flash_player_ppapi_linux.i' ] = '';
-$ignores[ 'chromium-launcher' ] = '';
 
 $libreoffice = array();
 
@@ -22,7 +21,8 @@ $libreoffice = array();
 
 $regex = array();
 $regex[ 'inkscape'     ] = "/^.*Latest.*(\d[\d\.]+\d).*$/";
-$regex[ 'chromium'     ] = "/^.*stable.*updated to (\d[\d\.]+\d) for Windows.*$/";
+//$regex[ 'chromium'     ] = "/^.*stable.*updated to (\d[\d\.]+\d) for Windows.*$/";
+$regex[ 'chromium'     ] = "/^pkgver=(\d[\d\.]+\d).*$/";
 $regex[ 'gnucash'      ] = "/^.*Download gnucash-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'pidgen'       ] = "/^.*Download pidgin-(\d[\d\.]+\d).*$/";
 $regex[ 'fontforge-dist'] = "/^.*fontforge-dist-(20\d+).tar.*$/";
@@ -35,7 +35,8 @@ $url_fix = array (
 
    array( 'pkg'     => 'chromium',
           'match'   => '^.*$',
-          'replace' => "https://googlechromereleases.blogspot.com/" ),
+          //'replace' => "https://googlechromereleases.blogspot.com/" ),
+          'replace' => "https://git.archlinux.org/svntogit/packages.git/plain/trunk/PKGBUILD?h=packages/chromium" ),
 
    array( 'pkg'     => 'gnucash',
           'match'   => '^.*$',
