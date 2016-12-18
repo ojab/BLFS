@@ -13,7 +13,7 @@ $renames[ 'btrfs-progs-v' ] = 'btrfs-progs';
 $renames[ 'LVM2.'         ] = 'LVM2';
 $ignores = array();
 
-//$current="jfsutils";   // For debugging
+//$current="sshfs";   // For debugging
 
 $regex = array();
 $regex[ 'ntfs-3g_ntfsprogs' ] = "/^.*Stable Source Release ([\d\.]+).*$/";
@@ -38,7 +38,7 @@ $url_fix = array (
         'match'   => '^.*$', 
         'replace' => "http://$sf/projects/gptfdisk/files/gptfdisk/" ),
 
- array( 'pkg'     => 'sshfs-fuse',
+ array( 'pkg'     => 'sshfs',
         'match'   => '^.*$', 
         'replace' => "https://github.com/libfuse/sshfs/releases" ),
 
