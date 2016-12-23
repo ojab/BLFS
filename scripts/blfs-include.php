@@ -182,6 +182,10 @@ function get_current()
       if ( preg_match( "/tripwire/", $line ) )
          $basename = 'tripwire';
 
+      // Custom for Chapter 10
+      if ( preg_match( "/opencv_contrib/", $line ) )
+        $basename = 'opencv_contrib';
+
       // Custom for Chapter 43
       if ( preg_match( "/chromium-launcher/", $line ) )
         $basename = 'chromium-launcher';

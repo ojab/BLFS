@@ -13,7 +13,7 @@ $renames[ 'v' ] = 'openjpeg2';
 
 $ignores = array();
 
-//$current="jasper";   // For debugging
+//$current="opencv_contrib";   // For debugging
 
 $regex = array();
 $regex[ 'aalib'         ] = "/^.*Download aalib-([\d\.]+rc\d).tar.*$/";
@@ -104,6 +104,10 @@ $url_fix = array (
  array( 'pkg'     => 'opencv',
         'match'   => '^.*$', 
         'replace' => "http://sourceforge.net/projects/opencvlibrary/files/opencv-unix" ),
+
+ array( 'pkg'     => 'opencv_contrib',
+        'match'   => '^.*$', 
+        'replace' => "https://github.com/opencv/opencv_contrib/releases" ),
 
  array( 'pkg'     => 'openjpeg',
         'match'   => '^.*$', 
@@ -264,6 +268,9 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "opencv" )
     return find_max( $lines, '/unix/', '/^.*unix\/(\d\.[\d\.]+)\/.*$/' );
 
+  if ( $book_index == "opencv_contrib" )
+    return find_max( $lines, '/3\./', '/^.*(3\.[\d\.]+)$/' );
+
   // OpenJPEG2
   if ( $book_index == "v" ) 
     return find_max( $lines, '/openjpeg/', '/^.*openjpeg-v(\d\.[\d\.]+)-.*$/' );
@@ -296,6 +303,9 @@ Function get_pattern( $line )
 
       array( 'pkg'   => 'imlib2', 
              'regex' => "/\D*imlib2-([\d\.]+)\D*$/" ),
+
+      array( 'pkg'   => 'opencv_contrib', 
+             'regex' => "/.*\/([\d\.]+\d)\D*$/" ),
 
       array( 'pkg'   => 'graphite2', 
              'regex' => "/\D*graphite2-([\d\.]+)\D*$/" ),
