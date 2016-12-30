@@ -34,7 +34,7 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="valgrind";  // For debugging
+//$current="elfutils";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Download check-(\d[\d\.]+\d).tar.*$/";
@@ -140,7 +140,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'elfutils',
           'match'   => '^.*$',
-          'replace' => "https://fedorahosted.org/releases/e/l/elfutils" ),
+          'replace' => "ftp://sourceware.org/pub/elfutils" ),
 
    array( 'pkg'     => 'Archive-Zip',
           'match'   => '^.*$',
@@ -511,8 +511,7 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "elfutils" )
   {
-     return find_max( $lines, "/^\s*\d[\d\.]+\/.*$/",
-                              "/^\s*(\d[\d\.]+)\/.*$/" );
+     return find_max( $lines, "/\d[\d\.]+/", "/^.* (\d[\d\.]+)$/" );
   }
 
     if ( $package == "v" )  // ninja
