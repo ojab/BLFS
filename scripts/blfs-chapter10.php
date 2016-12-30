@@ -12,6 +12,7 @@ $renames = array();
 $renames[ 'v' ] = 'openjpeg2';
 
 $ignores = array();
+$ignores[ 'ippicv_linux' ] = "";
 
 //$current="opencv_contrib";   // For debugging
 
