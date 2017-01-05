@@ -18,7 +18,7 @@ $renames[ 'x1'              ] = 'x265';
 
 $ignores = array();
 
-//$current="SDL2";
+//$current="pulseaudio";
 
 $regex = array();
 $regex[ 'faac'             ] = "/^.*Download faac-(\d[\d\.]+\d).tar.*$/";
@@ -296,6 +296,10 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "libcdio-paranoia" )
       return find_max( $lines, "/paranoia/", "/^.*paranoia-([\d\.\+]+).tar.*$/" );
+
+  if ( $package == "pulseaudio" ) // Skip minors > 90
+      return find_max( $lines, "/$package/", 
+                               "/^.*$package-([\d\.]*\d)\.tar.*$/" , TRUE );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
