@@ -5,7 +5,7 @@ include 'blfs-include.php';
 
 $CHAPTER       = '39';
 $CHAPTERS      = 'Chapters 39-43';
-$START_PACKAGE = 'libsysstat';
+$START_PACKAGE = 'lxqt-build-tools';
 $STOP_PACKAGE  = 'QupZilla';
 
 $renames = array();
@@ -14,7 +14,7 @@ $renames[ 'libfm1' ] = 'libfm';
 
 $ignores = array();
 
-//$current="kidletime";  // Debug
+//$current="lxqt-qtplugin";  // Debug
 
 $regex = array();
 $regex[ 'libfm'   ] = "/^.*Download libfm-(\d[\d\.]+\d).tar.*$/";
@@ -108,6 +108,18 @@ $url_fix = array (
    array( 'pkg'     => 'QupZilla',
           'match'   => '^.*$', 
           'replace' => "https://github.com/QupZilla/qupzilla/tags" ),
+
+   array( 'pkg'     => 'lxqt-common',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/lxde/lxqt-common/releases" ),
+
+   array( 'pkg'     => 'lxqt-l10n',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/lxde/lxqt-l10n/releases" ),
+
+   array( 'pkg'     => 'lxqt-qtplugin',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/lxde/lxqt-qtplugin/releases" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -180,6 +192,9 @@ function get_packages( $package, $dirpath )
             $book_index != "solid"           &&
             $book_index != "kwindowsystem"   &&
             $book_index != "libkscreen"      &&
+            $book_index != "lxqt-common"     &&
+            $book_index != "lxqt-l10n"       &&
+            $book_index != "lxqt-qtplugin"   &&
             $book_index != "QScintilla_gpl" 
             ) // http
   {

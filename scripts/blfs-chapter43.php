@@ -17,10 +17,10 @@ $ignores[ 'flash_player_ppapi_linux.i' ] = '';
 
 $libreoffice = array();
 
-//$current="chromium";
+//$current="inkscape";
 
 $regex = array();
-$regex[ 'inkscape'     ] = "/^.*Latest.*(\d[\d\.]+\d).*$/";
+//$regex[ 'inkscape'     ] = "/^.*Latest.*(\d[\d\.]+\d).*$/";
 //$regex[ 'chromium'     ] = "/^.*stable.*updated to (\d[\d\.]+\d) for Windows.*$/";
 $regex[ 'chromium'     ] = "/^pkgver=(\d[\d\.]+\d).*$/";
 $regex[ 'gnucash'      ] = "/^.*Download gnucash-(\d[\d\.]+\d).tar.*$/";
@@ -245,7 +245,7 @@ function get_packages( $package, $dirpath )
   }
 
   if ( preg_match( "/inkscape/", "$dirpath" ) )
-      return find_max( $lines, "/\d\./", "/^.* (\d[\d\.]+\d)$/" );
+      return find_max( $lines, "/inkscape-/", "/^.*inkscape-(\d[\d\.]+\d).tar.*$/" );
 
   if ( preg_match( "/abiword/", "$dirpath" ) )
       return find_max( $lines, "/^\d/", "/^([\d\.]+).*$/" );

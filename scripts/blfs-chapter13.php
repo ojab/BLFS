@@ -34,7 +34,7 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="elfutils";  // For debugging
+//$current="funcsigs";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Download check-(\d[\d\.]+\d).tar.*$/";
@@ -50,6 +50,9 @@ $regex[ 'php'     ] = "/^.*php-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'valgrind'] = "/^.*Valgrind (\d[\d\.]+\d).*$/";
 $regex[ 'jtreg'   ] = "/^.*jtreg-(\d[b\d\.\-]+\d)\.tar.*$/";
 $regex[ 'OpenJDK1'] = "/^.*OpenJDK-(\d[\d\.]+\d)\-.*$/";
+$regex[ 'setuptools' ] = "/^.*setuptools-(\d[\d\.]+\d).zip.*$/";
+$regex[ 'lxml'       ] = "/^.*lxml&nbsp;(\d[\d\.]+\d).*$/";
+$regex[ 'funcsigs'   ] = "/^.*funcsigs (\d[\d\.]+\d).*$/";
 
 // Perl Modules
 $regex[ 'Archive-Zip'             ] = "/^.*Archive-Zip-(\d[\d\.]+\d).*$/";
@@ -317,6 +320,22 @@ $url_fix = array (
    array( 'pkg'     => 'php',
           'match'   => '^.*$',
           'replace' => "http://us2.php.net/distributions" ),
+
+   array( 'pkg'     => 'ruby',
+          'match'   => '^.*$',
+          'replace' => "http://cache.ruby-lang.org/pub/ruby" ),
+
+   array( 'pkg'     => 'setuptools',
+          'match'   => '^.*$',
+          'replace' => "https://pypi.python.org/pypi/setuptools" ),
+
+   array( 'pkg'     => 'lxml',
+          'match'   => '^.*$',
+          'replace' => "https://pypi.python.org/pypi/lxml" ),
+
+   array( 'pkg'     => 'funcsigs',
+          'match'   => '^.*$',
+          'replace' => "https://pypi.python.org/pypi/funcsigs" ),
 
 );
 
