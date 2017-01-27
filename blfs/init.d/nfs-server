@@ -105,7 +105,7 @@
       ## Special case for nfsd with no full path
       statusproc nfsd
       statusproc /usr/sbin/rpc.statd
-      if [ "$QUOTA" = "yes" ]; then
+      if [ "$QUOTAS" = "yes" ]; then
          statusproc rpc.rquotad
       fi
       ;;

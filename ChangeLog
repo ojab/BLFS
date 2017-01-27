@@ -1,3 +1,6 @@
+2017-01-27  Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Fix nfs-server script QUOTAS typo in status.
+
 2016-09-02  Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Fix slapd script to better support initd-tools.
 
