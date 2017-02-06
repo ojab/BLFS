@@ -18,11 +18,11 @@ $renames[ 'x1'              ] = 'x265';
 
 $ignores = array();
 
-//$current="pulseaudio";
+//$current="fdk-aac";
 
 $regex = array();
 $regex[ 'faac'             ] = "/^.*Download faac-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'fdk-aac'          ] = "/^.*Download fdk-aac-(\d[\d\.]+\d).tar.*$/";
+//$regex[ 'fdk-aac'          ] = "/^.*Download fdk-aac-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'a52dec'           ] = "/^.*a52dec-(\d[\d\.]+\d) is.*$/";
 $regex[ 'libass'           ] = "/^.*Release (\d[\d\.]+\d).*$/";
 $regex[ 'libdv'            ] = "/^.*Download libdv-(\d[\d\.]+\d).*$/";
@@ -47,7 +47,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'fdk-aac',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/opencore-amr/files" ),
+          'replace' => "http://sourceforge.net/projects/opencore-amr/files/fdk-aac" ),
 
    array( 'pkg'     => 'frei0r-plugins',
           'match'   => '^.*$', 

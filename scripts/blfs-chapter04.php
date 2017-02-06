@@ -10,12 +10,11 @@ $STOP_PACKAGE  = "tripwire";
 
 $renames = array();
 $renames[ 'Linux-PAM1' ] = 'Linux-PAM-docs';
-$renames[ 'shadow_'    ] = 'shadow';
 
 $ignores = array();
 $ignores[ 'openssh1' ] = "";
 
-//$current="nss";   // For debugging
+//$current="shadow";   // For debugging
 
 $regex = array();
 $regex[ 'krb5'           ] = "/^.*Kerberos V5 Release ([\d\.]+).*$/";
@@ -61,6 +60,10 @@ $url_fix = array(
    array( 'pkg'     => 'tripwire',
           'match'   => '^.*$',
           'replace' => 'https://github.com/Tripwire/tripwire-open-source/releases' ),
+
+   array( 'pkg'     => 'shadow',
+          'match'   => '^.*$',
+          'replace' => 'https://github.com/shadow-maint/shadow/releases' ),
 
 //   array( 'pkg'     => 'stunnel',
 //          'match'   => '^.*$',
@@ -171,8 +174,8 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "p11-kit" )
      return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d).tar.*$/" );
 
-  if ( $book_index == "shadow_" )
-     return find_max( $lines, "/$package/", "/^.*$package([\d\.]*\d).orig.tar.*$/" );
+  if ( $book_index == "shadow" )
+     return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d).tar.*$/" );
 
   if ( $book_index == "cracklib" )
      return find_max( $lines, "/\d\.\d+\.\d+/", "/^.*(\d\.\d+\.\d+).*$/" );
