@@ -20,7 +20,7 @@ $libreoffice = array();
 //$current="inkscape";
 
 $regex = array();
-//$regex[ 'inkscape'     ] = "/^.*Latest.*(\d[\d\.]+\d).*$/";
+$regex[ 'inkscape'     ] = "/^.*Latest stable.*(\d[\d\.]+\d).*$/";
 //$regex[ 'chromium'     ] = "/^.*stable.*updated to (\d[\d\.]+\d) for Windows.*$/";
 $regex[ 'chromium'     ] = "/^pkgver=(\d[\d\.]+\d).*$/";
 $regex[ 'gnucash'      ] = "/^.*Download gnucash-(\d[\d\.]+\d).tar.*$/";
@@ -80,7 +80,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'inkscape',
           'match'   => '^.*$',
-          'replace' => "https://launchpad.net/inkscape" ),
+          'replace' => "https://inkscape.org/en/download/source" ),
 
    array( 'pkg'     => 'pidgin',
           'match'   => '^.*$',
@@ -244,8 +244,8 @@ function get_packages( $package, $dirpath )
      return 0;  // This is an error
   }
 
-  if ( preg_match( "/inkscape/", "$dirpath" ) )
-      return find_max( $lines, "/inkscape-/", "/^.*inkscape-(\d[\d\.]+\d).tar.*$/" );
+  #if ( preg_match( "/inkscape/", "$dirpath" ) )
+  #    return find_max( $lines, "/inkscape-/", "/^.*inkscape-(\d[\d\.]+\d).tar.*$/" );
 
   if ( preg_match( "/abiword/", "$dirpath" ) )
       return find_max( $lines, "/^\d/", "/^([\d\.]+).*$/" );
