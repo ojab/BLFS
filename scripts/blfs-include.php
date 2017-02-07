@@ -197,7 +197,10 @@ function get_current()
         $basename = "install-tl-unx";
       }
 
-      else if ( $version == "biblatex-biber" ) 
+      if ( preg_match( "/biber/", $line ) )
+        $basename = "biber";
+
+      if ( $version == "biblatex-biber" ) 
       {
         $version = basename( $url ); 
         $basename = "biblatex-biber";

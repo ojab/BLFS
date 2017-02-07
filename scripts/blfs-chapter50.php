@@ -9,11 +9,13 @@ $START_PACKAGE = 'cups';
 $STOP_PACKAGE  = 'xindy';
 
 $renames = array();
+$renames[ 'v' ] = "biber";
+
 $ignores = array();
 $ignores[ 'install-tl-unx' ] = '';
 $ignores[ 'texlive1'       ] = '';
 
-//$current="texlive";  // For debugging
+$current="biber";  // For debugging
 
 $regex = array();
 $regex[ 'gutenprint'      ] = "/^.*Download gutenprint-(\d[\d\.]+\d).*$/";
@@ -88,7 +90,7 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/asymptote/files" ),
 
-   array( 'pkg'     => 'biblatex-biber',
+   array( 'pkg'     => 'biber',
           'match'   => '^.*$',
           'replace' => "https://github.com/plk/biber/releases" ),
 
@@ -213,6 +215,9 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "biblatex" )
       return find_max( $lines, "/biblatex-/", "/^.*$package-([\d\.]+)$/" );
+
+  if ( $package == "biber" )
+      return find_max( $lines, "/v\d/", "/^.*v([\d\.]+)$/" );
 
   if ( $package == "biblatex-biber" )
       return "manual";
