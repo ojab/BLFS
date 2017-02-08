@@ -17,7 +17,7 @@ $ignores[ 'flash_player_ppapi_linux.i' ] = '';
 
 $libreoffice = array();
 
-//$current="inkscape";
+//$current="firefox";
 
 $regex = array();
 $regex[ 'inkscape'     ] = "/^.*Latest stable.*(\d[\d\.]+\d).*$/";
@@ -178,7 +178,7 @@ function get_packages( $package, $dirpath )
          if ( $package == "seamonkey" )
             return find_max( $dirs, "/\d\./", "/^.*\t(\d\.\d+)\/.*$/" );
          else
-            return find_max( $dirs, "/\d/", "/^.*(\d{2}[\.\d]+)\/.*/" );
+            return find_max( $dirs, "/\d/", "/^.*(\d{2}\.[\.\d]+)\/.*/" );
      }
 
      if ( preg_match( "/abiword/", $dirpath ) )
