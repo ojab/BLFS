@@ -17,10 +17,10 @@ $ignores[ 'flash_player_ppapi_linux.i' ] = '';
 
 $libreoffice = array();
 
-//$current="firefox";
+//$current="inkscape";
 
 $regex = array();
-$regex[ 'inkscape'     ] = "/^.*Latest stable.*(\d[\d\.]+\d).*$/";
+//$regex[ 'inkscape'     ] = "/^.*Latest stable.*(\d[\d\.]+\d).*$/";
 //$regex[ 'chromium'     ] = "/^.*stable.*updated to (\d[\d\.]+\d) for Windows.*$/";
 $regex[ 'chromium'     ] = "/^pkgver=(\d[\d\.]+\d).*$/";
 $regex[ 'gnucash'      ] = "/^.*Download gnucash-(\d[\d\.]+\d).tar.*$/";
@@ -244,8 +244,22 @@ function get_packages( $package, $dirpath )
      return 0;  // This is an error
   }
 
-  #if ( preg_match( "/inkscape/", "$dirpath" ) )
-  #    return find_max( $lines, "/inkscape-/", "/^.*inkscape-(\d[\d\.]+\d).tar.*$/" );
+  if ( $package == "inkscape" )
+  {
+    $max = find_max( $lines, "/Latest/", "/^.*Latest stable.*(\d[\d\.]+\d).*$/" );
+
+    // Upstrem's website info does not match tarball verion for non point versions
+    $dots = 0;
+
+    for ( $i = 0; $i < strlen($max); $i++ ) 
+    {
+      if ( $max[$i] == '.' ) $dots++;
+    }
+
+    if ( $dots < 2 ) $max .= '.0';
+
+    return $max;
+  }
 
   if ( preg_match( "/abiword/", "$dirpath" ) )
       return find_max( $lines, "/^\d/", "/^([\d\.]+).*$/" );
