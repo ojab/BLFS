@@ -34,10 +34,10 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="funcsigs";  // For debugging
+//$current="check";  // For debugging
 
 $regex = array();
-$regex[ 'check'   ] = "/^.*Download check-(\d[\d\.]+\d).tar.*$/";
+$regex[ 'check'   ] = "/^.*Check (\d[\d\.]+\d).*$/";
 $regex[ 'expect'  ] = "/^.*Download expect(\d[\d\.]+\d).tar.*$/";
 $regex[ 'junit4'  ] = "/^\h*(\d[\d\.]+)\h*$/";
 $regex[ 'llvm'    ] = "/^.*Download LLVM (\d[\d\.]+\d).*$/";
@@ -99,7 +99,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'check',
           'match'   => '^.*$',
-          'replace' => "http://sourceforge.net/projects/check/files" ),
+          'replace' => "http://github.com/libcheck/check/releases" ),
 
    array( 'pkg'     => 'expect',
           'match'   => '^.*$',
