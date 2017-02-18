@@ -202,6 +202,12 @@ function get_packages( $package, $dirpath )
         $ver = preg_replace( $regex[ $package ], "$1", $l );
         if ( $ver == $l ) continue;
 
+        if ( $book_index == "libepoxy" )
+        {
+          for ( $i = 0; $i < strlen($ver); $i++ ) if ( $max[$i] == '.' ) $dots++;
+          if ( $dots < 2 ) $ver .= '.0';
+        }
+
         return $ver;  // Return first match of regex
      }
 
