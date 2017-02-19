@@ -246,7 +246,7 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "inkscape" )
   {
-    $max = find_max( $lines, "/Latest/", "/^.*Latest stable.*(\d[\d\.]+\d).*$/" );
+    $max = find_max( $lines, "/Latest/", "/^.*Inkscape (\d[\d\.]+\d).*$/" );
 
     // Upstrem's website info does not match tarball verion for non point versions
     $dots = 0;
