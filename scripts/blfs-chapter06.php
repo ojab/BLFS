@@ -13,7 +13,7 @@ $renames[ 'zsh1' ] = 'zsh-doc';
 
 $ignores = array();
 
-//$current="emacs";   // For debugging
+//$current="nano";   // For debugging
 
 $regex = array();
 $regex[ 'joe'  ] = "/^.*Download joe-(\d[\d\.]+).tar.*$/";
@@ -38,6 +38,10 @@ $url_fix = array (
   array( 'pkg'     => 'tcsh',
          'match'   => '^.*$', 
          'replace' => "http://www.tcsh.org/MostRecentRelease" ),
+
+  array( 'pkg'     => 'nano',
+         'match'   => '^.*$', 
+         'replace' => "https://www.nano-editor.org/dist/" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -105,7 +109,10 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/^.*vim-[\d\.]+-lang.*$/', '/^.*vim-([\d\.]+)-lang.*$/' );
 
   if ( $book_index == "nano" )
-    return find_max( $lines, "/$package/", "/^.*$package-([\d\.]+).tar.*$/" );
+  {
+    $dir = find_max( $lines, "/v/", "/^.*(v[\d\.]+)\/.*$/" );    
+    $lines = http_get_file( "$dirpath/$dir" );
+  }
 
   // zsh docs 
   if ( $book_index == "zsh1" )
