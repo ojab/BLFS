@@ -14,7 +14,7 @@ $renames[ 'Linux-PAM1' ] = 'Linux-PAM-docs';
 $ignores = array();
 $ignores[ 'openssh1' ] = "";
 
-//$current="shadow";   // For debugging
+//$current="libpwquality";   // For debugging
 
 $regex = array();
 $regex[ 'krb5'           ] = "/^.*Kerberos V5 Release ([\d\.]+).*$/";
@@ -56,6 +56,10 @@ $url_fix = array(
    array( 'pkg'     => 'openssh',
           'match'   => '^ftp',
           'replace' => 'http' ),
+
+   array( 'pkg'     => 'libpwquality',
+          'match'   => '^.*$',
+          'replace' => 'https://github.com/libpwquality/libpwquality/releases' ),
 
    array( 'pkg'     => 'tripwire',
           'match'   => '^.*$',
