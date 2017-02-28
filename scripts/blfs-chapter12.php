@@ -18,7 +18,7 @@ $renames[ 'unrarsrc' ] = 'unrar';
 
 $ignores = array();
 
-//$current="p7zip";
+//$current="logrotate";
 
 $regex = array();
 $regex[ 'acpid'   ] = "/^.*Download acpid-(\d[\d\.]+\d).tar.*$/";
@@ -71,6 +71,10 @@ $url_fix = array (
    array( 'pkg'     => 'fcron',
           'match'   => '^.*$', 
           'replace' => "http://fcron.free.fr" ),
+
+   array( 'pkg'     => 'logrotate',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/logrotate/logrotate" ),
 
 );
 
