@@ -21,7 +21,7 @@ $regex[ 'bogofilter'    ] = "/^.*Download bogofilter-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'intltool'      ] = "/^.*Latest version is (\d[\d\.]+\d).*$/";
 $regex[ 'xscreensaver'  ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
 
-//$current="ImageMagick1";  // For debugging
+//$current="tidy-html5";  // For debugging
 
 $url_fix = array (
    array( 'pkg'     => 'bogofilter',
@@ -60,7 +60,7 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "https://github.com/ibus/ibus/releases" ),
 
-   array( 'pkg'     => 'tidy',
+   array( 'pkg'     => 'tidy-html5',
           'match'   => '^.*$', 
           'replace' => "https://github.com/htacg/tidy-html5/releases" ),
 
@@ -186,8 +186,8 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "tree" )
     return find_max( $lines, '/tree/', '/^.*tree-([\d\.]+).tgz.*$/' );
 
-  if ( $book_index == "tidy" )
-    return find_max( $lines, '/v\d/', '/^.*v([\d\.]+)$/' );
+  if ( $book_index == "tidy-html5" )
+    return find_max( $lines, '/tidy/', '/^.*tidy-html5-([\d\.]+).tar.*$/' );
 
   if ( $book_index == "rep-gtk" )
     return find_max( $lines, '/rep-gtk/', '/^.*rep-gtk[_-]([\d\.]+).tar.*$/' );
@@ -209,6 +209,9 @@ Function get_pattern( $line )
 
      array( 'pkg'   => 'qtchooser', 
             'regex' => "/qtchooser-([\d\.]+)-.*/" ),
+
+     array( 'pkg'   => 'tidy-html', 
+            'regex' => "/tidy-html5-([\d\.]+).*/" ),
    );
 
    foreach( $match as $m )
