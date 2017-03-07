@@ -6,7 +6,7 @@ include 'blfs-include.php';
 $CHAPTER       = '39';
 $CHAPTERS      = 'Chapters 39-43';
 $START_PACKAGE = 'lxqt-build-tools';
-$STOP_PACKAGE  = 'QupZilla';
+$STOP_PACKAGE  = 'qterminal';
 
 $renames = array();
 $renames[ 'libfm'  ] = 'libfm-extra';

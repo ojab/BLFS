@@ -172,11 +172,11 @@ function get_current()
       if ( ! $start ) continue;
 
       // Custom for tidy in Chapter 11 (github is not friendly)
-      if ( preg_match( "/tidy-html/", $line ) )
-      {
-         $version  = $file;
-         $basename = 'tidy';
-      }
+      //if ( preg_match( "/tidy-html/", $line ) )
+      //{
+      //   $version  = $file;
+      //   $basename = 'tidy';
+      //}
 
       // Custom for tripwire/github
       if ( preg_match( "/tripwire/", $line ) )
