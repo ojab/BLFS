@@ -8,7 +8,7 @@ $CHAPTERS      = 'Chapters 47-49';
 $START_PACKAGE = 'mpg123';
 $STOP_PACKAGE  = 'libisofs';
 
-//$current="xine-ui";  // For debugging
+//$current="libisofs";  // For debugging
 
 $renames = array();
 
@@ -42,6 +42,18 @@ $url_fix = array (
    array( 'pkg'     => 'amarok',
           'match'   => '^.*$', 
           'replace' => "http://download.kde.org/stable/amarok" ),
+
+   array( 'pkg'     => 'libisoburn',
+          'match'   => '^.*$', 
+          'replace' => "https://dev.lovelyhq.com/libburnia/libisoburn/tags" ),
+
+   array( 'pkg'     => 'libisofs',
+          'match'   => '^.*$', 
+          'replace' => "https://dev.lovelyhq.com/libburnia/libisofs/tags" ),
+
+   array( 'pkg'     => 'libburn',
+          'match'   => '^.*$', 
+          'replace' => "https://dev.lovelyhq.com/libburnia/libburn/tags" ),
 
    array( 'pkg'     => 'gvolwheel',
           'match'   => '^.*$', 
@@ -155,6 +167,15 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "xine-ui" )
       return find_max( $lines, "/xine-ui\//", "/^.*xine-ui\/([\d\.]+)\/.*$/" );
+
+  if ( $package == "libisoburn" )
+      return find_max( $lines, "/^\d\./", "/^([\d\.]+).*$/" );
+
+  if ( $package == "libisofs" )
+      return find_max( $lines, "/^release/", "/^release-([\d\.]+).*$/" );
+
+  if ( $package == "libburn" )
+      return find_max( $lines, "/^\d\./", "/^([\d\.]+).*$/" );
 
   if ( $package == "dvd+rw-tools" )
       return find_max( $lines, "/dvd\+/", "/^.*dvd\+rw-tools-([\d\.]+).tar.*$/" );

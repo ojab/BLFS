@@ -12,7 +12,7 @@ $renames = array();
 $renames[ 'v' ] = 'liblinear';
 $ignores = array();
 
-//$current="libusb"; // For debugging
+//$current="xapian-core"; // For debugging
 
 $regex = array();
 $regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
@@ -22,7 +22,7 @@ $regex[ 'mozjs'         ] = "/^.*mozjs(\d[\d\.]+\d).tar.*$/";
 $regex[ 'mozjs1'        ] = "/^.*mozjs-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'libiodbc'      ] = "/^.*Download libiodbc-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'libical'       ] = "/^.*v(\d[\d\.]+\d).*$/";
-$regex[ 'xapian-core'   ] = "/^.*is (\d[\d\.]+\d),.*$/";
+//$regex[ 'xapian-core'   ] = "/^.*is (\d[\d\.]+\d),.*$/";
 
 $sf = 'sourceforge.net';
 
@@ -117,7 +117,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'xapian-core',
         'match'   => '^.*$',
-        'replace' => "http://xapian.org" ),
+        'replace' => "https://oligarchy.co.uk/xapian" ),
 
  array( 'pkg'     => 'talloc',
         'match'   => '^.*$',
@@ -339,6 +339,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "grantlee" )
     return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );
+
+  if ( $book_index == "xapian-core" )
+    return find_max( $lines, "/^\d\./", "/^(\d\.[\d\.]+)\/.*$/" );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)

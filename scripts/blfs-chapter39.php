@@ -105,10 +105,6 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/pyqt/files/QScintilla2" ),
 
-   array( 'pkg'     => 'QupZilla',
-          'match'   => '^.*$', 
-          'replace' => "https://github.com/QupZilla/qupzilla/tags" ),
-
    array( 'pkg'     => 'lxqt-common',
           'match'   => '^.*$', 
           'replace' => "https://github.com/lxde/lxqt-common/releases" ),
@@ -186,7 +182,6 @@ function get_packages( $package, $dirpath )
             $book_index != "lxde-icon-theme" &&
             $book_index != "qtermwidget"     &&
             $book_index != "qterminal"       &&
-            $book_index != "QupZilla"        &&
             $book_index != "kguiaddons"      &&
             $book_index != "kwayland"        &&
             $book_index != "solid"           &&
@@ -334,9 +329,6 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "QScintilla_gpl" )
     return find_max( $lines, "/QScintilla-/", "/^.*QScintilla-([\d\.]*\d).*$/" );
-
-  if ( $book_index == "QupZilla" )
-    return find_max( $lines, "/v\d/", "/^.*v([\d\.]*\d).*$/" );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)

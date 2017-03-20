@@ -34,7 +34,7 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="check";  // For debugging
+//$current="pycrypto";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Check (\d[\d\.]+\d).*$/";
@@ -53,6 +53,7 @@ $regex[ 'OpenJDK1'] = "/^.*OpenJDK-(\d[\d\.]+\d)\-.*$/";
 $regex[ 'setuptools' ] = "/^.*setuptools-(\d[\d\.]+\d).zip.*$/";
 $regex[ 'lxml'       ] = "/^.*lxml&nbsp;(\d[\d\.]+\d).*$/";
 $regex[ 'funcsigs'   ] = "/^.*funcsigs (\d[\d\.]+\d).*$/";
+$regex[ 'pycrypto'   ] = "/^.*pycrypto (\d[\d\.]+\d).*$/";
 
 // Perl Modules
 $regex[ 'Archive-Zip'             ] = "/^.*Archive-Zip-(\d[\d\.]+\d).*$/";
@@ -336,6 +337,10 @@ $url_fix = array (
    array( 'pkg'     => 'funcsigs',
           'match'   => '^.*$',
           'replace' => "https://pypi.python.org/pypi/funcsigs" ),
+
+   array( 'pkg'     => 'pycrypto',
+          'match'   => '^.*$',
+          'replace' => "https://pypi.python.org/pypi/pycrypto" ),
 
 );
 

@@ -14,7 +14,7 @@ $renames[ 'geoclue1' ] = 'geoclue2';
 $ignores = array();
 $ignores[ 'rpcnis-headers' ] = '';
 
-//$current="nghttp2";
+//$current="fetchmail";
 
 $regex = array();
 $regex[ 're-alpine' ] = "/^.*Download re-alpine-(\d[\d\.]+\d).tar.*$/";
@@ -23,6 +23,7 @@ $regex[ 'serf'      ] = "/^.*Serf is ([\d\.]+\d).*$/";
 $regex[ 'neon'      ] = "/^.*Source code: neon-(\d[\d\.]*).tar.*$/";
 $regex[ 'geoclue'   ] = "/^.*geoclue-(\d[\d\.]+).tar.*$/";
 $regex[ 'libevent'  ] = "/^.*release-(\d[\d\.]*)-stable.*$/";
+$regex[ 'fetchmail' ] = "/^.*Download fetchmail-(\d[\d\.]*).tar.*$/";
 
 $url_fix = array (
 
@@ -37,6 +38,10 @@ $url_fix = array (
    array( 'pkg'     => 'w3m',
           'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/w3m/files" ),
+
+   array( 'pkg'     => 'fetchmail',
+          'match'   => '^.*$',
+          'replace' => "https://sourceforge.net/projects/fetchmail/files" ),
 
    array( 'pkg'     => 'links',
           'match'   => '^.*$',

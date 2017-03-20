@@ -17,7 +17,7 @@ $renames[ 'qt-everywhere-opensource-src'   ] = 'qt5';
 
 $ignores = array();
 
-//$current="webkitgtk"; // For debugging
+//$current="QScintilla_gpl"; // For debugging
 
 $regex = array();
 $regex[ 'freeglut' ] = "/^.*Download freeglut-(\d[\d\.]+\d).tar.*$/";
@@ -46,6 +46,10 @@ $url_fix = array (
    array( 'pkg'     => 'lxdm',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/lxdm/files" ),
+
+   array( 'pkg'     => 'QScintilla_gpl',
+          'match'   => '^.*$', 
+          'replace' => "https://sourceforge.net/projects/pyqt/files/QScintilla2" ),
 
    array( 'pkg'     => 'sddm',
           'match'   => '^.*$', 
@@ -181,6 +185,15 @@ function get_packages( $package, $dirpath )
       $dirpath .= "/$dir/single";
     }
 
+    if ( $book_index == "QScintilla_gpl" )
+    {
+      $dirs = http_get_file( "$dirpath/" );    
+      $dir = find_max ( $dirs, "/QScintilla/", "/^.*(QScintilla-[\d\.]+).*$/" );
+      $dirpath .= "/$dir";
+      $lines    = http_get_file( "$dirpath/" );
+      $ver = find_max( $lines, "/QScintilla_gpl/", "/^.*QScintilla_gpl-([\d\.]+).tar.*$/" );
+      return $ver;
+    }
     if ( $book_index == "fltk" )
     {
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash

@@ -17,19 +17,20 @@ $ignores[ 'flash_player_ppapi_linux.i' ] = '';
 
 $libreoffice = array();
 
-//$current="inkscape";
+//$current="QupZilla";
 
 $regex = array();
 //$regex[ 'inkscape'     ] = "/^.*Latest stable.*(\d[\d\.]+\d).*$/";
 //$regex[ 'chromium'     ] = "/^.*stable.*updated to (\d[\d\.]+\d) for Windows.*$/";
-$regex[ 'chromium'     ] = "/^pkgver=(\d[\d\.]+\d).*$/";
-$regex[ 'gnucash'      ] = "/^.*Download gnucash-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'pidgen'       ] = "/^.*Download pidgin-(\d[\d\.]+\d).*$/";
+$regex[ 'chromium'      ] = "/^pkgver=(\d[\d\.]+\d).*$/";
+$regex[ 'gnucash'       ] = "/^.*Download gnucash-(\d[\d\.]+\d).tar.*$/";
+$regex[ 'midori'        ] = "/^.*midori_(\d[\d\.]*\d)_all.*$/";
+$regex[ 'pidgen'        ] = "/^.*Download pidgin-(\d[\d\.]+\d).*$/";
 $regex[ 'fontforge-dist'] = "/^.*fontforge-dist-(20\d+).tar.*$/";
-$regex[ 'xscreensaver' ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'tigervnc'     ] = "/^.*TigerVNC (\d[\d\.]+\d)$/";
-$regex[ 'transmission' ] = "/^.*Transmission (\d[\d\.]+\d).*$/";
-$regex[ 'xarchiver'    ] = "/^.*Download xarchiver-(\d[\d\.]+\d).tar.*$/";
+$regex[ 'xscreensaver'  ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
+$regex[ 'tigervnc'      ] = "/^.*TigerVNC (\d[\d\.]+\d)$/";
+$regex[ 'transmission'  ] = "/^.*Transmission (\d[\d\.]+\d).*$/";
+$regex[ 'xarchiver'     ] = "/^.*Download xarchiver-(\d[\d\.]+\d).tar.*$/";
 
 $url_fix = array (
 
@@ -62,6 +63,10 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://download.documentfoundation.org/libreoffice/stable" ),
 
+   array( 'pkg'     => 'midori',
+          'match'   => '^.*$', 
+          'replace' => "http://www.midori-browser.org/download/source" ),
+
    array( 'pkg'     => 'gimp',
           'match'   => '^.*$',
           'replace' => "http://download.gimp.org/pub/gimp" ),
@@ -85,6 +90,10 @@ $url_fix = array (
    array( 'pkg'     => 'pidgin',
           'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/pidgin/files" ),
+
+   array( 'pkg'     => 'QupZilla',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/QupZilla/qupzilla/tags" ),
 
    array( 'pkg'     => 'rox-filer',
           'match'   => '^.*$',
@@ -225,7 +234,11 @@ function get_packages( $package, $dirpath )
          $dirpath .= "/$dir/";
      }
 
-     $lines = http_get_file( $dirpath );
+     if ( $book_index == "midori" )
+       exec( "curl -L -s -m30 $dirpath", $lines );
+     else
+       $lines = http_get_file( "$dirpath/" );
+
      if ( ! is_array( $lines ) ) return $lines;
   } // End fetch
 
@@ -269,6 +282,9 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "gparted" )
       return find_max( $lines, "/$package/", "/^.*$package-([\d\.]+).*$/" );
+
+  if ( $book_index == "QupZilla" )
+    return find_max( $lines, "/v\d/", "/^.*v([\d\.]*\d).*$/" );
 
   if ( $package == "rox-filer" )
       return find_max( $lines, "/rox\/files/", "/^.*rox\/(\d\.[\d\.]+)\/.*$/" );

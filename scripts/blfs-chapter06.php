@@ -13,7 +13,7 @@ $renames[ 'zsh1' ] = 'zsh-doc';
 
 $ignores = array();
 
-//$current="nano";   // For debugging
+//$current="dash";   // For debugging
 
 $regex = array();
 $regex[ 'joe'  ] = "/^.*Download joe-(\d[\d\.]+).tar.*$/";
@@ -42,6 +42,10 @@ $url_fix = array (
   array( 'pkg'     => 'nano',
          'match'   => '^.*$', 
          'replace' => "https://www.nano-editor.org/dist/" ),
+
+  array( 'pkg'     => 'dash',
+         'match'   => '^.*$', 
+         'replace' => "https://git.kernel.org/pub/scm/utils/dash/dash.git/refs" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -121,6 +125,9 @@ function get_packages( $package, $dirpath )
   // emacs
   if ( $book_index == "emacs" )
     return find_max( $lines, '/emacs/', '/^.*emacs-([\d\.]+).tar.*$/' );
+
+  if ( $book_index == "dash" )
+    return find_max( $lines, '/^v\d/', '/^v([\d\.]+).*$/' );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)

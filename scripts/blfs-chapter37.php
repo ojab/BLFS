@@ -15,7 +15,6 @@ $renames[ 'libfm1' ] = 'libfm';
 $ignores = array();
 
 $regex = array();
-$regex[ 'midori'      ] = "/^.*midori_(\d[\d\.]*\d)_all.*$/";
 $regex[ 'libfm'       ] = "/^.*Download libfm-([\d\.]+).tar.*$/";
 $regex[ 'libfm1'      ] = "/^.*Download libfm-([\d\.]+).tar.*$/";
 $regex[ 'lxde-common' ] = "/^.*Download lxde-common-([\d\.]+).tar.*$/";
@@ -86,10 +85,6 @@ $url_fix = array (
           'replace' => 
               "https://sourceforge.net/projects/lxde/files/LXPanel%20%28desktop%20panel%29" ),
 
-   array( 'pkg'     => 'midori',
-          'match'   => '^.*$', 
-          'replace' => "http://www.midori-browser.org/download/source" ),
-
    array( 'pkg'     => 'pcmanfm',
           'match'   => '^.*$', 
           'replace' => "https://sourceforge.net/projects/pcmanfm/files/PCManFM%20%2B%20Libfm%20%28tarball%20release%29/PCManFM" ),
@@ -101,10 +96,6 @@ $url_fix = array (
    array( 'pkg'     => 'qterminal',
           'match'   => '^.*$', 
           'replace' => "https://github.com/lxde/qterminal/releases" ),
-
-   array( 'pkg'     => 'QScintilla_gpl',
-          'match'   => '^.*$', 
-          'replace' => "https://sourceforge.net/projects/pyqt/files/QScintilla2" ),
 
    array( 'pkg'     => 'QupZilla',
           'match'   => '^.*$', 
@@ -291,17 +282,7 @@ function get_packages( $package, $dirpath )
     $ver = find_max( $lines, "/QupZilla/", "/^\s+QupZilla-([\d\.]+).tar.*$/" );
     return $ver;
   }
-  else if ( $book_index == "QScintilla_gpl" )
-  {
-    $dirs = http_get_file( "$dirpath/" );    
-    $dir = find_max ( $dirs, "/QScintilla/", "/^\s*(QScintilla-[\d\.]+).*$/" );
-    $dirpath .= "/$dir";
-    $lines    = http_get_file( "$dirpath/" );
-    $ver = find_max( $lines, "/QScintilla_gpl/", "/^\s+QScintilla_gpl-([\d\.]+).tar.*$/" );
-    return $ver;
-  }
-  else if ( $book_index != "midori"       &&
-            $book_index != "lxmenu-data"  &&
+  else if ( $book_index != "lxmenu-data"  &&
             $book_index != "libfm"        &&
             $book_index != "libfm1"       &&
             $book_index != "lxde-common"  &&
@@ -328,10 +309,7 @@ function get_packages( $package, $dirpath )
   // Others
   else 
   {
-     if ( $book_index == "midori" )
-       exec( "curl -L -s -m30 $dirpath", $lines );
-     else
-       $lines = http_get_file( "$dirpath/" );
+     $lines = http_get_file( "$dirpath/" );
   }
 
   if ( isset( $regex[ $package ] ) )

@@ -17,6 +17,11 @@ $renames[ 'x264-snapshot'   ] = 'x264';
 $renames[ 'x1'              ] = 'x265';
 
 $ignores = array();
+$ignores[ 'chromium-launcher' ] = '';
+$ignores[ 'flash_player_ppapi_linux.x' ] = '';
+$ignores[ 'flash_player_ppapi_linux.i' ] = '';
+$ignores[ 'flash_player_npapi_linux.x' ] = '';
+$ignores[ 'flash_player_npapi_linux.i' ] = '';
 
 //$current="fdk-aac";
 
