@@ -17,7 +17,7 @@ $ignores[ 'flash_player_ppapi_linux.i' ] = '';
 
 $libreoffice = array();
 
-//$current="QupZilla";
+//$current="xscreensaver";
 
 $regex = array();
 //$regex[ 'inkscape'     ] = "/^.*Latest stable.*(\d[\d\.]+\d).*$/";
@@ -237,7 +237,7 @@ function get_packages( $package, $dirpath )
      if ( $book_index == "midori" )
        exec( "curl -L -s -m30 $dirpath", $lines );
      else
-       $lines = http_get_file( "$dirpath/" );
+       $lines = http_get_file( "$dirpath" );
 
      if ( ! is_array( $lines ) ) return $lines;
   } // End fetch
