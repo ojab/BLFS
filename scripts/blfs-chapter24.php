@@ -88,18 +88,8 @@ function get_packages( $package, $dirpath )
     // MesaLib
     if ( $book_index == "mesa" )
     {
-      // Get the max directory and adjust the directory path
-      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-      $position = strrpos( $dirpath, "/" );
-      $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
-      $lines    = http_get_file( "$dirpath/" );
-
-      // The directory is not always the same as the package
-      $max   = find_max( $lines, "/\d$/", "/^.* (\d+[\d\.]+)$/" );
-      $split = explode( ".", $max );
-      if ( count( $split ) < 3 ) $max .= ".0";
-
-      return $max;
+      $lines = http_get_file( "$dirpath/" );
+      return find_max( $lines, "/mesa/", "/^.*mesa-(\d+[\d\.]+).tar.*$/" );
     }
 
      if ( $dirpath == $xorg_drv )
