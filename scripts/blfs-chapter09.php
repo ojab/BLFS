@@ -9,20 +9,17 @@ $START_PACKAGE = 'appstream-glib';
 $STOP_PACKAGE  = 'xapian-core';
 
 $renames = array();
-$renames[ 'v' ] = 'liblinear';
+$renames[ 'v'       ] = 'liblinear';
 $ignores = array();
 
-//$current="xapian-core"; // For debugging
+//$current="mozjs"; // For debugging
 
 $regex = array();
 $regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
 $regex[ 'expat'         ] = "/^.*Download expat-([\d\.]+).tar.*$/";
 $regex[ 'libzeitgeist'  ] = "/^.*Latest version is ([\d\.]+)\s*$/";
-$regex[ 'mozjs'         ] = "/^.*mozjs(\d[\d\.]+\d).tar.*$/";
-$regex[ 'mozjs1'        ] = "/^.*mozjs-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'libiodbc'      ] = "/^.*Download libiodbc-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'libical'       ] = "/^.*v(\d[\d\.]+\d).*$/";
-//$regex[ 'xapian-core'   ] = "/^.*is (\d[\d\.]+\d),.*$/";
 
 $sf = 'sourceforge.net';
 
@@ -140,6 +137,8 @@ function get_packages( $package, $dirpath )
   global $current;
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
+
+  if ( $package == "mozjs" ) return "manual";
 
   // Fix up directory path
   foreach ( $url_fix as $u )

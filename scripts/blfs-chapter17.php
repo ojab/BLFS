@@ -21,7 +21,6 @@ $regex[ 're-alpine' ] = "/^.*Download re-alpine-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'w3m'       ] = "/^.*Download w3m-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'serf'      ] = "/^.*Serf is ([\d\.]+\d).*$/";
 $regex[ 'neon'      ] = "/^.*Source code: neon-(\d[\d\.]*).tar.*$/";
-$regex[ 'geoclue'   ] = "/^.*geoclue-(\d[\d\.]+).tar.*$/";
 $regex[ 'libevent'  ] = "/^.*release-(\d[\d\.]*)-stable.*$/";
 $regex[ 'fetchmail' ] = "/^.*Download fetchmail-(\d[\d\.]*).tar.*$/";
 
@@ -61,7 +60,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'geoclue',
           'match'   => '^.*$',
-          'replace' => "https://launchpad.net/geoclue/trunk" ),
+          'replace' => "http://www.freedesktop.org/software/geoclue/releases" ),
 
    array( 'pkg'     => 'libpcap',
           'match'   => '^.*$',
@@ -166,6 +165,13 @@ function get_packages( $package, $dirpath )
       $lines1   = http_get_file( $dirpath );
       $dir      = find_even_max( $lines1, '/^\s*[\d\.]+\/.*$/', '/^\s*([\d\.]+).*$/' );
       $dirpath .= "/$dir/";
+    }
+
+    if ( $book_index == "geoclue" )
+    {
+      $lines    = http_get_file( $dirpath );
+      $dir      = find_max( $lines, '/\d\./', '/^.*(\d\.[\d\.]+)\/.*$/' );
+      $dirpath .= "/$dir";
     }
 
     $lines = http_get_file( $dirpath );
