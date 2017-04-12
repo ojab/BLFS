@@ -11,9 +11,11 @@ $STOP_PACKAGE  = 'xfsprogs';
 $renames = array();
 $renames[ 'btrfs-progs-v' ] = 'btrfs-progs';
 $renames[ 'LVM2.'         ] = 'LVM2';
+$renames[ 'fuse'          ] = 'fuse3';
+$renames[ 'fuse1'         ] = 'fuse2';
 $ignores = array();
 
-//$current="sshfs";   // For debugging
+//$current="fuse1";   // For debugging
 
 $regex = array();
 $regex[ 'ntfs-3g_ntfsprogs' ] = "/^.*Stable Source Release ([\d\.]+).*$/";
@@ -23,6 +25,10 @@ $sf = 'sourceforge.net';
 $url_fix = array (
 
  array( 'pkg'     => 'fuse',
+        'match'   => '^.*$', 
+        'replace' => "https://github.com/libfuse/libfuse/releases" ),
+
+ array( 'pkg'     => 'fuse1',
         'match'   => '^.*$', 
         'replace' => "https://github.com/libfuse/libfuse/releases" ),
 
@@ -120,7 +126,6 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "jfsutils" )
   {
-//print_r($lines);
     $max = find_max( $lines, '/release/', '/^.*release ([\d\.]+).*$/' );
     return $max;
   }
@@ -128,6 +133,18 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "reiserfsprogs" )
   {
     $max = find_max( $lines, '/^v[\d\.]+.*$/', '/^v([\d\.]+).*$/' );
+    return $max;
+  }
+
+  if ( $book_index == "fuse1" )
+  {
+    $max = find_max( $lines, '/fuse-2/', '/^.*fuse-(2[\d\.]*)\.tar.*$/' );
+    return $max;
+  }
+
+  if ( $book_index == "fuse" )
+  {
+    $max = find_max( $lines, '/fuse-3/', '/^.*fuse-(3[\d\.]*)\.tar.*$/' );
     return $max;
   }
 
