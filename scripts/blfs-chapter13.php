@@ -9,6 +9,8 @@ $START_PACKAGE = 'check';
 $STOP_PACKAGE  = 'junit';
 
 $renames = array();
+$renames[ 'llvm'       ] = 'llvm-3';
+$renames[ 'llvm1'      ] = 'llvm-4';
 $renames[ 'py'         ] = 'pycairo';
 $renames[ 'Python'     ] = 'python2';
 $renames[ 'Python1'    ] = 'python3';
@@ -34,13 +36,13 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="pycrypto";  // For debugging
+//$current="llvm1";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Check (\d[\d\.]+\d).*$/";
 $regex[ 'expect'  ] = "/^.*Download expect(\d[\d\.]+\d).tar.*$/";
 $regex[ 'junit4'  ] = "/^\h*(\d[\d\.]+)\h*$/";
-$regex[ 'llvm'    ] = "/^.*Download LLVM (\d[\d\.]+\d).*$/";
+//$regex[ 'llvm'    ] = "/^.*Download LLVM (\d[\d\.]+\d).*$/";
 $regex[ 'scons'   ] = "/^.*Download scons-(\d[\d\.]+\d).*$/";
 $regex[ 'tcl'     ] = "/^.*Download tcl(\d[\d\.]+\d).*$/";
 $regex[ 'Python'  ] = "/^.*Latest Python 2.*Python (2[\d\.]+\d).*$/";
@@ -119,6 +121,10 @@ $url_fix = array (
           'replace' => "https://github.com/ninja-build/ninja/releases" ),
 
    array( 'pkg'     => 'llvm',
+          'match'   => '^.*$',
+          'replace' => "http://llvm.org/releases/download.html" ),
+
+   array( 'pkg'     => 'llvm1',
           'match'   => '^.*$',
           'replace' => "http://llvm.org/releases/download.html" ),
 
@@ -528,10 +534,10 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/doxygen/', '/^.*doxygen-([\d\.]+).src.tar.*$/' );
 
   if ( $book_index == "llvm" )
-  {
-     return find_max( $lines, "/^.*$book_index-.*.src.*$/",
-                              "/^.*$book_index-([\d\.]+)\.src.*$/" );
-  }
+     return find_max( $lines, "/Download LLVM/",  "/^.*LLVM (3[\d\.]+).*$/" );
+
+  if ( $book_index == "llvm1" )
+     return find_max( $lines, "/Download LLVM/",  "/^.*LLVM (4[\d\.]+).*$/" );
 
   if ( $book_index == "elfutils" )
   {
