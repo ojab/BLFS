@@ -17,11 +17,11 @@ $renames[ 'qt-everywhere-opensource-src'   ] = 'qt5';
 
 $ignores = array();
 
-//$current="QScintilla_gpl"; // For debugging
+//$current="libepoxy"; // For debugging
 
 $regex = array();
 $regex[ 'freeglut' ] = "/^.*Download freeglut-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'libepoxy' ] = "/^.*v(\d[\d\.]+\d).*$/";
+//$regex[ 'libepoxy' ] = "/^.*v(\d[\d\.]+\d).*$/";
 $regex[ 'lxdm'     ] = "/^.*Download lxdm-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'sddm'     ] = "/^.*Version (\d[\d\.]+\d).*$/";
 
@@ -215,11 +215,11 @@ function get_packages( $package, $dirpath )
         $ver = preg_replace( $regex[ $package ], "$1", $l );
         if ( $ver == $l ) continue;
 
-        if ( $book_index == "libepoxy" )
-        {
-          for ( $i = 0; $i < strlen($ver); $i++ ) if ( $max[$i] == '.' ) $dots++;
-          if ( $dots < 2 ) $ver .= '.0';
-        }
+        //if ( $book_index == "libepoxy" )
+        //{
+        //  for ( $i = 0; $i < strlen($ver); $i++ ) if ( $max[$i] == '.' ) $dots++;
+        //  if ( $dots < 2 ) $ver .= '.0';
+        // }
 
         return $ver;  // Return first match of regex
      }
