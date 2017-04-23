@@ -5,7 +5,7 @@ include 'blfs-include.php';
 
 $CHAPTER       = '17';
 $CHAPTERS      = 'Chapters 17-19';
-$START_PACKAGE = 'curl';
+$START_PACKAGE = 'c-ares';
 $STOP_PACKAGE  = 're-alpine';
 
 $renames = array();
@@ -14,7 +14,7 @@ $renames[ 'geoclue1' ] = 'geoclue2';
 $ignores = array();
 $ignores[ 'rpcnis-headers' ] = '';
 
-//$current="fetchmail";
+//$current="c-ares";
 
 $regex = array();
 $regex[ 're-alpine' ] = "/^.*Download re-alpine-(\d[\d\.]+\d).tar.*$/";
@@ -194,6 +194,9 @@ function get_packages( $package, $dirpath )
 
      return 0;  // This is an error
   }
+
+  if ( $book_index == "c-ares" )
+    return find_max( $lines, '/c-ares/', '/^.*c-ares ([\d\.]+) .*$/' );
 
   if ( $book_index == "libndp" )
     return find_max( $lines, '/v\d/', '/^.*v([\d\.]+)$/' );
