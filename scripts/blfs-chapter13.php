@@ -36,13 +36,12 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="llvm1";  // For debugging
+//$current="rustc";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Check (\d[\d\.]+\d).*$/";
 $regex[ 'expect'  ] = "/^.*Download expect(\d[\d\.]+\d).tar.*$/";
 $regex[ 'junit4'  ] = "/^\h*(\d[\d\.]+)\h*$/";
-//$regex[ 'llvm'    ] = "/^.*Download LLVM (\d[\d\.]+\d).*$/";
 $regex[ 'scons'   ] = "/^.*Download scons-(\d[\d\.]+\d).*$/";
 $regex[ 'tcl'     ] = "/^.*Download tcl(\d[\d\.]+\d).*$/";
 $regex[ 'Python'  ] = "/^.*Latest Python 2.*Python (2[\d\.]+\d).*$/";
@@ -119,6 +118,10 @@ $url_fix = array (
    array( 'pkg'     => 'v',
           'match'   => '^.*$',
           'replace' => "https://github.com/ninja-build/ninja/releases" ),
+
+   array( 'pkg'     => 'rustc',
+          'match'   => '^.*$',
+          'replace' => "https://github.com/rust-lang/rust/releases" ),
 
    array( 'pkg'     => 'llvm',
           'match'   => '^.*$',
@@ -544,11 +547,17 @@ function get_packages( $package, $dirpath )
      return find_max( $lines, "/\d[\d\.]+/", "/^.* (\d[\d\.]+)$/" );
   }
 
-    if ( $package == "v" )  // ninja
-    {
-      $max = find_max( $lines, "/v/", "/^.*v(\d[\d\.]*\d).*$/" );
-      return $max;
-    }
+  if ( $package == "v" )  // ninja
+  {
+    $max = find_max( $lines, "/v/", "/^.*v(\d[\d\.]*\d).*$/" );
+    return $max;
+  }
+
+  if ( $package == "rustc" )
+  {
+    $max = find_max( $lines, "/release/", "/^.* (\d[\d\.]+\d) release.*$/" );
+    return $max;
+  }
 
   if ( $book_index == "swig" )
      return find_max( $lines, "/swig-/", "/.*swig-(\d[\d\.]+\d).*/" );

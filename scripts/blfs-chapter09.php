@@ -10,9 +10,10 @@ $STOP_PACKAGE  = 'xapian-core';
 
 $renames = array();
 $renames[ 'v'       ] = 'liblinear';
+$renames[ 'v1'      ] = 'node.js';
 $ignores = array();
 
-//$current="mozjs"; // For debugging
+//$current="v1"; // For debugging
 
 $regex = array();
 $regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
@@ -99,6 +100,10 @@ $url_fix = array (
  array( 'pkg'     => 'v',  //liblinear
         'match'   => '^.*$',
         'replace' => "https://github.com/cjlin1/liblinear/releases" ),
+
+ array( 'pkg'     => 'v1',  //liblinear
+        'match'   => '^.*$',
+        'replace' => "https://github.com/nodejs/node/releases" ),
 
  array( 'pkg'     => 'wv',
         'match'   => '^.*$',
@@ -304,6 +309,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "v" ) // liblinear
     return find_max( $lines, '/v\d/', '/^.*v(\d+)$/' );
+
+  if ( $book_index == "v1" ) // node.js
+    return find_max( $lines, '/v\d\./', '/^.*v(\d[\d\.]+).*$/' );
 
   if ( $book_index == "libusb-compat" )
     return find_max( $lines, '/^.*compat-[\d\.]+$/', '/^.*compat-([\d\.]+)$/' );

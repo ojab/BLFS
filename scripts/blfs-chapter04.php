@@ -14,7 +14,7 @@ $renames[ 'Linux-PAM1' ] = 'Linux-PAM-docs';
 $ignores = array();
 $ignores[ 'openssh1' ] = "";
 
-//$current="libpwquality";   // For debugging
+//$current="p11-kit";   // For debugging
 
 $regex = array();
 $regex[ 'krb5'           ] = "/^.*Kerberos V5 Release ([\d\.]+).*$/";
@@ -56,6 +56,10 @@ $url_fix = array(
    array( 'pkg'     => 'openssh',
           'match'   => '^ftp',
           'replace' => 'http' ),
+
+   array( 'pkg'     => 'p11-kit',
+          'match'   => '^.*$',
+          'replace' => 'https://github.com/p11-glue/p11-kit/releases' ),
 
    array( 'pkg'     => 'libpwquality',
           'match'   => '^.*$',

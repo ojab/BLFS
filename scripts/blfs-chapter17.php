@@ -14,7 +14,7 @@ $renames[ 'geoclue1' ] = 'geoclue2';
 $ignores = array();
 $ignores[ 'rpcnis-headers' ] = '';
 
-//$current="c-ares";
+//$current="lynx";
 
 $regex = array();
 $regex[ 're-alpine' ] = "/^.*Download re-alpine-(\d[\d\.]+\d).tar.*$/";
@@ -80,7 +80,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'lynx',
           'match'   => '^.*$',
-          'replace' => "ftp://lynx.isc.org/lynx/tarballs/" ),
+          'replace' => "http://invisible-mirror.net/archives/lynx/tarballs" ),
 
    array( 'pkg'     => 'libnl',
           'match'   => '^.*$',
@@ -141,14 +141,6 @@ function get_packages( $package, $dirpath )
       $dirpath .= "/$dir/";
     }
 
-    // lynx - really has odd name format
-    if ( $book_index == "lynx" )
-    {
-      $lines = http_get_file( $dirpath );
-      $max = find_max( $lines, "/rel/", "/^.*lynx(\d[\d\.]+rel\.\d).tar.*$/" );
-      return $max;
-    }
-
     // Get listing
     $lines   = http_get_file( "$dirpath/" );
   }
@@ -165,6 +157,14 @@ function get_packages( $package, $dirpath )
       $lines1   = http_get_file( $dirpath );
       $dir      = find_even_max( $lines1, '/^\s*[\d\.]+\/.*$/', '/^\s*([\d\.]+).*$/' );
       $dirpath .= "/$dir/";
+    }
+
+    // lynx - really has odd name format
+    if ( $book_index == "lynx" )
+    {
+      $lines = http_get_file( $dirpath );
+      $max = find_max( $lines, "/rel/", "/^.*lynx(\d[\d\.]+rel\.\d).tar.*$/" );
+      return $max;
     }
 
     if ( $book_index == "geoclue" )
