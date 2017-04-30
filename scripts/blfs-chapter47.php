@@ -3,9 +3,9 @@
 
 include 'blfs-include.php';
 
-$CHAPTER       = '47';
-$CHAPTERS      = 'Chapters 47-49';
-$START_PACKAGE = 'mpg123';
+$CHAPTER       = '45';
+$CHAPTERS      = 'Chapters 45-47';
+$START_PACKAGE = 'audacious';
 $STOP_PACKAGE  = 'libisofs';
 
 //$current="libisofs";  // For debugging

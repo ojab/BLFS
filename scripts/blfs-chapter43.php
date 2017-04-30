@@ -4,7 +4,7 @@
 include 'blfs-include.php';
 
 $CHAPTER       = '43';
-$CHAPTERS      = 'Chapters 43-45';
+$CHAPTERS      = 'Chapters 41-43';
 $START_PACKAGE = 'abiword';
 $STOP_PACKAGE  = 'xscreensaver';
 
