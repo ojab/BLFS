@@ -13,7 +13,7 @@ $renames[ 'v'       ] = 'liblinear';
 $renames[ 'v1'      ] = 'node.js';
 $ignores = array();
 
-//$current="v1"; // For debugging
+//$current="fftw"; // For debugging
 
 $regex = array();
 $regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
@@ -303,6 +303,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "libsigc++" )
     return find_max( $lines, '/^.*libsigc.*[\d\.]+.*$/', '/^.*libsigc\+\+-([\d\.]+).tar.*$/' );
+
+  if ( $book_index == "fftw" )
+    return find_max( $lines, '/ fftw-\d/', '/^.* fftw-([\d\.pl\-]+)\.tar.*$/' );
 
   if ( $book_index == "libusb" )
     return find_max( $lines, '/libusb v/', '/^.*libusb v([\d\.]+).*$/' );
