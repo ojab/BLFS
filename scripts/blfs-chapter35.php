@@ -13,7 +13,7 @@ $ignores = array();
 
 $kde_ver  = "";
 
-//$current="telepathy-glib";  // For debugging
+$current="telepathy-glib";  // For debugging
 
 $regex = array();
 //$regex[ 'libzeitgeist' ] = "/^.*Latest version is (\d[\d\.]+\d).*$/";
@@ -97,6 +97,7 @@ function get_packages( $package, $dirpath )
          $book_index == "dconf"                     ||
          $book_index == "gnome-icon-theme"          ||
          $book_index == "gnome-icon-theme-symbolic" ||
+         $book_index == "gnome-user-docs"           ||
          $book_index == "gnome-themes-standard"     ||
          $book_index == "notification-daemon"       ||
          $book_index == "yelp"                      ||
