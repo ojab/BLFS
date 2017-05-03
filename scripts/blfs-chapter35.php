@@ -13,7 +13,7 @@ $ignores = array();
 
 $kde_ver  = "";
 
-$current="telepathy-glib";  // For debugging
+//$current="telepathy-glib";  // For debugging
 
 $regex = array();
 //$regex[ 'libzeitgeist' ] = "/^.*Latest version is (\d[\d\.]+\d).*$/";
