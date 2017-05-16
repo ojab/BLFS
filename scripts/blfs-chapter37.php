@@ -337,7 +337,8 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "lxde-icon-theme" )
     return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d).*$/" );
 
-  if ( $book_index == "xfce4-terminal" )
+  if ( $book_index == "xfce4-terminal" ||
+       $book_index == "tumbler"         )
     return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d).*$/", TRUE );
 
   // Most packages are in the form $package-n.n.n
