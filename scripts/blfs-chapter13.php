@@ -36,7 +36,7 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="rustc";  // For debugging
+//$current="Text-CSV";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Check (\d[\d\.]+\d).*$/";
@@ -85,7 +85,7 @@ $regex[ 'Sort-Key'                ] = "/^.*Sort-Key-(\d[\d\.]+\d).*$/";
 $regex[ 'Test-Command'            ] = "/^.*Test-Command-(\d[\d\.]+\d).*$/";
 $regex[ 'Test-Differences'        ] = "/^.*Test-Differences-(\d[\d\.]+\d).*$/";
 $regex[ 'Text-BibTeX'             ] = "/^.*Text-BibTeX-(\d[\d\.]+\d).*$/";
-$regex[ 'Text-CSV'                ] = "/^.*Text-CSV-(\d[\d\.]+\d).*$/";
+//$regex[ 'Text-CSV'                ] = "/^.*Text-CSV-(\d[\d\.]+\d).*$/";
 $regex[ 'Text-Roman'              ] = "/^.*Text-Roman-(\d[\d\.]+\d).*$/";
 $regex[ 'Unicode-Collate'         ] = "/^.*Unicode-Collate-(\d[\d\.]+\d).*$/";
 $regex[ 'Unicode-LineBreak'       ] = "/^.*Unicode-LineBreak-(\d[\d\.]+\d)$/";
@@ -516,7 +516,7 @@ function get_packages( $package, $dirpath )
     $lines = http_get_file( $dirpath, $strip );
     if ( ! is_array( $lines ) ) return $lines;
   } // End fetch
-//print_r($lines);
+
   if ( isset( $regex[ $package ] ) )
   {
      // Custom search for latest package name
@@ -590,6 +590,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "apache-ant" )
     return find_max( $lines, "/$package/", "/^.*$package-(\d[\d\.]+\d)-src.*$/" );
+
+  if ( $book_index == "Text-CSV" )
+    return find_max( $lines, "/$package/", "/^.*$package-(\d[\d\.]+\d).*$/" );
 
   if ( $book_index == "tk" )
   {
