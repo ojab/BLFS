@@ -79,9 +79,9 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "https://github.com/nicklan/pnmixer/downloads" ),
 
-   array( 'pkg'     => 'k3b',
+   array( 'pkg'     => 'kwave',
           'match'   => '^.*$', 
-          'replace' => "http://download.kde.org/stable/k3b" ),
+          'replace' => "http://download.kde.org/stable/applications" ),
 
    array( 'pkg'     => 'simpleburn',
           'match'   => '^.*$', 
@@ -174,6 +174,9 @@ function get_packages( $package, $dirpath )
   if ( $package == "libisofs" )
       return find_max( $lines, "/^release/", "/^release-([\d\.]+).*$/" );
 
+  if ( $package == "kwave" )
+      return find_max( $lines, "/;\d\d\./", "/^.*;(\d\d\.[\d\.]+)\/.*$/" );
+
   if ( $package == "libburn" )
       return find_max( $lines, "/^\d\./", "/^([\d\.]+).*$/" );
 
@@ -195,8 +198,8 @@ function get_pattern( $line )
      array( 'pkg'   => 'mpg123', 
             'regex' => "/^.*mpg123-(\d[\d\.]+).*$/" ),
      
-     array( 'pkg'   => 'k3b', 
-            'regex' => "/^.*k3b-(\d[\d\.]+).*$/" ),
+     array( 'pkg'   => 'kwave', 
+            'regex' => "/^.*kwave-(\d[\d\.]+).*$/" ),
 
      array( 'pkg'   => 'mplayer', 
             'regex' => "/^.*mplayer-(SVN-r\d+).*$/" ),
