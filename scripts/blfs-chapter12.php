@@ -76,6 +76,10 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "https://github.com/logrotate/logrotate" ),
 
+   array( 'pkg'     => 'udisks1',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/storaged-project/udisks/releases" ),
+
 );
 
 function get_packages( $package, $dirpath )
@@ -193,7 +197,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/\d{6}/', '/^.* (\d{6})\h*$/' );
 
   if ( $book_index == "udisks1" )
-    return find_max( $lines, '/udisks/', '/^.*udisks-(\d[\d\.]*\d).tar.*$/' );
+    return find_max( $lines, '/udisks/', '/^.*udisks (\d[\d\.]*\d).*$/' );
 
   if ( $book_index == "p7zip" )
   {

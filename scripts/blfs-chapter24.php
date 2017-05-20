@@ -40,6 +40,10 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "https://github.com/i-rinat/libvdpau-va-gl/releases" ),
 
+   array( 'pkg'     => 'xf86-input-libinput',
+          'match'   => '^.*$', 
+          'replace' => "$xorg_drv" ),
+
 );
 function get_packages( $package, $dirpath )
 {
