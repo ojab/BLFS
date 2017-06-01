@@ -59,7 +59,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'libatomic_ops',
         'match'   => '^.*$',
-        'replace' => "http://www.ivmaisoft.com/_bin/atomic_ops" ),
+        'replace' => "https://github.com/ivmai/libatomic_ops/wiki/Download" ),
 
  array( 'pkg'     => 'libdbusmenu-qt',
         'match'   => '^.*$',
@@ -333,7 +333,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/libpaper/', '/.*libpaper_([\d\.]+\+nmu\d).tar.*$/' );
 
   if ( $book_index == "libatomic_ops" )
-    return find_max( $lines, '/tar/', '/.*ops-([\d\.]+).tar.*$/' );
+    return find_max( $lines, '/stable/', '/.*ops-([\d\.]+).tar.*$/' );
 
   if ( $book_index == "openobex" )
     return find_max( $lines, '/openobex/', '/^.*openobex\/([\d\.]+)\/.*$/' );
