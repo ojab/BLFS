@@ -6,7 +6,7 @@ include 'blfs-include.php';
 $CHAPTER       = '17';
 $CHAPTERS      = 'Chapters 17-19';
 $START_PACKAGE = 'c-ares';
-$STOP_PACKAGE  = 're-alpine';
+$STOP_PACKAGE  = 'fetchmail';
 
 $renames = array();
 $renames[ 'geoclue1' ] = 'geoclue2';
