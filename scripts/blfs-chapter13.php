@@ -11,7 +11,7 @@ $STOP_PACKAGE  = 'junit';
 $renames = array();
 $renames[ 'llvm'       ] = 'llvm-3';
 $renames[ 'llvm1'      ] = 'llvm-4';
-$renames[ 'py'         ] = 'pycairo';
+//$renames[ 'py'         ] = 'pycairo';
 $renames[ 'Python'     ] = 'python2';
 $renames[ 'Python1'    ] = 'python3';
 $renames[ 'pygobject'  ] = 'pygobject2';
@@ -36,7 +36,7 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="Text-CSV";  // For debugging
+//$current="pycairo";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Check (\d[\d\.]+\d).*$/";
@@ -351,6 +351,10 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "https://pypi.python.org/pypi/pycrypto" ),
 
+   array( 'pkg'     => 'pycairo',
+          'match'   => '^.*$',
+          'replace' => "https://github.com/pygobject/pycairo/releases" ),
+
 );
 
 /*
@@ -588,6 +592,9 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "librep" )
     return find_max( $lines, "/librep/", "/^.*[_-](\d[\d\.]*\d)\.tar.*$/" );
 
+  if ( $book_index == "pycairo" )
+    return find_max( $lines, "/pycairo/", "/^.*pycairo-(\d[\d\.]*\d)\.tar.*$/" );
+
   if ( $book_index == "apache-ant" )
     return find_max( $lines, "/$package/", "/^.*$package-(\d[\d\.]+\d)-src.*$/" );
 
@@ -614,8 +621,8 @@ Function get_pattern( $line )
    $match = array();
 
    $match = array(
-     array( 'pkg'   => 'py2cairo',
-            'regex' => "/py2cairo-([\d\.]+)/" ),
+     //array( 'pkg'   => 'py2cairo',
+     //       'regex' => "/py2cairo-([\d\.]+)/" ),
 
      array( 'pkg'   => 'Encode-JIS2K',
             'regex' => "/\D*Encode-JIS2K-([\d\.]+)\D*$/" ),

@@ -10,11 +10,13 @@ $STOP_PACKAGE  = "tripwire";
 
 $renames = array();
 $renames[ 'Linux-PAM1' ] = 'Linux-PAM-docs';
+$renames[ 'openssl'    ] = 'openssl-1.1';
+$renames[ 'openssl1'   ] = 'openssl-1.0';
 
 $ignores = array();
 $ignores[ 'openssh1' ] = "";
 
-//$current="p11-kit";   // For debugging
+//$current="openssl";   // For debugging
 
 $regex = array();
 $regex[ 'krb5'           ] = "/^.*Kerberos V5 Release ([\d\.]+).*$/";
@@ -181,6 +183,9 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "openssl" )
      return find_max( $lines, "/$package/", "/^.*$package-([\d\.p]*\d.?).tar.*$/" );
 
+  if ( $book_index == "openssl1" )
+     return find_max( $lines, "/$package/", "/^.*$package-(1.0[\d\.p]*\d.?).tar.*$/" );
+
   if ( $book_index == "p11-kit" )
      return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d).tar.*$/" );
 
@@ -225,6 +230,9 @@ Function get_pattern( $line )
              'regex' => "/p11-kit.(\d.*\d)\D*$/" ),
 
       array( 'pkg' => 'openssl',
+             'regex' => "/\D*(\d.*\d.*)$/" ),
+
+      array( 'pkg' => 'openssl1',
              'regex' => "/\D*(\d.*\d.*)$/" ),
 
       array( 'pkg' => 'krb',

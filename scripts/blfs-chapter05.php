@@ -15,7 +15,7 @@ $renames[ 'fuse'          ] = 'fuse3';
 $renames[ 'fuse1'         ] = 'fuse2';
 $ignores = array();
 
-//$current="fuse1";   // For debugging
+//$current="LVM2.";   // For debugging
 
 $regex = array();
 $regex[ 'ntfs-3g_ntfsprogs' ] = "/^.*Stable Source Release ([\d\.]+).*$/";
@@ -44,6 +44,10 @@ $url_fix = array (
         'match'   => '^.*$', 
         'replace' => "http://$sf/projects/gptfdisk/files/gptfdisk/" ),
 
+ array( 'pkg'     => 'LVM2.',
+        'match'   => '^.*$', 
+        'replace' => "https://sourceware.org/git/?p=lvm2.git" ),
+
  array( 'pkg'     => 'sshfs',
         'match'   => '^.*$', 
         'replace' => "https://github.com/libfuse/sshfs/releases" ),
@@ -61,6 +65,7 @@ function get_packages( $package, $dirpath )
   global $current;
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
+echo "pkg=$book_index $dirpath\n";
 
   // Fix up directory path
   foreach ( $url_fix as $u )
@@ -110,7 +115,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, "/$package/", "/^.*$package([\d\.]*\d).tar.*$/" );
 
   if ( $book_index == "LVM2." )
-    return find_max( $lines, "/$package/", "/^.*$package([\d\.]*\d).tgz.*$/" );
+    return find_max( $lines, "/Version/", "/^.*Version (\d[\d\.]*\d).*$/" );
 
   if ( $book_index == "gptfdisk" )
   {
