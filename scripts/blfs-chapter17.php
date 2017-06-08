@@ -17,7 +17,6 @@ $ignores[ 'rpcnis-headers' ] = '';
 //$current="lynx";
 
 $regex = array();
-$regex[ 're-alpine' ] = "/^.*Download re-alpine-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'w3m'       ] = "/^.*Download w3m-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'serf'      ] = "/^.*Serf is ([\d\.]+\d).*$/";
 $regex[ 'neon'      ] = "/^.*Source code: neon-(\d[\d\.]*).tar.*$/";
@@ -29,10 +28,6 @@ $url_fix = array (
    array( //'pkg'     => 'gnome',
           'match'   => '^ftp:\/\/ftp.gnome',
           'replace' => "http://ftp.gnome" ),
-
-   array( 'pkg'     => 're-alpine',
-          'match'   => '^.*$',
-          'replace' => "http://sourceforge.net/projects/re-alpine/files" ),
 
    array( 'pkg'     => 'w3m',
           'match'   => '^.*$',
