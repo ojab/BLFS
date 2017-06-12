@@ -6,6 +6,7 @@
 #
 # Authors     : Ken Moffat - ken@linuxfromscratch.org
 #               Bruce Dubbs - bdubbs@linuxfromscratch.org
+#               Douglas R. Reno - renodr@linuxfromscratch.org
 #
 # Version     : LFS 7.0
 #
@@ -34,42 +35,42 @@
  case "$1" in
    start)
       log_info_msg "Starting NFS statd..."
-      start_daemon /usr/sbin/rpc.statd --no-notify
+      start_daemon /sbin/rpc.statd --no-notify
       evaluate_retval
 
       log_info_msg "Starting NFS nfsd..."
-      start_daemon /usr/sbin/rpc.nfsd -p $PORT $PROCESSES
+      start_daemon /sbin/rpc.nfsd -p $PORT $PROCESSES
       evaluate_retval
 
       if [ "$QUOTAS" = "yes" ]; then
          log_info_msg "Starting NFS rquotad..."
-         start_daemon /usr/sbin/rpc.rquotad
+         start_daemon /sbin/rpc.rquotad
          evaluate_retval
       fi
 
       log_info_msg "Starting NFS mountd..."
-      start_daemon /usr/sbin/rpc.mountd
+      start_daemon /sbin/rpc.mountd
       evaluate_retval
 
       # Make certain that the list is refreshed on a restart.
       log_info_msg "Exporting NFS Filesystems..."
-      /usr/sbin/exportfs -ra 2>&1 > /dev/null
+      /sbin/exportfs -ra 2>&1 > /dev/null
       evaluate_retval
       ;;
 
    stop)
       log_info_msg "Removing NFS Exported Filesystems..."
-      /usr/sbin/exportfs -au 2>&1 > /dev/null
+      /sbin/exportfs -au 2>&1 > /dev/null
       evaluate_retval
 
       if [ "$QUOTAS" = "yes" ]; then
          log_info_msg "Stopping NFS rquotad..."
-         killproc /usr/sbin/rpc.rquotad
+         killproc /sbin/rpc.rquotad
          evaluate_retval
       fi
 
       log_info_msg "Stopping NFS statd..."
-      killproc /usr/sbin/rpc.statd
+      killproc /sbin/rpc.statd
       evaluate_retval
 
       log_info_msg "Stopping NFS nfsd..."
@@ -78,7 +79,7 @@
       evaluate_retval
 
       log_info_msg "Stopping NFS mountd..."
-      killproc /usr/sbin/rpc.mountd
+      killproc /sbin/rpc.mountd
       evaluate_retval
 
       # Remove a pid file that isn't done automatically
@@ -90,7 +91,7 @@
 
    reload)
       log_info_msg "Reloading NFS Server..."
-      /usr/sbin/exportfs -ra
+      /sbin/exportfs -ra
       evaluate_retval
       ;;
 
@@ -101,10 +102,10 @@
       ;;
 
    status)
-      statusproc /usr/sbin/rpc.mountd
+      status /sbin/rpc.mountd
       ## Special case for nfsd with no full path
       statusproc nfsd
-      statusproc /usr/sbin/rpc.statd
+      statusproc /sbin/rpc.statd
       if [ "$QUOTAS" = "yes" ]; then
          statusproc rpc.rquotad
       fi
