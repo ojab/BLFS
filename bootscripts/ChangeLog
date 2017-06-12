@@ -1,3 +1,6 @@
+2017-06-11  Douglas R. Reno <renodr@linuxfromscratch.org>
+   * Fix nfs-client and nfs-server scripts for change in nfs-utils
+
 2017-01-27  Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Fix nfs-server script QUOTAS typo in status.
 
