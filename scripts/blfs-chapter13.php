@@ -36,7 +36,7 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="pycairo";  // For debugging
+//$current="valgrind";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Check (\d[\d\.]+\d).*$/";
@@ -48,7 +48,6 @@ $regex[ 'Python'  ] = "/^.*Latest Python 2.*Python (2[\d\.]+\d).*$/";
 $regex[ 'Python1' ] = "/^.*Latest Python 3.*Python (3[\d\.]+\d).*$/";
 $regex[ 'Mako'    ] = "/^.*version is (\d[\d\.]+\d).*$/";
 $regex[ 'php'     ] = "/^.*php-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'valgrind'] = "/^.*Valgrind (\d[\d\.]+\d).*$/";
 $regex[ 'jtreg'   ] = "/^.*jtreg-(\d[b\d\.\-]+\d)\.tar.*$/";
 $regex[ 'OpenJDK1'] = "/^.*OpenJDK-(\d[\d\.]+\d)\-.*$/";
 $regex[ 'setuptools' ] = "/^.*setuptools-(\d[\d\.]+\d).zip.*$/";
@@ -474,9 +473,9 @@ function get_packages( $package, $dirpath )
       $lines1 = http_get_file( $dirpath );
 
       if ( $book_index == "pygobject" )
-         $dir      = find_even_max( $lines1, '/^\s+2[\d\.]+.*$/', '/^\s+(2[\d\.]+).*$/' );
+         $dir   = find_even_max( $lines1, '/^\s+2[\d\.]+.*$/', '/^\s+(2[\d\.]+).*$/' );
       else
-         $dir      = find_even_max( $lines1, '/^\s+[\d\.]+.*$/', '/^\s+([\d\.]+).*$/' );
+         $dir   = find_even_max( $lines1, '/^\s+[\d\.]+.*$/', '/^\s+([\d\.]+).*$/' );
 
       $dirpath .= "/$dir/";
     }

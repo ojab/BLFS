@@ -13,19 +13,17 @@ $renames[ 'zsh1' ] = 'zsh-doc';
 
 $ignores = array();
 
-//$current="dash";   // For debugging
+//$current="tcsh";   // For debugging
 
 $regex = array();
 $regex[ 'joe'  ] = "/^.*Download joe-(\d[\d\.]+).tar.*$/";
-$regex[ 'tcsh' ] = "/^.*release is (\d[\d\.]+)\..*$/";
-
-$sf = 'sourceforge.net';
+//$regex[ 'tcsh' ] = "/^.*release is (\d[\d\.]+)\..*$/";
 
 $url_fix = array (
 
   array( 'pkg'     => 'joe',
          'match'   => '^.*$', 
-         'replace' => "http://$sf/projects/joe-editor/files" ),
+         'replace' => "http://sourceforge.net/projects/joe-editor/files" ),
 
   array( 'pkg'     => 'emacs',
          'match'   => '^.*$', 
@@ -35,9 +33,9 @@ $url_fix = array (
          'match'   => '^.*$', 
          'replace' => "http://ftp.vim.org/vim/unix" ),
 
-  array( 'pkg'     => 'tcsh',
-         'match'   => '^.*$', 
-         'replace' => "http://www.tcsh.org/MostRecentRelease" ),
+//  array( 'pkg'     => 'tcsh',
+//         'match'   => '^.*$', 
+//         'replace' => "http://www.tcsh.org/MostRecentRelease" ),
 
   array( 'pkg'     => 'nano',
          'match'   => '^.*$', 

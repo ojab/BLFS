@@ -10,10 +10,10 @@ $STOP_PACKAGE  = 'xapian-core';
 
 $renames = array();
 $renames[ 'v'       ] = 'liblinear';
-$renames[ 'v1'      ] = 'node.js';
+$renames[ 'node-v'  ] = 'node.js';
 $ignores = array();
 
-//$current="fftw"; // For debugging
+//$current="node-v"; // For debugging
 
 $regex = array();
 $regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
@@ -93,6 +93,14 @@ $url_fix = array (
         'match'   => '^.*$',
         'replace' => "https://launchpad.net/libzeitgeist" ),
 
+ array( 'pkg'     => 'libbytesize',
+        'match'   => '^.*$',
+        'replace' => "https://github.com/storaged-project/libbytesize/releases" ),
+
+ array( 'pkg'     => 'libblockdev',
+        'match'   => '^.*$',
+        'replace' => "https://github.com/storaged-project/libblockdev/releases" ),
+
  array( 'pkg'     => 'libdaemon',
         'match'   => '^.*$',
         'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/libdaemon" ),
@@ -101,9 +109,9 @@ $url_fix = array (
         'match'   => '^.*$',
         'replace' => "https://github.com/cjlin1/liblinear/releases" ),
 
- array( 'pkg'     => 'v1',  //liblinear
+ array( 'pkg'     => 'node-v', 
         'match'   => '^.*$',
-        'replace' => "https://github.com/nodejs/node/releases" ),
+        'replace' => "https://nodejs.org/dist" ),
 
  array( 'pkg'     => 'wv',
         'match'   => '^.*$',
@@ -246,6 +254,21 @@ function get_packages( $package, $dirpath )
       $dir = find_max( $lines, "/v\d/", "/^.*v([\d\.]+).*/" );
       return $dir;
     }
+
+    if ( $book_index == "libblockdev" )
+    {
+      exec( "curl -L -s -m40 -A Firefox/41.0 $dirpath", $lines );
+      $ver = find_max( $lines, "/libblockdev-/", "/^.*libblockdev-([\d\.-]+).tar.*/" );
+      return $ver;
+    }
+
+    if ( $book_index == "libbytesize" )
+    {
+      exec( "curl -L -s -m40 -A Firefox/41.0 $dirpath", $lines );
+      $ver = find_max( $lines, "/libbytesize-/", "/^.*libbytesize-([\d\.]+).tar.*/" );
+      return $ver;
+    }
+
   } // End fetch
 
   if ( isset( $regex[ $package ] ) )
@@ -313,8 +336,8 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "v" ) // liblinear
     return find_max( $lines, '/v\d/', '/^.*v(\d+)$/' );
 
-  if ( $book_index == "v1" ) // node.js
-    return find_max( $lines, '/v\d\./', '/^.*v(\d[\d\.]+).*$/' );
+  if ( $book_index == "node-v" ) // node.js
+    return find_max( $lines, '/v\d\./', '/^.*v(\d[\d\.]+)\/.*$/' );
 
   if ( $book_index == "libusb-compat" )
     return find_max( $lines, '/^.*compat-[\d\.]+$/', '/^.*compat-([\d\.]+)$/' );

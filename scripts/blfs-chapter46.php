@@ -23,11 +23,10 @@ $ignores[ 'flash_player_ppapi_linux.i' ] = '';
 $ignores[ 'flash_player_npapi_linux.x' ] = '';
 $ignores[ 'flash_player_npapi_linux.i' ] = '';
 
-//$current="fdk-aac";
+//$current="opus";
 
 $regex = array();
 $regex[ 'faac'             ] = "/^.*Download faac-(\d[\d\.]+\d).tar.*$/";
-//$regex[ 'fdk-aac'          ] = "/^.*Download fdk-aac-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'a52dec'           ] = "/^.*a52dec-(\d[\d\.]+\d) is.*$/";
 $regex[ 'libass'           ] = "/^.*Release (\d[\d\.]+\d).*$/";
 $regex[ 'libdv'            ] = "/^.*Download libdv-(\d[\d\.]+\d).*$/";
@@ -228,6 +227,8 @@ function get_packages( $package, $dirpath )
         return $max;
      }
 
+     if ( $package == "opus" ) $dirpath .= '/';
+
      $lines = http_get_file( $dirpath );
 
      if ( ! is_array( $lines ) ) return $lines;
@@ -308,6 +309,7 @@ function get_packages( $package, $dirpath )
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
+
   $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );
   return $max;
 }
