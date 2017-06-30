@@ -19,10 +19,15 @@ $ignores = array();
 
 $regex = array();
 $regex[ 'ntfs-3g_ntfsprogs' ] = "/^.*Stable Source Release ([\d\.]+).*$/";
+$regex[ 'dosfstools'        ] = "/^.*dosfstools ([\d\.]+).*$/";
 
 $sf = 'sourceforge.net';
 
 $url_fix = array (
+
+ array( 'pkg'     => 'dosfstools',
+        'match'   => '^.*$', 
+        'replace' => "https://github.com/dosfstools/dosfstools/releases" ),
 
  array( 'pkg'     => 'fuse',
         'match'   => '^.*$', 

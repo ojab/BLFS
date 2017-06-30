@@ -200,6 +200,10 @@ function get_current()
       if ( preg_match( "/biber/", $line ) )
         $basename = "biber";
 
+      // Skip chromium-freetype
+      if ( preg_match( "/chromium-freetype/", $line ) )
+        continue;
+
       if ( $version == "biblatex-biber" ) 
       {
         $version = basename( $url ); 

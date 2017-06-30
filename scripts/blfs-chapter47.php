@@ -97,7 +97,8 @@ function get_packages( $package, $dirpath )
   global $current;
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
-  if ( $book_index == "mplayer" ) return "daily";
+  if ( $book_index == "mplayer"  ) return "daily";
+  if ( $book_index == "cdrtools" ) return "manual";
 
   // Fix up directory path
   foreach ( $url_fix as $u )
