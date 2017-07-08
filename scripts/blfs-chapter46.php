@@ -229,7 +229,10 @@ function get_packages( $package, $dirpath )
 
      if ( $package == "opus" ) $dirpath .= '/';
 
-     $lines = http_get_file( $dirpath );
+     if ( $package == "faad2" )
+       exec( "links -dump $dirpath", $lines );
+     else 
+       $lines = http_get_file( $dirpath );
 
      if ( ! is_array( $lines ) ) return $lines;
   } // End fetch
@@ -251,7 +254,7 @@ function get_packages( $package, $dirpath )
   }
 
   if ( $package == "faad2" )
-      return find_max( $lines, "/faad2-\d/", "/^.*faad2-([\d\.]+).*$/" );
+      return find_max( $lines, "/faad2-\d/", "/^.*faad2-([\d\.]+).tar.*$/" );
 
   if ( $package == "gstreamer" )
       return find_even_max( $lines, "/gstreamer/", "/^.*gstreamer-(1\.[\d\.]+).tar.*$/" );
