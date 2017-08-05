@@ -34,7 +34,7 @@ $regex[ 'libmpeg2'         ] = "/^.*libmpeg2-(\d[\d\.]+\d).*$/";
 $regex[ 'libmusicbrainz1'  ] = "/^.*libmusicbrainz-(5[\d\.]+\d).*$/";
 $regex[ 'libquicktime'     ] = "/^.*Download libquicktime-([\d\.]+\d).tar.*$/";
 $regex[ 'libsamplerate'    ] = "/^.*libsamplerate-([\d\.]+\d).tar.*$/";
-$regex[ 'soundtouch'       ] = "/^.*Download Source Codes release ([\d\.]+\d).*$/";
+$regex[ 'soundtouch'       ] = "/^.*Download .* Source Codes release ([\d\.]+\d).*$/";
 $regex[ 'xine-lib'         ] = "/^.*Download xine-lib-([\d\.]+\d).tar.*$/";
 $regex[ 'v'                ] = "/^.*fdk-aac ([\d\.]+) *$/";
 
@@ -254,7 +254,13 @@ function get_packages( $package, $dirpath )
   }
 
   if ( $package == "faad2" )
+  {
+      // Need to get max dir and go down
+      $dir = find_max( $lines, "/faad2-\d/", "/^.*(faad2-[\d\.]+).*$/" );
+      $dirpath .= "/$dir";
+      exec( "links -dump $dirpath", $lines );
       return find_max( $lines, "/faad2-\d/", "/^.*faad2-([\d\.]+).tar.*$/" );
+  }
 
   if ( $package == "gstreamer" )
       return find_even_max( $lines, "/gstreamer/", "/^.*gstreamer-(1\.[\d\.]+).tar.*$/" );
@@ -289,9 +295,6 @@ function get_packages( $package, $dirpath )
   // Very sensitive to upstream format that appears to be script based
   if ( $package == "libvpx" )
       return find_max( $lines, "/v\d/", "/^.*sv([\d\.]+)v.*$/" );
-
-  if ( $package == "soundtouch" )
-      return find_max( $lines, "/soundtouch/", "/^.*soundtouch-([\d\.]+).*$/" );
 
   if ( $package == "speex" || 
        $package == "speexdsp" )
