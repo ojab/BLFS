@@ -12,7 +12,7 @@ $renames = array();
 $renames[ 'v' ] = 'openjpeg2';
 
 $ignores = array();
-$ignores[ 'ippicv_linux' ] = "";
+$ignores[ 'ippicv' ] = "";
 
 //$current="opencv_contrib";   // For debugging
 
@@ -270,7 +270,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/unix/', '/^.*unix\/(\d\.[\d\.]+)\/.*$/' );
 
   if ( $book_index == "opencv_contrib" )
-    return find_max( $lines, '/3\./', '/^.*(3\.[\d\.]+)$/' );
+    return find_max( $lines, '/3\./', '/^.* (3\.[\d\.]+).*$/' );
 
   // OpenJPEG2
   if ( $book_index == "v" ) 
