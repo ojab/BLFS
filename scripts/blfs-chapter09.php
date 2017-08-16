@@ -5,16 +5,14 @@ include 'blfs-include.php';
 
 $CHAPTER       = '9';
 $CHAPTERS      = 'Chapter 9';
-#$START_PACKAGE = 'appstream-glib';
 $START_PACKAGE = 'apr';
-$STOP_PACKAGE  = 'xapian-core';
+$STOP_PACKAGE  = 'yaml';
 
 $renames = array();
-$renames[ 'v'       ] = 'liblinear';
 $renames[ 'node-v'  ] = 'node.js';
 $ignores = array();
 
-//$current="node-v"; // For debugging
+//$current="qca"; // For debugging
 
 $regex = array();
 $regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
@@ -22,6 +20,7 @@ $regex[ 'expat'         ] = "/^.*Download expat-([\d\.]+).tar.*$/";
 $regex[ 'libzeitgeist'  ] = "/^.*Latest version is ([\d\.]+)\s*$/";
 $regex[ 'libiodbc'      ] = "/^.*Download libiodbc-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'libical'       ] = "/^.*v(\d[\d\.]+\d).*$/";
+
 
 $sf = 'sourceforge.net';
 
@@ -102,15 +101,11 @@ $url_fix = array (
         'match'   => '^.*$',
         'replace' => "https://github.com/storaged-project/libblockdev/releases" ),
 
- array( 'pkg'     => 'libdaemon',
-        'match'   => '^.*$',
-        'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/libdaemon" ),
-
- array( 'pkg'     => 'v',  //liblinear
+ array( 'pkg'     => 'liblinear',
         'match'   => '^.*$',
         'replace' => "https://github.com/cjlin1/liblinear/releases" ),
 
- array( 'pkg'     => 'node-v', 
+ array( 'pkg'     => 'node-v',
         'match'   => '^.*$',
         'replace' => "https://nodejs.org/dist" ),
 
@@ -141,6 +136,10 @@ $url_fix = array (
  array( 'pkg'     => 'json-c',
         'match'   => '^.*$',
         'replace' => "https://s3.amazonaws.com/json-c_releases" ),
+
+ array( 'pkg'     => 'qca',
+        'match'   => '^.*$',
+        'replace' => "https://download.kde.org/stable/qca" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -241,6 +240,13 @@ function get_packages( $package, $dirpath )
       $dirpath .= "/$dir";
     }
 
+    if ( $book_index == "qca" )
+    {
+      $lines = http_get_file( "$dirpath" );
+      $dir = find_max( $lines, "/\d\./", "/^.*;(\d[\d\.]*)\/.*$/" );
+      $dirpath .= "/$dir/src/";
+    }
+
     // Customize http directories as needed
     if ( $book_index != "json-c")
     {
@@ -334,7 +340,7 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "libusb" )
     return find_max( $lines, '/libusb v/', '/^.*libusb v([\d\.]+).*$/' );
 
-  if ( $book_index == "v" ) // liblinear
+  if ( $book_index == "liblinear" )
     return find_max( $lines, '/v\d/', '/^.*v(\d+)$/' );
 
   if ( $book_index == "node-v" ) // node.js
