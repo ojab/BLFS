@@ -12,7 +12,7 @@ $renames = array();
 $renames[ 'node-v'  ] = 'node.js';
 $ignores = array();
 
-//$current="qca"; // For debugging
+//$current="libdaemon"; // For debugging
 
 $regex = array();
 $regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
@@ -20,7 +20,7 @@ $regex[ 'expat'         ] = "/^.*Download expat-([\d\.]+).tar.*$/";
 $regex[ 'libzeitgeist'  ] = "/^.*Latest version is ([\d\.]+)\s*$/";
 $regex[ 'libiodbc'      ] = "/^.*Download libiodbc-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'libical'       ] = "/^.*v(\d[\d\.]+\d).*$/";
-
+$regex[ 'libdaemon'     ] = "/^.*Version (\d[\d\.]+\d) released.*$/";
 
 $sf = 'sourceforge.net';
 
