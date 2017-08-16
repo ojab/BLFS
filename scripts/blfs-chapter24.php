@@ -9,7 +9,6 @@ $START_PACKAGE = 'util-macros';
 $STOP_PACKAGE  = 'xinit';
 
 $renames = array();
-$renames[ 'v' ] = 'libvdpau-va-gl';
 $ignores = array();
 
 $d = getenv( 'BLFS_DIR' );
@@ -24,8 +23,7 @@ $libs     = array();
 $fonts    = array();
 
 $regex = array();
-//$regex[ 'libvdpau-va-gl'  ] = "/^.*version (\d[\d\.]+\d).*$/";
-$regex[ 'v'  ] = "/^.*version (\d[\d\.]+\d).*$/";
+$regex[ 'libvdpau-va-gl'  ] = "/^.*version (\d[\d\.]+\d).*$/";
 
 //$current="v";   // For debugging
 
@@ -35,8 +33,15 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/linuxwacom/files/xf86-input-wacom" ),
 
-   //array( 'pkg'     => 'libvdpau-va-gl',
-   array( 'pkg'     => 'v',
+   array( 'pkg'     => 'libva',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/01org/libva/releases" ),
+
+   array( 'pkg'     => 'intel-vaapi-driver',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/01org/intel-vaapi-driver/releases" ),
+
+   array( 'pkg'     => 'libvdpau-va-gl',
           'match'   => '^.*$', 
           'replace' => "https://github.com/i-rinat/libvdpau-va-gl/releases" ),
 

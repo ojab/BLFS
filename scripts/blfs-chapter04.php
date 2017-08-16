@@ -6,7 +6,7 @@ include 'blfs-include.php';
 $CHAPTER       = "4";
 $CHAPTERS      = "Chapters 2-4";
 $START_PACKAGE = "lsb-release";
-$STOP_PACKAGE  = "tripwire";
+$STOP_PACKAGE  = "volume_key";
 
 $renames = array();
 $renames[ 'Linux-PAM1' ] = 'Linux-PAM-docs';
@@ -16,9 +16,10 @@ $renames[ 'openssl1'   ] = 'openssl-1.0';
 $ignores = array();
 $ignores[ 'openssh1' ] = "";
 
-//$current="openssl";   // For debugging
+//$current="liboauth";   // For debugging
 
 $regex = array();
+$regex[ 'lsb-release'    ] = "/^.*lsb-release_([\d\.]+).*_all\.deb*$/";
 $regex[ 'krb5'           ] = "/^.*Kerberos V5 Release ([\d\.]+).*$/";
 $regex[ 'haveged'        ] = "/^.*haveged-([\d\.]+)\.tar.*$/";
 $regex[ 'cracklib'       ] = "/^.*cracklib-([\d\.]+)\.tar.*$/";
@@ -26,6 +27,14 @@ $regex[ 'cracklib-words' ] = "/^.*cracklib-words-([\d\.]+)\.bz2.*$/";
 $regex[ 'ConsoleKit2'    ] = "/^.*ConsoleKit2-([\d\.]+)\.tar.*$/";
 
 $url_fix = array(
+
+   array( 'pkg'     => 'lsb-release',
+          'match'   => '^.*$',
+          'replace' => 'https://sourceforge.net/projects/lsb/files/' ),
+
+   array( 'pkg'     => 'liboauth',
+          'match'   => '^.*$',
+          'replace' => 'https://sourceforge.net/projects/liboauth/files/' ),
 
    array( 'pkg'     => 'ConsoleKit2',
           'match'   => '^.*$',

@@ -15,7 +15,7 @@ $renames[ 'fuse'          ] = 'fuse3';
 $renames[ 'fuse1'         ] = 'fuse2';
 $ignores = array();
 
-//$current="LVM2.";   // For debugging
+//$current="smartmontools";   // For debugging
 
 $regex = array();
 $regex[ 'ntfs-3g_ntfsprogs' ] = "/^.*Stable Source Release ([\d\.]+).*$/";
@@ -24,6 +24,10 @@ $regex[ 'dosfstools'        ] = "/^.*dosfstools ([\d\.]+).*$/";
 $sf = 'sourceforge.net';
 
 $url_fix = array (
+
+ array( 'pkg'     => 'smartmontools',
+        'match'   => '^.*$', 
+        'replace' => "https://sourceforge.net/projects/smartmontools/files/" ),
 
  array( 'pkg'     => 'dosfstools',
         'match'   => '^.*$', 
@@ -70,7 +74,7 @@ function get_packages( $package, $dirpath )
   global $current;
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
-echo "pkg=$book_index $dirpath\n";
+//echo "pkg=$book_index $dirpath\n";
 
   // Fix up directory path
   foreach ( $url_fix as $u )

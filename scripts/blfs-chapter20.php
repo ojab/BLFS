@@ -13,6 +13,7 @@ $renames[ 'sendmail.'           ] = 'sendmail';
 $renames[ 'virtuoso-opensource' ] = 'virtuoso';
 
 $ignores = array();
+$ignores[ 'sqlite-doc' ] = '';
 
 //$current="httpd";
 
@@ -21,7 +22,6 @@ $regex[ 'vsftpd'          ] = "/^.*vsftpd-(\d[\d\.]+\d) released.*$/";
 $regex[ 'db'              ] = "/^.*Berkeley DB (\d[\d\.]+\d).tar.*$/";
 $regex[ 'LMDB'            ] = "/^.*LMDB_(\d[\d\.]+\d).*$/";
 $regex[ 'mysql'           ] = "/^.*Current Generally Available Release: (\d[\d\.]+\d).*$/";
-$regex[ 'sqlite-doc'      ] = "/^.*sqlite-doc-(\d+).zip.*$/";
 $regex[ 'soprano'         ] = "/^.*Download soprano-(\d[\d\.]*).tar.*$/";
 $regex[ 'xinetd'          ] = "/^.*xinetd_(\d[\d\.]*).orig.tar.*$/";
 $regex[ 'mariadb'         ] = "/^.*Download (\d[\d\.]*\d) Stable.*$/";
@@ -41,10 +41,6 @@ $url_fix = array (
    array( 'pkg'     => 'virtuoso-opensource',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/virtuoso/files" ),
-
-   array( 'pkg'     => 'sqlite-doc',
-          'match'   => '^.*$', 
-          'replace' => "http://sqlite.org/download.html" ),
 
    array( 'pkg'     => 'sqlite-autoconf',
           'match'   => '^.*$', 

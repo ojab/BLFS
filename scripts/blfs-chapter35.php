@@ -80,37 +80,63 @@ function get_packages( $package, $dirpath )
     }
 
     // gsettings-desktop-schemas and similar
-    if ( $book_index == "gsettings-desktop-schemas" ||
-         $book_index == "GConf"                     ||
-         $book_index == "gcr"                       ||
-         $book_index == "gvfs"                      ||
-         $book_index == "yelp-xsl"                  ||
-         $book_index == "gnome-desktop"             ||
-         $book_index == "gnome-keyring"             ||
-         $book_index == "gnome-video-effects"       ||
-         $book_index == "gtksourceview"             ||
-         $book_index == "libgtop"                   ||
-         $book_index == "libpeas"                   ||
-         $book_index == "libwnck"                   ||
+    if ( $book_index == "gcr"                       ||
+         $book_index == "gsettings-desktop-schemas" ||
+         $book_index == "rest"                      ||
          $book_index == "totem-pl-parser"           ||
          $book_index == "vte"                       ||
+         $book_index == "yelp-xsl"                  ||
+         $book_index == "GConf"                     ||
+         $book_index == "geocode-glib"              ||
+         $book_index == "gjs"                       ||
+         $book_index == "gnome-autoar"              ||
+         $book_index == "gnome-desktop"             ||
+         $book_index == "gnome-menus"               ||
+         $book_index == "gnome-online-accounts"     ||
+         $book_index == "gnome-video-effects"       ||
+         $book_index == "grilo"                     ||
+         $book_index == "gtkhtml"                   ||
+         $book_index == "libchamplain"              ||
+         $book_index == "libgdata"                  ||
+         $book_index == "libgee"                    ||
+         $book_index == "libgtop"                   ||
+         $book_index == "libgweather"               ||
+         $book_index == "libpeas"                   ||
+         $book_index == "libwnck"                   ||
+         $book_index == "evolution-data-server"     ||
+         $book_index == "folks"                     ||
+         $book_index == "gfbgraph"                  ||
+         $book_index == "caribou"                   ||
          $book_index == "dconf"                     ||
-         $book_index == "gnome-icon-theme"          ||
-         $book_index == "gnome-icon-theme-symbolic" ||
+         $book_index == "dconf-editor"              ||
+         $book_index == "gnome-backgrounds"         ||
+         $book_index == "gvfs"                      ||
+         $book_index == "nautilus"                  ||
+         $book_index == "zenity"                    ||
+         $book_index == "gnome-bluetooth"           ||
+         $book_index == "gnome-keyring"             ||
+         $book_index == "gnome-settings-daemon"     ||
+         $book_index == "gnome-control-center"      ||
+         $book_index == "mutter"                    ||
+         $book_index == "gnome-shell"               ||
+         $book_index == "gnome-shell-extensions"    ||
+         $book_index == "gnome-session"             ||
+         $book_index == "gdm"                       ||
          $book_index == "gnome-user-docs"           ||
-         $book_index == "gnome-themes-standard"     ||
-         $book_index == "notification-daemon"       ||
          $book_index == "yelp"                      ||
-         $book_index == "libgnome-keyring"  )
+         $book_index == "notification-daemon"        )
     {
        $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
        $position = strrpos( $dirpath, "/" );
        $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
        $dirs     = http_get_file( "$dirpath/" );
 
-       //if ( $book_index == "libpeas" )
-       //  $dir = find_max(      $dirs, "/\d$/", "/^.* ([\d\.]+)$/" );
-       //else
+       if ( $book_index == "gnome-menus" ||
+            $book_index == "grilo"       ||
+            $book_index == "libgdata"    ||
+            $book_index == "folks"       )
+         $dir = find_max(      $dirs, "/\d$/", "/^.* ([\d\.]+)$/" );
+       else
          $dir = find_even_max( $dirs, "/\d$/", "/^.* ([\d\.]+)$/" );
        
        $dirpath .= "/$dir/";

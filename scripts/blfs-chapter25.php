@@ -6,7 +6,7 @@ include 'blfs-include.php';
 $CHAPTER       = '25';
 $CHAPTERS      = 'Chapter 25';
 $START_PACKAGE = 'atk';
-$STOP_PACKAGE  = 'lxdm';
+$STOP_PACKAGE  = 'webkitgtk';
 
 $renames = array();
 $renames[ 'gtk+'                           ] = 'gtk+2';
@@ -14,6 +14,8 @@ $renames[ 'gtk+1'                          ] = 'gtk+3';
 $renames[ 'gtkmm'                          ] = 'gtkmm2';
 $renames[ 'gtkmm1'                         ] = 'gtkmm3';
 $renames[ 'qt-everywhere-opensource-src'   ] = 'qt5';
+$renames[ 'qtwebengine-opensource-src'     ] = 'qtwebengine';
+$renames[ 'qtwebkit-opensource-src'        ] = 'qtwebkit';
 
 $ignores = array();
 
@@ -21,16 +23,8 @@ $ignores = array();
 
 $regex = array();
 $regex[ 'freeglut' ] = "/^.*Download freeglut-(\d[\d\.]+\d).tar.*$/";
-//$regex[ 'libepoxy' ] = "/^.*v(\d[\d\.]+\d).*$/";
-$regex[ 'lxdm'     ] = "/^.*Download lxdm-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'sddm'     ] = "/^.*Version (\d[\d\.]+\d).*$/";
 
 $url_fix = array (
-
-   array( 'pkg'     => 'clutter-gst',
-          'match'   => '^.*$', 
-          'replace' => "http://ftp.gnome.org/pub/gnome/sources/clutter-gst/3.0" ),
-
    array( 'pkg'     => 'freeglut',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/freeglut/files" ),
@@ -42,22 +36,10 @@ $url_fix = array (
    array( 'pkg'     => 'libepoxy',
           'match'   => '^.*$', 
           'replace' => "https://github.com/anholt/libepoxy/releases" ),
-   
-   array( 'pkg'     => 'lxdm',
-          'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/lxdm/files" ),
 
    array( 'pkg'     => 'QScintilla_gpl',
           'match'   => '^.*$', 
           'replace' => "https://sourceforge.net/projects/pyqt/files/QScintilla2" ),
-
-   array( 'pkg'     => 'sddm',
-          'match'   => '^.*$', 
-          'replace' => "https://github.com/sddm/sddm/releases" ),
-
-   array( 'pkg'     => 'webkitgtk',
-          'match'   => '^.*$', 
-          'replace' => "http://webkitgtk.org/releases" ),
 );
 
 function get_packages( $package, $dirpath )

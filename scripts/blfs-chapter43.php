@@ -20,8 +20,7 @@ $libreoffice = array();
 //$current="xscreensaver";
 
 $regex = array();
-//$regex[ 'inkscape'     ] = "/^.*Latest stable.*(\d[\d\.]+\d).*$/";
-//$regex[ 'chromium'     ] = "/^.*stable.*updated to (\d[\d\.]+\d) for Windows.*$/";
+$regex[ 'inkscape'     ] = "/^.*Download Inkscape (\d[\d\.]+\d).*$/";
 $regex[ 'chromium'      ] = "/^pkgver=(\d[\d\.]+\d).*$/";
 $regex[ 'gnucash'       ] = "/^.*Download gnucash-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'midori'        ] = "/^.*midori_(\d[\d\.]*\d)_all.*$/";
@@ -85,7 +84,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'inkscape',
           'match'   => '^.*$',
-          'replace' => "https://inkscape.org/en/download/source" ),
+          'replace' => "https://inkscape.org/en/release/" ),
 
    array( 'pkg'     => 'pidgin',
           'match'   => '^.*$',
@@ -166,6 +165,18 @@ function get_packages( $package, $dirpath )
   // Check for ftp
   if ( preg_match( "/^ftp/", $dirpath ) )
   {
+    if ( $package == "epiphany" )
+    {
+       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
+       $position = strrpos( $dirpath, "/" );
+       $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
+       $dirs     = http_get_file( "$dirpath/" );
+
+       $dir = find_even_max( $dirs, "/\d$/", "/^.* ([\d\.]+)$/" );
+
+       $dirpath .= "/$dir/";
+    }
+
     // Get listing
     $lines = http_get_file( "$dirpath/" );
   }

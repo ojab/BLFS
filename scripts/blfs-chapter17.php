@@ -9,10 +9,9 @@ $START_PACKAGE = 'c-ares';
 $STOP_PACKAGE  = 'procmail';
 
 $renames = array();
-$renames[ 'geoclue1' ] = 'geoclue2';
 
 $ignores = array();
-$ignores[ 'rpcnis-headers' ] = '';
+$ignores[ 'libnl-doc' ] = '';
 
 //$current="lynx";
 

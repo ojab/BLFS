@@ -9,7 +9,7 @@ $START_PACKAGE = 'aalib';
 $STOP_PACKAGE  = 'qpdf';
 
 $renames = array();
-$renames[ 'v' ] = 'openjpeg2';
+$renames[ 'openjpeg1' ] = 'openjpeg2';
 
 $ignores = array();
 $ignores[ 'ippicv' ] = "";
@@ -25,6 +25,8 @@ $regex[ 'LibRaw'        ] = "/^.*LibRaw-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'poppler'       ] = "/^.*poppler-([\d\.]+\d).tar.*$/";
 $regex[ 'popplerdata'   ] = "/^.*poppler-data([\d\.]+\d).tar.*$/";
 $regex[ 'qpdf'          ] = "/^.*Download qpdf-([\d\.]+\d).tar.*$/";
+$regex[ 'potrace'       ] = "/^.*Download potrace-([\d\.]+\d).tar.*$/";
+$regex[ 'exiv2'         ] = "/^.*exiv2-(\d[\d\.]+\d).*.tar.*$/";
 
 $sf = 'sourceforge.net';
 
@@ -100,7 +102,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'exiv2',
         'match'   => '^.*$', 
-        'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/exiv2" ),
+        'replace' => "http://exiv2.org/download.html" ),
 
  array( 'pkg'     => 'opencv',
         'match'   => '^.*$', 
@@ -114,17 +116,17 @@ $url_fix = array (
         'match'   => '^.*$', 
         'replace' => "http://sourceforge.net/projects/openjpeg.mirror/files" ),
 
- array( 'pkg'     => 'openjpeg1',
-        'match'   => '^.*$', 
-        'replace' => "http://sourceforge.net/projects/openjpeg.mirror/files" ),
-
  array( 'pkg'     => 'ijs',
         'match'   => '^.*$', 
         'replace' => "https://www.openprinting.org/download/ijs/download/" ),
 
- array( 'pkg'     => 'v',   // OpenJPEG2
+ array( 'pkg'     => 'openjpeg1',   // OpenJPEG2
         'match'   => '^.*$', 
         'replace' => "https://github.com/uclouvain/openjpeg/releases" ),
+
+ array( 'pkg'     => 'potrace',
+        'match'   => '^.*$', 
+        'replace' => "https://sourceforge.net/projects/potrace/files" ),
 
 );
 
@@ -251,9 +253,6 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "openjpeg" )
     return find_max( $lines, '/files/', '/^.*files\/(1\.[\d\.]+)\/.*$/' );
 
-  if ( $book_index == "openjpeg1" )
-    return find_max( $lines, '/files/', '/^.*files\/(2\.[\d\.]+)\/.*$/' );
-
   // imlib
   if ( $book_index == "imlib2" )
   {
@@ -273,7 +272,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/3\./', '/^.* (3\.[\d\.]+).*$/' );
 
   // OpenJPEG2
-  if ( $book_index == "v" ) 
+  if ( $book_index == "openjpeg1" ) 
     return find_max( $lines, '/openjpeg/', '/^.*openjpeg-v(\d\.[\d\.]+)-.*$/' );
 
   if ( $book_index == "lcms2" )
@@ -304,9 +303,6 @@ Function get_pattern( $line )
 
       array( 'pkg'   => 'imlib2', 
              'regex' => "/\D*imlib2-([\d\.]+)\D*$/" ),
-
-      array( 'pkg'   => 'opencv_contrib', 
-             'regex' => "/.*\/([\d\.]+\d)\D*$/" ),
 
       array( 'pkg'   => 'graphite2', 
              'regex' => "/\D*graphite2-([\d\.]+)\D*$/" ),

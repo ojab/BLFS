@@ -9,12 +9,12 @@ $START_PACKAGE = 'alsa-lib';
 $STOP_PACKAGE  = 'xvidcore';
 
 $renames = array();
-$renames[ 'libmusicbrainz'  ] = 'libmusicbrainz2';
-$renames[ 'libmusicbrainz1' ] = 'libmusicbrainz5';
-$renames[ 'libvpx-v'        ] = 'libvpx';
-$renames[ 'v'               ] = 'fdk-aac';
-$renames[ 'x264-snapshot'   ] = 'x264';
-$renames[ 'x1'              ] = 'x265';
+$renames[ 'libmusicbrainz'             ] = 'libmusicbrainz2';
+$renames[ 'libmusicbrainz1'            ] = 'libmusicbrainz5';
+$renames[ 'libvpx-v'                   ] = 'libvpx';
+$renames[ 'x264-snapshot'              ] = 'x264';
+$renames[ 'x1'                         ] = 'x265';
+$renames[ 'flash_player_ppapi_linux.x' ] = 'flashplayer';
 
 $ignores = array();
 $ignores[ 'chromium-launcher' ] = '';
@@ -23,21 +23,23 @@ $ignores[ 'flash_player_ppapi_linux.i' ] = '';
 $ignores[ 'flash_player_npapi_linux.x' ] = '';
 $ignores[ 'flash_player_npapi_linux.i' ] = '';
 
-//$current="opus";
+//$current="libcanberra";
 
 $regex = array();
-$regex[ 'faac'             ] = "/^.*Download faac-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'a52dec'           ] = "/^.*a52dec-(\d[\d\.]+\d) is.*$/";
-$regex[ 'libass'           ] = "/^.*Release (\d[\d\.]+\d).*$/";
-$regex[ 'libdv'            ] = "/^.*Download libdv-(\d[\d\.]+\d).*$/";
-$regex[ 'libmpeg2'         ] = "/^.*libmpeg2-(\d[\d\.]+\d).*$/";
-$regex[ 'libmusicbrainz1'  ] = "/^.*libmusicbrainz-(5[\d\.]+\d).*$/";
-$regex[ 'libquicktime'     ] = "/^.*Download libquicktime-([\d\.]+\d).tar.*$/";
-$regex[ 'libsamplerate'    ] = "/^.*libsamplerate-([\d\.]+\d).tar.*$/";
-$regex[ 'soundtouch'       ] = "/^.*Download .* Source Codes release ([\d\.]+\d).*$/";
-$regex[ 'xine-lib'         ] = "/^.*Download xine-lib-([\d\.]+\d).tar.*$/";
-$regex[ 'v'                ] = "/^.*fdk-aac ([\d\.]+) *$/";
-
+$regex[ 'faac'                       ] = "/^.*Download faac-(\d[\d\.]+\d).*$/";
+$regex[ 'a52dec'                     ] = "/^.*a52dec-(\d[\d\.]+\d) is.*$/";
+$regex[ 'libass'                     ] = "/^.*Release (\d[\d\.]+\d).*$/";
+$regex[ 'libdv'                      ] = "/^.*Download libdv-(\d[\d\.]+\d).*$/";
+$regex[ 'libmpeg2'                   ] = "/^.*libmpeg2-(\d[\d\.]+\d).*$/";
+$regex[ 'libmusicbrainz1'            ] = "/^.*libmusicbrainz-(5[\d\.]+\d).*$/";
+$regex[ 'libquicktime'               ] = "/^.*Download libquicktime-([\d\.]+\d).tar.*$/";
+$regex[ 'libsamplerate'              ] = "/^.*libsamplerate-([\d\.]+\d).tar.*$/";
+$regex[ 'soundtouch'                 ] = "/^.*Download .* Source Codes release ([\d\.]+\d).*$/";
+$regex[ 'xine-lib'                   ] = "/^.*Download xine-lib-([\d\.]+\d).tar.*$/";
+$regex[ 'mlt'                        ] = "/^.*Download mlt-([\d\.]+\d).tar.*$/";
+$regex[ 'libcddb'                    ] = "/^.*Download libcddb-([\d\.]+\d).tar.*$/";
+$regex[ 'flash_player_ppapi_linux.x' ] = "/^.*latest versions are (\d[\d\.]+\d).*$/";
+$regex[ 'libcanberra'                ] = "/^.*(\d[\d\.]+\d) released.*$/";
 
 $url_fix = array (
 
@@ -115,16 +117,23 @@ $url_fix = array (
 
    array( 'pkg'     => 'xvidcore',
           'match'   => '^.*$', 
-          'replace' => "http://ftp.br.debian.org/debian-multimedia/pool/main/x/xvidcore" ),
+          'replace' => "https://labs.xvid.com/source/" ),
 
-   array( 'pkg'     => 'v',
+   array( 'pkg'     => 'gavl',
           'match'   => '^.*$', 
-          'replace' => "https://github.com/mstorsjo/fdk-aac/releases" ),
+          'replace' => "https://sourceforge.net/projects/gmerlin/files/gavl" ),
 
-   array( 'pkg'     => 'libcanberra',
+   array( 'pkg'     => 'mlt',
           'match'   => '^.*$', 
-          'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/libcanberra" ),
+          'replace' => "https://sourceforge.net/projects/mlt/files" ),
 
+   array( 'pkg'     => 'libcddb',
+          'match'   => '^.*$', 
+          'replace' => "https://sourceforge.net/projects/libcddb/files" ),
+
+   array( 'pkg'     => 'flash_player_ppapi_linux.x',
+          'match'   => '^.*$', 
+          'replace' => "https://www.adobe.com/support/flashplayer/debug_downloads.html" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -182,6 +191,13 @@ function get_packages( $package, $dirpath )
   }
   else // http
   {
+     if ( $package == "gavl" )
+     {
+       exec( "elinks -dump '$dirpath/'", $dirs );
+       $dir = find_max( $dirs, "/\d\./", "/^.* ([\d\.]+)$/" );
+       $dirpath .= "/$dir/";
+     }
+
      if ( $package == "libdvdcss" ||
           $package == "libdvdnav" ||
           $package == "libdvdread" )
@@ -296,15 +312,11 @@ function get_packages( $package, $dirpath )
   if ( $package == "libvpx" )
       return find_max( $lines, "/v\d/", "/^.*sv([\d\.]+)v.*$/" );
 
-  if ( $package == "speex" || 
-       $package == "speexdsp" )
+  if ( $package == "speexdsp" )
       return find_max( $lines, "/$package/", "/^.*$package-([\d\.rc]+).tar.*$/" );
 
   if ( $package == "taglib" )
       return find_max( $lines, "/TagLib/", "/^.*TagLib ([\d\.]+).*$/" );
-
-  if ( $package == "xvidcore" )
-      return find_max( $lines, "/xvidcore_/", "/^.*xvidcore_([\d\.]+).orig.*$/" );
 
   if ( $package == "libcdio-paranoia" )
       return find_max( $lines, "/paranoia/", "/^.*paranoia-([\d\.\+]+).tar.*$/" );

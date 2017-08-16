@@ -21,7 +21,7 @@ $regex[ 'bogofilter'    ] = "/^.*Download bogofilter-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'intltool'      ] = "/^.*Latest version is (\d[\d\.]+\d).*$/";
 $regex[ 'xscreensaver'  ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
 
-//$current="tidy-html5";  // For debugging
+//$current="graphviz";  // For debugging
 
 $url_fix = array (
    array( 'pkg'     => 'bogofilter',
@@ -71,6 +71,10 @@ $url_fix = array (
    array( 'pkg'     => 'xscreensaver',
           'match'   => '^.*$', 
           'replace' => "http://www.jwz.org/xscreensaver/download.html" ),
+
+   array( 'pkg'     => 'graphviz',
+          'match'   => '^.*$', 
+          'replace' => "http://graphviz.org/pub/graphviz/stable/SOURCES/" ),
 );
 
 function get_packages( $package, $dirpath )

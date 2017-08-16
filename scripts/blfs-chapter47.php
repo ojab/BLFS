@@ -8,13 +8,12 @@ $CHAPTERS      = 'Chapters 45-47';
 $START_PACKAGE = 'audacious';
 $STOP_PACKAGE  = 'libisofs';
 
-//$current="libisofs";  // For debugging
+//$current="cdrtools";  // For debugging
 
 $renames = array();
 
 $ignores = array();
 $ignores[ 'freetts1' ] = '';
-$ignores[ 'Clearlooks' ] = '';
 
 $regex = array();
 $regex[ 'mpg123'     ] = "/^.*Download mpg123-(\d[\d\.]+\d).tar.*$/";
@@ -86,6 +85,10 @@ $url_fix = array (
    array( 'pkg'     => 'simpleburn',
           'match'   => '^.*$', 
           'replace' => "http://simpleburn.tuxfamily.org/-Download-" ),
+
+   array( 'pkg'     => 'cdrtools',
+          'match'   => '^.*$', 
+          'replace' => "https://sourceforge.net/projects/cdrtools/files/alpha" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -97,8 +100,6 @@ function get_packages( $package, $dirpath )
   global $current;
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
-  if ( $book_index == "mplayer"  ) return "daily";
-  if ( $book_index == "cdrtools" ) return "manual";
 
   // Fix up directory path
   foreach ( $url_fix as $u )
@@ -186,6 +187,12 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "vlc" )
       return find_max( $lines, "/\d\.[\d\.]+\//", "/^([\d\.]+)\/.*$/" );
+
+  if ( $package == "cdrtools" )
+    return find_max( $lines, "/$package/", "/^.*$package-([\d\.]+a?\d*)\.tar.*$/" );
+
+  if ( $package == "cdrtools" )
+     return find_max( $lines, "/cdrtools-[\d\.]+/", "/^.*cdrtools-([\d\.]+a?\d?).tar.*$/" );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)

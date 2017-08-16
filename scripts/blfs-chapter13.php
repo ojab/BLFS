@@ -9,16 +9,14 @@ $START_PACKAGE = 'check';
 $STOP_PACKAGE  = 'junit';
 
 $renames = array();
-$renames[ 'llvm'       ] = 'llvm-3';
-$renames[ 'llvm1'      ] = 'llvm-4';
-//$renames[ 'py'         ] = 'pycairo';
+$renames[ 'llvm1'      ] = 'llvm';
 $renames[ 'Python'     ] = 'python2';
 $renames[ 'Python1'    ] = 'python3';
 $renames[ 'pygobject'  ] = 'pygobject2';
 $renames[ 'pygobject1' ] = 'pygobject3';
-$renames[ 'v'          ] = 'ninja';
 
 $ignores = array();
+$ignores[ 'llvm'         ] = ''; // LLVM3
 $ignores[ 'cfe'          ] = '';
 $ignores[ 'clang'        ] = '';
 $ignores[ 'compiler-rt'  ] = '';
@@ -28,7 +26,6 @@ $ignores[ 'lua1'         ] = '';
 $ignores[ 'nasm1'        ] = '';
 $ignores[ 'tcl1'         ] = '';
 $ignores[ 'gcc1'         ] = '';
-$ignores[ 'gcc11'        ] = '';
 $ignores[ 'OpenJDK'      ] = '';
 $ignores[ 'hamcrest'     ] = '';
 $ignores[ 'apache-ant1'  ] = '';
@@ -36,7 +33,7 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="valgrind";  // For debugging
+//$current="scour";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Check (\d[\d\.]+\d).*$/";
@@ -102,6 +99,10 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://github.com/libcheck/check/releases" ),
 
+   array( 'pkg'     => 'cmake',
+          'match'   => '^.*$',
+          'replace' => "https://cmake.org/download/" ),
+
    array( 'pkg'     => 'expect',
           'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/expect/files" ),
@@ -114,7 +115,7 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "https://github.com/junit-team/junit/wiki" ),
 
-   array( 'pkg'     => 'v',
+   array( 'pkg'     => 'ninja',
           'match'   => '^.*$',
           'replace' => "https://github.com/ninja-build/ninja/releases" ),
 
@@ -354,6 +355,9 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "https://github.com/pygobject/pycairo/releases" ),
 
+   array( 'pkg'     => 'scour',
+          'match'   => '^.*$',
+          'replace' => "https://github.com/scour-project/scour/releases" ),
 );
 
 /*
@@ -480,22 +484,6 @@ function get_packages( $package, $dirpath )
       $dirpath .= "/$dir/";
     }
 
-    // Customize http directories as needed
-    if ( $book_index == "cmake" )
-    {
-       $dirpath = max_parent( $dirpath, 'v' );
-       $prev    = $previous;
-
-       // Special if there is no current version in $dirpath
-       $lines   = http_get_file( $dirpath );
-       $max     = find_max( $lines, "/$package/",
-                                    "/^.*$package-([\d\.]*\d)\.tar.*$/" );
-       if ( $max != 0 ) return $max;
-
-       $position = strrpos( $dirpath, "/" );
-       $dirpath  = substr ( $dirpath, 0, $position ) . "/$prev";
-    }
-
     if ( $package == "npapi-sdk" )
     {
       # We have to process the stupid javascript to get this to work
@@ -543,18 +531,21 @@ function get_packages( $package, $dirpath )
      return find_max( $lines, "/Download LLVM/",  "/^.*LLVM (3[\d\.]+).*$/" );
 
   if ( $book_index == "llvm1" )
-     return find_max( $lines, "/Download LLVM/",  "/^.*LLVM (4[\d\.]+).*$/" );
+     return find_max( $lines, "/Download LLVM/",  "/^.*LLVM ([\d\.]+).*$/" );
 
   if ( $book_index == "elfutils" )
   {
      return find_max( $lines, "/\d[\d\.]+/", "/^.* (\d[\d\.]+)$/" );
   }
 
-  if ( $package == "v" )  // ninja
+  if ( $package == "ninja" )
   {
     $max = find_max( $lines, "/v/", "/^.*v(\d[\d\.]*\d).*$/" );
     return $max;
   }
+
+  if ( $package == "scour" )
+    return find_max( $lines, "/v/", "/^.*v(\d[\d\.]*\d).*$/" );
 
   if ( $package == "rustc" )
   {

@@ -9,9 +9,9 @@ $START_PACKAGE = 'bluefish';
 $STOP_PACKAGE  = 'qemu';
 
 $renames = array();
-$renames[ 'zsh1' ] = 'zsh-doc';
 
 $ignores = array();
+$ignores[ 'zsh1' ] = '';
 
 //$current="tcsh";   // For debugging
 

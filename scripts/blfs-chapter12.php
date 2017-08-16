@@ -9,14 +9,13 @@ $START_PACKAGE = 'acpid';
 $STOP_PACKAGE  = 'zip';
 
 $renames = array();
-$renames[ 'colord'   ] = 'colord-1.2';
-$renames[ 'colord1'  ] = 'colord-1.3';
 $renames[ 'udisks1'  ] = 'udisks2';
 $renames[ 'sg'       ] = 'sg3_utils';
 $renames[ 'unrarsrc' ] = 'unrar';
 //$renames[ 'p7zip_'   ] = 'p7zip';
 
 $ignores = array();
+$ignores[ 'colord1' ] = "";
 
 //$current="logrotate";
 
@@ -56,10 +55,6 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "ftp://ftp.rarlab.com/rar" ),
    
-   array( 'pkg'     => 'unzip',
-          'match'   => '^.*$', 
-          'replace' => "ftp://ftp.info-zip.org/pub/infozip/src" ),
-   
    array( 'pkg'     => 'acpid',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/acpid2/files" ),
@@ -90,10 +85,6 @@ function get_packages( $package, $dirpath )
   global $current;
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
-
-  if ( $book_index == 'zip' ||
-       $book_index == 'unzip' )
-     return 'manual check';
 
   // Fix up directory path
   foreach ( $url_fix as $u )
