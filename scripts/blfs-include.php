@@ -97,13 +97,28 @@ function http_get_file( $url )
   if ( ! preg_match( "/sourceforge/", $url ) ||
          preg_match( "/jfs/", $url         ) ||
          preg_match( "/liba52/", $url      ) ||
-         preg_match( "/libmpeg2/", $url    ) )
+         preg_match( "/libmpeg2/", $url    ) ||
+         preg_match( "/tcl/", $url         ) ||
+         preg_match( "/tk/", $url          ) ||
+         preg_match( "/swig/", $url        ) ||
+         preg_match( "/expect/", $url              ) )
   {
 //echo "url=$url\n";
      exec( "curl -L -s -m40 -A Firefox/41.0 $url", $dir );
      $s   = implode( "\n", $dir );
      $dir = strip_tags( $s );
-     return explode( "\n", $dir );
+     $strip =  explode( "\n", $dir );
+//print_r($strip);
+     return $strip;
+  }
+  else if ( preg_match( "/scons/", $url ) )
+  {
+     exec( "wget -q -O- $url", $dir );
+     $s   = implode( "\n", $dir );
+     $dir = strip_tags( $s );
+     $strip =  explode( "\n", $dir );
+//print_r($strip);
+     return $strip;
   }
   else
   {
