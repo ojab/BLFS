@@ -16,11 +16,13 @@ $ignores[ 'libnl-doc' ] = '';
 //$current="lynx";
 
 $regex = array();
-$regex[ 'w3m'       ] = "/^.*Download w3m-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'serf'      ] = "/^.*Serf is ([\d\.]+\d).*$/";
-$regex[ 'neon'      ] = "/^.*Source code: neon-(\d[\d\.]*).tar.*$/";
-$regex[ 'libevent'  ] = "/^.*release-(\d[\d\.]*)-stable.*$/";
-$regex[ 'fetchmail' ] = "/^.*Download fetchmail-(\d[\d\.]*).tar.*$/";
+$regex[ 'w3m'           ] = "/^.*Download w3m-(\d[\d\.]+\d).tar.*$/";
+$regex[ 'serf'          ] = "/^.*Serf is ([\d\.]+\d).*$/";
+$regex[ 'neon'          ] = "/^.*Source code: neon-(\d[\d\.]*).tar.*$/";
+$regex[ 'libevent'      ] = "/^.*release-(\d[\d\.]*)-stable.*$/";
+$regex[ 'fetchmail'     ] = "/^.*Download fetchmail-(\d[\d\.]*).tar.*$/";
+$regex[ 'libnsl'        ] = "/^.*libnsl ([\d\.]+\d)*$/";
+$regex[ 'rpcsvc-proto'  ] = "/^.*Version ([\d\.]+\d)*$/";
 
 $url_fix = array (
 
@@ -78,12 +80,15 @@ $url_fix = array (
 
    array( 'pkg'     => 'libnl',
           'match'   => '^.*$',
-          'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/libnl3/" ),
+          'replace' => "https://github.com/thom311/libnl/releases" ),
 
-   array( 'pkg'     => 'libnl-doc',
+   array( 'pkg'     => 'libnsl',
           'match'   => '^.*$',
-          'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/libnl3/" ),
+          'replace' => "https://github.com/thkukuk/libnsl/releases" ),
 
+   array( 'pkg'     => 'rpcsvc-proto',
+          'match'   => '^.*$',
+          'replace' => "https://github.com/thkukuk/rpcsvc-proto/releases" ),
 );
 
 function get_packages( $package, $dirpath )
