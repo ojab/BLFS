@@ -34,7 +34,7 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="LWP-Protocol-https";  // For debugging
+//$current="six";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Check (\d[\d\.]+\d).*$/";
@@ -364,6 +364,10 @@ $url_fix = array (
    array( 'pkg'     => 'scour',
           'match'   => '^.*$',
           'replace' => "https://github.com/scour-project/scour/releases" ),
+
+   array( 'pkg'     => 'six',
+          'match'   => '^.*$',
+          'replace' => "https://pypi.python.org/pypi/six" ),
 );
 
 /*
