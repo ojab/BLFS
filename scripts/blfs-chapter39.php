@@ -9,89 +9,99 @@ $START_PACKAGE = 'lxqt-build-tools';
 $STOP_PACKAGE  = 'qterminal';
 
 $renames = array();
-$renames[ 'libfm'  ] = 'libfm-extra';
-$renames[ 'libfm1' ] = 'libfm';
+//$renames[ 'libfm'  ] = 'libfm-extra';
 
 $ignores = array();
 
-//$current="lxqt-qtplugin";  // Debug
+//$current="lxqt-powermanagement";  // Debug
 
 $regex = array();
-$regex[ 'libfm'   ] = "/^.*Download libfm-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'libfm1'  ] = "/^.*Download libfm-(\d[\d\.]+\d).tar.*$/";
+//$regex[ 'libfm'   ] = "/^.*Download libfm-(\d[\d\.]+\d).tar.*$/";
 
 $url_fix = array (
-   array( 'pkg'     => 'lxmenu-data',
+   array( 'pkg'     => 'lxqt-build-tools',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/lxde/files/lxmenu-data%20%28desktop%20menu%29" ),
+          'replace' => "https://github.com/lxde/lxqt-build-tools/releases" ),
 
-   array( 'pkg'     => 'lxde-icon-theme',
+   array( 'pkg'     => 'libsysstat',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/lxde/files/LXDE%20Icon%20Theme" ),
+          'replace' => "https://github.com/lxde/libsysstat/releases" ),
 
-   array( 'pkg'     => 'menu-cache',
+   array( 'pkg'     => 'liblxqt',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/lxde/files/menu-cache" ),
+          'replace' => "https://github.com/lxde/liblxqt/releases" ),
 
-   array( 'pkg'     => 'libfm',
+   array( 'pkg'     => 'libqtxdg',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/pcmanfm/files" ),
+          'replace' => "https://github.com/lxde/libqtxdg/releases" ),
 
-   array( 'pkg'     => 'libfm1',
+   array( 'pkg'     => 'libfm-qt',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/pcmanfm/files" ),
+          'replace' => "https://github.com/lxde/libfm-qt/releases" ),
 
-   array( 'pkg'     => 'lxpanel',
+   array( 'pkg'     => 'lxqt-about',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/lxde/files/LXPanel%20%28desktop%20panel%29" ),
+          'replace' => "https://github.com/lxde/lxqt-about/releases" ),
 
-   array( 'pkg'     => 'lxappearance',
+   array( 'pkg'     => 'lxqt-admin',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/lxde/files/LXAppearance" ),
+          'replace' => "https://github.com/lxde/lxqt-admin/releases" ),
 
-   array( 'pkg'     => 'lxpolkit',
+   array( 'pkg'     => 'lxqt-common',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/lxde/files/LXPolkit" ),
+          'replace' => "https://github.com/lxde/lxqt-common/releases" ),
 
-   array( 'pkg'     => 'lxsession',
+   array( 'pkg'     => 'lxqt-config',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/lxde/files/LXSession%20%28session%20manager%29" ),
+          'replace' => "https://github.com/lxde/lxqt-config/releases" ),
 
-   array( 'pkg'     => 'lxde-common',
+   array( 'pkg'     => 'lxqt-globalkeys',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/lxde/files/lxde-common%20%28default%20config%29" ),
+          'replace' => "https://github.com/lxde/lxqt-globalkeys/releases" ),
 
-   array( 'pkg'     => 'lxappearance-obconf',
+   array( 'pkg'     => 'lxqt-notificationd',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/lxde/files/LXAppearance%20Obconf" ),
+          'replace' => "https://github.com/lxde/lxqt-notificationd/releases" ),
 
-   array( 'pkg'     => 'lxinput',
+   array( 'pkg'     => 'lxqt-policykit',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/lxde/files/LXInput%20%28Kbd%20and%20amp_%20mouse%20config%29/" ),
+          'replace' => "https://github.com/lxde/lxqt-policykit/releases" ),
 
-   array( 'pkg'     => 'gpicview',
+   array( 'pkg'     => 'lxqt-powermanagement',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/lxde/files/GPicView%20%28image%20Viewer%29/0.2.x" ),
+          'replace' => "https://github.com/lxde/lxqt-powermanagement/releases" ),
 
-   array( 'pkg'     => 'lxrandr',
+   array( 'pkg'     => 'lxqt-session',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/lxde/files/LXRandR%20%28monitor%20config%20tool%29" ),
+          'replace' => "https://github.com/lxde/lxqt-session/releases" ),
 
-   array( 'pkg'     => 'lxshortcut',
+   array( 'pkg'     => 'lxqt-panel',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/lxde/files/LXShortcut%20%28edit%20app%20shortcut%29" ),
+          'replace' => "https://github.com/lxde/lxqt-panel/releases" ),
 
-   array( 'pkg'     => 'lxtask',
+   array( 'pkg'     => 'lxqt-runner',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/lxde/files/LXTask%20%28task%20manager%29" ),
+          'replace' => "https://github.com/lxde/lxqt-runner/releases" ),
 
-   array( 'pkg'     => 'lxterminal',
+   array( 'pkg'     => 'pcmanfm-qt',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/lxde/files/LXTerminal%20%28terminal%20emulator%29" ),
+          'replace' => "https://github.com/lxde/pcmanfm-qt/releases" ),
 
-   array( 'pkg'     => 'pcmanfm',
+   array( 'pkg'     => 'lximage-qt',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/pcmanfm/files/PCManFM%20%2B%20Libfm%20%28tarball%20release%29/PCManFM" ),
+          'replace' => "https://github.com/lxde/lximage-qt/releases" ),
+
+   array( 'pkg'     => 'obconf-qt',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/lxde/obconf-qt/releases" ),
+
+   array( 'pkg'     => 'pavucontrol-qt',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/lxde/pavucontrol-qt/releases" ),
+
+
+
+//////
 
    array( 'pkg'     => 'qtermwidget',
           'match'   => '^.*$', 
@@ -100,14 +110,6 @@ $url_fix = array (
    array( 'pkg'     => 'qterminal',
           'match'   => '^.*$', 
           'replace' => "https://github.com/lxde/qterminal/releases" ),
-
-   array( 'pkg'     => 'QScintilla_gpl',
-          'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/pyqt/files/QScintilla2" ),
-
-   array( 'pkg'     => 'lxqt-common',
-          'match'   => '^.*$', 
-          'replace' => "https://github.com/lxde/lxqt-common/releases" ),
 
    array( 'pkg'     => 'lxqt-l10n',
           'match'   => '^.*$', 
@@ -126,10 +128,6 @@ function get_packages( $package, $dirpath )
   global $current;
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
-
-  if ( $book_index == 'obconf-qt' ||
-       $book_index == 'juffed' )
-    return 'check manually';
 
   // Fix up directory path
   foreach ( $url_fix as $u )
@@ -160,37 +158,39 @@ function get_packages( $package, $dirpath )
   { 
      // All ftp enties for this chapter N/A for this chapter
   }
-  else if ( $book_index != "midori_"      &&
-            $book_index != "lxmenu-data"  &&
-            $book_index != "menu-cache"   &&
-            $book_index != "pcmanfm"      &&
-            $book_index != "libfm"        &&
-            $book_index != "libfm1"       &&
-            $book_index != "lxpanel"      &&
-            $book_index != "lxappearance" &&
-            $book_index != "lxpolkit"     &&
-            $book_index != "kidletime"    &&
-            $book_index != "lxsession"    &&
-            $book_index != "lxde-common"  &&
-            $book_index != "gpicview"     &&
-            $book_index != "lxinput"      &&
-            $book_index != "lxrandr"      &&
-            $book_index != "lxshortcut"   &&
-            $book_index != "lxtask"       &&
-            $book_index != "lxterminal"   &&
-            $book_index != "lxappearance-obconf"  &&
-            $book_index != "lxde-icon-theme" &&
-            $book_index != "qtermwidget"     &&
-            $book_index != "qterminal"       &&
+  else if ( $book_index != "lxqt-build-tools"  &&
+            $book_index != "libsysstat"   &&
+            $book_index != "libqtxdg"     &&
+            $book_index != "liblxqt"      &&
+            $book_index != "libfm-qt"     &&
+            $book_index != "lxqt-about"   &&
+            $book_index != "lxqt-admin"   &&
+            $book_index != "lxqt-common"  &&
+            $book_index != "lxqt-config"  &&
+            $book_index != "lxqt-globalkeys"      &&
+            $book_index != "lxqt-notificationd"   &&
+            $book_index != "lxqt-policykit"       &&
+            $book_index != "lxqt-powermanagement" &&
+            $book_index != "lxqt-qtplugin"        && 
+            $book_index != "lxqt-session" &&
+            $book_index != "lxqt-l10n"    &&
+            $book_index != "lxqt-panel"   &&
+            $book_index != "lxqt-runner"  &&
+            $book_index != "pcmanfm-qt"   &&
+            // kf5
+            $book_index != "kwindowsystem"   &&
+            $book_index != "kidletime"       &&
+            $book_index != "solid"           &&
             $book_index != "kguiaddons"      &&
             $book_index != "kwayland"        &&
-            $book_index != "solid"           &&
-            $book_index != "kwindowsystem"   &&
+            // plasma
             $book_index != "libkscreen"      &&
-            $book_index != "lxqt-common"     &&
-            $book_index != "lxqt-l10n"       &&
-            $book_index != "lxqt-qtplugin"   &&
-            $book_index != "QScintilla_gpl" 
+            // apps
+            $book_index != "lximage-qt"      &&
+            $book_index != "obconf-qt"       &&
+            $book_index != "pavucontrol-qt"  &&
+            $book_index != "qtermwidget"     &&
+            $book_index != "qterminal"      
             ) // http
   {
      // Most http enties for this chapter
@@ -212,77 +212,6 @@ function get_packages( $package, $dirpath )
 
   else // http 
   {
-     if ( $book_index == "menu-cache" )
-     {
-       $lines1   = http_get_file( "$dirpath" );
-       $dir      = find_max( $lines1, "/ 1\./", "/^.* (1[\d\.]+).*$/" );
-       $dirpath .= "/$dir";
-     }
-
-     if ( $book_index == "lxsession" )
-     {
-       $lines1   = http_get_file( "$dirpath" );
-       $dir      = find_max( $lines1, "/LXSession \d/", "/^.*(LXSession [\d\.x]+).*$/" );
-       $d        = preg_replace( "/ /", "%20", $dir ); // Fix embedded blank
-       $dirpath .= "/$d";
-     }
-
-     if ( $book_index == "lxde-common" )
-     {
-       $lines1   = http_get_file( "$dirpath" );
-       $dir      = find_max( $lines1, "/LXDE[ -]Common/i", "/^.*(LX.* [\d\.x]+).*$/i" );
-       $d        = preg_replace( "/ /", "%20", $dir ); // Fix embedded blank
-       $dirpath .= "/$d";
-     }
-
-     if ( $book_index == "lxinput" )
-     {
-       $lines1   = http_get_file( "$dirpath" );
-       $dir      = find_max( $lines1, "/LXInput/i", "/^.*(LX.* [\d\.x]+).*$/i" );
-       $d        = preg_replace( "/ /", "%20", $dir ); // Fix embedded blank
-       $dirpath .= "/$d";
-     }
-
-     if ( $book_index == "lxrandr" )
-     {
-       $lines1   = http_get_file( "$dirpath" );
-       $dir      = find_max( $lines1, "/LXRandR \d/i", "/^.*(LX.* [\d\.x]+).*$/i" );
-       $d        = preg_replace( "/ /", "%20", $dir ); // Fix embedded blank
-       $dirpath .= "/$d";
-     }
-
-     if ( $book_index == "lxshortcut" )
-     {
-       $lines1   = http_get_file( "$dirpath" );
-       $dir      = find_max( $lines1, "/LXShortcut \d/i", "/^.*(LX.* [\d\.]+).*$/i" );
-       $d        = preg_replace( "/ /", "%20", $dir ); // Fix embedded blank
-       $dirpath .= "/$d";
-     }
-
-     if ( $book_index == "lxtask" )
-     {
-       $lines1   = http_get_file( "$dirpath" );
-       $dir      = find_max( $lines1, "/LXTask \d/i", "/^.*(LX.* [\d\.x]+).*$/i" );
-       $d        = preg_replace( "/ /", "%20", $dir ); // Fix embedded blank
-       $dirpath .= "/$d";
-     }
-
-     if ( $book_index == "lxterminal" )
-     {
-       $lines1   = http_get_file( "$dirpath" );
-       $dir      = find_max( $lines1, "/LXTerminal \d/i", "/^.*(LX.* [\d\.]+).*$/i" );
-       $d        = preg_replace( "/ /", "%20", $dir ); // Fix embedded blank
-       $dirpath .= "/$d";
-     }
-
-     if ( $book_index == "lxpanel" )
-     {
-       $lines1   = http_get_file( "$dirpath" );
-       $dir      = find_max( $lines1, "/LXPanel 0/", "/^.*(LXPanel [\d\.x]+).*$/" );
-       $d        = preg_replace( "/ /", "%20", $dir ); // Fix embedded blank
-       $dirpath .= "/$d";
-     }
-
      if ( $book_index == "kguiaddons"    ||
           $book_index == "kwindowsystem" ||
           $book_index == "kidletime"     ||
@@ -323,12 +252,6 @@ function get_packages( $package, $dirpath )
     if ( $book_index == "libkscreen" ) return $max;
     return $max . ".0";  // Add .0 to version
   }
-
-  if ( $book_index == "lxde-icon-theme" )
-    return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d).*$/" );
-
-  if ( $book_index == "QScintilla_gpl" )
-    return find_max( $lines, "/QScintilla-/", "/^.*QScintilla-([\d\.]*\d).*$/" );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
