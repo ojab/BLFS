@@ -172,7 +172,7 @@ function get_packages( $package, $dirpath )
   }
 
   if ( $book_index == "xterm" )
-    return find_max( $lines, '/xterm-\d+.tgz$/', '/^.*xterm-(\d+).tgz$/' );
+    return find_max( $lines, '/xterm-\d+.tgz/', '/^.*xterm-(\d+).tgz.*$/' );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
