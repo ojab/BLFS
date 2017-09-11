@@ -32,7 +32,7 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="six";  // For debugging
+//$current="ninja";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Check (\d[\d\.]+\d).*$/";
@@ -115,7 +115,8 @@ $url_fix = array (
 
    array( 'pkg'     => 'ninja',
           'match'   => '^.*$',
-          'replace' => "https://github.com/ninja-build/ninja/releases" ),
+          'replace' => "https://ninja-build.org/" ),
+          //'replace' => "https://github.com/ninja-build/ninja/releases" ),
 
    array( 'pkg'     => 'scour',
           'match'   => '^.*$',
@@ -541,7 +542,7 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "ninja" )  // ninja
   {
-    $max = find_max( $lines, "/v/", "/^.*v(\d[\d\.]*\d).*$/" );
+    $max = find_max( $lines, "/release/", "/^.*v(\d[\d\.]*\d).*$/" );
     return $max;
   }
 
