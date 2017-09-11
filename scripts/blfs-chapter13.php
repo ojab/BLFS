@@ -9,7 +9,6 @@ $START_PACKAGE = 'check';
 $STOP_PACKAGE  = 'junit';
 
 $renames = array();
-$renames[ 'llvm1'      ] = 'llvm';
 $renames[ 'Python'     ] = 'python2';
 $renames[ 'Python1'    ] = 'python3';
 $renames[ 'pygobject'  ] = 'pygobject2';
@@ -17,7 +16,6 @@ $renames[ 'pygobject1' ] = 'pygobject3';
 //$renames[ 'v'          ] = 'ninja';
 
 $ignores = array();
-$ignores[ 'llvm'         ] = ''; // LLVM3
 $ignores[ 'cfe'          ] = '';
 $ignores[ 'clang'        ] = '';
 $ignores[ 'compiler-rt'  ] = '';
@@ -82,7 +80,6 @@ $regex[ 'Sort-Key'                ] = "/^.*Sort-Key-(\d[\d\.]+\d).*$/";
 $regex[ 'Test-Command'            ] = "/^.*Test-Command-(\d[\d\.]+\d).*$/";
 $regex[ 'Test-Differences'        ] = "/^.*Test-Differences-(\d[\d\.]+\d).*$/";
 $regex[ 'Text-BibTeX'             ] = "/^.*Text-BibTeX-(\d[\d\.]+\d).*$/";
-//$regex[ 'Text-CSV'                ] = "/^.*Text-CSV-(\d[\d\.]+\d).*$/";
 $regex[ 'Text-Roman'              ] = "/^.*Text-Roman-(\d[\d\.]+\d).*$/";
 $regex[ 'Unicode-Collate'         ] = "/^.*Unicode-Collate-(\d[\d\.]+\d).*$/";
 $regex[ 'Unicode-LineBreak'       ] = "/^.*Unicode-LineBreak-(\d[\d\.]+\d)$/";
@@ -129,10 +126,6 @@ $url_fix = array (
           'replace' => "https://github.com/rust-lang/rust/releases" ),
 
    array( 'pkg'     => 'llvm',
-          'match'   => '^.*$',
-          'replace' => "http://llvm.org/releases/download.html" ),
-
-   array( 'pkg'     => 'llvm1',
           'match'   => '^.*$',
           'replace' => "http://llvm.org/releases/download.html" ),
 
@@ -538,9 +531,6 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/doxygen/', '/^.*doxygen-([\d\.]+).src.tar.*$/' );
 
   if ( $book_index == "llvm" )
-     return find_max( $lines, "/Download LLVM/",  "/^.*LLVM (3[\d\.]+).*$/" );
-
-  if ( $book_index == "llvm1" )
      return find_max( $lines, "/Download LLVM/",  "/^.*LLVM ([\d\.]+).*$/" );
 
   if ( $book_index == "elfutils" )
