@@ -15,7 +15,7 @@ $renames[ 'fuse'          ] = 'fuse3';
 $renames[ 'fuse1'         ] = 'fuse2';
 $ignores = array();
 
-//$current="smartmontools";   // For debugging
+$current="";   // For debugging
 
 $regex = array();
 $regex[ 'ntfs-3g_ntfsprogs' ] = "/^.*Stable Source Release ([\d\.]+).*$/";
@@ -39,7 +39,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'fuse1',
         'match'   => '^.*$', 
-        'replace' => "https://github.com/libfuse/libfuse/releases" ),
+        'replace' => "https://github.com/libfuse/libfuse/releases?after=fuse-3.0.0pre0" ),
 
  array( 'pkg'     => 'jfsutils',
         'match'   => '^.*$', 
@@ -74,7 +74,6 @@ function get_packages( $package, $dirpath )
   global $current;
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
-//echo "pkg=$book_index $dirpath\n";
 
   // Fix up directory path
   foreach ( $url_fix as $u )

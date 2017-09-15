@@ -228,6 +228,8 @@ function get_current()
       $index = $basename;
       while ( isset( $book[ $index ] ) ) $index .= "1";
 
+      if ( $index == "fuse1" ) $basename = "fuse1";
+
       $book[ $index ] = array( 'basename' => $basename,
                                'url'      => $url, 
                                'version'  => $version );
