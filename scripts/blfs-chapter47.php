@@ -170,12 +170,6 @@ function get_packages( $package, $dirpath )
   if ( $package == "xine-ui" )
       return find_max( $lines, "/xine-ui\//", "/^.*xine-ui\/([\d\.]+)\/.*$/" );
 
-  if ( $package == "libisoburn" )
-      return find_max( $lines, "/^\d\./", "/^([\d\.]+).*$/" );
-
-  if ( $package == "libisofs" )
-      return find_max( $lines, "/^release/", "/^release-([\d\.]+).*$/" );
-
   if ( $package == "kwave" )
       return find_max( $lines, "/;\d\d\./", "/^.*;(\d\d\.[\d\.]+)\/.*$/" );
 
