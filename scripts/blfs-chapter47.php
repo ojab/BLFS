@@ -44,15 +44,15 @@ $url_fix = array (
 
    array( 'pkg'     => 'libisoburn',
           'match'   => '^.*$', 
-          'replace' => "https://dev.lovelyhq.com/libburnia/libisoburn/tags" ),
+          'replace' => "https://dev.lovelyhq.com/libburnia/web/wikis/Releases" ),
 
    array( 'pkg'     => 'libisofs',
           'match'   => '^.*$', 
-          'replace' => "https://dev.lovelyhq.com/libburnia/libisofs/tags" ),
+          'replace' => "https://dev.lovelyhq.com/libburnia/web/wikis/Releases" ),
 
    array( 'pkg'     => 'libburn',
           'match'   => '^.*$', 
-          'replace' => "https://dev.lovelyhq.com/libburnia/libburn/tags" ),
+          'replace' => "https://dev.lovelyhq.com/libburnia/web/wikis/Releases" ),
 
    array( 'pkg'     => 'gvolwheel',
           'match'   => '^.*$', 
@@ -178,9 +178,6 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "kwave" )
       return find_max( $lines, "/;\d\d\./", "/^.*;(\d\d\.[\d\.]+)\/.*$/" );
-
-  if ( $package == "libburn" )
-      return find_max( $lines, "/^\d\./", "/^([\d\.]+).*$/" );
 
   if ( $package == "dvd+rw-tools" )
       return find_max( $lines, "/dvd\+/", "/^.*dvd\+rw-tools-([\d\.]+).tar.*$/" );
