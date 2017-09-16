@@ -15,7 +15,7 @@ $renames[ 'fuse'          ] = 'fuse3';
 $renames[ 'fuse1'         ] = 'fuse2';
 $ignores = array();
 
-$current="";   // For debugging
+//$current="";   // For debugging
 
 $regex = array();
 $regex[ 'ntfs-3g_ntfsprogs' ] = "/^.*Stable Source Release ([\d\.]+).*$/";
