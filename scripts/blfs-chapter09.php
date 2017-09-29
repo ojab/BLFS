@@ -15,7 +15,7 @@ $renames[ 'mozjs1'  ] = 'js52';
 
 $ignores = array();
 
-//$current="libdaemon"; // For debugging
+//$current="enchant"; // For debugging
 
 $regex = array();
 $regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
@@ -24,6 +24,7 @@ $regex[ 'libzeitgeist'  ] = "/^.*Latest version is ([\d\.]+)\s*$/";
 $regex[ 'libiodbc'      ] = "/^.*Download libiodbc-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'libical'       ] = "/^.*v(\d[\d\.]+\d).*$/";
 $regex[ 'libdaemon'     ] = "/^.*Version (\d[\d\.]+\d) released.*$/";
+$regex[ 'libatasmart'   ] = "/^.*v(\d[\d\.]+\d).*$/";
 
 $sf = 'sourceforge.net';
 
@@ -39,10 +40,6 @@ $url_fix = array (
  array( 'pkg'     => 'clucene-core',
         'match'   => '^.*$',
         'replace' => "http://$sf/projects/clucene/files" ),
-
- array( 'pkg'     => 'enchant',
-        'match'   => '^.*$',
-        'replace' => "http://www.abisource.com/downloads/enchant" ),
 
  array( 'pkg'     => 'expat',
         'match'   => '^.*$',
@@ -143,6 +140,14 @@ $url_fix = array (
  array( 'pkg'     => 'qca',
         'match'   => '^.*$',
         'replace' => "https://download.kde.org/stable/qca" ),
+
+ array( 'pkg'     => 'libatasmart',
+        'match'   => '^.*$',
+        'replace' => "http://git.0pointer.net/libatasmart.git/refs/" ),
+
+ array( 'pkg'     => 'enchant',
+        'match'   => '^.*$',
+        'replace' => "https://github.com/AbiWord/enchant/releases" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -304,12 +309,6 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/^.*boost_[\d_]+.tar.*$/', '/^.*boost_([\d_]+).tar.*$/' );
   }
 
-  if ( $book_index == "enchant" )
-  {
-    $dir   = find_max( $lines, '/^\s*[\d\.]+\/.*$/', '/^\s*([\d\.]+)\/.*$/' );
-    $lines = http_get_file( "$dirpath/$dir" );
-  }
-
   if ( $book_index == "icu4c" )
   {
     $dir   = find_max( $lines, '/\d+\.\d/', '/^(\d+\.\d+)\/.*$/' );
@@ -413,6 +412,9 @@ Function get_pattern( $line )
 
       array( 'pkg'   => 'libxml2',
              'regex' => "/libxml2-([\d\.]+).*$/" ),
+
+      array( 'pkg'   => 'libidn2',
+             'regex' => "/libidn2-([\d\.]+).*$/" ),
    );
 
    foreach( $match as $m )
