@@ -15,7 +15,7 @@ $renames[ 'mozjs1'  ] = 'js52';
 
 $ignores = array();
 
-//$current="enchant"; // For debugging
+//$current="libseccomp"; // For debugging
 
 $regex = array();
 $regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
@@ -148,6 +148,10 @@ $url_fix = array (
  array( 'pkg'     => 'enchant',
         'match'   => '^.*$',
         'replace' => "https://github.com/AbiWord/enchant/releases" ),
+
+ array( 'pkg'     => 'libseccomp',
+        'match'   => '^.*$',
+        'replace' => "https://github.com/seccomp/libseccomp/releases" ),
 );
 
 function get_packages( $package, $dirpath )

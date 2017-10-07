@@ -16,7 +16,7 @@ $renames[ 'openssl1'   ] = 'openssl-1.0';
 $ignores = array();
 $ignores[ 'openssh1' ] = "";
 
-//$current="liboauth";   // For debugging
+//$current="make-ca";   // For debugging
 
 $regex = array();
 $regex[ 'lsb-release'    ] = "/^.*lsb-release_([\d\.]+).*_all\.deb*$/";
@@ -25,6 +25,7 @@ $regex[ 'haveged'        ] = "/^.*haveged-([\d\.]+)\.tar.*$/";
 $regex[ 'cracklib'       ] = "/^.*cracklib-([\d\.]+)\.tar.*$/";
 $regex[ 'cracklib-words' ] = "/^.*cracklib-words-([\d\.]+)\.bz2.*$/";
 $regex[ 'ConsoleKit2'    ] = "/^.*ConsoleKit2-([\d\.]+)\.tar.*$/";
+$regex[ 'make-ca'        ] = "/^.*v(\d[\d\.]+\d).*$/";
 
 $url_fix = array(
 
@@ -84,10 +85,6 @@ $url_fix = array(
           'match'   => '^.*$',
           'replace' => 'https://github.com/shadow-maint/shadow/releases' ),
 
-//   array( 'pkg'     => 'stunnel',
-//          'match'   => '^.*$',
-//          'replace' => 'https://www.stunnel.org/downloads.html' ),
-
    array( 'pkg'     => 'sudo',
           'match'   => '^.*$',
           'replace' => 'http://www.sudo.ws/sudo/dist' ),
@@ -96,6 +93,9 @@ $url_fix = array(
           'match'   => '^.*$',
           'replace' => 'https://ftp.mozilla.org/pub/security/nss/releases/' ),
 
+   array( 'pkg'     => 'make-ca',
+          'match'   => '^.*$',
+          'replace' => 'https://github.com/djlucas/make-ca/releases' ),
 );
 
 function get_packages( $package, $dirpath )
@@ -216,7 +216,7 @@ function get_packages( $package, $dirpath )
      return preg_replace( "/_/", ".", $ver ); // Change underscors to dots
   }
 
-   if ( $book_index == "tripwire" )
+  if ( $book_index == "tripwire" )
      return find_max( $lines, "/Open Source/", "/^.*Tripwire ([\.\d]+).*$/" );
 
   if ( $book_index == "sudo" )
