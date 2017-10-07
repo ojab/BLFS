@@ -13,11 +13,10 @@ $renames = array();
 $ignores = array();
 $ignores[ 'zsh1' ] = '';
 
-//$current="tcsh";   // For debugging
+//$current="emacs";   // For debugging
 
 $regex = array();
 $regex[ 'joe'  ] = "/^.*Download joe-(\d[\d\.]+).tar.*$/";
-//$regex[ 'tcsh' ] = "/^.*release is (\d[\d\.]+)\..*$/";
 
 $url_fix = array (
 
@@ -27,15 +26,11 @@ $url_fix = array (
 
   array( 'pkg'     => 'emacs',
          'match'   => '^.*$', 
-         'replace' => "http://git.savannah.gnu.org/cgit/emacs.git/" ),
+         'replace' => "https://www.gnu.org/software/emacs" ),
 
   array( 'pkg'     => 'vim',
          'match'   => '^.*$', 
          'replace' => "http://ftp.vim.org/vim/unix" ),
-
-//  array( 'pkg'     => 'tcsh',
-//         'match'   => '^.*$', 
-//         'replace' => "http://www.tcsh.org/MostRecentRelease" ),
 
   array( 'pkg'     => 'nano',
          'match'   => '^.*$', 
@@ -122,7 +117,7 @@ function get_packages( $package, $dirpath )
 
   // emacs
   if ( $book_index == "emacs" )
-    return find_max( $lines, '/emacs/', '/^.*emacs-([\d\.]+).tar.*$/' );
+    return find_max( $lines, '/latest/', '/^.*Emacs ([\d\.]+) .*$/' );
 
   if ( $book_index == "dash" )
     return find_max( $lines, '/^v\d/', '/^v([\d\.]+).*$/' );
