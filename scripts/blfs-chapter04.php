@@ -25,7 +25,7 @@ $regex[ 'haveged'        ] = "/^.*haveged-([\d\.]+)\.tar.*$/";
 $regex[ 'cracklib'       ] = "/^.*cracklib-([\d\.]+)\.tar.*$/";
 $regex[ 'cracklib-words' ] = "/^.*cracklib-words-([\d\.]+)\.bz2.*$/";
 $regex[ 'ConsoleKit2'    ] = "/^.*ConsoleKit2-([\d\.]+)\.tar.*$/";
-$regex[ 'make-ca'        ] = "/^.*v(\d[\d\.]+\d).*$/";
+$regex[ 'make-ca'        ] = "/^.*make-ca-(\d[\d\.]+\d).*$/";
 
 $url_fix = array(
 
