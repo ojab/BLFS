@@ -547,55 +547,26 @@ EOF&lt;/userinput&gt;&lt;/screen&gt;
   the number of available cores you should use different cores from time to time
   to spread the usage.</para>
 
-  <para>The following example shows how to do a measured build using only 4
-  cores on an intel i7 with 8 logical cores, running X. If for some reason you
-  wish to do this without X you will know which tty you intend to use, so no
-  need to identify a /dev/pts terminal.</para>
-
   <para>First decide which cores you wish to use for the measured build. In this
   example, paired cores 2-3 and 4-5. If you have enough cores, you could also do
   a different build on other cores - but if that build uses the same disks or
   filesystems (including /tmp) they can interfere with each other's
   measurements.</para>
 
-  <para>Now start your preferred graphical term where you intend to build, and
-  run <command>top</command>.</para>
+  <para>Second, in the term where you wish to run the measurement enter:</para>
 
-  <para>In a different term, use ps to find out where it is running (the space
-  in ' top' is to avoid false matches if qtwebengine has been invoked, one of
-  the many switches passed by <package>QupZilla</package> includes 'top') :
-  </para>
+<screen><userinput>taskset -pc 2-5 $$</userinput></screen>
 
-<screen><userinput>ps aux | grep ' top'</userinput></screen>
+  <para>The <application>bash</application> $$ variable returns the PID of
+  the current instance of <application>bash</application> which saves having
+  to search for its PID.</para>
 
-  <para>This example returned:</para>
-
-<literallayout>ken      30391  0.1  0.0 125452  2868 pts/2    S+   14:54   0:00 top
-ken      30394  0.0  0.0 116112  2224 pts/1    S+   14:57   0:00 grep  top</literallayout>
-
-  <para>So in this example the term used <literal>pts/2</literal>.</para>
-
-  <para>I then quit <command>top</command> so that term was only running
-  <command>bash</command>. Then I looked for the PID of that bash:</para>
-
-<screen><userinput>ps aux | grep 'pts/2 '</userinput></screen>
-
-<literallayout>ken      30368  0.0  0.0 128152  3800 pts/2    Ss+  14:54   0:00 bash
-ken      30396  0.0  0.0 116112  2012 pts/1    S+   14:58   0:00 grep pts/2 </literallayout>
-
-  <para>In that example, bash was running as PID 30368. Now you know your term's
-  bash PID, and which cores you wish to restrict it to, you can invoke
-  <command>taskset</command>. To complete the example, I used:</para>
-
-<screen><userinput>taskset -pc 2-5 30368</userinput></screen>
-
-  <para>Now you can return to the term where you will run the measured build.
-  Check that you now have only 4 cores available by entering
+  <para>Check that you now have only 4 cores available by entering
   <command>nproc</command>.</para>
 
   <para>If you intend to run anything else which loads the CPUs while the
   measured build is running, you can similarly assign that to other cores.
-  </para>
+  (use ps aux to find the PID by looking for its name).</para>
 
   </sect1>
 
