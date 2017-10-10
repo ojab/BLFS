@@ -135,7 +135,7 @@ md5sum packagename-x.x* > packagename-x.x.md5sums</command></screen>
   -->
 
   <section id="ch07-tagging">
-    <title>Adding Tags</title>
+    <title>Adding XML Tags</title>
 
     <itemizedlist>
       <!-- <listitem>

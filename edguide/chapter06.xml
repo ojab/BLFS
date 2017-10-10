@@ -435,7 +435,7 @@ EOF&lt;/userinput&gt;&lt;/screen&gt;
   </sect1>
 
   <sect1>
-    <title>About Tagging</title>
+    <title>About Indexing</title>
 
     <para>As you can see above, there are several places where indexing tags are
     placed into the page.  The tagging has the following format:</para>
