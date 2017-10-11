@@ -514,28 +514,8 @@ EOF&lt;/userinput&gt;&lt;/screen&gt;
   packages. In one or two places <command>make -j8</command> has been used, do
   not do that without good reason.</para>
 
-  <para>Where a package uses <command>ninja</command> to build, it will by
-  default use N+2 jobs, so on a single core machine it will try to run 3 jobs at
-  a time (nasty - too much thrashing) and on a 4 core machine it will try to run
-  six. This can be adjusted by using a <literal>-j</literal> switch, e.g.
-  <command>ninja -j1</command> to only run one job. On a laptop, building for
-  long periods using all cores might lead to overheating.</para>
-
   <para>The rest of this section covers temporarily restricting the number of
   available processors on machines with more than 4 cores.</para>
-
-  <para>Now that packages in the book are starting to use
-  <command>rust</command>, measuring on many-core machines has got harder. Rust
-  will determine how many processors are available, and then attempt to use all
-  of them (in practice it will usually pull in cargo source packages and some
-  parts of the build might only use one processor while waiting on another file
-  compiling).</para>
-
-  <para>For people who have more than 4 processors, the canonical way to limit
-  how many are available to a job is to use <command>tasksel</command>. The
-  <systemitem class="username">root</systemitem> user can alternatively take
-  processors offline, but that offers less flexibility for running other tasks at
-  the same time.</para>
 
   <para>Unless a process is constrained to a subset of the available CPUs, Linux
   will rotate processes across them. This is to even wear on the cores and to
@@ -547,26 +527,41 @@ EOF&lt;/userinput&gt;&lt;/screen&gt;
   the number of available cores you should use different cores from time to time
   to spread the usage.</para>
 
-  <para>First decide which cores you wish to use for the measured build. In this
-  example, paired cores 2-3 and 4-5. If you have enough cores, you could also do
-  a different build on other cores - but if that build uses the same disks or
-  filesystems (including /tmp) they can interfere with each other's
-  measurements.</para>
+  <para>For people who have more than 4 processors, the canonical way to limit
+  how many are available to a job is to use <command>taskset</command>.
+  Unfortunately, modern build systems think they know better. If you use
+  <command>ninja</command>, it should accept a -jN switch similar to
+  <command>make</command>. Unfortunately, some packages such as
+  <application>qtwebengine</application> ship with a local copy of
+  <command>ninja</command> which does not respect that switch. For ninja, the
+  default is N+2 jobs.</para>
 
-  <para>Second, in the term where you wish to run the measurement enter:</para>
+  <para> Similarly, <command>rustc</command> will run jobs for each core, even
+  if <command>taskset</command> has restricted the available cores. The result
+  is that although only the specified cores are used, the load average jumps up
+  because too many jobs are trying to run - this leads to slower building.</para>
 
-<screen><userinput>taskset -pc 2-5 $$</userinput></screen>
+  <para>When using such build systems, the only reliable way to reduce the number
+  of processors seen by the build system is to take them offline. The
+  <systemitem class="username">root</systemitem> user can do this by writing to
+  sysfs. The following example from a 12-core (6 real cores, 6 siblings) machine
+  will take cores 4 to 11 offline. To reenable them, echo 1 to the files :</para>
 
-  <para>The <application>bash</application> $$ variable returns the PID of
-  the current instance of <application>bash</application> which saves having
-  to search for its PID.</para>
+<screen><userinput>for i in $(seq 4 11); do
+ echo 0 | tee /sys/devices/system/cpu/cpu$i/online
+done</userinput></screen>
 
-  <para>Check that you now have only 4 cores available by entering
-  <command>nproc</command>.</para>
+  <para>If you wish you can use 'sudo tee' here, it is omitted from the example
+  as a reminder that only root should be doing this.</para>
 
-  <para>If you intend to run anything else which loads the CPUs while the
-  measured build is running, you can similarly assign that to other cores.
-  (use ps aux to find the PID by looking for its name).</para>
+  <note>
+    <para>If you take CPU 0 (the boot CPU) offline, you run the risk of bringing
+    the machine down. You should find that there is not an online file for cpu0
+    in sysfs. Because cpu1 is its sibling, it makes no sense to take that offline.
+    You should keep a different pair of cores online when you do this, so that
+    the load is spread across all the remaining CPUs, and you should bring them
+    all back online whenever you can.</para>
+  </note>
 
   </sect1>
 
