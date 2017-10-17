@@ -515,53 +515,125 @@ EOF&lt;/userinput&gt;&lt;/screen&gt;
   not do that without good reason.</para>
 
   <para>The rest of this section covers temporarily restricting the number of
-  available processors on machines with more than 4 cores.</para>
+  processors used on machines with more than 4 cores when using modern build
+  systems (ninja and rust).</para>
 
-  <para>Unless a process is constrained to a subset of the available CPUs, Linux
-  will rotate processes across them. This is to even wear on the cores and to
-  help with cooling. When limiting which processors are to be used, if a machine
-  uses multithreading (intel i3, i7, etc and in practice almost all modern AMD
-  processors) it is best to use the appropriate pairs of CPUs - so 0,1 2,3 etc
-  (on an 8-core i7, using logical cores 0,2,4,6 will run all physical cores at up
-  to 100%, with full production of heat). If you are using any approach to limit
-  the number of available cores you should use different cores from time to time
-  to spread the usage.</para>
+    <sect2> <!-- get titles on the various sub topics -->
+      <title>Limiting available processors on large machines</title>
 
-  <para>For people who have more than 4 processors, the canonical way to limit
-  how many are available to a job is to use <command>taskset</command>.
-  Unfortunately, modern build systems think they know better. If you use
-  <command>ninja</command>, it should accept a -jN switch similar to
-  <command>make</command>. Unfortunately, some packages such as
-  <application>qtwebengine</application> ship with a local copy of
-  <command>ninja</command> which does not respect that switch. For ninja, the
-  default is N+2 jobs.</para>
+      <para>These modern build systems are designed to build quickly, using all
+      the online processors (the sysconf libc _SC_NPROCESSORS_ONLN function). In
+      linux it is common to constrain processes on large systems to a subset of
+      the available CPUs using either taskset, cpugroups, or numactl. For
+      example, using taskset the current term's PID ($$ in bash) can be
+      restricted to CPUs 4-7 (typically two real cores and two multithread
+      siblings, x86 linux will show them all as cores) using:</para>
 
-  <para> Similarly, <command>rustc</command> will run jobs for each core, even
-  if <command>taskset</command> has restricted the available cores. The result
-  is that although only the specified cores are used, the load average jumps up
-  because too many jobs are trying to run - this leads to slower building.</para>
+<screen><userinput>taskset -pc 4-7</userinput></screen>
 
-  <para>When using such build systems, the only reliable way to reduce the number
-  of processors seen by the build system is to take them offline. The
-  <systemitem class="username">root</systemitem> user can do this by writing to
-  sysfs. The following example from a 12-core (6 real cores, 6 siblings) machine
-  will take cores 4 to 11 offline. To reenable them, echo 1 to the files :</para>
+      <para>Unfortunately there is no corresponding widely-available (cross-OS)
+      function for determining how many processors a task can use if it has been
+      restricted like this. This has meant that packages using ninja or rust
+      have spawned enough jobs for the whole physical machine (N+2 in ninja, N
+      in rust). That unnecessarily slows the build down because execution is
+      switching between all the jobs that are ready to run.</para>
+
+    </sect2>
+
+    <sect2>
+      <title>Measuring packages which use ninja</title>
+
+      <para>For ninja the situation can mostly be solved by passing a -jN switch
+      e.g. -j4 to only use 4 CPUs. In a machine with only 4 CPUs, ninja would
+      run 6 jobs, but tests show that timing differences between 4 and 6 ninja
+      jobs are minimal in that situation. Therefore one approach on a machine
+      with many processors is to not restrict the available cores, but to
+      instead pass -j4 just like conventional 'make'.</para>
+
+      <para>Unfortunately, some packages such as qtwebengine embed ninja (it
+      actually runs it from 'make') - it <emphasis>will</emphasis> use a system
+      ninja if one is available, but it does not pass any -j switch, so that all
+      online cores will be taken into account. But LFS now has a patched version
+      of ninja, using the environment variable <literal>NINJAJOBS</literal> -
+      this allows a many-cored machine to produce timings using:</para>
+
+<screen><userinput>NINJABOBS=4 make</userinput></screen>
+
+      <para>(that is for qtwebengine), or for regular ninja packages:</para>
+
+<screen><userinput>NINJAJOBS=4 ninja</userinput></screen>
+
+    </sect2>
+    <sect2>
+      <title>Measuring packages which use rust</title>
+
+      <para>For packages which are (partially) written in rust, the rust build
+      system (cargo) has similarly used all online processors. This is most
+      noticeable when compiling c++ parts of the package, or when rust is
+      running tests, plain rust code often only compiles one job at a time.
+      </para>
+
+      <para>In practice, rust uses the num_cpus crate to find out how many CPUs
+      are available. This has now (from v1.5.0) been altered so that on linux it
+      should correctly report the number of <emphasis>usable</emphasis>
+      processors. Unfortunately, the versions of the sub-modules ('crates') used
+      by a particular release of a package are set in stone. At the time of
+      writing, only rustc-1.16.0 and firefox-56 in the book use rust, and only
+      rustc uses num_cpus, fixed at v1.4.0.</para>
+
+        <sect3>
+          <title>Rust packages where the package <emphasis>or</emphasis> rustc uses num_cpus &lt; v1.5.0</title>
+
+          <para>If building <emphasis>or using</emphasis> that version of rustc,
+          and similarly for any other rust programs which use old versions of
+          num_cpus, the only reliable way to measure a 4-core build on a machine
+          with more than 4 processors is to take CPUs offline until only 4 are
+          left.</para>
+
+          <para>Unless a process is constrained to a subset of the available
+          CPUs, Linux will rotate processes across them. This is to even wear on
+          the cores and to help with cooling. When limiting which processors are
+          to be used, if a machine uses multithreading (intel i7 or above, and
+          all modern AMD CPUs with more than 4 cores) it is best to use the
+          appropriate pairs of CPUs - so 0,1 2,3 etc (on an 8-core i7, using
+          logical cores 0,2,4,6 will run all physical cores at up to 100%, with
+          full production of heat). If you are using any approach to limit the
+          number of available cores you should use different cores from time to
+          time to spread the usage.</para>
+
+          <para>The <systemitem class="username">root</systemitem> user can do
+          this by writing to sysfs. The following example from a 12-core (6 real
+          cores, 6 siblings) machine will take cores 4 to 11 offline. To
+          re-enable them, echo 1 to the files :</para>
 
 <screen><userinput>for i in $(seq 4 11); do
  echo 0 | tee /sys/devices/system/cpu/cpu$i/online
 done</userinput></screen>
 
-  <para>If you wish you can use 'sudo tee' here, it is omitted from the example
-  as a reminder that only root should be doing this.</para>
+          <para>If you wish you can use 'sudo tee' here, it is omitted from the
+          example as a reminder that only root should be doing this because it
+          will restrict what else you can do at hte same time.</para>
 
-  <note>
-    <para>If you take CPU 0 (the boot CPU) offline, you run the risk of bringing
-    the machine down. You should find that there is not an online file for cpu0
-    in sysfs. Because cpu1 is its sibling, it makes no sense to take that offline.
-    You should keep a different pair of cores online when you do this, so that
-    the load is spread across all the remaining CPUs, and you should bring them
-    all back online whenever you can.</para>
-  </note>
+          <note>
+            <para>If you take CPU 0 (the boot CPU) offline, you run the risk of
+            bringing the machine down. You should find that there is not an
+            online file for cpu0 in sysfs. Because cpu1 is its sibling, it makes
+            no sense to take that offline. You should keep a different pair of
+            cores online whenever you do this, so that the load is spread across
+            all the remaining CPUs, and you should bring them all back online
+            whenever you can.</para>
+          </note>
+      </sect3>
+
+      <sect3>
+        <title>Measuring rust where rustc and the package use num_cpus &ge; v1.5.0</title>
+
+        <para>Here (i.e. building with rustc-1.21.0 or later, and the package
+        either does not build num_cpus, or uses a new-enough version), use
+        taskset to restrict the term where you are building to 4 cores.</para>
+
+      </sect3>
+    </sect2>
 
   </sect1>
 
