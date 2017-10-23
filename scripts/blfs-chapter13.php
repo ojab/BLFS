@@ -32,7 +32,7 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="ruby";  // For debugging
+//$current="lxml";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Check (\d[\d\.]+\d).*$/";
@@ -47,7 +47,7 @@ $regex[ 'php'     ] = "/^.*php-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'jtreg'   ] = "/^.*jtreg-(\d[b\d\.\-]+\d)\.tar.*$/";
 $regex[ 'OpenJDK1'] = "/^.*OpenJDK-(\d[\d\.]+\d)\-.*$/";
 $regex[ 'setuptools' ] = "/^.*setuptools-(\d[\d\.]+\d).zip.*$/";
-//$regex[ 'lxml'       ] = "/^.*lxml&nbsp;(\d[\d\.]+\d).*$/";
+$regex[ 'lxml'       ] = "/^.*lxml-(\d[\d\.]+\d).*$/";
 $regex[ 'funcsigs'   ] = "/^.*funcsigs (\d[\d\.]+\d).*$/";
 $regex[ 'pycrypto'   ] = "/^.*pycrypto (\d[\d\.]+\d).*$/";
 
@@ -341,7 +341,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'lxml',
           'match'   => '^.*$',
-          'replace' => "https://pypi.python.org/pypi/lxml" ),
+          'replace' => "https://github.com/lxml/lxml/releases" ),
 
    array( 'pkg'     => 'funcsigs',
           'match'   => '^.*$',

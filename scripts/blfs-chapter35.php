@@ -5,7 +5,7 @@ include 'blfs-include.php';
 
 $CHAPTER       = '35';
 $CHAPTERS      = 'Chapter 35';
-$START_PACKAGE = 'accountsservice';
+$START_PACKAGE = 'gcr';
 $STOP_PACKAGE  = 'polkit-gnome';
 
 $renames = array();

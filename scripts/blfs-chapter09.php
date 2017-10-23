@@ -12,10 +12,11 @@ $renames = array();
 $renames[ 'node-v'  ] = 'node.js';
 $renames[ 'mozjs'   ] = 'js38';
 $renames[ 'mozjs1'  ] = 'js52';
+$renames[ 'gmime1'  ] = 'gmime3';
 
 $ignores = array();
 
-//$current="libseccomp"; // For debugging
+//$current="gmime1"; // For debugging
 
 $regex = array();
 $regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
@@ -196,7 +197,7 @@ function get_packages( $package, $dirpath )
     // glib type packages
     if ( $book_index == "glib"      ||
          $book_index == "glibmm"    ||
-         $book_index == "gmime"     ||
+         $book_index == "gmime1"    ||
          $book_index == "json-glib" ||
          $book_index == "libglade"  ||
          $book_index == "libgsf"    ||
@@ -229,7 +230,7 @@ function get_packages( $package, $dirpath )
     // glib type packages
     if ( $book_index == "glib"      ||
          $book_index == "glibmm"    ||
-         $book_index == "gmime"     ||
+         $book_index == "gmime1"    ||
          $book_index == "json-glib" ||
          $book_index == "libglade"  ||
          $book_index == "libgsf"    ||
@@ -389,6 +390,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "xapian-core" )
     return find_max( $lines, "/^\d\./", "/^(\d\.[\d\.]+)\/.*$/" );
+
+  if ( $book_index == "gmime1" )
+    return find_max( $lines, "/gmime/", "/^.*gmime-([\d\.]*\d)\.tar.*$/" );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)

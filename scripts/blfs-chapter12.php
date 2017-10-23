@@ -5,7 +5,7 @@ include 'blfs-include.php';
 
 $CHAPTER       = '12';
 $CHAPTERS      = 'Chapter 12';
-$START_PACKAGE = 'acpid';
+$START_PACKAGE = 'accountsservice';
 $STOP_PACKAGE  = 'zip';
 
 $renames = array();
@@ -17,7 +17,7 @@ $renames[ 'unrarsrc' ] = 'unrar';
 $ignores = array();
 $ignores[ 'colord1' ] = "";
 
-//$current="logrotate";
+//$current="systemd";
 
 $regex = array();
 $regex[ 'acpid'   ] = "/^.*Download acpid-(\d[\d\.]+\d).tar.*$/";
@@ -26,6 +26,7 @@ $regex[ 'hdparm'  ] = "/^.*Download hdparm-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'ibus'    ] = "/^.*ibus-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'strigi'  ] = "/^(\d[\d\.]+\d) .*$/";
 $regex[ 'sysstat' ] = "/^.*sysstat-(\d[\d\.]+\d).tar.*$/";
+$regex[ 'systemd' ] = "/^.*v(\d[\d\.]+\d).*$/";
 
 $sf = 'sourceforge.net';
 
@@ -75,6 +76,9 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "https://github.com/storaged-project/udisks/releases" ),
 
+   array( 'pkg'     => 'systemd',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/systemd/systemd/releases" ),
 );
 
 function get_packages( $package, $dirpath )
