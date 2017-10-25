@@ -134,7 +134,8 @@ function get_packages( $package, $dirpath )
        if ( $book_index == "gnome-menus" ||
             $book_index == "grilo"       ||
             $book_index == "libgdata"    ||
-            $book_index == "folks"       )
+            $book_index == "folks"       ||
+            $book_index == "geocode-glib" )
          $dir = find_max(      $dirs, "/\d$/", "/^.* ([\d\.]+)$/" );
        else
          $dir = find_even_max( $dirs, "/\d$/", "/^.* ([\d\.]+)$/" );

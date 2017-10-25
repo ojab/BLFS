@@ -80,7 +80,10 @@ foreach ( $a as $l )
        $pkg == "kdepimlibs"       ||
        $pkg == "obconf-qt"        ||
        $pkg == "libdbusmenu-qt"   ||
-       $pkg == "juffed"     
+       $pkg == "juffed"           ||
+       $pkg == "js38"             ||
+       $pkg == "js52"             ||
+       $pkg == "polkit"
      ) continue;
 
   if ( $c[3] == "0" ) $c[3] .= " ";
@@ -93,7 +96,9 @@ foreach ( $a as $l )
   for ( $i=0; $i<count($ticket); $i++ )
   {
      $pkg = preg_replace( "/\+/", ".", $pkg );
-     if ( preg_match( "/$pkg/i", $desc[$i] ) )
+     // Matching as follows:
+     // "$pkg-Version", "$pkg " (whitespace), "$pkg," (comma), "$pkg" (only at end of the line)
+     if ( preg_match( "/$pkg(-[0-9]|,|\s|$)/i", $desc[$i] ) )
      {
         // Make sure cmake != cmake-extra-modules
         if ( $pkg == "cmake" &&
