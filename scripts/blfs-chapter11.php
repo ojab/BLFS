@@ -189,6 +189,9 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "rep-gtk" )
     return find_max( $lines, '/rep-gtk/', '/^.*rep-gtk[_-]([\d\.]+).tar.*$/' );
 
+  if ( $book_index == "telepathy-mission-control" )
+    return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/", TRUE );
+
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
   $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );

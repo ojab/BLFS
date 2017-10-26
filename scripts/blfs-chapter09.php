@@ -394,10 +394,14 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "gmime1" )
     return find_max( $lines, "/gmime/", "/^.*gmime-([\d\.]*\d)\.tar.*$/" );
 
+  if ( $book_index == "telepathy-glib" ||
+       $book_index == "wayland"         )
+    return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/", TRUE );
+
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
 
-  $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/", $package == "wayland" ? TRUE : FALSE );
+  $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );
   return $max;
 }
 
