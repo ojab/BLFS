@@ -47,9 +47,9 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "https://github.com/lxde/lxqt-admin/releases" ),
 
-   array( 'pkg'     => 'lxqt-common',
+   array( 'pkg'     => 'lxqt-themes',
           'match'   => '^.*$', 
-          'replace' => "https://github.com/lxde/lxqt-common/releases" ),
+          'replace' => "https://github.com/lxde/lxqt-themes/releases" ),
 
    array( 'pkg'     => 'lxqt-config',
           'match'   => '^.*$', 
@@ -165,7 +165,7 @@ function get_packages( $package, $dirpath )
             $book_index != "libfm-qt"     &&
             $book_index != "lxqt-about"   &&
             $book_index != "lxqt-admin"   &&
-            $book_index != "lxqt-common"  &&
+            $book_index != "lxqt-themes"  &&
             $book_index != "lxqt-config"  &&
             $book_index != "lxqt-globalkeys"      &&
             $book_index != "lxqt-notificationd"   &&
