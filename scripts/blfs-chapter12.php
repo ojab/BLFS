@@ -17,7 +17,7 @@ $renames[ 'unrarsrc' ] = 'unrar';
 $ignores = array();
 $ignores[ 'colord1' ] = "";
 
-//$current="systemd";
+//$current="sysstat";
 
 $regex = array();
 $regex[ 'acpid'   ] = "/^.*Download acpid-(\d[\d\.]+\d).tar.*$/";
@@ -25,7 +25,7 @@ $regex[ 'fcron'   ] = "/^.*Stable release fcron (\d[\d\.]+\d)*$/";
 $regex[ 'hdparm'  ] = "/^.*Download hdparm-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'ibus'    ] = "/^.*ibus-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'strigi'  ] = "/^(\d[\d\.]+\d) .*$/";
-$regex[ 'sysstat' ] = "/^.*sysstat-(\d[\d\.]+\d).tar.*$/";
+//$regex[ 'sysstat' ] = "/^.*sysstat-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'systemd' ] = "/^.*v(\d[\d\.]+\d).*$/";
 
 $sf = 'sourceforge.net';
@@ -181,6 +181,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "colord1" )
     return find_max( $lines, '/colord/', '/^.*colord-(\d[\d\.]*\d).tar.*$/' );
+
+  if ( $book_index == "sysstat" )
+    return find_max( $lines, '/are/', '/^.*and (\d[\d\.]*\d) .*$/' );
 
   if ( $book_index == "fcron" )
     return find_max( $lines, '/fcron/', '/^.*fcron-(\d[\d\.]*\d).src.tar.*$/' );
