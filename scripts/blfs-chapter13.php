@@ -32,7 +32,7 @@ $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
 
-//$current="lxml";  // For debugging
+//$current="File-Slurper";  // For debugging
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Check (\d[\d\.]+\d).*$/";
@@ -208,9 +208,9 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://194.106.223.155/dist/File-BaseDir/" ),
 
-   array( 'pkg'     => 'File-Slurp',
+   array( 'pkg'     => 'File-Slurper',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/File-Slurp/" ),
+          'replace' => "http://194.106.223.155/dist/File-Slurper/" ),
 
    array( 'pkg'     => 'File-Which',
           'match'   => '^.*$',
