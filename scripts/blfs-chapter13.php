@@ -248,6 +248,10 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://194.106.223.155/dist/Parse-Yapp/" ),
 
+   array( 'pkg'     => 'PerlIO-utf8_strict',
+          'match'   => '^.*$',
+          'replace' => "http://194.106.223.155/dist/PerlIO-utf8_strict/" ),
+
    array( 'pkg'     => 'Readonly-XS',
           'match'   => '^.*$',
           'replace' => "http://194.106.223.155/dist/Readonly-XS/" ),
@@ -625,6 +629,9 @@ Function get_pattern( $line )
 
      array( 'pkg'   => 'Log-Log4perl',
             'regex' => "/\D*Log-Log4perl-([\d\.]+)\D*$/" ),
+
+     array( 'pkg'   => 'PerlIO-utf8_strict',
+            'regex' => "/\D*PerlIO-utf8_strict-([\d\.]+)\D*$/" ),
 
      array( 'pkg'   => 'Jinja2',
             'regex' => "/\D*Jinja2-([\d\.]+)\D*$/" ),
