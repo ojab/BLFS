@@ -16,7 +16,7 @@ $renames[ 'openssl1'   ] = 'openssl-1.0';
 $ignores = array();
 $ignores[ 'openssh1' ] = "";
 
-//$current="make-ca";   // For debugging
+//$current="gnutls";   // For debugging
 
 $regex = array();
 $regex[ 'lsb-release'    ] = "/^.*lsb-release_([\d\.]+).*_all\.deb*$/";
@@ -55,7 +55,7 @@ $url_fix = array(
 
    array( 'pkg'     => 'gnutls',
           'match'   => '^.*$',
-          'replace' => 'ftp://ftp.gnupg.org/gcrypt/gnutls/' ),
+          'replace' => 'http://www.gnupg.org/ftp/gcrypt/gnutls/' ),
 
    array( 'pkg'     => 'haveged',
           'match'   => '^.*$',
@@ -136,18 +136,17 @@ function get_packages( $package, $dirpath )
   // Check for ftp
   if ( preg_match( "/^ftp/", $dirpath ) )
   {
-     if ( $package == 'gnutls' )
-     {
-       $lines1 = http_get_file( $dirpath );
-       $dir = find_max( $lines1, "/v\d\.\d/", "/.*(v\d[\d\.-]*\d).*$/" );
-       $dirpath .= "$dir/";
-     }
-
      $lines = http_get_file( "$dirpath/" );
      if ( ! is_array( $lines ) ) return $lines;
   }
   else // http
   {
+     if ( $package == 'gnutls' )
+     {
+       $lines1 = http_get_file( $dirpath );
+       $dir = find_max( $lines1, "/v\d\.\d/", "/.*v(\d[\d\.-]*\d).*$/" );
+       $dirpath .= "v$dir/";
+     }
      // Customize http directories as needed
      //if ( $book_index == "krb5" )
      //{

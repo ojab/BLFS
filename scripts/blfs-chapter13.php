@@ -21,6 +21,7 @@ $ignores[ 'clang'        ] = '';
 $ignores[ 'compiler-rt'  ] = '';
 $ignores[ 'git-htmldocs' ] = '';
 $ignores[ 'git-manpages' ] = '';
+$ignores[ 'libxml'       ] = '';  // This is for python module; handled in Ch 9
 $ignores[ 'lua1'         ] = '';
 $ignores[ 'nasm1'        ] = '';
 $ignores[ 'tcl1'         ] = '';
@@ -36,6 +37,7 @@ $ignores[ 'python1'      ] = '';
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Check (\d[\d\.]+\d).*$/";
+$regex[ 'docutils'] = "/^.*Download docutils-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'expect'  ] = "/^.*Download expect(\d[\d\.]+\d).tar.*$/";
 $regex[ 'junit4'  ] = "/^\h*(\d[\d\.]+)\h*$/";
 $regex[ 'scons'   ] = "/^.*Download scons-(\d[\d\.]+\d).*$/";
@@ -101,6 +103,10 @@ $url_fix = array (
    array( 'pkg'     => 'cmake',
           'match'   => '^.*$',
           'replace' => "https://cmake.org/download/" ),
+
+   array( 'pkg'     => 'docutils',
+          'match'   => '^.*$',
+          'replace' => "http://sourceforge.net/projects/docutils/files" ),
 
    array( 'pkg'     => 'expect',
           'match'   => '^.*$',
@@ -516,7 +522,7 @@ function get_packages( $package, $dirpath )
     $lines = http_get_file( $dirpath, $strip );
     if ( ! is_array( $lines ) ) return $lines;
   } // End fetch
-//print_r($lines);
+
   if ( isset( $regex[ $package ] ) )
   {
      // Custom search for latest package name

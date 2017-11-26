@@ -48,6 +48,10 @@ $url_fix = array (
         'match'   => '^.*$', 
         'replace' => "http://$sf/projects/freetype/files/freetype-docs" ),
 
+ array( 'pkg'     => 'fribidi',
+        'match'   => '^.*$', 
+        'replace' => "https://github.com/fribidi/fribidi/releases" ),
+
  array( 'pkg'     => 'giflib',
         'match'   => '^.*$', 
         'replace' => "http://$sf/projects/giflib/files/giflib-5.x" ),
@@ -240,6 +244,8 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "freetype-doc" )
     return find_max( $lines, '/docs\//', '/^.*docs\/([\d\.]+)\/.*$/' );
 
+  if ( $book_index == "fribidi" )
+    return find_max( $lines, '/\d\./', '/^.*(\d\.[\d\.]+\d).*$/' );
 
   if ( $book_index == "graphite2" )
     return find_max( $lines, '/graphite2-/', '/^.*graphite2-(\d\.[\d\.]+)\.tgz.*$/' );

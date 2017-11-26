@@ -101,7 +101,8 @@ function http_get_file( $url )
          preg_match( "/tcl/", $url         ) ||
          preg_match( "/tk/", $url          ) ||
          preg_match( "/swig/", $url        ) ||
-         preg_match( "/expect/", $url              ) )
+         preg_match( "/docutils/", $url    ) ||
+         preg_match( "/expect/", $url      ) )
   {
 //echo "url=$url\n";
      exec( "curl -L -s -m40 -A Firefox/41.0 $url", $dir );
