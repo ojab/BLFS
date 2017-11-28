@@ -146,6 +146,10 @@ $url_fix = array (
         'match'   => '^.*$',
         'replace' => "http://git.0pointer.net/libatasmart.git/refs/" ),
 
+ array( 'pkg'     => 'libuv',
+        'match'   => '^.*$',
+        'replace' => "https://github.com/libuv/libuv/releases" ),
+
  array( 'pkg'     => 'enchant',
         'match'   => '^.*$',
         'replace' => "https://github.com/AbiWord/enchant/releases" ),
@@ -350,6 +354,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "liblinear" )
     return find_max( $lines, '/v\d/', '/^.*v(\d+)$/' );
+
+  if ( $book_index == "libuv" )
+    return find_max( $lines, '/v\d/', '/^.*v(\d\.[\d\.]+).*$/' );
 
   if ( $book_index == "node-v" ) // node.js
     return find_max( $lines, '/v\d\./', '/^.*v(\d[\d\.]+)\/.*$/' );
