@@ -21,7 +21,6 @@ $renames[ 'qtwebkit-opensource-src'        ] = 'qtwebkit';
 $ignores = array();
 
 //$current="libepoxy"; // For debugging
-$current="qt-everywhere-opensource-src"; // For debugging
 
 $regex = array();
 $regex[ 'freeglut' ] = "/^.*Download freeglut-(\d[\d\.]+\d).tar.*$/";
