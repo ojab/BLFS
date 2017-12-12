@@ -70,7 +70,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'graphviz',
           'match'   => '^.*$', 
-          'replace' => "http://graphviz.org/pub/graphviz/stable/SOURCES/" ),
+          'replace' => "http://graphviz.gitlab.io/_pages/Download/Download_source.html" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -191,6 +191,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "telepathy-mission-control" )
     return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/", TRUE );
+
+  if ( $book_index == "graphviz" )
+    return find_max( $lines, "/graphviz-/", "/^.*graphviz-(\d+\.\d+\.\d+)\.tar.*$/" );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)

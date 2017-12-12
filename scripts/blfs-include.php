@@ -41,7 +41,7 @@ function find_max( $lines, $regex_match, $regex_replace, $skip_high = FALSE )
   foreach ( $lines as $line )
   {
      if ( ! preg_match( $regex_match, $line ) ) continue; 
-     
+
      // Isolate the version and put in an array
      $slice = preg_replace( $regex_replace, "$1", $line );
 
@@ -94,6 +94,12 @@ function find_even_max( $lines, $regex_match, $regex_replace )
 
 function http_get_file( $url )
 {
+  if ( preg_match( "/graphviz/", $url ) )
+  {
+     exec( "elinks -dump $url", $lines );
+     return $lines;
+  }
+
   if ( ! preg_match( "/sourceforge/", $url ) ||
          preg_match( "/jfs/", $url         ) ||
          preg_match( "/liba52/", $url      ) ||
@@ -102,9 +108,8 @@ function http_get_file( $url )
          preg_match( "/tk/", $url          ) ||
          preg_match( "/swig/", $url        ) ||
          preg_match( "/docutils/", $url    ) ||
-         preg_match( "/expect/", $url      ) )
+         preg_match( "/expect/", $url      ) ) 
   {
-//echo "url=$url\n";
      exec( "curl -L -s -m40 -A Firefox/41.0 $url", $dir );
      $s   = implode( "\n", $dir );
      $dir = strip_tags( $s );
@@ -125,7 +130,6 @@ function http_get_file( $url )
   {
 //echo "url=$url\n";
      exec( "elinks -dump $url", $lines );
-//print_r($lines);
      return $lines;
   }
 }
