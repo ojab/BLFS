@@ -14,12 +14,14 @@ $renames[ 'gtk+1'                          ] = 'gtk+3';
 $renames[ 'gtkmm'                          ] = 'gtkmm2';
 $renames[ 'gtkmm1'                         ] = 'gtkmm3';
 $renames[ 'qt-everywhere-opensource-src'   ] = 'qt5';
+$renames[ 'qt-everywhere-opensource'       ] = 'qt5';
 $renames[ 'qtwebengine-opensource-src'     ] = 'qtwebengine';
 $renames[ 'qtwebkit-opensource-src'        ] = 'qtwebkit';
 
 $ignores = array();
 
 //$current="libepoxy"; // For debugging
+$current="qt-everywhere-opensource-src"; // For debugging
 
 $regex = array();
 $regex[ 'freeglut' ] = "/^.*Download freeglut-(\d[\d\.]+\d).tar.*$/";
@@ -149,7 +151,8 @@ function get_packages( $package, $dirpath )
       $dirpath .= "/$dir";
     }
     */
-    if ( $book_index == "qt-everywhere-opensource-src" )
+    $qt_len = strlen( "qt-everywhere" );
+    if ( substr($book_index, 0, $qt_len)  == "qt-everywhere" )
     {
       // Customize http directories as needed
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
@@ -229,7 +232,7 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "firefox" )
     return find_max( $lines, "/^\d/", "/^(\d{2}.\d+)$/" );
 
-  if ( $book_index == "qt-everywhere-opensource-src1" )
+  if ( substr($book_index, 0, $qt_len)  == "qt-everywhere" )
     return find_max( $lines, "/src.*tar.xz/", "/^.*src-([\d\.]+).tar.*$/" );
 
   if ( $book_index == "fltk" )
