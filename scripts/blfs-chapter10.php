@@ -20,7 +20,6 @@ $regex = array();
 $regex[ 'aalib'         ] = "/^.*Download aalib-([\d\.]+rc\d).tar.*$/";
 $regex[ 'libexif'       ] = "/^.*Download libexif-(\d[\d\.]+\d).*$/";
 $regex[ 'libmng'        ] = "/^.*Download libmng-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'libpng'        ] = "/^.*Download libpng-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'LibRaw'        ] = "/^.*LibRaw-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'poppler'       ] = "/^.*poppler-([\d\.]+\d).tar.*$/";
 $regex[ 'popplerdata'   ] = "/^.*poppler-data([\d\.]+\d).tar.*$/";
@@ -90,7 +89,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'libpng',
         'match'   => '^.*$', 
-        'replace' => "http://$sf/projects/libpng/files" ),
+        'replace' => "http://www.libpng.org/pub/png/libpng.html" ),
 
  array( 'pkg'     => 'libwebp',
         'match'   => '^.*$', 
@@ -249,6 +248,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "graphite2" )
     return find_max( $lines, '/graphite2-/', '/^.*graphite2-(\d\.[\d\.]+)\.tgz.*$/' );
+
+  if ( $book_index == "libpng" )
+    return find_max( $lines, '/libpng/', '/^.*libpng ([\d\.]+).*$/' );
 
   if ( $book_index == "libjpeg-turbo" )
     return find_max( $lines, '/files\//', '/^.*files\/([\d\.]+)\/.*$/' );
