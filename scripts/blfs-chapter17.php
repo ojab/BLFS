@@ -30,6 +30,10 @@ $url_fix = array (
           'match'   => '^ftp:\/\/ftp.gnome',
           'replace' => "http://ftp.gnome" ),
 
+   array( 'pkg'     => 'alpine',
+          'match'   => '^.*$',
+          'replace' => "http://repo.or.cz/alpine.git/shortlog" ),
+
    array( 'pkg'     => 'w3m',
           'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/w3m/files" ),
@@ -193,6 +197,9 @@ function get_packages( $package, $dirpath )
 
      return 0;  // This is an error
   }
+
+  if ( $book_index == "alpine" )
+    return find_max( $lines, '/New version/', '/^.*New version ([\d\.]+).*$/' );
 
   if ( $book_index == "c-ares" )
     return find_max( $lines, '/c-ares/', '/^.*c-ares ([\d\.]+) .*$/' );

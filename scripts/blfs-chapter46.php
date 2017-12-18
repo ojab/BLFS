@@ -28,6 +28,7 @@ $ignores[ 'flash_player_npapi_linux.i' ] = '';
 $regex = array();
 $regex[ 'faac'                       ] = "/^.*Download faac-(\d[\d\.]+\d).*$/";
 $regex[ 'a52dec'                     ] = "/^.*a52dec-(\d[\d\.]+\d) is.*$/";
+$regex[ 'id3lib'                     ] = "/^.*Download id3lib-(\d[\d\.]+\d).*$/";
 $regex[ 'libass'                     ] = "/^.*Release (\d[\d\.]+\d).*$/";
 $regex[ 'libdv'                      ] = "/^.*Download libdv-(\d[\d\.]+\d).*$/";
 $regex[ 'libmpeg2'                   ] = "/^.*libmpeg2-(\d[\d\.]+\d).*$/";
@@ -62,6 +63,10 @@ $url_fix = array (
    array( 'pkg'     => 'a52dec',
           'match'   => '^.*$', 
           'replace' => "http://liba52.sourceforge.net/" ),
+
+   array( 'pkg'     => 'id3lib',
+          'match'   => '^.*$', 
+          'replace' => "http://sourceforge.net/projects/id3lib/files/id3lib" ),
 
    array( 'pkg'     => 'libao',
           'match'   => '^.*$', 
@@ -245,7 +250,8 @@ function get_packages( $package, $dirpath )
 
      if ( $package == "opus" ) $dirpath .= '/';
 
-     if ( $package == "faad2" )
+     if ( $package == "faad2" ||
+          $package == "id3lib" )
        exec( "links -dump $dirpath", $lines );
      else 
        $lines = http_get_file( $dirpath );
@@ -343,6 +349,9 @@ Function get_pattern( $line )
      
      array( 'pkg'   => 'frei', 
             'regex' => "/^.*frei0r-plugins-(\d[\d\.]+).*$/" ),
+     
+     array( 'pkg'   => 'id3lib', 
+            'regex' => "/^.*id3lib-(\d[\d\.]+).*$/" ),
      
      array( 'pkg'   => 'libmpeg2', 
             'regex' => "/^.*libmpeg2-(\d[\d\.]+).*$/" ),
