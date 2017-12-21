@@ -529,7 +529,7 @@ EOF&lt;/userinput&gt;&lt;/screen&gt;
       restricted to CPUs 4-7 (typically two real cores and two multithread
       siblings, x86 linux will show them all as cores) using:</para>
 
-<screen><userinput>taskset -pc 4-7</userinput></screen>
+<screen><userinput>taskset -pc 4-7 $$</userinput></screen>
 
       <para>Unfortunately there is no corresponding widely-available (cross-OS)
       function for determining how many processors a task can use if it has been
