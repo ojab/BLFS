@@ -14,13 +14,14 @@ $renames[ 'v' ] = "biber";
 $ignores = array();
 $ignores[ 'install-tl-unx' ] = '';
 $ignores[ 'texlive1'       ] = '';
+$ignores[ 'docbook-xsl-doc'] = '';
 
-//$current="docbook-xsl-doc";  // For debugging
+//$current="docbook-xsl";  // For debugging
 
 $regex = array();
 $regex[ 'gutenprint'      ] = "/^.*Download gutenprint-(\d[\d\.]+\d).*$/";
 $regex[ 'OpenSP'          ] = "/^.*Download OpenSP-(\d[\d\.]+\d).*$/";
-$regex[ 'docbook-xsl-doc' ] = "/^.*Download docbook-xsl-(\d[\d\.]+\d).*$/";
+//$regex[ 'docbook-xsl-doc' ] = "/^.*Download docbook-xsl-(\d[\d\.]+\d).*$/";
 $regex[ 'ghostscript'     ] = "/^.*latest.*Ghostscript (\d[\d\.]+) .*$/";
 $regex[ 'paps'            ] = "/^.*Download paps-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'asymptote'       ] = "/^.*Download asymptote-(\d[\d\.]+\d).*$/";
@@ -68,11 +69,11 @@ $url_fix = array (
 
    array( 'pkg'     => 'docbook-xsl',
           'match'   => '^.*$',
-          'replace' => "http://sourceforge.net/projects/docbook/files/docbook-xsl" ),
+          'replace' => "https://github.com/docbook/xslt10-stylesheets/releases" ),
 
-   array( 'pkg'     => 'docbook-xsl-doc',
-          'match'   => '^.*$',
-          'replace' => "http://sourceforge.net/projects/docbook/files/docbook-xsl-doc" ),
+//   array( 'pkg'     => 'docbook-xsl-doc',
+//          'match'   => '^.*$',
+//      'replace' => "http://sourceforge.net/projects/docbook/files/docbook-xsl-doc" ),
 
    array( 'pkg'     => 'enscript',
           'match'   => '^.*$',
@@ -199,7 +200,7 @@ function get_packages( $package, $dirpath )
       return find_max( $lines, "/4\.\d/", "/^.*(4\.\d),.*$/" );
 
   if ( $package == "docbook-xsl" )
-      return find_max( $lines, "/xsl\//", "/^.*xsl\/([\d\.]+)\/$/" );
+      return find_max( $lines, "/docbook-xsl/", "/^.*docbook-xsl-([\d\.]+).tar.*$/" );
 
   if ( $package == "psutils" )
       return find_max( $lines, "/$package/", "/^.*$package-(p[\d\.]+).tar.*$/" );
