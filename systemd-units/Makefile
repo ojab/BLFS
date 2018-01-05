@@ -89,6 +89,10 @@ install-krb5: create-dirs
 	test -n "${DESTDIR}" || systemctl enable krb5-kpropd.service
 	test -n "${DESTDIR}" || systemctl enable krb5-kadmind.service
 
+install-lightdm: create-dirs
+	install -m ${CONFMODE} blfs/units/lightdm.service ${UNITSDIR}/
+	test -n "${DESTDIR}" || systemctl enable lightdm.service
+
 install-mysqld: create-dirs
 	install -m ${CONFMODE} blfs/tmpfiles/mysqld.conf ${TMPFILESDIR}/
 	install -m ${CONFMODE} blfs/units/mysqld.service ${UNITSDIR}/
@@ -272,6 +276,11 @@ uninstall-krb5:
 	test -n "${DESTDIR}" || systemctl disable krb5-kpropd.service
 	test -n "${DESTDIR}" || systemctl disable krb5-kdc.service
 	rm -f ${UNITSDIR}/krb5-kadmind.service ${UNITSDIR}/krb5-kpropd.service ${UNITSDIR}/krb5-kdc.service
+
+uninstall-lightdm:
+	test -n "${DESTDIR}" || systemctl stop lightdm.service
+	test -n "${DESTDIR}" || systemctl disable lightdm.service
+	rm -f ${UNITSDIR}/lightdm.service
 
 uninstall-mysqld:
 	test -n "${DESTDIR}" || systemctl stop mysqld.service
