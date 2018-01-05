@@ -100,6 +100,12 @@ function http_get_file( $url )
      return $lines;
   }
 
+  if ( preg_match( "/gpm/", $url ) )
+  {
+     exec( "wget -q --no-check-certificate -O- $url", $dir );
+     return $dir;
+  }
+
   if ( ! preg_match( "/sourceforge/", $url ) ||
          preg_match( "/jfs/", $url         ) ||
          preg_match( "/liba52/", $url      ) ||
