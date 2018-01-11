@@ -29,7 +29,6 @@ $regex[ 'fontforge-dist'] = "/^.*fontforge-dist-(20\d+).tar.*$/";
 $regex[ 'xscreensaver'  ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'tigervnc'      ] = "/^.*TigerVNC (\d[\d\.]+\d)$/";
 $regex[ 'transmission'  ] = "/^.*Transmission (\d[\d\.]+\d).*$/";
-$regex[ 'xarchiver'     ] = "/^.*Download xarchiver-(\d[\d\.]+\d).tar.*$/";
 
 $url_fix = array (
 

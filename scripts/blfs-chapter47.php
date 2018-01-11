@@ -16,11 +16,7 @@ $ignores = array();
 $ignores[ 'freetts1' ] = '';
 
 $regex = array();
-$regex[ 'mpg123'     ] = "/^.*Download mpg123-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'lame'       ] = "/^.*Download (\d[\d\.]+\d) sources.*$/";
-$regex[ 'freetts'    ] = "/^.*Download freetts-(\d[\d\.]+\d)-bin.*$/";
 $regex[ 'gvolwheel'  ] = "/^.*Download gvolwheel-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'cdrdao'     ] = "/^.*Download cdrdao-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'pnmixer'    ] = "/^.*pnmixer-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'simpleburn' ] = "/^.*SimpleBurn-(\d[\d\.]+\d).*$/";
 
@@ -169,6 +165,12 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "xine-ui" )
       return find_max( $lines, "/xine-ui\//", "/^.*xine-ui\/([\d\.]+)\/.*$/" );
+
+  if ( $package == "freetts" )
+      return find_max( $lines, "/freetts/", "/^.*freetts-([\d\.]+)-bin.*$/" );
+
+  if ( $package == "lame" )
+      return find_max( $lines, "/Latest/", "/^.*Version ([\d\.]+) sources.*$/" );
 
   if ( $package == "kwave" )
       return find_max( $lines, "/;\d\d\./", "/^.*;(\d\d\.[\d\.]+)\/.*$/" );

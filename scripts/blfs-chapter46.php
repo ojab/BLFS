@@ -26,19 +26,12 @@ $ignores[ 'flash_player_npapi_linux.i' ] = '';
 //$current="libcanberra";
 
 $regex = array();
-$regex[ 'faac'                       ] = "/^.*Download faac-(\d[\d\.]+\d).*$/";
 $regex[ 'a52dec'                     ] = "/^.*a52dec-(\d[\d\.]+\d) is.*$/";
-$regex[ 'id3lib'                     ] = "/^.*Download id3lib-(\d[\d\.]+\d).*$/";
 $regex[ 'libass'                     ] = "/^.*Release (\d[\d\.]+\d).*$/";
-$regex[ 'libdv'                      ] = "/^.*Download libdv-(\d[\d\.]+\d).*$/";
 $regex[ 'libmpeg2'                   ] = "/^.*libmpeg2-(\d[\d\.]+\d).*$/";
 $regex[ 'libmusicbrainz1'            ] = "/^.*libmusicbrainz-(5[\d\.]+\d).*$/";
-$regex[ 'libquicktime'               ] = "/^.*Download libquicktime-([\d\.]+\d).tar.*$/";
 $regex[ 'libsamplerate'              ] = "/^.*libsamplerate-([\d\.]+\d).tar.*$/";
 $regex[ 'soundtouch'                 ] = "/^.*Download .* Source Codes release ([\d\.]+\d).*$/";
-$regex[ 'xine-lib'                   ] = "/^.*Download xine-lib-([\d\.]+\d).tar.*$/";
-$regex[ 'mlt'                        ] = "/^.*Download mlt-([\d\.]+\d).tar.*$/";
-$regex[ 'libcddb'                    ] = "/^.*Download libcddb-([\d\.]+\d).tar.*$/";
 $regex[ 'flash_player_ppapi_linux.x' ] = "/^.*latest versions are (\d[\d\.]+\d).*$/";
 $regex[ 'libcanberra'                ] = "/^.*(\d[\d\.]+\d) released.*$/";
 
@@ -307,6 +300,9 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "libmad" )
       return find_max( $lines, "/^.*libmad-/", "/^.*libmad-([\d\.]+[a-m]{0,1}).tar.*$/" );
+
+  if ( $package == "id3lib" )
+      return find_max( $lines, "/id3lib/", "/^.*id3lib-([\d\.]+)binaries.*$/" );
 
   if ( $package == "libmusicbrainz" )
       return find_max( $lines, "/^.*libmusicbrainz-/", "/^.*libmusicbrainz-(2[\d\.]+).tar.*$/" );

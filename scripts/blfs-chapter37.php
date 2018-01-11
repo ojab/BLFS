@@ -13,11 +13,10 @@ $renames[ 'libfm'  ] = 'libfm-extra';
 $renames[ 'libfm1' ] = 'libfm';
 
 $ignores = array();
+//$renames[ 'libfm1' ] = '';
 
 $regex = array();
-$regex[ 'libfm'       ] = "/^.*Download libfm-([\d\.]+).tar.*$/";
-$regex[ 'libfm1'      ] = "/^.*Download libfm-([\d\.]+).tar.*$/";
-$regex[ 'lxde-common' ] = "/^.*Download lxde-common-([\d\.]+).tar.*$/";
+//$regex[ 'libfm'       ] = "/^.*Download libfm-([\d\.]+).tar.*$/";
 
 //$current="obconf-qt";
 
@@ -174,6 +173,12 @@ function get_packages( $package, $dirpath )
     $dirpath .= "/$dir";
     $lines    = http_get_file( "$dirpath/" );
     $ver = find_max( $lines, "/menu-cache/", "/^.*menu-cache-([\d\.]+).tar.*/" );
+    return $ver;
+  }
+  else if ( $book_index == "libfm1" )
+  {
+    $lines    = http_get_file( "$dirpath/" );
+    $ver = find_max( $lines, "/libfm/", "/^.*libfm-([\d\.]+).tar.*/" );
     return $ver;
   }
   else if ( $book_index == "pcmanfm" )

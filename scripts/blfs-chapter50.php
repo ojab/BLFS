@@ -19,12 +19,7 @@ $ignores[ 'docbook-xsl-doc'] = '';
 //$current="docbook-xsl";  // For debugging
 
 $regex = array();
-$regex[ 'gutenprint'      ] = "/^.*Download gutenprint-(\d[\d\.]+\d).*$/";
-$regex[ 'OpenSP'          ] = "/^.*Download OpenSP-(\d[\d\.]+\d).*$/";
-//$regex[ 'docbook-xsl-doc' ] = "/^.*Download docbook-xsl-(\d[\d\.]+\d).*$/";
 $regex[ 'ghostscript'     ] = "/^.*latest.*Ghostscript (\d[\d\.]+) .*$/";
-$regex[ 'paps'            ] = "/^.*Download paps-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'asymptote'       ] = "/^.*Download asymptote-(\d[\d\.]+\d).*$/";
 $regex[ 'sane-frontends'  ] = "/^.*sane-frontends-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'ghostscript-fonts-std' ] =
     "/^.*ghostscript-fonts-std-(\d[\d\.]+\d).tar.*$/";
@@ -189,6 +184,9 @@ function get_packages( $package, $dirpath )
 
      return 0;  // This is an error
   }
+
+  if ( $package == "asymptote" )
+      return find_max( $lines, "/asymptote/", "/^.*asymptote-([\d\.]+).i386.*$/" );
 
   if ( $package == "cups" )
       return find_max( $lines, "/^.*cups-/", "/^.*cups-([\d\.]+)-source.*$/" );
