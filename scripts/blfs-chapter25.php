@@ -23,7 +23,6 @@ $ignores = array();
 //$current="libepoxy"; // For debugging
 
 $regex = array();
-$regex[ 'freeglut' ] = "/^.*Download freeglut-(\d[\d\.]+\d).tar.*$/";
 
 $url_fix = array (
    array( 'pkg'     => 'freeglut',

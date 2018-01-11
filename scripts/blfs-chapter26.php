@@ -14,8 +14,7 @@ $renames[ 'oxygen-icons1' ] = 'oxygen-icons5';
 $ignores = array();
 
 $regex = array();
-$regex[ 'fluxbox' ] = "/^.*current version of Fluxbox is (\d[\d\.]+\d).*$/";
-$regex[ 'lxdm'    ] = "/^.*Download lxdm-(\d[\d\.]+\d).*$/";
+//$regex[ 'fluxbox' ] = "/^.*current version of Fluxbox is (\d[\d\.]+\d).*$/";
 
 //$current="lxde-icon-theme";  # For debugging
 
@@ -23,7 +22,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'fluxbox',
           'match'   => '^.*$', 
-          'replace' => "http://www.fluxbox.org/download" ),
+          'replace' => "https://sourceforge.net/projects/fluxbox/files" ),
 
    array( 'pkg'     => 'icewm',
           'match'   => '^.*$', 

@@ -16,11 +16,9 @@ $ignores[ 'libnl-doc' ] = '';
 //$current="lynx";
 
 $regex = array();
-$regex[ 'w3m'           ] = "/^.*Download w3m-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'serf'          ] = "/^.*Serf is ([\d\.]+\d).*$/";
 $regex[ 'neon'          ] = "/^.*neon-(\d[\d\.]*).tar.*$/";
 $regex[ 'libevent'      ] = "/^.*release-(\d[\d\.]*)-stable.*$/";
-$regex[ 'fetchmail'     ] = "/^.*Download fetchmail-(\d[\d\.]*).tar.*$/";
 $regex[ 'libnsl'        ] = "/^.*libnsl ([\d\.]+\d)*$/";
 $regex[ 'rpcsvc-proto'  ] = "/^.*Version ([\d\.]+\d)*$/";
 

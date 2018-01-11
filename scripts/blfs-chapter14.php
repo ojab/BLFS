@@ -18,10 +18,7 @@ $ignores = array();
 
 //$current="bridge-utils";
 
-$regex[ 'nfs-utils'       ] = "/^.*Download nfs-utils-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'rpcbind'         ] = "/^.*Download rpcbind-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'wireless_tools.' ] = "/^.*latest stable.*version (\d\d).*$/";
-$regex[ 'traceroute'      ] = "/^.*Download traceroute-([\d\.]*).tar.*$/";
 $regex[ 'wicd'            ] = "/^.*Latest version is ([\d\.]*).*$/";
 
 $url_fix = array (
