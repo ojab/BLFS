@@ -13,7 +13,6 @@ $renames[ 'Python'     ] = 'python2';
 $renames[ 'Python1'    ] = 'python3';
 $renames[ 'pygobject'  ] = 'pygobject2';
 $renames[ 'pygobject1' ] = 'pygobject3';
-//$renames[ 'v'          ] = 'ninja';
 
 $ignores = array();
 $ignores[ 'cfe'          ] = '';
@@ -37,11 +36,7 @@ $ignores[ 'python1'      ] = '';
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Check (\d[\d\.]+\d).*$/";
-$regex[ 'docutils'] = "/^.*Download docutils-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'expect'  ] = "/^.*Download expect(\d[\d\.]+\d).tar.*$/";
 $regex[ 'junit4'  ] = "/^\h*(\d[\d\.]+)\h*$/";
-$regex[ 'scons'   ] = "/^.*Download scons-(\d[\d\.]+\d).*$/";
-$regex[ 'tcl'     ] = "/^.*Download tcl(\d[\d\.]+\d).*$/";
 $regex[ 'Python'  ] = "/^.*Latest Python 2.*Python (2[\d\.]+\d).*$/";
 $regex[ 'Python1' ] = "/^.*Latest Python 3.*Python (3[\d\.]+\d).*$/";
 $regex[ 'Mako'    ] = "/^.*version is (\d[\d\.]+\d).*$/";
@@ -375,18 +370,6 @@ $url_fix = array (
           'replace' => "https://pypi.python.org/pypi/six" ),
 );
 
-/*
-     // Skip minor versions in the 90s (most of the time)
-     list( $major, $minor, $rest ) = explode( ".", $slice . ".0.0" );
-     if ( $minor >= 90                       &&
-          $book_index != "librep"            &&
-          $book_index != "Glib"              &&
-          $book_index != "Business-ISSN"     &&
-          $book_index != "XML-LibXML-Simple" &&
-          $book_index != "XML-LibXSLT"       &&
-          $book_index != "elfutils"          ) continue;
-*/
-
 function get_packages( $package, $dirpath )
 {
   global $regex;
@@ -560,6 +543,12 @@ function get_packages( $package, $dirpath )
   if ( $package == "scour" )
     return find_max( $lines, "/v/", "/^.*v(\d[\d\.]*\d).*$/" );
 
+  if ( $package == "expect" )
+    return find_max( $lines, "/expect/", "/^.*expect(\d[\d\.]*\d).tar.*$/" );
+
+  if ( $package == "tcl" )
+    return find_max( $lines, "/tcl/", "/^.*tcl(\d[\d\.]*\d)-src.*$/" );
+
   if ( $package == "rustc" )
   {
     $max = find_max( $lines, "/release/", "/^.* (\d[\d\.]+\d) release.*$/" );
@@ -571,12 +560,6 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "nasm" )
     return find_max( $lines, '/^\d/', '/^(\d[\d\.]+\d)\/.*$/' );
-
-#  if ( $book_index == "python" || $book_index == "python1" )  // python docs
-#  {
-#    return find_max( $lines, "/python-\d/",
-#                             "/^python-(\d[\d\.]*\d)-docs.*$/" );
-#  }
 
   if ( $book_index == "cmake" )
   {
@@ -604,6 +587,9 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "Text-CSV" )
     return find_max( $lines, "/$package/", "/^.*$package-(\d[\d\.]+\d).*$/" );
 
+  if ( $book_index == "scons" )
+    return find_max( $lines, "/$package/", "/^.*$package-(\d[\d\.]+\d).zip.*$/" );
+
   if ( $book_index == "tk" )
   {
     $dir = find_max( $lines, '/8\./', '/^.*(8\.[\d\.]+\d).*$/' );
@@ -613,7 +599,6 @@ function get_packages( $package, $dirpath )
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
-
   $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]+\d).tar.*$/" );
   return $max;
 }

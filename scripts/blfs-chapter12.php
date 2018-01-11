@@ -12,7 +12,6 @@ $renames = array();
 $renames[ 'udisks1'  ] = 'udisks2';
 $renames[ 'sg'       ] = 'sg3_utils';
 $renames[ 'unrarsrc' ] = 'unrar';
-//$renames[ 'p7zip_'   ] = 'p7zip';
 
 $ignores = array();
 $ignores[ 'colord1' ] = "";
@@ -20,12 +19,9 @@ $ignores[ 'colord1' ] = "";
 //$current="sysstat";
 
 $regex = array();
-$regex[ 'acpid'   ] = "/^.*Download acpid-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'fcron'   ] = "/^.*Stable release fcron (\d[\d\.]+\d)*$/";
-$regex[ 'hdparm'  ] = "/^.*Download hdparm-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'ibus'    ] = "/^.*ibus-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'strigi'  ] = "/^(\d[\d\.]+\d) .*$/";
-//$regex[ 'sysstat' ] = "/^.*sysstat-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'systemd' ] = "/^.*v(\d[\d\.]+\d).*$/";
 
 $sf = 'sourceforge.net';
