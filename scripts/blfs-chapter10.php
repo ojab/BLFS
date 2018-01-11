@@ -17,14 +17,9 @@ $ignores[ 'ippicv' ] = "";
 //$current="opencv_contrib";   // For debugging
 
 $regex = array();
-$regex[ 'aalib'         ] = "/^.*Download aalib-([\d\.]+rc\d).tar.*$/";
-$regex[ 'libexif'       ] = "/^.*Download libexif-(\d[\d\.]+\d).*$/";
-$regex[ 'libmng'        ] = "/^.*Download libmng-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'LibRaw'        ] = "/^.*LibRaw-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'poppler'       ] = "/^.*poppler-([\d\.]+\d).tar.*$/";
 $regex[ 'popplerdata'   ] = "/^.*poppler-data([\d\.]+\d).tar.*$/";
-$regex[ 'qpdf'          ] = "/^.*Download qpdf-([\d\.]+\d).tar.*$/";
-$regex[ 'potrace'       ] = "/^.*Download potrace-([\d\.]+\d).tar.*$/";
 $regex[ 'exiv2'         ] = "/^.*exiv2-(\d[\d\.]+\d).*.tar.*$/";
 
 $sf = 'sourceforge.net';
@@ -73,7 +68,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'libexif',
         'match'   => '^.*$', 
-        'replace' => "http://$sf/projects/libexif/files/libexif" ),
+        'replace' => "http://$sf/projects/libexif/files" ),
 
  array( 'pkg'     => 'libjpeg-turbo',
         'match'   => '^.*$', 
@@ -260,6 +255,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "openjpeg" )
     return find_max( $lines, '/files/', '/^.*files\/(1\.[\d\.]+)\/.*$/' );
+
+  if ( $book_index == "aalib" )
+    return find_max( $lines, "/$book_index/", '/^.*aalib-([rc\d\.]+).tar.*$/' );
 
   // imlib
   if ( $book_index == "imlib2" )

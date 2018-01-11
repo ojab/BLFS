@@ -16,7 +16,7 @@ $ignores[ 'zsh1' ] = '';
 //$current="emacs";   // For debugging
 
 $regex = array();
-$regex[ 'joe'  ] = "/^.*Download joe-(\d[\d\.]+).tar.*$/";
+//$regex[ 'joe'  ] = "/^.*Download joe-(\d[\d\.]+).tar.*$/";
 
 $url_fix = array (
 
@@ -97,8 +97,8 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "joe" )
   {
-    $dir   = find_max( $lines, '/^.*joe-[\d\.]+.*$/', '/^.*(joe-[\d\.]+).tar.*$/' );
-    $lines = http_get_file( "$dirpath/$dir" );
+    return find_max( $lines, '/joe/', '/^.*joe-([\d\.]+).tar.*$/' );
+    //$lines = http_get_file( "$dirpath/$dir" );
   }
 
   // vim language pack

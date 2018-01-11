@@ -19,10 +19,8 @@ $ignores = array();
 //$current="gmime1"; // For debugging
 
 $regex = array();
-$regex[ 'clucene-core'  ] = "/^.*Download clucene-core-([\d\.]+).tar.*$/";
 $regex[ 'expat'         ] = "/^.*Download expat-([\d\.]+).tar.*$/";
 $regex[ 'libzeitgeist'  ] = "/^.*Latest version is ([\d\.]+)\s*$/";
-$regex[ 'libiodbc'      ] = "/^.*Download libiodbc-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'libical'       ] = "/^.*v(\d[\d\.]+\d).*$/";
 $regex[ 'libdaemon'     ] = "/^.*Version (\d[\d\.]+\d) released.*$/";
 $regex[ 'libatasmart'   ] = "/^.*v(\d[\d\.]+\d).*$/";
@@ -40,7 +38,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'clucene-core',
         'match'   => '^.*$',
-        'replace' => "http://$sf/projects/clucene/files" ),
+        'replace' => "http://sourceforge.net/projects/clucene/files" ),
 
  array( 'pkg'     => 'expat',
         'match'   => '^.*$',

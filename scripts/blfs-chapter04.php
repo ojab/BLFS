@@ -14,7 +14,8 @@ $renames[ 'openssl'    ] = 'openssl-1.1';
 $renames[ 'openssl1'   ] = 'openssl-1.0';
 
 $ignores = array();
-$ignores[ 'openssh1' ] = "";
+$ignores[ 'openssh1'    ] = "";
+$ignores[ 'lsb-release' ] = ""; // Has not changed in 12 years
 
 //$current="gnutls";   // For debugging
 
