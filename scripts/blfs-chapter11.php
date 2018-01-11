@@ -17,7 +17,6 @@ $renames[ 'ImageMagick1' ] = 'ImageMagick7';
 $ignores = array();
 
 $regex = array();
-$regex[ 'bogofilter'    ] = "/^.*Download bogofilter-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'intltool'      ] = "/^.*Latest version is (\d[\d\.]+\d).*$/";
 $regex[ 'xscreensaver'  ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
 
@@ -210,9 +209,6 @@ Function get_pattern( $line )
      array( 'pkg'   => 'hd2u', 
             'regex' => "/hd2u-([\d\.]+)/" ),
 
-     array( 'pkg'   => 'qtchooser', 
-            'regex' => "/qtchooser-([\d\.]+)-.*/" ),
-
      array( 'pkg'   => 'tidy-html', 
             'regex' => "/tidy-html5-([\d\.]+).*/" ),
    );
@@ -222,6 +218,15 @@ Function get_pattern( $line )
       $pkg = $m[ 'pkg' ];
       if ( preg_match( "/$pkg/", $line ) ) 
          return $m[ 'regex' ];
+   }
+
+   // Workaround because graphviz does not have version in tarball name
+   if ( preg_match( "/graphviz/", $line) )
+   {
+      $url = 'http://www.linuxfromscratch.org/blfs/view/svn/general/genutils.html';
+      $f   = http_get_file( $url );
+      $p   = find_max( $f, '/Graphviz/', '/^.*Graphviz-([\d\.]+).*$/' );
+      return "$p";
    }
 
    return "/\D*(\d.*\d)\D*$/";

@@ -187,6 +187,13 @@ function get_current()
 
       $pattern = get_pattern( $file );
 
+      // Workaround because graphviz does not have version in filename
+      if ( preg_match( "/graphviz/", $file ) )
+      {
+         $file = preg_replace( '/graphviz/', "graphviz-$pattern", $file );
+         $pattern = '/\D*(\d.*\d)\D*$/'; 
+      }
+
       $version = preg_replace( $pattern, "$1", $file );   // Isolate version
       $version = preg_replace( "/^-/", "", $version );    // Remove leading #-
 
