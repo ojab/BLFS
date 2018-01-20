@@ -612,7 +612,7 @@ done</userinput></screen>
 
           <para>If you wish you can use 'sudo tee' here, it is omitted from the
           example as a reminder that only root should be doing this because it
-          will restrict what else you can do at hte same time.</para>
+          will restrict what else you can do at the same time.</para>
 
           <note>
             <para>If you take CPU 0 (the boot CPU) offline, you run the risk of
