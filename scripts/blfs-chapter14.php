@@ -194,7 +194,7 @@ function get_packages( $package, $dirpath )
   }
 
   if ( $book_index == "whois" )
-    return find_max( $lines, '/whois_/', '/^.*whois_([\d\.]+).tar.*$/' );
+    return find_even_max( $lines, '/whois_/', '/^.*whois_([\d\.]+).tar.*$/' );
 
   if ( $book_index == "wireshark" )
     return find_even_max( $lines, '/wireshark/', '/^.*wireshark-([\d\.]+).tar.*$/' );
