@@ -63,6 +63,10 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "https://github.com/lathiat/avahi/releases" ),
 
+   array( 'pkg'     => 'whois',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/rfc1036/whois/releases" ),
+
    array( 'pkg'     => 'nmap',
           'match'   => '^.*$', 
           'replace' => "http://nmap.org/dist" ),
@@ -194,7 +198,7 @@ function get_packages( $package, $dirpath )
   }
 
   if ( $book_index == "whois" )
-    return find_even_max( $lines, '/whois_/', '/^.*whois_([\d\.]+).tar.*$/' );
+    return find_even_max( $lines, '/v\d/', '/^.*v([\d\.]+).*$/' );
 
   if ( $book_index == "wireshark" )
     return find_even_max( $lines, '/wireshark/', '/^.*wireshark-([\d\.]+).tar.*$/' );
