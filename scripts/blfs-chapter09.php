@@ -66,7 +66,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'libesmtp',
         'match'   => '^.*$',
-        'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/libesmtp/" ),
+        'replace' => "http://brianstafford.info/libesmtp/download.html" ),
 
  array( 'pkg'     => 'libusb',
         'match'   => '^.*$',
