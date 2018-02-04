@@ -18,6 +18,7 @@ $ignores = array();
 
 //$current="bridge-utils";
 
+$regex[ 'mod_dnssd'       ] = "/^.*mod_dnssd ([\d\.]*).*$/";
 $regex[ 'wireless_tools.' ] = "/^.*latest stable.*version (\d\d).*$/";
 $regex[ 'wicd'            ] = "/^.*Latest version is ([\d\.]*).*$/";
 

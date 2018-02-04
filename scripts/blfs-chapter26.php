@@ -14,7 +14,7 @@ $renames[ 'oxygen-icons1' ] = 'oxygen-icons5';
 $ignores = array();
 
 $regex = array();
-//$regex[ 'fluxbox' ] = "/^.*current version of Fluxbox is (\d[\d\.]+\d).*$/";
+$regex[ 'openbox' ] = "/^.*release-(\d[\d\.]+\d).*$/";
 
 //$current="lxde-icon-theme";  # For debugging
 
@@ -44,6 +44,9 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "http://download.kde.org/stable/frameworks" ),
 
+   array( 'pkg'     => 'openbox',
+          'match'   => '^.*$', 
+          'replace' => "http://git.openbox.org/?p=mikachu/openbox.git;a=summary" ),
 );
 function get_packages( $package, $dirpath )
 {

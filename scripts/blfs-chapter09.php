@@ -266,7 +266,7 @@ function get_packages( $package, $dirpath )
     // Customize http directories as needed
     if ( $book_index != "json-c")
     {
-      $lines = http_get_file( "$dirpath/" );
+      $lines = http_get_file( "$dirpath" );
       if ( ! is_array( $lines ) ) return $lines;
     }
 
