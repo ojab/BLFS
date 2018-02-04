@@ -36,10 +36,6 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/lxde/files/LXDE%20Icon%20Theme" ),
 
-   array( 'pkg'     => 'openbox',
-          'match'   => '^.*$', 
-          'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/openbox" ),
-
    array( 'pkg'     => 'sddm',
           'match'   => '^.*$', 
           'replace' => "https://github.com/sddm/sddm/releases" ),

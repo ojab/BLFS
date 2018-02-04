@@ -120,11 +120,6 @@ $url_fix = array (
    array( 'pkg'     => 'xarchiver',
           'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/xarchiver/files" ),
-
-   array( 'pkg'     => 'rxvt-unicode',
-          'match'   => '^.*$',
-          'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/rxvt-unicode" ),
-
 );
 
 function get_packages( $package, $dirpath )

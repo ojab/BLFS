@@ -78,11 +78,6 @@ $url_fix = array (
    array( 'pkg'     => 'wicd',
           'match'   => '^.*$', 
           'replace' => "https://launchpad.net/wicd" ),
-
-   array( 'pkg'     => 'mod_dnssd',
-          'match'   => '^.*$', 
-          'replace' => "http://pkgs.fedoraproject.org/repo/pkgs/mod_dnssd" ),
-
 );
 
 function get_packages( $package, $dirpath )
