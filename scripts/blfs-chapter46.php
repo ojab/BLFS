@@ -11,7 +11,6 @@ $STOP_PACKAGE  = 'xvidcore';
 $renames = array();
 $renames[ 'libmusicbrainz'             ] = 'libmusicbrainz2';
 $renames[ 'libmusicbrainz1'            ] = 'libmusicbrainz5';
-$renames[ 'libvpx-v'                   ] = 'libvpx';
 $renames[ 'x264-snapshot'              ] = 'x264';
 $renames[ 'x1'                         ] = 'x265';
 $renames[ 'flash_player_ppapi_linux.x' ] = 'flashplayer';
@@ -99,7 +98,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'libvpx',
           'match'   => '^.*$', 
-          'replace' => "https://chromium.googlesource.com/webm/libvpx/" ),
+          'replace' => "https://github.com/webmproject/libvpx/releases" ),
 
    array( 'pkg'     => 'soundtouch',
           'match'   => '^.*$', 
@@ -310,9 +309,8 @@ function get_packages( $package, $dirpath )
   if ( $package == "libmusicbrainz1" )
       return find_max( $lines, "/^.*libmusicbrainz-/", "/^.*libmusicbrainz-(3[\d\.]+).tar.*$/" );
 
-  // Very sensitive to upstream format that appears to be script based
   if ( $package == "libvpx" )
-      return find_max( $lines, "/v\d/", "/^.*sv([\d\.]+)v.*$/" );
+      return find_max( $lines, "/v\d/", "/^.*v(\d[\d\.]+\d).*$/" );
 
   if ( $package == "speexdsp" )
       return find_max( $lines, "/$package/", "/^.*$package-([\d\.rc]+).tar.*$/" );
