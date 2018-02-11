@@ -239,7 +239,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/docs\//', '/^.*docs\/([\d\.]+)\/.*$/' );
 
   if ( $book_index == "fribidi" )
-    return find_max( $lines, '/\d\./', '/^.*(\d\.[\d\.]+\d).*$/' );
+    return find_max( $lines, '/fribidi/', '/^.*(\d\.[\d\.]+\d).*$/' );
 
   if ( $book_index == "graphite2" )
     return find_max( $lines, '/graphite2-/', '/^.*graphite2-(\d\.[\d\.]+)\.tgz.*$/' );
