@@ -10,8 +10,8 @@ $STOP_PACKAGE  = "volume_key";
 
 $renames = array();
 $renames[ 'Linux-PAM1' ] = 'Linux-PAM-docs';
-$renames[ 'openssl'    ] = 'openssl-1.1';
-$renames[ 'openssl1'   ] = 'openssl-1.0';
+$renames[ 'openssl'    ] = 'openssl-1.0';
+//$renames[ 'openssl1'   ] = 'openssl-1.0';
 
 $ignores = array();
 $ignores[ 'openssh1'    ] = "";
@@ -189,10 +189,10 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "openssh" )
      return find_max( $lines, "/$package/", "/^.*$package-([\d\.p]*\d).tar.*$/" );
 
-  if ( $book_index == "openssl" )
-     return find_max( $lines, "/$package/", "/^.*$package-([\d\.p]*\d.?).tar.*$/" );
+//  if ( $book_index == "openssl" )
+//     return find_max( $lines, "/$package/", "/^.*$package-([\d\.p]*\d.?).tar.*$/" );
 
-  if ( $book_index == "openssl1" )
+  if ( $book_index == "openssl" )
      return find_max( $lines, "/$package/", "/^.*$package-(1.0[\d\.p]*\d.?).tar.*$/" );
 
   if ( $book_index == "p11-kit" )
@@ -241,8 +241,8 @@ Function get_pattern( $line )
       array( 'pkg' => 'openssl',
              'regex' => "/\D*(\d.*\d.*)$/" ),
 
-      array( 'pkg' => 'openssl1',
-             'regex' => "/\D*(\d.*\d.*)$/" ),
+//      array( 'pkg' => 'openssl1',
+//             'regex' => "/\D*(\d.*\d.*)$/" ),
 
       array( 'pkg' => 'krb',
              'regex' => "/krb5-([\d.]+)$/" ),
