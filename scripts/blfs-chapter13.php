@@ -5,7 +5,7 @@ include 'blfs-include.php';
 
 $CHAPTER       = '13';
 $CHAPTERS      = 'Chapter 13';
-$START_PACKAGE = 'check';
+$START_PACKAGE = 'clisp';
 $STOP_PACKAGE  = 'junit';
 
 $renames = array();
