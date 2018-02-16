@@ -19,6 +19,7 @@ $regex = array();
 //$regex[ 'libfm'       ] = "/^.*Download libfm-([\d\.]+).tar.*$/";
 
 //$current="obconf-qt";
+$current="lxpanel";
 
 $url_fix = array (
 
@@ -202,8 +203,9 @@ function get_packages( $package, $dirpath )
   else if ( $book_index == "lxpanel" )
   {
     $dirs = http_get_file( "$dirpath/" );    
-    $dir = find_max ( $dirs, "/\/LXPanel/", "/^.*(LXPanel.+[\d\.x]+)\/.*$/" );
+    $dir = find_max ( $dirs, "/LXPanel/", "/^.*(LXPanel\s+[\d\.x]+) .*$/" );
     $dir = preg_replace( "/ /", '%20', $dir );
+echo "dir=$dir\n";
     $dirpath .= "/$dir";
     $lines    = http_get_file( "$dirpath/" );
     $ver = find_max( $lines, "/lxpanel/", "/^.*lxpanel-([\d\.]+).tar.*$/" );
@@ -212,8 +214,8 @@ function get_packages( $package, $dirpath )
   else if ( $book_index == "lxinput" )
   {
     $dirs = http_get_file( "$dirpath/" );    
-    $dir = find_max ( $dirs, "/LXInput/", "/^.*(LXInput.*[\d\.x]+)\/.*$/" );
-    //$dir = preg_replace( "/ /", '%20', $dir );
+    $dir = find_max ( $dirs, "/LXInput/", "/^.*(LXInput\s*[\d\.x]+) .*$/" );
+    $dir = preg_replace( "/ /", '%20', $dir );
     $dirpath .= "/$dir";
     $lines    = http_get_file( "$dirpath/" );
     $ver = find_max( $lines, "/lxinput/", "/^.*lxinput-([\d\.]+).tar.*$/" );
@@ -262,7 +264,7 @@ function get_packages( $package, $dirpath )
   else if ( $book_index == "gpicview" )
   {
     $dirs = http_get_file( "$dirpath/" );    
-    $dir = find_max ( $dirs, "/GPicView/", "/^.*\/([\d\.x]+)\/.*$/" );
+    $dir = find_max ( $dirs, "/^\s*\d/", "/^\s*([\d\.x]+) .*$/" );
     //$dir = preg_replace( "/ /", '%20', $dir );
     $dirpath .= "/$dir";
     $lines    = http_get_file( "$dirpath/" );
