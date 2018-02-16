@@ -292,7 +292,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, "/v\d/", "/^.*v([\d\.]*\d).*$/" );
 
   if ( $package == "rox-filer" )
-      return find_max( $lines, "/rox\/files/", "/^.*rox\/(\d\.[\d\.]+)\/.*$/" );
+      return find_max( $lines, "/^\s*\d/", "/^\s*(\d\.[\d\.]+)\s+.*$/" );
 
   if ( $package == "tigervnc" )
       return find_max( $lines, "/^\s*\d\./", "/^\s*(\d\.[\d\.]+).*$/" );
