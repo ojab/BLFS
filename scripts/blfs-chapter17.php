@@ -222,7 +222,7 @@ function get_packages( $package, $dirpath )
 
   // libtirpc  (sourceforge is inconsistent here)
   if ( $book_index == "libtirpc" )
-    return find_max( $lines, '/libtirpc\//', '/^.*libtirpc\/([\d\.]+)\/.*$/' );
+    return find_max( $lines, '/^\s*\d/', '/^\s*(\d[\d\.]+) .*$/' );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
