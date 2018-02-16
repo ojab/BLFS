@@ -122,7 +122,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, "/v\d/", "/^.*v([\d\.]*\d)*$/" );
 
   if ( $package == 'lxde-icon-theme' )
-    return find_max( $lines, "/theme/", "/^.*theme-([\d\.]+)*$/" );
+    return find_max( $lines, "/theme/", "/^.*theme-([\d\.]+) .*$/" );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
