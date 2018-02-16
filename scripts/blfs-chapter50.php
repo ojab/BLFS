@@ -158,10 +158,10 @@ function get_packages( $package, $dirpath )
      if ( $book_index == "gnu-gs-fonts-other" )
      {
         $dirs = http_get_file( $dirpath );
-        $dir  = find_max( $dirs, "/misc.*GPL/", "/^.*files\/gs-fonts\/([\d\.]+.*)\/$/" );
-        //$dir  = preg_replace( "/ /",  '%20', $dir );
-        //$dir  = preg_replace( "/\(/", '%28', $dir );
-        //$dir  = preg_replace( "/\)/", '%29', $dir );
+        $dir  = find_max( $dirs, "/misc.*GPL/", "/^\s*([\d\.]+.*\))\s+.*$/" );
+        $dir  = preg_replace( "/ /",  '%20', $dir );
+        $dir  = preg_replace( "/\(/", '%28', $dir );
+        $dir  = preg_replace( "/\)/", '%29', $dir );
         $dirpath .= "/$dir";
      }
 
