@@ -191,7 +191,7 @@ function get_packages( $package, $dirpath )
      if ( $package == "gavl" )
      {
        exec( "links -dump '$dirpath/'", $dirs );
-       $dir = find_max( $dirs, "/\d\./", "/^.* ([\d\.]+)$/" );
+       $dir = find_max( $dirs, "/^\s*\d\./", "/^\s*([\d\.]+).*$/" );
        $dirpath .= "/$dir/";
      }
 
