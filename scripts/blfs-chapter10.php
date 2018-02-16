@@ -84,7 +84,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'libpng',
         'match'   => '^.*$', 
-        'replace' => "http://www.libpng.org/pub/png/libpng.html" ),
+        'replace' => "http://sourceforge.net/projects/libpng/files" ),
 
  array( 'pkg'     => 'libwebp',
         'match'   => '^.*$', 
@@ -112,7 +112,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'openjpeg',
         'match'   => '^.*$', 
-        'replace' => "http://sourceforge.net/projects/openjpeg.mirror/files" ),
+        'replace' => "https://github.com/uclouvain/openjpeg/releases" ),
 
  array( 'pkg'     => 'ijs',
         'match'   => '^.*$', 
@@ -231,12 +231,12 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "freetype" )
   {
-    $dir   = find_max( $lines, '/\d\./', '/^\s*([\d\.]+)\s*$/' );
+    $dir   = find_max( $lines, '/\d\./', '/^\s*([\d\.]+)\s.*$/' );
     $lines = http_get_file( "$dirpath/$dir" );
   }
 
   if ( $book_index == "freetype-doc" )
-    return find_max( $lines, '/docs\//', '/^.*docs\/([\d\.]+)\/.*$/' );
+    return find_max( $lines, '/^\s*\d\./', '/^.*\s(\d\.[\d\.]+) .*$/' );
 
   if ( $book_index == "fribidi" )
     return find_max( $lines, '/fribidi/', '/^.*(\d\.[\d\.]+\d).*$/' );
@@ -245,16 +245,20 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/graphite2-/', '/^.*graphite2-(\d\.[\d\.]+)\.tgz.*$/' );
 
   if ( $book_index == "libpng" )
-    return find_max( $lines, '/libpng/', '/^.*libpng ([\d\.]+).*$/' );
+  {
+    $dir = find_max( $lines, '/^\s*libpng\d/', '/^\s*libpng(\d[02468]) .*$/' );
+    $lines = http_get_file( "$dirpath/libpng$dir" );
+    return find_max( $lines, '/^\s*\d/', '/^\s*(\d[\d\.]+) .*$/' );
+  }
 
   if ( $book_index == "libjpeg-turbo" )
-    return find_max( $lines, '/files\//', '/^.*files\/([\d\.]+)\/.*$/' );
+    return find_max( $lines, '/^\s*\d/', '/^\s*(\d[\d\.]+) .*$/' );
 
   if ( $book_index == "jasper" )
     return find_max( $lines, '/JasPer/', '/^.*JasPer (\d\.[\d\.]+).*$/' );
 
   if ( $book_index == "openjpeg" )
-    return find_max( $lines, '/files/', '/^.*files\/(1\.[\d\.]+)\/.*$/' );
+    return find_max( $lines, '/openjpeg-1/', '/^.*openjpeg-(1\.[\d\.]+).*$/' );
 
   if ( $book_index == "aalib" )
     return find_max( $lines, "/$book_index/", '/^.*aalib-([rc\d\.]+).tar.*$/' );
@@ -269,10 +273,10 @@ function get_packages( $package, $dirpath )
 
   // lcms (actually lcms 1.xx)
   if ( $book_index == "lcms" )
-    return find_max( $lines, '/lcms\/1/', '/^.*\/(1[\d\.]+)\/.*$/' );
+    return find_max( $lines, '/^\s*1/', '/^\s*(1[\d\.]+) .*$/' );
 
   if ( $book_index == "opencv" )
-    return find_max( $lines, '/unix/', '/^.*unix\/(\d\.[\d\.]+)\/.*$/' );
+    return find_max( $lines, '/^\s*\d/', '/^\s*(\d\.[\d\.]+) .*$/' );
 
   if ( $book_index == "opencv_contrib" )
     return find_max( $lines, '/3\./', '/^.* (3\.[\d\.]+).*$/' );
@@ -282,7 +286,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/openjpeg/', '/^.*openjpeg-v(\d\.[\d\.]+)-.*$/' );
 
   if ( $book_index == "lcms2" )
-    return find_max( $lines, '/lcms/', '/^.*\/([\d\.]+)\/.*$/' );
+    return find_max( $lines, '/^\s*2/', '/^\s*(2[\d\.]+) .*$/' );
 
   if ( $package == "graphite2" ) $package = "graphite";
 
