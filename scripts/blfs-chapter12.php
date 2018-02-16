@@ -17,6 +17,7 @@ $ignores = array();
 $ignores[ 'colord1' ] = "";
 
 //$current="sysstat";
+$current="p7zip";
 
 $regex = array();
 $regex[ 'fcron'   ] = "/^.*Stable release fcron (\d[\d\.]+\d)*$/";
@@ -195,7 +196,7 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "p7zip" )
   {
-    $max = find_max( $lines, '/p7zip\//', '/^.*p7zip\/([\d\.]+)\/.*$/' );
+    $max = find_max( $lines, '/^\s*\d/', '/^\s*([\d\.]+) .*$/' );
     return $max;
   }
 
