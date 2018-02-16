@@ -41,10 +41,10 @@ function find_max( $lines, $regex_match, $regex_replace, $skip_high = FALSE )
   foreach ( $lines as $line )
   {
      if ( ! preg_match( $regex_match, $line ) ) continue; 
-echo "line=$line\n";
+//echo "line=$line\n";
      // Isolate the version and put in an array
      $slice = preg_replace( $regex_replace, "$1", $line );
-echo "slice=$slice\n";
+//echo "slice=$slice\n";
      if ( "x$slice" == "x$line" && 
           ! preg_match( "/^\d[\d\.]*$/", $slice ) ) continue; 
 

@@ -19,7 +19,6 @@ $regex = array();
 //$regex[ 'libfm'       ] = "/^.*Download libfm-([\d\.]+).tar.*$/";
 
 //$current="obconf-qt";
-$current="lxpanel";
 
 $url_fix = array (
 
@@ -170,7 +169,7 @@ function get_packages( $package, $dirpath )
   else if ( $book_index == "menu-cache" )
   {
     $dirs = http_get_file( "$dirpath/" );    
-    $dir = find_max ( $dirs, "/menu-cache\//", "/^.*menu-cache\/(\d\.[\d\.x]+)\/.*$/" );
+    $dir = find_max ( $dirs, "/^\s*\d/", "/^\s*(\d\.[\d\.x]+)\s+.*$/" );
     $dirpath .= "/$dir";
     $lines    = http_get_file( "$dirpath/" );
     $ver = find_max( $lines, "/menu-cache/", "/^.*menu-cache-([\d\.]+).tar.*/" );
@@ -203,9 +202,8 @@ function get_packages( $package, $dirpath )
   else if ( $book_index == "lxpanel" )
   {
     $dirs = http_get_file( "$dirpath/" );    
-    $dir = find_max ( $dirs, "/LXPanel/", "/^.*(LXPanel\s+[\d\.x]+) .*$/" );
+    $dir = find_max ( $dirs, "/LXPanel/", "/^.*(LXPanel\s+[\d\.x]+)\s+\d.*$/" );
     $dir = preg_replace( "/ /", '%20', $dir );
-echo "dir=$dir\n";
     $dirpath .= "/$dir";
     $lines    = http_get_file( "$dirpath/" );
     $ver = find_max( $lines, "/lxpanel/", "/^.*lxpanel-([\d\.]+).tar.*$/" );
@@ -224,8 +222,8 @@ echo "dir=$dir\n";
   else if ( $book_index == "lxrandr" )
   {
     $dirs = http_get_file( "$dirpath/" );    
-    $dir = find_max ( $dirs, "/LXRandR/", "/^.*(LXRandR.*[\d\.x]+)\/.*$/" );
-    //$dir = preg_replace( "/ /", '%20', $dir );
+    $dir = find_max ( $dirs, "/LXRandR/", "/^.*(LXRandR\s+[\d\.x]+).*$/" );
+    $dir = preg_replace( "/ /", '%20', $dir );
     $dirpath .= "/$dir";
     $lines    = http_get_file( "$dirpath/" );
     $ver = find_max( $lines, "/lxrandr/", "/^.*lxrandr-([\d\.]+).tar.*$/" );
@@ -234,8 +232,8 @@ echo "dir=$dir\n";
   else if ( $book_index == "lxtask" )
   {
     $dirs = http_get_file( "$dirpath/" );    
-    $dir = find_max ( $dirs, "/LXTask/", "/^.*(LXTask.*[\d\.x]+)\/.*$/" );
-    //$dir = preg_replace( "/ /", '%20', $dir );
+    $dir = find_max ( $dirs, "/LXTask/", "/^\s*(LXTask\s+[\d\.x]+)\s+.*$/" );
+    $dir = preg_replace( "/ /", '%20', $dir );
     $dirpath .= "/$dir";
     $lines    = http_get_file( "$dirpath/" );
     $ver = find_max( $lines, "/lxtask/", "/^.*lxtask-([\d\.]+).tar.*$/" );
@@ -244,7 +242,7 @@ echo "dir=$dir\n";
   else if ( $book_index == "lxterminal" )
   {
     $dirs = http_get_file( "$dirpath/" );    
-    $dir = find_max ( $dirs, "/LXTerminal/", "/^.*(LXTerminal.*[\d\.x]+)\/.*$/" );
+    $dir = find_max ( $dirs, "/LXTerminal/", "/^\s*(LXTerminal\s+[\d\.x]+)\s+.*$/" );
     $dir = preg_replace( "/ /", '%20', $dir );
     $dirpath .= "/$dir";
     $lines    = http_get_file( "$dirpath/" );
@@ -254,7 +252,7 @@ echo "dir=$dir\n";
   else if ( $book_index == "lxsession" )
   {
     $dirs = http_get_file( "$dirpath/" );    
-    $dir = find_max ( $dirs, "/LXSession/", "/^.*(LXSession.*[\d\.x]+)\/.*$/" );
+    $dir = find_max ( $dirs, "/LXSession/", "/^.*(LXSession\s+[\d\.x]+)\s+.*$/" );
     $dir = preg_replace( "/ /", '%20', $dir );
     $dirpath .= "/$dir";
     $lines    = http_get_file( "$dirpath/" );
