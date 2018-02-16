@@ -311,7 +311,7 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "boost" )
   {
-    $dir   = find_max( $lines, '/\d\.\d\d/', '/^\s*([\d\.]+)\s*$/' );
+    $dir   = find_max( $lines, '/\d\.\d\d/', '/^\s*([\d\.]+)\s.*$/' );
     $lines = http_get_file( "$dirpath/$dir" );
     return find_max( $lines, '/^.*boost_[\d_]+.tar.*$/', '/^.*boost_([\d_]+).tar.*$/' );
   }
@@ -379,7 +379,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/stable/', '/.*ops-([\d\.]+).tar.*$/' );
 
   if ( $book_index == "openobex" )
-    return find_max( $lines, '/openobex/', '/^.*openobex\/([\d\.]+)\/.*$/' );
+    return find_max( $lines, '/^\s*\d\./', '/^\s*(\d\.[\d\.]+) .*$/' );
 
   if ( $book_index == "qjson" )
     return find_max( $lines, '/\d\./', '/^\s*([\d\.]+)\s*$/' );
