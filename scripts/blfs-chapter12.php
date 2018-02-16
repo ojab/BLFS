@@ -17,7 +17,6 @@ $ignores = array();
 $ignores[ 'colord1' ] = "";
 
 //$current="sysstat";
-$current="p7zip";
 
 $regex = array();
 $regex[ 'fcron'   ] = "/^.*Stable release fcron (\d[\d\.]+\d)*$/";
