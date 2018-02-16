@@ -51,7 +51,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'gptfdisk',
         'match'   => '^.*$', 
-        'replace' => "http://$sf/projects/gptfdisk/files/gptfdisk/" ),
+        'replace' => "http://$sf/projects/gptfdisk/files/gptfdisk" ),
 
  array( 'pkg'     => 'LVM2.',
         'match'   => '^.*$', 
@@ -127,7 +127,7 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "gptfdisk" )
   {
-    $dir = find_max( $lines, '/\d\./', '/^.*gptfdisk\/([\d\.]+)\/.*$/' );
+    $dir = find_max( $lines, '/\d\./', '/^.* ([\d\.]+) .*$/' );
     $lines = http_get_file( "$dirpath/$dir" );
   }
 
