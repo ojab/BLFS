@@ -96,7 +96,7 @@ function http_get_file( $url )
 {
   if ( preg_match( "/graphviz/", $url ) )
   {
-     exec( "elinks -dump $url", $lines );
+     exec( "links -dump $url", $lines );
      return $lines;
   }
 
@@ -135,7 +135,7 @@ function http_get_file( $url )
   else
   {
 //echo "url=$url\n";
-     exec( "elinks -dump $url", $lines );
+     exec( "links -dump $url", $lines );
      return $lines;
   }
 }

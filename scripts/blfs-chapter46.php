@@ -190,7 +190,7 @@ function get_packages( $package, $dirpath )
   {
      if ( $package == "gavl" )
      {
-       exec( "elinks -dump '$dirpath/'", $dirs );
+       exec( "links -dump '$dirpath/'", $dirs );
        $dir = find_max( $dirs, "/\d\./", "/^.* ([\d\.]+)$/" );
        $dirpath .= "/$dir/";
      }
