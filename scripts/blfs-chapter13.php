@@ -31,6 +31,7 @@ $ignores[ 'apache-ant1'  ] = '';
 $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
+$ignores[ 'NetRexx'      ] = '';
 
 //$current="File-Slurper";  // For debugging
 
