@@ -360,7 +360,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/v\d\./', '/^.*v(\d[\d\.]+)\/.*$/' );
 
   if ( $book_index == "libusb-compat" )
-    return find_max( $lines, '/^.*compat-[\d\.]+$/', '/^.*compat-([\d\.]+)$/' );
+    return find_max( $lines, '/^.*compat-\d/', '/^.*compat-([\d\.]+) .*$/' );
 
   if ( $book_index == "libxkbcommon" )
     return find_max( $lines, '/\d\./', '/^.*(0\.[\d\.]+)\..*$/' );
