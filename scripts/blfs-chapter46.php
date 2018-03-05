@@ -122,7 +122,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'mlt',
           'match'   => '^.*$', 
-          'replace' => "https://sourceforge.net/projects/mlt/files" ),
+          'replace' => "https://github.com/mltframework/mlt/releases" ),
 
    array( 'pkg'     => 'libcddb',
           'match'   => '^.*$', 
