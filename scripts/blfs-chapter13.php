@@ -633,7 +633,7 @@ Function get_pattern( $line )
             'regex' => "/jtreg-(\d[\d\.b-]+)$/" ),
 
      array( 'pkg'   => 'OpenJDK',
-            'regex' => "/OpenJDK-([\d\.]+)-.*$/" ),
+            'regex' => "/OpenJDK-([\d\.]+)\+?.*$/" ),
 
      array( 'pkg'   => 'junit4',
             'regex' => "/junit4_([\d\.]+).*$/" ),
