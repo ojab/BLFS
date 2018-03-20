@@ -233,6 +233,9 @@ function get_current()
       if ( preg_match( "/biber/", $line ) )
         $basename = "biber";
 
+      if ( preg_match( "/hg\.mozilla\.org/", $line ) )
+        $basename = "firefox";
+
       // Skip chromium-freetype
       if ( preg_match( "/chromium-freetype/", $line ) )
         continue;

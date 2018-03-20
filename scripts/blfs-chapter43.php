@@ -132,6 +132,8 @@ function get_packages( $package, $dirpath )
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
 
+  if ( $package == "firefox" ) return "manual";
+
   // Fix up directory path
   foreach ( $url_fix as $u )
   {
@@ -177,7 +179,6 @@ function get_packages( $package, $dirpath )
   else // http
   {
      if ( $package == "seamonkey"   ||
-          $package == "firefox"     ||
           $package == "thunderbird" )
      {
          $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
