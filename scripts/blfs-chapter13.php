@@ -26,8 +26,10 @@ $ignores[ 'nasm1'        ] = '';
 $ignores[ 'tcl1'         ] = '';
 $ignores[ 'gcc1'         ] = '';
 $ignores[ 'OpenJDK'      ] = '';
+$ignores[ 'OpenJDK1'     ] = '';
 $ignores[ 'hamcrest'     ] = '';
 $ignores[ 'apache-ant1'  ] = '';
+$ignores[ 'apache-maven1'] = '';
 $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
@@ -37,7 +39,6 @@ $ignores[ 'NetRexx'      ] = '';
 
 $regex = array();
 $regex[ 'check'   ] = "/^.*Check (\d[\d\.]+\d).*$/";
-$regex[ 'junit4'  ] = "/^\h*(\d[\d\.]+)\h*$/";
 $regex[ 'Python'  ] = "/^.*Latest Python 2.*Python (2[\d\.]+\d).*$/";
 $regex[ 'Python1' ] = "/^.*Latest Python 3.*Python (3[\d\.]+\d).*$/";
 $regex[ 'Mako'    ] = "/^.*version is (\d[\d\.]+\d).*$/";
@@ -112,9 +113,9 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://icedtea.classpath.org/download/source" ),
 
-   array( 'pkg'     => 'junit4',
+   array( 'pkg'     => 'junit',
           'match'   => '^.*$',
-          'replace' => "https://github.com/junit-team/junit/wiki" ),
+          'replace' => "https://github.com/junit-team/junit4/releases" ),
 
    array( 'pkg'     => 'ninja',
           'match'   => '^.*$',
@@ -591,6 +592,12 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "scons" )
     return find_max( $lines, "/$package/", "/^.*$package-(\d[\d\.]+\d).zip.*$/" );
 
+  if ( $book_index == "apache-maven" )
+    return find_max( $lines, "/$package/", "/^.*$package-(\d[\d\.]+\d)-src.*$/" );
+
+  if ( $book_index == "junit" )
+    return find_max( $lines, "/$package/", "/^.*$package-(\d[\d\.]+\d)-sources.*$/" );
+
   if ( $book_index == "tk" )
   {
     $dir = find_max( $lines, '/8\./', '/^.*(8\.[\d\.]+\d).*$/' );
@@ -634,9 +641,6 @@ Function get_pattern( $line )
 
      array( 'pkg'   => 'OpenJDK',
             'regex' => "/OpenJDK-([\d\.]+)\+?.*$/" ),
-
-     array( 'pkg'   => 'junit4',
-            'regex' => "/junit4_([\d\.]+).*$/" ),
    );
 
    foreach( $match as $m )

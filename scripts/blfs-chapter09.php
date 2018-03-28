@@ -10,6 +10,7 @@ $STOP_PACKAGE  = 'yaml';
 
 $renames = array();
 $renames[ 'node-v'  ] = 'node.js';
+$renames[ 'libuv-v' ] = 'libuv';
 $renames[ 'mozjs'   ] = 'js38';
 $renames[ 'mozjs1'  ] = 'js52';
 $renames[ 'gmime1'  ] = 'gmime3';
@@ -144,7 +145,7 @@ $url_fix = array (
         'match'   => '^.*$',
         'replace' => "http://git.0pointer.net/libatasmart.git/refs/" ),
 
- array( 'pkg'     => 'libuv',
+ array( 'pkg'     => 'libuv-v',
         'match'   => '^.*$',
         'replace' => "https://github.com/libuv/libuv/releases" ),
 
@@ -353,7 +354,7 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "liblinear" )
     return find_max( $lines, '/v\d/', '/^.*v(\d+)$/' );
 
-  if ( $book_index == "libuv" )
+  if ( $book_index == "libuv-v" )
     return find_max( $lines, '/v\d/', '/^.*v(\d\.[\d\.]+).*$/' );
 
   if ( $book_index == "node-v" ) // node.js
@@ -432,6 +433,9 @@ Function get_pattern( $line )
 
       array( 'pkg'   => 'libidn2',
              'regex' => "/libidn2-([\d\.]+).*$/" ),
+
+      array( 'pkg'   => 'libuv',
+             'regex' => "/libuv-v([\d\.]+).*$/" ),
    );
 
    foreach( $match as $m )

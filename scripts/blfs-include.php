@@ -82,6 +82,31 @@ function find_even_max( $lines, $regex_match, $regex_replace )
      if ( $minor % 2 == 1  ) continue;
      if ( $minor     >  80 ) continue;
 
+     array_push( $a, $slice );     
+  }
+
+  // SORT_NATURAL requires php-5.4.0 or later
+  rsort( $a, SORT_NATURAL );  // Max version is at the top
+
+  return ( isset( $a[0] ) ) ? $a[0] : 0;
+}
+
+function find_odd_max( $lines, $regex_match, $regex_replace )
+{
+  $a = array();
+  foreach ( $lines as $line )
+  {
+     if ( ! preg_match( $regex_match, $line ) ) continue; 
+     
+     // Isolate the version and put in an array
+     $slice = preg_replace( $regex_replace, "$1", $line );
+
+     if ( "x$slice" == "x$line" ) continue; 
+
+     // Skip even numbered minor versions and minors > 80
+     list( $major, $minor ) = explode( ".", $slice . ".0", 2 );
+     if ( $minor % 2 == 0  ) continue;
+     if ( $minor     >  80 ) continue;
 
      array_push( $a, $slice );     
   }
@@ -94,7 +119,8 @@ function find_even_max( $lines, $regex_match, $regex_replace )
 
 function http_get_file( $url )
 {
-  if ( preg_match( "/graphviz/", $url ) )
+  if ( preg_match( "/graphviz/", $url ) ||
+       preg_match( "/llvm/",     $url ) )
   {
      exec( "links -dump $url", $lines );
      return $lines;
