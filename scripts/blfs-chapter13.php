@@ -117,6 +117,10 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "https://github.com/junit-team/junit4/releases" ),
 
+   array( 'pkg'     => 'jdk',
+          'match'   => '^.*$',
+          'replace' => "http://hg.openjdk.java.net/jdk-updates" ),
+
    array( 'pkg'     => 'ninja',
           'match'   => '^.*$',
           'replace' => "https://ninja-build.org/" ),
@@ -490,6 +494,18 @@ function get_packages( $package, $dirpath )
       exec( "lynx -dump  $dirpath", $output );
       $max = find_max( $output, "/npapi-sdk/", "/^.*npapi-sdk-([\d\.]*\d)\.tar.*$/" );
       return $max;
+    }
+
+    if ( $package == "jdk" )
+    {
+      exec( "lynx -dump  $dirpath", $lines1 );
+      $dir = find_max( $lines1, "/jdk\d/", "/^.*(jdk\d+u).*$/" );
+      $dirpath .= "/$dir/tags";
+      exec( "lynx -dump  $dirpath", $lines );
+//print_r($lines);
+      $version = find_max( $lines, "/jdk-/", "/^.*jdk-([\d\.\+]+) .*$/" );
+//echo "version=$version\n";
+      return $version;
     }
 
     if ( $book_index == "vala" )
