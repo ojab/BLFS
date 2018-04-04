@@ -20,9 +20,13 @@ $regex = array();
 
 
 $url_fix = array (
-//   array( 'pkg'     => 'libzeitgeist',
-//          'match'   => '^.*$', 
-//          'replace' => "https://launchpad.net/libzeitgeist" ),
+   array( 'pkg'     => 'libsass',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/sass/libsass/releases" ),
+
+   array( 'pkg'     => 'sassc',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/sass/sassc/releases" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -88,6 +92,7 @@ function get_packages( $package, $dirpath )
          $book_index == "yelp-xsl"                  ||
          $book_index == "GConf"                     ||
          $book_index == "geocode-glib"              ||
+         $book_index == "gexiv2"                    ||
          $book_index == "gjs"                       ||
          $book_index == "gnome-autoar"              ||
          $book_index == "gnome-desktop"             ||
@@ -167,6 +172,10 @@ function get_packages( $package, $dirpath )
      return 0;  // This is an error
   }
 
+  if ( $book_index == "libsass" ||
+       $book_index == "sassc"    )
+     return find_max( $lines, "/\d$/", "/^.*(\d\.\d[\d\.]+)$/" );
+
   if ( $book_index == "polkit-gnome" )
      return find_max( $lines, "/\d$/", "/^.* ([\d\.]+)$/" );
 
@@ -183,6 +192,9 @@ function get_pattern( $line )
    $match = array(
      array( 'pkg'   => 'automoc', 
             'regex' => "/^.*automoc4-(\d[\d\.]+).*$/" ),
+
+     array( 'pkg'   => 'gexiv', 
+            'regex' => "/^.*gexiv2-(\d[\d\.]+).*$/" ),
 
      array( 'pkg'   => 'polkit-qt', 
             'regex' => "/^.*polkit-qt-1-(\d[\d\.]+).*$/" ),

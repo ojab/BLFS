@@ -105,6 +105,10 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/docutils/files" ),
 
+   array( 'pkg'     => 'doxygen',
+          'match'   => '^.*$',
+          'replace' => "ftp://ftp.stack.nl/pub/doxygen" ),
+
    array( 'pkg'     => 'expect',
           'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/expect/files" ),
