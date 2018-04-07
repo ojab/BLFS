@@ -45,7 +45,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'lsof',
           'match'   => '^.*$', 
-          'replace' => "https://www.mirrorservice.org/sites/lsof.itap.purdue.edu/pub/tools/unix/lsof/" ),
+          'replace' => "ftp://lsof.itap.purdue.edu/pub/tools/unix/lsof" ),
 
    array( 'pkg'     => 'highlight',
           'match'   => '^.*$', 
