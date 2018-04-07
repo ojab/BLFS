@@ -349,7 +349,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/ fftw-\d/', '/^.* fftw-([\d\.pl\-]+)\.tar.*$/' );
 
   if ( $book_index == "libusb" )
-    return find_max( $lines, '/libusb v/', '/^.*libusb v([\d\.]+).*$/' );
+    return find_max( $lines, '/libusb/', '/^.*libusb-([\d\.]+).tar.*$/' );
 
   if ( $book_index == "liblinear" )
     return find_max( $lines, '/v\d/', '/^.*v(\d+)$/' );
