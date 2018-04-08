@@ -83,6 +83,8 @@ foreach ( $a as $l )
        $pkg == "juffed"           ||
        $pkg == "js38"             ||
        $pkg == "js52"             ||
+       $pkg == "firefox"          ||
+       $pkg == "x264"             ||
        $pkg == "polkit"
      ) continue;
 

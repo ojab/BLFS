@@ -12,6 +12,7 @@ $renames = array();
 $renames[ 'udisks1'  ] = 'udisks2';
 $renames[ 'sg'       ] = 'sg3_utils';
 $renames[ 'unrarsrc' ] = 'unrar';
+$renames[ 'paxmirabilis' ] = 'pax';
 
 $ignores = array();
 $ignores[ 'colord1' ] = "";
@@ -51,6 +52,10 @@ $url_fix = array (
    array( 'pkg'     => 'unrarsrc',
           'match'   => '^.*$', 
           'replace' => "ftp://ftp.rarlab.com/rar" ),
+   
+   array( 'pkg'     => 'paxmirabilis',
+          'match'   => '^.*$', 
+          'replace' => "http://pub.allbsd.org/MirOS/dist/mir/cpio" ),
    
    array( 'pkg'     => 'acpid',
           'match'   => '^.*$', 
@@ -192,6 +197,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "udisks1" )
     return find_max( $lines, '/udisks/', '/^.*udisks (\d[\d\.]*\d).*$/' );
+
+  if ( $book_index == "paxmirabilis" )
+    return find_max( $lines, '/paxmirabilis/', '/^.*paxmirabilis-(\d\d*\d).cpio.*$/' );
 
   if ( $book_index == "p7zip" )
   {
