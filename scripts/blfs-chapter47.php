@@ -40,15 +40,15 @@ $url_fix = array (
 
    array( 'pkg'     => 'libisoburn',
           'match'   => '^.*$', 
-          'replace' => "https://dev.lovelyhq.com/libburnia/web/wikis/Releases" ),
+          'replace' => "http://files.libburnia-project.org/releases" ),
 
    array( 'pkg'     => 'libisofs',
           'match'   => '^.*$', 
-          'replace' => "https://dev.lovelyhq.com/libburnia/web/wikis/Releases" ),
+          'replace' => "http://files.libburnia-project.org/releases" ),
 
    array( 'pkg'     => 'libburn',
           'match'   => '^.*$', 
-          'replace' => "https://dev.lovelyhq.com/libburnia/web/wikis/Releases" ),
+          'replace' => "http://files.libburnia-project.org/releases" ),
 
    array( 'pkg'     => 'gvolwheel',
           'match'   => '^.*$', 
