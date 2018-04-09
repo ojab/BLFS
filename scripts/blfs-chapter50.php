@@ -186,7 +186,7 @@ function get_packages( $package, $dirpath )
   }
 
   if ( $package == "asymptote" )
-      return find_max( $lines, "/asymptote/", "/^.*asymptote-([\d\.]+).i386.*$/" );
+      return find_max( $lines, "/asymptote/", "/^.*asymptote-([\d\.]+).src.*$/" );
 
   if ( $package == "cups" )
       return find_max( $lines, "/^.*cups-/", "/^.*cups-([\d\.]+)-source.*$/" );
