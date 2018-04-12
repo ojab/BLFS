@@ -169,151 +169,151 @@ $url_fix = array (
    array( 'pkg'     => 'Archive-Zip',
           'match'   => '^.*$',
           #'replace' => "http://search.cpan.org/dist/Archive-Zip/" ),
-          'replace' => "http://194.106.223.155/dist/Archive-Zip/" ),
+          'replace' => "http://search.cpan.org/dist/Archive-Zip/" ),
 # Mirror problem was search.cpan.org
    array( 'pkg'     => 'autovivification',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/autovivification/" ),
+          'replace' => "http://search.cpan.org/dist/autovivification/" ),
 
    array( 'pkg'     => 'Business-ISBN',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Business-ISBN/" ),
+          'replace' => "http://search.cpan.org/dist/Business-ISBN/" ),
 
    array( 'pkg'     => 'Business-ISMN',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Business-ISMN/" ),
+          'replace' => "http://search.cpan.org/dist/Business-ISMN/" ),
 
    array( 'pkg'     => 'Business-ISSN',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Business-ISSN/" ),
+          'replace' => "http://search.cpan.org/dist/Business-ISSN/" ),
 
    array( 'pkg'     => 'Data-Compare',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Data-Compare/" ),
+          'replace' => "http://search.cpan.org/dist/Data-Compare/" ),
 
    array( 'pkg'     => 'Data-Dump',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Data-Dump/" ),
+          'replace' => "http://search.cpan.org/dist/Data-Dump/" ),
 
    array( 'pkg'     => 'DateTime-Calendar-Julian',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/DateTime-Calendar-Julian/" ),
+          'replace' => "http://search.cpan.org/dist/DateTime-Calendar-Julian/" ),
 
    array( 'pkg'     => 'DateTime-Format-Builder',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/DateTime-Format-Builder/" ),
+          'replace' => "http://search.cpan.org/dist/DateTime-Format-Builder/" ),
 
    array( 'pkg'     => 'Encode-EUCJPASCII',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Encode-EUCJPASCII/" ),
+          'replace' => "http://search.cpan.org/dist/Encode-EUCJPASCII/" ),
 
    array( 'pkg'     => 'Encode-HanExtra',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Encode-HanExtra/" ),
+          'replace' => "http://search.cpan.org/dist/Encode-HanExtra/" ),
 
    array( 'pkg'     => 'Encode-JIS2K',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Encode-JIS2K/" ),
+          'replace' => "http://search.cpan.org/dist/Encode-JIS2K/" ),
 
    array( 'pkg'     => 'File-BaseDir',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/File-BaseDir/" ),
+          'replace' => "http://search.cpan.org/dist/File-BaseDir/" ),
 
    array( 'pkg'     => 'File-Slurper',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/File-Slurper/" ),
+          'replace' => "http://search.cpan.org/dist/File-Slurper/" ),
 
    array( 'pkg'     => 'File-Which',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/File-Which/" ),
+          'replace' => "http://search.cpan.org/dist/File-Which/" ),
 
    array( 'pkg'     => 'HTML-Parser',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/HTML-Parser/" ),
+          'replace' => "http://search.cpan.org/dist/HTML-Parser/" ),
 
    array( 'pkg'     => 'IPC-Run3',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/IPC-Run3/" ),
+          'replace' => "http://search.cpan.org/dist/IPC-Run3/" ),
 
    array( 'pkg'     => 'IPC-Run3',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/IPC-Run3/" ),
+          'replace' => "http://search.cpan.org/dist/IPC-Run3/" ),
 
    array( 'pkg'     => 'libwww-perl',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/libwww-perl/" ),
+          'replace' => "http://search.cpan.org/dist/libwww-perl/" ),
 
    array( 'pkg'     => 'List-AllUtils',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/List-AllUtils/" ),
+          'replace' => "http://search.cpan.org/dist/List-AllUtils/" ),
 
    array( 'pkg'     => 'Log-Log4perl',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Log-Log4perl/" ),
+          'replace' => "http://search.cpan.org/dist/Log-Log4perl/" ),
 
    array( 'pkg'     => 'Net-DNS',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Net-DNS/" ),
+          'replace' => "http://search.cpan.org/dist/Net-DNS/" ),
 
    array( 'pkg'     => 'Parse-Yapp',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Parse-Yapp/" ),
+          'replace' => "http://search.cpan.org/dist/Parse-Yapp/" ),
 
    array( 'pkg'     => 'PerlIO-utf8_strict',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/PerlIO-utf8_strict/" ),
+          'replace' => "http://search.cpan.org/dist/PerlIO-utf8_strict/" ),
 
    array( 'pkg'     => 'Readonly-XS',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Readonly-XS/" ),
+          'replace' => "http://search.cpan.org/dist/Readonly-XS/" ),
 
    array( 'pkg'     => 'Regexp-Common',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Regexp-Common/" ),
+          'replace' => "http://search.cpan.org/dist/Regexp-Common/" ),
 
    array( 'pkg'     => 'Sort-Key',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Sort-Key/" ),
+          'replace' => "http://search.cpan.org/dist/Sort-Key/" ),
 
    array( 'pkg'     => 'Test-Command',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Test-Command/" ),
+          'replace' => "http://search.cpan.org/dist/Test-Command/" ),
 
    array( 'pkg'     => 'Test-Differences',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Test-Differences/" ),
+          'replace' => "http://search.cpan.org/dist/Test-Differences/" ),
 
    array( 'pkg'     => 'Text-BibTeX',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Text-BibTeX/" ),
+          'replace' => "http://search.cpan.org/dist/Text-BibTeX/" ),
 
    array( 'pkg'     => 'Text-CSV',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Text-CSV/" ),
+          'replace' => "http://search.cpan.org/dist/Text-CSV/" ),
 
    array( 'pkg'     => 'Text-Roman',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Text-Roman/" ),
+          'replace' => "http://search.cpan.org/dist/Text-Roman/" ),
 
    array( 'pkg'     => 'Unicode-Collate',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Unicode-Collate/" ),
+          'replace' => "http://search.cpan.org/dist/Unicode-Collate/" ),
 
    array( 'pkg'     => 'Unicode-LineBreak',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/Unicode-LineBreak/" ),
+          'replace' => "http://search.cpan.org/dist/Unicode-LineBreak/" ),
 
    array( 'pkg'     => 'XML-LibXML-Simple',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/XML-LibXML-Simple/" ),
+          'replace' => "http://search.cpan.org/dist/XML-LibXML-Simple/" ),
 
    array( 'pkg'     => 'XML-LibXSLT',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/XML-LibXSLT/" ),
+          'replace' => "http://search.cpan.org/dist/XML-LibXSLT/" ),
 
    array( 'pkg'     => 'XML-Simple',
           'match'   => '^.*$',
-          'replace' => "http://194.106.223.155/dist/XML-Simple/" ),
+          'replace' => "http://search.cpan.org/dist/XML-Simple/" ),
 
    array( 'pkg'     => 'Python',
           'match'   => '^.*$',
