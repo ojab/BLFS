@@ -9,7 +9,7 @@ $START_PACKAGE = 'aalib';
 $STOP_PACKAGE  = 'qpdf';
 
 $renames = array();
-$renames[ 'openjpeg1' ] = 'openjpeg2';
+#$renames[ 'openjpeg1' ] = 'openjpeg2';
 
 $ignores = array();
 $ignores[ 'ippicv' ] = "";
@@ -117,10 +117,6 @@ $url_fix = array (
  array( 'pkg'     => 'ijs',
         'match'   => '^.*$', 
         'replace' => "https://www.openprinting.org/download/ijs/download/" ),
-
- array( 'pkg'     => 'openjpeg1',   // OpenJPEG2
-        'match'   => '^.*$', 
-        'replace' => "https://github.com/uclouvain/openjpeg/releases" ),
 
  array( 'pkg'     => 'potrace',
         'match'   => '^.*$', 
@@ -257,9 +253,6 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "jasper" )
     return find_max( $lines, '/JasPer/', '/^.*JasPer (\d\.[\d\.]+).*$/' );
 
-  if ( $book_index == "openjpeg" )
-    return find_max( $lines, '/openjpeg-1/', '/^.*openjpeg-(1\.[\d\.]+).*$/' );
-
   if ( $book_index == "aalib" )
     return find_max( $lines, "/$book_index/", '/^.*aalib-([rc\d\.]+).tar.*$/' );
 
@@ -282,7 +275,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/3\./', '/^.* (3\.[\d\.]+).*$/' );
 
   // OpenJPEG2
-  if ( $book_index == "openjpeg1" ) 
+  if ( $book_index == "openjpeg" ) 
     return find_max( $lines, '/openjpeg/', '/^.*openjpeg-v(\d\.[\d\.]+)-.*$/' );
 
   if ( $book_index == "lcms2" )
