@@ -29,6 +29,10 @@ $sf = 'sourceforge.net';
 
 $url_fix = array (
 
+   array( 'pkg'     => 'gpm',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/telmich/gpm/releases" ),
+   
    array( 'pkg'     => 'hdparm',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/hdparm/files" ),
@@ -191,6 +195,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "raptor2" )
     return find_max( $lines, '/raptor/', '/^.*raptor2-([\d\.]*\d).tar.*$/' );
+
+  if ( $book_index == "gpm" )
+    return find_max( $lines, '/archive/', '/^.*\/(\d[\d\.]+).tar.*$/', true );
 
   if ( $book_index == "heirloom" )
     return find_max( $lines, '/\d{6}/', '/^.* (\d{6}) .*$/' );

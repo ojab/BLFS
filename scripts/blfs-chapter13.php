@@ -49,6 +49,7 @@ $regex[ 'setuptools' ] = "/^.*setuptools-(\d[\d\.]+\d).zip.*$/";
 $regex[ 'lxml'       ] = "/^.*lxml-(\d[\d\.]+\d).*$/";
 $regex[ 'funcsigs'   ] = "/^.*funcsigs (\d[\d\.]+\d).*$/";
 $regex[ 'pycrypto'   ] = "/^.*pycrypto (\d[\d\.]+\d).*$/";
+$regex[ 'ruby'       ] = "/^.*Ruby (\d[\d\.]+\d) Released.*$/";
 
 // Perl Modules
 $regex[ 'Archive-Zip'             ] = "/^.*Archive-Zip-(\d[\d\.]+\d).*$/";
@@ -349,7 +350,8 @@ $url_fix = array (
 
    array( 'pkg'     => 'ruby',
           'match'   => '^.*$',
-          'replace' => "http://cache.ruby-lang.org/pub/ruby/" ),
+          'replace' => "https://www.ruby-lang.org/en" ),
+          //'replace' => "http://cache.ruby-lang.org/pub/ruby/" ),
 
    array( 'pkg'     => 'setuptools',
           'match'   => '^.*$',
