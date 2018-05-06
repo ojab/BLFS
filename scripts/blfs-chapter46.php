@@ -110,7 +110,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'xine-lib',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/xine/files" ),
+          'replace' => "http://sourceforge.net/projects/xine/files/xine-lib" ),
 
    array( 'pkg'     => 'xvidcore',
           'match'   => '^.*$', 
@@ -324,6 +324,9 @@ function get_packages( $package, $dirpath )
   if ( $package == "pulseaudio" ) // Skip minors > 90
       return find_max( $lines, "/$package/", 
                                "/^.*$package-([\d\.]*\d)\.tar.*$/" , TRUE );
+
+  if ( $package == "xine-lib" )
+      return find_max( $lines, "/^\\s*\d\./", "/^\\s*(\d\.[\d\.]+) .*$/" );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
