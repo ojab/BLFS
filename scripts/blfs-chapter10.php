@@ -9,7 +9,7 @@ $START_PACKAGE = 'aalib';
 $STOP_PACKAGE  = 'qpdf';
 
 $renames = array();
-#$renames[ 'openjpeg1' ] = 'openjpeg2';
+$renames[ 'mypaint-brushes-v' ] = 'mypaint-brushes';
 
 $ignores = array();
 $ignores[ 'ippicv' ] = "";
@@ -81,6 +81,14 @@ $url_fix = array (
  array( 'pkg'     => 'libmng',
         'match'   => '^.*$', 
         'replace' => "http://$sf/projects/libmng/files" ),
+
+ array( 'pkg'     => 'mypaint-brushes-v',
+        'match'   => '^.*$', 
+        'replace' => "https://github.com/Jehan/mypaint-brushes/releases" ),
+
+ array( 'pkg'     => 'libmypaint',
+        'match'   => '^.*$', 
+        'replace' => "https://github.com/mypaint/libmypaint/releases" ),
 
  array( 'pkg'     => 'libpng',
         'match'   => '^.*$', 
@@ -250,6 +258,12 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "libjpeg-turbo" )
     return find_max( $lines, '/^\s*\d/', '/^\s*(\d[\d\.]+) .*$/' );
 
+  if ( $book_index == "libmypaint" )
+    return find_max( $lines, '/libmypaint/', '/^\s*libmypaint-(\d[\d\.]+).tar.*$/' );
+
+  if ( $book_index == "mypaint-brushes-v" )
+    return find_max( $lines, '/v\d/', '/^\s*v(\d[\d\.]+).*$/' );
+
   if ( $book_index == "jasper" )
     return find_max( $lines, '/JasPer/', '/^.*JasPer (\d\.[\d\.]+).*$/' );
 
@@ -306,6 +320,9 @@ Function get_pattern( $line )
 
       array( 'pkg'   => 'imlib2', 
              'regex' => "/\D*imlib2-([\d\.]+)\D*$/" ),
+
+      array( 'pkg'   => 'mypaint-brushes', 
+             'regex' => "/\D*mypaint-brushes-v([\d\.]+)\D*$/" ),
 
       array( 'pkg'   => 'graphite2', 
              'regex' => "/\D*graphite2-([\d\.]+)\D*$/" ),
