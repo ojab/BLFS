@@ -39,6 +39,10 @@ $url_fix = array (
           'match'   => '^ftp:\/\/ftp.gnome',
           'replace' => "http://ftp.gnome" ),
 
+   array( 'pkg'     => 'iso-codes',
+          'match'   => '^.*$', 
+          'replace' => "https://salsa.debian.org/iso-codes-team/iso-codes/tags" ),
+
    array( 'pkg'     => 'intltool',
           'match'   => '^.*$', 
           'replace' => "https://launchpad.net/intltool/trunk" ),
