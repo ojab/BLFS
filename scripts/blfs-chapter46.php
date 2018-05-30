@@ -23,6 +23,7 @@ $ignores[ 'flash_player_npapi_linux.x' ] = '';
 $ignores[ 'flash_player_npapi_linux.i' ] = '';
 
 //$current="libcanberra";
+$current="soundtouch";
 
 $regex = array();
 $regex[ 'a52dec'                     ] = "/^.*a52dec-(\d[\d\.]+\d) is.*$/";
@@ -30,7 +31,6 @@ $regex[ 'libass'                     ] = "/^.*Release (\d[\d\.]+\d).*$/";
 $regex[ 'libmpeg2'                   ] = "/^.*libmpeg2-(\d[\d\.]+\d).*$/";
 $regex[ 'libmusicbrainz1'            ] = "/^.*libmusicbrainz-(5[\d\.]+\d).*$/";
 $regex[ 'libsamplerate'              ] = "/^.*libsamplerate-([\d\.]+\d).tar.*$/";
-$regex[ 'soundtouch'                 ] = "/^.*Download .* Source Codes release ([\d\.]+\d).*$/";
 $regex[ 'flash_player_ppapi_linux.x' ] = "/^.*latest versions are (\d[\d\.]+\d).*$/";
 $regex[ 'libcanberra'                ] = "/^.*(\d[\d\.]+\d) released.*$/";
 
@@ -102,7 +102,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'soundtouch',
           'match'   => '^.*$', 
-          'replace' => "http://www.surina.net/soundtouch/sourcecode.html" ),
+          'replace' => "https://gitlab.com/soundtouch/soundtouch/tags" ),
 
    array( 'pkg'     => 'taglib',
           'match'   => '^.*$', 
@@ -311,6 +311,9 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "libvpx" )
       return find_max( $lines, "/v\d/", "/^.*v(\d[\d\.]+\d).*$/" );
+
+  if ( $package == "soundtouch" )
+      return find_max( $lines, "/$package/", "/^.*$package-([\d\.]+).*$/" );
 
   if ( $package == "speexdsp" )
       return find_max( $lines, "/$package/", "/^.*$package-([\d\.rc]+).tar.*$/" );

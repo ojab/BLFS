@@ -20,7 +20,6 @@ $regex = array();
 $regex[ 'LibRaw'        ] = "/^.*LibRaw-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'poppler'       ] = "/^.*poppler-([\d\.]+\d).tar.*$/";
 $regex[ 'popplerdata'   ] = "/^.*poppler-data([\d\.]+\d).tar.*$/";
-$regex[ 'exiv2'         ] = "/^.*exiv2-(\d[\d\.]+\d).*.tar.*$/";
 
 $sf = 'sourceforge.net';
 
@@ -108,7 +107,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'exiv2',
         'match'   => '^.*$', 
-        'replace' => "http://exiv2.org/download.html" ),
+        'replace' => "https://github.com/Exiv2/exiv2/releases" ),
 
  array( 'pkg'     => 'opencv',
         'match'   => '^.*$', 
@@ -269,6 +268,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "aalib" )
     return find_max( $lines, "/$book_index/", '/^.*aalib-([rc\d\.]+).tar.*$/' );
+
+  if ( $book_index == "exiv2" )
+    return find_max( $lines, "/v\d/", '/^.*v(\d[\d\.]+).*$/' );
 
   // imlib
   if ( $book_index == "imlib2" )

@@ -19,7 +19,7 @@ $ignores[ 'docbook-xsl-doc'] = '';
 //$current="docbook-xsl";  // For debugging
 
 $regex = array();
-$regex[ 'ghostscript'     ] = "/^.*latest.*Ghostscript (\d[\d\.]+) .*$/";
+$regex[ 'ghostscript'     ] = "/^.*current Ghostscript release (\d[\d\.]+) .*$/";
 $regex[ 'sane-frontends'  ] = "/^.*sane-frontends-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'ghostscript-fonts-std' ] =
     "/^.*ghostscript-fonts-std-(\d[\d\.]+\d).tar.*$/";
@@ -36,7 +36,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'ghostscript',
           'match'   => '^.*$',
-          'replace' => "http://www.ghostscript.com/Releases.html" ),
+          'replace' => "http://www.ghostscript.com/index.html" ),
 
    array( 'pkg'     => 'ghostscript-fonts-std',
           'match'   => '^.*$',
