@@ -23,7 +23,6 @@ $ignores[ 'flash_player_npapi_linux.x' ] = '';
 $ignores[ 'flash_player_npapi_linux.i' ] = '';
 
 //$current="libcanberra";
-$current="soundtouch";
 
 $regex = array();
 $regex[ 'a52dec'                     ] = "/^.*a52dec-(\d[\d\.]+\d) is.*$/";
