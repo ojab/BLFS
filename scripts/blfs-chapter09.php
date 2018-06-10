@@ -156,6 +156,14 @@ $url_fix = array (
  array( 'pkg'     => 'libseccomp',
         'match'   => '^.*$',
         'replace' => "https://github.com/seccomp/libseccomp/releases" ),
+
+ array( 'pkg'     => 'wayland',
+        'match'   => '^.*$',
+        'replace' => "https://wayland.freedesktop.org/releases.html" ),
+
+ array( 'pkg'     => 'wayland-protocols',
+        'match'   => '^.*$',
+        'replace' => "https://wayland.freedesktop.org/releases.html" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -400,8 +408,9 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "gmime1" )
     return find_max( $lines, "/gmime/", "/^.*gmime-([\d\.]*\d)\.tar.*$/" );
 
-  if ( $book_index == "telepathy-glib" ||
-       $book_index == "wayland"         )
+  if ( $book_index == "telepathy-glib"    ||
+       $book_index == "wayland-protocols" ||
+       $book_index == "wayland"           )
     return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/", TRUE );
 
   // Most packages are in the form $package-n.n.n

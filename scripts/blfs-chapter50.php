@@ -20,7 +20,8 @@ $ignores[ 'docbook-xsl-doc'] = '';
 
 $regex = array();
 $regex[ 'ghostscript'     ] = "/^.*current Ghostscript release (\d[\d\.]+) .*$/";
-$regex[ 'sane-frontends'  ] = "/^.*sane-frontends-(\d[\d\.]+\d).tar.*$/";
+$regex[ 'sane-frontends'  ] = "/^.*Upstream version (\d[\d\.]+\d).*$/";
+$regex[ 'xsane'           ] = "/^.*pkgver=(\d[\d\.]+\d).*$/";
 $regex[ 'ghostscript-fonts-std' ] =
     "/^.*ghostscript-fonts-std-(\d[\d\.]+\d).tar.*$/";
 
@@ -92,7 +93,11 @@ $url_fix = array (
 
    array( 'pkg'     => 'sane-frontends',
           'match'   => '^.*$',
-          'replace' => "https://alioth.debian.org/frs/?group_id=30186" ),
+          'replace' => "https://salsa.debian.org/debian/sane-frontends/tags" ),
+
+   array( 'pkg'     => 'xsane',
+          'match'   => '^.*$',
+          'replace' => "https://git.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/xsane" ),
 );
 
 function get_packages( $package, $dirpath )
