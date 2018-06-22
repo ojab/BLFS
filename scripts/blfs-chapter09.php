@@ -434,6 +434,9 @@ Function get_pattern( $line )
       array( 'pkg'   => 'libtasn1',
              'regex' => "/libtasn1-([\d\.]+).*$/" ),
 
+      array( 'pkg'   => 'libssh2',
+             'regex' => "/libssh2-([\d\.]+).*$/" ),
+
       array( 'pkg'   => 'pcre2',
              'regex' => "/pcre2-([\d\.]+).*$/" ),
 
