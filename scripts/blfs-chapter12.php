@@ -20,7 +20,7 @@ $ignores[ 'colord1' ] = "";
 //$current="sysstat";
 
 $regex = array();
-$regex[ 'fcron'   ] = "/^.*Stable release fcron (\d[\d\.]+\d)*$/";
+//$regex[ 'fcron'   ] = "/^.*Stable release fcron (\d[\d\.]+\d)*$/";
 $regex[ 'ibus'    ] = "/^.*ibus-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'strigi'  ] = "/^(\d[\d\.]+\d) .*$/";
 $regex[ 'systemd' ] = "/^.*v(\d[\d\.]+\d).*$/";
@@ -191,7 +191,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/are/', '/^.*and (\d[\d\.]*\d) .*$/' );
 
   if ( $book_index == "fcron" )
-    return find_max( $lines, '/fcron/', '/^.*fcron-(\d[\d\.]*\d).src.tar.*$/' );
+    return find_max( $lines, '/fcron/', '/^.*fcron (\d[\d\.]*\d) released .*$/' );
 
   if ( $book_index == "raptor2" )
     return find_max( $lines, '/raptor/', '/^.*raptor2-([\d\.]*\d).tar.*$/' );
