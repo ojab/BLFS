@@ -191,7 +191,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/are/', '/^.*and (\d[\d\.]*\d) .*$/' );
 
   if ( $book_index == "fcron" )
-    return find_max( $lines, '/fcron/', '/^.*fcron (\d[\d\.]*\d) released .*$/' );
+    return find_max( $lines, '/fcron/', '/^.*fcron (\d[\d\.]*\d) released.*$/' );
 
   if ( $book_index == "raptor2" )
     return find_max( $lines, '/raptor/', '/^.*raptor2-([\d\.]*\d).tar.*$/' );

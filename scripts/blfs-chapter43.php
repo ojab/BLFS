@@ -24,7 +24,7 @@ $regex[ 'inkscape'     ] = "/^.*Download Inkscape (\d[\d\.]+\d).*$/";
 $regex[ 'chromium'      ] = "/^pkgver=(\d[\d\.]+\d).*$/";
 $regex[ 'gnucash'       ] = "/^.*Download gnucash-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'midori'        ] = "/^.*midori_(\d[\d\.]*\d)_all.*$/";
-$regex[ 'pidgen'        ] = "/^.*pidgin-(\d[\d\.]+\d)-.*$/";
+$regex[ 'pidgin'        ] = "/^.*Download.*pidgin-(\d[\d\.]+\d)-.*$/";
 $regex[ 'fontforge-dist'] = "/^.*fontforge-dist-(20\d+).tar.*$/";
 $regex[ 'xscreensaver'  ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'tigervnc'      ] = "/^.*TigerVNC (\d[\d\.]+\d)$/";
