@@ -230,7 +230,7 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "firefox" )
     return find_max( $lines, "/^\d/", "/^(\d{2}.\d+)$/" );
 
-  if ( substr($book_index, 0, $qt_len)  == "qt-everywhere" )
+  if ( substr($book_index, 0, strlen( "qt-everywhere" ) )  == "qt-everywhere" )
     return find_max( $lines, "/src.*tar.xz/", "/^.*src-([\d\.]+).tar.*$/" );
 
   if ( $book_index == "fltk" )
