@@ -203,7 +203,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/\d{6}/', '/^.* (\d{6}) .*$/' );
 
   if ( $book_index == "udisks1" )
-    return find_max( $lines, '/udisks/', '/^.*udisks (\d[\d\.]*\d).*$/' );
+    return find_max( $lines, '/udisks/', '/^.*udisks-(\d[\d\.]*\d).*$/' );
 
   if ( $book_index == "paxmirabilis" )
     return find_max( $lines, '/paxmirabilis/', '/^.*paxmirabilis-(\d\d*\d).cpio.*$/' );
