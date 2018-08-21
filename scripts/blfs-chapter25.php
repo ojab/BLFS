@@ -101,7 +101,11 @@ function get_packages( $package, $dirpath )
       $dirpath  = substr ( $dirpath, 0, $position );
       $dirlines = http_get_file( "$dirpath/" );
 
-      $dir      = find_even_max( $dirlines, '/\d$/', '/^.* ([\d\.]+)$/' );
+      if ( $book_index == "atk") // For now atk uses devel versions
+        $dir      = find_max( $dirlines, '/\d$/', '/^.* ([\d\.]+)$/' );
+      else 
+        $dir      = find_even_max( $dirlines, '/\d$/', '/^.* ([\d\.]+)$/' );
+
       $dirpath .= "/$dir/";
     }
  
