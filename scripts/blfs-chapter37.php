@@ -262,7 +262,7 @@ function get_packages( $package, $dirpath )
   else if ( $book_index == "gpicview" )
   {
     $dirs = http_get_file( "$dirpath/" );    
-    $dir = find_max ( $dirs, "/^\s*\d/", "/^\s*([\d\.x]+) .*$/" );
+    $dir = find_max ( $dirs, "/^\s*\d/", "/^\s*(\d\.[\d\.x]+) .*$/" );
     //$dir = preg_replace( "/ /", '%20', $dir );
     $dirpath .= "/$dir";
     $lines    = http_get_file( "$dirpath/" );

@@ -164,7 +164,7 @@ function get_packages( $package, $dirpath )
       return find_max( $lines, "/\d\./", "/^.*;([\d\.]+)\/.*$/", TRUE );
 
   if ( $package == "xine-ui" )
-      return find_max( $lines, "/^\s*\d/", "/^\s*([\d\.]+)\s+.*$/" );
+      return find_max( $lines, "/^\s*\d/", "/^\s*(\d\.[\d\.]+)\s+.*$/" );
 
   if ( $package == "freetts" )
       return find_max( $lines, "/freetts/", "/^.*freetts-([\d\.]+)-bin.*$/" );

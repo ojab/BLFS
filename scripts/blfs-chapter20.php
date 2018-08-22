@@ -19,7 +19,7 @@ $ignores[ 'sqlite-doc' ] = '';
 
 $regex = array();
 $regex[ 'vsftpd'          ] = "/^.*vsftpd-(\d[\d\.]+\d) released.*$/";
-$regex[ 'db'              ] = "/^.*Berkeley DB (\d[\d\.]+\d).tar.*$/";
+//$regex[ 'db'              ] = "/^.*Berkeley DB (\d[\d\.]+\d).tar.*$/";
 $regex[ 'LMDB'            ] = "/^.*LMDB_(\d[\d\.]+\d).*$/";
 $regex[ 'mysql'           ] = "/^.*Current Generally Available Release: (\d[\d\.]+\d).*$/";
 $regex[ 'soprano'         ] = "/^.*Download soprano-(\d[\d\.]*).tar.*$/";
@@ -54,9 +54,9 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "https://downloads.mariadb.org" ),
 
-   array( 'pkg'     => 'db',
-          'match'   => '^.*$', 
-          'replace' => "http://www.oracle.com/technetwork/products/berkeleydb/downloads/index.html" ),
+//   array( 'pkg'     => 'db',
+//          'match'   => '^.*$', 
+//          'replace' => "http://www.oracle.com/technetwork/products/berkeleydb/downloads/index.html" ),
 
    array( 'pkg'     => 'vsftpd',
           'match'   => '^.*$', 
@@ -84,6 +84,8 @@ function get_packages( $package, $dirpath )
   global $current;
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
+
+  if ( $package == "db" ) return "manual";
 
   // Fix up directory path
   foreach ( $url_fix as $u )

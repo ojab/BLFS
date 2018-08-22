@@ -251,11 +251,11 @@ function get_packages( $package, $dirpath )
   {
     $dir = find_max( $lines, '/^\s*libpng\d/', '/^\s*libpng(\d[02468]) .*$/' );
     $lines = http_get_file( "$dirpath/libpng$dir" );
-    return find_max( $lines, '/^\s*\d/', '/^\s*(\d[\d\.]+) .*$/' );
+    return find_max( $lines, '/^\s*\d/', '/^\s*(\d\.[\d\.]+) .*$/' );
   }
 
   if ( $book_index == "libjpeg-turbo" )
-    return find_max( $lines, '/^\s*\d/', '/^\s*(\d[\d\.]+) .*$/' );
+    return find_max( $lines, '/^\s*\d/', '/^\s*(\d\.[\d\.]+) .*$/' );
 
   if ( $book_index == "libmypaint" )
     return find_max( $lines, '/libmypaint/', '/^\s*libmypaint-(\d[\d\.]+).tar.*$/' );

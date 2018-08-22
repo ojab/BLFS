@@ -210,7 +210,7 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "p7zip" )
   {
-    $max = find_max( $lines, '/^\s*\d/', '/^\s*([\d\.]+) .*$/' );
+    $max = find_max( $lines, '/^\s*\d/', '/^\s*(\d+\.[\d\.]+) .*$/' );
     return $max;
   }
 
