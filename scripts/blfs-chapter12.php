@@ -9,7 +9,7 @@ $START_PACKAGE = 'accountsservice';
 $STOP_PACKAGE  = 'zip';
 
 $renames = array();
-$renames[ 'udisks1'  ] = 'udisks2';
+$renames[ 'udisks'   ] = 'udisks2';
 $renames[ 'sg'       ] = 'sg3_utils';
 $renames[ 'unrarsrc' ] = 'unrar';
 $renames[ 'paxmirabilis' ] = 'pax';
@@ -75,9 +75,9 @@ $url_fix = array (
 
    array( 'pkg'     => 'logrotate',
           'match'   => '^.*$', 
-          'replace' => "https://github.com/logrotate/logrotate" ),
+          'replace' => "https://github.com/logrotate/logrotate/releases" ),
 
-   array( 'pkg'     => 'udisks1',
+   array( 'pkg'     => 'udisks',
           'match'   => '^.*$', 
           'replace' => "https://github.com/storaged-project/udisks/releases" ),
 

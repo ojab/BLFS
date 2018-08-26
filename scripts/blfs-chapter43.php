@@ -12,6 +12,7 @@ $renames = array();
 $ignores = array();
 $ignores[ 'xorg-server'       ] = '';
 $ignores[ 'chromium-launcher' ] = '';
+$ignores[ 'gimp-help'         ] = '';
 $ignores[ 'flash_player_ppapi_linux.x' ] = '';
 $ignores[ 'flash_player_ppapi_linux.i' ] = '';
 
@@ -69,9 +70,9 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://download.gimp.org/pub/gimp" ),
 
-   array( 'pkg'     => 'gimp-help',
-          'match'   => '^.*$',
-          'replace' => "http://download.gimp.org/pub/gimp/help" ),
+//   array( 'pkg'     => 'gimp-help',
+//          'match'   => '^.*$',
+//          'replace' => "http://download.gimp.org/pub/gimp/help" ),
 
    array( 'pkg'     => 'balsa',
           'match'   => '^.*$',
