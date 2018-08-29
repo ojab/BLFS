@@ -13,6 +13,7 @@ $renames[ 'Python'     ] = 'python2';
 $renames[ 'Python1'    ] = 'python3';
 $renames[ 'pygobject'  ] = 'pygobject2';
 $renames[ 'pygobject1' ] = 'pygobject3';
+$renames[ 'junit4-r'   ] = 'junit';
 
 $ignores = array();
 $ignores[ 'cfe'          ] = '';
@@ -118,7 +119,7 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://icedtea.classpath.org/download/source" ),
 
-   array( 'pkg'     => 'junit',
+   array( 'pkg'     => 'junit4-r',
           'match'   => '^.*$',
           'replace' => "https://github.com/junit-team/junit4/releases" ),
 
@@ -617,8 +618,8 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "apache-maven" )
     return find_max( $lines, "/$package/", "/^.*$package-(\d[\d\.]+\d)-src.*$/" );
 
-  if ( $book_index == "junit" )
-    return find_max( $lines, "/$package/", "/^.*$package-(\d[\d\.]+\d)-sources.*$/" );
+  if ( $book_index == "junit4-r" )
+    return find_max( $lines, "/junit/", "/^.*$junit-(\d[\d\.]+\d).jar.*$/" );
 
   if ( $book_index == "tk" )
   {
@@ -656,6 +657,9 @@ Function get_pattern( $line )
 
      array( 'pkg'   => 'Jinja2',
             'regex' => "/\D*Jinja2-([\d\.]+)\D*$/" ),
+
+     array( 'pkg'   => 'junit',
+            'regex' => "/\D*junit4-r([\d\.]+)\D*$/" ),
 
      // Order matters here.  jtreg must be before OpenJDK
      array( 'pkg'   => 'jtreg',
