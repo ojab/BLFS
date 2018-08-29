@@ -17,7 +17,6 @@ $ignores[ 'freetts1' ] = '';
 
 $regex = array();
 $regex[ 'gvolwheel'  ] = "/^.*Download gvolwheel-(\d[\d\.]+\d).tar.*$/";
-$regex[ 'pnmixer'    ] = "/^.*pnmixer-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'simpleburn' ] = "/^.*SimpleBurn-(\d[\d\.]+\d).*$/";
 
 $url_fix = array (
@@ -72,7 +71,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'pnmixer',
           'match'   => '^.*$', 
-          'replace' => "https://github.com/nicklan/pnmixer/downloads" ),
+          'replace' => "https://github.com/nicklan/pnmixer/releases" ),
 
    array( 'pkg'     => 'kwave',
           'match'   => '^.*$', 
@@ -186,6 +185,9 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "cdrtools" )
      return find_max( $lines, "/cdrtools-[\d\.]+/", "/^.*cdrtools-([\d\.]+a?\d?).tar.*$/" );
+
+  if ( $package == "pnmixer" )
+     return find_max( $lines, "/pnmixer-v/", "/^.*pnmixer-v([\d\.]+).tar.*$/" );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
