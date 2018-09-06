@@ -38,6 +38,10 @@ $url_fix = array (
           //'replace' => "https://googlechromereleases.blogspot.com/" ),
           'replace' => "https://git.archlinux.org/svntogit/packages.git/plain/trunk/PKGBUILD?h=packages/chromium" ),
 
+   array( 'pkg'     => 'firefox',
+          'match'   => '^.*$',
+          'replace' => "https://archive.mozilla.org/pub/firefox/releases/" ),
+
    array( 'pkg'     => 'gnucash',
           'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/gnucash/files" ),
@@ -133,7 +137,7 @@ function get_packages( $package, $dirpath )
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
 
-  if ( $package == "firefox" ) return "manual";
+  //if ( $package == "firefox" ) return "manual";
 
   // Fix up directory path
   foreach ( $url_fix as $u )
@@ -280,6 +284,9 @@ function get_packages( $package, $dirpath )
 
     return $max;
   }
+
+  if ( preg_match( "/firefox/", "$dirpath" ) )
+      return find_max( $lines, "/^\s+[\d\.]+/", "/^\s+([\d\.]+)\/.*$/" );
 
   if ( preg_match( "/abiword/", "$dirpath" ) )
       return find_max( $lines, "/^\d/", "/^([\d\.]+).*$/" );
