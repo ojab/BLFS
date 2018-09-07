@@ -48,6 +48,10 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://serf.apache.org/download" ),
 
+   array( 'pkg'     => 'libpsl',
+          'match'   => '^.*$',
+          'replace' => "https://github.com/rockdaboot/libpsl/releases" ),
+
    array( 'pkg'     => 'libtirpc',
           'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/libtirpc/files/libtirpc" ),

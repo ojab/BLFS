@@ -187,7 +187,8 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/tree/', '/^.*tree-([\d\.]+).tgz.*$/' );
 
   if ( $book_index == "tidy-html5" )
-    return find_max( $lines, '/tidy/', '/^.*tidy-html5-([\d\.]+).tar.*$/' );
+    return find_max( $lines, '/tidy/', '/^.*tidy-([\d\.]+).*$/' );
+    //return find_max( $lines, '/tidy/', '/^.*tidy-html5-([\d\.]+).tar.*$/' );
 
   if ( $book_index == "rep-gtk" )
     return find_max( $lines, '/rep-gtk/', '/^.*rep-gtk[_-]([\d\.]+).tar.*$/' );

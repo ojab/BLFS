@@ -263,8 +263,10 @@ function get_current()
         $basename = "firefox";
 
       // Skip chromium-freetype
-      if ( preg_match( "/chromium-freetype/", $line ) )
-        continue;
+      if ( preg_match( "/chromium-freetype/", $line ) ) continue;
+
+      // Skip UCD.zip in ibus package
+      if ( preg_match( "/UCD/", $line ) ) continue;
 
       if ( $version == "biblatex-biber" ) 
       {
