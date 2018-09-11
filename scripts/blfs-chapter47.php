@@ -69,7 +69,7 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/cdrdao/files" ),
 
-   array( 'pkg'     => 'pnmixer',
+   array( 'pkg'     => 'pnmixer-v',
           'match'   => '^.*$', 
           'replace' => "https://github.com/nicklan/pnmixer/releases" ),
 
@@ -186,7 +186,7 @@ function get_packages( $package, $dirpath )
   if ( $package == "cdrtools" )
      return find_max( $lines, "/cdrtools-[\d\.]+/", "/^.*cdrtools-([\d\.]+a?\d?).tar.*$/" );
 
-  if ( $package == "pnmixer" )
+  if ( $package == "pnmixer-v" )
      return find_max( $lines, "/pnmixer-v/", "/^.*pnmixer-v([\d\.]+).tar.*$/" );
 
   // Most packages are in the form $package-n.n.n
@@ -206,6 +206,9 @@ function get_pattern( $line )
 
      array( 'pkg'   => 'mplayer', 
             'regex' => "/^.*mplayer-(SVN-r\d+).*$/" ),
+
+     array( 'pkg'   => 'pnmixer', 
+            'regex' => "/^.*pnmixer-v(\d[\d\.]+).*$/" ),
    );
 
    foreach( $match as $m )
