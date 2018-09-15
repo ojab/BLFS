@@ -4,7 +4,7 @@ Requires=rpcbind.socket
 
 [Service]
 Type=forking
-ExecStart=/sbin/rpcbind -w
+ExecStart=/sbin/rpcbind
 
 [Install]
 Also=rpcbind.socket
