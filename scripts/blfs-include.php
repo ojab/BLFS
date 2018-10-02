@@ -77,8 +77,11 @@ function find_even_max( $lines, $regex_match, $regex_replace )
 
      if ( "x$slice" == "x$line" ) continue; 
 
+     // Remove trailing things like -P2
+     $slice1 = preg_replace( "/^(.*)-.*$/", "$1", $slice );
+
      // Skip odd numbered minor versions and minors > 80
-     list( $major, $minor ) = explode( ".", $slice . ".0", 2 );
+     list( $major, $minor, $other ) = explode( ".", $slice1 . ".0", 3 );
      if ( $minor % 2 == 1  ) continue;
      if ( $minor     >  80 ) continue;
 
