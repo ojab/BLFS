@@ -124,10 +124,10 @@ function get_packages( $package, $dirpath )
       $position = strrpos( $dirpath, "/" );
       $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
       $lines1   = http_get_file( "$dirpath/" );
-      $dir      = find_max( $lines1, "/\d$/", "/^.* ([\d\.P\-]+)$/" );
+      $dir      = find_even_max( $lines1, "\.[\d\.P-]+\s*$/", "/^.* (\d\.[\d\.P-]+)$/" );
       $dirpath .= "/$dir/";
       $lines2   = http_get_file( $dirpath );
-      return find_max( $lines2, "/bind-/", "/^.*bind-(\d+[\d\.P\-]+).tar.*$/" );
+      return find_max( $lines2, "/bind-9/", "/^.*bind-(\d+[\d\.P\-]+).tar.*$/" );
     }
 
     if ( $book_index == "dhcp"  )
