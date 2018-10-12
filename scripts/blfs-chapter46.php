@@ -32,6 +32,7 @@ $regex[ 'libmusicbrainz1'            ] = "/^.*libmusicbrainz-(5[\d\.]+\d).*$/";
 $regex[ 'libsamplerate'              ] = "/^.*libsamplerate-([\d\.]+\d).tar.*$/";
 $regex[ 'flash_player_ppapi_linux.x' ] = "/^.*latest versions are (\d[\d\.]+\d).*$/";
 $regex[ 'libcanberra'                ] = "/^.*(\d[\d\.]+\d) released.*$/";
+$regex[ 'xvidcore'                   ] = "/^.*Xvid (\d[\d\.]+\d) stable.*$/";
 
 $url_fix = array (
 

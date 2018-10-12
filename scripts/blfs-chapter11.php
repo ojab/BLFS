@@ -49,7 +49,8 @@ $url_fix = array (
 
    array( 'pkg'     => 'lsof',
           'match'   => '^.*$', 
-          'replace' => "ftp://lsof.itap.purdue.edu/pub/tools/unix/lsof" ),
+          //'replace' => "ftp://lsof.itap.purdue.edu/pub/tools/unix/lsof" ),
+          'replace' => "ftp://ftp.fu-berlin.de/pub/unix/tools/lsof" ),
 
    array( 'pkg'     => 'highlight',
           'match'   => '^.*$', 

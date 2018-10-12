@@ -42,7 +42,7 @@ $regex = array();
 $regex[ 'check'   ] = "/^.*Check (\d[\d\.]+\d).*$/";
 $regex[ 'Python'  ] = "/^.*Latest Python 2.*Python (2[\d\.]+\d).*$/";
 $regex[ 'Python1' ] = "/^.*Latest Python 3.*Python (3[\d\.]+\d).*$/";
-$regex[ 'Mako'    ] = "/^.*version is (\d[\d\.]+\d).*$/";
+$regex[ 'Mako'    ] = "/^.*Mako (\d[\d\.]+\d).*$/";
 $regex[ 'php'     ] = "/^.*php-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'jtreg'   ] = "/^.*jtreg-(\d[b\d\.\-]+\d)\.tar.*$/";
 $regex[ 'OpenJDK1'] = "/^.*OpenJDK-(\d[\d\.]+\d)\-.*$/";
@@ -156,9 +156,10 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/tcl/files" ),
 
+   // Same as tcl
    array( 'pkg'     => 'tk',
           'match'   => '^.*$',
-          'replace' => "http://sourceforge.net/projects/tcl/files/Tcl" ),
+          'replace' => "http://sourceforge.net/projects/tcl/files" ),
 
    array( 'pkg'     => 'swig',
           'match'   => '^.*$',
@@ -343,7 +344,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'Mako',
           'match'   => '^.*$',
-          'replace' => "http://www.makotemplates.org/download.html" ),
+          'replace' => "https://pypi.org/project/Mako" ),
 
    array( 'pkg'     => 'php',
           'match'   => '^.*$',
@@ -574,6 +575,15 @@ function get_packages( $package, $dirpath )
   if ( $package == "tcl" )
     return find_max( $lines, "/tcl/", "/^.*tcl(\d[\d\.]*\d)-src.*$/" );
 
+  // Same as tcl
+  if ( $book_index == "tk" )
+  {
+    return find_max( $lines, "/tcl/", "/^.*tcl(\d[\d\.]*\d)-src.*$/" );
+    //$dir = find_max( $lines, '/8\./', '/^.*(8\.[\d\.]+\d).*$/' );
+    //$lines = http_get_file( "$dirpath/$dir" );
+    //return find_max( $lines, "/$package/", "/^.*$package([\d\.]*\d)-src.tar.*$/" );
+  }
+
   if ( $package == "rustc" )
   {
     $max = find_max( $lines, "/release/", "/^.* (\d[\d\.]+\d) release.*$/" );
@@ -620,13 +630,6 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "junit4-r" )
     return find_max( $lines, "/junit/", "/^.*$junit-(\d[\d\.]+\d).jar.*$/" );
-
-  if ( $book_index == "tk" )
-  {
-    $dir = find_max( $lines, '/8\./', '/^.*(8\.[\d\.]+\d).*$/' );
-    $lines = http_get_file( "$dirpath/$dir" );
-    return find_max( $lines, "/$package/", "/^.*$package([\d\.]*\d)-src.tar.*$/" );
-  }
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)

@@ -97,6 +97,10 @@ $url_fix = array(
    array( 'pkg'     => 'make-ca',
           'match'   => '^.*$',
           'replace' => 'https://github.com/djlucas/make-ca/releases' ),
+
+   array( 'pkg'     => 'volume_key',
+          'match'   => '^.*$',
+          'replace' => 'https://github.com/felixonmars/volume_key/releases' ),
 );
 
 function get_packages( $package, $dirpath )
@@ -222,6 +226,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "sudo" )
      return find_max( $lines, "/sudo-\d[\.\d]+/", "/^.*sudo-(\d\.[\d\.]+p?\d?).tar.*$/" );
+
+  if ( $book_index == "volume_key" )
+     return find_max( $lines, "/volume_key/", "/^.*volume_key-(\d\.[\d\.]+\d).*$/" );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)

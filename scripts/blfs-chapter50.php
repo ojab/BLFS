@@ -203,7 +203,8 @@ function get_packages( $package, $dirpath )
       return find_max( $lines, "/4\.\d/", "/^.*(4\.\d),.*$/" );
 
   if ( $package == "docbook-xsl" )
-      return find_max( $lines, "/docbook-xsl/", "/^.*docbook-xsl-([\d\.]+).tar.*$/" );
+      //return find_max( $lines, "/docbook-xsl/", "/^.*docbook-xsl-([\d\.]+).tar.*$/" );
+      return "manual";
 
   if ( $package == "psutils" )
       return find_max( $lines, "/$package/", "/^.*$package-(p[\d\.]+).tar.*$/" );
