@@ -123,7 +123,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, "/$package/", "/^.*$package([\d\.]*\d).tar.*$/" );
 
   if ( $book_index == "LVM2." )
-    return find_max( $lines, "/Release/", "/^.*Release (\d[\d\.]*\d)\..*$/" );
+    return find_max( $lines, "/Release/", "/^.*Release (\d[\d\.]*\d).*$/" );
 
   if ( $book_index == "gptfdisk" )
   {

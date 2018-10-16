@@ -408,6 +408,9 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "gmime1" )
     return find_max( $lines, "/gmime/", "/^.*gmime-([\d\.]*\d)\.tar.*$/" );
 
+  if ( $book_index == "libaio" )
+    return find_max( $lines, "/libaio/", "/^.*libaio_([\d\.]*\d)\.orig.tar.*$/" );
+
   if ( $book_index == "telepathy-glib"    ||
        $book_index == "wayland-protocols" ||
        $book_index == "wayland"           )
