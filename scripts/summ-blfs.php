@@ -83,10 +83,11 @@ foreach ( $a as $l )
        $pkg == "juffed"           ||
        $pkg == "js38"             ||
        $pkg == "js52"             ||
-       $pkg == "firefox"          ||
        $pkg == "x264"             ||
        $pkg == "polkit"
      ) continue;
+
+       //$pkg == "firefox"          ||
 
   if ( $c[3] == "0" ) $c[3] .= " ";
   $x    = substr("chapter $c[0]: $c[1]                         ", 0, 32);
