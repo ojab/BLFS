@@ -203,6 +203,7 @@ function get_current()
    {
       if ( $line == "" ) continue;
       if ( preg_match( "/patch/", $line ) ) continue;     // Skip patches
+      if ( preg_match( "/metacpan/", $line ) ) continue;     // Skip perl depeperl dependenciess
 
       $file =  basename( $line );
       $url  =  dirname ( $line );

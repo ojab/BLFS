@@ -629,7 +629,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, "/$package/", "/^.*$package-(\d[\d\.]+\d)-src.*$/" );
 
   if ( $book_index == "junit4-r" )
-    return find_max( $lines, "/junit/", "/^.*$junit-(\d[\d\.]+\d).jar.*$/" );
+    return find_max( $lines, "/junit/", "/^.*junit-(\d[\d\.]+\d).jar.*$/" );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
