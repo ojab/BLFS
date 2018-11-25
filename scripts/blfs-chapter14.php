@@ -19,7 +19,7 @@ $ignores = array();
 //$current="bridge-utils";
 
 $regex[ 'mod_dnssd'       ] = "/^.*mod_dnssd ([\d\.]*).*$/";
-$regex[ 'wireless_tools.' ] = "/^.*latest stable.*version (\d\d).*$/";
+$regex[ 'wireless_tools.' ] = "/^.*latest stable version.*version (\d\d).*$/";
 $regex[ 'wicd'            ] = "/^.*Latest version is ([\d\.]*).*$/";
 
 $url_fix = array (
@@ -58,7 +58,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'wireless_tools.',
           'match'   => '^.*$', 
-          'replace' => "http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html" ),
+          'replace' => "https://hewlettpackard.github.io/wireless-tools/Tools.html#latest" ),
 
    array( 'pkg'     => 'avahi',
           'match'   => '^.*$', 
