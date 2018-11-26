@@ -14,12 +14,14 @@ $ignores = array();
 $ignores[ 'libnl-doc' ] = '';
 
 //$current="lynx";
+$current="procmail";
 
 $regex = array();
 $regex[ 'serf'          ] = "/^.*Serf is ([\d\.]+\d).*$/";
 $regex[ 'neon'          ] = "/^.*neon-(\d[\d\.]*).tar.*$/";
 $regex[ 'libevent'      ] = "/^.*release-(\d[\d\.]*)-stable.*$/";
 $regex[ 'libnsl'        ] = "/^.*libnsl ([\d\.]+\d)*$/";
+$regex[ 'procmail'      ] = "/^.*version ([\d\.]+\d) released.*$/";
 $regex[ 'rpcsvc-proto'  ] = "/^.*Version ([\d\.]+\d)*$/";
 
 $url_fix = array (
