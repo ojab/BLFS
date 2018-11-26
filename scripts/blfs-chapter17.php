@@ -14,7 +14,6 @@ $ignores = array();
 $ignores[ 'libnl-doc' ] = '';
 
 //$current="lynx";
-$current="procmail";
 
 $regex = array();
 $regex[ 'serf'          ] = "/^.*Serf is ([\d\.]+\d).*$/";
