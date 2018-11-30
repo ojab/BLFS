@@ -188,7 +188,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/colord/', '/^.*colord-(\d[\d\.]*\d).tar.*$/' );
 
   if ( $book_index == "sysstat" )
-    return find_max( $lines, '/are/', '/^.*and (\d[\d\.]*\d) .*$/' );
+    return find_max( $lines, '/are/', '/^.* are (\d[\d\.]*\d) .*$/' );
 
   if ( $book_index == "fcron" )
     return find_max( $lines, '/fcron/', '/^.*fcron (\d[\d\.]*\d) released.*$/' );
