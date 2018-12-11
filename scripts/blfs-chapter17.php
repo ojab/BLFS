@@ -20,7 +20,6 @@ $regex[ 'serf'          ] = "/^.*Serf is ([\d\.]+\d).*$/";
 $regex[ 'neon'          ] = "/^.*neon-(\d[\d\.]*).tar.*$/";
 $regex[ 'libevent'      ] = "/^.*release-(\d[\d\.]*)-stable.*$/";
 $regex[ 'libnsl'        ] = "/^.*libnsl ([\d\.]+\d)*$/";
-$regex[ 'procmail'      ] = "/^.*version ([\d\.]+\d) released.*$/";
 $regex[ 'rpcsvc-proto'  ] = "/^.*Version ([\d\.]+\d)*$/";
 
 $url_fix = array (
@@ -224,6 +223,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "geoclue1" )
     return find_max( $lines, '/geoclue/', '/^.*geoclue-([\d\.]+).tar.*$/' );
+
+  if ( $book_index == "procmail" )
+    return find_max( $lines, '/procmail/', '/^.*procmail-([\d\.]+)\.tar.*$/' );
 
   // libtirpc  (sourceforge is inconsistent here)
   if ( $book_index == "libtirpc" )

@@ -109,7 +109,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'doxygen',
           'match'   => '^.*$',
-          'replace' => "ftp://ftp.stack.nl/pub/doxygen" ),
+          'replace' => "http://www.doxygen.nl/download.html" ),
 
    array( 'pkg'     => 'expect',
           'match'   => '^.*$',

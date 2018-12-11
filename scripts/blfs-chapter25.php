@@ -25,6 +25,10 @@ $ignores = array();
 $regex = array();
 
 $url_fix = array (
+   array( 'pkg'     => 'fltk',
+          'match'   => '^.*$', 
+          'replace' => "https://www.fltk.org/software.php" ),
+
    array( 'pkg'     => 'freeglut',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/freeglut/files" ),
@@ -181,12 +185,6 @@ function get_packages( $package, $dirpath )
       $ver = find_max( $lines, "/QScintilla_gpl/", "/^.*QScintilla_gpl-([\d\.]+).tar.*$/" );
       return $ver;
     }
-    if ( $book_index == "fltk" )
-    {
-      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-      $position = strrpos( $dirpath, "/" );
-      $dirpath  = substr ( $dirpath, 0, $position ); // Up 1
-    }
 
     $lines = http_get_file( $dirpath );
 
@@ -238,7 +236,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, "/src.*tar.xz/", "/^.*src-([\d\.]+).tar.*$/" );
 
   if ( $book_index == "fltk" )
-    return find_max( $lines, "/1\./", "/^\s+(1\.[\d\.]+).*$/" );
+    return find_max( $lines, "/fltk-/", "/.*fltk-(\d[\d\.-]+)-source.*$/" );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
