@@ -149,7 +149,7 @@ function get_packages( $package, $dirpath )
      if ( $package == 'gnutls' )
      {
        $lines1 = http_get_file( $dirpath );
-       $dir = find_odd_max( $lines1, "/v\d\.\d/", "/.*v(\d[\d\.-]*\d).*$/" );
+       $dir = find_max( $lines1, "/v\d\.\d/", "/.*v(\d[\d\.-]*\d).*$/" );
        $dirpath .= "v$dir/";
      }
 
