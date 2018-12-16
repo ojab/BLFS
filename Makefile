@@ -181,7 +181,7 @@ install-dovecot: create-dirs
 	ln -sf  ../init.d/dovecot ${EXTDIR}/rc.d/rc5.d/S27dovecot
 	ln -sf  ../init.d/dovecot ${EXTDIR}/rc.d/rc6.d/K78dovecot
 
-install-elogind: create-dirs
+install-elogind: create-dirs install-mountcgroupfs
 	install -m ${MODE} blfs/init.d/elogind ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/elogind ${EXTDIR}/rc.d/rc0.d/K24elogind
 	ln -sf  ../init.d/elogind ${EXTDIR}/rc.d/rc1.d/K24elogind
@@ -920,7 +920,7 @@ uninstall-slapd:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S25slapd
 	rm -f ${EXTDIR}/rc.d/rc6.d/K46slapd
 
-uinstall-smartd: c
+uinstall-smartd: 
 	rm -f ${EXTDIR}/rc.d/init.d/smartd
 	rm -f ${EXTDIR}/rc.d/rc0.d/K70smartd
 	rm -f ${EXTDIR}/rc.d/rc1.d/K70smartd
