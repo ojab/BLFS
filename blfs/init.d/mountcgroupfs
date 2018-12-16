@@ -1,0 +1,60 @@
+#!/bin/sh
+########################################################################
+# Begin mountcgroupfs
+#
+# Description : Mount /sys/fs/cgroup{,/unified}
+#
+# Authors     : DJ Lucas - dj@linuxfromscratch.org
+#
+# Version     : BLFS 8.4
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            mountcgroupfs
+# Required-Start:      mountvirtfs
+# Should-Start:
+# Required-Stop:
+# Should-Stop:
+# Default-Start:       S
+# Default-Stop:
+# Short-Description:   Mounts cgroup and cgroup v2 filesystems.
+# Description:         Mounts /sys/fs/cgroup (cgroup).
+#                      Mounts /sys/fs/cgroup/unified (cgroup2).
+# X-LFS-Provided-By:   BLFS
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+case "${1}" in
+   start)
+      log_info_msg "Mounting cgroup file systems:"
+      # Make sure /sys is available before doing anything
+      if mountpoint /sys >/dev/null; then
+        failed=0
+
+        # cgroup v1
+        mkdir -p /sys/fs/cgroup 2>&1> /dev/null
+        log_info_msg2 " ${INFO}/sys/fs/cgroup"
+        mount -t cgroup cgroup /sys/fs/cgroup || failed=1
+
+        # cgroup v2
+        mkdir -p /sys/fs/cgroup/unified 2>&1> /dev/null || failed=1
+        log_info_msg2 " ${INFO}/sys/fs/cgroup/unified"
+        mount -t cgroup2 none /sys/fs/cgroup/unified || failed=1
+      else
+        failed=1
+      fi
+
+      (exit ${failed})
+      evaluate_retval
+      exit $failed
+      ;;
+
+   *)
+      echo "Usage: ${0} {start}"
+      exit 1
+      ;;
+esac
+
+# End mountcgroupfs
