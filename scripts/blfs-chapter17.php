@@ -32,6 +32,10 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://repo.or.cz/alpine.git/shortlog" ),
 
+   array( 'pkg'     => 'c-ares',
+          'match'   => '^.*$',
+          'replace' => "https://github.com/c-ares/c-ares/releases" ),
+
    array( 'pkg'     => 'w3m',
           'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/w3m/files" ),
@@ -204,7 +208,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/New version/', '/^.*New version ([\d\.]+).*$/' );
 
   if ( $book_index == "c-ares" )
-    return find_max( $lines, '/c-ares/', '/^.*c-ares ([\d\.]+) .*$/' );
+    return find_max( $lines, '/c-ares/', '/^.*c-ares-([\d\.]+).tar.*$/' );
 
   if ( $book_index == "libndp" )
     return find_max( $lines, '/v\d/', '/^.*v([\d\.]+)$/' );
