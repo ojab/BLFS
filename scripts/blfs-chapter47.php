@@ -55,7 +55,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'transcode',
           'match'   => '^.*$', 
-          'replace' => "https://bitbucket.org/france/transcode-tcforge/downloads" ),
+          'replace' => "http://ftp.osuosl.org/pub/blfs/conglomeration/transcode" ),
 
    array( 'pkg'     => 'vlc',
           'match'   => '^.*$', 
@@ -128,14 +128,6 @@ function get_packages( $package, $dirpath )
   }
   else // http
   {
-     if ( $package == "transcode" )
-     {
-       # We have to process the stupid javascript to get this to work
-       exec( "lynx -dump  $dirpath", $output );
-       $max = find_max( $output, "/transcode/", "/^.*transcode-([\d\.]*\d)\.tar.*$/" );
-       return $max;
-     }
-
      $lines = http_get_file( $dirpath );
      if ( ! is_array( $lines ) ) return $lines;
   } // End fetch
@@ -158,6 +150,9 @@ function get_packages( $package, $dirpath )
   if ( $package == "cdparanoia-III" )
       return find_max( $lines, "/^.*cdparanoia-III-/", 
                                "/^.*cdparanoia-III-([\d\.]+).src.tgz.*$/" );
+
+  if ( $package == "transcode" )
+      return find_max( $lines, "/transcode/", "/^.*transcode-([\d\.]+).tar.*$/" );
 
   if ( $package == "amarok" )
       return find_max( $lines, "/\d\./", "/^.*;([\d\.]+)\/.*$/", TRUE );

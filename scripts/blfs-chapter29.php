@@ -98,7 +98,7 @@ function get_packages( $package, $dirpath )
      if ( $book_index == "extra-cmake-modules" )
      {
         $lines = http_get_file( "$dirpath" );
-        $max = find_max( $lines, "/5/", "/^.*(5[\d\.]+)\/.*$/" );
+        $max = find_max( $lines, "/5/", "/^.*;(5[\d\.]+)\/.*$/" );
         return $max . ".0";
      }
 

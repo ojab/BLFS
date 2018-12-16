@@ -94,7 +94,7 @@ function get_packages( $package, $dirpath )
 
     if ( $package == 'oxygen-icons5' )  # Same as KF5 version
     {
-      $max = find_max( $lines, "/5/", "/^.*(5[\d\.]+)\/.*$/" );
+      $max = find_max( $lines, "/5/", "/^.*(5\.[\d\.]+)\/.*$/" );
       return $max . ".0" ;
     }
 

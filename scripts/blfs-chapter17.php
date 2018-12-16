@@ -99,6 +99,10 @@ $url_fix = array (
    array( 'pkg'     => 'rpcsvc-proto',
           'match'   => '^.*$',
           'replace' => "https://github.com/thkukuk/rpcsvc-proto/releases" ),
+
+   array( 'pkg'     => 'procmail',
+          'match'   => '^.*$',
+          'replace' => "http://ftp.osuosl.org/pub/blfs/conglomeration/procmail" ),
 );
 
 function get_packages( $package, $dirpath )
