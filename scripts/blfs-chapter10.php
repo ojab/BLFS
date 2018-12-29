@@ -270,7 +270,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, "/$book_index/", '/^.*aalib-([rc\d\.]+).tar.*$/' );
 
   if ( $book_index == "exiv2" )
-    return find_max( $lines, "/  v\d/", '/^.*v(\d\.[\d\.]+)$/' );
+    return find_max( $lines, "/  Version \d/", '/^.*Version (\d\.[\d\.]+)$/' );
 
   // imlib
   if ( $book_index == "imlib2" )
