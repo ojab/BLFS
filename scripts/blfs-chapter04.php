@@ -34,6 +34,10 @@ $url_fix = array(
           'match'   => '^.*$',
           'replace' => 'https://sourceforge.net/projects/lsb/files/' ),
 
+   array( 'pkg'     => 'cyrus-sasl',
+          'match'   => '^.*$',
+          'replace' => 'https://github.com/cyrusimap/cyrus-sasl/releases/' ),
+
    array( 'pkg'     => 'liboauth',
           'match'   => '^.*$',
           'replace' => 'https://sourceforge.net/projects/liboauth/files/' ),
@@ -184,6 +188,9 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "acl" || $package == "attr" )
      return find_max( $lines, "/$package/", "/^.*$package-([\d\.-]*\d)\.src.tar.*$/" );
+
+  if ( $package == "cyrus-sasl" )
+     return find_max( $lines, "/${package}/", "/^.*${package}-([\d\.]+\d).tar.*$/" );
 
   if ( $package == "libcap2_" )
      return find_max( $lines, "/${package}/", "/^.*${package}([\d\.-]*\d)\.orig.tar.*$/" );
