@@ -32,6 +32,10 @@ $url_fix = array (
    array( 'pkg'     => 'gpm',
           'match'   => '^.*$', 
           'replace' => "https://github.com/telmich/gpm/releases" ),
+
+   array( 'pkg'     => 'bubblewrap',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/projectatomic/bubblewrap/releases" ),
    
    array( 'pkg'     => 'hdparm',
           'match'   => '^.*$', 
@@ -178,6 +182,9 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "at" )
     return find_max( $lines, '/orig/', '/^.*at_([\d\.]+).orig.tar.*$/' );
 
+  if ( $book_index == "bubblewrap" )
+    return find_max( $lines, '/bubblewrap-/', '/^.*bubblewrap-([\d\.]+).tar.*$/' );
+
   if ( $book_index == "dbus" )
     return find_even_max( $lines, '/dbus/', '/^.*dbus-(\d[\d\.]*\d).tar.*$/' );
 
@@ -188,7 +195,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/colord/', '/^.*colord-(\d[\d\.]*\d).tar.*$/' );
 
   if ( $book_index == "sysstat" )
-    return find_max( $lines, '/are/', '/^.* are (\d[\d\.]*\d) .*$/' );
+    return find_max( $lines, '/sysstat-/', '/^.*sysstat-(\d[\d\.]*\d).tar.*$/' );
 
   if ( $book_index == "fcron" )
     return find_max( $lines, '/fcron/', '/^.*fcron (\d[\d\.]*\d) released.*$/' );
