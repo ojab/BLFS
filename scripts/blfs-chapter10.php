@@ -15,7 +15,6 @@ $ignores = array();
 $ignores[ 'ippicv' ] = "";
 
 //$current="opencv_contrib";   // For debugging
-$current="exiv2";   // For debugging
 
 $regex = array();
 $regex[ 'LibRaw'        ] = "/^.*LibRaw-(\d[\d\.]+\d).tar.*$/";
