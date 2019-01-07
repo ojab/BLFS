@@ -15,6 +15,7 @@ $ignores = array();
 $ignores[ 'ippicv' ] = "";
 
 //$current="opencv_contrib";   // For debugging
+$current="exiv2";   // For debugging
 
 $regex = array();
 $regex[ 'LibRaw'        ] = "/^.*LibRaw-(\d[\d\.]+\d).tar.*$/";
@@ -270,7 +271,18 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, "/$book_index/", '/^.*aalib-([rc\d\.]+).tar.*$/' );
 
   if ( $book_index == "exiv2" )
-    return find_max( $lines, "/  Version \d/", '/^.*Version (\d\.[\d\.]+)$/' );
+  {
+    $max = find_max( $lines, "/  Version \d/", '/^.*Version (\d\.[\d\.]+)$/' );
+
+    for ( $i = 0; $i < strlen($max); $i++ )
+    {
+      if ( $max[$i] == '.' ) $dots++;
+    }
+
+    if ( $dots < 2 ) $max .= '.0';
+
+    return $max;
+  }
 
   // imlib
   if ( $book_index == "imlib2" )
