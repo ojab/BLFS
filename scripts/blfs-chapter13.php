@@ -5,7 +5,7 @@ include 'blfs-include.php';
 
 $CHAPTER       = '13';
 $CHAPTERS      = 'Chapter 13';
-$START_PACKAGE = 'clisp';
+$START_PACKAGE = 'cbindgen';
 $STOP_PACKAGE  = 'junit';
 
 $renames = array();
@@ -94,6 +94,10 @@ $url_fix = array (
    array( //'pkg'     => 'gnome',
           'match'   => '^ftp:\/\/ftp.gnome',
           'replace' => "http://ftp.gnome" ),
+
+   array( 'pkg'     => 'cbindgen',
+          'match'   => '^.*$',
+          'replace' => "https://github.com/eqrion/cbindgen/releases" ),
 
    array( 'pkg'     => 'check',
           'match'   => '^.*$',
@@ -568,6 +572,9 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "scour" )
     return find_max( $lines, "/v/", "/^.*v(\d[\d\.]*\d).*$/" );
+
+  if ( $package == "cbindgen" )
+    return find_max( $lines, "/v\d/", "/^.*v(\d[\d\.]*\d).*$/" );
 
   if ( $package == "expect" )
     return find_max( $lines, "/expect/", "/^.*expect(\d[\d\.]*\d).tar.*$/" );
