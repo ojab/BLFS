@@ -66,7 +66,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'geoclue',
           'match'   => '^.*$',
-          'replace' => "http://www.freedesktop.org/software/geoclue/releases" ),
+          'replace' => "https://gitlab.freedesktop.org/geoclue/geoclue/tags" ),
 
    array( 'pkg'     => 'libpcap',
           'match'   => '^.*$',
@@ -180,13 +180,6 @@ function get_packages( $package, $dirpath )
       return $max;
     }
 
-    if ( $book_index == "geoclue" )
-    {
-      $lines    = http_get_file( $dirpath );
-      $dir      = find_max( $lines, '/\d\./', '/^.*(\d\.[\d\.]+)\/.*$/' );
-      $dirpath .= "/$dir";
-    }
-
     $lines = http_get_file( $dirpath );
     if ( ! is_array( $lines ) ) return $lines;
   } // End fetch
@@ -229,8 +222,8 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "nghttp2" )
     return find_max( $lines, '/nghttp2/', '/^.*nghttp2 v([\d\.]+).*$/' );
 
-  if ( $book_index == "geoclue1" )
-    return find_max( $lines, '/geoclue/', '/^.*geoclue-([\d\.]+).tar.*$/' );
+  if ( $book_index == "geoclue" )
+    return find_max( $lines, '/Release/', '/^.*Release ([\d\.]+).*$/' );
 
   if ( $book_index == "procmail" )
     return find_max( $lines, '/procmail/', '/^.*procmail-([\d\.]+)\.tar.*$/' );
