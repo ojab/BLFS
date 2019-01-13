@@ -138,6 +138,7 @@ function get_packages( $package, $dirpath )
 
        if ( $book_index == "gnome-menus" ||
             $book_index == "grilo"       ||
+            $book_index == "gexiv2"      ||
             $book_index == "libgdata"    ||
             $book_index == "folks"       ||
             $book_index == "geocode-glib" )
