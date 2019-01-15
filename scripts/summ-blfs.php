@@ -81,8 +81,6 @@ foreach ( $a as $l )
        $pkg == "obconf-qt"        ||
        $pkg == "libdbusmenu-qt"   ||
        $pkg == "juffed"           ||
-       $pkg == "js38"             ||
-       $pkg == "js52"             ||
        $pkg == "x264"             ||
        $pkg == "polkit"
      ) continue;
