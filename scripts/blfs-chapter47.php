@@ -73,6 +73,14 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "https://github.com/nicklan/pnmixer/releases" ),
 
+   array( 'pkg'     => 'MPlayer',
+          'match'   => '^.*$', 
+          'replace' => "http://www.mplayerhq.hu/MPlayer/releases" ),
+
+   array( 'pkg'     => 'Clearlooks',
+          'match'   => '^.*$', 
+          'replace' => "http://www.mplayerhq.hu/MPlayer/skins" ),
+
    array( 'pkg'     => 'kwave',
           'match'   => '^.*$', 
           'replace' => "http://download.kde.org/stable/applications" ),
@@ -186,6 +194,7 @@ function get_packages( $package, $dirpath )
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
+
   $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );
   return $max;
 }
