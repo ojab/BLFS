@@ -28,6 +28,7 @@ $ignores[ 'tcl1'         ] = '';
 $ignores[ 'gcc1'         ] = '';
 $ignores[ 'OpenJDK'      ] = '';
 $ignores[ 'OpenJDK1'     ] = '';
+$ignores[ 'openjdk'      ] = '';
 $ignores[ 'hamcrest'     ] = '';
 $ignores[ 'apache-ant1'  ] = '';
 $ignores[ 'apache-maven1'] = '';
@@ -129,7 +130,8 @@ $url_fix = array (
 
    array( 'pkg'     => 'jdk',
           'match'   => '^.*$',
-          'replace' => "http://hg.openjdk.java.net/jdk-updates" ),
+          'replace' => "https://www.oracle.com/technetwork/java/javase/downloads" ),
+          //'replace' => "http://hg.openjdk.java.net/jdk-updates" ),
 
    array( 'pkg'     => 'ninja',
           'match'   => '^.*$',
@@ -510,6 +512,10 @@ function get_packages( $package, $dirpath )
 
     if ( $package == "jdk" )
     {
+      exec( "lynx -dump  $dirpath", $lines );
+      $version = find_max( $lines, "/Java SE/", "/^.*Java SE (\d[\d\.]+).LTS.*$/" );
+      return $version;
+/*
       exec( "lynx -dump  $dirpath", $lines1 );
       $dir = find_max( $lines1, "/jdk\d/", "/^.*(jdk\d+u).*$/" );
       $dirpath .= "/$dir/tags";
@@ -518,6 +524,7 @@ function get_packages( $package, $dirpath )
       $version = find_max( $lines, "/jdk-/", "/^.*jdk-([\d\.\+]+) .*$/" );
 //echo "version=$version\n";
       return $version;
+*/
     }
 
     if ( $book_index == "vala" )
@@ -677,6 +684,9 @@ Function get_pattern( $line )
 
      array( 'pkg'   => 'OpenJDK',
             'regex' => "/OpenJDK-([\d\.]+)\+?.*$/" ),
+
+     array( 'pkg'   => 'openjdk',
+            'regex' => "/openjdk-([\d\.]+)\+?.*$/" ),
    );
 
    foreach( $match as $m )
