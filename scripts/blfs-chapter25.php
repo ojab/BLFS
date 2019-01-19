@@ -93,6 +93,7 @@ function get_packages( $package, $dirpath )
          $book_index == "gdk-pixbuf"   ||
          $book_index == "gtk+1"        ||
          $book_index == "gtk-engines"  ||
+         $book_index == "gtk-vnc"      ||
          $book_index == "libglade"     ||
          $book_index == "pango"        ||
          $book_index == "pangomm"      ||
@@ -105,7 +106,8 @@ function get_packages( $package, $dirpath )
       $dirpath  = substr ( $dirpath, 0, $position );
       $dirlines = http_get_file( "$dirpath/" );
 
-      if ( $book_index == "atk") // For now atk uses devel versions
+      if ( $book_index == "atk"    ||
+           $book_index == "gtk-vnc" ) // For now atk uses devel versions
         $dir      = find_max( $dirlines, '/\d$/', '/^.* ([\d\.]+)$/' );
       else 
         $dir      = find_even_max( $dirlines, '/\d$/', '/^.* ([\d\.]+)$/' );
