@@ -6,7 +6,7 @@ include 'blfs-include.php';
 $CHAPTER       = '13';
 $CHAPTERS      = 'Chapter 13';
 $START_PACKAGE = 'cbindgen';
-$STOP_PACKAGE  = 'junit';
+$STOP_PACKAGE  = 'yasm';
 
 $renames = array();
 $renames[ 'Python'     ] = 'python2';
