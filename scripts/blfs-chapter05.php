@@ -55,7 +55,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'LVM2.',
         'match'   => '^.*$', 
-        'replace' => "https://sourceware.org/git/?p=lvm2.git" ),
+        'replace' => "https://sourceware.org/ftp/lvm2" ),
 
  array( 'pkg'     => 'sshfs',
         'match'   => '^.*$', 
@@ -123,7 +123,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, "/$package/", "/^.*$package([\d\.]*\d).tar.*$/" );
 
   if ( $book_index == "LVM2." )
-    return find_max( $lines, "/Release/", "/^.*Release (\d[\d\.]*\d).*$/" );
+    return find_max( $lines, "/LVM2/", "/^.*LVM2.(\d[\d\.]*\d).*$/" );
 
   if ( $book_index == "gptfdisk" )
   {

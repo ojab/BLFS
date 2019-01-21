@@ -16,7 +16,7 @@ $ignores[ 'install-tl-unx' ] = '';
 $ignores[ 'texlive1'       ] = '';
 $ignores[ 'docbook-xsl-doc'] = '';
 
-//$current="docbook-xsl";  // For debugging
+//$current="docbook-xsl-nons";  // For debugging
 
 $regex = array();
 $regex[ 'ghostscript'     ] = "/^.*current Ghostscript release (\d[\d\.]+) .*$/";
@@ -63,7 +63,7 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://www.docbook.org/schemas/4x.html" ),
 
-   array( 'pkg'     => 'docbook-xsl',
+   array( 'pkg'     => 'docbook-xsl-nons',
           'match'   => '^.*$',
           'replace' => "https://github.com/docbook/xslt10-stylesheets/releases" ),
 
@@ -202,7 +202,7 @@ function get_packages( $package, $dirpath )
   if ( $package == "docbook-xml" )
       return find_max( $lines, "/4\.\d/", "/^.*(4\.\d),.*$/" );
 
-  if ( $package == "docbook-xsl" )
+  if ( $package == "docbook-xsl-nons" )
       //return find_max( $lines, "/docbook-xsl/", "/^.*docbook-xsl-([\d\.]+).tar.*$/" );
       return "manual";
 

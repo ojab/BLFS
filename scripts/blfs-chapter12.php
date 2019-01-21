@@ -85,6 +85,10 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "https://github.com/storaged-project/udisks/releases" ),
 
+   array( 'pkg'     => 'upower',
+          'match'   => '^.*$', 
+          'replace' => "https://gitlab.freedesktop.org/upower/upower/tags" ),
+
    array( 'pkg'     => 'systemd',
           'match'   => '^.*$', 
           'replace' => "https://github.com/systemd/systemd/releases" ),
@@ -214,6 +218,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "paxmirabilis" )
     return find_max( $lines, '/paxmirabilis/', '/^.*paxmirabilis-(\d\d*\d).cpio.*$/' );
+
+  if ( $book_index == "upower" )
+    return find_max( $lines, '/upower/', '/^.*upower-(\d\.[\d\.]+\d).*$/' );
 
   if ( $book_index == "p7zip" )
   {
