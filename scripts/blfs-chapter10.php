@@ -272,7 +272,7 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "exiv2" )
   {
     $max = find_max( $lines, "/  Version \d/", '/^.*Version (\d\.[\d\.]+)$/' );
-
+    $dots = 0;
     for ( $i = 0; $i < strlen($max); $i++ )
     {
       if ( $max[$i] == '.' ) $dots++;

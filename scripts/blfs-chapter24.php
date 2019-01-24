@@ -21,6 +21,7 @@ $proto    = array();
 $apps     = array();
 $libs     = array();
 $fonts    = array();
+$drivers  = array();
 
 $regex = array();
 $regex[ 'libvdpau-va-gl'  ] = "/^.*version (\d[\d\.]+\d).*$/";
@@ -292,9 +293,9 @@ function get_current_xorg()
       if ( preg_match( "/^xf86/", $basename ) )
          $book[ $index ][ 'indent' ] = "driver";
 
-      // If $basename is util-macros, add Xorg Protocol Headers 
-      if ( $basename == 'util-macros' )
-         insert_subsection( "Xorg Protocol Headers", "x7proto.xml", "proto" );
+      #// If $basename is util-macros, add Xorg Protocol Headers 
+      #if ( $basename == 'util-macros' )
+      #   insert_subsection( "Xorg Protocol Headers", "x7proto.xml", "proto" );
 
       // If $basename is libxcb, add Xorg libs
       if ( $basename == 'libxcb' )
