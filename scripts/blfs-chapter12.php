@@ -23,7 +23,7 @@ $regex = array();
 //$regex[ 'fcron'   ] = "/^.*Stable release fcron (\d[\d\.]+\d)*$/";
 $regex[ 'ibus'    ] = "/^.*ibus-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'strigi'  ] = "/^(\d[\d\.]+\d) .*$/";
-$regex[ 'systemd' ] = "/^.*v(\d[\d\.]+\d).*$/";
+$regex[ 'systemd' ] = "/^.*v(\d[\d\.]+\d)$/";
 
 $sf = 'sourceforge.net';
 
