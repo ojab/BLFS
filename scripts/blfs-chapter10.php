@@ -111,7 +111,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'opencv',
         'match'   => '^.*$', 
-        'replace' => "http://sourceforge.net/projects/opencvlibrary/files/opencv-unix" ),
+        'replace' => "https://github.com/opencv/opencv/releases" ),
 
  array( 'pkg'     => 'opencv_contrib',
         'match'   => '^.*$', 
@@ -296,10 +296,10 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/^\s*1/', '/^\s*(1[\d\.]+) .*$/' );
 
   if ( $book_index == "opencv" )
-    return find_max( $lines, '/^\s*\d/', '/^\s*(\d\.[\d\.]+) .*$/' );
+    return find_max( $lines, '/OpenCV/', '/^.*OpenCV (\d\.[\d\.]+)$/' );
 
   if ( $book_index == "opencv_contrib" )
-    return find_max( $lines, '/3\./', '/^.* (3\.[\d\.]+).*$/' );
+    return find_max( $lines, '/ \d\./', '/^.* (\d\.[\d\.]+).*$/' );
 
   // OpenJPEG2
   if ( $book_index == "openjpeg" ) 
