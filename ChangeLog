@@ -1,3 +1,7 @@
+2019-02-07  DJ Lucas <dj@linuxfromscratch.org>
+   * Add separate mount for /run/user to mountcgroupfs
+   * Correct dependency information for elogind
+
 2018-12-16  DJ Lucas <dj@linuxfromscratch.org>
    * Add elogind bootscript
    * Add mountcgroupfs bootscript
