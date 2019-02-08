@@ -42,10 +42,16 @@ case "${1}" in
         mkdir -p /sys/fs/cgroup/unified 2>&1> /dev/null || failed=1
         log_info_msg2 " ${INFO}/sys/fs/cgroup/unified"
         mount -t cgroup2 none /sys/fs/cgroup/unified || failed=1
+
+        # /run/user
+        mkdir -p /run/user 2>&1> /dev/null || failed=1
+        log_info_msg2 " ${INFO}/run/user"
+        mount -t tmpfs none /run/user -o mode=755 || failed=1
       else
         failed=1
       fi
 
+      
       (exit ${failed})
       evaluate_retval
       exit $failed

@@ -12,8 +12,8 @@
 
 ### BEGIN INIT INFO
 # Provides:            elogind
-# Required-Start:
-# Should-Start:        dbus
+# Required-Start:      dbus mountcgroupfs
+# Should-Start:
 # Required-Stop:
 # Should-Stop:
 # Default-Start:       3 4 5
@@ -28,19 +28,19 @@
 case "${1}" in
    start)
       install -vdm644 /run/systemd 2>&1>/dev/null &&
-      log_info_msg "Startng elogind..." &&
+      log_info_msg "Startng elogind Session Manager..." &&
       test -d /run/systemd && start_daemon /lib/elogind/elogind -D
       evaluate_retval
       ;;
 
     stop)
-      log_info_msg "Stopping elogind..."
+      log_info_msg "Stopping elogind Session Manager..."
       killproc /lib/elogind/elogind
       evaluate_retval
       ;;
 
    reload)
-      log_info_msg "Reloading elogind..."
+      log_info_msg "Reloading elogind Session Manager..."
       pid=`pidofproc elogind`
       kill -HUP "${pid}"
       evaluate_retval
