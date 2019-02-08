@@ -63,4 +63,4 @@ case "${1}" in
       ;;
 esac
 
-# End mountcgroupfs
+# End /etc/init.d/mountcgroupfs

@@ -64,4 +64,4 @@ esac
 
 exit 0
 
-# End elogind
+# End /etc/init.d/elogind
