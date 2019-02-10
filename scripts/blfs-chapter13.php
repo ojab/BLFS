@@ -135,8 +135,8 @@ $url_fix = array (
 
    array( 'pkg'     => 'ninja',
           'match'   => '^.*$',
-          'replace' => "https://ninja-build.org/" ),
-          //'replace' => "https://github.com/ninja-build/ninja/releases" ),
+          'replace' => "https://github.com/ninja-build/ninja/releases" ),
+          //'replace' => "https://ninja-build.org/" ),
 
    array( 'pkg'     => 'scour',
           'match'   => '^.*$',
@@ -573,7 +573,7 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "ninja" )  // ninja
   {
-    $max = find_max( $lines, "/release/", "/^.*v(\d[\d\.]*\d).*$/" );
+    $max = find_max( $lines, "/v\d/", "/^.*v(\d[\d\.]*\d).*$/" );
     return $max;
   }
 
