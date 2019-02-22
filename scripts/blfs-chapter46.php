@@ -36,6 +36,26 @@ $regex[ 'xvidcore'                   ] = "/^.*Xvid (\d[\d\.]+\d) stable.*$/";
 
 $url_fix = array (
 
+   array( 'pkg'     => 'alsa-lib',
+          'match'   => '^.*$', 
+          'replace' => "https://alsa-project.org/wiki/Main_Page" ),
+
+   array( 'pkg'     => 'alsa-plugins',
+          'match'   => '^.*$', 
+          'replace' => "https://alsa-project.org/wiki/Main_Page" ),
+
+   array( 'pkg'     => 'alsa-utils',
+          'match'   => '^.*$', 
+          'replace' => "https://alsa-project.org/wiki/Main_Page" ),
+
+   array( 'pkg'     => 'alsa-tools',
+          'match'   => '^.*$', 
+          'replace' => "https://alsa-project.org/wiki/Main_Page" ),
+
+   array( 'pkg'     => 'alsa-oss',
+          'match'   => '^.*$', 
+          'replace' => "https://alsa-project.org/wiki/Main_Page" ),
+
    array( 'pkg'     => 'faac',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/faac/files" ),
@@ -265,6 +285,12 @@ function get_packages( $package, $dirpath )
      }
 
      return 0;  // This is an error
+  }
+
+  if ( preg_match( '/alsa/', $package ) )
+  {
+      $max = find_max( $lines, "/$package/", "/^.*$package-(\d\.[\d\.]+).*$/" );
+      return $max;
   }
 
   if ( $package == "faad2" )

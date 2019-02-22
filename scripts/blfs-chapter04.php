@@ -14,8 +14,9 @@ $renames[ 'openssl'    ] = 'openssl-1.0';
 //$renames[ 'openssl1'   ] = 'openssl-1.0';
 
 $ignores = array();
-$ignores[ 'openssh1'    ] = "";
-$ignores[ 'lsb-release' ] = ""; // Has not changed in 12 years
+$ignores[ 'openssh1'       ] = "";
+$ignores[ 'cracklib-words' ] = "";
+$ignores[ 'lsb-release'    ] = ""; // Has not changed in 12 years
 
 //$current="gnutls";   // For debugging
 
@@ -23,8 +24,8 @@ $regex = array();
 $regex[ 'lsb-release'    ] = "/^.*lsb-release_([\d\.]+).*_all\.deb*$/";
 $regex[ 'krb5'           ] = "/^.*Kerberos V5 Release ([\d\.]+).*$/";
 $regex[ 'haveged'        ] = "/^.*haveged-([\d\.]+)\.tar.*$/";
-$regex[ 'cracklib'       ] = "/^.*cracklib-([\d\.]+)\.tar.*$/";
-$regex[ 'cracklib-words' ] = "/^.*cracklib-words-([\d\.]+)\.bz2.*$/";
+//$regex[ 'cracklib'       ] = "/^.*cracklib-([\d\.]+)\.tar.*$/";
+//$regex[ 'cracklib-words' ] = "/^.*cracklib-words-([\d\.]+)\.bz2.*$/";
 $regex[ 'ConsoleKit2'    ] = "/^.*ConsoleKit2-([\d\.]+)\.tar.*$/";
 $regex[ 'make-ca'        ] = "/^.*make-ca-(\d[\d\.]+\d).*$/";
 

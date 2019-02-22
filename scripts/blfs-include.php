@@ -129,7 +129,8 @@ function http_get_file( $url )
      return $lines;
   }
 
-  if ( preg_match( "/gpm/", $url ) )
+  if ( preg_match( "/gpm/",  $url ) ||
+       preg_match( "/alsa/", $url ) )
   {
      exec( "wget -q --no-check-certificate -O- $url", $dir );
      return $dir;
@@ -138,6 +139,7 @@ function http_get_file( $url )
   if ( ! preg_match( "/sourceforge/", $url ) ||
          preg_match( "/jfs/", $url         ) ||
          preg_match( "/liba52/", $url      ) ||
+         preg_match( "/cracklib/", $url    ) ||
          preg_match( "/libmpeg2/", $url    ) ||
          preg_match( "/tcl/", $url         ) ||
          preg_match( "/tk/", $url          ) ||
