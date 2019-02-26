@@ -287,6 +287,12 @@ function get_packages( $package, $dirpath )
      return 0;  // This is an error
   }
 
+  if ( preg_match( '/alsa-firmware/', $package ) )
+  {
+      $max = find_max( $lines, "/$package/", "/^.*$package-(\d\.[\d\.]+).tar.*$/" );
+      return $max;
+  }
+
   if ( preg_match( '/alsa/', $package ) )
   {
       $max = find_max( $lines, "/$package/", "/^.*$package-(\d\.[\d\.]+).*$/" );
