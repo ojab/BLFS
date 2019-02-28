@@ -264,6 +264,10 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Net-DNS/" ),
 
+   array( 'pkg'     => 'Net-SSLeay',
+          'match'   => '^.*$',
+          'replace' => " https://github.com/rurban/Net-SSLeay/releases" ),
+
    array( 'pkg'     => 'Parse-Yapp',
           'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Parse-Yapp/" ),
@@ -558,6 +562,9 @@ function get_packages( $package, $dirpath )
 
      return 0;  // This is an error
   }
+
+  if ( $book_index == "Net-SSLeay" )
+    return find_max( $lines, '/\d\./', '/^.*(\d\.[\d\._]+\d)$/' );
 
   if ( $book_index == "doxygen" )
     return find_max( $lines, '/doxygen/', '/^.*doxygen-([\d\.]+).src.tar.*$/' );
