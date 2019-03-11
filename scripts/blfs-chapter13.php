@@ -9,6 +9,7 @@ $START_PACKAGE = 'cbindgen';
 $STOP_PACKAGE  = 'apache-ant';
 
 $renames = array();
+$renames[ 'lua11'      ] = 'lua5.2';
 $renames[ 'Python'     ] = 'python2';
 $renames[ 'Python1'    ] = 'python3';
 $renames[ 'pygobject'  ] = 'pygobject2';
@@ -565,6 +566,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "Net-SSLeay" )
     return find_max( $lines, '/\d\./', '/^.*(\d\.[\d\._]+\d)$/' );
+
+  if ( $book_index == "lua11" )
+    return find_max( $lines, '/lua-5.2/', '/^.*lua-(5.2.[\d\.]+).tar.*$/' );
 
   if ( $book_index == "doxygen" )
     return find_max( $lines, '/doxygen/', '/^.*doxygen-([\d\.]+).src.tar.*$/' );
