@@ -42,6 +42,10 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "https://github.com/01org/intel-vaapi-driver/releases" ),
 
+   array( 'pkg'     => 'libvdpau',
+          'match'   => '^.*$', 
+          'replace' => "https://gitlab.freedesktop.org/vdpau/libvdpau/tags" ),
+
    array( 'pkg'     => 'libvdpau-va-gl',
           'match'   => '^.*$', 
           'replace' => "https://github.com/i-rinat/libvdpau-va-gl/releases" ),
@@ -171,6 +175,9 @@ function get_packages( $package, $dirpath )
 
      return 0;  // This is an error
   }
+
+  if ( $book_index == "libvdpau" )
+    return find_max( $lines, '/libvdpau-/', '/^.*libvdpau-(\d[\d\.]+).tar.*$/' );
 
   if ( $book_index == "xterm" )
     return find_max( $lines, '/xterm-\d+.tgz/', '/^.*xterm-(\d+).tgz.*$/' );

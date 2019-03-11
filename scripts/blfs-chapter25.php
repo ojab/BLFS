@@ -37,6 +37,10 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/enlightenment/files/imlib2-src" ),
 
+   array( 'pkg'     => 'keybinder',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/kupferlauncher/keybinder/releases" ),
+
    array( 'pkg'     => 'libepoxy',
           'match'   => '^.*$', 
           'replace' => "https://github.com/anholt/libepoxy/releases" ),
@@ -223,6 +227,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "imlib2" )
     return find_max( $lines, '/\d\.[\d\.]+\d/', '/^.* (\d\.[\d\.]+\d).*$/' );
+
+  if ( $book_index == "keybinder" )
+    return find_max( $lines, '/keybinder-/', '/^.*keybinder-(\d\.[\d\.]+).tar.*$/' );
 
   if ( $book_index == "webkitgtk" )
     return find_even_max( $lines, '//', '/^.*webkitgtk-(\d[\d\.]+\d).tar.*$/' );
