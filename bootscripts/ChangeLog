@@ -1,3 +1,6 @@
+2019-03-13  Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Allow bridge to be created without INTERFACE_COMPONENTS
+
 2018-01-05  Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Add lightdm bootscript
 

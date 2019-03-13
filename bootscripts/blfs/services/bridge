@@ -24,7 +24,7 @@ is_true()
 }
 
 if [ -z "${INTERFACE_COMPONENTS}" ]; then
-   log_failure_msg "INTERFACE_COMPONENTS variable missing from ${IFCONFIG}"
+   log_warning_msg "INTERFACE_COMPONENTS variable missing from ${IFCONFIG}"
    exit 1
 fi
 
@@ -35,11 +35,13 @@ case "${2}" in
       brctl addbr ${1}
       evaluate_retval
 
-      for I in ${INTERFACE_COMPONENTS}; do
-         log_info_msg "Adding ${I} to ${1}..."
-         brctl addif ${1} ${I}
-         evaluate_retval
-      done
+      if [  -n "${INTERFACE_COMPONENTS}" ]; then
+         for I in ${INTERFACE_COMPONENTS}; do
+            log_info_msg "Adding ${I} to ${1}..."
+            brctl addif ${1} ${I}
+            evaluate_retval
+         done
+      fi
 
       if is_true ${STP}; then
         brctl stp ${1} on
@@ -53,12 +55,14 @@ case "${2}" in
    ;;
    
    down)
-      for I in ${INTERFACE_COMPONENTS}; do
-         log_info_msg "Removing ${I} from ${1}..."
-         ip link set ${I} down &&
-         brctl delif ${1} ${I}
-         evaluate_retval
-      done
+      if [  -n "${INTERFACE_COMPONENTS}" ]; then
+         for I in ${INTERFACE_COMPONENTS}; do
+            log_info_msg "Removing ${I} from ${1}..."
+            ip link set ${I} down &&
+            brctl delif ${1} ${I}
+            evaluate_retval
+         done
+      fi
 
       log_info_msg "Bringing down the ${1} interface..."
       ip link set ${1} down
