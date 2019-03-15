@@ -52,7 +52,7 @@ $regex[ 'setuptools' ] = "/^.*setuptools-(\d[\d\.]+\d).zip.*$/";
 $regex[ 'lxml'       ] = "/^.*lxml-(\d[\d\.]+\d).*$/";
 $regex[ 'funcsigs'   ] = "/^.*funcsigs (\d[\d\.]+\d).*$/";
 $regex[ 'pycrypto'   ] = "/^.*pycrypto (\d[\d\.]+\d).*$/";
-$regex[ 'ruby'       ] = "/^.*Ruby (\d[\d\.]+\d) Released.*$/";
+//$regex[ 'ruby'       ] = "/^.*Ruby (\d[\d\.]+\d) Released.*$/";
 
 // Perl Modules
 $regex[ 'Archive-Zip'             ] = "/^.*Archive-Zip-(\d[\d\.]+\d).*$/";
@@ -563,6 +563,9 @@ function get_packages( $package, $dirpath )
 
      return 0;  // This is an error
   }
+
+  if ( $book_index == "ruby" )
+    return find_max( $lines, '/Released/', '/^.*Ruby (\d\.[\d\.]+\d) R.*$/' );
 
   if ( $book_index == "Net-SSLeay" )
     return find_max( $lines, '/\d\./', '/^.*(\d\.[\d\._]+\d)$/' );
