@@ -28,6 +28,10 @@ $url_fix = array (
          'match'   => '^.*$', 
          'replace' => "https://www.gnu.org/software/emacs" ),
 
+  array( 'pkg'     => 'gedit',
+         'match'   => '^.*$', 
+         'replace' => "http://ftp.gnome.org/pub/gnome/sources/gedit" ),
+
   array( 'pkg'     => 'vim',
          'match'   => '^.*$', 
          'replace' => "http://ftp.vim.org/vim/unix" ),
@@ -94,6 +98,38 @@ function get_packages( $package, $dirpath )
 
      return 0;  // This is an error
   }
+
+
+  if ( $book_index == "gedit" )
+  {
+    // Get max even directory
+    $major = 0; 
+    $minor = 0;
+
+    foreach ( $lines as $line )
+    {
+      if ( ! preg_match( "/\d\.\d+\/ /", $line ) ) continue;
+
+      $d = preg_replace( "/^.*(\d\.\d+)\/.*$/", "$1", $line );
+      list( $ma, $mi, $other ) = explode( ".", $d . ".0.0", 3 );
+
+      if ( $mi % 2 == 1  ) continue;  // Skip odd minors
+      if ( $ma > $major )
+      {
+        $major = $ma;
+        $minor = 0;
+      }
+      else if ( $ma == $major )
+      {
+        if ( $mi > $minor ) $minor = $mi;
+      }
+    }
+
+    $lines = http_get_file( "$dirpath/$major.$minor" );
+    return find_max( $lines, '/gedit/', '/^.*gedit-([\d\.]+).tar.*$/' );
+  }
+
+
 
   if ( $book_index == "joe" )
   {
