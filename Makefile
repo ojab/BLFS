@@ -39,6 +39,16 @@ install-service-pppoe: create-service-dir
 install-service-wpa: create-service-dir
 	install -m ${MODE} blfs/services/wpa ${LIBDIR}
 
+install-accounts-daemon: create-dirs
+	install -m ${MODE} blfs/init.d/accounts-daemon ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/accounts-daemon ${EXTDIR}/rc.d/rc0.d/K22accounts-daemon
+	ln -sf  ../init.d/accounts-daemon ${EXTDIR}/rc.d/rc1.d/K22accounts-daemon
+	ln -sf  ../init.d/accounts-daemon ${EXTDIR}/rc.d/rc2.d/S36accounts-daemon
+	ln -sf  ../init.d/accounts-daemon ${EXTDIR}/rc.d/rc3.d/S36accounts-daemon
+	ln -sf  ../init.d/accounts-daemon ${EXTDIR}/rc.d/rc4.d/S36accounts-daemon
+	ln -sf  ../init.d/accounts-daemon ${EXTDIR}/rc.d/rc5.d/S36accounts-daemon
+	ln -sf  ../init.d/accounts-daemon ${EXTDIR}/rc.d/rc6.d/K22accounts-daemon
+
 install-acpid: create-dirs
 	install -m ${MODE} blfs/init.d/acpid       ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/acpid ${EXTDIR}/rc.d/rc0.d/K32acpid
