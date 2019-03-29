@@ -41,6 +41,10 @@ $url_fix = array (
         'match'   => '^.*$',
         'replace' => "http://sourceforge.net/projects/clucene/files" ),
 
+ array( 'pkg'     => 'exempi',
+        'match'   => '^.*$',
+        'replace' => "https://libopenraw.freedesktop.org/exempi" ),
+
  array( 'pkg'     => 'expat',
         'match'   => '^.*$',
         'replace' => "http://$sf/projects/expat/files/expat" ),
@@ -164,6 +168,10 @@ $url_fix = array (
  array( 'pkg'     => 'wayland-protocols',
         'match'   => '^.*$',
         'replace' => "https://wayland.freedesktop.org/releases.html" ),
+
+ array( 'pkg'     => 'yaml',
+        'match'   => '^.*$',
+        'replace' => "https://pyyaml.org/wiki/LibYAML" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -353,6 +361,9 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "libsigc++" )
     return find_max( $lines, '/^.*libsigc.*[\d\.]+.*$/', '/^.*libsigc\+\+-([\d\.]+).tar.*$/' );
 
+  if ( $book_index == "exempi" )
+    return find_max( $lines, '/version /', '/^.*version ([\d\.]+) .tar.*$/' );
+
   if ( $book_index == "fftw" )
     return find_max( $lines, '/ fftw-\d/', '/^.* fftw-([\d\.pl\-]+)\.tar.*$/' );
 
@@ -410,6 +421,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "libaio" )
     return find_max( $lines, "/libaio/", "/^.*libaio_([\d\.]*\d)\.orig.tar.*$/" );
+
+  if ( $book_index == "yaml" )
+    return find_max( $lines, "/current/", "/^.*LibYAML: ([\d\.]+) .*$/" );
 
   if ( $book_index == "telepathy-glib"    ||
        $book_index == "wayland-protocols" ||
