@@ -123,6 +123,9 @@ function find_odd_max( $lines, $regex_match, $regex_replace )
 function http_get_file( $url )
 {
   if ( preg_match( "/graphviz/", $url ) ||
+       preg_match( "/ntfs-3g/",  $url ) ||
+       preg_match( "/libgcrypt/",$url ) ||
+       preg_match( "/libksba/",  $url ) ||
        preg_match( "/llvm/",     $url ) )
   {
      exec( "links -dump $url", $lines );

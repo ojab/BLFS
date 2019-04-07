@@ -18,7 +18,7 @@ $ignores = array();
 //$current="";   // For debugging
 
 $regex = array();
-$regex[ 'ntfs-3g_ntfsprogs' ] = "/^.*Stable Source Release ([\d\.]+).*$/";
+$regex[ 'ntfs-3g_ntfsprogs' ] = "/^.*STABLE Version ([\d\.]+) .*$/";
 $regex[ 'dosfstools'        ] = "/^.*dosfstools ([\d\.]+).*$/";
 
 $sf = 'sourceforge.net';
