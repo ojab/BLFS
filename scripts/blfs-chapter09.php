@@ -277,7 +277,7 @@ function get_packages( $package, $dirpath )
     {
       $lines = http_get_file( "$dirpath" );
       $dir = find_max( $lines, "/\d\./", "/^.*;(\d[\d\.]*)\/.*$/" );
-      $dirpath .= "/$dir/src/";
+      $dirpath .= "/$dir";
     }
 
     // Customize http directories as needed

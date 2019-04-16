@@ -49,6 +49,10 @@ $url_fix = array (
         'match'   => '^.*$', 
         'replace' => "http://$sf/projects/giflib/files/giflib-5.x" ),
 
+ array( 'pkg'     => 'glm',
+        'match'   => '^.*$', 
+        'replace' => "https://github.com/g-truc/glm/releases" ),
+
  array( 'pkg'     => 'imlib2',
         'match'   => '^.*$', 
         'replace' => "http://$sf/projects/enlightenment/files/imlib2-src" ),
@@ -246,6 +250,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "graphite2" )
     return find_max( $lines, '/graphite2-/', '/^.*graphite2-(\d\.[\d\.]+)\.tgz.*$/' );
+
+  if ( $book_index == "glm" )
+    return find_max( $lines, '/GLM/', '/^.*GLM (\d\.[\d\.]+).*$/' );
 
   if ( $book_index == "libpng" )
   {

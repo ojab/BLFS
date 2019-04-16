@@ -37,6 +37,10 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/enlightenment/files/imlib2-src" ),
 
+   array( 'pkg'     => 'glew',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/nigels-com/glew/releases" ),
+
    array( 'pkg'     => 'keybinder',
           'match'   => '^.*$', 
           'replace' => "https://github.com/kupferlauncher/keybinder/releases" ),
@@ -217,6 +221,9 @@ function get_packages( $package, $dirpath )
 
      return 0;  // This is an error
   }
+
+  if ( $book_index == "glew" )
+    return find_max( $lines, '/GLEW/', '/^.*GLEW (\d\.[\d\.]+\d).*$/' );
 
   if ( $book_index == "gtk+"  ||
        $book_index == "gtk+1" )
