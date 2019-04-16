@@ -6,7 +6,7 @@ include 'blfs-include.php';
 $CHAPTER       = '9';
 $CHAPTERS      = 'Chapter 9';
 $START_PACKAGE = 'apr';
-$STOP_PACKAGE  = 'yaml';
+$STOP_PACKAGE  = 'xapian';
 
 $renames = array();
 $renames[ 'node-v'  ] = 'node.js';
