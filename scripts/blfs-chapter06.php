@@ -26,7 +26,7 @@ $url_fix = array (
 
   array( 'pkg'     => 'emacs',
          'match'   => '^.*$', 
-         'replace' => "https://www.gnu.org/software/emacs" ),
+         'replace' => "https://ftp.gnu.org/gnu/emacs" ),
 
   array( 'pkg'     => 'gedit',
          'match'   => '^.*$', 
@@ -108,7 +108,7 @@ function get_packages( $package, $dirpath )
 
     foreach ( $lines as $line )
     {
-      if ( ! preg_match( "/\d\.\d+\/ /", $line ) ) continue;
+      if ( ! preg_match( " /\d\.\d+\//", $line ) ) continue;
 
       $d = preg_replace( "/^.*(\d\.\d+)\/.*$/", "$1", $line );
       list( $ma, $mi, $other ) = explode( ".", $d . ".0.0", 3 );
@@ -152,8 +152,8 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/doc/', '/^.*zsh-([\d\.]+)-doc.tar.*$/' );
 
   // emacs
-  if ( $book_index == "emacs" )
-    return find_max( $lines, '/latest/', '/^.*Emacs ([\d\.]+) .*$/' );
+  //if ( $book_index == "emacs" )
+  //  return find_max( $lines, '/latest/', '/^.*Emacs ([\d\.]+) .*$/' );
 
   if ( $book_index == "dash" )
     return find_max( $lines, '/^v\d/', '/^v([\d\.]+).*$/' );

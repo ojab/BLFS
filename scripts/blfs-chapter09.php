@@ -169,9 +169,9 @@ $url_fix = array (
         'match'   => '^.*$',
         'replace' => "https://wayland.freedesktop.org/releases.html" ),
 
- array( 'pkg'     => 'yaml',
+ array( 'pkg'     => 'libyaml-dist',
         'match'   => '^.*$',
-        'replace' => "https://pyyaml.org/wiki/LibYAML" ),
+        'replace' => "https://github.com/yaml/libyaml/releases" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -422,8 +422,8 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "libaio" )
     return find_max( $lines, "/libaio/", "/^.*libaio_([\d\.]*\d)\.orig.tar.*$/" );
 
-  if ( $book_index == "yaml" )
-    return find_max( $lines, "/current/", "/^.*LibYAML: ([\d\.]+) .*$/" );
+  if ( $book_index == "libyaml-dist" )
+    return find_max( $lines, "/dist-/", "/^.*dist-([\d\.]+).*$/" );
 
   if ( $book_index == "telepathy-glib"    ||
        $book_index == "wayland-protocols" ||
