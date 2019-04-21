@@ -9,13 +9,14 @@ $START_PACKAGE = "lsb-release";
 $STOP_PACKAGE  = "volume_key";
 
 $renames = array();
-$renames[ 'Linux-PAM1' ] = 'Linux-PAM-docs';
+//$renames[ 'Linux-PAM1' ] = 'Linux-PAM-docs';
 $renames[ 'openssl'    ] = 'openssl-1.0';
 //$renames[ 'openssl1'   ] = 'openssl-1.0';
 
 $ignores = array();
 $ignores[ 'openssh1'       ] = "";
 $ignores[ 'cracklib-words' ] = "";
+$ignores[ 'Linux-PAM1'     ] = "";
 $ignores[ 'lsb-release'    ] = ""; // Has not changed in 12 years
 
 //$current="gnutls";   // For debugging
@@ -54,6 +55,10 @@ $url_fix = array(
    array( 'pkg'     => 'cracklib-words',
           'match'   => '^.*$',
           'replace' => 'https://github.com/cracklib/cracklib/releases' ),
+
+   array( 'pkg'     => 'Linux-PAM',
+          'match'   => '^.*$',
+          'replace' => 'https://github.com/linux-pam/linux-pam/releases' ),
 
    array( 'pkg'     => 'gnupg',
           'match'   => '^.*$',
