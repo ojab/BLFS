@@ -120,6 +120,10 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "https://github.com/webmproject/libvpx/releases" ),
 
+   array( 'pkg'     => 'pipewire',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/Pipewire/pipewire/releases" ),
+
    array( 'pkg'     => 'soundtouch',
           'match'   => '^.*$', 
           'replace' => "https://gitlab.com/soundtouch/soundtouch/tags" ),
@@ -362,6 +366,10 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "xine-lib" )
       return find_max( $lines, "/^\\s*\d\./", "/^\\s*(\d\.[\d\.]+) .*$/" );
+
+  if ( $package == "pipewire" )
+      return find_max( $lines, "/^\\s*\d\./", "/^\\s*(\d\.[\d\.]+).*$/" );
+
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
