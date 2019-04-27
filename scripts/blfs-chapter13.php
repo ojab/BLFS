@@ -404,7 +404,7 @@ function get_packages( $package, $dirpath )
   global $previous;
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
-  if ( isset( $package == "jdk" ) ) return "manual";
+  if ( $package == "jdk" ) return "manual";
 
   // Fix up directory path
   foreach ( $url_fix as $u )
