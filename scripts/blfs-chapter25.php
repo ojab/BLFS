@@ -13,6 +13,8 @@ $renames[ 'gtk+'                           ] = 'gtk+2';
 $renames[ 'gtk+1'                          ] = 'gtk+3';
 $renames[ 'gtkmm'                          ] = 'gtkmm2';
 $renames[ 'gtkmm1'                         ] = 'gtkmm3';
+$renames[ 'gtksourceview'                  ] = 'gtksourceview3';
+$renames[ 'gtksourceview1'                 ] = 'gtksourceview4';
 $renames[ 'qt-everywhere-opensource-src'   ] = 'qt5';
 $renames[ 'qt-everywhere-opensource'       ] = 'qt5';
 $renames[ 'qtwebengine-opensource-src'     ] = 'qtwebengine';
@@ -91,22 +93,24 @@ function get_packages( $package, $dirpath )
   if ( preg_match( "/^ftp/", $dirpath ) ) 
   { 
     // glib type packages
-    if ( $book_index == "atk"          ||
-         $book_index == "atkmm"        ||
-         $book_index == "at-spi2-core" ||
-         $book_index == "at-spi2-atk"  ||
-         $book_index == "cogl"         ||
-         $book_index == "clutter"      ||
-         $book_index == "clutter-gtk"  ||
-         $book_index == "gdk-pixbuf"   ||
-         $book_index == "gtk+1"        ||
-         $book_index == "gtk-engines"  ||
-         $book_index == "gtk-vnc"      ||
-         $book_index == "libglade"     ||
-         $book_index == "pango"        ||
-         $book_index == "pangomm"      ||
-         $book_index == "gtkmm1"       ||
-         $book_index == "goffice"       )
+    if ( $book_index == "atk"            ||
+         $book_index == "atkmm"          ||
+         $book_index == "at-spi2-core"   ||
+         $book_index == "at-spi2-atk"    ||
+         $book_index == "cogl"           ||
+         $book_index == "clutter"        ||
+         $book_index == "clutter-gtk"    ||
+         $book_index == "gdk-pixbuf"     ||
+         $book_index == "gtksourceview"  ||
+         $book_index == "gtksourceview1" ||
+         $book_index == "gtk+1"          ||
+         $book_index == "gtk-engines"    ||
+         $book_index == "gtk-vnc"        ||
+         $book_index == "libglade"       ||
+         $book_index == "pango"          ||
+         $book_index == "pangomm"        ||
+         $book_index == "gtkmm1"         ||
+         $book_index == "goffice"         )
     {
       // Parent listing
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
@@ -116,9 +120,11 @@ function get_packages( $package, $dirpath )
 
       if ( $book_index == "atk"    ||
            $book_index == "gtk-vnc" ) // For now atk uses devel versions
-        $dir      = find_max( $dirlines, '/\d$/', '/^.* ([\d\.]+)$/' );
-      else 
-        $dir      = find_even_max( $dirlines, '/\d$/', '/^.* ([\d\.]+)$/' );
+        $dir   = find_max( $dirlines, '/\d$/', '/^.* ([\d\.]+)$/' );
+      elseif ( $book_index == "gtksourceview" )
+        $dir   = find_even_max( $dirlines, '/3\.\d/', '/^.*(3[\d\.]+)$/', TRUE );
+      else
+        $dir   = find_even_max( $dirlines, '/\d$/', '/^.* ([\d\.]+)$/', TRUE );
 
       $dirpath .= "/$dir/";
     }
@@ -221,6 +227,20 @@ function get_packages( $package, $dirpath )
 
      return 0;  // This is an error
   }
+
+    if ( $book_index == "gtksourceview" )
+    {
+      $lines = http_get_file( "$dirpath" );
+      return find_max( $lines, '/gtksourceview-/', 
+          '/^.*gtksourceview-(\d\.[\d\.]+).tar.*$/' );
+    }
+
+    if ( $book_index == "gtksourceview1" )
+    {
+      $lines = http_get_file( "$dirpath" );
+      return find_max( $lines, '/gtksourceview-/', 
+          '/^.*gtksourceview-(\d\.[\d\.]+).tar.*$/' ); 
+    }
 
   if ( $book_index == "glew" )
     return find_max( $lines, '/GLEW/', '/^.*GLEW (\d\.[\d\.]+\d).*$/' );

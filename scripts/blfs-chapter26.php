@@ -26,7 +26,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'icewm',
           'match'   => '^.*$', 
-          'replace' => "https://github.com/bbidulock/icewm/releases/" ),
+          'replace' => "https://github.com/ice-wm/icewm/releases" ),
 
    array( 'pkg'     => 'lxdm',
           'match'   => '^.*$', 
