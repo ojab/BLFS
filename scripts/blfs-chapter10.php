@@ -111,7 +111,8 @@ $url_fix = array (
 
  array( 'pkg'     => 'exiv2',
         'match'   => '^.*$', 
-        'replace' => "https://github.com/Exiv2/exiv2/releases" ),
+        'replace' => "https://www.exiv2.org/download.html" ),
+        //'replace' => "https://github.com/Exiv2/exiv2/releases" ),
 
  array( 'pkg'     => 'opencv',
         'match'   => '^.*$', 
@@ -277,18 +278,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, "/$book_index/", '/^.*aalib-([rc\d\.]+).tar.*$/' );
 
   if ( $book_index == "exiv2" )
-  {
-    $max = find_max( $lines, "/  Version \d/", '/^.*Version (\d\.[\d\.]+)$/' );
-    $dots = 0;
-    for ( $i = 0; $i < strlen($max); $i++ )
-    {
-      if ( $max[$i] == '.' ) $dots++;
-    }
-
-    if ( $dots < 2 ) $max .= '.0';
-
-    return $max;
-  }
+    return find_max( $lines, "/Currently/", '/^.*v(\d\.[\d\.]+)$/' );
 
   // imlib
   if ( $book_index == "imlib2" )
