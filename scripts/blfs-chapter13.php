@@ -52,6 +52,7 @@ $regex[ 'setuptools' ] = "/^.*setuptools-(\d[\d\.]+\d).zip.*$/";
 $regex[ 'lxml'       ] = "/^.*lxml-(\d[\d\.]+\d).*$/";
 $regex[ 'funcsigs'   ] = "/^.*funcsigs (\d[\d\.]+\d).*$/";
 $regex[ 'pycrypto'   ] = "/^.*pycrypto (\d[\d\.]+\d).*$/";
+$regex[ 'Pygments'   ] = "/^.*version: (\d[\d\.]+\d).*$/";
 //$regex[ 'ruby'       ] = "/^.*Ruby (\d[\d\.]+\d) Released.*$/";
 
 // Perl Modules
@@ -385,6 +386,10 @@ $url_fix = array (
    array( 'pkg'     => 'pycairo',
           'match'   => '^.*$',
           'replace' => "https://github.com/pygobject/pycairo/releases" ),
+
+   array( 'pkg'     => 'Pygments',
+          'match'   => '^.*$',
+          'replace' => "http://pygments.org" ),
 
    array( 'pkg'     => 'scour',
           'match'   => '^.*$',
