@@ -60,6 +60,10 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "https://github.com/ibus/ibus/releases" ),
 
+   array( 'pkg'     => 'shared-mime-info',
+          'match'   => '^.*$', 
+          'replace' => "https://gitlab.freedesktop.org/xdg/shared-mime-info/tags" ),
+
    array( 'pkg'     => 'tidy-html5',
           'match'   => '^.*$', 
           'replace' => "https://github.com/htacg/tidy-html5/releases" ),
@@ -196,6 +200,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "rep-gtk" )
     return find_max( $lines, '/rep-gtk/', '/^.*rep-gtk[_-]([\d\.]+).tar.*$/' );
+
+  if ( $book_index == "shared-mime-info" )
+    return find_max( $lines, '/shared-mime-info/', '/^.*shared-mime-info ([\d\.]+).*$/' );
 
   if ( $book_index == "telepathy-mission-control" )
     return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/", TRUE );
