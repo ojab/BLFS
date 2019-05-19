@@ -3,8 +3,8 @@
 
 ### BEGIN INIT INFO
 # Provides:            accounts-daemon
-# Required-Start:      $local_fs dbus 
-# Should-Start:        $remote_fs $syslog elogind
+# Required-Start:      $local_fs dbus elogind
+# Should-Start:        $remote_fs $syslog
 # Required-Stop:       $local_fs
 # Should-Stop:         $remote_fs $syslog
 # Default-Start:       3 4 5

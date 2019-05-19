@@ -16,8 +16,8 @@
 # Should-Start:
 # Required-Stop:
 # Should-Stop:
-# Default-Start:       3 4 5
-# Default-Stop:        0 1 2 6
+# Default-Start:       2 3 4 5
+# Default-Stop:        0 1 6
 # Short-Description:   Manages user sessions
 # Description:         Starts the elogind user session management daemon
 # X-LFS-Provided-By:   BLFS
@@ -27,7 +27,7 @@
 
 case "${1}" in
    start)
-      install -vdm644 /run/systemd 2>&1>/dev/null &&
+      install -vdm755 /run/systemd > /dev/null 2>&1 &&
       log_info_msg "Startng elogind Session Manager..." &&
       test -d /run/systemd && start_daemon /lib/elogind/elogind -D
       evaluate_retval

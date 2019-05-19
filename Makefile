@@ -170,17 +170,6 @@ install-dbus: create-dirs
 	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc5.d/S29dbus
 	ln -sf  ../init.d/dbus ${EXTDIR}/rc.d/rc6.d/K30dbus
 
-install-dhcpd: create-dirs
-	install -m ${MODE} blfs/init.d/dhcpd       ${EXTDIR}/rc.d/init.d/dhcpd
-	install -m ${CONFMODE} blfs/sysconfig/dhcpd ${EXTDIR}/sysconfig/dhcpd
-	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc0.d/K30dhcpd
-	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc1.d/K30dhcpd
-	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc2.d/K30dhcpd
-	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc3.d/S30dhcpd
-	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc4.d/S30dhcpd
-	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc5.d/S30dhcpd
-	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc6.d/K30dhcpd
-
 install-dovecot: create-dirs
 	install -m ${MODE} blfs/init.d/dovecot       ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/dovecot ${EXTDIR}/rc.d/rc0.d/K78dovecot
@@ -200,6 +189,27 @@ install-elogind: create-dirs install-mountcgroupfs
 	ln -sf  ../init.d/elogind ${EXTDIR}/rc.d/rc4.d/S31elogind
 	ln -sf  ../init.d/elogind ${EXTDIR}/rc.d/rc5.d/S31elogind
 	ln -sf  ../init.d/elogind ${EXTDIR}/rc.d/rc6.d/K24elogind
+
+install-wicd: create-dirs
+	install -m ${MODE} blfs/init.d/wicd ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc0.d/K20wicd
+	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc1.d/K20wicd
+	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc2.d/S30wicd
+	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc3.d/S30wicd
+	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc4.d/S30wicd
+	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc5.d/S30wicd
+	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc6.d/K20wicd
+
+install-dhcpd: create-dirs
+	install -m ${MODE} blfs/init.d/dhcpd       ${EXTDIR}/rc.d/init.d/dhcpd
+	install -m ${CONFMODE} blfs/sysconfig/dhcpd ${EXTDIR}/sysconfig/dhcpd
+	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc0.d/K30dhcpd
+	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc1.d/K30dhcpd
+	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc2.d/K30dhcpd
+	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc3.d/S30dhcpd
+	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc4.d/S30dhcpd
+	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc5.d/S30dhcpd
+	ln -sf  ../init.d/dhcpd ${EXTDIR}/rc.d/rc6.d/K30dhcpd
 
 install-exim: create-dirs
 	install -m ${MODE} blfs/init.d/exim       ${EXTDIR}/rc.d/init.d/
@@ -276,16 +286,6 @@ install-krb5: create-dirs
 	ln -sf ../init.d/krb5 ${EXTDIR}/rc.d/rc4.d/S28krb5
 	ln -sf ../init.d/krb5 ${EXTDIR}/rc.d/rc5.d/S28krb5
 	ln -sf ../init.d/krb5 ${EXTDIR}/rc.d/rc6.d/K42krb5
-
-install-lightdm: create-dirs
-	install -m ${MODE} blfs/init.d/lightdm        ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc0.d/K05lightdm
-	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc1.d/K05lightdm
-	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc2.d/K05lightdm
-	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc3.d/K05lightdm
-	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc4.d/K05lightdm
-	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc5.d/S95lightdm
-	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc6.d/K05lightdm
 
 install-lprng: create-dirs
 	install -m ${MODE} blfs/init.d/lprng      ${EXTDIR}/rc.d/init.d/
@@ -370,6 +370,17 @@ install-ntpd: create-dirs
 	ln -sf  ../init.d/ntpd ${EXTDIR}/rc.d/rc4.d/S26ntpd
 	ln -sf  ../init.d/ntpd ${EXTDIR}/rc.d/rc5.d/S26ntpd
 	ln -sf  ../init.d/ntpd ${EXTDIR}/rc.d/rc6.d/K46ntpd
+
+install-slapd: create-dirs
+	install -m ${MODE} blfs/init.d/slapd ${EXTDIR}/rc.d/init.d/slapd
+	install -m ${CONFMODE} blfs/sysconfig/slapd ${EXTDIR}/sysconfig/slapd
+	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc0.d/K46slapd
+	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc1.d/K46slapd
+	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc2.d/S25slapd
+	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc3.d/S25slapd
+	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc4.d/S25slapd
+	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc5.d/S25slapd
+	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc6.d/K46slapd
 
 install-postfix: create-dirs
 	install -m ${MODE} blfs/init.d/postfix    ${EXTDIR}/rc.d/init.d/
@@ -461,6 +472,16 @@ install-sddm: create-dirs
 	ln -sf  ../init.d/sddm ${EXTDIR}/rc.d/rc5.d/S95sddm
 	ln -sf  ../init.d/sddm ${EXTDIR}/rc.d/rc6.d/K05sddm
 
+install-lightdm: create-dirs
+	install -m ${MODE} blfs/init.d/lightdm        ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc0.d/K05lightdm
+	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc1.d/K05lightdm
+	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc2.d/K05lightdm
+	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc3.d/K05lightdm
+	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc4.d/K05lightdm
+	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc5.d/S95lightdm
+	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc6.d/K05lightdm
+
 install-sendmail: create-dirs
 	install -m ${MODE} blfs/init.d/sendmail   ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/sendmail ${EXTDIR}/rc.d/rc0.d/K25sendmail
@@ -480,17 +501,6 @@ install-smartd: create-dirs
 	ln -sf  ../init.d/smartd ${EXTDIR}/rc.d/rc4.d/S21smartd
 	ln -sf  ../init.d/smartd ${EXTDIR}/rc.d/rc5.d/S21smartd
 	ln -sf  ../init.d/smartd ${EXTDIR}/rc.d/rc6.d/K70smartd
-
-install-slapd: create-dirs
-	install -m ${MODE} blfs/init.d/slapd ${EXTDIR}/rc.d/init.d/slapd
-	install -m ${CONFMODE} blfs/sysconfig/slapd ${EXTDIR}/sysconfig/slapd
-	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc0.d/K46slapd
-	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc1.d/K46slapd
-	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc2.d/S25slapd
-	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc3.d/S25slapd
-	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc4.d/S25slapd
-	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc5.d/S25slapd
-	ln -sf  ../init.d/slapd ${EXTDIR}/rc.d/rc6.d/K46slapd
 
 install-soprano: create-dirs
 	install -m ${MODE} blfs/init.d/soprano    ${EXTDIR}/rc.d/init.d/
@@ -576,16 +586,6 @@ install-vsftpd: create-dirs
 	ln -sf ../init.d/vsftpd ${EXTDIR}/rc.d/rc5.d/S32vsftpd
 	ln -sf ../init.d/vsftpd ${EXTDIR}/rc.d/rc6.d/K28vsftpd
 
-install-wicd: create-dirs
-	install -m ${MODE} blfs/init.d/wicd ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc0.d/K20wicd
-	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc1.d/K20wicd
-	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc2.d/S30wicd
-	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc3.d/S30wicd
-	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc4.d/S30wicd
-	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc5.d/S30wicd
-	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc6.d/K20wicd
-
 install-winbindd: create-dirs
 	install -m ${MODE} blfs/init.d/winbindd      ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/winbindd ${EXTDIR}/rc.d/rc0.d/K49winbindd
@@ -615,6 +615,16 @@ uninstall-atd:
 	rm -f ${EXTDIR}/rc.d/rc4.d/S68atd
 	rm -f ${EXTDIR}/rc.d/rc5.d/S68atd
 	rm -f ${EXTDIR}/rc.d/rc6.d/K29atd
+
+uninstall-accounts-daemon:
+	rm -f ${EXTDIR}/rc.d/init.d/accounts-daemon
+	rm -f ${EXTDIR}/rc.d/rc0.d/K22accounts-daemon
+	rm -f ${EXTDIR}/rc.d/rc1.d/K22accounts-daemon
+	rm -f ${EXTDIR}/rc.d/rc2.d/S36accounts-daemon
+	rm -f ${EXTDIR}/rc.d/rc3.d/S36accounts-daemon
+	rm -f ${EXTDIR}/rc.d/rc4.d/S36accounts-daemon
+	rm -f ${EXTDIR}/rc.d/rc5.d/S36accounts-daemon
+	rm -f ${EXTDIR}/rc.d/rc6.d/K22accounts-daemon
 
 uninstall-acpid:
 	rm -f ${EXTDIR}/rc.d/init.d/acpid
@@ -753,7 +763,7 @@ uninstall-elogind:
 	rm -f ${EXTDIR}/rc.d/init.d/elogind
 	rm -f ${EXTDIR}/rc.d/rc0.d/K24elogind
 	rm -f ${EXTDIR}/rc.d/rc1.d/K24elogind
-	rm -f ${EXTDIR}/rc.d/rc2.d/K24elogind
+	rm -f ${EXTDIR}/rc.d/rc2.d/S31elogind
 	rm -f ${EXTDIR}/rc.d/rc3.d/S31elogind
 	rm -f ${EXTDIR}/rc.d/rc4.d/S31elogind
 	rm -f ${EXTDIR}/rc.d/rc5.d/S31elogind
@@ -855,7 +865,7 @@ uninstall-lxdm:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S95lxdm
 	rm -f ${EXTDIR}/rc.d/rc6.d/K05lxdm
 
-uninstall-mountcgroupfs: create-dirs
+uninstall-mountcgroupfs:
 	rm -f ${EXTDIR}/rc.d/init.d/mountcgroupfs
 	rm -f ${EXTDIR}/rc.d/rcS.d/S55mountcgroupfs
 
@@ -930,7 +940,7 @@ uninstall-slapd:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S25slapd
 	rm -f ${EXTDIR}/rc.d/rc6.d/K46slapd
 
-uinstall-smartd: 
+uinstall-smartd: c
 	rm -f ${EXTDIR}/rc.d/init.d/smartd
 	rm -f ${EXTDIR}/rc.d/rc0.d/K70smartd
 	rm -f ${EXTDIR}/rc.d/rc1.d/K70smartd
@@ -1130,6 +1140,7 @@ uninstall-xinetd:
 	install-service-ipx \
 	install-service-pppoe \
 	install-atd \
+	install-accounts-daemon \
 	install-acpid \
 	install-alsa \
 	install-avahi \
@@ -1138,6 +1149,8 @@ uninstall-xinetd:
 	install-bind \
 	install-bluetooth \
 	install-cups \
+	install-saslauthd \
+	install-wicd \
 	install-dhcpd \
 	install-dovecot \
 	install-elogind \
@@ -1149,6 +1162,7 @@ uninstall-xinetd:
 	install-iptables \
 	install-krb5 \
 	install-lprng \
+	install-lxdm \
 	install-mountcgroupfs \
 	install-mysql \
 	install-netfs \
@@ -1156,7 +1170,6 @@ uninstall-xinetd:
 	install-nfs-client \
 	install-nfs-server \
 	install-ntpd \
-	install-saslauthd \
 	install-slapd \
 	install-postfix \
 	install-postgresql \
@@ -1174,10 +1187,10 @@ uninstall-xinetd:
 	install-vsftpd \
 	install-unbound \
 	install-virtuoso \
-	install-wicd \
 	install-winbindd \
 	install-xinetd \
 	uninstall-atd \
+	uninstall-accounts-daemon \
 	uninstall-acpid \
 	uninstall-alsa \
 	uninstall-avahi \
@@ -1186,6 +1199,8 @@ uninstall-xinetd:
 	uninstall-bind \
 	uninstall-bluetooth \
 	uninstall-cups \
+	uninstall-saslauthd \
+	uninstall-wicd \
 	uninstall-dhcpd \
 	uninstall-dovecot \
 	uninstall-elogind \
@@ -1197,6 +1212,7 @@ uninstall-xinetd:
 	uninstall-iptables \
 	uninstall-krb5 \
 	uninstall-lprng \
+	uninstall-lxdm \
 	uninstall-mountcgroupfs \
 	uninstall-mysql \
 	uninstall-netfs \
@@ -1211,7 +1227,6 @@ uninstall-xinetd:
 	uninstall-random \
 	uninstall-rsync \
 	uninstall-samba \
-	uninstall-saslauthd \
 	uninstall-sddm \
 	uninstall-sendmail \
 	uninstall-soprano \
@@ -1222,6 +1237,5 @@ uninstall-xinetd:
 	uninstall-unbound \
 	uninstall-virtuoso \
 	uninstall-vsftpd   \
-	uninstall-wicd \
 	uninstall-winbindd \
 	uninstall-xinetd

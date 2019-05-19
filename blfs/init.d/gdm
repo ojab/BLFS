@@ -13,8 +13,10 @@
 
 ### BEGIN INIT INFO
 # Provides:            gdm
-# Required-Start:      $local_fs $remote_fs
-# Required-Stop:       $local_fs $remote_fs
+# Required-Start:      $local_fs
+# Should-Start:        $remote_fs
+# Required-Stop:       $local_fs
+# Should-Stop:         $remote_fs
 # Default-Start:       5
 # Default-Stop:        0 1 2 3 4 6
 # Short-Description:   GNOME Display Manager
@@ -30,7 +32,7 @@ case "${1}" in
       # Determine session type
       XDG_SESSION_TYPE=wayland
       if [ -f /etc/gdm/custom.conf ]; then
-        grep "^WaylandEnable" | grep "false" 2>&1>/dev/null &&
+        grep "^WaylandEnable" /etc/gdm/custom.conf | grep "false" 2>&1>/dev/null &&
         XDG_SESSION_TYPE=x11
       fi
       export XDG_SESSION_TYPE

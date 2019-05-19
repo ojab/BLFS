@@ -1,14 +1,10 @@
-2019-02-07  DJ Lucas <dj@linuxfromscratch.org>
-   * Detect/set XDG_SESSION_TYPE for gdm
-
-2019-02-07  DJ Lucas <dj@linuxfromscratch.org>
-   * Add separate mount for /run/user to mountcgroupfs
-   * Correct dependency information for elogind
+2019-03-13  Bruce Dubbs <bdubbs@linuxfromscratch.org>
+   * Allow bridge to be created without INTERFACE_COMPONENTS
 
 2018-12-16  DJ Lucas <dj@linuxfromscratch.org>
    * Add elogind bootscript
    * Add mountcgroupfs bootscript
-   * Reorder Makefile (partially)
+   * Restore gdm bootscript
 
 2018-01-05  Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Add lightdm bootscript
