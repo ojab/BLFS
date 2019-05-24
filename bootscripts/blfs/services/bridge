@@ -30,7 +30,6 @@ fi
 
 case "${2}" in
    up)
-      log_info_msg2 "\n"
       log_info_msg "Creating the ${1} interface..."
       brctl addbr ${1}
       evaluate_retval
@@ -45,12 +44,12 @@ case "${2}" in
 
       if is_true ${STP}; then
         brctl stp ${1} on
-        log_success_msg "Setting spanning tree protocol"
+        log_success_msg "Enabling spanning tree protocol..."
       fi
 
       if is_true ${IP_FORWARD}; then
         sysctl -w net.ipv4.ip_forward=1 > /dev/null
-        log_success_msg "Setting net.ipv4.ip_forward = 1"
+        log_success_msg "Enabling IP forwarding..."
       fi
    ;;
    
