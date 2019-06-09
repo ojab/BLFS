@@ -29,14 +29,6 @@ GDM_BINARY=/usr/sbin/gdm
 
 case "${1}" in
    start)
-      # Determine session type
-      XDG_SESSION_TYPE=wayland
-      if [ -f /etc/gdm/custom.conf ]; then
-        grep "^WaylandEnable" /etc/gdm/custom.conf | grep "false" 2>&1>/dev/null &&
-        XDG_SESSION_TYPE=x11
-      fi
-      export XDG_SESSION_TYPE
-
       log_info_msg "Starting GNOME Display Manager GDM"
       start_daemon ${GDM_BINARY}
       evaluate_retval
