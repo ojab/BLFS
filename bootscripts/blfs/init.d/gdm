@@ -5,6 +5,7 @@
 # Description : GDM Boot Script
 #
 # Authors     : Armin K. <krejzi@email.com>
+#               DJ Lucas <dj@linuxfromscratch.org>
 #
 # Version     : BLFS SVN
 #
@@ -12,10 +13,12 @@
 
 ### BEGIN INIT INFO
 # Provides:            gdm
-# Required-Start:      $local_fs $remote_fs
-# Required-Stop:       $local_fs $remote_fs
-# Default-Start:       2 3 4 5
-# Default-Stop:        0 1 6
+# Required-Start:      $local_fs
+# Should-Start:        $remote_fs
+# Required-Stop:       $local_fs
+# Should-Stop:         $remote_fs
+# Default-Start:       5
+# Default-Stop:        0 1 2 3 4 6
 # Short-Description:   GNOME Display Manager
 # X-LFS-Provided-By:   BLFS
 ### END INIT INFO

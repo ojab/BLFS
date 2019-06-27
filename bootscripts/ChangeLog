@@ -1,6 +1,12 @@
 2019-03-13  Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Allow bridge to be created without INTERFACE_COMPONENTS
 
+2018-12-16  DJ Lucas <dj@linuxfromscratch.org>
+   * Add elogind bootscript
+   * Add mountcgroupfs bootscript
+   * Add accounts-daemon bootscript
+   * Restore gdm bootscript
+
 2018-01-05  Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Add lightdm bootscript
 
