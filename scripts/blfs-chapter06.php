@@ -34,7 +34,7 @@ $url_fix = array (
 
   array( 'pkg'     => 'vim',
          'match'   => '^.*$', 
-         'replace' => "http://ftp.vim.org/vim/unix" ),
+         'replace' => "http://github.com/vim/vim/releases" ),
 
   array( 'pkg'     => 'nano',
          'match'   => '^.*$', 
@@ -137,9 +137,9 @@ function get_packages( $package, $dirpath )
     //$lines = http_get_file( "$dirpath/$dir" );
   }
 
-  // vim language pack
-  if ( $book_index == "vim1" )
-    return find_max( $lines, '/^.*vim-[\d\.]+-lang.*$/', '/^.*vim-([\d\.]+)-lang.*$/' );
+  // vim 
+  if ( $book_index == "vim" )
+    return find_max( $lines, '/v\d/', '/^.*v([\d\.]+).*$/' );
 
   if ( $book_index == "nano" )
   {

@@ -62,7 +62,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'libevent',
           'match'   => '^.*$',
-          'replace' => "https://github.com/nmathewson/Libevent/releases" ),
+          'replace' => "https://github.com/libevent/libevent/releases" ),
 
    array( 'pkg'     => 'geoclue',
           'match'   => '^.*$',

@@ -47,7 +47,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'giflib',
         'match'   => '^.*$', 
-        'replace' => "http://$sf/projects/giflib/files/giflib-5.x" ),
+        'replace' => "http://$sf/projects/giflib/files" ),
 
  array( 'pkg'     => 'glm',
         'match'   => '^.*$', 
@@ -214,6 +214,7 @@ function get_packages( $package, $dirpath )
       $dirpath .= "/$dir/";
     }
 
+    if ( $book_index == "newt" ) $dirpath .= "/";
     // Customize http directories as needed
     $lines = http_get_file( $dirpath );
     if ( ! is_array( $lines ) ) return $lines;

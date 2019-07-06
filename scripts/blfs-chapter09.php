@@ -49,6 +49,10 @@ $url_fix = array (
         'match'   => '^.*$',
         'replace' => "http://$sf/projects/expat/files/expat" ),
 
+ array( 'pkg'     => 'libarchive',
+        'match'   => '^.*$',
+        'replace' => "https://github.com/libarchive/libarchive/releases" ),
+
  array( 'pkg'     => 'libiodbc',
         'match'   => '^.*$',
         'replace' => "http://$sf/projects/iodbc/files" ),
@@ -366,6 +370,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "fftw" )
     return find_max( $lines, '/ fftw-\d/', '/^.* fftw-([\d\.pl\-]+)\.tar.*$/' );
+
+  if ( $book_index == "libarchive" )
+    return find_max( $lines, '/archive \d/', '/^.*archive ([\d\.]+).*$/' );
 
   if ( $book_index == "libusb" )
     return find_max( $lines, '/libusb/', '/^.*libusb-([\d\.]+).tar.*$/' );

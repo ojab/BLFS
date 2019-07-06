@@ -17,7 +17,7 @@ $renames[ 'gtksourceview'                  ] = 'gtksourceview3';
 $renames[ 'gtksourceview1'                 ] = 'gtksourceview4';
 $renames[ 'qt-everywhere-opensource-src'   ] = 'qt5';
 $renames[ 'qt-everywhere-opensource'       ] = 'qt5';
-$renames[ 'qtwebengine-opensource-src'     ] = 'qtwebengine';
+$renames[ 'qtwebengine-everywhere-src'     ] = 'qtwebengine';
 $renames[ 'qtwebkit-opensource-src'        ] = 'qtwebkit';
 
 $ignores = array();
@@ -64,6 +64,8 @@ function get_packages( $package, $dirpath )
   global $current;
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
+
+  if ( $book_index == "qtwebengine-everywhere-src" ) return "manual";
 
   // Fix up directory path
   foreach ( $url_fix as $u )
