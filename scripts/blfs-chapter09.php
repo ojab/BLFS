@@ -61,6 +61,10 @@ $url_fix = array (
         'match'   => '^.*$',
         'replace' => "https://sourceforge.net/projects/linuxwacom/files/libwacom" ),
 
+ array( 'pkg'     => 'grantlee',
+        'match'   => '^.*$',
+        'replace' => "https://github.com/steveire/grantlee/releases" ),
+
  array( 'pkg'     => 'gamin',
         'match'   => '^.*$',
         'replace' => "https://people.gnome.org/~veillard/gamin/sources" ),
@@ -418,7 +422,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/.*/', '/^([\d\.]+).*$/' );
 
   if ( $book_index == "grantlee" )
-    return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );
+    return find_max( $lines, "/v\d/", "/^.*v([\d\.]*\d).*$/" );
 
   if ( $book_index == "xapian-core" )
     return find_max( $lines, "/^\d\./", "/^(\d\.[\d\.]+)\/.*$/" );

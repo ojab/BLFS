@@ -139,9 +139,7 @@ function get_packages( $package, $dirpath )
      if ( $book_index == "dovecot" )
      {
         // Get the max directory and adjust the directory path
-        $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-        $position = strrpos( $dirpath, "/" );
-        $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
+        $dirpath  = "https://dovecot.org/releases";
         $lines1   = http_get_file( "$dirpath/" );
         $dir      = find_max( $lines1, "/^\s*\d+/", "/^\s*(\d+[\d\.]+)\/.*$/" );
         $dirpath .= "/$dir/";
