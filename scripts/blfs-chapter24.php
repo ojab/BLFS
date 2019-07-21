@@ -32,7 +32,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'xf86-input-wacom',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/linuxwacom/files/xf86-input-wacom" ),
+          'replace' => "https://github.com/linuxwacom/xf86-input-wacom/releases" ),
 
    array( 'pkg'     => 'libva',
           'match'   => '^.*$', 
