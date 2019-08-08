@@ -137,6 +137,7 @@ function get_packages( $package, $dirpath )
        $dirs     = http_get_file( "$dirpath/" );
 
        if ( $book_index == "gnome-menus" ||
+            $book_index == "gnome-video-effects" ||
             $book_index == "grilo"       ||
             $book_index == "gexiv2"      ||
             $book_index == "libgdata"    ||
