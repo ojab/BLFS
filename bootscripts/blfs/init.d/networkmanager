@@ -14,10 +14,12 @@
 
 ### BEGIN INIT INFO
 # Provides:          networkmanager
-# Required-Start:    $remote_fs dbus udev
-# Required-Stop:     $remote_fs dbus udev
-# Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
+# Required-Start:    dbus udev
+# Should-Start:
+# Required-Stop:     dbus
+# Should-Stop:       sendsignals
+# Default-Start:     3 4 5
+# Default-Stop:      0 1 2 6
 # Short-Description: Network connection manager.
 # Description:       Daemon for automatically switching network
 #                    connections to the best available connection.

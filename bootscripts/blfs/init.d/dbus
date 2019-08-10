@@ -11,16 +11,16 @@
 ########################################################################
 
 ### BEGIN INIT INFO
-# Provides:            dbus
-# Required-Start:      cleanfs
+# Provides:            dbus messagebus
+# Required-Start:      $syslog
 # Should-Start:        $remote_fs
-# Required-Stop:       sendsignals
-# Should-Stop:
-# Default-Start:       2 3 4 5
-# Default-Stop:        0 1 6
+# Required-Stop:
+# Should-Stop:         $remote_fs $syslog sendsignals
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
 # Short-Description:   Starts message bus.
 # Description:         Starts message bus.
-# X-LFS-Provided-By:   LFS
+# X-LFS-Provided-By:   BLFS
 ### END INIT INFO
 
 . /lib/lsb/init-functions

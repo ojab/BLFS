@@ -16,7 +16,7 @@
 # Required-Start:    
 # Should-Start:
 # Required-Stop:     $local_fs
-# Should-Stop:
+# Should-Stop:       sendsignals
 # Default-Start:     3 4 5
 # Default-Stop:     
 # Short-Description: Loads iptables rules.

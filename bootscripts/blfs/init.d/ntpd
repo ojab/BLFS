@@ -14,9 +14,9 @@
 ### BEGIN INIT INFO
 # Provides:            ntpd
 # Required-Start:      $time $network
-# Should-Start:        $remote_fs
+# Should-Start:        $remote_fs networkmanager
 # Required-Stop:       $network
-# Should-Stop:         $remote_fs
+# Should-Stop:         $remote_fs networkmanager sendsignals
 # Default-Start:       3 4 5
 # Default-Stop:        0 1 2 6
 # Short-Description:   NTP Network Time Protocol
