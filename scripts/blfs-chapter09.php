@@ -169,6 +169,10 @@ $url_fix = array (
         'match'   => '^.*$',
         'replace' => "https://github.com/seccomp/libseccomp/releases" ),
 
+ array( 'pkg'     => 'pcre2',
+        'match'   => '^.*$',
+        'replace' => "https://sourceforge.net/projects/pcre/files/pcre2" ),
+
  array( 'pkg'     => 'wayland',
         'match'   => '^.*$',
         'replace' => "https://wayland.freedesktop.org/releases.html" ),
@@ -286,6 +290,13 @@ function get_packages( $package, $dirpath )
       $lines = http_get_file( "$dirpath" );
       $dir = find_max( $lines, "/\d\./", "/^.*;(\d[\d\.]*)\/.*$/" );
       $dirpath .= "/$dir";
+    }
+
+    if ( $book_index == "pcre2" )
+    {
+      exec( "curl -L -s -m40 -A Firefox/41.0 $dirpath", $lines );
+      $ver = find_max( $lines, "/pcre2-/", "/^.*pcre2-([\d\.]+).zip.*/" );
+      return $ver;
     }
 
     // Customize http directories as needed
