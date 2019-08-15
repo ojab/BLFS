@@ -220,7 +220,7 @@ function get_current()
       $file = preg_replace( "/\.src$/",       "", $file ); // Remove .src$
       $file = preg_replace( "/\.tgz$/",       "", $file ); // Remove .tgz$
 
-      if ( preg_match( "/php_/", $file ) ) return;
+      if ( preg_match( "/php_manual/", $file ) ) continue;
 
       $pattern = get_pattern( $file );
 
