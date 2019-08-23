@@ -35,7 +35,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'boost',
         'match'   => '^.*$',
-        'replace' => "http://$sf/projects/boost/files/boost" ),
+        'replace' => "https://www.boost.org" ),
 
  array( 'pkg'     => 'clucene-core',
         'match'   => '^.*$',
@@ -347,9 +347,7 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "boost" )
   {
-    $dir   = find_max( $lines, '/\d\.\d\d/', '/^\s*([\d\.]+)\s.*$/' );
-    $lines = http_get_file( "$dirpath/$dir" );
-    return find_max( $lines, '/^.*boost_[\d_]+.tar.*$/', '/^.*boost_([\d_]+).tar.*$/' );
+    return find_max( $lines, '/Version \d/', '/^.*Version ([\d\.]+).*$/' );
   }
 
   if ( $book_index == "icu4c" )

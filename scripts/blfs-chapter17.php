@@ -232,6 +232,9 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "libtirpc" )
     return find_max( $lines, '/^\s*\d/', '/^\s*(\d\.[\d\.]+) .*$/' );
 
+  if ( $book_index == "fetchmail" )
+    return find_max( $lines, '/fetchmail-/', '/^.*fetchmail-(\d\.[\d\.rc]+).tar.*$/' );
+
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
   $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );
