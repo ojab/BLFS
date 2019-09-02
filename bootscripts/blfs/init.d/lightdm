@@ -4,9 +4,9 @@
 ### BEGIN INIT INFO
 # Provides:            lightdm
 # Required-Start:      $local_fs
-# Should-Start:        $remote_fs $syslog
+# Should-Start:        $remote_fs $last
 # Required-Stop:       $local_fs
-# Should-Stop:         $remote_fs $syslog
+# Should-Stop:         $remote_fs
 # Default-Start:       5
 # Default-Stop:        0 1 2 3 4 6
 # Short-Description:   Starts lightdm.

@@ -180,16 +180,6 @@ install-dovecot: create-dirs
 	ln -sf  ../init.d/dovecot ${EXTDIR}/rc.d/rc5.d/S27dovecot
 	ln -sf  ../init.d/dovecot ${EXTDIR}/rc.d/rc6.d/K78dovecot
 
-install-elogind: create-dirs install-mountcgroupfs
-	install -m ${MODE} blfs/init.d/elogind ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/elogind ${EXTDIR}/rc.d/rc0.d/K24elogind
-	ln -sf  ../init.d/elogind ${EXTDIR}/rc.d/rc1.d/K24elogind
-	ln -sf  ../init.d/elogind ${EXTDIR}/rc.d/rc2.d/S31elogind
-	ln -sf  ../init.d/elogind ${EXTDIR}/rc.d/rc3.d/S31elogind
-	ln -sf  ../init.d/elogind ${EXTDIR}/rc.d/rc4.d/S31elogind
-	ln -sf  ../init.d/elogind ${EXTDIR}/rc.d/rc5.d/S31elogind
-	ln -sf  ../init.d/elogind ${EXTDIR}/rc.d/rc6.d/K24elogind
-
 install-wicd: create-dirs
 	install -m ${MODE} blfs/init.d/wicd ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/wicd ${EXTDIR}/rc.d/rc0.d/K20wicd
@@ -306,10 +296,6 @@ install-lxdm: create-dirs
 	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc4.d/K05lxdm
 	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc5.d/S95lxdm
 	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc6.d/K05lxdm
-
-install-mountcgroupfs: create-dirs
-	install -m ${MODE} blfs/init.d/mountcgroupfs ${EXTDIR}/rc.d/init.d/
-	ln -sf ../init.d/mountcgroupfs ${EXTDIR}/rc.d/rcS.d/S55mountcgroupfs
 
 install-mysql: create-dirs
 	install -m ${MODE} blfs/init.d/mysql      ${EXTDIR}/rc.d/init.d/
@@ -759,16 +745,6 @@ uninstall-dovecot:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S27dovecot
 	rm -f ${EXTDIR}/rc.d/rc6.d/K78dovecot
 
-uninstall-elogind:
-	rm -f ${EXTDIR}/rc.d/init.d/elogind
-	rm -f ${EXTDIR}/rc.d/rc0.d/K24elogind
-	rm -f ${EXTDIR}/rc.d/rc1.d/K24elogind
-	rm -f ${EXTDIR}/rc.d/rc2.d/S31elogind
-	rm -f ${EXTDIR}/rc.d/rc3.d/S31elogind
-	rm -f ${EXTDIR}/rc.d/rc4.d/S31elogind
-	rm -f ${EXTDIR}/rc.d/rc5.d/S31elogind
-	rm -f ${EXTDIR}/rc.d/rc6.d/K24elogind
-
 uninstall-exim:
 	rm -f ${EXTDIR}/rc.d/init.d/exim
 	rm -f ${EXTDIR}/rc.d/rc0.d/K25exim
@@ -864,10 +840,6 @@ uninstall-lxdm:
 	rm -f ${EXTDIR}/rc.d/rc4.d/K05lxdm
 	rm -f ${EXTDIR}/rc.d/rc5.d/S95lxdm
 	rm -f ${EXTDIR}/rc.d/rc6.d/K05lxdm
-
-uninstall-mountcgroupfs:
-	rm -f ${EXTDIR}/rc.d/init.d/mountcgroupfs
-	rm -f ${EXTDIR}/rc.d/rcS.d/S55mountcgroupfs
 
 uninstall-mysql:
 	rm -f ${EXTDIR}/rc.d/init.d/mysql
@@ -1153,7 +1125,6 @@ uninstall-xinetd:
 	install-wicd \
 	install-dhcpd \
 	install-dovecot \
-	install-elogind \
 	install-exim \
 	install-fcron \
 	install-gdm \
@@ -1163,7 +1134,6 @@ uninstall-xinetd:
 	install-krb5 \
 	install-lprng \
 	install-lxdm \
-	install-mountcgroupfs \
 	install-mysql \
 	install-netfs \
 	install-networkmanager \
@@ -1203,7 +1173,6 @@ uninstall-xinetd:
 	uninstall-wicd \
 	uninstall-dhcpd \
 	uninstall-dovecot \
-	uninstall-elogind \
 	uninstall-exim \
 	uninstall-fcron \
 	uninstall-gdm \
@@ -1213,7 +1182,6 @@ uninstall-xinetd:
 	uninstall-krb5 \
 	uninstall-lprng \
 	uninstall-lxdm \
-	uninstall-mountcgroupfs \
 	uninstall-mysql \
 	uninstall-netfs \
 	uninstall-networkmanager \

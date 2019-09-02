@@ -14,7 +14,7 @@
 ### BEGIN INIT INFO
 # Provides:            gdm
 # Required-Start:      $local_fs
-# Should-Start:        $remote_fs
+# Should-Start:        $remote_fs $last
 # Required-Stop:       $local_fs
 # Should-Stop:         $remote_fs
 # Default-Start:       5

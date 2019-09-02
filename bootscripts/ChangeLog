@@ -1,3 +1,7 @@
+2019-09-02  DJ Lucas <dj@linuxfromscratch.org>
+   * Remove elogind and mountcgroupfs bootscripts
+   * Introduce $last facility for LSB-Tools and DM scripts
+
 2019-03-13  Bruce Dubbs <bdubbs@linuxfromscratch.org>
    * Allow bridge to be created without INTERFACE_COMPONENTS
 
