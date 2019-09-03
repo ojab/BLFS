@@ -92,6 +92,10 @@ $url_fix = array (
    array( 'pkg'     => 'systemd',
           'match'   => '^.*$', 
           'replace' => "https://github.com/systemd/systemd/releases" ),
+
+   array( 'pkg'     => 'LSB-Tools',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/djlucas/LSB-Tools/releases" ),
 );
 
 function get_packages( $package, $dirpath )

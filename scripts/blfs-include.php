@@ -133,8 +133,10 @@ function http_get_file( $url )
      return $lines;
   }
 
-  if ( preg_match( "/gpm/",  $url ) ||
-       preg_match( "/alsa/", $url ) )
+  // Do not strip tags
+  if ( preg_match( "/gpm/",      $url ) ||
+       preg_match( "/libvdpau/", $url ) ||
+       preg_match( "/alsa/",     $url ) )
   {
      exec( "wget -q --no-check-certificate -O- $url", $dir );
      return $dir;
@@ -223,14 +225,14 @@ function get_current()
       if ( preg_match( "/php_manual/", $file ) ) continue;
 
       $pattern = get_pattern( $file );
-
+/*
       // Workaround because graphviz does not have version in filename
       if ( preg_match( "/graphviz/", $file ) )
       {
          $file = preg_replace( '/graphviz/', "graphviz-$pattern", $file );
          $pattern = '/\D*(\d.*\d)\D*$/'; 
       }
-
+*/
       $version = preg_replace( $pattern, "$1", $file );   // Isolate version
       $version = preg_replace( "/^-/", "", $version );    // Remove leading #-
 

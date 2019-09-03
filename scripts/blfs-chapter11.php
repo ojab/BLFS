@@ -78,7 +78,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'graphviz',
           'match'   => '^.*$', 
-          'replace' => "http://graphviz.gitlab.io/_pages/Download/Download_source.html" ),
+          'replace' => "https://www2.graphviz.org/Packages/stable/portable_source" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -235,7 +235,7 @@ Function get_pattern( $line )
       if ( preg_match( "/$pkg/", $line ) ) 
          return $m[ 'regex' ];
    }
-
+/*
    // Workaround because graphviz does not have version in tarball name
    if ( preg_match( "/graphviz/", $line) )
    {
@@ -244,7 +244,7 @@ Function get_pattern( $line )
       $p   = find_max( $f, '/Graphviz/', '/^.*Graphviz-([\d\.]+).*$/' );
       return "$p";
    }
-
+*/
    return "/\D*(\d.*\d)\D*$/";
 }
 
