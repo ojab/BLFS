@@ -347,7 +347,8 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "boost" )
   {
-    return find_max( $lines, '/Version \d/', '/^.*Version ([\d\.]+).*$/' );
+    $ver = find_max( $lines, '/Version \d/', '/^.*Version ([\d\.]+).*$/' );
+    return preg_replace( "/\./", "_", $ver ); 
   }
 
   if ( $book_index == "icu4c" )
