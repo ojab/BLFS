@@ -4,22 +4,25 @@
 #
 # Description : OpenLDAP Boot Script
 #
-# Authors     : Armin K. <krejzi@email.com>
+# Authors     : Armin K. - krejzi@email.com
 #
-# Version     : BLFS SVN
+# Version     : BLFS 7.0
 #
 # Notes       : Can be configured through /etc/sysconfig/slapd.
 #
 ########################################################################
 
 ### BEGIN INIT INFO
-# Provides:          slapd
-# Required-Start:    $network $syslog
-# Required-Stop:     $network $syslog
-# Default-Start:     3 4 5
-# Default-Stop:      0 1 6
-# Short-Description: OpenLDAP standalone server
-# X-LFS-Provided-By: BLFS
+# Provides:            slapd
+# Required-Start:      $network $syslog
+# Should-Start:        networkmanager wicd
+# Required-Stop:       $network $syslog
+# Should-Stop:         networkmanager wicd
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   OpenLDAP standalone server
+# Description:         OpenLDAP standalone server
+# X-LFS-Provided-By:   BLFS
 ### END INIT INFO
 
 . /lib/lsb/init-functions

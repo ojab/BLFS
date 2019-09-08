@@ -1,5 +1,14 @@
 #!/bin/sh
-# Begin /etc/init.d/winbindd
+########################################################################
+# Begin winbindd
+#
+# Description : Winbindd Boot Script
+#
+# Authors     : Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : BLFS 7.0
+#
+########################################################################
 
 ### BEGIN INIT INFO
 # Provides:            winbindd

@@ -1,17 +1,28 @@
 #! /bin/sh
+########################################################################
+# Begin smartd
+#
+# Description : SmartD Boot Script
+#
+# Authors     : Bruce Dubbs - bdubbs@linuxfromscratch.org
+#
+# Version     : BLFS 8.0
+#
+########################################################################
 
 # smartmontools init file for smartd
 
 ### BEGIN INIT INFO
-# Provides:                   smartd
-# Required-Start:             $syslog $remote_fs
-# Should-Start:               sendmail
-# Required-Stop:              $syslog $remote_fs
-# Should-Stop:                sendmail
-# Default-Start:              2 3 5
-# Default-Stop:
-# Short-Description:          Monitors disk and tape health via S.M.A.R.T.
-# Description:                Start S.M.A.R.T. disk and tape monitor.
+# Provides:            smartd
+# Required-Start:      $syslog udev
+# Should-Start:        sendmail postfix exim
+# Required-Stop:       $syslog
+# Should-Stop:         sendmail postix exim
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Monitors disk and tape health via S.M.A.R.T.
+# Description:         Start S.M.A.R.T. disk and tape monitor.
+# X-LFS-Provided-By:   BLFS
 ### END INIT INFO
 
 source /lib/lsb/init-functions

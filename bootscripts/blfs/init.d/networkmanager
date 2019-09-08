@@ -6,18 +6,16 @@
 #
 # Authors     : Armin K. <krejzi@email.com>
 #
-# Version     : BLFS SVN
-#
-# Notes       :
+# Version     : BLFS 8.0
 #
 ########################################################################
 
 ### BEGIN INIT INFO
 # Provides:          networkmanager
-# Required-Start:    dbus udev
+# Required-Start:    $network $syslog udev dbus
 # Should-Start:
-# Required-Stop:     dbus
-# Should-Stop:       sendsignals
+# Required-Stop:     $network $syslog dbus
+# Should-Stop:
 # Default-Start:     3 4 5
 # Default-Stop:      0 1 2 6
 # Short-Description: Network connection manager.

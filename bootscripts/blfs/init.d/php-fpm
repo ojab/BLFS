@@ -1,27 +1,26 @@
 #! /bin/sh
 #######################################################################
-# Begin /etc/init.d/php-fpm
+# Begin php-fpm
 #
 # Description : Start the PHP fastCGI Proces Manager
 #
-# Author      : P Labastie - pierre.labastie@neuf.fr
-#               from a file shipped with the PHP pacakge
+# Author      : Pierre Labastie - pierre.labastie@neuf.fr
 #
-# Version     : LFS 7.5
+# Version     : BLFS 7.5
 #
 ########################################################################
 
 ### BEGIN INIT INFO
 # Provides:          php-fpm
-# Required-Start:    $syslog $local_fs $network
-# Should-Start:      $remote_fs
-# Required-Stop:     $network
-# Should-Stop:       $remote_fs sendsignals
+# Required-Start:    $local_fs $network $syslog
+# Should-Start:      netwrokmanager wicd
+# Required-Stop:     $network $syslog
+# Should-Stop:       networkmanager wicd
 # Default-Start:     3 4 5
 # Default-Stop:      0 1 2 6
 # Short-Description: starts php-fpm
 # Description:       starts the PHP FastCGI Process Manager daemon
-# X-LFS-Provided-By: BLFS / LFS 7.5
+# X-LFS-Provided-By: BLFS
 ### END INIT INFO
 
 . /lib/lsb/init-functions

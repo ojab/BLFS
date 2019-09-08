@@ -6,18 +6,16 @@
 #
 # Authors     : Armin K. <krejzi@email.com>
 #
-# Version     : BLFS SVN
-#
-# Notes       :
+# Version     : BLFS 8.0
 #
 ########################################################################
 
 ### BEGIN INIT INFO
 # Provides:          krb5
 # Required-Start:    $local_fs $network $syslog
-# Should-Start:      $remote_fs
-# Required-Stop:     $local_fs $network
-# Should-Stop:       $remote_fs sendsignals
+# Should-Start:      networkmanager wicd
+# Required-Stop:     $local_fs $network $syslog
+# Should-Stop:       networkmanager wicd
 # Default-Start:     3 4 5
 # Default-Stop:      0 1 2 6
 # Short-Description: MIT Kerberos KDC and Admin Server

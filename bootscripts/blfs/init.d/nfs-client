@@ -8,21 +8,21 @@
 #               Bruce Dubbs - bdubbs@linuxfromscratch.org
 #               Douglas R. Reno - renodr@linuxfromscratch.org
 #
-# Version     : LFS 7.0
+# Version     : BLFS 7.0
 #
 ########################################################################
 
 ### BEGIN INIT INFO
-# Provides:          nfs-client
-# Required-Start:    rpcbind
-# Should-Start:
-# Required-Stop:     rpcbind
-# Should-Stop:
-# Default-Start:     3 4 5
-# Default-Stop:      0 1 2 6
-# Short-Description: Starts statd
-# Description:       rpc.statd provides file locking on nfs.
-# X-LFS-Provided-By: BLFS / LFS 7.0
+# Provides:            nfs-client
+# Required-Start:      $network $syslog $portmap
+# Should-Start:        networkmanager wicd
+# Required-Stop:       $network $syslog $portmap
+# Should-Stop:         networkmanager wicd
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Starts statd
+# Description:         rpc.statd provides file locking on nfs.
+# X-LFS-Provided-By:   BLFS
 ### END INIT INFO
 
 . /lib/lsb/init-functions

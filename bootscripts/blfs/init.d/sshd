@@ -6,16 +6,16 @@
 #
 # Author      : Bruce Dubbs - bdubbs@linuxfromscratch.org
 #
-# Version     : LFS 7.0
+# Version     : BLFS 7.0
 #
 ########################################################################
 
 ### BEGIN INIT INFO
 # Provides:            sshd
-# Required-Start:      $network
-# Should-Start:        $remote_fs networkmanager
-# Required-Stop:       $network
-# Should-Stop:         $remote_fs networkmanager sendsignals
+# Required-Start:      $network $syslog
+# Should-Start:        networkmanager wicd krb5 openldap samba
+# Required-Stop:       $network $syslog
+# Should-Stop:         networkmanager wicd krb5 openldap samba
 # Default-Start:       3 4 5
 # Default-Stop:        0 1 2 6
 # Short-Description:   Starts sshd daemon.

@@ -7,21 +7,21 @@
 # Authors     : Ken Moffat - ken@linuxfromscratch.org
 #               Bruce Dubbs - bdubbs@linuxfromscratch.org
 #
-# Version     : LFS 7.0
+# Version     : BLFS 7.0
 #
 ########################################################################
 
 ### BEGIN INIT INFO
 # Provides:          iptables
-# Required-Start:    
+# Required-Start:    $syslog
 # Should-Start:
-# Required-Stop:     $local_fs
-# Should-Stop:       sendsignals
+# Required-Stop:
+# Should-Stop:
 # Default-Start:     3 4 5
 # Default-Stop:     
 # Short-Description: Loads iptables rules.
 # Description:       Iptables provides firewall for Linux systems.
-# X-LFS-Provided-By: BLFS / LFS 7.0
+# X-LFS-Provided-By: BLFS
 ### END INIT INFO
 
 . /lib/lsb/init-functions

@@ -8,22 +8,21 @@
 #               Bruce Dubbs - bdubbs@linuxfromscratch.org
 #               Douglas R. Reno - renodr@linuxfromscratch.org
 #
-# Version     : LFS 7.0
-# Version     : LFS 8.1 - Remove references to rpc.rquotad
+# Version     : BLFS 8.1
 #
 ########################################################################
 
 ### BEGIN INIT INFO
 # Provides:            nfs-server
-# Required-Start:      rpcbind
-# Should-Start:
-# Required-Stop:       rpcbind
-# Should-Stop:
+# Required-Start:      $network $syslog $portmap
+# Should-Start:        networkmanager wicd
+# Required-Stop:       $network $syslog $portmap
+# Should-Stop:         networkmanager wicd
 # Default-Start:       3 4 5
 # Default-Stop:        0 1 2 6
 # Short-Description:   Starts the nfs server
 # Description:         Starts the nfs server and exports directories.
-# X-LFS-Provided-By:   BLFS / LFS 7.0
+# X-LFS-Provided-By:   BLFS
 ### END INIT INFO
 
 . /lib/lsb/init-functions

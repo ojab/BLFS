@@ -6,18 +6,21 @@
 #
 # Author      : Igor Živković <contact@igor-zivkovic.from.hr>
 #
-# Version     : BLFS SVN
+# Version     : BLFS 7.0
 #
 ########################################################################
 
 
 ### BEGIN INIT INFO
 # Provides:          dovecot
-# Required-Start:    $network $remote_fs $syslog
-# Required-Stop:     $network $remote_fs $syslog
-# Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
-# Short-Description: Dovecot init script
+# Required-Start:    $network $syslog
+# Should-Start:      mysql openldap networkmanager postgresql samba saslauthd wicd
+# Required-Stop:     $network $syslog
+# Should-Stop:       mysql openldap networkmanager postgresql samba saslauthd wicd
+# Default-Start:     3 4 5
+# Default-Stop:      0 1 2 6
+# Short-Description: Starts the Dovecot POP3/IMAP service
+# Description:       Starts the Dovecot POP3/IMAP service
 # X-LFS-Provided-By: BLFS
 ### END INIT INFO
 

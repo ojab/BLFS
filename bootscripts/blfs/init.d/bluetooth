@@ -6,7 +6,7 @@
 #
 # Authors     : Armin K. <krejzi@email.com>
 #
-# Version     : BLFS SVN
+# Version     : BLFS 8.0
 #
 # Notes       : Configurable through /etc/sysconfig/bluetooth
 #             : Rewritten May 29, 2014 for bluez-5 by 
@@ -18,11 +18,12 @@
 # Provides:            bluetooth
 # Required-Start:      $local_fs $syslog dbus
 # Should-Start:
-# Required-Stop:       $local_fs
-# Should-Stop:         sendsignals
+# Required-Stop:       $local_fs $syslog
+# Should-Stop:
 # Default-Start:       3 4 5
 # Default-Stop:        0 1 2 6
 # Short-Description:   Starts bluetooth daemons
+# Description:         Starts bluetooth daemons
 # X-LFS-Provided-By:   BLFS
 ### END INIT INFO
 

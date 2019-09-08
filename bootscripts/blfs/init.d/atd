@@ -12,15 +12,15 @@
 
 ### BEGIN INIT INFO
 # Provides:            atd
-# Required-Start:      $time
+# Required-Start:      $syslog $time
 # Should-Start:        
-# Required-Stop:       
+# Required-Stop:       $syslog
 # Should-Stop:         
 # Default-Start:       2 3 4 5
 # Default-Stop:        0 1 6
 # Short-Description:   atd daemon
 # Description:         Run jobs queued for later execution
-# X-LFS-Provided-By:   BLFS / LFS 7.2
+# X-LFS-Provided-By:   BLFS
 ### END INIT INFO
 
 . /lib/lsb/init-functions

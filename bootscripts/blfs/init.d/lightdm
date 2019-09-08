@@ -1,12 +1,21 @@
 #!/bin/sh
-# Begin /etc/rc.d/init.d/lightdm
+########################################################################
+# Begin lightdm
+#
+# Description : LightDM Boot Script
+#
+# Authors     : Bruce Dubbbs - bdubbs@linuxfromscratch.org
+#
+# Version     : BLFS 8.0
+#
+########################################################################
 
 ### BEGIN INIT INFO
 # Provides:            lightdm
-# Required-Start:      $local_fs
-# Should-Start:        $remote_fs $last
-# Required-Stop:       $local_fs
-# Should-Stop:         $remote_fs
+# Required-Start:      $local_fs $last
+# Should-Start:
+# Required-Stop:       $local_fs $first
+# Should-Stop:
 # Default-Start:       5
 # Default-Stop:        0 1 2 3 4 6
 # Short-Description:   Starts lightdm.

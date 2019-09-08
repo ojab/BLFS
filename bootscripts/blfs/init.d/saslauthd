@@ -4,20 +4,18 @@
 #
 # Description : Cyrus SASL Boot Script
 #
-# Authors     : Armin K. <krejzi@email.com>
+# Authors     : Armin K. - krejzi@email.com
 #
-# Version     : BLFS SVN
-#
-# Notes       : Not enabled by default.
+# Version     : BLFS 7.0
 #
 ########################################################################
 
 ### BEGIN INIT INFO
 # Provides:            saslauthd
-# Required-Start:      $local_fs
+# Required-Start:      $local_fs $syslog
 # Should-Start:
-# Required-Stop:       $local_fs
-# Should-Stop:         $remote_fs sendsignals
+# Required-Stop:       $local_fs $syslog
+# Should-Stop:
 # Default-Start:       2 3 4 5
 # Default-Stop:        0 1 6
 # Short-Description:   saslauthd startup script

@@ -398,16 +398,6 @@ install-proftpd: create-dirs
 	ln -sf  ../init.d/proftpd ${EXTDIR}/rc.d/rc5.d/S32proftpd
 	ln -sf  ../init.d/proftpd ${EXTDIR}/rc.d/rc6.d/K28proftpd
 
-install-qpopper: create-dirs
-	install -m ${MODE} blfs/init.d/qpopper   ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc0.d/K23qpopper
-	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc1.d/K23qpopper
-	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc2.d/K23qpopper
-	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc3.d/S37qpopper
-	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc4.d/S37qpopper
-	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc5.d/S37qpopper
-	ln -sf  ../init.d/qpopper ${EXTDIR}/rc.d/rc6.d/K23qpopper
-
 install-random: create-dirs
 	install -m ${MODE} blfs/init.d/random     ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/random ${EXTDIR}/rc.d/rc0.d/K45random
