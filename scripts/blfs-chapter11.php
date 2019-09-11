@@ -210,6 +210,9 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "graphviz" )
     return find_max( $lines, "/graphviz-/", "/^.*graphviz-(\d+\.\d+\.\d+)\.tar.*$/" );
 
+  if ( $book_index == "bogofilter" )
+    return find_max( $lines, "/bogofilter/", "/^.*bogofilter-([\d\.rc]+)\.tar.*$/" );
+
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
   $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );
