@@ -63,7 +63,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'xine-ui',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/xine/files/xine-ui" ),
+          'replace' => "https://www.xine-project.org/home" ),
 
    array( 'pkg'     => 'cdrdao',
           'match'   => '^.*$', 
@@ -166,7 +166,7 @@ function get_packages( $package, $dirpath )
       return find_max( $lines, "/\d\./", "/^.*;([\d\.]+)\/.*$/", TRUE );
 
   if ( $package == "xine-ui" )
-      return find_max( $lines, "/^\s*\d/", "/^\s*(\d\.[\d\.]+)\s+.*$/" );
+      return find_max( $lines, "/$package/", "/^.*$package (\d\.[\d\.]+).*$/" );
 
   if ( $package == "freetts" )
       return find_max( $lines, "/freetts/", "/^.*freetts-([\d\.]+)-bin.*$/" );
