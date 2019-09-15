@@ -120,8 +120,7 @@ function get_packages( $package, $dirpath )
       $dirpath  = substr ( $dirpath, 0, $position );
       $dirlines = http_get_file( "$dirpath/" );
 
-      if ( $book_index == "atk"    ||
-           $book_index == "gtk-vnc" ) // For now atk uses devel versions
+      if ( $book_index == "gtk-vnc" ) 
         $dir   = find_max( $dirlines, '/\d$/', '/^.* ([\d\.]+)$/' );
       elseif ( $book_index == "gtksourceview" )
         $dir   = find_even_max( $dirlines, '/3\.\d/', '/^.*(3[\d\.]+)$/', TRUE );
