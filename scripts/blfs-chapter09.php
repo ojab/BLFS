@@ -295,7 +295,7 @@ function get_packages( $package, $dirpath )
     if ( $book_index == "pcre2" )
     {
       exec( "curl -L -s -m40 -A Firefox/41.0 $dirpath", $lines );
-      $ver = find_max( $lines, "/pcre2-/", "/^.*pcre2-([\d\.]+).zip.*/" );
+      $ver = find_max( $lines, "/pcre2-/", "/^.*pcre2-([\d\.]+)\..*/" );
       return $ver;
     }
 

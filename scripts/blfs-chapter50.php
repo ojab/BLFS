@@ -9,7 +9,9 @@ $START_PACKAGE = 'cups';
 $STOP_PACKAGE  = 'xindy';
 
 $renames = array();
-$renames[ 'v' ] = "biber";
+$renames[ 'v'         ] = "biber";
+$renames[ 'docbook1'  ] = "docbook-xml-5.0";
+$renames[ 'docbook-v' ] = "docbook-xml-5.1";
 
 $ignores = array();
 $ignores[ 'install-tl-unx' ] = '';
@@ -112,6 +114,8 @@ function get_packages( $package, $dirpath )
   // These are constant - have not changed in 10 years
   if ( $package == "docbk"             ) return "31";
   if ( $package == "docbook"           ) return "4.5";
+  if ( $package == "docbook1"          ) return "5.0";
+  if ( $package == "docbook-v"         ) return "5.1";
   if ( $package == "openjade"          ) return "1.3.2";
   if ( $package == "docbook-dsssl"     ) return "1.79";
   if ( $package == "docbook-dsssl-doc" ) return "1.79";
