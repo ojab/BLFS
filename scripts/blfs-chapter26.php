@@ -16,7 +16,7 @@ $ignores = array();
 $regex = array();
 $regex[ 'openbox' ] = "/^.*release-(\d[\d\.]+\d).*$/";
 
-// $current="adwaita-icon-theme";  # For debugging
+//$current="adwaita-icon-theme";  # For debugging
 
 $url_fix = array (
 
@@ -130,34 +130,11 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "adwaita-icon-theme" )
   {
-    // Get max even directory
-    $major = 0;
-    $minor = 0;
-
-    foreach ( $lines as $line )
-    {
-      if ( ! preg_match( " /\d\.\d+\//", $line ) ) continue;
-
-      $d = preg_replace( "/^.*(\d\.\d+)\/.*$/", "$1", $line );
-      list( $ma, $mi, $other ) = explode( ".", $d . ".0.0", 3 );
-
-      if ( $mi % 2 == 1 ) continue;  // Skip odd minors
-      if ( $ma > $major )
-      {
-        $major = $ma;
-	$minor = 0;
-      }
-      else if ( $ma == $major )
-      {
-        if ( $mi > $minor ) $minor = $mi;
-      }
-    }
-
-    $lines = http_get_file( "$dirpath/$major.$minor" );
-    return find_max( $lines, '/adwaita-icon-theme/', '/^.*adwaita-icon-theme-([\d\.]+).tar.*$/' );
+    $dir = find_even_max( $lines, "/^ +\d/", "/^ +([\d\.]+).*$/" );
+    $lines = http_get_file( "$dirpath/$dir" );
+    return find_max( $lines, '/theme/', '/^.*theme-([\d\.]+).tar.*$/' );
   }
     
-
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
   // print_r($lines);
