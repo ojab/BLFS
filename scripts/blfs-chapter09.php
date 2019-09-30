@@ -143,7 +143,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'icu4c',
         'match'   => '^.*$',
-        'replace' => "http://download.icu-project.org/files/icu4c" ),
+        'replace' => "https://sourceforge.net/projects/icu/files/ICU4C" ),
 
  array( 'pkg'     => 'json-c',
         'match'   => '^.*$',
@@ -353,7 +353,7 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "icu4c" )
   {
-    $dir   = find_max( $lines, '/\d+\.\d/', '/^(\d+\.\d+)\/.*$/' );
+    $dir   = find_max( $lines, '/ +\d+\.\d/', '/^ +(\d+\.\d+) .*$/' );
     $lines = http_get_file( "$dirpath/$dir" );
     return find_max( $lines, '/icu4c/', '/^.*icu4c-([\d_]+)-src.*$/' );
   }
