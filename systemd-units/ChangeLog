@@ -1,3 +1,11 @@
+2019-10-01 Douglas R. Reno <renodr@linuxfromscratch.org>
+   * Remove obsolete kdm service
+   * Remove obsolete tor service (note that it was never part of BLFS)
+   * Remove obsolete xinetd service
+   * Remove obsolete nscd service and tmpfiles configuration file. 
+     This is now part of LFS in the glibc installation section.
+   * Update acpid unit file to allow it to install/enable under systemd-243.
+
 2018-09-15 Douglas R. Reno <renodr@linuxfromscratch.org>
    * Modify rpcbind.service to not do a warm start. This solves a bug where, as of
      LFS 8.3, rpcbind will fail to start, exiting with error code 1. In addition,

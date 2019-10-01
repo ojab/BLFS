@@ -77,10 +77,6 @@ install-iptables: create-dirs
 	install -m ${CONFMODE} blfs/units/iptables.service ${UNITSDIR}/
 	test -n "${DESTDIR}" || systemctl enable iptables.service
 
-install-kdm: create-dirs
-	install -m ${CONFMODE} blfs/units/kdm.service ${UNITSDIR}/
-	test -n "${DESTDIR}" || systemctl enable kdm.service
-
 install-krb5: create-dirs
 	install -m ${CONFMODE} blfs/units/krb5-kdc.service ${UNITSDIR}/
 	install -m ${CONFMODE} blfs/units/krb5-kpropd.service ${UNITSDIR}/
@@ -214,10 +210,6 @@ install-winbindd: install-samba
 	install -m ${CONFMODE} blfs/units/winbindd.service ${UNITSDIR}/
 	test -n "${DESTDIR}" || systemctl enable winbindd.service
 
-install-xinetd: create-dirs
-	install -m ${CONFMODE} blfs/units/xinetd.service ${UNITSDIR}/
-	test -n "${DESTDIR}" || systemctl enable xinetd.service
-
 uninstall-acpid:
 	test -n "${DESTDIR}" || systemctl stop acpid.service
 	test -n "${DESTDIR}" || systemctl disable acpid.socket
@@ -262,11 +254,6 @@ uninstall-httpd:
 uninstall-iptables:
 	test -n "${DESTDIR}" || systemctl disable iptables.service
 	rm -f ${UNITSDIR}/iptables.service
-
-uninstall-kdm:
-	test -n "${DESTDIR}" || systemctl stop kdm.service
-	test -n "${DESTDIR}" || systemctl disable kdm.service
-	rm -f ${UNITSDIR}/kdm.service
 
 uninstall-krb5:
 	test -n "${DESTDIR}" || systemctl stop krb5-kadmind.service
@@ -396,11 +383,6 @@ uninstall-winbindd:
 	test -n "${DESTDIR}" || systemctl disable winbindd.service
 	rm -f ${UNITSDIR}/winbindd.service
 
-uninstall-xinetd:
-	test -n "${DESTDIR}" || systemctl stop xinetd.service
-	test -n "${DESTDIR}" || systemctl disable xinetd.service
-	rm -f ${UNITSDIR}/xinetd.service
-
 .PHONY: all create-dirs create-service-dir \
 	install-acpid \
 	install-dhclient \
@@ -411,7 +393,6 @@ uninstall-xinetd:
 	install-gpm \
 	install-httpd \
 	install-iptables \
-	install-kdm \
 	install-krb5 \
 	install-mysqld \
 	install-named \
@@ -434,7 +415,6 @@ uninstall-xinetd:
 	install-unbound \
 	install-vsftpd \
 	install-winbindd \
-	install-xinetd \
 	uninstall-acpid \
 	uninstall-dhclient \
 	uninstall-dhcpcd \
@@ -444,7 +424,6 @@ uninstall-xinetd:
 	uninstall-gpm \
 	uninstall-httpd \
 	uninstall-iptables \
-	uninstall-kdm \
 	uninstall-krb5 \
 	uninstall-mysqld \
 	uninstall-named \
@@ -467,4 +446,3 @@ uninstall-xinetd:
 	uninstall-unbound \
 	uninstall-vsftpd \
 	uninstall-winbindd \
-	uninstall-xinetd
