@@ -5,6 +5,7 @@
    * Remove obsolete nscd service and tmpfiles configuration file. 
      This is now part of LFS in the glibc installation section.
    * Update acpid unit file to allow it to install/enable under systemd-243.
+   * Update acpid unit file to contain a Documentation= value
 
 2018-09-15 Douglas R. Reno <renodr@linuxfromscratch.org>
    * Modify rpcbind.service to not do a warm start. This solves a bug where, as of

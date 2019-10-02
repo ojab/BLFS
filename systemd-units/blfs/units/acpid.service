@@ -1,10 +1,10 @@
 [Unit]
 Description=ACPI event daemon
-Requires=acpid.socket
+Documentation=man:acpid(8)
 
 [Service]
 StandardInput=socket
 ExecStart=/usr/sbin/acpid
 
 [Install]
-WantedBy=sockets.target
+WantedBy=multi-user.target
