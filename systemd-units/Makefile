@@ -54,11 +54,6 @@ install-exim: create-dirs
 	install -m ${CONFMODE} blfs/units/exim.service ${UNITSDIR}/
 	test -n "${DESTDIR}" || systemctl enable exim.service
 
-install-git: create-dirs
-	install -m ${CONFMODE} blfs/units/git-daemonat.service ${UNITSDIR}/git-daemon@.service
-	install -m ${CONFMODE} blfs/units/git-daemon.socket ${UNITSDIR}/
-	test -n "${DESTDIR}" || systemctl enable git-daemon.socket
-
 install-gpm: create-dirs
 	install -m ${CONFMODE} blfs/units/gpm.service ${UNITSDIR}/
 	test -n "${DESTDIR}" || systemctl enable gpm.service
@@ -231,11 +226,6 @@ uninstall-exim:
 	test -n "${DESTDIR}" || systemctl disable exim.service
 	rm -f ${UNITSDIR}/exim.service
 
-uninstall-git:
-	test -n "${DESTDIR}" || systemctl stop git-daemon.socket
-	test -n "${DESTDIR}" || systemctl disable git-daemon.socket
-	rm -f ${UNITSDIR}/git-daemon@.service ${UNITSDIR}/git-daemon.socket
-
 uninstall-gpm:
 	test -n "${DESTDIR}" || systemctl stop gpm.service
 	test -n "${DESTDIR}" || systemctl disable gpm.service
@@ -389,7 +379,6 @@ uninstall-winbindd:
 	install-dhcpcd \
 	install-dhcpd \
 	install-exim \
-	install-git \
 	install-gpm \
 	install-httpd \
 	install-iptables \
@@ -420,7 +409,6 @@ uninstall-winbindd:
 	uninstall-dhcpcd \
 	uninstall-dhcpd \
 	uninstall-exim \
-	uninstall-git \
 	uninstall-gpm \
 	uninstall-httpd \
 	uninstall-iptables \

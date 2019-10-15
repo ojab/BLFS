@@ -1,3 +1,7 @@
+2019-10-15 Douglas R. Reno <renodr@linuxfromscratch.org>
+   * Remove the PIDFile argument from httpd as it is no longer needed.
+   * Remove git-daemon service since we no longer support it.
+
 2019-10-01 Douglas R. Reno <renodr@linuxfromscratch.org>
    * Remove obsolete kdm service
    * Remove obsolete tor service (note that it was never part of BLFS)
