@@ -4,9 +4,9 @@ After=network.target
 
 [Service]
 Type=forking
-EnvironmentFile=/etc/defaults/samba
-PIDFile=/var/run/samba.pid
-ExecStart=/usr/bin/samba $SAMBA_OPTS
+EnvironmentFile=/etc/default/samba
+PIDFile=/run/samba.pid
+ExecStart=/usr/sbin/samba $SAMBA_OPTS
 ExecReload=/usr/bin/kill -HUP $MAINPID
 
 [Install]
