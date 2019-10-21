@@ -4,8 +4,8 @@
 include 'blfs-include.php';
 
 $CHAPTER       = "4";
-$CHAPTERS      = "Chapters 2-4";
-$START_PACKAGE = "lsb-release";
+$CHAPTERS      = "Chapter 4";
+$START_PACKAGE = "make-ca";
 $STOP_PACKAGE  = "volume_key";
 
 $renames = array();
