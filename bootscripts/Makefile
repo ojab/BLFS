@@ -221,6 +221,16 @@ install-fcron: create-dirs
 	ln -sf  ../init.d/fcron ${EXTDIR}/rc.d/rc5.d/S40fcron
 	ln -sf  ../init.d/fcron ${EXTDIR}/rc.d/rc6.d/K08fcron
 
+install-firewalld: create-dirs
+	install -m ${MODE} blfs/init.d/firewalld   ${EXTDIR}/rc.d/init.d/
+	ln -sf  ../init.d/firewalld ${EXTDIR}/rc.d/rc0.d/K81firewalld
+	ln -sf  ../init.d/firewalld ${EXTDIR}/rc.d/rc1.d/K81firewalld
+	ln -sf  ../init.d/firewalld ${EXTDIR}/rc.d/rc2.d/S19firewalld
+	ln -sf  ../init.d/firewalld ${EXTDIR}/rc.d/rc3.d/S19firewalld
+	ln -sf  ../init.d/firewalld ${EXTDIR}/rc.d/rc4.d/S19firewalld
+	ln -sf  ../init.d/firewalld ${EXTDIR}/rc.d/rc5.d/S19firewalld
+	ln -sf  ../init.d/firewalld ${EXTDIR}/rc.d/rc6.d/K81firewalld
+
 install-gdm: create-dirs
 	install -m ${MODE} blfs/init.d/gdm        ${EXTDIR}/rc.d/init.d/
 	ln -sf  ../init.d/gdm ${EXTDIR}/rc.d/rc0.d/K05gdm
@@ -755,6 +765,16 @@ uninstall-fcron:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S40fcron
 	rm -f ${EXTDIR}/rc.d/rc6.d/K08fcron
 
+uninstall-firewalld:
+	rm -f ${EXTDIR}/rc.d/init.d/firewalld
+	rm -f ${EXTDIR}/rc.d/rc0.d/K81firewalld
+	rm -f ${EXTDIR}/rc.d/rc1.d/K81firewalld
+	rm -f ${EXTDIR}/rc.d/rc2.d/S19firewalld
+	rm -f ${EXTDIR}/rc.d/rc3.d/S19firewalld
+	rm -f ${EXTDIR}/rc.d/rc4.d/S19firewalld
+	rm -f ${EXTDIR}/rc.d/rc5.d/S19firewalld
+	rm -f ${EXTDIR}/rc.d/rc6.d/K81firewalld
+
 uninstall-gdm:
 	rm -f ${EXTDIR}/rc.d/init.d/gdm
 	rm -f ${EXTDIR}/rc.d/rc0.d/K05gdm
@@ -1117,6 +1137,7 @@ uninstall-xinetd:
 	install-dovecot \
 	install-exim \
 	install-fcron \
+	install-firewalld \
 	install-gdm \
 	install-gpm \
 	install-heimdal \
@@ -1165,6 +1186,7 @@ uninstall-xinetd:
 	uninstall-dovecot \
 	uninstall-exim \
 	uninstall-fcron \
+	uninstall-firewalld \
 	uninstall-gdm \
 	uninstall-gpm \
 	uninstall-heimdal \
