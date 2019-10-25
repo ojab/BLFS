@@ -145,7 +145,7 @@ function get_packages( $package, $dirpath )
       $dir      = find_max( $dirlines, '/\d$/', '/^.* ([\d\.]+)$/' );
       $dirpath .= "/$dir/";
     }
-
+/*
     if ( $book_index == "firefox" )
     {
       // Customize http directories as needed
@@ -155,7 +155,7 @@ function get_packages( $package, $dirpath )
       $position = strrpos( $dirpath, "/" );
       $dirpath  = substr ( $dirpath, 0, $position ); // Up 2
     }
-
+*/
     // Get listing
     $lines = http_get_file( "$dirpath/" );
   }
@@ -266,8 +266,8 @@ function get_packages( $package, $dirpath )
        $book_index == "cairomm"  )
     return find_even_max( $lines, "/$package/", "/^$package-(\d[\d\.]+\d).tar.*$/" );
 
-  if ( $book_index == "firefox" )
-    return find_max( $lines, "/^\d/", "/^(\d{2}.\d+)$/" );
+//  if ( $book_index == "firefox" )
+//    return find_max( $lines, "/^\d/", "/^(\d{2}.\d+)$/" );
 
   if ( substr($book_index, 0, strlen( "qt-everywhere" ) )  == "qt-everywhere" )
     return find_max( $lines, "/src.*tar.xz/", "/^.*src-([\d\.]+).tar.*$/" );

@@ -6,7 +6,7 @@ include 'blfs-include.php';
 $CHAPTER       = "4";
 $CHAPTERS      = "Chapter 4";
 $START_PACKAGE = "make-ca";
-$STOP_PACKAGE  = "volume_key";
+$STOP_PACKAGE  = "firewalld";
 
 $renames = array();
 //$renames[ 'Linux-PAM1' ] = 'Linux-PAM-docs';
