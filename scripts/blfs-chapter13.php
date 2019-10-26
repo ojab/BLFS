@@ -215,6 +215,14 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/DateTime-Format-Builder/" ),
 
+   array( 'pkg'     => 'decorator',
+          'match'   => '^.*$',
+          'replace' => "https://pypi.org/project/decorator/" ),
+
+   array( 'pkg'     => 'python-slip',
+          'match'   => '^.*$',
+          'replace' => "https://github.com/nphilipp/python-slip/releases/" ),
+
    array( 'pkg'     => 'Encode-EUCJPASCII',
           'match'   => '^.*$',
           'replace' => "http://search.cpan.org/dist/Encode-EUCJPASCII/" ),
@@ -580,6 +588,12 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "Net-SSLeay" )
     return find_max( $lines, '/\d\./', '/^.*(\d\.[\d\._]+\d)$/' );
+
+  if ( $book_index == "decorator" )
+    return find_max( $lines, '/decorator /', '/^.*decorator (\d\.[\d\.]+\d).*$/' );
+
+  if ( $book_index == "python-slip" )
+    return find_max( $lines, '/python-slip/', '/^.*python-slip-(\d\.[\d\.]+\d).*$/' );
 
   if ( $book_index == "lua11" )
     return find_max( $lines, '/lua-5.2/', '/^.*lua-(5.2.[\d\.]+).tar.*$/' );

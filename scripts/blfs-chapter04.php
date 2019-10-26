@@ -56,6 +56,10 @@ $url_fix = array(
           'match'   => '^.*$',
           'replace' => 'https://github.com/cracklib/cracklib/releases' ),
 
+   array( 'pkg'     => 'firewalld',
+          'match'   => '^.*$',
+          'replace' => 'https://github.com/firewalld/firewalld/releases' ),
+
    array( 'pkg'     => 'Linux-PAM',
           'match'   => '^.*$',
           'replace' => 'https://github.com/linux-pam/linux-pam/releases' ),
@@ -197,6 +201,9 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "cyrus-sasl" )
      return find_max( $lines, "/${package}/", "/^.*${package}-([\d\.]+\d).tar.*$/" );
+
+  if ( $package == "firewalld" )
+     return find_max( $lines, "/${package}/", "/^.*${package}-([\d\.]+\d).*$/" );
 
   if ( $package == "libcap2_" )
      return find_max( $lines, "/${package}/", "/^.*${package}([\d\.-]*\d)\.orig.tar.*$/" );
