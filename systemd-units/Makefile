@@ -114,6 +114,10 @@ install-nfsv4-server: install-nfs-server
 	install -m ${CONFMODE} blfs/units/rpc-idmapd.service ${UNITSDIR}/
 	install -m ${CONFMODE} blfs/units/var-lib-nfs-rpc_pipefs.mount ${UNITSDIR}/
 
+install-nftables: create-dirs
+	install -m ${CONFMODE} blfs/units/nftables.service ${UNITSDIR}/
+	test -n "${DESTDIR}" || systemctl enable nftables.service
+
 install-ntpd: create-dirs
 	install -m ${CONFMODE} blfs/units/ntpd.service ${UNITSDIR}/
 	install -d -m ${DIRMODE} ${DESTDIR}/usr/lib/systemd/ntp-units.d
@@ -285,6 +289,10 @@ uninstall-nfsv4-server:
 	rm -f ${UNITSDIR}/rpc-idmapd.service
 	rm -f ${UNITSDIR}/var-lib-nfs-rpc_pipefs.mount
 
+uninstall-nftables:
+	test -n "${DESTDIR}" || systemctl disable nftables.service
+	rm -f ${UNITSDIR}/nftables.service
+
 uninstall-ntpd:
 	test -n "${DESTDIR}" || systemctl stop ntpd.service
 	test -n "${DESTDIR}" || systemctl disable ntpd.service
@@ -388,6 +396,7 @@ uninstall-winbindd:
 	install-nfs-client \
 	install-nfs-server \
 	install-nfsv4-server \
+	install-nftables \
 	install-ntp \
 	install-php-fpm \
 	install-postfix \
@@ -418,6 +427,7 @@ uninstall-winbindd:
 	uninstall-nfs-client \
 	uninstall-nfs-server \
 	uninstall-nfsv4-server \
+	uninstall-nftables \
 	uninstall-ntpd \
 	uninstall-php-fpm \
 	uninstall-postfix \

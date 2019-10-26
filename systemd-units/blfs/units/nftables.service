@@ -1,0 +1,16 @@
+[Unit]
+Description=Netfilter Tables
+Documentation=man:nft(8)
+Wants=network-pre.target
+Before=network-pre.target
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/nft -f /etc/nftables/nftables.conf
+ExecReload=/sbin/nft flush ruleset ';' include '"/etc/nftables/nftables.conf"'
+ExecStop=/sbin/nft flush ruleset
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+
