@@ -1,3 +1,6 @@
+2019-10-31  DJ Lucas <dj@linuxfromscratch.org>
+   * Add nftables bootscript
+
 2019-10-25  DJ Lucas <dj@linuxfromscratch.org>
    * Add firewalld bootscript
    * Adjust network dependencies to account for firewall scripts
