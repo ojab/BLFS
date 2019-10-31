@@ -12,8 +12,8 @@
 
 ### BEGIN INIT INFO
 # Provides:            acpid
-# Required-Start:      $syslog
-# Should-Start:
+# Required-Start:
+# Should-Start:        $syslog
 # Required-Stop:       
 # Should-Stop:         $syslog
 # Default-Start:       2 3 4 5

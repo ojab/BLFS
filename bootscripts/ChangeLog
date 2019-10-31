@@ -1,5 +1,6 @@
 2019-10-31  DJ Lucas <dj@linuxfromscratch.org>
    * Add nftables bootscript
+   * Fix depdendencies for syslog
 
 2019-10-25  DJ Lucas <dj@linuxfromscratch.org>
    * Add firewalld bootscript

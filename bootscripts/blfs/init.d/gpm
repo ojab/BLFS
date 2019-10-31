@@ -12,10 +12,10 @@
 
 ### BEGIN INIT INFO
 # Provides:            gpm
-# Required-Start:      $local_fs $syslog udev
-# Should-Start:
-# Required-Stop:       $local_fs $syslog
-# Should-Stop:
+# Required-Start:      $local_fs udev
+# Should-Start:        $syslog
+# Required-Stop:       $local_fs
+# Should-Stop:         $syslog
 # Default-Start:       2 3 4 5
 # Default-Stop:        0 1 6
 # Short-Description:   Starts and stops the GPM console mouse service.
