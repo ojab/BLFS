@@ -297,7 +297,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/OpenCV/', '/^.*OpenCV (\d\.[\d\.]+)$/' );
 
   if ( $book_index == "opencv_contrib" )
-    return find_max( $lines, '/ \d\./', '/^.* (\d\.[\d\.]+).*$/' );
+    return find_max( $lines, '/ \d\./', '/^.* (\d\.[\d\.]+)$/' );
 
   // OpenJPEG2
   if ( $book_index == "openjpeg" ) 
