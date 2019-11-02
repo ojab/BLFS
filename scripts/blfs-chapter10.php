@@ -6,7 +6,7 @@ include 'blfs-include.php';
 $CHAPTER       = '10';
 $CHAPTERS      = 'Chapter 10';
 $START_PACKAGE = 'aalib';
-$STOP_PACKAGE  = 'qpdf';
+$STOP_PACKAGE  = 'woff2';
 
 $renames = array();
 $renames[ 'mypaint-brushes-v' ] = 'mypaint-brushes';
@@ -134,6 +134,9 @@ $url_fix = array (
         'match'   => '^.*$', 
         'replace' => "https://sourceforge.net/projects/potrace/files" ),
 
+ array( 'pkg'     => 'woff2',
+        'match'   => '^.*$', 
+        'replace' => "https://github.com/google/woff2/releases" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -306,6 +309,9 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "lcms2" )
     return find_max( $lines, '/^\s*2/', '/^\s*(2[\d\.]+) .*$/' );
 
+  if ( $book_index == "woff2" )
+    return find_max( $lines, '/v\d/', '/^.*v([\d\.]+).*$/' );
+
   if ( $package == "graphite2" ) $package = "graphite";
 
   // Most packages are in the form $package-n.n.n
@@ -337,6 +343,9 @@ Function get_pattern( $line )
 
       array( 'pkg'   => 'graphite2', 
              'regex' => "/\D*graphite2-([\d\.]+)\D*$/" ),
+
+      array( 'pkg'   => 'woff', 
+             'regex' => "/\D*woff2-([\d\.]+)\D*$/" ),
    );
 
    foreach( $match as $m )

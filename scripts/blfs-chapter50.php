@@ -93,6 +93,10 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "https://github.com/plk/biber/releases" ),
 
+   array( 'pkg'     => 'dvisvgm',
+          'match'   => '^.*$',
+          'replace' => "https://github.com/mgieseki/dvisvgm/releases" ),
+
    array( 'pkg'     => 'sane-frontends',
           'match'   => '^.*$',
           'replace' => "https://salsa.debian.org/debian/sane-frontends/tags" ),
@@ -227,6 +231,9 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "biber" )
       return find_max( $lines, "/v\d/", "/^.*v([\d\.]+)$/" );
+
+  if ( $package == "dvisvgm" )
+      return find_max( $lines, "/dvisvgm/", "/^.*dvisvgm ([\d\.]+)$/" );
 
   if ( $package == "biblatex-biber" )
       return "manual";

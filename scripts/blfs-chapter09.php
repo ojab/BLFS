@@ -37,6 +37,10 @@ $url_fix = array (
         'match'   => '^.*$',
         'replace' => "https://www.boost.org" ),
 
+ array( 'pkg'     => 'brotli-v',
+        'match'   => '^.*$',
+        'replace' => "https://github.com/google/brotli/releases" ),
+
  array( 'pkg'     => 'clucene-core',
         'match'   => '^.*$',
         'replace' => "http://sourceforge.net/projects/clucene/files" ),
@@ -351,6 +355,10 @@ function get_packages( $package, $dirpath )
     return preg_replace( "/\./", "_", $ver ); 
   }
 
+  if ( $book_index == "brotli-v" )
+    return find_max( $lines, '/v\d/', '/^.*v([\d\.]+).*$/' );
+
+
   if ( $book_index == "icu4c" )
   {
     $dir   = find_max( $lines, '/ +\d+\.\d/', '/^ +(\d+\.\d+) .*$/' );
@@ -462,6 +470,9 @@ Function get_pattern( $line )
 {
    // Set up specific pattern matches for extracting book versions
    $match = array(
+
+      array( 'pkg'   => 'brotli',
+             'regex' => "/^.*brotli-v([\d\.]+).*$/" ),
 
       array( 'pkg'   => 'libatomic_ops',
              'regex' => "/\D*(\d.*\d[a-z]{0,1})\D*$/" ),
