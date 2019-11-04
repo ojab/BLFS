@@ -25,7 +25,7 @@ $url_fix = array (
    array( 'pkg'     => 'gpicview',
           'match'   => '^.*$', 
           'replace' => 
-             "https://sourceforge.net/projects/lxde/files/GPicView%20%28image%20Viewer%29"),
+             "https://sourceforge.net/projects/lxde/files/GPicView%20%28image%20Viewer%29/0.2.x"),
 
    array( 'pkg'     => 'lxappearance',
           'match'   => '^.*$', 
@@ -37,7 +37,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'lxde-common',
           'match'   => '^.*$', 
-          'replace' => "https://sourceforge.net/projects/lxde/files"),
+          'replace' => "https://sourceforge.net/projects/lxde/files/lxde-common%20%28default%20config%29"),
 
    array( 'pkg'     => 'lxinput',
           'match'   => '^.*$', 
@@ -259,13 +259,23 @@ function get_packages( $package, $dirpath )
     $ver = find_max( $lines, "/lxsession/", "/^.*lxsession-([\d\.]+).tar.*$/" );
     return $ver;
   }
+  if ( $book_index == "lxde-common" )
+  {
+    $dirs = http_get_file( "$dirpath/" );
+    $dir = find_max( $dirs, "/common/", "/^.*common ([\d\.]+\d).*$/" );
+    $dirpath .= "/lxde-common%20$dir";
+    $lines = http_get_file( "$dirpath/" );
+    $ver = find_max( $lines, "/common/", "/^.*common-([\d\.]+).tar.*$/" );
+    return $ver;
+  }
+
   else if ( $book_index == "gpicview" )
   {
-    $dirs = http_get_file( "$dirpath/" );    
-    $dir = find_max ( $dirs, "/^\s*\d/", "/^\s*(\d\.[\d\.x]+) .*$/" );
+    //$dirs = http_get_file( "$dirpath/" );    
+    //$dir = find_max ( $dirs, "/^\s*\d/", "/^\s*(\d\.[\d\.x]+) .*$/" );
     //$dir = preg_replace( "/ /", '%20', $dir );
-    $dirpath .= "/$dir";
-    $lines    = http_get_file( "$dirpath/" );
+    //$dirpath .= "/$dir";
+    $lines = http_get_file( "$dirpath/" );
     $ver = find_max( $lines, "/gpicview/", "/^.*gpicview-([\d\.]+).tar.*$/" );
     return $ver;
   }
@@ -290,7 +300,6 @@ function get_packages( $package, $dirpath )
   else if ( $book_index != "lxmenu-data"  &&
             $book_index != "libfm"        &&
             $book_index != "libfm1"       &&
-            $book_index != "lxde-common"  &&
             $book_index != "xfce4-xkb-plugin" ) // http
   {
      // Most http enties for this chapter
