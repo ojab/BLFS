@@ -97,6 +97,14 @@ $url_fix = array (
         'match'   => '^.*$', 
         'replace' => "http://sourceforge.net/projects/libpng/files" ),
 
+ array( 'pkg'     => 'sassc',
+        'match'   => '^.*$', 
+        'replace' => "https://github.com/sass/sassc/tags" ),
+
+ array( 'pkg'     => 'libsass',
+        'match'   => '^.*$', 
+        'replace' => "https://github.com/sass/libsass/tags" ),
+
  array( 'pkg'     => 'libwebp',
         'match'   => '^.*$', 
         'replace' => "http://downloads.webmproject.org/releases/webp/index.html" ),
@@ -271,6 +279,12 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "libmypaint" )
     return find_max( $lines, '/libmypaint/', '/^\s*libmypaint-(\d[\d\.]+).tar.*$/' );
+
+  if ( $book_index == "sassc" )
+    return find_max( $lines, '/\d\.\d\.\d/', '/^.*(\d\.\d\.\d).*$/' );
+
+  if ( $book_index == "libsass" )
+    return find_max( $lines, '/\d\.\d\.\d/', '/^.*(\d\.\d\.\d).*$/' );
 
   if ( $book_index == "mypaint-brushes-v" )
     return find_max( $lines, '/v\d/', '/^\s*v(\d[\d\.]+).*$/' );
