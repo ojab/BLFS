@@ -300,6 +300,8 @@ function get_packages( $package, $dirpath )
   else if ( $book_index != "lxmenu-data"  &&
             $book_index != "libfm"        &&
             $book_index != "libfm1"       &&
+            $book_index != "vte"          &&
+            $book_index != "libwnck"      &&
             $book_index != "xfce4-xkb-plugin" ) // http
   {
      // Most http enties for this chapter
