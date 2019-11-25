@@ -147,7 +147,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'icu4c',
         'match'   => '^.*$',
-        'replace' => "https://sourceforge.net/projects/icu/files/ICU4C" ),
+        'replace' => "https://github.com/unicode-org/icu/releases" ),
 
  array( 'pkg'     => 'json-c',
         'match'   => '^.*$',
@@ -361,9 +361,10 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "icu4c" )
   {
-    $dir   = find_max( $lines, '/ +\d+\.\d/', '/^ +(\d+\.\d+) .*$/' );
-    $lines = http_get_file( "$dirpath/$dir" );
-    return find_max( $lines, '/icu4c/', '/^.*icu4c-([\d_]+)-src.*$/' );
+    //$dir   = find_max( $lines, '/ +\d+\.\d/', '/^ +(\d+\.\d+) .*$/' );
+    //$lines = http_get_file( "$dirpath/$dir" );
+    $ver = find_max( $lines, '/ICU \d/', '/^.*ICU ([\d\.]+).*$/' );
+    return preg_replace( "/\./", "_", $ver );
   }
 
   if ( $book_index == "json-c" )

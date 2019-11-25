@@ -297,6 +297,12 @@ function get_packages( $package, $dirpath )
       return $max;
   }
 
+  if ( preg_match( '/alsa-lib/', $package ) )
+  {
+      $max = find_max( $lines, "/$package/", "/^.*$package-(\d\.[\d\.]+).tar.*$/" );
+      if ( $max != 0 ) return $max;  // else fall through
+  }
+
   if ( preg_match( '/alsa/', $package ) )
   {
       $max = find_max( $lines, "/$package/", "/^.*$package-(\d\.[\d\.]+).*$/" );
