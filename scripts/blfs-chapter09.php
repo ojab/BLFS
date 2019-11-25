@@ -351,7 +351,7 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "boost" )
   {
-    $ver = find_max( $lines, '/Version \d/', '/^.*Version ([\d\.]+).*$/' );
+    $ver = find_max( $lines, '/Version \d/', '/^.*Version ([\d\.]+)\s*$/' );
     return preg_replace( "/\./", "_", $ver ); 
   }
 
