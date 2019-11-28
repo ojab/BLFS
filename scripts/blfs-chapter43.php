@@ -137,6 +137,8 @@ function get_packages( $package, $dirpath )
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
 
+  if ( $package == 'abiword-docs' ) return "manual"; 
+
   // Fix up directory path
   foreach ( $url_fix as $u )
   {
