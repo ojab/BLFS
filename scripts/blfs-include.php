@@ -123,7 +123,6 @@ function find_odd_max( $lines, $regex_match, $regex_replace )
 function http_get_file( $url )
 {
   if ( preg_match( "/graphviz/", $url ) ||
-       preg_match( "/ntfs-3g/",  $url ) ||
        preg_match( "/libgcrypt/",$url ) ||
        preg_match( "/libksba/",  $url ) ||
        preg_match( "/swig/",     $url ) ||
@@ -140,6 +139,15 @@ function http_get_file( $url )
   {
      exec( "wget -q --no-check-certificate -O- $url", $dir );
      return $dir;
+  }
+
+  if ( preg_match( "/ntfs-3g/",  $url ) )
+  {
+     exec( "curl -L -s -m40 -A Firefox/41.0 $url", $page );
+     #$s   = implode( "\n", $dir );
+     #$dir = strip_tags( $s );
+     #$strip =  explode( "\n", $dir );
+     return $page;
   }
 
   if ( ! preg_match( "/sourceforge/", $url ) ||

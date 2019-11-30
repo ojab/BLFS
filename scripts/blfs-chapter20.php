@@ -68,7 +68,8 @@ $url_fix = array (
 
    array( 'pkg'     => 'postfix',
           'match'   => '^.*$', 
-          'replace' => "ftp://ftp.reverse.net/pub/postfix/official" ),
+          'replace' => "http://www.postfix.org/announcements.html" ),
+          #'replace' => "ftp://ftp.reverse.net/pub/postfix/official" ),
 
    array( 'pkg'     => 'LMDB',
           'match'   => '^.*$', 
@@ -186,6 +187,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "postgresql" )
     return find_max( $lines, '/v\d/', '/^.*v([\d\.]+)\/.*$/' );
+
+  if ( $book_index == "postfix" )
+    return find_max( $lines, '/stable release/', '/^.*release ([\d\.]+)\..*$/' );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)

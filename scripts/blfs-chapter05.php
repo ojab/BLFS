@@ -101,7 +101,8 @@ function get_packages( $package, $dirpath )
 
   if ( preg_match( "/ftp/", $dirpath ) ) $dirpath .= "/";
   $lines = http_get_file( "$dirpath" );
-
+#echo "dirpath=$dirpath\n";
+#print_r($lines);
   if ( ! is_array( $lines ) ) return $lines;
 
   if ( isset( $regex[ $package ] ) )
