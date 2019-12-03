@@ -1,3 +1,6 @@
+2019-12-03  DJ Lucas <dj@linuxfromscratch.org>
+   * Fix typo (postfix) in firewalld bootscript
+
 2019-10-31  DJ Lucas <dj@linuxfromscratch.org>
    * Add nftables bootscript
    * Fix depdendencies for syslog
