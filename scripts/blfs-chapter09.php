@@ -364,7 +364,7 @@ function get_packages( $package, $dirpath )
     //$dir   = find_max( $lines, '/ +\d+\.\d/', '/^ +(\d+\.\d+) .*$/' );
     //$lines = http_get_file( "$dirpath/$dir" );
     //$ver = find_max( $lines, '/ICU \d/', '/^.*ICU ([\d\.]+).*$/' );
-    $ver = find_max( $lines, '/-src/', '/^.*icu4c-([\d\._]+).*$/' );
+    $ver = find_max( $lines, '/-src/', '/^.*icu4c-([\d\._]+)-src.*$/' );
     return preg_replace( "/\./", "_", $ver );
   }
 
