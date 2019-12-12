@@ -27,6 +27,10 @@ $ignores = array();
 $regex = array();
 
 $url_fix = array (
+   array( 'pkg'     => 'cairo',
+          'match'   => '^.*$', 
+          'replace' => "https://www.cairographics.org/releases" ),
+
    array( 'pkg'     => 'fltk',
           'match'   => '^.*$', 
           'replace' => "https://www.fltk.org/software.php" ),

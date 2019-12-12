@@ -77,6 +77,10 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "http://fcron.free.fr" ),
 
+   array( 'pkg'     => 'lm-sensors',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/lm-sensors/lm-sensors/releases" ),
+
    array( 'pkg'     => 'logrotate',
           'match'   => '^.*$', 
           'replace' => "https://github.com/logrotate/logrotate/releases" ),
@@ -216,6 +220,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "heirloom" )
     return find_max( $lines, '/\d{6}/', '/^.* (\d{6}) .*$/' );
+
+  if ( $book_index == "lm-sensors" )
+    return find_max( $lines, '/V\d/', '/^.*V([\d-]+).*$/' );
 
   if ( $book_index == "udisks1" )
     return find_max( $lines, '/udisks/', '/^.*udisks-(\d[\d\.]*\d).*$/' );
