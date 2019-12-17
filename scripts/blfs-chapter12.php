@@ -37,6 +37,14 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "https://github.com/projectatomic/bubblewrap/releases" ),
    
+   array( 'pkg'     => 'elogind',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/elogind/elogind/releases" ),
+   
+   array( 'pkg'     => 'blocaled',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/pierre-labastie/blocaled/releases" ),
+   
    array( 'pkg'     => 'hdparm',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/hdparm/files" ),
@@ -205,6 +213,12 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "colord1" )
     return find_max( $lines, '/colord/', '/^.*colord-(\d[\d\.]*\d).tar.*$/' );
+
+  if ( $book_index == "elogind" )
+    return find_max( $lines, '/Version \d/', '/^.*Version (\d[\d\.]*\d) Release.*$/' );
+
+  if ( $book_index == "blocaled" )
+    return find_max( $lines, '/Blocaled \d/', '/^.*Blocaled (\d[\d\.]*\d).*$/' );
 
   if ( $book_index == "sysstat" )
     return find_max( $lines, '/sysstat-/', '/^.*sysstat-(\d[\d\.]*\d).tar.*$/' );
