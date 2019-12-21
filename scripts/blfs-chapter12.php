@@ -218,7 +218,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/Version \d/', '/^.*Version (\d[\d\.]*\d) Release.*$/' );
 
   if ( $book_index == "blocaled" )
-    return find_max( $lines, '/Blocaled \d/', '/^.*Blocaled (\d[\d\.]*\d).*$/' );
+    return find_max( $lines, '/blocaled/', '/^.*blocaled-(\d[\d\.]*\d).tar.*$/' );
 
   if ( $book_index == "sysstat" )
     return find_max( $lines, '/sysstat-/', '/^.*sysstat-(\d[\d\.]*\d).tar.*$/' );
