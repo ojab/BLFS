@@ -38,6 +38,10 @@ $url_fix = array (
           //'replace' => "https://googlechromereleases.blogspot.com/" ),
           'replace' => "https://git.archlinux.org/svntogit/packages.git/plain/trunk/PKGBUILD?h=packages/chromium" ),
 
+   array( 'pkg'     => 'falkon',
+          'match'   => '^.*$',
+          'replace' => "https://github.com/KDE/falkon/releases" ),
+
    array( 'pkg'     => 'firefox',
           'match'   => '^.*$',
           'replace' => "https://archive.mozilla.org/pub/firefox/releases/" ),
@@ -284,6 +288,9 @@ function get_packages( $package, $dirpath )
 
     return $max;
   }
+
+  if ( preg_match( "/falkon/", "$dirpath" ) )
+      return find_max( $lines, "/v\d/", "/^\s*v([\d\.]+).*$/" );
 
   if ( preg_match( "/firefox/", "$dirpath" ) )
       return find_max( $lines, "/^\s+[\d\.]+esr/", "/^\s+([\d\.]+)esr\/.*$/" );
