@@ -151,7 +151,8 @@ $url_fix = array (
 
    array( 'pkg'     => 'llvm',
           'match'   => '^.*$',
-          'replace' => "http://llvm.org/releases/download.html" ),
+          'replace' => "https://github.com/llvm/llvm-project/releases" ),
+          //'replace' => "http://llvm.org/releases/download.html" ),
 
    array( 'pkg'     => 'nasm',
           'match'   => '^.*$',
@@ -602,7 +603,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/doxygen/', '/^.*doxygen-([\d\.]+).src.tar.*$/' );
 
   if ( $book_index == "llvm" )
-     return find_max( $lines, "/Download LLVM/",  "/^.*LLVM ([\d\.]+).*$/" );
+     return find_max( $lines, "/llvm-/",  "/^.*llvm-([\d\.]+).src.*$/" );
 
   if ( $book_index == "elfutils" )
      return find_max( $lines, "/\d[\d\.]+/", "/^.* (\d[\d\.]+)$/" );
