@@ -112,6 +112,7 @@ function get_packages( $package, $dirpath )
          $book_index == "gtk+1"          ||
          $book_index == "gtk-engines"    ||
          $book_index == "gtk-vnc"        ||
+         $book_index == "libdazzle"      ||
          $book_index == "libglade"       ||
          $book_index == "pango"          ||
          $book_index == "pangomm"        ||
