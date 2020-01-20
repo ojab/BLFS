@@ -414,7 +414,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/^.*compat-\d/', '/^.*compat-([\d\.]+) .*$/' );
 
   if ( $book_index == "libxkbcommon" )
-    return find_max( $lines, '/\d\./', '/^.*(0\.[\d\.]+)\..*$/' );
+    return find_max( $lines, '/\d\./', '/^.* (0\.[\d\.]+)\.$/' );
 
   if ( $book_index == "libxml2" )
     return find_max( $lines, '/libxml2/', '/^.*libxml2-([\d\.-]+).tar.*$/' );
