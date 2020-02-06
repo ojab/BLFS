@@ -405,6 +405,10 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://pygments.org" ),
 
+   array( 'pkg'     => 'python-dbusmock',
+          'match'   => '^.*$',
+          'replace' => "https://github.com/martinpitt/python-dbusmock/releases" ),
+
    array( 'pkg'     => 'scour',
           'match'   => '^.*$',
           'replace' => "https://github.com/scour-project/scour/releases" ),
@@ -668,6 +672,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "pycairo" )
     return find_max( $lines, "/pycairo/", "/^.*pycairo-(\d[\d\.]*\d)\.tar.*$/" );
+
+  if ( $book_index == "python-dbusmock" )
+    return find_max( $lines, "/python-dbusmock/", "/^.*python-dbusmock-(\d[\d\.]*\d)\.tar.*$/" );
 
   if ( $book_index == "apache-ant" )
     return find_max( $lines, "/$package/", "/^.*$package-(\d[\d\.]+\d)-src.*$/" );
