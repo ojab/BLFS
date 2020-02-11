@@ -37,7 +37,7 @@ $line             = exec( "grep ' kf5apps-version ' $file" );
 $kf5_apps_version = preg_replace( '/^.*"(\d[\.\d]+)".*$/', "$1", $line );
 
 $book[ 'kf5-apps' ] = array( 'basename' => 'kf5-apps',
-                             'url'      => 'http://download.kde.org/stable/applications',
+                             'url'      => 'http://download.kde.org/stable/release-service',
                              'version'  => $kf5_apps_version );
 
 $line           = exec( "grep 'plasma5-version' $file" );
