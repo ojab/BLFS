@@ -84,7 +84,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'kwave',
           'match'   => '^.*$', 
-          'replace' => "http://download.kde.org/stable/applications" ),
+          'replace' => "http://download.kde.org/stable/release-service" ),
 
    array( 'pkg'     => 'simpleburn',
           'match'   => '^.*$', 
