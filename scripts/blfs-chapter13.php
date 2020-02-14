@@ -36,6 +36,7 @@ $ignores[ 'apache-maven1'] = '';
 $ignores[ 'icedtea-web'  ] = '';
 $ignores[ 'python'       ] = '';
 $ignores[ 'python1'      ] = '';
+$ignores[ 'pycairo1'     ] = '';   // Static old version for python2 only
 $ignores[ 'NetRexx'      ] = '';
 
 //$current="File-Slurper";  // For debugging

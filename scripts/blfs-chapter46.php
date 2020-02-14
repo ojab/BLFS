@@ -358,7 +358,7 @@ function get_packages( $package, $dirpath )
       return find_max( $lines, "/$package/", "/^.*$package-([\d\.]+).*$/" );
 
   if ( $package == "speexdsp" )
-      return find_max( $lines, "/$package/", "/^.*$package-([\d\.rc]+).tar.*$/" );
+      return find_max( $lines, "/$package/", "/^.*$package-([\d\.]+).tar.*$/" );
 
   if ( $package == "taglib" )
       return find_max( $lines, "/TagLib/", "/^.*TagLib ([\d\.]+).*$/" );
