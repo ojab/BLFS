@@ -63,7 +63,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'libwacom',
         'match'   => '^.*$',
-        'replace' => "https://sourceforge.net/projects/linuxwacom/files/libwacom" ),
+        'replace' => " https://github.com/linuxwacom/libwacom/releases" ),
 
  array( 'pkg'     => 'grantlee',
         'match'   => '^.*$',
