@@ -5,7 +5,7 @@ include 'blfs-include.php';
 
 $CHAPTER       = '25';
 $CHAPTERS      = 'Chapter 25';
-$START_PACKAGE = 'atk';
+$START_PACKAGE = 'amtk';
 $STOP_PACKAGE  = 'webkitgtk';
 
 $renames = array();
