@@ -6,7 +6,7 @@ include 'blfs-include.php';
 $CHAPTER       = '35';
 $CHAPTERS      = 'Chapter 35';
 $START_PACKAGE = 'gcr';
-$STOP_PACKAGE  = 'polkit-gnome';
+$STOP_PACKAGE  = 'yelp';
 
 $renames = array();
 $ignores = array();
