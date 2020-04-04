@@ -11,8 +11,8 @@ $STOP_PACKAGE  = 'xapian';
 $renames = array();
 $renames[ 'node-v'  ] = 'node.js';
 $renames[ 'libuv-v' ] = 'libuv';
-$renames[ 'mozjs'   ] = 'js38';
-$renames[ 'mozjs1'  ] = 'js52';
+$renames[ 'mozjs'   ] = 'js60';
+#$renames[ 'mozjs1'  ] = 'js52';
 $renames[ 'gmime1'  ] = 'gmime3';
 
 $ignores = array();
@@ -200,7 +200,7 @@ function get_packages( $package, $dirpath )
   if ( isset( $current ) && $book_index != "$current" ) return 0;
 
   if ( $package == "mozjs"  ) return "manual";
-  if ( $package == "mozjs1" ) return "manual";
+#  if ( $package == "mozjs1" ) return "manual";
 
   // Fix up directory path
   foreach ( $url_fix as $u )
