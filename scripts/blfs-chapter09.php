@@ -11,6 +11,7 @@ $STOP_PACKAGE  = 'xapian';
 $renames = array();
 $renames[ 'node-v'  ] = 'node.js';
 $renames[ 'libuv-v' ] = 'libuv';
+$renames[ 'firefox' ] = 'js';
 $renames[ 'mozjs'   ] = 'js60';
 #$renames[ 'mozjs1'  ] = 'js52';
 $renames[ 'gmime1'  ] = 'gmime3';
@@ -18,6 +19,7 @@ $renames[ 'gmime1'  ] = 'gmime3';
 $ignores = array();
 
 //$current="gmime1"; // For debugging
+$current="uchardet"; // For debugging
 
 $regex = array();
 $regex[ 'expat'         ] = "/^.*Download expat-([\d\.]+).tar.*$/";
@@ -52,6 +54,10 @@ $url_fix = array (
  array( 'pkg'     => 'expat',
         'match'   => '^.*$',
         'replace' => "http://$sf/projects/expat/files/expat" ),
+
+ array( 'pkg'     => 'firefox',
+        'match'   => '^.*$',
+        'replace' => "https://archive.mozilla.org/pub/firefox/releases/" ),
 
  array( 'pkg'     => 'libarchive',
         'match'   => '^.*$',
@@ -176,6 +182,10 @@ $url_fix = array (
  array( 'pkg'     => 'pcre2',
         'match'   => '^.*$',
         'replace' => "https://sourceforge.net/projects/pcre/files/pcre2" ),
+
+ array( 'pkg'     => 'umockdev',
+        'match'   => '^.*$',
+        'replace' => "https://github.com/martinpitt/umockdev/releases" ),
 
  array( 'pkg'     => 'wayland',
         'match'   => '^.*$',
@@ -394,6 +404,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "fftw" )
     return find_max( $lines, '/ fftw-\d/', '/^.* fftw-([\d\.pl\-]+)\.tar.*$/' );
+
+  if ( $book_index == "firefox" )
+      return find_max( $lines, "/^\s+[\d\.]+esr/", "/^\s+([\d\.]+)esr\/.*$/" );
 
   if ( $book_index == "libarchive" )
     return find_max( $lines, '/archive \d/', '/^.*archive ([\d\.]+).*$/' );
