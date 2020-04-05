@@ -19,7 +19,6 @@ $renames[ 'gmime1'  ] = 'gmime3';
 $ignores = array();
 
 //$current="gmime1"; // For debugging
-$current="uchardet"; // For debugging
 
 $regex = array();
 $regex[ 'expat'         ] = "/^.*Download expat-([\d\.]+).tar.*$/";

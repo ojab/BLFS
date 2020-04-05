@@ -22,7 +22,7 @@ $renames[ 'qtwebkit-opensource-src'        ] = 'qtwebkit';
 
 $ignores = array();
 
-$current="graphene"; // For debugging
+//$current="graphene"; // For debugging
 
 $regex = array();
 
