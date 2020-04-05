@@ -22,7 +22,7 @@ $renames[ 'qtwebkit-opensource-src'        ] = 'qtwebkit';
 
 $ignores = array();
 
-//$current="libepoxy"; // For debugging
+$current="graphene"; // For debugging
 
 $regex = array();
 
@@ -46,6 +46,10 @@ $url_fix = array (
    array( 'pkg'     => 'glew',
           'match'   => '^.*$', 
           'replace' => "https://github.com/nigels-com/glew/releases" ),
+
+   array( 'pkg'     => 'graphene',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/ebassi/graphene/releases" ),
 
    array( 'pkg'     => 'keybinder',
           'match'   => '^.*$', 
