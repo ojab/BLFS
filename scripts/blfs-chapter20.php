@@ -54,6 +54,10 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "https://downloads.mariadb.org" ),
 
+   array( 'pkg'     => 'openldap',
+          'match'   => '^.*$', 
+          'replace' => "https://www.openldap.org" ),
+
 //   array( 'pkg'     => 'db',
 //          'match'   => '^.*$', 
 //          'replace' => "http://www.oracle.com/technetwork/products/berkeleydb/downloads/index.html" ),
@@ -147,6 +151,7 @@ function get_packages( $package, $dirpath )
      }
 
      $lines = http_get_file( $dirpath );
+print_r($lines);
      if ( ! is_array( $lines ) ) return $lines;
   } // End fetch
 
@@ -176,7 +181,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/sendmail\.[\d\.]+.tar.*$/', '/^.* sendmail\.([\d\.]+).tar.*$/' );
 
   if ( $book_index == "openldap" )
-    return find_max( $lines, '/openldap-[\d\.]+.tgz.*$/', '/^.* openldap-([\d\.]+).tgz.*$/' );
+    return find_max( $lines, '/OpenLDAP \d/', '/^.*OpenLDAP ([\d\.]+)*$/' );
 
   if ( $book_index == "proftpd" )
     return find_max( $lines, '/proftpd-[a-m\d\.]+.tar.*$/', 
