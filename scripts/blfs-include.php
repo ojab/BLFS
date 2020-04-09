@@ -160,7 +160,7 @@ function http_get_file( $url )
          preg_match( "/docutils/", $url    ) ||
          preg_match( "/expect/", $url      ) ) 
   {
-     exec( "curl -L -s -m40 -A Firefox/41.0 $url", $dir );
+     exec( "curl -4 -L -s -m40 -A Firefox/41.0 $url", $dir );
      $s   = implode( "\n", $dir );
      $dir = strip_tags( $s );
      $strip =  explode( "\n", $dir );
