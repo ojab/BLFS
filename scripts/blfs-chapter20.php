@@ -34,6 +34,10 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "http://packages.debian.org/sid/xinetd" ),
 
+   array( 'pkg'     => 'bind',
+          'match'   => '^.*$', 
+          'replace' => "https://downloads.isc.org/isc/bind9" ),
+
    array( 'pkg'     => 'soprano',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/soprano/files" ),
@@ -119,6 +123,7 @@ function get_packages( $package, $dirpath )
   // Check for ftp
   if ( preg_match( "/^ftp/", $dirpath ) ) 
   { 
+/*
     // bind
     if ( $book_index == "bind" )
     {
@@ -133,7 +138,7 @@ function get_packages( $package, $dirpath )
 
       return find_max( $lines2, "/bind-9/", "/^.*bind-(\d+[\d\.P-]+).tar.*$/" );
     }
-
+*/
     // Get listing
     $lines = http_get_file( "$dirpath/" );
   }
@@ -176,6 +181,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "qpopper" )
     return find_max( $lines, '/qpopper[\d\.]+.tar.*$/', '/^.* qpopper([\d\.]+).tar.*$/' );
+
+  if ( $book_index == "bind" )
+    return find_even_max( $lines, '/^ *\d\./', '/^.* ([\d\.P-]+)\/.*$/' );
 
   if ( $book_index == "sendmail." )
     return find_max( $lines, '/sendmail\.[\d\.]+.tar.*$/', '/^.* sendmail\.([\d\.]+).tar.*$/' );

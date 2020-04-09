@@ -40,6 +40,14 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "http://roy.marples.name/downloads/dhcpcd" ),
 
+   array( 'pkg'     => 'bind',
+          'match'   => '^.*$', 
+          'replace' => "https://downloads.isc.org/isc/bind9" ),
+
+   array( 'pkg'     => 'dhcp',
+          'match'   => '^.*$', 
+          'replace' => "https://downloads.isc.org/isc/dhcp" ),
+
    array( 'pkg'     => 'nfs-utils',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/nfs/files" ),
@@ -117,6 +125,7 @@ function get_packages( $package, $dirpath )
   // Check for ftp
   if ( preg_match( "/^ftp/", $dirpath ) ) 
   { 
+/*
     if ( $book_index == "bind" )
     {
        // Get the max directory and adjust the directory path
@@ -129,7 +138,8 @@ function get_packages( $package, $dirpath )
       $lines2   = http_get_file( $dirpath );
       return find_max( $lines2, "/bind-9/", "/^.*bind-(\d+[\d\.P\-]+).tar.*$/" );
     }
-
+*/
+/*
     if ( $book_index == "dhcp"  )
     {
        // Get the max directory and adjust the directory path
@@ -140,7 +150,7 @@ function get_packages( $package, $dirpath )
       $dir      = find_max( $lines, "/\d$/", "/^.* (\d\.[\d\.P\-]+)$/" );
       $dirpath .= "/$dir/";
     }
-
+*/
     // Get listing
     $lines    = http_get_file( "$dirpath/" );
   }
@@ -178,7 +188,11 @@ function get_packages( $package, $dirpath )
   }
 
   if ( $book_index == "dhcp" )
-    return find_max( $lines, '/dhcp/', '/^.*dhcp-([\d\.P-]+).tar.*$/' );
+    //return find_max( $lines, '/dhcp/', '/^.*dhcp-([\d\.P-]+).tar.*$/' );
+    return find_even_max( $lines, '/^ *\d\./', '/^.* ([\d\.P-]+)\/\d.*$/' );
+
+  if ( $book_index == "bind" )
+    return find_even_max( $lines, '/^ *\d\./', '/^.* ([\d\.P-]+)\/\d.*$/' );
 
   if ( $book_index == "ncftp" )
     return find_max( $lines, '/ncftp/', '/^.*ncftp-([\d\.]+)-src.tar.*$/' );
