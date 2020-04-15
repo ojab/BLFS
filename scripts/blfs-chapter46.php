@@ -58,11 +58,11 @@ $url_fix = array (
 
    array( 'pkg'     => 'faac',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/faac/files" ),
+          'replace' => "https://github.com/knik0/faac/releases" ),
 
    array( 'pkg'     => 'faad2',
           'match'   => '^.*$', 
-          'replace' => "http://sourceforge.net/projects/faac/files/faad2-src" ),
+          'replace' => "https://github.com/knik0/faad2/releases" ),
 
    array( 'pkg'     => 'fdk-aac',
           'match'   => '^.*$', 
@@ -266,8 +266,7 @@ function get_packages( $package, $dirpath )
 
      if ( $package == "opus" ) $dirpath .= '/';
 
-     if ( $package == "faad2" ||
-          $package == "id3lib" )
+     if ( $package == "id3lib" )
        exec( "links -dump $dirpath", $lines );
      else 
        $lines = http_get_file( $dirpath );
@@ -311,11 +310,14 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "faad2" )
   {
-      // Need to get max dir and go down
-      $dir = find_max( $lines, "/faad2-\d/", "/^.*(faad2-[\d\.]+).*$/" );
-      $dirpath .= "/$dir";
-      exec( "links -dump $dirpath", $lines );
-      return find_max( $lines, "/faad2-\d/", "/^.*faad2-([\d\.]+).tar.*$/" );
+      $ver = find_max( $lines, "/FAAD2 \d/", "/^.*FAAD2 ([\d\.]+).*$/" );
+      return preg_replace( "/\./", "_", $ver );
+  }
+
+  if ( $package == "faac" )
+  {
+      $ver = find_max( $lines, "/FAAC \d/", "/^.*FAAC ([\d\.]+).*$/" );
+      return preg_replace( "/\./", "_", $ver );
   }
 
   if ( $package == "gstreamer" )
@@ -391,7 +393,7 @@ Function get_pattern( $line )
             'regex' => "/^.*a52dec-(\d[\d\.]+).*$/" ),
      
      array( 'pkg'   => 'faad2', 
-            'regex' => "/^.*faad2-(\d[\d\.]+).*$/" ),
+            'regex' => "/^.*faad2-(\d[\d_]+).*$/" ),
      
      array( 'pkg'   => 'frei', 
             'regex' => "/^.*frei0r-plugins-(\d[\d\.]+).*$/" ),
