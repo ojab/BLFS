@@ -1,3 +1,7 @@
+2020-04-15 Douglas R. Reno <renodr@linuxfromscratch.org>
+	* Fix the dhcpcd systemd unit to use the correct PID file and no
+	  freeze systemctl or stop dhcpcd from starting as a result.
+
 2019-10-26 DJ Lucas <dj@linuxfromscratch.org>
    * Add nftables service.
 
