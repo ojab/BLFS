@@ -16,6 +16,7 @@ $renames[ 'docbook-v' ] = "docbook-xml-5.1";
 $ignores = array();
 $ignores[ 'install-tl-unx' ] = '';
 $ignores[ 'texlive1'       ] = '';
+$ignores[ 'texlive11'      ] = '';
 $ignores[ 'docbook-xsl-doc'] = '';
 
 //$current="docbook-xsl-nons";  // For debugging
