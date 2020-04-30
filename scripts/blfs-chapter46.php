@@ -126,7 +126,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'soundtouch',
           'match'   => '^.*$', 
-          'replace' => "https://gitlab.com/soundtouch/soundtouch/tags" ),
+          'replace' => "https://gitlab.com/soundtouch/soundtouch/-/tags" ),
 
    array( 'pkg'     => 'taglib',
           'match'   => '^.*$', 
@@ -357,7 +357,7 @@ function get_packages( $package, $dirpath )
       return find_max( $lines, "/v\d/", "/^.*v(\d[\d\.]+\d).*$/" );
 
   if ( $package == "soundtouch" )
-      return find_max( $lines, "/$package/", "/^.*$package-([\d\.]+).*$/" );
+      return find_max( $lines, "/release/", "/^.*release ([\d\.]+).*$/" );
 
   if ( $package == "speexdsp" )
       return find_max( $lines, "/$package/", "/^.*$package-([\d\.]+).tar.*$/" );
