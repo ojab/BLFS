@@ -295,6 +295,12 @@ function get_current()
         $basename = "biblatex-biber";
       }
 
+      if ( $basename == "fontforge-dist" ) 
+      {
+        //$version = basename( $url ); 
+        $basename = "fontforge";
+      }
+
       $index = $basename;
       while ( isset( $book[ $index ] ) ) $index .= "1";
 

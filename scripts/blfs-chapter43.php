@@ -26,7 +26,7 @@ $regex[ 'chromium'      ] = "/^pkgver=(\d[\d\.]+\d).*$/";
 $regex[ 'gnucash'       ] = "/^.*Download gnucash-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'midori'        ] = "/^.*midori_(\d[\d\.]*\d)_all.*$/";
 $regex[ 'pidgin'        ] = "/^.*Download.*pidgin-(\d[\d\.]+\d)-.*$/";
-$regex[ 'fontforge-dist'] = "/^.*fontforge-dist-(20\d+).tar.*$/";
+$regex[ 'fontforge'     ] = "/^.*fontforge-(20\d+).tar.*$/";
 $regex[ 'xscreensaver'  ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'tigervnc'      ] = "/^.*TigerVNC (\d[\d\.]+\d)$/";
 $regex[ 'transmission'  ] = "/^.*Transmission (\d[\d\.]+\d).*$/";
@@ -114,7 +114,7 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "http://xchat.org/files/source" ),
 
-   array( 'pkg'     => 'fontforge-dist',
+   array( 'pkg'     => 'fontforge',
           'match'   => '^.*$',
           'replace' => "https://github.com/fontforge/fontforge/releases" ),
 
