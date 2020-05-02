@@ -56,6 +56,10 @@ $url_fix = array (
           'match'   => '^.*$', 
           'replace' => "https://alsa-project.org/wiki/Main_Page" ),
 
+   array( 'pkg'     => 'alsa-firmware',
+          'match'   => '^.*$', 
+          'replace' => "https://www.alsa-project.org/files/pub/firmware" ),
+
    array( 'pkg'     => 'faac',
           'match'   => '^.*$', 
           'replace' => "https://github.com/knik0/faac/releases" ),
