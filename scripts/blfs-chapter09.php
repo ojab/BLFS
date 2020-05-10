@@ -46,6 +46,10 @@ $url_fix = array (
         'match'   => '^.*$',
         'replace' => "http://sourceforge.net/projects/clucene/files" ),
 
+ array( 'pkg'     => 'double-conversion',
+        'match'   => '^.*$',
+        'replace' => "https://github.com/google/double-conversion/releases" ),
+
  array( 'pkg'     => 'exempi',
         'match'   => '^.*$',
         'replace' => "https://libopenraw.freedesktop.org/exempi" ),
@@ -367,6 +371,8 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "brotli-v" )
     return find_max( $lines, '/v\d/', '/^.*v([\d\.]+).*$/' );
 
+  if ( $book_index == "double-conversion" )
+    return find_max( $lines, '/v\d/', '/^.*v([\d\.]+).*$/' );
 
   if ( $book_index == "icu4c" )
   {
