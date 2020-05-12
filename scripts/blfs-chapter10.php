@@ -10,6 +10,7 @@ $STOP_PACKAGE  = 'woff2';
 
 $renames = array();
 $renames[ 'mypaint-brushes-v' ] = 'mypaint-brushes';
+$renames[ 'libspiro-dist'     ] = 'libspiro';
 
 $ignores = array();
 $ignores[ 'ippicv' ] = "";
@@ -100,6 +101,10 @@ $url_fix = array (
  array( 'pkg'     => 'sassc',
         'match'   => '^.*$', 
         'replace' => "https://github.com/sass/sassc/tags" ),
+
+ array( 'pkg'     => 'libspiro-dist',
+        'match'   => '^.*$', 
+        'replace' => "https://github.com/fontforge/libspiro/releases" ),
 
  array( 'pkg'     => 'libsass',
         'match'   => '^.*$', 
@@ -279,6 +284,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "libmypaint" )
     return find_max( $lines, '/libmypaint/', '/^\s*libmypaint-(\d[\d\.]+).tar.*$/' );
+
+  if ( $book_index == "libspiro-dist" )
+    return find_max( $lines, '/libspiro-dist/', '/^.*libspiro-dist-(\d[\d\.]+).tar.*$/' );
 
   if ( $book_index == "sassc" )
     return find_max( $lines, '/\d\.\d\.\d/', '/^.*(\d\.\d\.\d).*$/' );

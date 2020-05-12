@@ -9,16 +9,18 @@ $START_PACKAGE = 'apr';
 $STOP_PACKAGE  = 'xapian';
 
 $renames = array();
-$renames[ 'node-v'  ] = 'node.js';
-$renames[ 'libuv-v' ] = 'libuv';
-$renames[ 'firefox' ] = 'js';
-$renames[ 'mozjs'   ] = 'js60';
-#$renames[ 'mozjs1'  ] = 'js52';
-$renames[ 'gmime1'  ] = 'gmime3';
+$renames[ 'node-v'                ] = 'node.js';
+$renames[ 'libuv-v'               ] = 'libuv';
+$renames[ 'firefox'               ] = 'js';
+$renames[ 'mozjs'                 ] = 'js60';
+#$renames[ 'mozjs1'                ] = 'js52';
+$renames[ 'gmime1'                ] = 'gmime3';
+$renames[ 'libuninameslist-dist'  ] = 'libuninameslist';
 
 $ignores = array();
 
 //$current="gmime1"; // For debugging
+$current="libuninameslist-dist"; // For debugging
 
 $regex = array();
 $regex[ 'expat'         ] = "/^.*Download expat-([\d\.]+).tar.*$/";
@@ -93,6 +95,10 @@ $url_fix = array (
  array( 'pkg'     => 'libesmtp',
         'match'   => '^.*$',
         'replace' => "http://brianstafford.info/libesmtp/download.html" ),
+
+ array( 'pkg'     => 'libuninameslist-dist',
+        'match'   => '^.*$',
+        'replace' => "https://github.com/fontforge/libuninameslist/releases" ),
 
  array( 'pkg'     => 'libusb',
         'match'   => '^.*$',
@@ -415,6 +421,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "libarchive" )
     return find_max( $lines, '/archive \d/', '/^.*archive ([\d\.]+).*$/' );
+
+  if ( $book_index == "libuninameslist-dist" )
+    return find_max( $lines, '/libuninameslist-dist/', '/^.*libuninameslist-dist-([\d\.]+).tar.*$/' );
 
   if ( $book_index == "libusb" )
     return find_max( $lines, '/libusb/', '/^.*libusb-([\d\.]+).tar.*$/' );
