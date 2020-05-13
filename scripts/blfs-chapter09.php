@@ -20,7 +20,6 @@ $renames[ 'libuninameslist-dist'  ] = 'libuninameslist';
 $ignores = array();
 
 //$current="gmime1"; // For debugging
-$current="libuninameslist-dist"; // For debugging
 
 $regex = array();
 $regex[ 'expat'         ] = "/^.*Download expat-([\d\.]+).tar.*$/";
