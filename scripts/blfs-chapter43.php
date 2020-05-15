@@ -128,7 +128,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'xarchiver',
           'match'   => '^.*$',
-          'replace' => "http://sourceforge.net/projects/xarchiver/files" ),
+          'replace' => "https://github.com/ib/xarchiver/releases" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -311,6 +311,9 @@ function get_packages( $package, $dirpath )
       return find_max( $lines, "/^\s*\d/", "/^\s*(\d\.[\d\.]+)\s+.*$/" );
 
   if ( $package == "tigervnc" )
+      return find_max( $lines, "/^\s*\d\./", "/^\s*(\d\.[\d\.]+).*$/" );
+
+  if ( $package == "xarchiver" )
       return find_max( $lines, "/^\s*\d\./", "/^\s*(\d\.[\d\.]+).*$/" );
 
   if ( $package == "xdg-utils" )

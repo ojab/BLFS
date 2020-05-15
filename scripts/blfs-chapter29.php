@@ -9,6 +9,8 @@ $START_PACKAGE = 'extra-cmake-modules';
 $STOP_PACKAGE  = 'libdbusmenu-qt';
 
 $renames = array();
+$renames[ 'polkit-qt-1' ] = 'polkit-qt';
+
 $ignores = array();
 
 //$current="libdbusmenu-qt";
@@ -26,7 +28,7 @@ $url_fix = array (
 
   array( 'pkg'     => 'libdbusmenu-qt',
          'match'   => '^.*$', 
-       'replace' => "http://archive.ubuntu.com/ubuntu/pool/main/libd/libdbusmenu-qt/" ),
+         'replace' => "http://archive.ubuntu.com/ubuntu/pool/main/libd/libdbusmenu-qt/" ),
 );
 
 function get_packages( $package, $dirpath )

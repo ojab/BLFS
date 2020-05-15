@@ -54,6 +54,10 @@ $url_fix = array (
         'match'   => '^.*$', 
         'replace' => "https://github.com/g-truc/glm/releases" ),
 
+ array( 'pkg'     => 'harfbuzz',
+        'match'   => '^.*$', 
+        'replace' => "https://github.com/harfbuzz/harfbuzz/releases" ),
+
  array( 'pkg'     => 'imlib2',
         'match'   => '^.*$', 
         'replace' => "http://$sf/projects/enlightenment/files/imlib2-src" ),
@@ -271,6 +275,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "glm" )
     return find_max( $lines, '/GLM/', '/^.*GLM (\d\.[\d\.]+).*$/' );
+
+  if ( $book_index == "haarfbuzz" )
+    return find_max( $lines, '/harfbuzz-/', '/^.*harfbuzz-(\d\.[\d\.]+).tar.*$/' );
 
   if ( $book_index == "libpng" )
   {
