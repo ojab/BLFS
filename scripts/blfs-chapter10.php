@@ -276,9 +276,6 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "glm" )
     return find_max( $lines, '/GLM/', '/^.*GLM (\d\.[\d\.]+).*$/' );
 
-  if ( $book_index == "haarfbuzz" )
-    return find_max( $lines, '/harfbuzz-/', '/^.*harfbuzz-(\d\.[\d\.]+).tar.*$/' );
-
   if ( $book_index == "libpng" )
   {
     $dir = find_max( $lines, '/^\s*libpng\d/', '/^\s*libpng(\d[02468]) .*$/' );
