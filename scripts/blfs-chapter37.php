@@ -310,8 +310,11 @@ function get_packages( $package, $dirpath )
      $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
      $dirs     = http_get_file( "$dirpath/" );
 
-     if ( preg_match( "/xf/", $package )  &&
-          $book_index != "xfburn" )
+     if ( ( preg_match( "/xf/",  $package ) ||
+            preg_match( "/exo/", $package ) 
+          ) &&
+          $book_index != "xfburn" 
+        )
        $dir = find_even_max( $dirs, "/^\d/", "/^([\d\.]+)\/.*$/" );
      else
        $dir = find_max     ( $dirs, "/^\d/", "/^([\d\.]+)\/.*$/" );
