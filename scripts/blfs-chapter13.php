@@ -357,6 +357,10 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "https://pypi.python.org/pypi/Beaker/" ),
 
+   array( 'pkg'     => 'py3c',
+          'match'   => '^.*$',
+          'replace' => "https://github.com/encukou/py3c/releases" ),
+
    array( 'pkg'     => 'MarkupSafe',
           'match'   => '^.*$',
           'replace' => "https://pypi.python.org/pypi/MarkupSafe/" ),
@@ -671,6 +675,9 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "librep" )
     return find_max( $lines, "/librep/", "/^.*[_-](\d[\d\.]*\d)\.tar.*$/" );
 
+  if ( $book_index == "py3c" )
+    return find_max( $lines, "/v\d\./", "/^.*v(\d[\d\.]*\d).*$/" );
+
   if ( $book_index == "pycairo" )
     return find_max( $lines, "/pycairo/", "/^.*pycairo-(\d[\d\.]*\d)\.tar.*$/" );
 
@@ -718,6 +725,9 @@ Function get_pattern( $line )
 
      array( 'pkg'   => 'PerlIO-utf8_strict',
             'regex' => "/\D*PerlIO-utf8_strict-([\d\.]+)\D*$/" ),
+
+     array( 'pkg'   => 'py3c',
+            'regex' => "/\D*py3c-([\d\.]+)\D*$/" ),
 
      array( 'pkg'   => 'Jinja2',
             'regex' => "/\D*Jinja2-([\d\.]+)\D*$/" ),

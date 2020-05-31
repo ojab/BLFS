@@ -17,7 +17,6 @@ $ignores[ 'libnl-doc' ] = '';
 
 $regex = array();
 $regex[ 'serf'          ] = "/^.*Serf is ([\d\.]+\d).*$/";
-$regex[ 'neon'          ] = "/^.*neon-(\d[\d\.]*).tar.*$/";
 $regex[ 'libevent'      ] = "/^.*release-(\d[\d\.]*)-stable.*$/";
 $regex[ 'libnsl'        ] = "/^.*libnsl ([\d\.]+\d)*$/";
 $regex[ 'rpcsvc-proto'  ] = "/^.*Version ([\d\.]+\d)*$/";
@@ -75,6 +74,10 @@ $url_fix = array (
    array( 'pkg'     => 'mutt',
           'match'   => '^.*$',
           'replace' => "http://www.mutt.org/download.html" ),
+
+   array( 'pkg'     => 'neon',
+          'match'   => '^.*$',
+          'replace' => "https://github.com/notroj/neon/releases/" ),
 
    array( 'pkg'     => 'nghttp2',
           'match'   => '^.*$',
@@ -218,6 +221,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "mutt" )
     return find_max( $lines, '/mutt-/', '/^.*mutt-([\d\.]+).tar.*$/' );
+
+  if ( $book_index == "neon" )
+    return find_max( $lines, '/\d\./', '/^.* ([\d\.]+).*$/' );
 
   if ( $book_index == "nghttp2" )
     return find_max( $lines, '/nghttp2/', '/^.*nghttp2 v([\d\.]+).*$/' );

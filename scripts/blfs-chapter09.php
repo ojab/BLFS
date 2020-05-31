@@ -484,6 +484,7 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "telepathy-glib"    ||
        $book_index == "wayland-protocols" ||
+       $book_index == "libqmi"            ||
        $book_index == "libmbim"           ||
        $book_index == "wayland"           )
     return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/", TRUE );
