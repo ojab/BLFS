@@ -29,7 +29,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'asciidoc',
           'match'   => '^.*$',
-          'replace' => "https://sourceforge.net/projects/asciidoc/files" ),
+          'replace' => "https://github.com/asciidoc/asciidoc-py3/releases" ),
 
    array( 'pkg'     => 'chrpath',
           'match'   => '^.*$',
@@ -169,9 +169,6 @@ function get_packages( $package, $dirpath )
 
      return 0;  // This is an error
   }
-
-  if ( $book_index == "asciidoc" )
-    return find_max( $lines, '/Latest/', '/^.*asciidoc-([\d\.]+).tar.*$/' );
 
   if ( $book_index == "chrpath" )
     return find_max( $lines, '/0\./', '/^\s*([\d\.]+).*$/' );
