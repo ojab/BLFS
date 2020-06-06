@@ -137,7 +137,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'node-v',
         'match'   => '^.*$',
-        'replace' => "https://nodejs.org/en" ),
+        'replace' => "https://nodejs.org/en/download/" ),
 
  array( 'pkg'     => 'wv',
         'match'   => '^.*$',
@@ -434,7 +434,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/v\d/', '/^.*v(\d\.[\d\.]+).*$/' );
 
   if ( $book_index == "node-v" ) // node.js
-    return find_max( $lines, '/LTS/', '/^.* (\d[\d\.]+) LTS.*$/' );
+    return find_max( $lines, '/node/', '/^.*node-v(\d[\d\.]+).tar.*$/' );
 
   if ( $book_index == "libusb-compat" )
     return find_max( $lines, '/^.*compat-\d/', '/^.*compat-([\d\.]+) .*$/' );

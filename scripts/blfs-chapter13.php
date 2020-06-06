@@ -492,15 +492,6 @@ function get_packages( $package, $dirpath )
       return find_max( $lines, "/gcc-\d/", "/^.*gcc-(\d[\d\.]+).*$/" );
     }
 
-    // slang
-    if ( $book_index == "slang" )
-    {
-       // Get the max directory and adjust the directory path
-      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-      $position = strrpos( $dirpath, "/" );
-      $dirpath  = substr ( $dirpath, 0, $position ) . "/latest";
-    }
-
     if ( $book_index == "cvs" )
     {
        // Get the max directory
