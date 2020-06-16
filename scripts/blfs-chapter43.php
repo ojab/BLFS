@@ -25,7 +25,6 @@ $regex[ 'inkscape'     ] = "/^.*Download Inkscape (\d[\d\.]+\d).*$/";
 $regex[ 'chromium'      ] = "/^pkgver=(\d[\d\.]+\d).*$/";
 $regex[ 'gnucash'       ] = "/^.*Download gnucash-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'midori'        ] = "/^.*midori_(\d[\d\.]*\d)_all.*$/";
-$regex[ 'pidgin'        ] = "/^.*Download.*pidgin-(\d[\d\.]+\d)-.*$/";
 $regex[ 'fontforge'     ] = "/^.*fontforge-(20\d+).tar.*$/";
 $regex[ 'xscreensaver'  ] = "/^.*xscreensaver-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'tigervnc'      ] = "/^.*TigerVNC (\d[\d\.]+\d)$/";
@@ -96,7 +95,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'pidgin',
           'match'   => '^.*$',
-          'replace' => "http://sourceforge.net/projects/pidgin/files" ),
+          'replace' => "http://sourceforge.net/projects/pidgin/files/Pidgin" ),
 
    array( 'pkg'     => 'QupZilla',
           'match'   => '^.*$', 
@@ -318,6 +317,9 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "xdg-utils" )
       return find_max( $lines, "/$package/", "/^$package-(\d\.[\d\.]+).tar.*$/" );
+
+  if ( $package == "pidgin" )
+      return find_max( $lines, "/^ *\d\./", "/^ *(\d\.[\d\.]+) .*$/" );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)

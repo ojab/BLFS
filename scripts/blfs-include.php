@@ -47,7 +47,7 @@ function find_max( $lines, $regex_match, $regex_replace, $skip_high = FALSE )
 //echo "slice=$slice\n";
      if ( "x$slice" == "x$line" && 
           ! preg_match( "/^\d[\d\.]*$/", $slice ) ) continue; 
-
+//echo "found\n";
      // Skip minor versions in the 90s if requested
      if ( $skip_high )
      {

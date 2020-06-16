@@ -24,9 +24,6 @@ $ignores[ 'lsb-release'    ] = ""; // Has not changed in 12 years
 $regex = array();
 $regex[ 'lsb-release'    ] = "/^.*lsb-release_([\d\.]+).*_all\.deb*$/";
 $regex[ 'krb5'           ] = "/^.*Kerberos V5 Release ([\d\.]+).*$/";
-$regex[ 'haveged'        ] = "/^.*haveged-([\d\.]+)\.tar.*$/";
-//$regex[ 'cracklib'       ] = "/^.*cracklib-([\d\.]+)\.tar.*$/";
-//$regex[ 'cracklib-words' ] = "/^.*cracklib-words-([\d\.]+)\.bz2.*$/";
 $regex[ 'ConsoleKit2'    ] = "/^.*ConsoleKit2-([\d\.]+)\.tar.*$/";
 $regex[ 'make-ca'        ] = "/^.*make-ca-(\d[\d\.]+\d).*$/";
 
@@ -74,7 +71,11 @@ $url_fix = array(
 
    array( 'pkg'     => 'haveged',
           'match'   => '^.*$',
-          'replace' => 'http://sourceforge.net/projects/haveged/files' ),
+          'replace' => 'https://github.com/jirka-h/haveged/releases' ),
+
+   array( 'pkg'     => 'iptables',
+          'match'   => '^.*$',
+          'replace' => 'http://www.netfilter.org/projects/iptables/files' ),
 
    array( 'pkg'     => 'krb5',
           'match'   => '^.*$',
@@ -195,6 +196,9 @@ function get_packages( $package, $dirpath )
 
      return 0;  // This is an error
   }
+
+  if ( $package == "haveged" )
+     return find_max( $lines, "/v\d\./", "/^.*v([\d\.]*\d).*$/" );
 
   if ( $package == "acl" || $package == "attr" )
      return find_max( $lines, "/$package/", "/^.*$package-([\d\.-]*\d)\.src.tar.*$/" );

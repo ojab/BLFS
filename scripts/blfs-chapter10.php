@@ -76,7 +76,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'libexif',
         'match'   => '^.*$', 
-        'replace' => "http://$sf/projects/libexif/files" ),
+        'replace' => "https://github.com/libexif/libexif/releases" ),
 
  array( 'pkg'     => 'libjpeg-turbo',
         'match'   => '^.*$', 
