@@ -223,7 +223,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/mutt-/', '/^.*mutt-([\d\.]+).tar.*$/' );
 
   if ( $book_index == "neon" )
-    return find_max( $lines, '/\d\./', '/^.* ([\d\.]+).*$/' );
+    return find_max( $lines, '/\d\./', '/^.* ([\d\.]+/d).*$/' );
 
   if ( $book_index == "nghttp2" )
     return find_max( $lines, '/nghttp2/', '/^.*nghttp2 v([\d\.]+).*$/' );
