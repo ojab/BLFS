@@ -167,6 +167,10 @@ $url_fix = array (
         'match'   => '^.*$',
         'replace' => "https://s3.amazonaws.com/json-c_releases" ),
 
+ array( 'pkg'     => 'popt',
+        'match'   => '^.*$',
+        'replace' => "http://ftp.rpm.org/mirror/popt" ),
+
  array( 'pkg'     => 'qca',
         'match'   => '^.*$',
         'replace' => "https://download.kde.org/stable/qca" ),
