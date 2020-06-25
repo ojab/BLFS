@@ -169,7 +169,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'popt',
         'match'   => '^.*$',
-        'replace' => "http://ftp.rpm.org/mirror/popt" ),
+        'replace' => "ftp://ftp.rpm.org/pub/rpm/popt/releases/popt-1.x" ),
 
  array( 'pkg'     => 'qca',
         'match'   => '^.*$',
