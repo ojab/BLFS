@@ -52,8 +52,6 @@ $regex[ 'OpenJDK1'] = "/^.*OpenJDK-(\d[\d\.]+\d)\-.*$/";
 $regex[ 'setuptools' ] = "/^.*setuptools-(\d[\d\.]+\d).zip.*$/";
 $regex[ 'lxml'       ] = "/^.*lxml-(\d[\d\.]+\d).*$/";
 $regex[ 'funcsigs'   ] = "/^.*funcsigs (\d[\d\.]+\d).*$/";
-//$regex[ 'pycrypto'   ] = "/^.*pycrypto (\d[\d\.]+\d).*$/";
-$regex[ 'pycryptodome' ] = "/^.*pycryptodome (\d[\d\.]+\d).*$/";
 $regex[ 'Pygments'   ] = "/^.*version: (\d[\d\.]+\d).*$/";
 //$regex[ 'ruby'       ] = "/^.*Ruby (\d[\d\.]+\d) Released.*$/";
 
@@ -394,13 +392,9 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "https://pypi.python.org/pypi/funcsigs" ),
 
-//   array( 'pkg'     => 'pycrypto',
-//          'match'   => '^.*$',
-//          'replace' => "https://pypi.python.org/pypi/pycrypto" ),
-
    array( 'pkg'     => 'pycryptodome',
           'match'   => '^.*$',
-          'replace' => "https://pypi.org/project/pycryptodome" ),
+          'replace' => "https://github.com/Legrandin/pycryptodome/releases" ),
 
    array( 'pkg'     => 'pycairo',
           'match'   => '^.*$',
@@ -674,6 +668,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "python-dbusmock" )
     return find_max( $lines, "/python-dbusmock/", "/^.*python-dbusmock-(\d[\d\.]*\d)\.tar.*$/" );
+
+  if ( $book_index == "pycryptodome" )
+    return find_max( $lines, "/v\d\./", "/^.*v(\d[\d\.]*\d).*$/" );
 
   if ( $book_index == "apache-ant" )
     return find_max( $lines, "/$package/", "/^.*$package-(\d[\d\.]+\d)-src.*$/" );
