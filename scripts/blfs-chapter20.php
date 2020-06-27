@@ -48,7 +48,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'sqlite-autoconf',
           'match'   => '^.*$', 
-          'replace' => "http://sqlite.org/download.html" ),
+          'replace' => "https://sqlite.org/download.html" ),
 
    array( 'pkg'     => 'mysql',
           'match'   => '^.*$', 
