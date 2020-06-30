@@ -150,6 +150,15 @@ function http_get_file( $url )
      return $page;
   }
 
+  if ( preg_match( "/gc_source/",  $url ) )
+  {
+     exec( "wget -q --no-check-certificate -O- $url", $dir );
+     $s     = implode( "\n", $dir );
+     $dir   = strip_tags( $s );
+     $strip =  explode( "\n", $dir );
+     return $strip;
+  }
+
   if ( ! preg_match( "/sourceforge/", $url ) ||
          preg_match( "/jfs/", $url         ) ||
          preg_match( "/liba52/", $url      ) ||
