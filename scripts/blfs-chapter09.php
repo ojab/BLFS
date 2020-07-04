@@ -420,7 +420,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/ fftw-\d/', '/^.* fftw-([\d\.pl\-]+)\.tar.*$/' );
 
   if ( $book_index == "firefox" )
-      return find_max( $lines, "/^\s+[\d\.]+esr/", "/^\s+([\d\.]+)esr\/.*$/" );
+      return find_max( $lines, "/^\s+68[\d\.]+esr/", "/^\s+([\d\.]+)esr\/.*$/" );
 
   if ( $book_index == "libarchive" )
     return find_max( $lines, '/archive \d/', '/^.*archive ([\d\.]+).*$/' );

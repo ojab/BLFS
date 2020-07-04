@@ -39,15 +39,15 @@ $url_fix = array (
 
    array( 'pkg'     => 'libisoburn',
           'match'   => '^.*$', 
-          'replace' => "http://files.libburnia-project.org/releases" ),
+          'replace' => "https://dev.lovelyhq.com/libburnia/libisoburn/-/tags" ),
 
    array( 'pkg'     => 'libisofs',
           'match'   => '^.*$', 
-          'replace' => "http://files.libburnia-project.org/releases" ),
+          'replace' => "https://dev.lovelyhq.com/libburnia/libisofs/-/tags" ),
 
    array( 'pkg'     => 'libburn',
           'match'   => '^.*$', 
-          'replace' => "http://files.libburnia-project.org/releases" ),
+          'replace' => "https://dev.lovelyhq.com/libburnia/libburn/-/tags" ),
 
    array( 'pkg'     => 'gvolwheel',
           'match'   => '^.*$', 
@@ -192,6 +192,11 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "pnmixer-v" )
      return find_max( $lines, "/pnmixer-v/", "/^.*pnmixer-v([\d\.]+).tar.*$/" );
+
+  if ( $package == "libburn"    ||
+       $package == "libisoburn" ||
+       $package == "libisofs"   )
+     return find_max( $lines, "/release-\d/", "/^.*release-([\d\.]+)$/" );
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
