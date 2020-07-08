@@ -39,15 +39,15 @@ $url_fix = array (
 
    array( 'pkg'     => 'libisoburn',
           'match'   => '^.*$', 
-          'replace' => "https://dev.lovelyhq.com/libburnia/libisoburn/-/tags" ),
+          'replace' => "https://dev.lovelyhq.com/libburnia/libisoburn/releases" ),
 
    array( 'pkg'     => 'libisofs',
           'match'   => '^.*$', 
-          'replace' => "https://dev.lovelyhq.com/libburnia/libisofs/-/tags" ),
+          'replace' => "https://dev.lovelyhq.com/libburnia/libisofs/releases" ),
 
    array( 'pkg'     => 'libburn',
           'match'   => '^.*$', 
-          'replace' => "https://dev.lovelyhq.com/libburnia/libburn/-/tags" ),
+          'replace' => "https://dev.lovelyhq.com/libburnia/libburn/releases" ),
 
    array( 'pkg'     => 'gvolwheel',
           'match'   => '^.*$', 
