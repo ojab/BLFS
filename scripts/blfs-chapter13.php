@@ -159,7 +159,8 @@ $url_fix = array (
 
    array( 'pkg'     => 'scons',
           'match'   => '^.*$',
-          'replace' => "http://sourceforge.net/projects/scons/files/scons" ),
+          'replace' => "https://www.scons.org/pages/download.html" ),
+          //'replace' => "http://sourceforge.net/projects/scons/files/scons" ),
 
    array( 'pkg'     => 'tcl',
           'match'   => '^.*$',
@@ -678,8 +679,8 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "Text-CSV" )
     return find_max( $lines, "/$package/", "/^.*$package-(\d[\d\.]+\d).*$/" );
 
-  if ( $book_index == "scons" )
-    return find_max( $lines, "/\d\.\d\.\d/", "/^.*(\d\.\d\.\d).*$/" );
+  //if ( $book_index == "scons" )
+  //  return find_max( $lines, "/\d\.\d\.\d/", "/^.*(\d\.\d\.\d).*$/" );
 
   if ( $book_index == "apache-maven" )
     return find_max( $lines, "/$package/", "/^.*$package-(\d[\d\.]+\d)-src.*$/" );
