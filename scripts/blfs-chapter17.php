@@ -235,8 +235,10 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/procmail/', '/^.*procmail-([\d\.]+)\.tar.*$/' );
 
   // libtirpc  (sourceforge is inconsistent here)
+  // Trying a constant '1' now (2020-07-26)
   if ( $book_index == "libtirpc" )
-    return find_max( $lines, '/^\s*\d/', '/^\s*(\d\.[\d\.]+) .*$/' );
+    return find_max( $lines, '/^\s*1/', '/^\s*(\d\.[\d\.]+) .*$/' );
+    //return find_max( $lines, '/^\s*\d/', '/^\s*(\d\.[\d\.]+) .*$/' );
 
   if ( $book_index == "fetchmail" )
     return find_max( $lines, '/fetchmail-/', '/^.*fetchmail-(\d\.[\d\.rc]+).tar.*$/' );
