@@ -127,7 +127,7 @@ function get_packages( $package, $dirpath )
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
 
-  if ( $package == "polkit" ) return "manual";
+  #if ( $package == "polkit" ) return "manual";
 
   // Fix up directory path
   foreach ( $url_fix as $u )
@@ -273,8 +273,8 @@ Function get_pattern( $line )
       array( 'pkg' => 'openssl',
              'regex' => "/\D*(\d.*\d.*)$/" ),
 
-      array( 'pkg' => 'polkit-[a-f\d]',
-             'regex' => "/polkit-([a-f\d]+)$/" ),
+//      array( 'pkg' => 'polkit-[a-f\d]',
+//             'regex' => "/polkit-([a-f\d]+)$/" ),
 
 //      array( 'pkg' => 'openssl1',
 //             'regex' => "/\D*(\d.*\d.*)$/" ),
