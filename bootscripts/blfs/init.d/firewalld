@@ -14,10 +14,10 @@
 
 ### BEGIN INIT INFO
 # Provides:            firewalld
-# Required-Start:      $syslog $local_fs messagebus
-# Should-Start:
-# Required-Stop:       $syslog $local_fs messagebus
-# Should-Stop: 
+# Required-Start:      $local_fs messagebus
+# Should-Start:        $syslog
+# Required-Stop:       $local_fs messagebus
+# Should-Stop:         $syslog
 # Default-Start:       3 4 5 
 # Default-Stop:        0 1 2 6
 # Short-Description:   The Firewalld firewall daemon

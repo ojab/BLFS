@@ -14,9 +14,9 @@
 
 ### BEGIN INIT INFO
 # Provides:            nfs-server
-# Required-Start:      $network $syslog $portmap
+# Required-Start:      $network $portmap
 # Should-Start:        networkmanager wicd
-# Required-Stop:       $network $syslog $portmap
+# Required-Stop:       $network $portmap
 # Should-Stop:         networkmanager wicd
 # Default-Start:       3 4 5
 # Default-Stop:        0 1 2 6

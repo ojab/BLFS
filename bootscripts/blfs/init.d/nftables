@@ -12,10 +12,10 @@
 
 ### BEGIN INIT INFO
 # Provides:            nftables
-# Required-Start:      $syslog localnet
-# Should-Start:
-# Required-Stop:       $syslog localnet
-# Should-Stop:
+# Required-Start:      localnet
+# Should-Start:        $syslog
+# Required-Stop:       localnet
+# Should-Stop:         $syslog
 # Default-Start:       3 4 5
 # Default-Stop:        0 1 2 6
 # Short-Description:   Enables/disables kernel nf_tables netfilter

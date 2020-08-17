@@ -13,8 +13,8 @@
 
 ### BEGIN INIT INFO
 # Provides:          iptables
-# Required-Start:    $syslog
-# Should-Start:
+# Required-Start:
+# Should-Start:      $syslog
 # Required-Stop:
 # Should-Stop:
 # Default-Start:     3 4 5

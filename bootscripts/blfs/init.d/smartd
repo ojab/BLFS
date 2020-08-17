@@ -14,10 +14,10 @@
 
 ### BEGIN INIT INFO
 # Provides:            smartd
-# Required-Start:      $syslog udev
-# Should-Start:        sendmail postfix exim
-# Required-Stop:       $syslog
-# Should-Stop:         sendmail postix exim
+# Required-Start:      udev
+# Should-Start:        $syslog sendmail postfix exim
+# Required-Stop:
+# Should-Stop:         $syslog sendmail postix exim
 # Default-Start:       3 4 5
 # Default-Stop:        0 1 2 6
 # Short-Description:   Monitors disk and tape health via S.M.A.R.T.

@@ -12,9 +12,9 @@
 
 ### BEGIN INIT INFO
 # Provides:          krb5
-# Required-Start:    $local_fs $network $syslog
+# Required-Start:    $local_fs $network
 # Should-Start:      networkmanager wicd
-# Required-Stop:     $local_fs $network $syslog
+# Required-Stop:     $local_fs $network
 # Should-Stop:       networkmanager wicd
 # Default-Start:     3 4 5
 # Default-Stop:      0 1 2 6

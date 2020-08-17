@@ -14,9 +14,9 @@
 
 ### BEGIN INIT INFO
 # Provides:            slapd
-# Required-Start:      $network $syslog
+# Required-Start:      $network
 # Should-Start:        networkmanager wicd
-# Required-Stop:       $network $syslog
+# Required-Stop:       $network
 # Should-Stop:         networkmanager wicd
 # Default-Start:       3 4 5
 # Default-Stop:        0 1 2 6
