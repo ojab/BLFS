@@ -11,8 +11,8 @@ $STOP_PACKAGE  = 'xdg-user-dirs';
 $renames = array();
 $renames[ 'lsof_'        ] = 'lsof';
 $renames[ 'rep-gtk_'     ] = 'rep-gtk';
-$renames[ 'ImageMagick'  ] = 'ImageMagick6';
-$renames[ 'ImageMagick1' ] = 'ImageMagick7';
+//$renames[ 'ImageMagick'  ] = 'ImageMagick6';
+//$renames[ 'ImageMagick1' ] = 'ImageMagick7';
 
 $ignores = array();
 
@@ -176,10 +176,10 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "hd2u" )
     return find_max( $lines, '/hd2u/', '/^.*hd2u-([\d\.]+).tgz.*$/' );
 
-  if ( $book_index == "ImageMagick" )
-    return find_max( $lines, '/Magick-6/', '/^.*ImageMagick-([\d\.-]+).tar.*$/' );
+//  if ( $book_index == "ImageMagick" )
+//    return find_max( $lines, '/Magick-6/', '/^.*ImageMagick-([\d\.-]+).tar.*$/' );
 
-  if ( $book_index == "ImageMagick1" )
+  if ( $book_index == "ImageMagick" )
     return find_max( $lines, '/Magick/', '/^.*ImageMagick-([\d\.-]+).tar.*$/' );
 
   if ( $book_index == "js" )
