@@ -23,7 +23,6 @@ $ignores[ 'flash_player_npapi_linux.x' ] = '';
 $ignores[ 'flash_player_npapi_linux.i' ] = '';
 
 //$current="libcanberra";
-$current="frei0r-plugins";
 
 $regex = array();
 $regex[ 'a52dec'                     ] = "/^.*a52dec-(\d[\d\.]+\d) is.*$/";
