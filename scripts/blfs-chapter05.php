@@ -18,7 +18,7 @@ $ignores = array();
 //$current="";   // For debugging
 
 $regex = array();
-$regex[ 'ntfs-3g_ntfsprogs' ] = "/^.*STABLE Version ([\d\.]+) .*$/";
+$regex[ 'ntfs-3g_ntfsprogs' ] = "/^.*Stable.* ([\d\.]+).*$/";
 $regex[ 'dosfstools'        ] = "/^.*dosfstools ([\d\.]+).*$/";
 
 $sf = 'sourceforge.net';
@@ -47,7 +47,8 @@ $url_fix = array (
 
  array( 'pkg'     => 'ntfs-3g_ntfsprogs',
         'match'   => '^.*$', 
-        'replace' => 'http://www.tuxera.com/community/ntfs-3g-download' ),
+        'replace' => 'http://www.tuxera.com/company/open-source' ),
+        //'replace' => 'http://www.tuxera.com/community/ntfs-3g-download' ),
 
  array( 'pkg'     => 'gptfdisk',
         'match'   => '^.*$', 

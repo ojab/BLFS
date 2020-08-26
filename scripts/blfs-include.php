@@ -126,6 +126,8 @@ function http_get_file( $url )
        preg_match( "/libgcrypt/",$url ) ||
        preg_match( "/libksba/",  $url ) ||
        preg_match( "/swig/",     $url ) ||
+       preg_match( "/ntfs/",     $url ) ||
+       preg_match( "/docutils/", $url ) ||
        preg_match( "/llvm/",     $url ) )
   {
      exec( "links -dump $url", $lines );

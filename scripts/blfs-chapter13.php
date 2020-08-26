@@ -558,6 +558,12 @@ function get_packages( $package, $dirpath )
       $dirpath .= "/$dir/";
     }
 
+    if ( $book_index == "tk" )
+    {
+      exec( "links -dump $dirpath", $lines );
+      return find_max( $lines, "/tcl/", "/^.*tcl(\d[\d\.]*\d)-src.*$/" );
+    }
+
     $strip = "yes";
     $lines = http_get_file( $dirpath, $strip );
     if ( ! is_array( $lines ) ) return $lines;
@@ -623,15 +629,6 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "tcl" )
     return find_max( $lines, "/tcl/", "/^.*tcl(\d[\d\.]*\d)-src.*$/" );
-
-  // Same as tcl
-  if ( $book_index == "tk" )
-  {
-    return find_max( $lines, "/tcl/", "/^.*tcl(\d[\d\.]*\d)-src.*$/" );
-    //$dir = find_max( $lines, '/8\./', '/^.*(8\.[\d\.]+\d).*$/' );
-    //$lines = http_get_file( "$dirpath/$dir" );
-    //return find_max( $lines, "/$package/", "/^.*$package([\d\.]*\d)-src.tar.*$/" );
-  }
 
   if ( $package == "rustc" )
   {

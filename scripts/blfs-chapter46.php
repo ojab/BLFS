@@ -159,6 +159,10 @@ $url_fix = array (
    array( 'pkg'     => 'flash_player_ppapi_linux.x',
           'match'   => '^.*$', 
           'replace' => "https://www.adobe.com/support/flashplayer/debug_downloads.html" ),
+
+   array( 'pkg'     => 'x265',
+          'match'   => '^.*$', 
+          'replace' => "http://hg.videolan.org/x265/tags" ),
 );
 
 function get_packages( $package, $dirpath )
@@ -256,8 +260,9 @@ function get_packages( $package, $dirpath )
      if ( $package == "x265" )
      {
         # We have to process the stupid javascript to get this to work
-        exec( "lynx -dump  $dirpath", $output );
-        $max = find_max( $output, "/x265_/", "/^.*x265_([\d\.]*\d)\.tar.*$/" );
+        //exec( "lynx -dump  $dirpath", $output );
+        $output = http_get_file( "$dirpath" );
+        $max = find_max( $output, "/\d\./", "/^([\d\.]+)$/" );
         return $max;
      }
 
