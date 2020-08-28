@@ -10,7 +10,7 @@ DIRMODE=755
 CONFMODE=644
 
 all:
-	@grep "^install" Makefile.systemd | cut -d ":" -f 1
+	@grep "^install" Makefile | cut -d ":" -f 1
 	@echo "Select an appropriate install target from the above list"
 
 create-dirs:
