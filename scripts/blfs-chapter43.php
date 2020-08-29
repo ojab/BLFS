@@ -93,6 +93,10 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "https://inkscape.org/en/release/" ),
 
+   array( 'pkg'     => 'pavucontrol',
+          'match'   => '^.*$',
+          'replace' => "https://freedesktop.org/software/pulseaudio/pavucontrol" ),
+
    array( 'pkg'     => 'pidgin',
           'match'   => '^.*$',
           'replace' => "http://sourceforge.net/projects/pidgin/files/Pidgin" ),
@@ -305,6 +309,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "QupZilla" )
     return find_max( $lines, "/v\d/", "/^.*v([\d\.]*\d).*$/" );
+
+  if ( $book_index == "pavucontrol" )
+    return find_max( $lines, "/Version/", "/^.*Version ([\d\.]*\d) released.*$/" );
 
   if ( $package == "rox-filer" )
       return find_max( $lines, "/^\s*\d/", "/^\s*(\d\.[\d\.]+)\s+.*$/" );

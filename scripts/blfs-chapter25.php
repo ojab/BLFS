@@ -9,16 +9,17 @@ $START_PACKAGE = 'amtk';
 $STOP_PACKAGE  = 'webkitgtk';
 
 $renames = array();
-$renames[ 'gtk+'                           ] = 'gtk+2';
-$renames[ 'gtk+1'                          ] = 'gtk+3';
-$renames[ 'gtkmm'                          ] = 'gtkmm2';
-$renames[ 'gtkmm1'                         ] = 'gtkmm3';
-$renames[ 'gtksourceview'                  ] = 'gtksourceview3';
-$renames[ 'gtksourceview1'                 ] = 'gtksourceview4';
-$renames[ 'qt-everywhere-opensource-src'   ] = 'qt5';
-$renames[ 'qt-everywhere-opensource'       ] = 'qt5';
-$renames[ 'qtwebengine-everywhere-src'     ] = 'qtwebengine';
-$renames[ 'qtwebkit-opensource-src'        ] = 'qtwebkit';
+$renames[ 'gtk+'                         ] = 'gtk+2';
+$renames[ 'gtk+1'                        ] = 'gtk+3';
+$renames[ 'gtkmm'                        ] = 'gtkmm2';
+$renames[ 'gtkmm1'                       ] = 'gtkmm3';
+$renames[ 'gtksourceview'                ] = 'gtksourceview3';
+$renames[ 'gtksourceview1'               ] = 'gtksourceview4';
+$renames[ 'qt-everywhere-opensource-src' ] = 'qt5';
+$renames[ 'qt-everywhere-opensource'     ] = 'qt5';
+$renames[ 'qtwebengine-everywhere-src'   ] = 'qtwebengine';
+$renames[ 'qtwebkit-opensource-src'      ] = 'qtwebkit';
+$renames[ 'keybinder1'                   ] = 'keybinder3';
 
 $ignores = array();
 
@@ -52,6 +53,10 @@ $url_fix = array (
           'replace' => "https://github.com/ebassi/graphene/releases" ),
 
    array( 'pkg'     => 'keybinder',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/kupferlauncher/keybinder/releases" ),
+
+   array( 'pkg'     => 'keybinder1',
           'match'   => '^.*$', 
           'replace' => "https://github.com/kupferlauncher/keybinder/releases" ),
 
@@ -267,6 +272,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "keybinder" )
     return find_max( $lines, '/keybinder-/', '/^.*keybinder-(\d\.[\d\.]+).tar.*$/' );
+
+  if ( $book_index == "keybinder1" )
+    return find_max( $lines, '/keybinder-3/', '/^.*keybinder-(3\.[\d\.v-]+).tar.*$/' );
 
   if ( $book_index == "webkitgtk" )
     return find_even_max( $lines, '//', '/^.*webkitgtk-(\d[\d\.]+\d).tar.*$/' );

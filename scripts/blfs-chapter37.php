@@ -27,6 +27,10 @@ $url_fix = array (
           'replace' => 
              "https://sourceforge.net/projects/lxde/files/GPicView%20%28image%20Viewer%29/0.2.x"),
 
+   array( 'pkg'     => 'xfce4-pulseaudio-plugin',
+          'match'   => '^.*$', 
+          'replace' => "https://gitlab.xfce.org/panel-plugins/xfce4-pulseaudio-plugin/-/tags/"),
+
    array( 'pkg'     => 'lxappearance',
           'match'   => '^.*$', 
           'replace' => "https://sourceforge.net/projects/lxde/files/LXAppearance"),
@@ -295,6 +299,13 @@ function get_packages( $package, $dirpath )
   {
     $lines    = http_get_file( "$dirpath/" );
     $ver = find_max( $lines, "/QupZilla/", "/^\s+QupZilla-([\d\.]+).tar.*$/" );
+    return $ver;
+  }
+  else if ( $book_index == "xfce4-pulseaudio-plugin" )
+  {
+    $lines    = http_get_file( "$dirpath" );
+    $ver = find_max( $lines, "/xfce4-pulseaudio-plugin/", 
+                             "/^.*xfce4-pulseaudio-plugin-([\d\.]+).*$/" );
     return $ver;
   }
   else if ( $book_index != "lxmenu-data"  &&
