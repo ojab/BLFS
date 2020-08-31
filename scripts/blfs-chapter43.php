@@ -21,7 +21,7 @@ $libreoffice = array();
 //$current="xscreensaver";
 
 $regex = array();
-$regex[ 'inkscape'     ] = "/^.*Download Inkscape (\d[\d\.]+\d).*$/";
+$regex[ 'inkscape'      ] = "/^.* Inkscape (\d[\d\.]+\d).*$/";
 $regex[ 'chromium'      ] = "/^pkgver=(\d[\d\.]+\d).*$/";
 $regex[ 'gnucash'       ] = "/^.*Download gnucash-(\d[\d\.]+\d).tar.*$/";
 $regex[ 'midori'        ] = "/^.*midori_(\d[\d\.]*\d)_all.*$/";
