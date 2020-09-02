@@ -311,7 +311,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, "/v\d/", "/^.*v([\d\.]*\d).*$/" );
 
   if ( $book_index == "pavucontrol" )
-    return find_max( $lines, "/Version/", "/^.*Version ([\d\.]*\d) released.*$/" );
+    return find_max( $lines, "/Version/", "/^.*Version ([\d\.]+\d) released*$/" );
 
   if ( $package == "rox-filer" )
       return find_max( $lines, "/^\s*\d/", "/^\s*(\d\.[\d\.]+)\s+.*$/" );
