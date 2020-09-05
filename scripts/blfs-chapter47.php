@@ -9,7 +9,6 @@ $START_PACKAGE = 'audacious';
 $STOP_PACKAGE  = 'libisofs';
 
 //$current="cdrtools";  // For debugging
-$current="pavucontrol";  // For debugging
 
 $renames = array();
 
