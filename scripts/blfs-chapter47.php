@@ -9,6 +9,7 @@ $START_PACKAGE = 'audacious';
 $STOP_PACKAGE  = 'libisofs';
 
 //$current="cdrtools";  // For debugging
+$current="pavucontrol";  // For debugging
 
 $renames = array();
 
@@ -52,6 +53,10 @@ $url_fix = array (
    array( 'pkg'     => 'gvolwheel',
           'match'   => '^.*$', 
           'replace' => "http://sourceforge.net/projects/gvolwheel/files" ),
+
+   array( 'pkg'     => 'pavucontrol',
+          'match'   => '^.*$',
+          'replace' => "https://freedesktop.org/software/pulseaudio/pavucontrol" ),
 
    array( 'pkg'     => 'transcode',
           'match'   => '^.*$', 
@@ -189,6 +194,9 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "cdrtools" )
      return find_max( $lines, "/cdrtools-[\d\.]+/", "/^.*cdrtools-([\d\.]+a?\d?).tar.*$/" );
+
+  if ( $book_index == "pavucontrol" )
+    return find_max( $lines, "/Version/", "/^.*Version ([\d\.]+\d) released.*$/" );
 
   if ( $package == "pnmixer-v" )
      return find_max( $lines, "/pnmixer-v/", "/^.*pnmixer-v([\d\.]+).tar.*$/" );
