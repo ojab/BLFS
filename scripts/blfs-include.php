@@ -153,12 +153,13 @@ function http_get_file( $url )
      return $page;
   }
 
-  if ( preg_match( "/gc_source/",  $url ) )
+  if ( preg_match( "/gc_source/",  $url ) ||
+       preg_match( "/abisource/",  $url ) )
   {
      exec( "wget -q --no-check-certificate -O- $url", $dir );
      $s     = implode( "\n", $dir );
      $dir   = strip_tags( $s );
-     $strip =  explode( "\n", $dir );
+     $strip = explode( "\n", $dir );
      return $strip;
   }
 
