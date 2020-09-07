@@ -32,6 +32,10 @@ $regex[ 'transmission'  ] = "/^.*Transmission (\d[\d\.]+\d).*$/";
 
 $url_fix = array (
 
+   array( 'pkg'     => 'abiword',
+          'match'   => '^.*$',
+          'replace' => "https://www.abisource.com/downloads/abiword" ),
+
    array( 'pkg'     => 'chromium',
           'match'   => '^.*$',
           //'replace' => "https://googlechromereleases.blogspot.com/" ),
@@ -204,14 +208,14 @@ function get_packages( $package, $dirpath )
             return find_max( $dirs, "/\d/", "/^.*(\d{2}\.[\.\d]+)\/.*/" );
      }
 
-     if ( preg_match( "/abiword/", $dirpath ) )
-     {
-        $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-        $position = strrpos( $dirpath, "/" );
-        $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
-        $position = strrpos( $dirpath, "/" );
-        $dirpath  = substr ( $dirpath, 0, $position );  // Up 2
-     }
+     //if ( preg_match( "/abiword/", $dirpath ) )
+     //{
+     //   $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
+     //   $position = strrpos( $dirpath, "/" );
+     //   $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
+     //   $position = strrpos( $dirpath, "/" );
+     //   $dirpath  = substr ( $dirpath, 0, $position );  // Up 2
+     //}
 
      if ( $book_index == "gnucash-docs" )
      {
@@ -294,7 +298,7 @@ function get_packages( $package, $dirpath )
   if ( preg_match( "/firefox/", "$dirpath" ) )
       return find_max( $lines, "/^\s+[\d\.]+esr/", "/^\s+([\d\.]+)esr\/.*$/" );
 
-  if ( preg_match( "/abiword/", "$dirpath" ) )
+  if ( $package == "abiword" )
       return find_max( $lines, "/^\d/", "/^([\d\.]+).*$/" );
 
   if ( $package == "balsa" )
@@ -306,7 +310,7 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "QupZilla" )
     return find_max( $lines, "/v\d/", "/^.*v([\d\.]*\d).*$/" );
 
-  qf ( $package == "rox-filer" )
+  if ( $package == "rox-filer" )
       return find_max( $lines, "/^\s*\d/", "/^\s*(\d\.[\d\.]+)\s+.*$/" );
 
   if ( $package == "tigervnc" )

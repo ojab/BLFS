@@ -409,10 +409,6 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "https://github.com/martinpitt/python-dbusmock/releases" ),
 
-   array( 'pkg'     => 'scour',
-          'match'   => '^.*$',
-          'replace' => "https://github.com/scour-project/scour/releases" ),
-
    array( 'pkg'     => 'six',
           'match'   => '^.*$',
           'replace' => "https://pypi.python.org/pypi/six" ),
@@ -610,16 +606,18 @@ function get_packages( $package, $dirpath )
      return find_max( $lines, "/\d[\d\.]+/", "/^.* (\d[\d\.]+)$/" );
 
   if ( $book_index == "scour" )
-     return find_max( $lines, "/v\d/", "/^.*v(\d[\d\.]+).*$/" );
+  {
+     $max = find_max( $lines, "/v\d/", "/^.*v(\d[\d\.]+).*$/" );
+     // Fix 038.1 to be 0.38.1
+     $fix = preg_replace( "/^0(\d)/", "0.$1", $max);
+     return $fix;
+  }
 
   if ( $package == "ninja" )  // ninja
   {
     $max = find_max( $lines, "/v\d/", "/^.*v(\d[\d\.]*\d).*$/" );
     return $max;
   }
-
-  if ( $package == "scour" )
-    return find_max( $lines, "/v/", "/^.*v(\d[\d\.]*\d).*$/" );
 
   if ( $package == "cbindgen" )
     return find_max( $lines, "/v\d/", "/^.*v(\d[\d\.]*\d).*$/" );
