@@ -630,7 +630,7 @@ function get_packages( $package, $dirpath )
 
   if ( $package == "rustc" )
   {
-    $max = find_max( $lines, "/release/", "/^.* (\d[\d\.]+\d) release.*$/" );
+    $max = find_max( $lines, "/Rust/", "/^.*Rust (\d[\d\.]+\d).*$/" );
     return $max;
   }
   if ( $book_index == "swig" )

@@ -138,6 +138,7 @@ function http_get_file( $url )
   // Do not strip tags
   if ( preg_match( "/gpm/",      $url ) ||
        preg_match( "/libvdpau/", $url ) ||
+       preg_match( "/imagemagick/", $url ) ||
        preg_match( "/alsa/",     $url ) )
   {
      exec( "wget -q --no-check-certificate -O- $url", $dir );
