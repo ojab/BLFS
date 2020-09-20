@@ -232,14 +232,12 @@ install-firewalld: create-dirs
 	ln -sf  ../init.d/firewalld ${EXTDIR}/rc.d/rc6.d/K81firewalld
 
 install-gdm: create-dirs
-	install -m ${MODE} blfs/init.d/gdm        ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/gdm ${EXTDIR}/rc.d/rc0.d/K05gdm
-	ln -sf  ../init.d/gdm ${EXTDIR}/rc.d/rc1.d/K05gdm
-	ln -sf  ../init.d/gdm ${EXTDIR}/rc.d/rc2.d/K05gdm
-	ln -sf  ../init.d/gdm ${EXTDIR}/rc.d/rc3.d/K05gdm
-	ln -sf  ../init.d/gdm ${EXTDIR}/rc.d/rc4.d/K05gdm
-	ln -sf  ../init.d/gdm ${EXTDIR}/rc.d/rc5.d/S95gdm
-	ln -sf  ../init.d/gdm ${EXTDIR}/rc.d/rc6.d/K05gdm
+	install -m ${MODE} blfs/init.d/xdm        ${EXTDIR}/rc.d/init.d/
+	install -m ${CONFMODE} blfs/sysconfig/xdm ${EXTDIR}/sysconfig/xdm
+	sed -i '/gdm/s/^#//' ${EXTDIR}/sysconfig/xdm
+	if ! grep -q '^dm:5' ${ETCDIR}/inittab; then \
+		echo dm:5:respawn:/etc/rc.d/init.d/xdm >> ${ETCDIR}/inittab; \
+	fi
 
 install-gpm: create-dirs
 	install -m ${MODE} blfs/init.d/gpm        ${EXTDIR}/rc.d/init.d/
@@ -298,14 +296,12 @@ install-lprng: create-dirs
 	ln -sf  ../init.d/lprng ${EXTDIR}/rc.d/rc6.d/K00lprng
 
 install-lxdm: create-dirs
-	install -m ${MODE} blfs/init.d/lxdm        ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc0.d/K05lxdm
-	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc1.d/K05lxdm
-	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc2.d/K05lxdm
-	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc3.d/K05lxdm
-	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc4.d/K05lxdm
-	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc5.d/S95lxdm
-	ln -sf  ../init.d/lxdm ${EXTDIR}/rc.d/rc6.d/K05lxdm
+	install -m ${MODE} blfs/init.d/xdm        ${EXTDIR}/rc.d/init.d/
+	install -m ${CONFMODE} blfs/sysconfig/xdm ${EXTDIR}/sysconfig/xdm
+	sed -i '/lxdm/s/^#//' ${EXTDIR}/sysconfig/xdm
+	if ! grep -q '^dm:5' ${ETCDIR}/inittab; then \
+		echo dm:5:respawn:/etc/rc.d/init.d/xdm >> ${ETCDIR}/inittab; \
+	fi
 
 install-mysql: create-dirs
 	install -m ${MODE} blfs/init.d/mysql      ${EXTDIR}/rc.d/init.d/
@@ -448,25 +444,13 @@ install-samba: create-dirs
 	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc5.d/S45samba
 	ln -sf  ../init.d/samba ${EXTDIR}/rc.d/rc6.d/K48samba
 
-install-sddm: create-dirs
-	install -m ${MODE} blfs/init.d/sddm        ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/sddm ${EXTDIR}/rc.d/rc0.d/K05sddm
-	ln -sf  ../init.d/sddm ${EXTDIR}/rc.d/rc1.d/K05sddm
-	ln -sf  ../init.d/sddm ${EXTDIR}/rc.d/rc2.d/K05sddm
-	ln -sf  ../init.d/sddm ${EXTDIR}/rc.d/rc3.d/K05sddm
-	ln -sf  ../init.d/sddm ${EXTDIR}/rc.d/rc4.d/K05sddm
-	ln -sf  ../init.d/sddm ${EXTDIR}/rc.d/rc5.d/S95sddm
-	ln -sf  ../init.d/sddm ${EXTDIR}/rc.d/rc6.d/K05sddm
-
 install-lightdm: create-dirs
-	install -m ${MODE} blfs/init.d/lightdm        ${EXTDIR}/rc.d/init.d/
-	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc0.d/K05lightdm
-	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc1.d/K05lightdm
-	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc2.d/K05lightdm
-	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc3.d/K05lightdm
-	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc4.d/K05lightdm
-	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc5.d/S95lightdm
-	ln -sf  ../init.d/lightdm ${EXTDIR}/rc.d/rc6.d/K05lightdm
+	install -m ${MODE} blfs/init.d/xdm        ${EXTDIR}/rc.d/init.d/
+	install -m ${CONFMODE} blfs/sysconfig/xdm ${EXTDIR}/sysconfig/xdm
+	sed -i '/lightdm/s/^#//' ${EXTDIR}/sysconfig/xdm
+	if ! grep -q '^dm:5' ${ETCDIR}/inittab; then \
+		echo dm:5:respawn:/etc/rc.d/init.d/xdm >> ${ETCDIR}/inittab; \
+	fi
 
 install-sendmail: create-dirs
 	install -m ${MODE} blfs/init.d/sendmail   ${EXTDIR}/rc.d/init.d/
@@ -776,14 +760,9 @@ uninstall-firewalld:
 	rm -f ${EXTDIR}/rc.d/rc6.d/K81firewalld
 
 uninstall-gdm:
-	rm -f ${EXTDIR}/rc.d/init.d/gdm
-	rm -f ${EXTDIR}/rc.d/rc0.d/K05gdm
-	rm -f ${EXTDIR}/rc.d/rc1.d/K05gdm
-	rm -f ${EXTDIR}/rc.d/rc2.d/K05gdm
-	rm -f ${EXTDIR}/rc.d/rc3.d/K05gdm
-	rm -f ${EXTDIR}/rc.d/rc4.d/K05gdm
-	rm -f ${EXTDIR}/rc.d/rc5.d/S95gdm
-	rm -f ${EXTDIR}/rc.d/rc6.d/K05gdm
+	rm -f ${EXTDIR}/rc.d/init.d/xdm
+	rm -f ${EXTDIR}/sysconfig/xdm
+	sed -i '/^dm/d' ${ETCDIR}/inittab
 
 uninstall-gpm:
 	rm -f ${EXTDIR}/rc.d/init.d/gpm
@@ -842,14 +821,9 @@ uninstall-lprng:
 	rm -f ${EXTDIR}/rc.d/rc6.d/K00lprng
 
 uninstall-lxdm:
-	rm -f ${EXTDIR}/rc.d/init.d/lxdm
-	rm -f ${EXTDIR}/rc.d/rc0.d/K05lxdm
-	rm -f ${EXTDIR}/rc.d/rc1.d/K05lxdm
-	rm -f ${EXTDIR}/rc.d/rc2.d/K05lxdm
-	rm -f ${EXTDIR}/rc.d/rc3.d/K05lxdm
-	rm -f ${EXTDIR}/rc.d/rc4.d/K05lxdm
-	rm -f ${EXTDIR}/rc.d/rc5.d/S95lxdm
-	rm -f ${EXTDIR}/rc.d/rc6.d/K05lxdm
+	rm -f ${EXTDIR}/rc.d/init.d/xdm
+	rm -f ${EXTDIR}/sysconfig/xdm
+	sed -i '/^dm/d' ${ETCDIR}/inittab
 
 uninstall-mysql:
 	rm -f ${EXTDIR}/rc.d/init.d/mysql
@@ -1003,24 +977,14 @@ uninstall-samba:
 	rm -f ${EXTDIR}/rc.d/rc6.d/K48samba
 
 uninstall-sddm:
-	rm -f ${EXTDIR}/rc.d/init.d/sddm
-	rm -f ${EXTDIR}/rc.d/rc0.d/K05sddm
-	rm -f ${EXTDIR}/rc.d/rc1.d/K05sddm
-	rm -f ${EXTDIR}/rc.d/rc2.d/K05sddm
-	rm -f ${EXTDIR}/rc.d/rc3.d/K05sddm
-	rm -f ${EXTDIR}/rc.d/rc4.d/K05sddm
-	rm -f ${EXTDIR}/rc.d/rc5.d/S95sddm
-	rm -f ${EXTDIR}/rc.d/rc6.d/K05sddm
+	rm -f ${EXTDIR}/rc.d/init.d/xdm
+	rm -f ${EXTDIR}/sysconfig/xdm
+	sed -i '/^dm/d' ${ETCDIR}/inittab
 
 uninstall-lightdm:
-	rm -f ${EXTDIR}/rc.d/init.d/lightdm
-	rm -f ${EXTDIR}/rc.d/rc0.d/K05lightdm
-	rm -f ${EXTDIR}/rc.d/rc1.d/K05lightdm
-	rm -f ${EXTDIR}/rc.d/rc2.d/K05lightdm
-	rm -f ${EXTDIR}/rc.d/rc3.d/K05lightdm
-	rm -f ${EXTDIR}/rc.d/rc4.d/K05lightdm
-	rm -f ${EXTDIR}/rc.d/rc5.d/S95lightdm
-	rm -f ${EXTDIR}/rc.d/rc6.d/K05lightdm
+	rm -f ${EXTDIR}/rc.d/init.d/xdm
+	rm -f ${EXTDIR}/sysconfig/xdm
+	sed -i '/^dm/d' ${ETCDIR}/inittab
 
 uninstall-sendmail:
 	rm -f ${EXTDIR}/rc.d/init.d/sendmail
