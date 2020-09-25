@@ -18,7 +18,7 @@ $ignores[ 'libnl-doc' ] = '';
 $regex = array();
 $regex[ 'serf'          ] = "/^.*Serf is ([\d\.]+\d).*$/";
 $regex[ 'libevent'      ] = "/^.*release-(\d[\d\.]*)-stable.*$/";
-$regex[ 'libnsl'        ] = "/^.*libnsl ([\d\.]+\d)*$/";
+//$regex[ 'libnsl'        ] = "/^.*libnsl ([\d\.]+\d)*$/";
 $regex[ 'rpcsvc-proto'  ] = "/^.*Version ([\d\.]+\d)*$/";
 
 $url_fix = array (
