@@ -1,3 +1,12 @@
+2020-10-02  Pierre Labastie <pierre.labastie@neuf.fr>
+   * Remove the -W (nowait) flag from posgresql start, and add -s
+     (silent) to both start and stop.
+2020-09-20  Pierre Labastie <pierre.labastie@neuf.fr>
+   * Start the display managers directly from inittab:
+     - add a new /etc/init.d/xdm script, and default /etc/sysconfig/xdm
+     - install-{g,lx,light,sd}dm now install both xdm files, change
+       inittab to start xdm, and adjust /etc/sysconfig/xdm for the
+       particular target
 2019-12-03  DJ Lucas <dj@linuxfromscratch.org>
    * Fix typo (postfix) in firewalld bootscript
 

@@ -36,14 +36,14 @@ case "$1" in
 
       install -dm755 -o postgres -g postgres /run/postgresql
 
-      su - postgres -c '/usr/bin/pg_ctl start -W -D /srv/pgsql/data \
+      su - postgres -c '/usr/bin/pg_ctl start -s -D /srv/pgsql/data \
                          -l /srv/pgsql/data/logfile -o "-i" '
       evaluate_retval
       ;;
 
    stop)
       log_info_msg "Stopping PostgreSQL daemon..."
-      su - postgres -c "/usr/bin/pg_ctl stop -m smart -D /srv/pgsql/data"
+      su - postgres -c "/usr/bin/pg_ctl stop -m smart -s -D /srv/pgsql/data"
       evaluate_retval
       ;;
 
