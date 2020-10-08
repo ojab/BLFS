@@ -16,6 +16,8 @@ $renames[ 'mozjs'                 ] = 'js60';
 #$renames[ 'mozjs1'                ] = 'js52';
 $renames[ 'gmime1'                ] = 'gmime3';
 $renames[ 'libuninameslist-dist'  ] = 'libuninameslist';
+$renames[ 'libsigc++'             ] = 'libsigc++2';
+$renames[ 'libsigc++1'            ] = 'libsigc++3';
 
 $ignores = array();
 
@@ -260,6 +262,7 @@ function get_packages( $package, $dirpath )
          $book_index == "libgsf"    ||
          $book_index == "libIDL"    ||
          $book_index == "libsigc++" ||
+         $book_index == "libsigc++1"||
          $book_index == "libcroco"  ||
          $book_index == "ptlib"     ||
          $book_index == "gobject-introspection" )
@@ -293,6 +296,7 @@ function get_packages( $package, $dirpath )
          $book_index == "libgsf"    ||
          $book_index == "libIDL"    ||
          $book_index == "libsigc++" ||
+         $book_index == "libsigc++1"||
          $book_index == "libcroco"  ||
          $book_index == "ptlib"     ||
          $book_index == "gobject-introspection" )
@@ -303,9 +307,9 @@ function get_packages( $package, $dirpath )
       $dirpath  = substr ( $dirpath, 0, $position );
       $lines1 = http_get_file( $dirpath );
 
-      //if ( $book_index == "libsigc++" )
-      //   $dir = find_max(      $lines1, '/^\s+[\d\.]+\/.*$/', '/^\s+([\d\.]+)\/.*$/' );
-      //else
+      if ( $book_index == "libsigc++" )
+         $dir = find_max(      $lines1, '/^\s+[\d\.]+\/.*$/', '/^\s+(2.1[\d\.]+)\/.*$/' );
+      else
          $dir = find_even_max( $lines1, '/^\s+[\d\.]+\/.*$/', '/^\s+([\d\.]+)\/.*$/' );
 
       $dirpath .= "/$dir";
@@ -411,7 +415,10 @@ function get_packages( $package, $dirpath )
                              '/^.*libdbusmenu-qt ([\d\.]+).*$/' );
 
   if ( $book_index == "libsigc++" )
-    return find_max( $lines, '/^.*libsigc.*[\d\.]+.*$/', '/^.*libsigc\+\+-([\d\.]+).tar.*$/' );
+    return find_max( $lines, '/libsigc\+\+-2/', '/^.*libsigc\+\+-(2[\d\.]+).tar.*$/', TRUE );
+
+  if ( $book_index == "libsigc++1" )
+    return find_max( $lines, '/libsigc\+\+-3/', '/^.*libsigc\+\+-(3[\d\.]+).tar.*$/', TRUE );
 
   if ( $book_index == "exempi" )
     return find_max( $lines, '/version /', '/^.*version ([\d\.]+) .tar.*$/' );
