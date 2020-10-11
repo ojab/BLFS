@@ -9,6 +9,11 @@ $START_PACKAGE = 'gcr';
 $STOP_PACKAGE  = 'yelp';
 
 $renames = array();
+$renames[ 'tracker'         ] = 'tracker2';
+$renames[ 'tracker-miners'  ] = 'tracker-miners2';
+$renames[ 'tracker1'        ] = 'tracker3';
+$renames[ 'tracker-miners1' ] = 'tracker-miners3';
+
 $ignores = array();
 
 $kde_ver  = "";
@@ -150,6 +155,21 @@ function get_packages( $package, $dirpath )
        $dirpath .= "/$dir/";
     }
 
+    if ( preg_match( "/tracker/", $book_index ) )
+    {
+       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
+       $position = strrpos( $dirpath, "/" );
+       $dirpath  = substr ( $dirpath, 0, $position );  // Up 1
+       $dirs     = http_get_file( "$dirpath/" );
+
+       if ( ! preg_match( "/1/", $book_index ) )
+         $dir = find_max( $dirs, "/2\.\d+$/", "/^.* ([\d\.]+)$/", TRUE );
+       else
+         $dir = find_max( $dirs, "/3\.\d+$/", "/^.* ([\d\.]+)$/", TRUE );
+
+       $dirpath .= "/$dir/";
+    }
+
     // Get listing
     $lines = http_get_file( "$dirpath/" );
   }
@@ -183,6 +203,10 @@ function get_packages( $package, $dirpath )
 
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
+
+  if ( $package == 'tracker1'        ) $package = 'tracker';
+  if ( $package == 'tracker-miners1' ) $package = 'tracker-miners';
+  
   $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/", TRUE );
   return $max;
 }
