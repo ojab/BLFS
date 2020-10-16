@@ -22,7 +22,6 @@ $renames[ 'libsigc++1'            ] = 'libsigc++3';
 $ignores = array();
 
 //$current="gmime1"; // For debugging
-$current="firefox"; // For debugging
 
 $regex = array();
 $regex[ 'expat'         ] = "/^.*Download expat-([\d\.]+).tar.*$/";
