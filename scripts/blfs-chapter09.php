@@ -93,6 +93,10 @@ $url_fix = array (
         'match'   => '^.*$',
         'replace' => "https://launchpad.net/libdbusmenu-qt/trunk" ),
 
+ array( 'pkg'     => 'libportal',
+        'match'   => '^.*$',
+        'replace' => "https://github.com/flatpak/libportal/releases" ),
+
  array( 'pkg'     => 'libesmtp',
         'match'   => '^.*$',
         'replace' => "http://brianstafford.info/libesmtp/download.html" ),
