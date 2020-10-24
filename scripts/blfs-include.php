@@ -139,6 +139,7 @@ function http_get_file( $url )
   if ( preg_match( "/gpm/",      $url ) ||
        preg_match( "/libvdpau/", $url ) ||
        preg_match( "/imagemagick/", $url ) ||
+       preg_match( "/allbsd/",   $url ) ||    // paxmirabilis
        preg_match( "/alsa/",     $url ) )
   {
      exec( "wget -q --no-check-certificate -O- $url", $dir );

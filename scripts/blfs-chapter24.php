@@ -36,7 +36,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'libva',
           'match'   => '^.*$', 
-          'replace' => "https://github.com/01org/libva/releases" ),
+          'replace' => "https://github.com/intel/libva/releases" ),
 
    array( 'pkg'     => 'intel-vaapi-driver',
           'match'   => '^.*$', 
