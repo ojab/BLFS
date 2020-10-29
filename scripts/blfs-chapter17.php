@@ -210,6 +210,9 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "c-ares" )
     return find_max( $lines, '/c-ares/', '/^.*c-ares-([\d\.]+).tar.*$/' );
 
+  if ( $book_index == "curl" )
+    return find_max( $lines, '/^\d/', '/^([\d\.]+) .*$/' );
+
   if ( $book_index == "libndp" )
     return find_max( $lines, '/v\d/', '/^.*v([\d\.]+)$/' );
 
