@@ -180,7 +180,7 @@ function get_packages( $package, $dirpath )
       return find_max( $lines, "/Latest/", "/^.*Version ([\d\.]+) sources.*$/" );
 
   if ( $package == "kwave" )
-      return find_max( $lines, "/;\d\d\./", "/^.*;(\d\d\.[\d\.]+)\/.*$/" );
+      return find_max( $lines, "/^\d\d\./", "/^(\d\d\.[\d\.]+)\/.*$/" );
 
   if ( $package == "dvd+rw-tools" )
       return find_max( $lines, "/dvd\+/", "/^.*dvd\+rw-tools-([\d\.]+).tar.*$/" );

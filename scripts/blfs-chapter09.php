@@ -41,7 +41,7 @@ $url_fix = array (
         'match'   => '^.*$',
         'replace' => "https://www.boost.org" ),
 
- array( 'pkg'     => 'brotli-v',
+ array( 'pkg'     => 'brotli',
         'match'   => '^.*$',
         'replace' => "https://github.com/google/brotli/releases" ),
 
@@ -322,7 +322,7 @@ function get_packages( $package, $dirpath )
     if ( $book_index == "qca" )
     {
       $lines = http_get_file( "$dirpath" );
-      $dir = find_max( $lines, "/\d\./", "/^.*;(\d[\d\.]*)\/.*$/" );
+      $dir = find_max( $lines, "/^\d\./", "/^(\d[\d\.]*)\/.*$/" );
       $dirpath .= "/$dir";
     }
 
@@ -385,7 +385,7 @@ function get_packages( $package, $dirpath )
     return preg_replace( "/\./", "_", $ver ); 
   }
 
-  if ( $book_index == "brotli-v" )
+  if ( $book_index == "brotli" )
     return find_max( $lines, '/v\d/', '/^.*v([\d\.]+).*$/' );
 
   if ( $book_index == "double-conversion" )
@@ -517,7 +517,7 @@ Function get_pattern( $line )
    $match = array(
 
       array( 'pkg'   => 'brotli',
-             'regex' => "/^.*brotli-v([\d\.]+).*$/" ),
+             'regex' => "/^.*brotli-([\d\.]+).*$/" ),
 
       array( 'pkg'   => 'libatomic_ops',
              'regex' => "/\D*(\d.*\d[a-z]{0,1})\D*$/" ),

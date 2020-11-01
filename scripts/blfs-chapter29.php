@@ -94,13 +94,13 @@ function get_packages( $package, $dirpath )
       $position = strrpos( $dirpath, "/" );
       $dirpath  = substr ( $dirpath, 0, $position ); // Up 1
       $lines = http_get_file( "$dirpath" );
-      return find_max( $lines, "/\d\./", "/^.*;([\d\.]+)\/.*$/" );
+      return find_max( $lines, "/^\d\./", "/^([\d\.]+)\/.*$/" );
     }
 
      if ( $book_index == "extra-cmake-modules" )
      {
         $lines = http_get_file( "$dirpath" );
-        $max = find_max( $lines, "/5/", "/^.*;(5[\d\.]+)\/.*$/" );
+        $max = find_max( $lines, "/^5/", "/^(5[\d\.]+)\/.*$/" );
         return $max . ".0";
      }
 

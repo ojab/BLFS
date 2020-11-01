@@ -19,7 +19,7 @@ function get_packages( $package, $dirpath )
   if ( isset( $current ) && $book_index != "$current" ) return 0;
 
   $lines = http_get_file( "$dirpath" );
-  return find_max( $lines, "/\d\./", "/^.*;(\d[\d\.]*)\/.*$/" );
+  return find_max( $lines, "/^\d+\./", "/^(\d[\d\.]*)\/.*$/" );
 }
 
 $d = getenv( 'BLFS_DIR' );
