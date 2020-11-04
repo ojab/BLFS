@@ -130,7 +130,7 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "adwaita-icon-theme" )
   {
-    $dir = find_even_max( $lines, "/^ +\d/", "/^ +([\d\.]+).*$/" );
+    $dir = find_even_max( $lines, "/^\d/", "/^([\d\.]+)\/.*$/" );
     $lines = http_get_file( "$dirpath/$dir" );
     return find_max( $lines, '/theme/', '/^.*theme-([\d\.]+).tar.*$/' );
   }

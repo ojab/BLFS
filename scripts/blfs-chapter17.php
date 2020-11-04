@@ -153,7 +153,7 @@ function get_packages( $package, $dirpath )
       $position = strrpos( $dirpath, "/" );
       $dirpath  = substr ( $dirpath, 0, $position );
       $lines    = http_get_file( "$dirpath/" );
-      $dir      = find_even_max( $lines, '/^[\d\.]+$/', '/^([\d\.]+)$/' );
+      $dir      = find_even_max( $lines, '/^.* [\d\.]+$/', '/^.* ([\d\.]+)$/' );
       $dirpath .= "/$dir/";
     }
 
