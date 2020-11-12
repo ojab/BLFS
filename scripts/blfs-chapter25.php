@@ -22,6 +22,7 @@ $renames[ 'qtwebkit-opensource-src'      ] = 'qtwebkit';
 $renames[ 'keybinder1'                   ] = 'keybinder3';
 
 $ignores = array();
+$ignores[ gdk-pixbuf-xlib = "";
 
 //$current="graphene"; // For debugging
 
