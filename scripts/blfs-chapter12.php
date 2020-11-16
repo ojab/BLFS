@@ -71,7 +71,7 @@ $url_fix = array (
    
    array( 'pkg'     => 'paxmirabilis',
           'match'   => '^.*$', 
-          'replace' => "http://pub.allbsd.org/MirOS/dist/mir/cpio" ),
+          'replace' => "https://www.mirbsd.org/MirOS/dist/mir/cpio/" ),
    
    array( 'pkg'     => 'acpid',
           'match'   => '^.*$', 
@@ -242,7 +242,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/udisks/', '/^.*udisks-(\d[\d\.]*\d).*$/' );
 
   if ( $book_index == "paxmirabilis" )
-    return find_max( $lines, '/paxmirabilis/', '/^.*paxmirabilis-(\d\d*\d).cpio.*$/' );
+    return find_max( $lines, '/paxmirabilis/', '/^.*paxmirabilis-(\d\d*\d).tgz.*$/' );
 
   if ( $book_index == "upower" )
     return find_max( $lines, '/upower/', '/^.*upower-(\d\.[\d\.]+\d).*$/' );
