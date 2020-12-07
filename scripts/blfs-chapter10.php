@@ -72,7 +72,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'lcms2',
         'match'   => '^.*$', 
-        'replace' => "http://$sf/projects/lcms/files/lcms" ),
+        'replace' => "https://sourceforge.net/projects/lcms/files/lcms/" ),
 
  array( 'pkg'     => 'libexif',
         'match'   => '^.*$', 
@@ -333,7 +333,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/openjpeg/', '/^.*openjpeg-v(\d\.[\d\.]+)-.*$/' );
 
   if ( $book_index == "lcms2" )
-    return find_max( $lines, '/^\s*2/', '/^\s*(2[\d\.]+) .*$/' );
+    return find_max( $lines, '/^\s*\d\./', '/^\s*([\d\.]+) .*$/' );
 
   if ( $book_index == "woff2" )
     return find_max( $lines, '/v\d/', '/^.*v([\d\.]+).*$/' );
