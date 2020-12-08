@@ -401,6 +401,10 @@ $url_fix = array (
           'match'   => '^.*$',
           'replace' => "https://github.com/pygobject/pycairo/releases" ),
 
+   array( 'pkg'     => 'pyxdg',
+          'match'   => '^.*$',
+          'replace' => "https://pypi.org/project/pyxdg" ),
+
    array( 'pkg'     => 'Pygments',
           'match'   => '^.*$',
           'replace' => "http://pygments.org" ),
@@ -662,6 +666,9 @@ function get_packages( $package, $dirpath )
 
   if ( $book_index == "pycairo" )
     return find_max( $lines, "/pycairo/", "/^.*pycairo-(\d[\d\.]*\d)\.tar.*$/" );
+
+  if ( $book_index == "pyxdg" )
+    return find_max( $lines, "/pyxdg/", "/^.*pyxdg (\d[\d\.]*\d).*$/" );
 
   if ( $book_index == "python-dbusmock" )
     return find_max( $lines, "/python-dbusmock/", "/^.*python-dbusmock-(\d[\d\.]*\d)\.tar.*$/" );
