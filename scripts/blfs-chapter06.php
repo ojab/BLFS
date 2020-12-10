@@ -30,7 +30,7 @@ $url_fix = array (
 
   array( 'pkg'     => 'gedit',
          'match'   => '^.*$', 
-         'replace' => "http://ftp.gnome.org/pub/gnome/sources/gedit" ),
+         'replace' => "https://download.gnome.org/sources/gedit/" ),
 
   array( 'pkg'     => 'vim',
          'match'   => '^.*$', 
@@ -125,7 +125,7 @@ function get_packages( $package, $dirpath )
       }
     }
 
-    $lines = http_get_file( "$dirpath/$major.$minor" );
+    $lines = http_get_file( "$dirpath/$major.$minor/" );
     return find_max( $lines, '/gedit/', '/^.*gedit-([\d\.]+).tar.*$/' );
   }
 

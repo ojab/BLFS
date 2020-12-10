@@ -42,7 +42,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'adwaita-icon-theme',
           'match'   => '^.*$', 
-          'replace' => "https://ftp.gnome.org/pub/gnome/sources/adwaita-icon-theme" ),
+          'replace' => "https://download.gnome.org/sources/adwaita-icon-theme/" ),
 
    array( 'pkg'     => 'oxygen-icons5',
           'match'   => '^.*$', 
@@ -131,7 +131,7 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "adwaita-icon-theme" )
   {
     $dir = find_even_max( $lines, "/^\d/", "/^([\d\.]+)\/.*$/" );
-    $lines = http_get_file( "$dirpath/$dir" );
+    $lines = http_get_file( "$dirpath/$dir/" );
     return find_max( $lines, '/theme/', '/^.*theme-([\d\.]+).tar.*$/' );
   }
     

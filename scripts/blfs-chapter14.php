@@ -54,7 +54,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'NetworkManager',
           'match'   => '^.*$', 
-          'replace' => "http://ftp.gnome.org/pub/gnome/sources/NetworkManager" ),
+          'replace' => "https://download.gnome.org/sources/NetworkManager" ),
 
    array( 'pkg'     => 'ntp',
           'match'   => '^.*$', 
@@ -159,8 +159,7 @@ function get_packages( $package, $dirpath )
     if ( $book_index == "NetworkManager" )
     {
       // Get the max directory and adjust the directory path
-      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
-      $lines1   = http_get_file( $dirpath );
+      $lines1   = http_get_file( "$dirpath/" );
       $dir      = find_even_max( $lines1, "/\d[\d\.]+/", "/^\s*(\d[\d\.]+).*$/" );
       $dirpath .= "/$dir/";
     }

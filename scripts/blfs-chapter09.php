@@ -319,6 +319,19 @@ function get_packages( $package, $dirpath )
       $dirpath .= "/$dir";
     }
 
+    if ( $book_index == "gspell" )
+    {
+      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
+      $position = strrpos( $dirpath, "/" );
+      $dirpath  = substr ( $dirpath, 0, $position );
+      $lines1 = http_get_file( $dirpath );
+      $dir = find_even_max( $lines1, '/^[\d\.]+\/.*$/', '/^([\d\.]+)\/.*$/' );
+
+      $lines = http_get_file( "$dirpath/" );
+      $dir = find_even_max( $lines, "/^\d\./", "/^(\d[\d\.]*)\/.*$/" );
+      $dirpath .= "/$dir/";
+    }
+
     if ( $book_index == "qca" )
     {
       $lines = http_get_file( "$dirpath" );
