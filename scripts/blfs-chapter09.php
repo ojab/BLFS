@@ -12,6 +12,7 @@ $renames = array();
 $renames[ 'node-v'                ] = 'node.js';
 $renames[ 'libuv-v'               ] = 'libuv';
 $renames[ 'firefox'               ] = 'js';
+$renames[ 'inih-r'                ] = 'inih';
 $renames[ 'mozjs'                 ] = 'js60';
 #$renames[ 'mozjs1'                ] = 'js52';
 $renames[ 'gmime1'                ] = 'gmime3';
@@ -64,6 +65,10 @@ $url_fix = array (
  array( 'pkg'     => 'firefox',
         'match'   => '^.*$',
         'replace' => "https://archive.mozilla.org/pub/firefox/releases/" ),
+
+ array( 'pkg'     => 'inih-r',
+        'match'   => '^.*$',
+        'replace' => "https://github.com/benhoyt/inih/releases" ),
 
  array( 'pkg'     => 'libarchive',
         'match'   => '^.*$',
@@ -430,6 +435,9 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "libdbusmenu-qt" )
     return find_max( $lines, '/^.*libdbusmenu-qt [\d\.]+.*$/',
                              '/^.*libdbusmenu-qt ([\d\.]+).*$/' );
+
+  if ( $book_index == "inih-r" )
+    return find_max( $lines, '/version/', '/^.*version (\d+)$/' );
 
   if ( $book_index == "libsigc++" )
     return find_max( $lines, '/libsigc\+\+-2/', '/^.*libsigc\+\+-(2[\d\.]+).tar.*$/', TRUE );
