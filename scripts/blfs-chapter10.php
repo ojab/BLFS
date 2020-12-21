@@ -338,6 +338,9 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "woff2" )
     return find_max( $lines, '/v\d/', '/^.*v([\d\.]+).*$/' );
 
+  if ( $book_index == "babl" )
+    return find_max( $lines, '/babl/', '/^.*babl-([\d\.]+).tar.*$/', FALSE );
+
   if ( $package == "graphite2" ) $package = "graphite";
 
   // Most packages are in the form $package-n.n.n
