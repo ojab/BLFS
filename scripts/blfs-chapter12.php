@@ -215,7 +215,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/colord/', '/^.*colord-(\d[\d\.]*\d).tar.*$/' );
 
   if ( $book_index == "elogind" )
-    return find_max( $lines, '/Version \d/', '/^.*Version (\d[\d\.]*\d) Release.*$/' );
+    return find_max( $lines, '/Version \d/', '/^.*Version (\d[\d\.]*\d).*Release.*$/' );
 
   if ( $book_index == "blocaled" )
     return find_max( $lines, '/blocaled/', '/^.*blocaled-(\d[\d\.]*\d).tar.*$/' );

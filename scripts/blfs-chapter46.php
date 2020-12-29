@@ -174,6 +174,7 @@ function get_packages( $package, $dirpath )
 
   if ( isset( $current ) && $book_index != "$current" ) return 0;
   #if ( $package == "x264-snapshot" ) return 'daily'; // Daily snapshot for x264
+ if ( $package == "x1" ) return "manual"; # x265
 
   // Fix up directory path
   foreach ( $url_fix as $u )
