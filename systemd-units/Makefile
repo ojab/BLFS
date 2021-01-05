@@ -197,6 +197,11 @@ install-svnserve: create-dirs
 	systemd-tmpfiles --create svnserve.conf
 	test -n "${DESTDIR}" || systemctl enable svnserve.service
 
+install-git-daemon: create-dirs
+	install -m ${CONFMODE} blfs/default/git-daemon ${DEFAULTSDIR}/
+	install -m ${CONFMODE} blfs/units/git-daemon.service ${UNITSDIR}/
+	test -n "${DESTDIR}" || systemctl enable git-daemon.service
+
 install-unbound: create-dirs
 	install -m ${CONFMODE} blfs/units/unbound.service ${UNITSDIR}/
 	test -n "${DESTDIR}" || systemctl enable unbound.service

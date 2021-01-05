@@ -1,0 +1,12 @@
+# Begin /etc/default/git-daemon
+
+# Repository base dir
+GIT_BASE_DIR="/srv/git/"
+
+# Default repository dir
+DFT_REPO_DIR="$GIT_BASE_DIR"
+
+# Options to pass to git-daemon
+GIT_DAEMON_OPTS=""
+
+# End /etc/default/git-daemon

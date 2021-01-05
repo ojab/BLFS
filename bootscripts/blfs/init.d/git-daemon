@@ -1,0 +1,71 @@
+#!/bin/sh
+########################################################################
+# Begin /etc/rc.d/init.d/git-daemon
+#
+# Description : Start/Stop git-daemon
+#
+# Authors     : Thomas Trepl - thomas@linuxfromscratch.org
+#
+# Version     : LFS x.x
+#
+# Notes       :
+#
+########################################################################
+
+### BEGIN INIT INFO
+# Provides:            git-daemon
+# Required-Start:      $network
+# Should-Start:
+# Required-Stop:       $network
+# Should-Stop:
+# Default-Start:       3 4 5
+# Default-Stop:        0 1 2 6
+# Short-Description:   Start git-daemon
+# Description:         Start git-daemon to publish repositories
+# X-LFS-Provided-By:
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+GIT_BIN="/usr/bin/git"
+GIT_DAEMON_OPTS=""
+DFT_REPO_DIR="/srv/git/"
+PID_FILE="/run/git-daemon.pid"
+if [ -f "/etc/sysconfig/git-daemon" ]; then
+   . /etc/sysconfig/git-daemon
+fi
+
+case "${1}" in
+   start)
+      log_info_msg "Starting git-daemon ... "
+      $GIT_BIN daemon \
+               --detach --pid-file=$PID_FILE \
+               --user=git --group=git \
+               --reuseaddr \
+               --base-path=$DFT_REPO_DIR \
+               $GIT_DAEMON_OPTS \
+               $DFT_REPO_DIR
+      evaluate_retval
+      ;;
+
+   stop)
+      log_info_msg "Stopping git-daemon ... "
+      killproc -p $PID_FILE $GIT_BIN
+      evaluate_retval
+      ;;
+
+   restart)
+      ${0} stop
+      sleep 1
+      ${0} start
+      ;;
+
+   *)
+      echo "Usage: ${0} {start|stop|restart}"
+      exit 1
+      ;;
+esac
+
+exit 0
+
+# End /etc/rc.d/init.d/git-daemon

@@ -522,6 +522,16 @@ install-svn: create-dirs
 	ln -sf ../init.d/svn ${EXTDIR}/rc.d/rc5.d/S33svn
 	ln -sf ../init.d/svn ${EXTDIR}/rc.d/rc6.d/K27svn
 
+install-git-daemon: create-dirs
+	install -m ${MODE} blfs/init.d/git-daemon ${EXTDIR}/rc.d/init.d/
+	ln -sf ../init.d/git-daemon ${EXTDIR}/rc.d/rc0.d/K27git-daemon
+	ln -sf ../init.d/git-daemon ${EXTDIR}/rc.d/rc1.d/K27git-daemon
+	ln -sf ../init.d/git-daemon ${EXTDIR}/rc.d/rc2.d/K27git-daemon
+	ln -sf ../init.d/git-daemon ${EXTDIR}/rc.d/rc3.d/S33git-daemon
+	ln -sf ../init.d/git-daemon ${EXTDIR}/rc.d/rc4.d/S33git-daemon
+	ln -sf ../init.d/git-daemon ${EXTDIR}/rc.d/rc5.d/S33git-daemon
+	ln -sf ../init.d/git-daemon ${EXTDIR}/rc.d/rc6.d/K27git-daemon
+
 install-sysstat: create-dirs
 	install -m ${MODE} blfs/init.d/sysstat    ${EXTDIR}/rc.d/init.d/
 	ln -sf ../init.d/sysstat ${EXTDIR}/rc.d/rcS.d/S85sysstat
