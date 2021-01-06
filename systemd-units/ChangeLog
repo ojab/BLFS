@@ -1,3 +1,6 @@
+2021-01-05 Thomas Trepl <thomas@linuxfromscratch.org>
+   * Add git-daemon service.
+
 2020-04-15 Douglas R. Reno <renodr@linuxfromscratch.org>
 	* Fix the dhcpcd systemd unit to use the correct PID file and no
 	  freeze systemctl or stop dhcpcd from starting as a result.

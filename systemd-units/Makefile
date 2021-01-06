@@ -54,6 +54,11 @@ install-exim: create-dirs
 	install -m ${CONFMODE} blfs/units/exim.service ${UNITSDIR}/
 	test -n "${DESTDIR}" || systemctl enable exim.service
 
+install-git-daemon: create-dirs
+	install -m ${CONFMODE} blfs/default/git-daemon ${DEFAULTSDIR}/
+	install -m ${CONFMODE} blfs/units/git-daemon.service ${UNITSDIR}/
+	test -n "${DESTDIR}" || systemctl enable git-daemon.service
+
 install-gpm: create-dirs
 	install -m ${CONFMODE} blfs/units/gpm.service ${UNITSDIR}/
 	test -n "${DESTDIR}" || systemctl enable gpm.service
@@ -197,11 +202,6 @@ install-svnserve: create-dirs
 	systemd-tmpfiles --create svnserve.conf
 	test -n "${DESTDIR}" || systemctl enable svnserve.service
 
-install-git-daemon: create-dirs
-	install -m ${CONFMODE} blfs/default/git-daemon ${DEFAULTSDIR}/
-	install -m ${CONFMODE} blfs/units/git-daemon.service ${UNITSDIR}/
-	test -n "${DESTDIR}" || systemctl enable git-daemon.service
-
 install-unbound: create-dirs
 	install -m ${CONFMODE} blfs/units/unbound.service ${UNITSDIR}/
 	test -n "${DESTDIR}" || systemctl enable unbound.service
@@ -234,6 +234,11 @@ uninstall-exim:
 	test -n "${DESTDIR}" || systemctl stop exim.service
 	test -n "${DESTDIR}" || systemctl disable exim.service
 	rm -f ${UNITSDIR}/exim.service
+
+uninstall-git-daemon:
+	test -n "${DESTDIR}" || systemctl stop git-daemon
+	test -n "${DESTDIR}" || systemctl disable git-daemon
+	rm -f ${UNITSDIR}/git-daemon.service
 
 uninstall-gpm:
 	test -n "${DESTDIR}" || systemctl stop gpm.service
@@ -392,6 +397,7 @@ uninstall-winbindd:
 	install-dhcpcd \
 	install-dhcpd \
 	install-exim \
+	install-git-daemon \
 	install-gpm \
 	install-httpd \
 	install-iptables \
@@ -423,6 +429,7 @@ uninstall-winbindd:
 	uninstall-dhcpcd \
 	uninstall-dhcpd \
 	uninstall-exim \
+	uninstall-git-daemon \
 	uninstall-gpm \
 	uninstall-httpd \
 	uninstall-iptables \

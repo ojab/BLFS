@@ -1036,6 +1036,16 @@ uninstall-svn:
 	rm -f ${EXTDIR}/rc.d/rc5.d/S33svn
 	rm -f ${EXTDIR}/rc.d/rc6.d/K27svn
 
+uninstall-git-daemon:
+	rm -f ${EXTDIR}/rc.d/init.d/git-daemon
+	rm -f ${EXTDIR}/rc.d/rc0.d/K27git-daemon
+	rm -f ${EXTDIR}/rc.d/rc1.d/K27git-daemon
+	rm -f ${EXTDIR}/rc.d/rc2.d/K27git-daemon
+	rm -f ${EXTDIR}/rc.d/rc3.d/S33git-daemon
+	rm -f ${EXTDIR}/rc.d/rc4.d/S33git-daemon
+	rm -f ${EXTDIR}/rc.d/rc5.d/S33git-daemon
+	rm -f ${EXTDIR}/rc.d/rc6.d/K27git-daemon
+
 uninstall-sysstat:
 	rm -f ${EXTDIR}/rc.d/init.d/sysstat
 	rm -f ${EXTDIR}/rc.d/rcS.d/S85sysstat

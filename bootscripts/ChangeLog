@@ -1,3 +1,6 @@
+2021-01-05  Thomas Trepl <thomas@linuxfromscratch.org>
+   * Add git-daemon bootscript
+
 2020-10-02  Pierre Labastie <pierre.labastie@neuf.fr>
    * Remove the -W (nowait) flag from posgresql start, and add -s
      (silent) to both start and stop.
