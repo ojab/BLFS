@@ -5,7 +5,7 @@ include 'blfs-include.php';
 
 $CHAPTER       = '26';
 $CHAPTERS      = 'Chapters 26-28';
-$START_PACKAGE = 'lxdm';
+$START_PACKAGE = 'lightdm';
 $STOP_PACKAGE  = 'oxygen-icons5';
 
 $renames = array();
@@ -27,6 +27,14 @@ $url_fix = array (
    array( 'pkg'     => 'icewm',
           'match'   => '^.*$', 
           'replace' => "https://github.com/ice-wm/icewm/releases" ),
+
+   array( 'pkg'     => 'lightdm',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/canonical/lightdm/releases" ),
+
+   array( 'pkg'     => 'lightdm-gtk-greeter',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/Xubuntu/lightdm-gtk-greeter/releases" ),
 
    array( 'pkg'     => 'lxdm',
           'match'   => '^.*$', 
