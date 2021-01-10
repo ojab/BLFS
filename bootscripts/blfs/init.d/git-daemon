@@ -27,22 +27,27 @@
 
 . /lib/lsb/init-functions
 
-GIT_BIN="/usr/bin/git"
 GIT_DAEMON_OPTS=""
-DFT_REPO_DIR="/srv/git/"
-PID_FILE="/run/git-daemon.pid"
+GIT_BASE_DIR="/srv/git/"
+DFT_REPO_DIR="$GIT_BASE_DIR"
 if [ -f "/etc/sysconfig/git-daemon" ]; then
    . /etc/sysconfig/git-daemon
 fi
+PID_FILE="/run/git-daemon.pid"
+GIT_BIN="/usr/bin/git"
+GIT_USR="git"
+GIT_GRP="git"
+GIT_HOME=$(eval echo ~$GIT_USR)
 
 case "${1}" in
    start)
       log_info_msg "Starting git-daemon ... "
+      export HOME=$GIT_HOME
       $GIT_BIN daemon \
                --detach --pid-file=$PID_FILE \
-               --user=git --group=git \
+               --user=$GIT_USR --group=$GIT_GRP \
                --reuseaddr \
-               --base-path=$DFT_REPO_DIR \
+               --base-path=$GIT_BASE_DIR \
                $GIT_DAEMON_OPTS \
                $DFT_REPO_DIR
       evaluate_retval

@@ -1,3 +1,6 @@
+2021-01-10  Thomas Trepl <thomas@linuxfromscratch.org>
+   * Add set $HOME in bootscript, add description of
+     how to use the git:// protocol for unauth clones.
 2021-01-05  Thomas Trepl <thomas@linuxfromscratch.org>
    * Add git-daemon bootscript
 
