@@ -145,7 +145,7 @@ function get_packages( $package, $dirpath )
   if ( preg_match( "/^ftp/", $dirpath ) )
   {
     // glib type packages
-    if ( $book_index == "glib-networking" ||
+    if ( $book_index == "glib-networking" ||  // This shouldn't happen any more
          $book_index == "libsoup"          )
     {
       // Parent listing
@@ -170,7 +170,7 @@ function get_packages( $package, $dirpath )
       $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
       $position = strrpos( $dirpath, "/" );
       $dirpath  = substr ( $dirpath, 0, $position );
-      $lines1   = http_get_file( $dirpath );
+      $lines1   = http_get_file( "$dirpath/" );
       $dir      = find_even_max( $lines1, '/^\s*[\d\.]+\/.*$/', '/^\s*([\d\.]+).*$/' );
       $dirpath .= "/$dir/";
     }
@@ -210,6 +210,28 @@ function get_packages( $package, $dirpath )
   if ( $book_index == "c-ares" )
     return find_max( $lines, '/c-ares/', '/^.*c-ares-([\d\.]+).tar.*$/' );
 
+  if ( $book_index == "glib-networking" )
+  {
+    $version = find_max( $lines, "/$book_index/", "/.*$book_index-([\d\.]*\d)\.tar.*$/" );
+    if ( $version == 0 )
+    {
+      // Reduce last directory segment by 0.02
+      /*
+      $dirpath  = rtrim  ( $dirpath, "/" );    // Trim any trailing slash
+      $position = strrpos( $dirpath, "/" );
+      $basedir  = substr ( $dirpath, 0, $position );
+      $lastdir  = substr ( $dirpath, -4  );    // 3.xx 
+      $newdir   = (float)$lastdir - 0.02 ;
+      $dirpath  = $basedir . "/" . $newdir;
+
+      // Get values from that diretory
+      $lines    = http_get_file( "$dirpath/" );
+      */
+      $lines   = backup_dir( $dirpath, 4, 0.02 );
+      $version = find_max( $lines, "/$book_index/", "/^.*$book_index-([\d\.]*\d)\.tar.*$/" );
+    }
+    return $version;
+  }
   if ( $book_index == "curl" )
     return find_max( $lines, '/^\d/', '/^([\d\.]+) .*$/' );
 

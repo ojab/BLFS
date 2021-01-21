@@ -66,7 +66,7 @@ $url_fix = array (
 
    array( 'pkg'     => 'shared-mime-info',
           'match'   => '^.*$', 
-          'replace' => "https://gitlab.freedesktop.org/xdg/shared-mime-info/tags" ),
+          'replace' => "https://github.com/freedesktop/xdg-shared-mime-info/releases" ),
 
    array( 'pkg'     => 'tidy-html5',
           'match'   => '^.*$', 
@@ -203,7 +203,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/rep-gtk/', '/^.*rep-gtk[_-]([\d\.]+).tar.*$/' );
 
   if ( $book_index == "shared-mime-info" )
-    return find_max( $lines, '/shared-mime-info/', '/^.*shared-mime-info ([\d\.]+).*$/' );
+    return find_max( $lines, '/\d\.tar/', '/^.*\/([\d\.]+).tar.*$/' );
 
   if ( $book_index == "telepathy-mission-control" )
     return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/", TRUE );

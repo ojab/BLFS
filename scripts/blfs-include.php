@@ -120,6 +120,20 @@ function find_odd_max( $lines, $regex_match, $regex_replace )
   return ( isset( $a[0] ) ) ? $a[0] : 0;
 }
 
+function backup_dir( $path, $dirlen, $diff )
+{
+   $path     = rtrim  ( $path, "/" );         // Trim any trailing slash
+   $position = strrpos( $path, "/" );
+   $basedir  = substr ( $path, 0, $position );
+   $lastdir  = substr ( $path, -$dirlen );    // last $dirlen characters
+   $newdir   = (float)$lastdir - $diff ;      // backup
+   $fullpath = $basedir . "/" . $newdir;
+
+   // Get values from that diretory
+   $newlines = http_get_file( "$fullpath/" );
+   return $newlines;
+}
+
 function http_get_file( $url )
 {
   if ( preg_match( "/graphviz/", $url ) ||
@@ -139,7 +153,8 @@ function http_get_file( $url )
   // Do not strip tags
   if ( preg_match( "/gpm/",      $url ) ||
        preg_match( "/libvdpau/", $url ) ||
-       preg_match( "/imagemagick/", $url ) ||
+       preg_match( "/shared-mime-info/", $url ) ||
+       preg_match( "/imagemagick/",      $url ) ||
        preg_match( "/allbsd/",   $url ) ||    // paxmirabilis
        preg_match( "/alsa/",     $url ) )
   {

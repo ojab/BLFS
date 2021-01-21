@@ -245,7 +245,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/paxmirabilis/', '/^.*paxmirabilis-(\d\d*\d).tgz.*$/' );
 
   if ( $book_index == "upower" )
-    return find_max( $lines, '/upower/', '/^.*upower-(\d\.[\d\.]+\d).*$/' );
+    return find_max( $lines, '/Released UPower/', '/^.*UPower (\d\.[\d\.]+\d).*$/' );
 
   if ( $book_index == "p7zip" )
   {
