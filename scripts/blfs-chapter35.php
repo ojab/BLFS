@@ -19,6 +19,7 @@ $ignores = array();
 $kde_ver  = "";
 
 //$current="telepathy-glib";  // For debugging
+//$current="tracker-miners1";  // For debugging
 
 $regex = array();
 //$regex[ 'libzeitgeist' ] = "/^.*Latest version is (\d[\d\.]+\d).*$/";
@@ -206,8 +207,29 @@ function get_packages( $package, $dirpath )
 
   if ( $package == 'tracker1'        ) $package = 'tracker';
   if ( $package == 'tracker-miners1' ) $package = 'tracker-miners';
-  
+
   $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/", TRUE );
+
+  if ( $max == 0 && preg_match( "/tracker/", $dirpath ) )
+  {
+    $lines = backup_dir( $dirpath, 3, 0.1 );
+    return find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/", TRUE );
+  }
+
+
+  // Hardcode this for now
+  if ( $max == 0 && preg_match( "/40\//", $dirpath ) )
+  {
+    if ( $package == 'libgweather' ) 
+      $dir = "3.36";
+    else
+      $dir = "3.38";
+      
+    $dirpath = preg_replace( "/40/", "/$dir/", $dirpath );
+    $lines   = http_get_file( "$dirpath" );
+    $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/", FALSE );
+  }
+
   return $max;
 }
 

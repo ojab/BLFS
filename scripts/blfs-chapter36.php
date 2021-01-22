@@ -106,6 +106,19 @@ function get_packages( $package, $dirpath )
   // Most packages are in the form $package-n.n.n
   // Occasionally there are dashes (e.g. 201-1)
   $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/" );
+
+  // Hardcode this for now
+  if ( $max == 0 && preg_match( "/40\//", $dirpath ) )
+  {
+    if ( $package == 'gnome-weather' ) 
+      $dir = "3.36";
+    else
+      $dir = "3.38";
+      
+    $dirpath = preg_replace( "/40/", "/$dir/", $dirpath );
+    $lines   = http_get_file( "$dirpath" );
+    $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.tar.*$/", FALSE );
+  }
   return $max;
 }
 

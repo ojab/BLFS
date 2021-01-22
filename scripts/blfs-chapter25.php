@@ -17,6 +17,7 @@ $renames[ 'gtksourceview'                ] = 'gtksourceview3';
 $renames[ 'gtksourceview1'               ] = 'gtksourceview4';
 $renames[ 'qt-everywhere-opensource-src' ] = 'qt5';
 $renames[ 'qt-everywhere-opensource'     ] = 'qt5';
+$renames[ 'qt-everywhere-src'            ] = 'qt5';
 $renames[ 'qtwebengine-everywhere-src'   ] = 'qtwebengine';
 $renames[ 'qtwebkit-opensource-src'      ] = 'qtwebkit';
 $renames[ 'keybinder1'                   ] = 'keybinder3';
@@ -25,6 +26,7 @@ $ignores = array();
 $ignores[ 'gdk-pixbuf-xlib' ] = "";
 
 //$current="graphene"; // For debugging
+//$current="qt-everywhere-src";
 
 $regex = array();
 

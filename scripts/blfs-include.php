@@ -81,9 +81,13 @@ function find_even_max( $lines, $regex_match, $regex_replace )
      $slice1 = preg_replace( "/^(.*)-.*$/", "$1", $slice );
 
      // Skip odd numbered minor versions and minors > 80
-     list( $major, $minor, $other ) = explode( ".", $slice1 . ".0", 3 );
-     if ( $minor % 2 == 1  ) continue;
-     if ( $minor     >  80 ) continue;
+     // Sometimes there is no period in $slice
+     if ( preg_match( "/\./", $slice1 ) )
+     {
+       list( $major, $minor, $other ) = explode( ".", $slice1 . ".0", 3 );
+       if ( $minor % 2 == 1  ) continue;
+       if ( $minor     >  80 ) continue;
+     }
 
      array_push( $a, $slice );     
   }
@@ -126,9 +130,10 @@ function backup_dir( $path, $dirlen, $diff )
    $position = strrpos( $path, "/" );
    $basedir  = substr ( $path, 0, $position );
    $lastdir  = substr ( $path, -$dirlen );    // last $dirlen characters
-   $newdir   = (float)$lastdir - $diff ;      // backup
+   $precision= $dirlen - 2;
+   $format   = "%$dirlen.${precision}f";
+   $newdir   = sprintf( $format, (float)$lastdir - $diff );      // backup
    $fullpath = $basedir . "/" . $newdir;
-
    // Get values from that diretory
    $newlines = http_get_file( "$fullpath/" );
    return $newlines;
