@@ -1,3 +1,6 @@
+2021-01-22 Douglas R. Reno <renodr@linuxfromscratch.org>
+	* Modify the rpcbind socket to use /run instead of /var/run like other sockets.
+
 2021-01-05 Thomas Trepl <thomas@linuxfromscratch.org>
    * Add git-daemon service.
 
