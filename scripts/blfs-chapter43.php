@@ -304,6 +304,19 @@ function get_packages( $package, $dirpath )
   if ( $package == "balsa" )
       return find_max( $lines, "/^.*balsa-/", "/^.*balsa-([\d\.]+).*$/" );
 
+  if ( $package == "epiphany" )
+  {
+      $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.ta.*$/" );
+      if ($max == 0 && preg_match( "/40\//", $dirpath ) )
+      {
+        $dirpath = preg_replace( "/40/", "/3.38/", $dirpath );
+        $lines   = http_get_file( "$dirpath" );
+        $max = find_max( $lines, "/$package/", "/^.*$package-([\d\.]*\d)\.ta.*$/" );
+      }
+
+      return $max;
+  }
+
   if ( $package == "gparted" )
       return find_max( $lines, "/$package/", "/^.*$package-([\d\.]+).*$/" );
 
