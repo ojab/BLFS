@@ -161,6 +161,7 @@ function http_get_file( $url )
        preg_match( "/libvdpau/", $url ) ||
        preg_match( "/shared-mime-info/", $url ) ||
        preg_match( "/imagemagick/",      $url ) ||
+       preg_match( "/w1.fi/",    $url ) ||
        preg_match( "/allbsd/",   $url ) ||    // paxmirabilis
        preg_match( "/alsa/",     $url ) )
   {
