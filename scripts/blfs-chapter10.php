@@ -64,7 +64,7 @@ $url_fix = array (
 
  array( 'pkg'     => 'jasper',
         'match'   => '^.*$', 
-        'replace' => "http://www.ece.uvic.ca/~frodo/jasper/#download" ),
+        'replace' => "https://github.com/jasper-software/jasper/releases" ),
 
  array( 'pkg'     => 'lcms',
         'match'   => '^.*$', 
@@ -302,7 +302,7 @@ function get_packages( $package, $dirpath )
     return find_max( $lines, '/v\d/', '/^\s*v(\d[\d\.]+).*$/' );
 
   if ( $book_index == "jasper" )
-    return find_max( $lines, '/JasPer/', '/^.*JasPer (\d\.[\d\.]+).*$/' );
+    return find_max( $lines, '/version-/', '/^.*version-(\d\.[\d\.]+).*$/' );
 
   if ( $book_index == "aalib" )
     return find_max( $lines, "/$book_index/", '/^.*aalib-([rc\d\.]+).tar.*$/' );

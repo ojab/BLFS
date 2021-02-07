@@ -29,7 +29,6 @@ $regex[ 'a52dec'                     ] = "/^.*a52dec-(\d[\d\.]+\d) is.*$/";
 $regex[ 'libass'                     ] = "/^.*Release (\d[\d\.]+\d).*$/";
 $regex[ 'libmpeg2'                   ] = "/^.*libmpeg2-(\d[\d\.]+\d).*$/";
 $regex[ 'libmusicbrainz1'            ] = "/^.*libmusicbrainz-(5[\d\.]+\d).*$/";
-$regex[ 'libsamplerate'              ] = "/^.*libsamplerate-([\d\.]+\d).tar.*$/";
 $regex[ 'flash_player_ppapi_linux.x' ] = "/^.*latest versions are (\d[\d\.]+\d).*$/";
 $regex[ 'libcanberra'                ] = "/^.*(\d[\d\.]+\d) released.*$/";
 $regex[ 'xvidcore'                   ] = "/^.*Xvid (\d[\d\.]+\d) stable.*$/";
@@ -118,7 +117,11 @@ $url_fix = array (
 
    array( 'pkg'     => 'libsamplerate',
           'match'   => '^.*$', 
-          'replace' => "http://www.mega-nerd.com/SRC/download.html" ),
+          'replace' => "https://github.com/libsndfile/libsamplerate/releases" ),
+
+   array( 'pkg'     => 'libsndfile',
+          'match'   => '^.*$', 
+          'replace' => "https://github.com/libsndfile/libsndfile/releases" ),
 
    array( 'pkg'     => 'libvpx',
           'match'   => '^.*$', 
