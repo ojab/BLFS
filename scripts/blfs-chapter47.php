@@ -186,7 +186,11 @@ function get_packages( $package, $dirpath )
       return find_max( $lines, "/dvd\+/", "/^.*dvd\+rw-tools-([\d\.]+).tar.*$/" );
 
   if ( $package == "vlc" )
-      return find_max( $lines, "/\d\.[\d\.]+\//", "/^([\d\.]+)\/.*$/" );
+  {
+      $max = find_max( $lines, "/\d\.[\d\.]+\//", "/^([\d\.]+)\/.*$/" );
+      if ( $max == "3.0.12.1" ) $max = "3.0.12";
+      return $max;
+  }
 
   if ( $package == "cdrtools" )
     return find_max( $lines, "/$package/", "/^.*$package-([\d\.]+a?\d*)\.tar.*$/" );
