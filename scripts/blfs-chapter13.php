@@ -169,7 +169,7 @@ $url_fix = array (
    // Same as tcl
    array( 'pkg'     => 'tk',
           'match'   => '^.*$',
-          'replace' => "http://sourceforge.net/projects/tcl/files" ),
+          'replace' => "https://sourceforge.net/projects/tcl/files" ),
 
    array( 'pkg'     => 'swig',
           'match'   => '^.*$',
@@ -561,7 +561,10 @@ function get_packages( $package, $dirpath )
     if ( $book_index == "tk" )
     {
       exec( "links -dump $dirpath", $lines );
-      return find_max( $lines, "/tcl/", "/^.*tcl(\d[\d\.]*\d)-src.*$/" );
+      $tcl = find_max( $lines, "/tcl/", "/^.*tcl(\d[\d\.]*\d)-src.*$/" );
+      $dirpath  .= "/Tcl/" . $tcl . "/";
+      exec( "links -dump $dirpath", $lines );
+      return find_max( $lines, "/tk8\./", "/^.*tk(\d[\d\.]*\d)-src.*$/" );
     }
 
     $strip = "yes";
