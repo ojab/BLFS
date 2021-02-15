@@ -67,7 +67,6 @@ function get_packages( $package, $dirpath )
         $dir      = find_even_max( $dirs, "/\d$/", "/^.* ([\d\.]+)$/" ); // Not even
         $dirpath .= "/$dir/";
     }
-
     else
     {
         // All other ftp enties for this chapter
@@ -112,7 +111,9 @@ function get_packages( $package, $dirpath )
   {
     if ( $package == 'gnome-weather' ) 
       $dir = "3.36";
-    else
+    else if ( $package == 'gnome-tweaks' )
+      $dir = "3.34";
+    else 
       $dir = "3.38";
       
     $dirpath = preg_replace( "/40/", "/$dir/", $dirpath );

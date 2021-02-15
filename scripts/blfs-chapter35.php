@@ -19,7 +19,6 @@ $ignores = array();
 $kde_ver  = "";
 
 //$current="telepathy-glib";  // For debugging
-//$current="tracker-miners1";  // For debugging
 
 $regex = array();
 //$regex[ 'libzeitgeist' ] = "/^.*Latest version is (\d[\d\.]+\d).*$/";
@@ -147,6 +146,7 @@ function get_packages( $package, $dirpath )
             $book_index == "grilo"       ||
             $book_index == "gexiv2"      ||
             $book_index == "libgdata"    ||
+            $book_index == "gnome-autoar"||
             $book_index == "folks"       ||
             $book_index == "geocode-glib" )
          $dir = find_max(      $dirs, "/\d$/", "/^.* ([\d\.]+)$/" );
