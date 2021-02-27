@@ -203,11 +203,12 @@ function get_packages( $package, $dirpath )
       $position = strrpos( $dirpath, "/" );
       $dirpath  = substr ( $dirpath, 0, $position ); // Up 3
       $dirlines = http_get_file( $dirpath );
-      $dir      = find_max( $dirlines, '/^[\d\.]+.*$/', '/^([\d\.]+).*$/' );
+      # Version 5.x only
+      $dir      = find_max( $dirlines, '/;5\./', '/^.*;([\d\.]+).*$/' );
       $dirpath .= "/$dir";
       $dirlines = http_get_file( "$dirpath" );
-      $dir      = find_max( $dirlines, '/^[\d\.]+.*$/', '/^([\d\.]+).*$/' );
-      $dirpath .= "/$dir/single";
+      $max      = find_max( $dirlines, '/;[\d\.]+/', '/^.*;([\d\.]+)\/.*$/' );
+      return $max;
     }
 
     if ( $book_index == "QScintilla_gpl" )
